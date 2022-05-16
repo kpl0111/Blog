@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+
+
+<html lang="zh_CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="Simple" />
+       
+      <meta name="description" content="Simple" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>编译系统原理复习提纲 |  Nefelibata</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/blog/dist/main.css">
+
+      
+<link rel="stylesheet" href="/blog/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/blog/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-编译系统原理复习提纲"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  编译系统原理复习提纲
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/blog/2022/0178868943.html" class="article-date">
+  <time datetime="2022-01-01T07:31:41.000Z" itemprop="datePublished">2022-01-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/%E5%A4%8D%E4%B9%A0/">复习</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">6 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="编译系统原理"><a href="#编译系统原理" class="headerlink" title="编译系统原理"></a>编译系统原理</h1><p>[toc]</p>
+<p><strong>内容过多，未完全整理</strong></p>
+<h2 id="题型设计"><a href="#题型设计" class="headerlink" title="题型设计"></a>题型设计</h2><ul>
+<li>单项选择（12*2）<ul>
+<li>编译阶段所做事情考察</li>
+<li>编译器和解释器的区分</li>
+<li>ϵ是空符号串</li>
+<li>正则表达式本质上表述的是符号串集合</li>
+<li>NFA，DFA和CFG</li>
+</ul>
+</li>
+<li>设计题（6*4）<ul>
+<li>正则表达式表示的含义</li>
+<li>设计正则表达式</li>
+<li>设计上下文无关文法</li>
+<li><img src="https://s2.loli.net/2022/01/02/qnjOP91pUJG8AND.png" alt="image-20220102183721573"></li>
+</ul>
+</li>
+<li>解答题<ul>
+<li>Thompson构造法</li>
+<li>子集构造法</li>
+<li>终结符，非终结符，开始符号</li>
+<li>消除左递归</li>
+<li>构造预测分析表</li>
+<li>流图</li>
+<li>三地址码</li>
+<li>优化</li>
+</ul>
+</li>
+</ul>
+<h2 id="真题"><a href="#真题" class="headerlink" title="真题"></a>真题</h2><p>C++编译器检查数组下标越界是在_____阶段?<br>ϵ为空符号串</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>广义的编译器：浏览器</p>
+<p><img src="https://s2.loli.net/2022/01/02/3Anf8JchwoUvt17.png" alt="image-20220102012213479"></p>
+<h3 id="分析-综合模型"><a href="#分析-综合模型" class="headerlink" title="分析-综合模型"></a>分析-综合模型</h3><p>两个基本部分</p>
+<ul>
+<li>分析：将源程序分解为基本组成部分，生成中间表示形式<ul>
+<li>中间表示形式：树</li>
+<li>节点-操作</li>
+<li>孩子-参数</li>
+</ul>
+</li>
+<li>综合：从中间表示形式构建目标程序</li>
+</ul>
+<p>源程序分析的三个阶段</p>
+<ul>
+<li>线性分析/词法分析/扫描<ul>
+<li>由左至右扫描源程序字符序列➔token，单词（记号）——具有组合意义的字符序列</li>
+<li>忽略空格、回车等，将字符组合为单词</li>
+</ul>
+</li>
+<li>层次分析/语法分析<ul>
+<li>单词序列➔有意义的集合，语法单位</li>
+<li>将词法分析产生的单词组合为语法短语</li>
+<li>语法分析树：内部节点-运算符，叶节点-运算对象</li>
+</ul>
+</li>
+<li>语义分析<ul>
+<li>检查程序各部分是否正确符合语义</li>
+</ul>
+</li>
+</ul>
+<p>语法结构的递归定义</p>
+<ul>
+<li>表达式</li>
+</ul>
+<ol>
+<li>标识符是表达式</li>
+<li>数是表达式</li>
+<li>若expression1和expression2是表达式，则expression1 + expression2 、expression1 * expression2、( expression1 )也是表达式</li>
+</ol>
+<ul>
+<li>1、2——基本规则，3——递归定义</li>
+</ul>
+<p>文法（grammar）</p>
+<ul>
+<li>语句（statement）定义</li>
+</ul>
+<ol>
+<li>若identifier1是一个标识符，expression2是一个表达式，则identifier1 := expression2是一个语句</li>
+<li>若expression1是一个表达式，statement2是一个语句，则while ( expression1 ) do statement2和if ( expression1 ) then statement2也是语句</li>
+</ol>
+<ul>
+<li>文法：处理token相互关系和结构的一组规则</li>
+</ul>
+<p>程序优化技术现状</p>
+<ul>
+<li>CPU上的过程内优化基本成熟</li>
+<li>过程间优化能力仍然受限</li>
+<li>面向GPU等新型体系结构的编译优化还有空间</li>
+</ul>
+<h2 id="一个简单的编译器"><a href="#一个简单的编译器" class="headerlink" title="一个简单的编译器"></a>一个简单的编译器</h2><p>字符流 → 词法分析器 → 单词流 → 语法制导翻译器 → 中间表示形式</p>
+<p>语法制导翻译器：语法分析 + 中间代码生成</p>
+<h3 id="语法定义"><a href="#语法定义" class="headerlink" title="语法定义"></a>语法定义</h3><p>上下文无关文法：描述语言的语法结构</p>
+<p>组成：</p>
+<ol>
+<li>一组终结符号，单词，基本符号</li>
+<li>一组非终结符号（语法变量），语法范畴，语法概念</li>
+<li>一组产生式，定义语法范畴<ul>
+<li>产生式：A→α</li>
+<li>A—一个非终结符，左部</li>
+<li>α—终结符或/与非终结符串，右部</li>
+</ul>
+</li>
+<li>一个特定的非终结符——开始符号，start symbol</li>
+</ol>
+<p>几个概念</p>
+<ul>
+<li>Σ：有穷字母表，元素——符号</li>
+<li>符号串：Σ中符号构成的有穷序列</li>
+<li>空字：不含任何符号的序列，ε</li>
+<li>Σ*：符号串全体，包括空字</li>
+<li>φ：空集{}，区分ε，{}，{ε}</li>
+<li>Σ*的子集U、V的积（连接）{ αβ|α ∈ U 且 β ∈ V}</li>
+<li>UV≠VU，(UV)W=U(VW)</li>
+<li>V自身的n次积（连接）记为$V^{n}$</li>
+<li>$V^{0}={ε}$</li>
+<li>V的闭包（closure）<ul>
+<li>$V* = V^{0} ⋃ V^{1} ⋃ V^{2} ⋃ V^{3} ⋃ …$</li>
+<li>每个符号串，都是V中符号串有限次连接</li>
+</ul>
+</li>
+<li>正则闭包，$V^{+}=VV*$</li>
+</ul>
+<p>四元式定义上下文无关文法</p>
+<ul>
+<li>$(V_{T}, V_{N}, S, P)$</li>
+<li>$V_{T}$：非空有限集，终结符号集合</li>
+<li>$V_{N}$：非空有限集，非终结符号集合</li>
+<li>S：开始符号</li>
+<li>P：产生式集合（有限集）<ul>
+<li>每个产生式形式A→α，其中</li>
+<li>$A ∈ V_{N},α ∈(V_{T} ⋃ V_{N})*$</li>
+<li>关于A的产生式S至少在某个产生式左部出现一次</li>
+</ul>
+</li>
+</ul>
+<p>符号约定</p>
+<ul>
+<li><p><em>expr → expr + digit</em></p>
+</li>
+<li><p><em>expr → expr – digit</em></p>
+</li>
+<li><p><em>expr → digit</em></p>
+</li>
+<li><p><em>digit</em> → 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9</p>
+</li>
+<li><p>数字、运算符、黑体字符串——终结符</p>
+</li>
+<li><p>斜体字符串——非终结符</p>
+</li>
+<li><p>左部相同可合并，‘|’——“或”的意思<em>expr → expr + digit |  expr - digit | digit</em>候选式</p>
+</li>
+</ul>
+<p>推导</p>
+<ul>
+<li>单词串(string)：0个或多个单词构成的序列</li>
+<li>推导(derive)<ul>
+<li>由<strong>开始符号作为推导起点</strong></li>
+<li>用产生式<strong>右部</strong>替换左部非终结符</li>
+<li>反复替换，最终得到单词串</li>
+</ul>
+</li>
+<li>语言(language)<ul>
+<li>语法所定义的语言——可由开始符号推导出的所有单词串的集合</li>
+</ul>
+</li>
+</ul>
+<p>二义性：多个语法分析树生成相同的单词串——多个意义</p>
+<h3 id="语法制导翻译"><a href="#语法制导翻译" class="headerlink" title="语法制导翻译"></a>语法制导翻译</h3><ul>
+<li>翻译：为生成代码，需保存语言结构的类型、代码位置、代码数量等</li>
+<li>属性(attribute)：类型、串、内存位置等</li>
+<li>语法制导翻译syntax-directed translation<ul>
+<li>语法制导定义syntax-directed definition</li>
+<li>属性与语法结构相关联➔指明翻译方法</li>
+<li>翻译模式，translation scheme</li>
+</ul>
+</li>
+<li>表达式E的后缀形式Postfix(E)如何生成：<ol>
+<li>E为变量或常量：Postfix(E) = E</li>
+<li>$E = E_{1} op E_{2}$，op—二元运算符，$E_{1}、E_{2}$—子表达式：<br> $Postfix(E) = Postfix(E_{1} op E_{2})= Postfix(E_{1}) Postfix(E_{2}) op$</li>
+<li>$E = (E_{1})$：<br> $Postfix(E) = Postfix(E_{1})$</li>
+</ol>
+</li>
+<li>(9 - 5) + 2 ➔9 5 - 2 +</li>
+<li>9 - (5 + 2) ➔9 5 2 + -</li>
+</ul>
+<p>语法制导定义</p>
+<ul>
+<li>基于语言的上下文无关文法</li>
+<li>语法符号——一组属性</li>
+<li>产生式——一组语义规则(semantic rule)——属性值计算规则</li>
+<li>CFG+语义规则➔语法制导定义</li>
+</ul>
+<p>语法制导翻译的基本过程（翻译——输入→输出映射过程）</p>
+<ol>
+<li>输入单词串x➔语法分析树</li>
+<li>节点n标记为X，X.a——X的属性</li>
+<li>计算节点n的X.a的值——利用X产生式的语义规则➔</li>
+<li>“注释语法分析树”（annotated parse tree）</li>
+</ol>
+<p>语法制导定义的实现</p>
+<ul>
+<li>树的遍历：计算完所有孩子节点的属性，父节点才能计算自身属性</li>
+<li>后序遍历，深度优先</li>
+</ul>
+<p>翻译模式</p>
+<ul>
+<li>translation scheme</li>
+<li>同样基于上下文无关文法</li>
+<li>语义动作（semantic action，程序片断）嵌入产生式的右部</li>
+<li><img src="https://s2.loli.net/2022/01/02/a8GclC5wADqj6mY.png" alt="image-20220102171537472"></li>
+<li>语法分析树添加额外节点</li>
+<li>指明了语义动作执行顺序</li>
+</ul>
+<h3 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h3><ul>
+<li>确定一个单词串是否可由一个文法生成</li>
+<li>构造语法分析树</li>
+<li>时间复杂度$O(n^3)➔O(n)$</li>
+<li>自顶向下分析方法，top-down<br>语法树构造——由根向叶<br>适合手工编写语法分析器</li>
+<li>自底向上分析方法，bottom-up<br>语法树构造——由叶向根<br>适用更多文法，自动生成工具</li>
+</ul>
+<p>自顶向下分析方法</p>
+<ul>
+<li>从根节点（标记为开始符号）开始构造语法树，不断重复以下步骤</li>
+</ul>
+<ol>
+<li>对标记为NT A的节点n,选择一个关于A的产生式,利用产生式右部构造n的孩子节点</li>
+<li>选择下一个没有扩展（构造孩子节点）的节点，对它执行1</li>
+</ol>
+<p><strong>平凡算法</strong></p>
+<ol>
+<li>初始状态，只有一个根节点，标记为开始符号，输入指针指向第一个单词</li>
+<li>对于NT节点<br> a) 选择产生式（尝试、回溯）构造孩子节点<br> b) 对孩子节点从左至右继续分析</li>
+<li>对于T节点<br> a) 与当前输入单词进行比较<br> b) 若匹配，输入指针前移，处理下一个节点<br> c) 不匹配，可能需要回溯或报告错误</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3ay47iMBAFUP7/p+ltSyMy97pCS7FPVhEK2CeLoh5+veLr/ev69Pm/1+9n2rVe37gwMDAey8i3cr3ANfV6i8m6n57BwMA4h3Ed+K7vr4Ps9fLJd6OgjIGBgRE/kwfuSVqJgYGB0QbctbQvKWIxMDAw1lpm+VYmYfqLtTgGBsYDGW2z/i/vvzLfwMDAeBTjXV6flrkrQC/uCgMDY2vGXaneWsm6Nij9+CQGBsbWjLtyrXYrSfAd5bwYGBgbMSZhdN5WmxzCGP1vYGBgPISRH+TKy9Q2HaxHlRgYGIcx2qFj0nRLYvxdqScGBsYJjDYhy7e1NkJYbK5hYGAcw8iD3WRIuVYG/+c1YWBgHMNohwR5aZqAR8NODAyMAxht8ysfT+btvDyIf5xsYGBgHMCYFKttKdu+xPr4FwYGxkaMNl1rz3GsNebaoxsYGBh7M5Jm1jzsTp6PoisGBsYBjDoJu6lNlpMWD1tgYGBswcjTwQk1TzTb11EvhoGB8VhG2/aahMX2vmjkYWBgHMZItntv0XvD6BQDA+MwRn5sYpLMTX6zODmCgYHxcMa7vJKB4lpp2o45Ix8GBsYWjLZZNlmgLZWT+xqGgYHxWEZesuZvJS9HF4eU7b8HBgbGFoy8cF0bBiSfjI53YGBgYJSM+ebaUI6BgYHxjeZaDo4GohgYGAcw2qMVebMsB4+KZwwMjK0Zbeo2OZaRt/NyDAYGxtaMHxSMk2GRbg60AAAAAElFTkSuQmCC" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Lex/" rel="tag">Lex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Yacc/" rel="tag">Yacc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E7%BC%96%E8%AF%91%E5%99%A8/" rel="tag">编译器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E7%BC%96%E8%AF%91%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/" rel="tag">编译系统原理</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/blog/2022/018a8f3fb6.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            物联网安全复习总结
+          
+        </div>
+      </a>
+    
+    
+      <a href="/blog/2021/1210d148d4.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">计算机网络复习摘要</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "UqmmCk8hwk6pFHShPMHgKKM2-9Nh9j0Va",
+    app_key: "EDTBSLGA8nmdRYGxKz5K3NW3",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "Just go go ~(想要回复记得留下邮箱~)",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021-2022
+        <i class="ri-heart-fill heart_icon"></i> kpl0111
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/blog/"><img src="/images/ayer.svg" alt="Nefelibata"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/">主  页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/archives">时间轴</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/categories">分  类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/tags">标  签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/friends">友  链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/about">关  于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/blog/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/blog/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/blog/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/blog/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/blog/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+ 
+<script src="/blog/js/clickBoom2.js"></script>
+ 
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/blog/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/blog/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

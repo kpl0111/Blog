@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Nefelibata</title>
+  
+  <subtitle>Nefelibata</subtitle>
+  <link href="https://kpl0111.github.io/blog/atom.xml" rel="self"/>
+  
+  <link href="https://kpl0111.github.io/blog/"/>
+  <updated>2021-04-07T13:53:20.682Z</updated>
+  <id>https://kpl0111.github.io/blog/</id>
+  
+  <author>
+    <name>kpl0111</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello kpl!</title>
+    <link href="https://kpl0111.github.io/blog/2022/054a17b156.html"/>
+    <id>https://kpl0111.github.io/blog/2022/054a17b156.html</id>
+    <published>2022-05-16T02:38:03.577Z</published>
+    <updated>2021-04-07T13:53:20.682Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2021/04/07/BHgA5RqQeZTv8Wt.png&quot; alt=&quot;image-20210407205253791&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vim参数推荐</title>
+    <link href="https://kpl0111.github.io/blog/2022/0257c5ab7b.html"/>
+    <id>https://kpl0111.github.io/blog/2022/0257c5ab7b.html</id>
+    <published>2022-02-18T15:06:31.000Z</published>
+    <updated>2022-02-18T15:09:43.872Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;“ All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by&lt;br&gt;“ the call to :runtime you can find below.  If you wish</summary>
+        
+      
+    
+    
+    
+    <category term="杂项" scheme="https://kpl0111.github.io/blog/categories/%E6%9D%82%E9%A1%B9/"/>
+    
+    
+    <category term="Vim" scheme="https://kpl0111.github.io/blog/tags/Vim/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>物联网安全复习总结</title>
+    <link href="https://kpl0111.github.io/blog/2022/018a8f3fb6.html"/>
+    <id>https://kpl0111.github.io/blog/2022/018a8f3fb6.html</id>
+    <published>2022-01-04T04:29:58.000Z</published>
+    <updated>2022-01-05T14:23:49.020Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+  &lt;p&gt;
+    &lt;font size=&quot;4&quot; color=&quot;#7E0C6E&quot;&gt;
+      复习时随手记录，并不完整
+    &lt;/font&gt;
+  &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;物联网安全&quot;&gt;&lt;a href=&quot;#物联网安全&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="复习" scheme="https://kpl0111.github.io/blog/categories/%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+    <category term="物联网安全" scheme="https://kpl0111.github.io/blog/tags/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="复习" scheme="https://kpl0111.github.io/blog/tags/%E5%A4%8D%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编译系统原理复习提纲</title>
+    <link href="https://kpl0111.github.io/blog/2022/0178868943.html"/>
+    <id>https://kpl0111.github.io/blog/2022/0178868943.html</id>
+    <published>2022-01-01T07:31:41.000Z</published>
+    <updated>2022-01-04T04:53:44.673Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;编译系统原理&quot;&gt;&lt;a href=&quot;#编译系统原理&quot; class=&quot;headerlink&quot; title=&quot;编译系统原理&quot;&gt;&lt;/a&gt;编译系统原理&lt;/h1&gt;&lt;p&gt;[toc]&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;内容过多，未完全整理&lt;/strong&gt;&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="复习" scheme="https://kpl0111.github.io/blog/categories/%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+    <category term="Lex" scheme="https://kpl0111.github.io/blog/tags/Lex/"/>
+    
+    <category term="Yacc" scheme="https://kpl0111.github.io/blog/tags/Yacc/"/>
+    
+    <category term="编译系统原理" scheme="https://kpl0111.github.io/blog/tags/%E7%BC%96%E8%AF%91%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="编译器" scheme="https://kpl0111.github.io/blog/tags/%E7%BC%96%E8%AF%91%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机网络复习摘要</title>
+    <link href="https://kpl0111.github.io/blog/2021/1210d148d4.html"/>
+    <id>https://kpl0111.github.io/blog/2021/1210d148d4.html</id>
+    <published>2021-12-30T20:53:41.000Z</published>
+    <updated>2022-01-06T20:23:49.488Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;IPV4：32位地址&lt;br&gt;IPv6：128位地址&lt;/p&gt;
+&lt;p&gt;Internet三个重要理念：&lt;br&gt;➢ 互联网的开放理念&lt;br&gt;➢</summary>
+        
+      
+    
+    
+    
+    <category term="复习" scheme="https://kpl0111.github.io/blog/categories/%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+    <category term="计算机网络" scheme="https://kpl0111.github.io/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test</title>
+    <link href="https://kpl0111.github.io/blog/2021/12784dd132.html"/>
+    <id>https://kpl0111.github.io/blog/2021/12784dd132.html</id>
+    <published>2021-12-10T08:42:31.000Z</published>
+    <updated>2022-01-04T04:53:44.667Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;test&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LightSensor</title>
+    <link href="https://kpl0111.github.io/blog/2021/0420210424.html"/>
+    <id>https://kpl0111.github.io/blog/2021/0420210424.html</id>
+    <published>2021-04-23T19:31:03.000Z</published>
+    <updated>2021-04-23T19:33:11.992Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;光线传感器&quot;&gt;&lt;a href=&quot;#光线传感器&quot; class=&quot;headerlink&quot; title=&quot;光线传感器&quot;&gt;&lt;/a&gt;&lt;center&gt;光线传感器&lt;center&gt;&lt;/center&gt;&lt;/center&gt;&lt;/h1&gt;&lt;h3 id=&quot;实验目的&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Homework" scheme="https://kpl0111.github.io/blog/categories/Homework/"/>
+    
+    
+    <category term="Android" scheme="https://kpl0111.github.io/blog/tags/Android/"/>
+    
+    <category term="Homework" scheme="https://kpl0111.github.io/blog/tags/Homework/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ucore_lab1</title>
+    <link href="https://kpl0111.github.io/blog/2021/0420210413.html"/>
+    <id>https://kpl0111.github.io/blog/2021/0420210413.html</id>
+    <published>2021-04-13T08:26:17.000Z</published>
+    <updated>2021-05-02T13:18:42.731Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;p&gt;在解压后的ucroe源码包中使用make命令即可以生成所需的目标文件,例如在本次实验中&lt;/p&gt;
+&lt;figure</summary>
+        
+      
+    
+    
+    
+    <category term="Homework" scheme="https://kpl0111.github.io/blog/categories/Homework/"/>
+    
+    
+    <category term="Homework" scheme="https://kpl0111.github.io/blog/tags/Homework/"/>
+    
+    <category term="OS" scheme="https://kpl0111.github.io/blog/tags/OS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>可视化第一次作业</title>
+    <link href="https://kpl0111.github.io/blog/2021/042021410.html"/>
+    <id>https://kpl0111.github.io/blog/2021/042021410.html</id>
+    <published>2021-04-09T17:52:16.000Z</published>
+    <updated>2021-04-13T08:38:38.827Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;作业内容&quot;&gt;&lt;a href=&quot;#作业内容&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Homework" scheme="https://kpl0111.github.io/blog/categories/Homework/"/>
+    
+    
+    <category term="Homework" scheme="https://kpl0111.github.io/blog/tags/Homework/"/>
+    
+    <category term="MFC" scheme="https://kpl0111.github.io/blog/tags/MFC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+Github搭建自己的博客</title>
+    <link href="https://kpl0111.github.io/blog/2021/03711.html"/>
+    <id>https://kpl0111.github.io/blog/2021/03711.html</id>
+    <published>2021-03-27T14:04:17.000Z</published>
+    <updated>2021-04-07T13:52:21.632Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;​	今天算是把自己的简易博客给搭建了起来，虽然说很丑，很多地方优化还没做好，功能也不太全，但是，做事情嘛，总是要一步步来的，哪有一蹴而就的事情，自己慢慢摸索，踩了许多坑之后，也把这其中的原理摸索了个七七八八，虽然说要我写个主题是天大的难题，但是理解博客的架构，以及githu</summary>
+        
+      
+    
+    
+    
+    <category term="Blog" scheme="https://kpl0111.github.io/blog/categories/Blog/"/>
+    
+    
+    <category term="Hexo" scheme="https://kpl0111.github.io/blog/tags/Hexo/"/>
+    
+    <category term="Blog" scheme="https://kpl0111.github.io/blog/tags/Blog/"/>
+    
+    <category term="Github" scheme="https://kpl0111.github.io/blog/tags/Github/"/>
+    
+  </entry>
+  
+</feed>
