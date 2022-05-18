@@ -8,6 +8,35 @@
 ]]></content>
   </entry>
   <entry>
+    <title>关于Eclipse安卓开发中的文件调用</title>
+    <url>/blog/2022/05442e8a7e.html</url>
+    <content><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>最近在用Eclipse做Android的时候使用jxl库简单处理了xls文件，由于我对xls文件处理不太熟练，于是创建了一个Java项目进行简单测试，没问题之后直接在安卓项目使用，但是却发现<strong>即使我把xls文件放在assets文件夹下并在Build Path里面勾选了assets文件夹</strong>依旧会抛出找不到文件的错误：FileNotFoundException，采用了</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">file:<span class="comment">///android_asset/xxx.html</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>和</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">/assets/xxx.xls</span><br></pre></td></tr></tbody></table></figure>
+
+<p>均没有效果，依旧会抛出错误。</p>
+<h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>一般情况下我们在本地项目引用文件，直接用绝对路径或者相对路径都可以，这两者都可以在资源文件的属性里面查看，如下图所示：</p>
+<p><img src="https://s2.loli.net/2022/05/18/r6SBcVZJkpTGbOE.png" alt="image-20220518100916219"></p>
+<p>Android项目打包生成APK之后，会将项目打包成Jar包或者war包，此时就不会存在 assets/resources 目录，JVM会在编译项目时，主动将 java文件编译成 class文件 和 resources 下的静态文件放在 target/classes目录下；  </p>
+<p>也就是说我们在打包之后上述目录结构已经发生变化，此时再用原来的路径去索引文件，必然是索引不到的，那么我们还想去索引这个文件怎么办呢？</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>我们可以用Java提供的方法获取文件流</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="type">InputStream</span> <span class="variable">input</span> <span class="operator">=</span> <span class="built_in">this</span>.getClass().getResourceAsStream(<span class="string">"/assets/xxx.xls"</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>从而去使用文件。</p>
+<p>需要注意的是，路径的开头的 / 是不能少的，它代表的就是从src目录-根目录，而资源文件路径就是从src开始找，这样工程打包以后同样可以找到路径。</p>
+<p>参考：<a href="https://www.cnblogs.com/blogtech/p/11151780.html">Java项目读取resources资源文件路径那点事 </a></p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vim参数推荐</title>
     <url>/blog/2022/0257c5ab7b.html</url>
     <content><![CDATA[<p>“ All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by<br>“ the call to :runtime you can find below.  If you wish to change any of those<br>“ settings, you should do it in this file (/etc/vim/vimrc), since debian.vim<br>“ will be overwritten everytime an upgrade of the vim packages is performed.<br>“ It is recommended to make changes after sourcing debian.vim since it alters<br>“ the value of the ‘compatible’ option.</p>

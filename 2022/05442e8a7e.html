@@ -16,7 +16,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>杂项 |  Nefelibata</title>
+      <title>关于Eclipse安卓开发中的文件调用 |  Nefelibata</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="https://pic.imgdb.cn/item/6281c0490947543129bbaa79.png" />
@@ -86,85 +86,217 @@ var _hmt = _hmt || [];
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-关于Eclipse安卓开发中的文件调用"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">杂项</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/blog/archives/2022" class="archive-year">2022</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/blog/2022/05442e8a7e.html" class="archive-article-date">
-  <time datetime="2022-05-17T18:35:09.000Z" itemprop="datePublished">05/18</time>
-</a>
+    <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/blog/2022/05442e8a7e.html"
-    >关于Eclipse安卓开发中的文件调用</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  关于Eclipse安卓开发中的文件调用
+</h1>
  
 
-    </header>
-    
       
+    </header>
+     
+    <div class="article-meta">
+      <a href="/blog/2022/05442e8a7e.html" class="article-date">
+  <time datetime="2022-05-17T18:35:09.000Z" itemprop="datePublished">2022-05-18</time>
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/blog/categories/%E6%9D%82%E9%A1%B9/">杂项</a>
   </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">432</span>
+        </span>
+    </span>
 
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/blog/2022/0257c5ab7b.html" class="archive-article-date">
-  <time datetime="2022-02-18T15:06:31.000Z" itemprop="datePublished">02/18</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/blog/2022/0257c5ab7b.html"
-    >Vim参数推荐</a> 
-</h2>
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">1 min</span>
+        </span>
+    </span>
+</div>
  
-
-    </header>
-    
+    </div>
       
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/%E6%9D%82%E9%A1%B9/">杂项</a>
-  </div>
+    <div class="tocbot"></div>
 
-    
-    
-  </div>
-</article>
-      
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>最近在用Eclipse做Android的时候使用jxl库简单处理了xls文件，由于我对xls文件处理不太熟练，于是创建了一个Java项目进行简单测试，没问题之后直接在安卓项目使用，但是却发现<strong>即使我把xls文件放在assets文件夹下并在Build Path里面勾选了assets文件夹</strong>依旧会抛出找不到文件的错误：FileNotFoundException，采用了</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file:<span class="comment">///android_asset/xxx.html</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>和</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/assets/xxx.xls</span><br></pre></td></tr></tbody></table></figure>
+
+<p>均没有效果，依旧会抛出错误。</p>
+<h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>一般情况下我们在本地项目引用文件，直接用绝对路径或者相对路径都可以，这两者都可以在资源文件的属性里面查看，如下图所示：</p>
+<p><img src="https://s2.loli.net/2022/05/18/r6SBcVZJkpTGbOE.png" alt="image-20220518100916219"></p>
+<p>Android项目打包生成APK之后，会将项目打包成Jar包或者war包，此时就不会存在 assets/resources 目录，JVM会在编译项目时，主动将 java文件编译成 class文件 和 resources 下的静态文件放在 target/classes目录下；  </p>
+<p>也就是说我们在打包之后上述目录结构已经发生变化，此时再用原来的路径去索引文件，必然是索引不到的，那么我们还想去索引这个文件怎么办呢？</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>我们可以用Java提供的方法获取文件流</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">InputStream</span> <span class="variable">input</span> <span class="operator">=</span> <span class="built_in">this</span>.getClass().getResourceAsStream(<span class="string">"/assets/xxx.xls"</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>从而去使用文件。</p>
+<p>需要注意的是，路径的开头的 / 是不能少的，它代表的就是从src目录-根目录，而资源文件路径就是从src开始找，这样工程打包以后同样可以找到路径。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/blogtech/p/11151780.html">Java项目读取resources资源文件路径那点事 </a></p>
+ 
+      <!-- reward -->
       
     </div>
-  </div>
-  
-  
+    
 
-  
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aS47CMBAFQO5/aWaLxJC8bieRbFdWCCHZlUXTv9crft4fz6/vv5/P31TPet3xYGBgTMvIr3J8wDE1+Xx87q/fYGBg7MM4Dnx5qM2vWKWe3BkDAwOjmBTmATT5HgMDA6MXBKtHJonjowEXAwNjQkY11eu155KXcnstjoGBMSGj2qx/8vMt8w0MDIypGCOF6LXXyoPsP7fCwMBYmnFVqpeXrNWUtHAfDAyMpRnjGVfzgCD4XpDzYmBgTM4YD6MjbbXk6slwAgMDYx9GdfGrOnQ8ZvfWyDAwMHZg9JYe8qsch87qiliExMDAWI5RXfaqvqFewleuUjEwMDZj5P2rakNtpAw+eU0YGBjbMHpt+pHwmryUCI+BgbEBIx8Z5tfKc7YL0kQMDIxtGPcVnNXSdGjZAgMDY2nGHQfkTf/qWYXUEAMDY3LGM2G3t9JRbvZhYGAsyqgWpdUUcHyRorBsgYGBsSgjScWiIWLcqiusUPTafBgYGIsyegdXlyR6o4JC6YuBgbEZIw+1eSutmerloRkDA2MDxsjaxEiJmxfPJ+EeAwNjUca7+CQDxV5p2htzRv8PGBgYkzPyJ2+6VdO7PBCfLFtgYGAszegNAJJSdnzwWXjfGBgYGzDywjVJ1PLGXG/JAwMDA6PaYsvTvt5wAgMDA6PHuHY60Qvf5Z0RDAyMyRnV1Yq8WdZbI0uaehgYGPswqqlbby0jb6X1RgUYGBiLMv4A/mRLqR7BYcYAAAAASUVORK5CYII=" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/blog/2022/054a17b156.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Hello kpl!</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "UqmmCk8hwk6pFHShPMHgKKM2-9Nh9j0Va",
+    app_key: "EDTBSLGA8nmdRYGxKz5K3NW3",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "Just go go ~(想要回复记得留下邮箱~)",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -301,6 +433,22 @@ var _hmt = _hmt || [];
 <script src="/blog/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/blog/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
