@@ -56,6 +56,27 @@
     </div>
     
     <div class="post">
+        <a class="post-title" href="/blog/2022/05fcf9ff47.html">LeetCode笔记</a>
+        <div class="post-except">
+            本篇为个人笔记，内容或有错误。
+数组需要两点注意的是：
+
+数组下标都是从0开始的
+数组内存空间的地址是连续的
+
+正是因为数组的在内存空间的地址是连续的，所以我们在删除或者增添元素的时候，就难免要移动其他元素的地址，而且数组不能增删，只能覆盖。在C++中二维数组在地址空间上是连续的。但是Java是没有指针的，同时也不对程序员暴露其元素的地址，寻址操作完全交给虚拟机。所以看不到每个元素的地址情况。
+二分使用二分的前提是：
+
+有序数组
+无重复元素
+
+使用二分时一般需要注意边界条件的
+            <a class="read-more" href="/blog/2022/05fcf9ff47.html"> ... </a>
+        </div>
+        <div class="post-date">2022.05.25</div>
+    </div>
+    
+    <div class="post">
         <a class="post-title" href="/blog/2022/05d90a8c79.html">MD5加密算法C++实现</a>
         <div class="post-except">
             实验目的本次实验通过C++编程实现MD5加密算法，通过了解MD5算法加深对Hash函数的认识
@@ -199,22 +220,6 @@ Internet三个重要理念：➢ 互联网的开放理念➢ 互联网的自组�
             <a class="read-more" href="/blog/2021/0420210424.html"> ... </a>
         </div>
         <div class="post-date">2021.04.24</div>
-    </div>
-    
-    <div class="post">
-        <a class="post-title" href="/blog/2021/0420210413.html">Ucore_lab1</a>
-        <div class="post-except">
-            说明在解压后的ucroe源码包中使用make命令即可以生成所需的目标文件,例如在本次实验中
-1user@system:~../lab1$ make
-之后就会在bin文件夹生成一系列的目标文件：
-
-user.img : 被qemu访问的虚拟硬盘文件
-kernel : ELF格式的toy ucore kernel执行文，嵌入到了ucore.img中
-bootblock : 虚拟的硬盘主引导扇区(512字节)，包含了bootloader执行代码，同样嵌入了
-sign : 外部执行程
-            <a class="read-more" href="/blog/2021/0420210413.html"> ... </a>
-        </div>
-        <div class="post-date">2021.04.13</div>
     </div>
     
 </div>

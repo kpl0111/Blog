@@ -25,57 +25,50 @@
         <div class="paper">
             <div class="paper-main">
                 
-                    <div class="header">
+                    <div class="post-header">
     <a class="logo" href="/blog/">Nefelibata</a>
-    <ul class="nav">
-        
-        <li><a href="https://kpl0111.github.io">Home</a></li>
-        
-        <li><a href="/blog/">主  页</a></li>
-        
-        <li><a href="/blog/archives">时间轴</a></li>
-        
-        <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
-        
-        <li><a href="https://kpl0111.github.io/about">关  于</a></li>
-        
-    </ul>
+    <a class="go-home" href="/blog/">
+        <svg width="8" height="14" viewBox="0 0 8 14">
+            <path d="M7 1L1 7l6 6" stroke="#000" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
 </div>
                 
-                <div class="archive-list">
-    <ul class="archive">
-        
-        <li>
-            <span class="archive-date">2021.04.13</span>
-            <div class="archive-main">
-                <a class="archive-title" href="/blog/2021/0420210413.html">Ucore_lab1</a>
-                <!-- <a class="read-more" href="/blog/2021/0420210413.html"> ... </a> -->
-            </div>
-        </li>
-        
-        <li>
-            <span class="archive-date">2021.04.10</span>
-            <div class="archive-main">
-                <a class="archive-title" href="/blog/2021/042021410.html">可视化第一次作业</a>
-                <!-- <a class="read-more" href="/blog/2021/042021410.html"> ... </a> -->
-            </div>
-        </li>
-        
-        <li>
-            <span class="archive-date">2021.03.27</span>
-            <div class="archive-main">
-                <a class="archive-title" href="/blog/2021/03711.html">Hexo+Github搭建自己的博客</a>
-                <!-- <a class="read-more" href="/blog/2021/03711.html"> ... </a> -->
-            </div>
-        </li>
-        
-    </ul>
-</div>
+                <div class="post-main">
 
-<div class="paginator">
-    <a class="extend prev" rel="prev" href="/blog/archives/">上一页</a><a class="page-number" href="/blog/archives/">1</a><span class="page-number current">2</span>
-</div>
+    
+        <div class="post-main-title">
+            LeetCode笔记
+        </div>
+        <div class="post-meta">
+            2022-05-25
+        </div>
+    
 
+    <div class="post-md">
+        <p>本篇为个人笔记，内容或有错误。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>需要两点注意的是：</p>
+<ul>
+<li>数组下标都是从0开始的</li>
+<li>数组内存空间的地址是连续的</li>
+</ul>
+<p>正是因为数组的在内存空间的地址是连续的，所以我们在删除或者增添元素的时候，就难免要移动其他元素的地址，而且数组不能<strong>增删，只能覆盖</strong>。<br>在C++中二维数组在地址空间上是连续的。但是Java是没有指针的，同时也不对程序员暴露其元素的地址，寻址操作完全交给虚拟机。所以看不到每个元素的地址情况。</p>
+<h3 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h3><p>使用二分的前提是：</p>
+<ul>
+<li>有序数组</li>
+<li>无重复元素</li>
+</ul>
+<p>使用二分时一般需要注意边界条件的处理，一般包括以下两种情况：</p>
+<ol>
+<li>左闭右闭</li>
+<li>左闭右开</li>
+</ol>
+<p>二分法经常写乱，主要是因为对区间的定义没有想清楚，区间的定义就是不变量。要在二分查找的过程中，保持不变量，就是在while寻找中每一次边界的处理都要坚持根据区间的定义来操作，这就是<strong>循环不变量规则</strong>。</p>
+<h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><p>使用双指针可以实现滑动窗口等操作，避免了循环嵌套，大大降低了时间复杂度</p>
+
+    </div>
+
+</div>
                 <div class="footer">
     <span>Copyright © 2022 Nefelibata</span>
     <span>Theme Designed By <a target="_blank" href="https://zheli.design/one-paper">這Li</a></span>
