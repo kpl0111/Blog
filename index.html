@@ -1,998 +1,249 @@
 <!DOCTYPE html>
-
-
-<html lang="zh_CN">
-  
-
+<html>
     <head>
-      <meta name="baidu-site-verification" content="code-Qq079ysevX" />
-      <meta charset="utf-8" />
-       
-      <meta name="keywords" content="Simple" />
-       
-      <meta name="description" content="Simple" />
-      
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1"
-      />
-      <title> Nefelibata</title>
-  <meta name="generator" content="hexo-theme-ayer">
-      
-      <link rel="shortcut icon" href="https://pic.imgdb.cn/item/6281c0490947543129bbaa79.png" />
-       
-<link rel="stylesheet" href="/blog/dist/main.css">
-
-      
-<link rel="stylesheet" href="/blog/css/fonts/remixicon.css">
-
-      
-<link rel="stylesheet" href="/blog/css/custom.css">
- 
-      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
-       
-
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-193150547-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-
-
- 
-<script>
-var _hmt = _hmt || [];
-(function() {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?174caeef24f7ccb10474262cd42adbc0";
-	var s = document.getElementsByTagName("script")[0]; 
-	s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
-      />
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
-
-      <!-- mermaid -->
-      
-      <style>
-        .swal2-styled.swal2-confirm {
-          font-size: 1.6rem;
-        }
-      </style>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <link rel="alternate icon" type="image/png" href="/blog/img/favicon.png">
+    <title>Nefelibata | Nefelibata</title>
     
+<link rel="stylesheet" href="/blog/css/reset.css">
+
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    
+<link rel="stylesheet" href="/blog/css/markdown.css">
+
+    
+<link rel="stylesheet" href="/blog/css/fonts.css">
+
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
-  </html>
-</html>
-
-
-<body>
-  <div id="app">
-    
-      
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
-      
-    <main class="content on">
-      
-<section class="cover">
-    
-      
-      <a class="forkMe" href="https://github.com/kpl0111"
-        target="_blank"><img width="149" height="149" src="/blog/images/forkme.png"
-          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="https://pic.imgdb.cn/item/6281c0020947543129bae8ab.jpg" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/blog/">Nefelibata</a></h1>
-      <div id="subtitle-box">
+    <body>
+        <div class="paper">
+            <div class="paper-main">
+                
+                    <div class="header">
+    <a class="logo" href="/blog/">Nefelibata</a>
+    <ul class="nav">
         
-        <span id="subtitle"></span>
+        <li><a href="https://kpl0111.github.io">Home</a></li>
         
-      </div>
-      <div>
+        <li><a href="/blog/">主  页</a></li>
         
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
-
-
-
-<script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
-
-
-<!-- Subtitle -->
-
-  <script>
-    try {
-      var typed = new Typed("#subtitle", {
-        strings: ['不气馁 有召唤 爱自由', '永远年轻 永远感动 永远热泪盈眶', ''],
-        startDelay: 0,
-        typeSpeed: 200,
-        loop: true,
-        backSpeed: 100,
-        showCursor: true
-      });
-    } catch (err) {
-      console.log(err)
-    }
-  </script>
-  
-<div id="main">
-  <section class="outer">
-  
-  
-  
-
-<div class="notice" style="margin-top:50px">
-    <i class="ri-heart-fill"></i>
-    <div class="notice-content" id="broad"></div>
+        <li><a href="/blog/archives">时间轴</a></li>
+        
+        <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+        
+        <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+    </ul>
 </div>
-<script type="text/javascript">
-    fetch('https://v1.hitokoto.cn')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("broad").innerHTML = data.hitokoto;
-        })
-        .catch(console.error)
-</script>
+                
+                <div class="post-list">
+    
+    <div class="post">
+        <a class="post-title" href="/blog/2022/054a17b156.html">Hello kpl!</a>
+        <div class="post-except">
+            
 
-<style>
-    .notice {
-        padding: 20px;
-        border: 1px dashed #e6e6e6;
-        color: #969696;
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        background: #fbfbfb50;
-        border-radius: 10px;
-    }
 
-    .notice i {
-        float: left;
-        color: #999;
-        font-size: 16px;
-        padding-right: 10px;
-        vertical-align: middle;
-        margin-top: -2px;
-    }
+            <a class="read-more" href="/blog/2022/054a17b156.html"> ... </a>
+        </div>
+        <div class="post-date">2022.05.16</div>
+    </div>
+    
+    <div class="post">
+        <a class="post-title" href="/blog/2022/05d90a8c79.html">MD5加密算法C++实现</a>
+        <div class="post-except">
+            实验目的本次实验通过C++编程实现MD5加密算法，通过了解MD5算法加深对Hash函数的认识
+实验原理Hash 函数是将任意长的数字串转换成一个较短的定长输出数字串的函数，输出的结果称为 Hash 值。Hash 函数具有如下特点：
 
-    .notice-content {
-        display: initial;
-        vertical-align: middle;
-    }
-</style>
+快速性：对于任意一个输入值 x，由 Hash 函数H(x) ，计算 Hash值 y，即H(x) = y是非常容易的
+单向性：对于任意一个输出值 y，希望反向推出输入值 x，使得H(x) = y，是非常困难的。
+无碰撞性：包括强无碰撞性和弱无碰撞性
+            <a class="read-more" href="/blog/2022/05d90a8c79.html"> ... </a>
+        </div>
+        <div class="post-date">2022.05.23</div>
+    </div>
+    
+    <div class="post">
+        <a class="post-title" href="/blog/2022/05442e8a7e.html">关于Eclipse安卓开发中的文件调用</a>
+        <div class="post-except">
+            问题描述最近在用Eclipse做Android的时候使用jxl库简单处理了xls文件，由于我对xls文件处理不太熟练，于是创建了一个Java项目进行简单测试，没问题之后直接在安卓项目使用，但是却发现即使我把xls文件放在assets文件夹下并在Build Path里面勾选了assets文件夹依旧会抛出找不到文件的错误：FileNotFoundException，采用了
+1file:///android_asset/xxx.html
+
+和
+1/assets/xxx.xls
+
+均
+            <a class="read-more" href="/blog/2022/05442e8a7e.html"> ... </a>
+        </div>
+        <div class="post-date">2022.05.18</div>
+    </div>
+    
+    <div class="post">
+        <a class="post-title" href="/blog/2022/0257c5ab7b.html">Vim参数推荐</a>
+        <div class="post-except">
+            “ All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by“ the call to :runtime you can find below.  If you wish to change any of those“ settings, you should do it in this file (/etc/vim/vimrc), since debian.vim“ will be o
+            <a class="read-more" href="/blog/2022/0257c5ab7b.html"> ... </a>
+        </div>
+        <div class="post-date">2022.02.18</div>
+    </div>
+    
+    <div class="post">
+        <a class="post-title" href="/blog/2022/018a8f3fb6.html">物联网安全复习总结</a>
+        <div class="post-except">
+            
   
-  <article class="articles">
     
+      复习时随手记录，并不完整
     
-    
-    
-    <article
-  id="post-hello-kpl"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/blog/2022/054a17b156.html"
-    >Hello kpl!
-  <i class="article-topping">Sticky</i>
-</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/blog/2022/054a17b156.html" class="article-date">
-  <time datetime="2022-05-16T02:38:03.577Z" itemprop="datePublished">2022-05-16</time>
-</a>    
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-MD5加密算法C-实现"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/blog/2022/05d90a8c79.html"
-    >MD5加密算法C++实现</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/blog/2022/05d90a8c79.html" class="article-date">
-  <time datetime="2022-05-23T12:10:38.000Z" itemprop="datePublished">2022-05-23</time>
-</a>    
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Homework/" rel="tag">Homework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/MD5/" rel="tag">MD5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-关于Eclipse安卓开发中的文件调用"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/blog/2022/05442e8a7e.html"
-    >关于Eclipse安卓开发中的文件调用</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/blog/2022/05442e8a7e.html" class="article-date">
-  <time datetime="2022-05-17T18:35:09.000Z" itemprop="datePublished">2022-05-18</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/%E6%9D%82%E9%A1%B9/">杂项</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Vim参数推荐"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/blog/2022/0257c5ab7b.html"
-    >Vim参数推荐</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/blog/2022/0257c5ab7b.html" class="article-date">
-  <time datetime="2022-02-18T15:06:31.000Z" itemprop="datePublished">2022-02-18</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/%E6%9D%82%E9%A1%B9/">杂项</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Vim/" rel="tag">Vim</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-物联网安全复习总结"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/blog/2022/018a8f3fb6.html"
-    >物联网安全复习总结</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/blog/2022/018a8f3fb6.html" class="article-date">
-  <time datetime="2022-01-04T04:29:58.000Z" itemprop="datePublished">2022-01-04</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/%E5%A4%8D%E4%B9%A0/">复习</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E5%A4%8D%E4%B9%A0/" rel="tag">复习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/" rel="tag">物联网安全</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-编译系统原理复习提纲"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/blog/2022/0178868943.html"
-    >编译系统原理复习提纲</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/blog/2022/0178868943.html" class="article-date">
-  <time datetime="2022-01-01T07:31:41.000Z" itemprop="datePublished">2022-01-01</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/%E5%A4%8D%E4%B9%A0/">复习</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Lex/" rel="tag">Lex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Yacc/" rel="tag">Yacc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E7%BC%96%E8%AF%91%E5%99%A8/" rel="tag">编译器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E7%BC%96%E8%AF%91%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/" rel="tag">编译系统原理</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-计算机网络复习摘要"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/blog/2021/1210d148d4.html"
-    >计算机网络复习摘要</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/blog/2021/1210d148d4.html" class="article-date">
-  <time datetime="2021-12-30T20:53:41.000Z" itemprop="datePublished">2021-12-31</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/%E5%A4%8D%E4%B9%A0/">复习</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-test"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/blog/2021/12784dd132.html"
-    >test</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/blog/2021/12784dd132.html" class="article-date">
-  <time datetime="2021-12-10T08:42:31.000Z" itemprop="datePublished">2021-12-10</time>
-</a>    
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-LightSensor"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/blog/2021/0420210424.html"
-    >LightSensor</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/blog/2021/0420210424.html" class="article-date">
-  <time datetime="2021-04-23T19:31:03.000Z" itemprop="datePublished">2021-04-24</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/Homework/">Homework</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Homework/" rel="tag">Homework</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Ucore_lab1"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/blog/2021/0420210413.html"
-    >Ucore_lab1</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/blog/2021/0420210413.html" class="article-date">
-  <time datetime="2021-04-13T08:26:17.000Z" itemprop="datePublished">2021-04-13</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/Homework/">Homework</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Homework/" rel="tag">Homework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/OS/" rel="tag">OS</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-  </article>
   
 
-  
-  <nav class="page-nav">
+
+物联网安全根据国际电信联盟的定义, 物联网( internet of things, IOT) 主要解决:
+
+物品到物品( thing to thing,T2T)
+人到物品( human to thing, H2T)
+人到人( human to human, H2H)之间的互联
+
+第1章 物联网安全需求分析与其他传统网络相比, 物联网感知节点大都部署在无人监控的场景中, 具有能力脆弱、资源受限等特点,
+            <a class="read-more" href="/blog/2022/018a8f3fb6.html"> ... </a>
+        </div>
+        <div class="post-date">2022.01.04</div>
+    </div>
     
+    <div class="post">
+        <a class="post-title" href="/blog/2022/0178868943.html">编译系统原理复习提纲</a>
+        <div class="post-except">
+            编译系统原理[toc]
+内容过多，未完全整理
+题型设计
+单项选择（12*2）
+编译阶段所做事情考察
+编译器和解释器的区分
+ϵ是空符号串
+正则表达式本质上表述的是符号串集合
+NFA，DFA和CFG
+
+
+设计题（6*4）
+正则表达式表示的含义
+设计正则表达式
+设计上下文无关文法
+
+
+
+解答题
+Thompson构造法
+子集构造法
+终结符，非终结符，开始符号
+消除左递归
+构造预测分析表
+流图
+三地址码
+优化
+
+
+
+真题C++编译器检查数组下标越界是在_____阶段?ϵ为空符号串
+概述
+            <a class="read-more" href="/blog/2022/0178868943.html"> ... </a>
+        </div>
+        <div class="post-date">2022.01.01</div>
+    </div>
+    
+    <div class="post">
+        <a class="post-title" href="/blog/2021/1210d148d4.html">计算机网络复习摘要</a>
+        <div class="post-except">
+            概述IPV4：32位地址IPv6：128位地址
+Internet三个重要理念：➢ 互联网的开放理念➢ 互联网的自组织理念➢ 互联网的分享理念
+统计多路复用：主机A和B的报文分组没有固定的到达模式，带宽按需共享，这种方式称为统计多路复用(statistical multiplexing)
+网络流量具有很强的突发性，即不平稳，每个独立的流的峰值可能出现在不同时间
+
+结论：流越多，网络平均流量越平滑
+
+报文长度P ：单位“位(bit)”链路长度L ：单位“米”传输速率R ：单位“位
+            <a class="read-more" href="/blog/2021/1210d148d4.html"> ... </a>
+        </div>
+        <div class="post-date">2021.12.31</div>
+    </div>
+    
+    <div class="post">
+        <a class="post-title" href="/blog/2021/12784dd132.html">test</a>
+        <div class="post-except">
+            test
+
+            <a class="read-more" href="/blog/2021/12784dd132.html"> ... </a>
+        </div>
+        <div class="post-date">2021.12.10</div>
+    </div>
+    
+    <div class="post">
+        <a class="post-title" href="/blog/2021/0420210424.html">LightSensor</a>
+        <div class="post-except">
+            光线传感器实验目的本次实验的目的是让大家了解Android中光线传感器的基本知识，掌握Android中光线传感器的使用方法。
+实验要求
+了解Android中光线传感器基本知识
+
+
+掌握Android中光线传感器使用方法
+
+
+
+基础知识光线传感器基础  
+光线传感器的好处是可以根据手机所处环境的光线来调节手机屏幕的亮度和键盘灯。例如在光线充足的地方屏幕会很亮，键盘灯就会关闭。相反如果在暗处，键盘灯就会亮，屏幕较暗（与屏幕亮度的设置也有关系），这样既保护了眼睛又节省了电量。光线传
+            <a class="read-more" href="/blog/2021/0420210424.html"> ... </a>
+        </div>
+        <div class="post-date">2021.04.24</div>
+    </div>
+    
+    <div class="post">
+        <a class="post-title" href="/blog/2021/0420210413.html">Ucore_lab1</a>
+        <div class="post-except">
+            说明在解压后的ucroe源码包中使用make命令即可以生成所需的目标文件,例如在本次实验中
+1user@system:~../lab1$ make
+之后就会在bin文件夹生成一系列的目标文件：
+
+user.img : 被qemu访问的虚拟硬盘文件
+kernel : ELF格式的toy ucore kernel执行文，嵌入到了ucore.img中
+bootblock : 虚拟的硬盘主引导扇区(512字节)，包含了bootloader执行代码，同样嵌入了
+sign : 外部执行程
+            <a class="read-more" href="/blog/2021/0420210413.html"> ... </a>
+        </div>
+        <div class="post-date">2021.04.13</div>
+    </div>
+    
+</div>
+
+<div class="paginator">
     <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="extend next" rel="next" href="/blog/page/2/">下一页</a>
-  </nav>
-  
-</section>
 </div>
 
-      <footer class="footer">
-  <div class="outer">
-    <ul>
-      <li>
-        Copyrights &copy;
-        2021-2022
-        <i class="ri-heart-fill heart_icon"></i> kpl0111
-      </li>
-    </ul>
-    <ul>
-      <li>
-        
-      </li>
-    </ul>
-    <ul>
-      <li>
-        
-        
-        <span>
-  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
-  <span class="division">|</span>
-  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
-</span>
-        
-      </li>
-    </ul>
-    <ul>
-      
-    </ul>
-    <ul>
-      
-    </ul>
-    <ul>
-      <li>
-        <!-- cnzz统计 -->
-        
-        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
-        
-      </li>
-    </ul>
-  </div>
-</footer>    
-    </main>
-    <div class="float_btns">
-      <div class="totop" id="totop">
-  <i class="ri-arrow-up-line"></i>
+                <div class="footer">
+    <span>Copyright © 2022 Nefelibata</span>
+    <span>Theme Designed By <a target="_blank" href="https://zheli.design/one-paper">這Li</a></span>
 </div>
 
-<div class="todark" id="todark">
-  <i class="ri-moon-line"></i>
-</div>
 
-    </div>
-    <aside class="sidebar on">
-      <button class="navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/blog/"><img src="https://pic.imgdb.cn/item/6281c0490947543129bbaa79.png" alt="Nefelibata"></a>
-  </div>
-  
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="https://kpl0111.github.io">主  页</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/blog/archives">时间轴</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/blog/categories">分  类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/blog/tags">标  签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/blog/friends">友  链</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="https://kpl0111.github.io/about">关  于</a>
-    </li>
-    
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="Search">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-    </aside>
-    <div id="mask"></div>
+<link rel="stylesheet" href="/blog/css/a11y-dark.min.css">
 
-<!-- #reward -->
-<div id="reward">
-  <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
-  <div class="reward-box">
-    
-    <div class="reward-item">
-      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
-      <span class="reward-type">支付宝</span>
-    </div>
-    
-    
-    <div class="reward-item">
-      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
-      <span class="reward-type">微信</span>
-    </div>
-    
-  </div>
-</div>
-    
-<script src="/blog/js/jquery-3.6.0.min.js"></script>
- 
-<script src="/blog/js/lazyload.min.js"></script>
 
-<!-- Tocbot -->
+<script src="/blog/js/highlight.min.js"></script>
 
-<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
-<link
-  rel="stylesheet"
-  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
-/>
-<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
 
-<script src="/blog/dist/main.js"></script>
+<script src="/blog/js/highlightjs-line-numbers.js"></script>
 
-<!-- ImageViewer -->
- <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
-<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
-<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
 
 <script>
-    function viewer_init() {
-        let pswpElement = document.querySelectorAll('.pswp')[0];
-        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
-
-        $imgArr.forEach(($em, i) => {
-            $em.onclick = () => {
-                // slider展开状态
-                // todo: 这样不好，后面改成状态
-                if (document.querySelector('.left-col.show')) return
-                let items = []
-                $imgArr.forEach(($em2, i2) => {
-                    let img = $em2.getAttribute('data-idx', i2)
-                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
-                    let title = $em2.getAttribute('alt')
-                    // 获得原图尺寸
-                    const image = new Image()
-                    image.src = src
-                    items.push({
-                        src: src,
-                        w: image.width || $em2.width,
-                        h: image.height || $em2.height,
-                        title: title
-                    })
-                })
-                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
-                    index: parseInt(i)
-                });
-                gallery.init()
-            }
-        })
-    }
-    viewer_init()
-</script> 
-<!-- MathJax -->
-
-<!-- Katex -->
- 
-    
-        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
-        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
-        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
-        
-    
- 
-<!-- busuanzi  -->
- 
-<script src="/blog/js/busuanzi-2.3.pure.min.js"></script>
- 
-<!-- ClickLove -->
-
-<!-- ClickBoom1 -->
-
-<!-- ClickBoom2 -->
- 
-<script src="/blog/js/clickBoom2.js"></script>
- 
-<!-- CodeCopy -->
- 
-<link rel="stylesheet" href="/blog/css/clipboard.css">
- <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
-<script>
-  function wait(callback, seconds) {
-    var timelag = null;
-    timelag = window.setTimeout(callback, seconds);
-  }
-  !function (e, t, a) {
-    var initCopyCode = function(){
-      var copyHtml = '';
-      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
-      copyHtml += '</button>';
-      $(".highlight .code pre").before(copyHtml);
-      $(".article pre code").before(copyHtml);
-      var clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-          return trigger.nextElementSibling;
-        }
-      });
-      clipboard.on('success', function(e) {
-        let $btn = $(e.trigger);
-        $btn.addClass('copied');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-checkbox-circle-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPIED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-checkbox-circle-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-      clipboard.on('error', function(e) {
-        e.clearSelection();
-        let $btn = $(e.trigger);
-        $btn.addClass('copy-failed');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-time-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-time-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-    }
-    initCopyCode();
-  }(window, document);
-</script>
- 
-<!-- CanvasBackground -->
- 
-<script src="/blog/js/dz.js"></script>
- 
-<script>
-  if (window.mermaid) {
-    mermaid.initialize({ theme: "forest" });
-  }
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
 </script>
 
-
-    
-    
-
-  </div>
-</body>
-
+            </div>
+        </div>
+    </body>
 </html>
