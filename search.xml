@@ -17,6 +17,25 @@
 <h4 id="VSCode终端编码方式修改"><a href="#VSCode终端编码方式修改" class="headerlink" title="VSCode终端编码方式修改"></a>VSCode终端编码方式修改</h4><p>VScode的默认编码方式为UTF-8，中国地区下cmd的编码方式GBK，所以会导致在终端运行程序打印中文出乱码的情况，修改编码方式即可</p>
 <p>在终端运行以下指令即可修改cmd编码方式：</p>
 <figure class="highlight c++"><table><tbody><tr><td class="code"><pre><span class="line">chcp <span class="number">65001</span> <span class="comment">//UTF-8编码</span></span><br><span class="line">chcp <span class="number">936</span> <span class="comment">//GBK编码</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="国内快速访问Github"><a href="#国内快速访问Github" class="headerlink" title="国内快速访问Github"></a>国内快速访问Github</h4><ol>
+<li><p>打开IPAddress.com网站,查询下列三个地址的ip</p>
+<blockquote>
+<p>github.com<br>assets-cnd.github.com<br>gibhut.global.ssl.fastly.net</p>
+</blockquote>
+</li>
+<li><p>修改本地hosts文件(window系统)</p>
+<p> 在C:\Windows\System32\drivers\etc 找到hosts文件，然后添加下列数据，注意把下面的ip改成你自己查询到ip地址。</p>
+<blockquote>
+<p>140.82.114.3 github.com<br> 185.199.108.153 assets-cdn.github.com<br> 199.232.69.194 github.global.ssl.fastly.net</p>
+</blockquote>
+</li>
+<li><p>刷新本地dns缓存<br> Win+R打开cmd，输入命令 ipconfig/flushdns<br> 此时就配置成功了，然后就可以去访问啦</p>
+</li>
+</ol>
+<blockquote>
+<p>当然科学上网也是可以的</p>
+</blockquote>
 ]]></content>
       <tags>
         <tag>command</tag>
