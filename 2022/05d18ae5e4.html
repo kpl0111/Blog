@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <link rel="alternate icon" type="image/png" href="/blog/img/favicon.png">
+    <title>Nefelibata | Nefelibata</title>
+    
+<link rel="stylesheet" href="/blog/css/reset.css">
+
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    
+<link rel="stylesheet" href="/blog/css/markdown.css">
+
+    
+<link rel="stylesheet" href="/blog/css/fonts.css">
+
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+</head>
+    <body>
+        <div class="paper">
+            <div class="paper-main">
+                
+                    <div class="post-header">
+    <a class="logo" href="/blog/">Nefelibata</a>
+    <a class="go-home" href="/blog/">
+        <svg width="8" height="14" viewBox="0 0 8 14">
+            <path d="M7 1L1 7l6 6" stroke="#000" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+</div>
+                
+                <div class="post-main">
+
+    
+        <div class="post-main-title">
+            MarkDown常用语法
+        </div>
+        <div class="post-meta">
+            2022-05-26
+        </div>
+    
+
+    <div class="post-md">
+        <blockquote>
+<p>一些常用基本语法不过多介绍，详细可以参看<a target="_blank" rel="noopener" href="https://markdown.com.cn/cheat-sheet.html">MarkDown官方教程</a><br>这里只介绍一些实用但是容易被忽视的一些语法</p>
+</blockquote>
+<p>[toc]</p>
+<h4 id="MarkDown引用"><a href="#MarkDown引用" class="headerlink" title="MarkDown引用"></a>MarkDown引用</h4><p>使用标记符 &gt; 对内容进行引用：</p>
+<ol>
+<li>引用一段内容<blockquote>
+<p>引用一段内容</p>
+</blockquote>
+</li>
+<li>引用的多层嵌套：只要根据层次加上不同数量的 &gt; 符号</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;  请问  Markdwon  怎么用？  -  小白</span><br><span class="line">&gt;&gt;  自己看教程！  -  愤青</span><br><span class="line">&gt;&gt;&gt;  教程在哪？  -  小白</span><br><span class="line">&gt;&gt;&gt;&gt;  我也不知道在哪！  -  愤青</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;  那你回答个屁。  -  小白</span><br></pre></td></tr></tbody></table></figure>
+
+<p>显示效果：</p>
+<blockquote>
+<p>请问  Markdwon  怎么用？  -  小白</p>
+<blockquote>
+<p>自己看教程！  -  愤青</p>
+<blockquote>
+<p>教程在哪？  -  小白</p>
+<blockquote>
+<p>我也不知道在哪！  -  愤青</p>
+<blockquote>
+<p>那你回答个屁。  -  小白</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>引用其它要素：<br>引用的区块内也可以使用其他的语法，包括标题、列表、代码区块等。</p>
+<p>示例：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="number">1.1</span> 这是第一行列表项。</span><br><span class="line">&gt;&gt; <span class="number">2.1</span> 这是第二行列表项。</span><br><span class="line">&gt;&gt;&gt; - 这是第三行列表项。</span><br><span class="line">&gt; ### 给出一些例子代码：</span><br><span class="line">&gt; ```bash</span><br><span class="line">&gt; <span class="keyword">return</span> <span class="built_in">shell_exec</span>(<span class="string">"echo $input | $markdown_script"</span>);</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">显示效果：</span><br><span class="line"></span><br><span class="line">&gt; 1.1 这是第一行列表项。</span><br><span class="line">&gt;&gt; 2.1 这是第二行列表项。</span><br><span class="line">&gt;&gt;&gt;- 这是第三行列表项。</span><br><span class="line">&gt;### 给出一些例子代码：</span><br><span class="line">&gt; ```bash</span><br><span class="line">&gt; return shell_exec("echo $input | $markdown_script");</span><br></pre></td></tr></tbody></table></figure>
+
+<p>引用中内容换行：<br>有时候引用的内容太长，需要分段落层次，可以使用 $<br>$ 实现换行。</p>
+<p>举例：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; $\underline{幽默小故事，笑死人不偿命}$&lt;br&gt;</span><br><span class="line">我：“老板，你这清炒油麦菜是荤菜还是素菜？</span><br><span class="line">老板：“当然是素菜了”&lt;br&gt;</span><br><span class="line">我：“那这条虫是怎么回事”</span><br><span class="line">老板：“呃……它也是来吃饭的。”&lt;br&gt;</span><br><span class="line">我：“它吃饭凭什么我付钱？我又不认识它！”</span><br><span class="line">老板哭着说：“它为了这顿饭，把命都丢了，你还能要求它AA制吗？”</span><br></pre></td></tr></tbody></table></figure>
+
+<p>显示效果：</p>
+<blockquote>
+<p>$\underline{幽默小故事，笑死人不偿命}$<br><br>我：“老板，你这清炒油麦菜是荤菜还是素菜？<br>老板：“当然是素菜了”<br><br>我：“那这条虫是怎么回事”<br>老板：“呃……它也是来吃饭的。”<br><br>我：“它吃饭凭什么我付钱？我又不认识它！”<br>老板哭着说：“它为了这顿饭，把命都丢了，你还能要求它AA制吗？”</p>
+</blockquote>
+<h4 id="下划线"><a href="#下划线" class="headerlink" title="下划线"></a>下划线</h4><p>示例：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\underline{给这条语句加一个下划线}$</span><br></pre></td></tr></tbody></table></figure>
+
+<p>效果：</p>
+<p>$\underline{给这条语句加一个下划线}$</p>
+
+    </div>
+
+</div>
+                <div class="footer">
+    <span>Copyright © 2022 Nefelibata</span>
+    <span>Theme Designed By <a target="_blank" href="https://github.com/kpl0111">Nefelibata</a></span>
+</div>
+
+
+<link rel="stylesheet" href="/blog/css/a11y-dark.min.css">
+
+
+<script src="/blog/js/highlight.min.js"></script>
+
+
+<script src="/blog/js/highlightjs-line-numbers.js"></script>
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+            </div>
+        </div>
+    </body>
+</html>

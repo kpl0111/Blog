@@ -6,7 +6,7 @@
   <link href="https://kpl0111.github.io/blog/atom.xml" rel="self"/>
   
   <link href="https://kpl0111.github.io/blog/"/>
-  <updated>2022-05-26T15:23:13.635Z</updated>
+  <updated>2022-05-26T15:51:48.255Z</updated>
   <id>https://kpl0111.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一些方便好用的常用命令</title>
+    <link href="https://kpl0111.github.io/blog/2022/056ac63caa.html"/>
+    <id>https://kpl0111.github.io/blog/2022/056ac63caa.html</id>
+    <published>2022-05-26T15:27:14.000Z</published>
+    <updated>2022-05-26T15:51:48.255Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文记录一些平时遇到的没必要记忆却又需要的指令&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h4 id=&quot;VSCode终端编码方式修改&quot;&gt;&lt;a href=&quot;#VSCode终端编码方式修改&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="command" scheme="https://kpl0111.github.io/blog/tags/command/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MarkDown常用语法</title>
+    <link href="https://kpl0111.github.io/blog/2022/05d18ae5e4.html"/>
+    <id>https://kpl0111.github.io/blog/2022/05d18ae5e4.html</id>
+    <published>2022-05-26T15:26:29.000Z</published>
+    <updated>2022-05-26T15:43:54.206Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;一些常用基本语法不过多介绍，详细可以参看&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="MarkDown" scheme="https://kpl0111.github.io/blog/tags/MarkDown/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode笔记</title>

@@ -25,65 +25,38 @@
         <div class="paper">
             <div class="paper-main">
                 
-                    <div class="header">
+                    <div class="post-header">
     <a class="logo" href="/blog/">Nefelibata</a>
-    <ul class="nav">
-        
-        <li><a href="https://kpl0111.github.io">Home</a></li>
-        
-        <li><a href="/blog/">主  页</a></li>
-        
-        <li><a href="/blog/archives">时间轴</a></li>
-        
-        <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
-        
-        <li><a href="https://kpl0111.github.io/about">关  于</a></li>
-        
-    </ul>
+    <a class="go-home" href="/blog/">
+        <svg width="8" height="14" viewBox="0 0 8 14">
+            <path d="M7 1L1 7l6 6" stroke="#000" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
 </div>
                 
-                <div class="archive-list">
-    <ul class="archive">
-        
-        <li>
-            <span class="archive-date">2021.04.24</span>
-            <div class="archive-main">
-                <a class="archive-title" href="/blog/2021/0420210424.html">LightSensor</a>
-                <!-- <a class="read-more" href="/blog/2021/0420210424.html"> ... </a> -->
-            </div>
-        </li>
-        
-        <li>
-            <span class="archive-date">2021.04.13</span>
-            <div class="archive-main">
-                <a class="archive-title" href="/blog/2021/0420210413.html">Ucore_lab1</a>
-                <!-- <a class="read-more" href="/blog/2021/0420210413.html"> ... </a> -->
-            </div>
-        </li>
-        
-        <li>
-            <span class="archive-date">2021.04.10</span>
-            <div class="archive-main">
-                <a class="archive-title" href="/blog/2021/042021410.html">可视化第一次作业</a>
-                <!-- <a class="read-more" href="/blog/2021/042021410.html"> ... </a> -->
-            </div>
-        </li>
-        
-        <li>
-            <span class="archive-date">2021.03.27</span>
-            <div class="archive-main">
-                <a class="archive-title" href="/blog/2021/03711.html">Hexo+Github搭建自己的博客</a>
-                <!-- <a class="read-more" href="/blog/2021/03711.html"> ... </a> -->
-            </div>
-        </li>
-        
-    </ul>
-</div>
+                <div class="post-main">
 
-<div class="paginator">
-    <a class="extend prev" rel="prev" href="/blog/archives/">上一页</a><a class="page-number" href="/blog/archives/">1</a><span class="page-number current">2</span>
-</div>
+    
+        <div class="post-main-title">
+            一些方便好用的常用命令
+        </div>
+        <div class="post-meta">
+            2022-05-26
+        </div>
+    
 
+    <div class="post-md">
+        <blockquote>
+<p>本文记录一些平时遇到的没必要记忆却又需要的指令</p>
+</blockquote>
+<p>[toc]</p>
+<h4 id="VSCode终端编码方式修改"><a href="#VSCode终端编码方式修改" class="headerlink" title="VSCode终端编码方式修改"></a>VSCode终端编码方式修改</h4><p>VScode的默认编码方式为UTF-8，中国地区下cmd的编码方式GBK，所以会导致在终端运行程序打印中文出乱码的情况，修改编码方式即可</p>
+<p>在终端运行以下指令即可修改cmd编码方式：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chcp <span class="number">65001</span> <span class="comment">//UTF-8编码</span></span><br><span class="line">chcp <span class="number">936</span> <span class="comment">//GBK编码</span></span><br></pre></td></tr></tbody></table></figure>
+
+    </div>
+
+</div>
                 <div class="footer">
     <span>Copyright © 2022 Nefelibata</span>
     <span>Theme Designed By <a target="_blank" href="https://github.com/kpl0111">Nefelibata</a></span>
