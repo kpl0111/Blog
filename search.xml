@@ -2178,12 +2178,6 @@
       </tags>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/blog/2021/12784dd132.html</url>
-    <content><![CDATA[<p>test</p>
-]]></content>
-  </entry>
-  <entry>
     <title>LightSensor</title>
     <url>/blog/2021/0420210424.html</url>
     <content><![CDATA[<h1 id="光线传感器"><a href="#光线传感器" class="headerlink" title="光线传感器"></a><center>光线传感器<center></center></center></h1><h3 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h3><p>本次实验的目的是让大家了解Android中光线传感器的基本知识，掌握Android中光线传感器的使用方法。</p>
