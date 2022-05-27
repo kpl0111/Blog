@@ -46,8 +46,8 @@
     
 
     <div class="post-md">
-        <h1 id="光线传感器"><a href="#光线传感器" class="headerlink" title="光线传感器"></a><center>光线传感器<center></center></center></h1><h3 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h3><p>本次实验的目的是让大家了解Android中光线传感器的基本知识，掌握Android中光线传感器的使用方法。</p>
-<h3 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h3><ol>
+        <h1><span id="光线传感器"><center>光线传感器<center></center></center></span></h1><h3><span id="实验目的">实验目的</span></h3><p>本次实验的目的是让大家了解Android中光线传感器的基本知识，掌握Android中光线传感器的使用方法。</p>
+<h3><span id="实验要求">实验要求</span></h3><ol>
 <li><pre><code>了解Android中光线传感器基本知识
 </code></pre>
 </li>
@@ -55,7 +55,7 @@
 </code></pre>
 </li>
 </ol>
-<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p>光线传感器基础  </p>
+<h3><span id="基础知识">基础知识</span></h3><p>光线传感器基础  </p>
 <p>光线传感器的好处是可以根据手机所处环境的光线来调节手机屏幕的亮度和键盘灯。例如在光线充足的地方屏幕会很亮，键盘灯就会关闭。相反如果在暗处，键盘灯就会亮，屏幕较暗（与屏幕亮度的设置也有关系），这样既保护了眼睛又节省了电量。光线传感器在进入睡眠模式时候会发出蓝色周期性闪动的光，非常美观。在本节的内容中，将详细讲解Android系统光线传感器的基本知识。<br>光线传感器介绍<br>在Android设备中，光线传感器通常位于前摄像头旁边的一个小点，如果在光线充足的情况下（室外或者是灯光充足的室内），大约在2～3秒之后键盘灯会自动熄灭，即使再操作机器键盘灯也不会亮，除非到了光线比较暗的地方才会自动地亮起来。如果在光线充足的情况下用手将光线感应器遮上，在2～3秒后键盘灯会自动亮起来，在此过程中光线感应器起到了一个节电的功能。<br>要想在Android设备中监听光线传感器，需要掌握如下所示的监听方法。</p>
 <ol>
 <li>registerListenr(SensorListenerlistenr,int sensors,int rate)：已过时。</li>
@@ -73,7 +73,7 @@
 <li>SENSOR_DELAY_GAME：匹配游戏。</li>
 <li>SENSOR_DELAY_FASTEST.：匹配所能达到的最快。</li>
 </ul>
-<h3 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h3><p>按照实验的内容进行操作，掌握Android中光线传感器的使用方法等内容。<br>完成实验内容后，设计一个光线传感器的app，至少包含如下功能：</p>
+<h3><span id="实验内容">实验内容</span></h3><p>按照实验的内容进行操作，掌握Android中光线传感器的使用方法等内容。<br>完成实验内容后，设计一个光线传感器的app，至少包含如下功能：</p>
 <ul>
 <li>显示当前光线传感器的光照强度；</li>
 <li>显示当前光线传感器的名称，耗电量，以及最大测量范围。</li>
@@ -83,18 +83,50 @@
 <p>名称：myS.getName() ;</p>
 <p>耗电量（mA）：myS.getPower();</p>
 <p>最大测量范围：myS.getMaximumRange()</p>
-<h3 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h3><ol>
+<h3><span id="实验过程">实验过程</span></h3><ol>
 <li>利用Android studio创建一个工程，并利用实体机或者安卓虚拟机进行测试（这里我先利用逍遥模拟器进行测试，成功之后，连接真机进行测试）</li>
 <li>修改activity_main.yml文件，新建一个静态文本控件用来输出我们要输出的亮度传感器的有关信息，这里新建工程初始化时会自动生成一个文本控件，文本内容默认为“Hello World！”，所以只需在其基础上进行修改即可</li>
 </ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">        android:id="@+id/textView1"//为控件添加编号textView1</span><br><span class="line">        android:layout_width="wrap_content"</span><br><span class="line">        android:layout_height="wrap_content"</span><br><span class="line">        android:text="Hello World!"//初始化文本内容</span><br><span class="line">        app:layout_constraintBottom_toBottomOf="parent"</span><br><span class="line">        app:layout_constraintLeft_toLeftOf="parent"</span><br><span class="line">        app:layout_constraintRight_toRightOf="parent"</span><br><span class="line">        app:layout_constraintTop_toTopOf="parent" /&gt;</span><br></pre></td></tr></tbody></table></figure>
-
+<pre><code>&lt;TextView
+        android:id="@+id/textView1"//为控件添加编号textView1
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"//初始化文本内容
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
+</code></pre>
 <ol start="3">
 <li>修改Mainactivity.java文件对传感器进行控制并进行文本输出</li>
 </ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//这里仅展示所需主要代码。具体代码见工程文件</span><br><span class="line">public class MainActivity extends Activity implements SensorEventListener {</span><br><span class="line">    private SensorManager sensor;//定义一个传感器管理器</span><br><span class="line">    private TextView text;//定义一个文本控件</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) {//项目初始化函数</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        sensor = (SensorManager)getSystemService(SENSOR_SERVICE);//调用getSystemService函数来获取传感器控制权</span><br><span class="line">        text = (TextView)findViewById(R.id.textView1);//通过控件ID将实体文本控件与代码连接起来</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onSensorChanged(SensorEvent event) {</span><br><span class="line">        // 在传感器控制函数里面实现我们的功能</span><br><span class="line">        float[] values = event.values; //定义变量来获取事件的值</span><br><span class="line">        int sensorType = event.sensor.TYPE_LIGHT; //定义值为事件发生时的传感器变量值</span><br><span class="line">        if(sensorType==Sensor.TYPE_LIGHT){//如果对应系统中的亮度传感器，则证明是亮度发生变化</span><br><span class="line">            String detail="\n传感器名称："+(event.sensor.getType()==Sensor.TYPE_LIGHT?(event.sensor.getName()+"\n中文名称：光照传感器"):"")+"\n耗电量："+event.sensor.getPower()+"\n最大测量范围："+event.sensor.getMaximumRange();//定义字符串来实现输出，调用getName，getPower，getMaximumRange函数来获取传感器参数</span><br><span class="line">            text.setText(detail+"\n当前光照强度："+String.valueOf(values[0])+"Lux\n");//将静态文本控件内容更新为传感器信息</span><br><span class="line">            text.setTextSize(30);//设置字体大小</span><br><span class="line">            text.setTextColor(Color.parseColor("#ff5e9cff"));//#7E0C6E设置字体颜色</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>//这里仅展示所需主要代码。具体代码见工程文件
+public class MainActivity extends Activity implements SensorEventListener {
+    private SensorManager sensor;//定义一个传感器管理器
+    private TextView text;//定义一个文本控件
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {//项目初始化函数
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        sensor = (SensorManager)getSystemService(SENSOR_SERVICE);//调用getSystemService函数来获取传感器控制权
+        text = (TextView)findViewById(R.id.textView1);//通过控件ID将实体文本控件与代码连接起来
+    }
 
-<h3 id="软件效果展示"><a href="#软件效果展示" class="headerlink" title="软件效果展示"></a>软件效果展示</h3><p><img src="https://i.loli.net/2021/04/24/OR4gjAQVUtnKr7z.png" alt="image-20210424025040667"></p>
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        // 在传感器控制函数里面实现我们的功能
+        float[] values = event.values; //定义变量来获取事件的值
+        int sensorType = event.sensor.TYPE_LIGHT; //定义值为事件发生时的传感器变量值
+        if(sensorType==Sensor.TYPE_LIGHT){//如果对应系统中的亮度传感器，则证明是亮度发生变化
+            String detail="\n传感器名称："+(event.sensor.getType()==Sensor.TYPE_LIGHT?(event.sensor.getName()+"\n中文名称：光照传感器"):"")+"\n耗电量："+event.sensor.getPower()+"\n最大测量范围："+event.sensor.getMaximumRange();//定义字符串来实现输出，调用getName，getPower，getMaximumRange函数来获取传感器参数
+            text.setText(detail+"\n当前光照强度："+String.valueOf(values[0])+"Lux\n");//将静态文本控件内容更新为传感器信息
+            text.setTextSize(30);//设置字体大小
+            text.setTextColor(Color.parseColor("#ff5e9cff"));//#7E0C6E设置字体颜色
+        }
+    }
+}
+</code></pre>
+<h3><span id="软件效果展示">软件效果展示</span></h3><p><img src="https://i.loli.net/2021/04/24/OR4gjAQVUtnKr7z.png" alt="image-20210424025040667"></p>
 
     </div>
 

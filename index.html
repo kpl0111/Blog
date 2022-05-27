@@ -96,12 +96,13 @@
 
 VSCode终端编码方式修改VScode的默认编码方式为UTF-8，中国地区下cmd的编码方式GBK，所以会导致在终端运行程序打印中文出乱码的情况，修改编码方式即可
 在终端运行以下指令即可修改cmd编码方式：
-12chcp 65001 //UTF-8编码chcp 936 //GBK编码
+chcp 65001 //UTF-8编码
+chcp 936 //GBK编码
 
 国内快速访问Github
 打开IPAddress.com网站,查询下列三个地址的ip
 
-github.comassets-cn
+github.comassets-cnd
             <a class="read-more" href="/blog/2022/056ac63caa.html"> ... </a>
         </div>
         <div class="post-date">2022.05.26</div>
@@ -129,7 +130,10 @@ MarkDown引用使用标记符 &gt; 对内容进行引用：
 引用的多层嵌套：只要根据层次加上不同数量的 &gt; 符号
 
 示例：
-12345&gt;  请问  Markdwon  怎么用？  -  小白&gt;&gt;  自己看教程！  -  愤青&gt;&gt;&gt;  教程在哪？  -  小白&
+&gt;  请问  Markdwon  怎么用？  -  小白
+&gt;&gt;  自己看教程！  -  愤青
+&gt;&gt;&gt;  教程在哪？  -  小白
+&gt
             <a class="read-more" href="/blog/2022/05d18ae5e4.html"> ... </a>
         </div>
         <div class="post-date">2022.05.26</div>
@@ -187,12 +191,12 @@ C++示例：
         <a class="post-title" href="/blog/2022/05442e8a7e.html">关于Eclipse安卓开发中的文件调用</a>
         <div class="post-except">
             问题描述最近在用Eclipse做Android的时候使用jxl库简单处理了xls文件，由于我对xls文件处理不太熟练，于是创建了一个Java项目进行简单测试，没问题之后直接在安卓项目使用，但是却发现即使我把xls文件放在assets文件夹下并在Build Path里面勾选了assets文件夹依旧会抛出找不到文件的错误：FileNotFoundException，采用了
-1file:///android_asset/xxx.html
+file:///android_asset/xxx.html
 
 和
-1/assets/xxx.xls
+/assets/xxx.xls
 
-均
+均没有
             <a class="read-more" href="/blog/2022/05442e8a7e.html"> ... </a>
         </div>
         <div class="post-date">2022.05.18</div>

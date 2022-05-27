@@ -46,9 +46,9 @@
     
 
     <div class="post-md">
-        <h1 id="编译系统原理"><a href="#编译系统原理" class="headerlink" title="编译系统原理"></a>编译系统原理</h1><p>[toc]</p>
+        <h1><span id="编译系统原理">编译系统原理</span></h1><p>[toc]</p>
 <p><strong>内容过多，未完全整理</strong></p>
-<h2 id="题型设计"><a href="#题型设计" class="headerlink" title="题型设计"></a>题型设计</h2><ul>
+<h2><span id="题型设计">题型设计</span></h2><ul>
 <li>单项选择（12*2）<ul>
 <li>编译阶段所做事情考察</li>
 <li>编译器和解释器的区分</li>
@@ -76,10 +76,10 @@
 </ul>
 </li>
 </ul>
-<h2 id="真题"><a href="#真题" class="headerlink" title="真题"></a>真题</h2><p>C++编译器检查数组下标越界是在_____阶段?<br>ϵ为空符号串</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>广义的编译器：浏览器</p>
+<h2><span id="真题">真题</span></h2><p>C++编译器检查数组下标越界是在_____阶段?<br>ϵ为空符号串</p>
+<h2><span id="概述">概述</span></h2><p>广义的编译器：浏览器</p>
 <p><img src="https://s2.loli.net/2022/01/02/3Anf8JchwoUvt17.png" alt="image-20220102012213479"></p>
-<h3 id="分析-综合模型"><a href="#分析-综合模型" class="headerlink" title="分析-综合模型"></a>分析-综合模型</h3><p>两个基本部分</p>
+<h3><span id="分析-综合模型">分析-综合模型</span></h3><p>两个基本部分</p>
 <ul>
 <li>分析：将源程序分解为基本组成部分，生成中间表示形式<ul>
 <li>中间表示形式：树</li>
@@ -136,9 +136,9 @@
 <li>过程间优化能力仍然受限</li>
 <li>面向GPU等新型体系结构的编译优化还有空间</li>
 </ul>
-<h2 id="一个简单的编译器"><a href="#一个简单的编译器" class="headerlink" title="一个简单的编译器"></a>一个简单的编译器</h2><p>字符流 → 词法分析器 → 单词流 → 语法制导翻译器 → 中间表示形式</p>
+<h2><span id="一个简单的编译器">一个简单的编译器</span></h2><p>字符流 → 词法分析器 → 单词流 → 语法制导翻译器 → 中间表示形式</p>
 <p>语法制导翻译器：语法分析 + 中间代码生成</p>
-<h3 id="语法定义"><a href="#语法定义" class="headerlink" title="语法定义"></a>语法定义</h3><p>上下文无关文法：描述语言的语法结构</p>
+<h3><span id="语法定义">语法定义</span></h3><p>上下文无关文法：描述语言的语法结构</p>
 <p>组成：</p>
 <ol>
 <li>一组终结符号，单词，基本符号</li>
@@ -214,7 +214,7 @@
 </li>
 </ul>
 <p>二义性：多个语法分析树生成相同的单词串——多个意义</p>
-<h3 id="语法制导翻译"><a href="#语法制导翻译" class="headerlink" title="语法制导翻译"></a>语法制导翻译</h3><ul>
+<h3><span id="语法制导翻译">语法制导翻译</span></h3><ul>
 <li>翻译：为生成代码，需保存语言结构的类型、代码位置、代码数量等</li>
 <li>属性(attribute)：类型、串、内存位置等</li>
 <li>语法制导翻译syntax-directed translation<ul>
@@ -260,7 +260,7 @@
 <li>语法分析树添加额外节点</li>
 <li>指明了语义动作执行顺序</li>
 </ul>
-<h3 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h3><ul>
+<h3><span id="语法分析">语法分析</span></h3><ul>
 <li>确定一个单词串是否可由一个文法生成</li>
 <li>构造语法分析树</li>
 <li>时间复杂度$O(n^3)➔O(n)$</li>

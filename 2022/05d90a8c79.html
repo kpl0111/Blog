@@ -46,19 +46,35 @@
     
 
     <div class="post-md">
-        <h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>本次实验通过C++编程实现MD5加密算法，通过了解MD5算法加深对Hash函数的认识</p>
-<h2 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h2><p>Hash 函数是将任意长的数字串转换成一个较短的定长输出数字串的函数，输出的结果称为 Hash 值。Hash 函数具有如下特点：</p>
+        <h2><span id="实验目的">实验目的</span></h2><p>本次实验通过C++编程实现MD5加密算法，通过了解MD5算法加深对Hash函数的认识</p>
+<h2><span id="实验原理">实验原理</span></h2><p>Hash 函数是将任意长的数字串转换成一个较短的定长输出数字串的函数，输出的结果称为 Hash 值。Hash 函数具有如下特点：</p>
 <ol>
 <li>快速性：对于任意一个输入值 x，由 Hash 函数H(x) ，计算 Hash值 y，即H(x) = y是非常容易的</li>
 <li>单向性：对于任意一个输出值 y，希望反向推出输入值 x，使得H(x) = y，是非常困难的。</li>
 <li>无碰撞性：包括强无碰撞性和弱无碰撞性，一个好的 Hash 函数应该满足强无碰撞性，即找到两个不同的数字串 x 和 y，满足H(x) = H(y)，在计算上是不可能的。</li>
 </ol>
 <p>MD5算法满足Hash特性，然而需要说明的是,2004年8月，在Crypto2004国际密码学会议上，山东大学王小云教授发现了一种找到MD5散列函数的碰撞的方法，即可以找到两个不同的输入x和y，得到相同的Hash结果。这一发现意味着采用MD5算法的数字签名、完整性检验等信息安全应用系统将不在安全了，这就促使信息安全系统的设计者尽快去寻找和探索新的Hash算法。</p>
-<h2 id="MD5算法模块拆解"><a href="#MD5算法模块拆解" class="headerlink" title="MD5算法模块拆解"></a>MD5算法模块拆解</h2><ol>
+<h2><span id="md5算法模块拆解">MD5算法模块拆解</span></h2><ol>
 <li><p>获取输入，该模块用于获取一段明文字符，不定长</p>
 </li>
 <li><p>对获取的不定长字符串进行填充,使其字节长度满足n*512 + 448, 填充规则是第一位填充1，后续填充0，直至满足上述条件，最后再用一个64为二进制字符串表示明文长度，这样填充之后长度为(n + 1)*512</p>
- <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 填充字符串</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">unsigned</span> <span class="type">int</span>&gt; <span class="title">padding</span><span class="params">(string src)</span> </span>{</span><br><span class="line">    <span class="comment">// 以512位,64个字节为一组</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> num = ((src.<span class="built_in">length</span>() + <span class="number">8</span>) / <span class="number">64</span>) + <span class="number">1</span>;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">unsigned</span> <span class="type">int</span>&gt; <span class="title">rec</span><span class="params">(num*<span class="number">16</span>)</span></span>;</span><br><span class="line">    strlength = num*<span class="number">16</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">unsigned</span> <span class="type">int</span> i = <span class="number">0</span>; i &lt; src.<span class="built_in">length</span>(); i++){</span><br><span class="line">        <span class="comment">// 一个unsigned int对应4个字节，保存4个字符信息</span></span><br><span class="line">        rec[i&gt;&gt;<span class="number">2</span>] |= (<span class="type">int</span>)(src[i]) &lt;&lt; ((i % <span class="number">4</span>) * <span class="number">8</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 补充1000...000</span></span><br><span class="line">    rec[src.<span class="built_in">length</span>() &gt;&gt; <span class="number">2</span>] |= (<span class="number">0x80</span> &lt;&lt; ((src.<span class="built_in">length</span>() % <span class="number">4</span>)*<span class="number">8</span>));</span><br><span class="line">    <span class="comment">// 填充原文长度</span></span><br><span class="line">    rec[rec.<span class="built_in">size</span>()<span class="number">-2</span>] = (src.<span class="built_in">length</span>() &lt;&lt; <span class="number">3</span>);</span><br><span class="line">    <span class="keyword">return</span> rec;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">// 填充字符串
+vector&lt;unsigned int&gt; padding(string src) {
+    // 以512位,64个字节为一组
+    unsigned int num = ((src.length() + 8) / 64) + 1;
+    vector&lt;unsigned int&gt; rec(num*16);
+    strlength = num*16;
+    for(unsigned int i = 0; i &lt; src.length(); i++){
+        // 一个unsigned int对应4个字节，保存4个字符信息
+        rec[i&gt;&gt;2] |= (int)(src[i]) &lt;&lt; ((i % 4) * 8);
+    }
+    // 补充1000...000
+    rec[src.length() &gt;&gt; 2] |= (0x80 &lt;&lt; ((src.length() % 4)*8));
+    // 填充原文长度
+    rec[rec.size()-2] = (src.length() &lt;&lt; 3);
+    return rec;
+}
+</code></pre>
 </li>
 <li><p>字符串分块函数，将上述填充之后的字符串分割为L个512字节长度的字符串</p>
 </li>
@@ -69,8 +85,27 @@
 <li>A,B,C,D代表MD5缓冲区当前的数值</li>
 <li>f为轮函数，1-16轮迭代使用F函数，17-32轮迭代使用G函数，33-48轮迭 代使用H函数，49-64轮迭代使用I函数</li>
 </ul>
-  <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// F函数</span></span><br><span class="line"><span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">F</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> b, <span class="type">unsigned</span> <span class="type">int</span> c, <span class="type">unsigned</span> <span class="type">int</span> d)</span> </span>{</span><br><span class="line">    <span class="keyword">return</span> (b &amp; c) | ((~b) &amp; d);</span><br><span class="line">}</span><br><span class="line"><span class="comment">// G函数</span></span><br><span class="line"><span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">G</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> b, <span class="type">unsigned</span> <span class="type">int</span> c, <span class="type">unsigned</span> <span class="type">int</span> d)</span> </span>{</span><br><span class="line">    <span class="keyword">return</span> (b &amp; d) | (c &amp; (~d));</span><br><span class="line">}</span><br><span class="line"><span class="comment">// H函数</span></span><br><span class="line"><span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">H</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> b, <span class="type">unsigned</span> <span class="type">int</span> c, <span class="type">unsigned</span> <span class="type">int</span> d)</span> </span>{</span><br><span class="line">    <span class="keyword">return</span> b ^ c ^ d;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// I函数</span></span><br><span class="line"><span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">I</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> b, <span class="type">unsigned</span> <span class="type">int</span> c, <span class="type">unsigned</span> <span class="type">int</span> d)</span> </span>{</span><br><span class="line">    <span class="keyword">return</span> c ^ (b | (~d));</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 移位操作函数</span></span><br><span class="line"><span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">shift</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> a, <span class="type">unsigned</span> <span class="type">int</span> n)</span> </span>{</span><br><span class="line">    <span class="keyword">return</span> (a &lt;&lt; n) | (a &gt;&gt; (<span class="number">32</span> - n));</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
+<pre><code class="C++">// F函数
+unsigned int F(unsigned int b, unsigned int c, unsigned int d) {
+    return (b &amp; c) | ((~b) &amp; d);
+}
+// G函数
+unsigned int G(unsigned int b, unsigned int c, unsigned int d) {
+    return (b &amp; d) | (c &amp; (~d));
+}
+// H函数
+unsigned int H(unsigned int b, unsigned int c, unsigned int d) {
+    return b ^ c ^ d;
+}
+// I函数
+unsigned int I(unsigned int b, unsigned int c, unsigned int d) {
+    return c ^ (b | (~d));
+}
+// 移位操作函数
+unsigned int shift(unsigned int a, unsigned int n) {
+    return (a &lt;&lt; n) | (a &gt;&gt; (32 - n));
+}
+</code></pre>
 <ul>
 <li>X[k]代表当前处理消息分组的第k个32位字，X[k]由第n轮迭代对应的顺序表决定</li>
 <li>T[i]代表T表的第i项的值，T[i] = int(2^32 * |sin(i)|)</li>
@@ -82,7 +117,47 @@
 <li><p>按照1， 2步骤进行四轮循环压缩</p>
 </li>
 </ol>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">// 循环压缩</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">iterateFunc</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span>* X, <span class="type">int</span> size = <span class="number">16</span>)</span> </span>{</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> a = tempA,</span><br><span class="line">                 b = tempB,</span><br><span class="line">                 c = tempC,</span><br><span class="line">                 d = tempD,</span><br><span class="line">                 rec = <span class="number">0</span>,</span><br><span class="line">                 g, k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">64</span>; i++) {</span><br><span class="line">        <span class="keyword">if</span>(i &lt; <span class="number">16</span>) {</span><br><span class="line">            <span class="comment">// F迭代</span></span><br><span class="line">            g = <span class="built_in">F</span>(b, c, d);</span><br><span class="line">            k = i;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(i &lt; <span class="number">32</span>) {</span><br><span class="line">            <span class="comment">// G迭代</span></span><br><span class="line">            g = <span class="built_in">G</span>(b, c, d);</span><br><span class="line">            k = (<span class="number">1</span> + <span class="number">5</span>*i) % <span class="number">16</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(i &lt; <span class="number">48</span>) {</span><br><span class="line">            <span class="comment">// H迭代</span></span><br><span class="line">            g = <span class="built_in">H</span>(b, c, d);</span><br><span class="line">            k = (<span class="number">5</span> + <span class="number">3</span>*i) % <span class="number">16</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span> {</span><br><span class="line">            <span class="comment">// I迭代</span></span><br><span class="line">            g = <span class="built_in">I</span>(b, c, d);</span><br><span class="line">            k = (<span class="number">7</span>*i) % <span class="number">16</span>;</span><br><span class="line">        }</span><br><span class="line">        rec = d;</span><br><span class="line">        d = c;</span><br><span class="line">        c = b;</span><br><span class="line">        b = b + <span class="built_in">shift</span>(a + g + X[k] + T[i], s[i]);</span><br><span class="line">        a = rec;</span><br><span class="line">    }</span><br><span class="line">    tempA += a;</span><br><span class="line">    tempB += b;</span><br><span class="line">    tempC += c;</span><br><span class="line">    tempD += d;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">    // 循环压缩
+ void iterateFunc(unsigned int* X, int size = 16) {
+     unsigned int a = tempA,
+                  b = tempB,
+                  c = tempC,
+                  d = tempD,
+                  rec = 0,
+                  g, k;
+     for(int i = 0; i &lt; 64; i++) {
+         if(i &lt; 16) {
+             // F迭代
+             g = F(b, c, d);
+             k = i;
+         }
+         else if(i &lt; 32) {
+             // G迭代
+             g = G(b, c, d);
+             k = (1 + 5*i) % 16;
+         }
+         else if(i &lt; 48) {
+             // H迭代
+             g = H(b, c, d);
+             k = (5 + 3*i) % 16;
+         }
+         else {
+             // I迭代
+             g = I(b, c, d);
+             k = (7*i) % 16;
+         }
+         rec = d;
+         d = c;
+         c = b;
+         b = b + shift(a + g + X[k] + T[i], s[i]);
+         a = rec;
+     }
+     tempA += a;
+     tempB += b;
+     tempC += c;
+     tempD += d;
+ }
+</code></pre>
 </li>
 <li><p>MD5编码主函数：用于调用前面的功能函数对明文字符串进行MD5编码</p>
 <ol>
@@ -93,11 +168,24 @@
 <li>对各个分块字符串利用公式HMD5($CV_(i-1), Y_i$)进行循环压缩，运算结果作为下一块的输入（$CV_i$）</li>
 <li>当所有的分块迭代完成后，输出结果$CV_L$，L表示最后一个分块的序号</li>
 </ol>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MD5加密函数</span></span><br><span class="line"> <span class="function">string <span class="title">encode</span><span class="params">(string src)</span> </span>{</span><br><span class="line">     vector&lt;<span class="type">unsigned</span> <span class="type">int</span>&gt; rec = <span class="built_in">padding</span>(src);</span><br><span class="line">     <span class="keyword">for</span>(<span class="type">unsigned</span> <span class="type">int</span> i = <span class="number">0</span>; i &lt; strlength/<span class="number">16</span>; i++) {</span><br><span class="line">         <span class="type">unsigned</span> <span class="type">int</span> num[<span class="number">16</span>];</span><br><span class="line">         <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">16</span>; j++) {</span><br><span class="line">             num[j] = rec[i*<span class="number">16</span>+j];</span><br><span class="line">         }</span><br><span class="line">         <span class="built_in">iterateFunc</span>(num, <span class="number">16</span>);</span><br><span class="line">     }</span><br><span class="line">     <span class="keyword">return</span> format(tempA) + format(tempB) + format(tempC) + format(tempD);</span><br><span class="line"> }</span><br></pre></td></tr></tbody></table></figure></li>
+<pre><code class="C++">// MD5加密函数
+ string encode(string src) {
+     vector&lt;unsigned int&gt; rec = padding(src);
+     for(unsigned int i = 0; i &lt; strlength/16; i++) {
+         unsigned int num[16];
+         for(int j = 0; j &lt; 16; j++) {
+             num[j] = rec[i*16+j];
+         }
+         iterateFunc(num, 16);
+     }
+     return format(tempA) + format(tempB) + format(tempC) + format(tempD);
+ }
+</code></pre>
+</li>
 </ol>
-<h2 id="程序流程图"><a href="#程序流程图" class="headerlink" title="程序流程图"></a>程序流程图</h2><p><img src="https://s2.loli.net/2022/05/23/Uj4DuPtrp7wq82v.png" alt="result4"></p>
-<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p>对测试数据进行测试，测试结果如下：<br><img src="https://s2.loli.net/2022/05/23/1blRcNfZUIHEsOu.png" alt="result1"><br><img src="https://s2.loli.net/2022/05/23/3SCV7qa4QboycfD.png" alt="result"></p>
-<h2 id="雪崩测试"><a href="#雪崩测试" class="headerlink" title="雪崩测试"></a>雪崩测试</h2><p>对每个测试数据均在字符串末尾加上一个空格得到密文改变位数如下<br><img src="https://s2.loli.net/2022/05/23/mz6sGwdfiHr5lQD.png" alt="result2"></p>
+<h2><span id="程序流程图">程序流程图</span></h2><p><img src="https://s2.loli.net/2022/05/23/Uj4DuPtrp7wq82v.png" alt="result4"></p>
+<h2><span id="测试结果">测试结果</span></h2><p>对测试数据进行测试，测试结果如下：<br><img src="https://s2.loli.net/2022/05/23/1blRcNfZUIHEsOu.png" alt="result1"><br><img src="https://s2.loli.net/2022/05/23/3SCV7qa4QboycfD.png" alt="result"></p>
+<h2><span id="雪崩测试">雪崩测试</span></h2><p>对每个测试数据均在字符串末尾加上一个空格得到密文改变位数如下<br><img src="https://s2.loli.net/2022/05/23/mz6sGwdfiHr5lQD.png" alt="result2"></p>
 <table>
 <thead>
 <tr>
@@ -124,9 +212,209 @@
 <td align="center">29</td>
 </tr>
 </tbody></table>
-<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//MD5.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> A 0x67452301</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> B 0xefcdab89</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> C 0x98badcfe</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> D 0x10325476</span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> str16[] = <span class="string">"0123456789abcdef"</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">unsigned</span> <span class="type">int</span> T[] = {</span><br><span class="line">    <span class="number">0xd76aa478</span>,<span class="number">0xe8c7b756</span>,<span class="number">0x242070db</span>,<span class="number">0xc1bdceee</span>,</span><br><span class="line">    <span class="number">0xf57c0faf</span>,<span class="number">0x4787c62a</span>,<span class="number">0xa8304613</span>,<span class="number">0xfd469501</span>,</span><br><span class="line">    <span class="number">0x698098d8</span>,<span class="number">0x8b44f7af</span>,<span class="number">0xffff5bb1</span>,<span class="number">0x895cd7be</span>,</span><br><span class="line">    <span class="number">0x6b901122</span>,<span class="number">0xfd987193</span>,<span class="number">0xa679438e</span>,<span class="number">0x49b40821</span>,</span><br><span class="line">    <span class="number">0xf61e2562</span>,<span class="number">0xc040b340</span>,<span class="number">0x265e5a51</span>,<span class="number">0xe9b6c7aa</span>,</span><br><span class="line">    <span class="number">0xd62f105d</span>,<span class="number">0x02441453</span>,<span class="number">0xd8a1e681</span>,<span class="number">0xe7d3fbc8</span>,</span><br><span class="line">    <span class="number">0x21e1cde6</span>,<span class="number">0xc33707d6</span>,<span class="number">0xf4d50d87</span>,<span class="number">0x455a14ed</span>,</span><br><span class="line">    <span class="number">0xa9e3e905</span>,<span class="number">0xfcefa3f8</span>,<span class="number">0x676f02d9</span>,<span class="number">0x8d2a4c8a</span>,</span><br><span class="line">    <span class="number">0xfffa3942</span>,<span class="number">0x8771f681</span>,<span class="number">0x6d9d6122</span>,<span class="number">0xfde5380c</span>,</span><br><span class="line">    <span class="number">0xa4beea44</span>,<span class="number">0x4bdecfa9</span>,<span class="number">0xf6bb4b60</span>,<span class="number">0xbebfbc70</span>,</span><br><span class="line">    <span class="number">0x289b7ec6</span>,<span class="number">0xeaa127fa</span>,<span class="number">0xd4ef3085</span>,<span class="number">0x04881d05</span>,</span><br><span class="line">    <span class="number">0xd9d4d039</span>,<span class="number">0xe6db99e5</span>,<span class="number">0x1fa27cf8</span>,<span class="number">0xc4ac5665</span>,</span><br><span class="line">    <span class="number">0xf4292244</span>,<span class="number">0x432aff97</span>,<span class="number">0xab9423a7</span>,<span class="number">0xfc93a039</span>,</span><br><span class="line">    <span class="number">0x655b59c3</span>,<span class="number">0x8f0ccc92</span>,<span class="number">0xffeff47d</span>,<span class="number">0x85845dd1</span>,</span><br><span class="line">    <span class="number">0x6fa87e4f</span>,<span class="number">0xfe2ce6e0</span>,<span class="number">0xa3014314</span>,<span class="number">0x4e0811a1</span>,</span><br><span class="line">    <span class="number">0xf7537e82</span>,<span class="number">0xbd3af235</span>,<span class="number">0x2ad7d2bb</span>,<span class="number">0xeb86d391</span> };</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">unsigned</span> <span class="type">int</span> s[] = { <span class="number">7</span>,<span class="number">12</span>,<span class="number">17</span>,<span class="number">22</span>,<span class="number">7</span>,<span class="number">12</span>,<span class="number">17</span>,<span class="number">22</span>,<span class="number">7</span>,<span class="number">12</span>,<span class="number">17</span>,<span class="number">22</span>,<span class="number">7</span>,<span class="number">12</span>,<span class="number">17</span>,<span class="number">22</span>,</span><br><span class="line">                           <span class="number">5</span>,<span class="number">9</span>,<span class="number">14</span>,<span class="number">20</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">14</span>,<span class="number">20</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">14</span>,<span class="number">20</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">14</span>,<span class="number">20</span>,</span><br><span class="line">                           <span class="number">4</span>,<span class="number">11</span>,<span class="number">16</span>,<span class="number">23</span>,<span class="number">4</span>,<span class="number">11</span>,<span class="number">16</span>,<span class="number">23</span>,<span class="number">4</span>,<span class="number">11</span>,<span class="number">16</span>,<span class="number">23</span>,<span class="number">4</span>,<span class="number">11</span>,<span class="number">16</span>,<span class="number">23</span>,</span><br><span class="line">                           <span class="number">6</span>,<span class="number">10</span>,<span class="number">15</span>,<span class="number">21</span>,<span class="number">6</span>,<span class="number">10</span>,<span class="number">15</span>,<span class="number">21</span>,<span class="number">6</span>,<span class="number">10</span>,<span class="number">15</span>,<span class="number">21</span>,<span class="number">6</span>,<span class="number">10</span>,<span class="number">15</span>,<span class="number">21</span>};</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一部分是要进行 HASH 运算的原始明文，第二部分则是其对应的 HASH 值</span></span><br><span class="line"><span class="type">static</span> <span class="type">const</span> <span class="keyword">struct</span> <span class="title class_">data</span>{</span><br><span class="line">    string msg;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> hash[<span class="number">16</span>];</span><br><span class="line">}tests[] = {</span><br><span class="line">    { <span class="string">""</span>,</span><br><span class="line">      { <span class="number">0xd4</span>, <span class="number">0x1d</span>, <span class="number">0x8c</span>, <span class="number">0xd9</span>, <span class="number">0x8f</span>, <span class="number">0x00</span>, <span class="number">0xb2</span>, <span class="number">0x04</span>, </span><br><span class="line">        <span class="number">0xe9</span>, <span class="number">0x80</span>, <span class="number">0x09</span>, <span class="number">0x98</span>, <span class="number">0xec</span>, <span class="number">0xf8</span>, <span class="number">0x42</span>, <span class="number">0x7e</span> } },</span><br><span class="line">    { <span class="string">"a"</span>,</span><br><span class="line">      {<span class="number">0x0c</span>, <span class="number">0xc1</span>, <span class="number">0x75</span>, <span class="number">0xb9</span>, <span class="number">0xc0</span>, <span class="number">0xf1</span>, <span class="number">0xb6</span>, <span class="number">0xa8</span>, </span><br><span class="line">       <span class="number">0x31</span>, <span class="number">0xc3</span>, <span class="number">0x99</span>, <span class="number">0xe2</span>, <span class="number">0x69</span>, <span class="number">0x77</span>, <span class="number">0x26</span>, <span class="number">0x61</span> } },</span><br><span class="line">    { <span class="string">"abc"</span>,</span><br><span class="line">      { <span class="number">0x90</span>, <span class="number">0x01</span>, <span class="number">0x50</span>, <span class="number">0x98</span>, <span class="number">0x3c</span>, <span class="number">0xd2</span>, <span class="number">0x4f</span>, <span class="number">0xb0</span>, </span><br><span class="line">        <span class="number">0xd6</span>, <span class="number">0x96</span>, <span class="number">0x3f</span>, <span class="number">0x7d</span>, <span class="number">0x28</span>, <span class="number">0xe1</span>, <span class="number">0x7f</span>, <span class="number">0x72</span> } },</span><br><span class="line">    { <span class="string">"message digest"</span>, </span><br><span class="line">      { <span class="number">0xf9</span>, <span class="number">0x6b</span>, <span class="number">0x69</span>, <span class="number">0x7d</span>, <span class="number">0x7c</span>, <span class="number">0xb7</span>, <span class="number">0x93</span>, <span class="number">0x8d</span>, </span><br><span class="line">        <span class="number">0x52</span>, <span class="number">0x5a</span>, <span class="number">0x2f</span>, <span class="number">0x31</span>, <span class="number">0xaa</span>, <span class="number">0xf1</span>, <span class="number">0x61</span>, <span class="number">0xd0</span> } }, </span><br><span class="line">    { <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>,</span><br><span class="line">      { <span class="number">0xc3</span>, <span class="number">0xfc</span>, <span class="number">0xd3</span>, <span class="number">0xd7</span>, <span class="number">0x61</span>, <span class="number">0x92</span>, <span class="number">0xe4</span>, <span class="number">0x00</span>, </span><br><span class="line">        <span class="number">0x7d</span>, <span class="number">0xfb</span>, <span class="number">0x49</span>, <span class="number">0x6c</span>, <span class="number">0xca</span>, <span class="number">0x67</span>, <span class="number">0xe1</span>, <span class="number">0x3b</span> } },</span><br><span class="line">    { <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"</span>,</span><br><span class="line">      { <span class="number">0xd1</span>, <span class="number">0x74</span>, <span class="number">0xab</span>, <span class="number">0x98</span>, <span class="number">0xd2</span>, <span class="number">0x77</span>, <span class="number">0xd9</span>, <span class="number">0xf5</span>, </span><br><span class="line">        <span class="number">0xa5</span>, <span class="number">0x61</span>, <span class="number">0x1c</span>, <span class="number">0x2c</span>, <span class="number">0x9f</span>, <span class="number">0x41</span>, <span class="number">0x9d</span>, <span class="number">0x9f</span> } },</span><br><span class="line">    { <span class="string">"12345678901234567890123456789012345678901234567890123456789012345678901234567890"</span>,</span><br><span class="line">      { <span class="number">0x57</span>, <span class="number">0xed</span>, <span class="number">0xf4</span>, <span class="number">0xa2</span>, <span class="number">0x2b</span>, <span class="number">0xe3</span>, <span class="number">0xc9</span>, <span class="number">0x55</span>, </span><br><span class="line">        <span class="number">0xac</span>, <span class="number">0x49</span>, <span class="number">0xda</span>, <span class="number">0x2e</span>, <span class="number">0x21</span>, <span class="number">0x07</span>, <span class="number">0xb6</span>, <span class="number">0x7a</span> } },</span><br><span class="line"></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MD5</span> {</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> tempA, tempB, tempC, tempD, strlength;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MD5</span>() {</span><br><span class="line">        tempA = A;</span><br><span class="line">        tempB = B;</span><br><span class="line">        tempC = C;</span><br><span class="line">        tempD = D;</span><br><span class="line">        strlength = <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 填充字符串</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">unsigned</span> <span class="type">int</span>&gt; <span class="title">padding</span><span class="params">(string src)</span> </span>{</span><br><span class="line">        <span class="comment">// 以512位,64个字节为一组</span></span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> num = ((src.<span class="built_in">length</span>() + <span class="number">8</span>) / <span class="number">64</span>) + <span class="number">1</span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">unsigned</span> <span class="type">int</span>&gt; <span class="title">rec</span><span class="params">(num*<span class="number">16</span>)</span></span>;</span><br><span class="line">        strlength = num*<span class="number">16</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">unsigned</span> <span class="type">int</span> i = <span class="number">0</span>; i &lt; src.<span class="built_in">length</span>(); i++){</span><br><span class="line">            <span class="comment">// 一个unsigned int对应4个字节，保存4个字符信息</span></span><br><span class="line">            rec[i&gt;&gt;<span class="number">2</span>] |= (<span class="type">int</span>)(src[i]) &lt;&lt; ((i % <span class="number">4</span>) * <span class="number">8</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 补充1000...000</span></span><br><span class="line">        rec[src.<span class="built_in">length</span>() &gt;&gt; <span class="number">2</span>] |= (<span class="number">0x80</span> &lt;&lt; ((src.<span class="built_in">length</span>() % <span class="number">4</span>)*<span class="number">8</span>));</span><br><span class="line">        <span class="comment">// 填充原文长度</span></span><br><span class="line">        rec[rec.<span class="built_in">size</span>()<span class="number">-2</span>] = (src.<span class="built_in">length</span>() &lt;&lt; <span class="number">3</span>);</span><br><span class="line">        <span class="keyword">return</span> rec;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// F函数</span></span><br><span class="line">    <span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">F</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> b, <span class="type">unsigned</span> <span class="type">int</span> c, <span class="type">unsigned</span> <span class="type">int</span> d)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> (b &amp; c) | ((~b) &amp; d);</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// G函数</span></span><br><span class="line">    <span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">G</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> b, <span class="type">unsigned</span> <span class="type">int</span> c, <span class="type">unsigned</span> <span class="type">int</span> d)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> (b &amp; d) | (c &amp; (~d));</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// H函数</span></span><br><span class="line">    <span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">H</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> b, <span class="type">unsigned</span> <span class="type">int</span> c, <span class="type">unsigned</span> <span class="type">int</span> d)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> b ^ c ^ d;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// I函数</span></span><br><span class="line">    <span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">I</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> b, <span class="type">unsigned</span> <span class="type">int</span> c, <span class="type">unsigned</span> <span class="type">int</span> d)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> c ^ (b | (~d));</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 移位操作函数</span></span><br><span class="line">    <span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">shift</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> a, <span class="type">unsigned</span> <span class="type">int</span> n)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> (a &lt;&lt; n) | (a &gt;&gt; (<span class="number">32</span> - n));</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 循环压缩</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">iterateFunc</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span>* X, <span class="type">int</span> size = <span class="number">16</span>)</span> </span>{</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> a = tempA,</span><br><span class="line">                     b = tempB,</span><br><span class="line">                     c = tempC,</span><br><span class="line">                     d = tempD,</span><br><span class="line">                     rec = <span class="number">0</span>,</span><br><span class="line">                     g, k;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">64</span>; i++) {</span><br><span class="line">            <span class="keyword">if</span>(i &lt; <span class="number">16</span>) {</span><br><span class="line">                <span class="comment">// F迭代</span></span><br><span class="line">                g = <span class="built_in">F</span>(b, c, d);</span><br><span class="line">                k = i;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(i &lt; <span class="number">32</span>) {</span><br><span class="line">                <span class="comment">// G迭代</span></span><br><span class="line">                g = <span class="built_in">G</span>(b, c, d);</span><br><span class="line">                k = (<span class="number">1</span> + <span class="number">5</span>*i) % <span class="number">16</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(i &lt; <span class="number">48</span>) {</span><br><span class="line">                <span class="comment">// H迭代</span></span><br><span class="line">                g = <span class="built_in">H</span>(b, c, d);</span><br><span class="line">                k = (<span class="number">5</span> + <span class="number">3</span>*i) % <span class="number">16</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span> {</span><br><span class="line">                <span class="comment">// I迭代</span></span><br><span class="line">                g = <span class="built_in">I</span>(b, c, d);</span><br><span class="line">                k = (<span class="number">7</span>*i) % <span class="number">16</span>;</span><br><span class="line">            }</span><br><span class="line">            rec = d;</span><br><span class="line">            d = c;</span><br><span class="line">            c = b;</span><br><span class="line">            b = b + <span class="built_in">shift</span>(a + g + X[k] + T[i], s[i]);</span><br><span class="line">            a = rec;</span><br><span class="line">        }</span><br><span class="line">        tempA += a;</span><br><span class="line">        tempB += b;</span><br><span class="line">        tempC += c;</span><br><span class="line">        tempD += d;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 整理输出</span></span><br><span class="line">    <span class="function">string <span class="title">format</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> num)</span> </span>{</span><br><span class="line">        string res = <span class="string">""</span>;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> base = <span class="number">1</span> &lt;&lt; <span class="number">8</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) {</span><br><span class="line">            string tmp = <span class="string">""</span>;</span><br><span class="line">            <span class="type">unsigned</span> <span class="type">int</span> b = (num &gt;&gt; (i * <span class="number">8</span>)) % base &amp; <span class="number">0xff</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) {</span><br><span class="line">                tmp = str16[b%<span class="number">16</span>] + tmp;</span><br><span class="line">                b /= <span class="number">16</span>;</span><br><span class="line">            }</span><br><span class="line">            res += tmp;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 编码函数</span></span><br><span class="line">    <span class="function">string <span class="title">encode</span><span class="params">(string src)</span> </span>{</span><br><span class="line">        vector&lt;<span class="type">unsigned</span> <span class="type">int</span>&gt; rec = <span class="built_in">padding</span>(src);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">unsigned</span> <span class="type">int</span> i = <span class="number">0</span>; i &lt; strlength/<span class="number">16</span>; i++) {</span><br><span class="line">            <span class="type">unsigned</span> <span class="type">int</span> num[<span class="number">16</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">16</span>; j++) {</span><br><span class="line">                num[j] = rec[i*<span class="number">16</span>+j];</span><br><span class="line">            }</span><br><span class="line">            <span class="built_in">iterateFunc</span>(num, <span class="number">16</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> format(tempA) + format(tempB) + format(tempC) + format(tempD);</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="源代码">源代码</span></h2><pre><code class="C++">//MD5.h
+#pragma once
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cstdlib&gt;
+#include &lt;string&gt;
 
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">\\MD5.cpp</span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">"MD5.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    MD5 test;</span><br><span class="line">    string a = <span class="string">""</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">"Plain Text: "</span>;</span><br><span class="line">    <span class="built_in">getline</span>(cin,a);</span><br><span class="line">    cout &lt;&lt; <span class="string">"result: "</span> &lt;&lt; test.<span class="built_in">encode</span>(a) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+using namespace std;
+
+#define A 0x67452301
+#define B 0xefcdab89
+#define C 0x98badcfe
+#define D 0x10325476
+
+const char str16[] = "0123456789abcdef";
+
+const unsigned int T[] = {
+    0xd76aa478,0xe8c7b756,0x242070db,0xc1bdceee,
+    0xf57c0faf,0x4787c62a,0xa8304613,0xfd469501,
+    0x698098d8,0x8b44f7af,0xffff5bb1,0x895cd7be,
+    0x6b901122,0xfd987193,0xa679438e,0x49b40821,
+    0xf61e2562,0xc040b340,0x265e5a51,0xe9b6c7aa,
+    0xd62f105d,0x02441453,0xd8a1e681,0xe7d3fbc8,
+    0x21e1cde6,0xc33707d6,0xf4d50d87,0x455a14ed,
+    0xa9e3e905,0xfcefa3f8,0x676f02d9,0x8d2a4c8a,
+    0xfffa3942,0x8771f681,0x6d9d6122,0xfde5380c,
+    0xa4beea44,0x4bdecfa9,0xf6bb4b60,0xbebfbc70,
+    0x289b7ec6,0xeaa127fa,0xd4ef3085,0x04881d05,
+    0xd9d4d039,0xe6db99e5,0x1fa27cf8,0xc4ac5665,
+    0xf4292244,0x432aff97,0xab9423a7,0xfc93a039,
+    0x655b59c3,0x8f0ccc92,0xffeff47d,0x85845dd1,
+    0x6fa87e4f,0xfe2ce6e0,0xa3014314,0x4e0811a1,
+    0xf7537e82,0xbd3af235,0x2ad7d2bb,0xeb86d391 };
+
+const unsigned int s[] = { 7,12,17,22,7,12,17,22,7,12,17,22,7,12,17,22,
+                           5,9,14,20,5,9,14,20,5,9,14,20,5,9,14,20,
+                           4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,
+                           6,10,15,21,6,10,15,21,6,10,15,21,6,10,15,21};
+
+// 第一部分是要进行 HASH 运算的原始明文，第二部分则是其对应的 HASH 值
+static const struct data{
+    string msg;
+    unsigned char hash[16];
+}tests[] = {
+    { "",
+      { 0xd4, 0x1d, 0x8c, 0xd9, 0x8f, 0x00, 0xb2, 0x04, 
+        0xe9, 0x80, 0x09, 0x98, 0xec, 0xf8, 0x42, 0x7e } },
+    { "a",
+      {0x0c, 0xc1, 0x75, 0xb9, 0xc0, 0xf1, 0xb6, 0xa8, 
+       0x31, 0xc3, 0x99, 0xe2, 0x69, 0x77, 0x26, 0x61 } },
+    { "abc",
+      { 0x90, 0x01, 0x50, 0x98, 0x3c, 0xd2, 0x4f, 0xb0, 
+        0xd6, 0x96, 0x3f, 0x7d, 0x28, 0xe1, 0x7f, 0x72 } },
+    { "message digest", 
+      { 0xf9, 0x6b, 0x69, 0x7d, 0x7c, 0xb7, 0x93, 0x8d, 
+        0x52, 0x5a, 0x2f, 0x31, 0xaa, 0xf1, 0x61, 0xd0 } }, 
+    { "abcdefghijklmnopqrstuvwxyz",
+      { 0xc3, 0xfc, 0xd3, 0xd7, 0x61, 0x92, 0xe4, 0x00, 
+        0x7d, 0xfb, 0x49, 0x6c, 0xca, 0x67, 0xe1, 0x3b } },
+    { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+      { 0xd1, 0x74, 0xab, 0x98, 0xd2, 0x77, 0xd9, 0xf5, 
+        0xa5, 0x61, 0x1c, 0x2c, 0x9f, 0x41, 0x9d, 0x9f } },
+    { "12345678901234567890123456789012345678901234567890123456789012345678901234567890",
+      { 0x57, 0xed, 0xf4, 0xa2, 0x2b, 0xe3, 0xc9, 0x55, 
+        0xac, 0x49, 0xda, 0x2e, 0x21, 0x07, 0xb6, 0x7a } },
+
+};
+
+class MD5 {
+private:
+    unsigned int tempA, tempB, tempC, tempD, strlength;
+public:
+    MD5() {
+        tempA = A;
+        tempB = B;
+        tempC = C;
+        tempD = D;
+        strlength = 0;
+    }
+    // 填充字符串
+    vector&lt;unsigned int&gt; padding(string src) {
+        // 以512位,64个字节为一组
+        unsigned int num = ((src.length() + 8) / 64) + 1;
+        vector&lt;unsigned int&gt; rec(num*16);
+        strlength = num*16;
+        for(unsigned int i = 0; i &lt; src.length(); i++){
+            // 一个unsigned int对应4个字节，保存4个字符信息
+            rec[i&gt;&gt;2] |= (int)(src[i]) &lt;&lt; ((i % 4) * 8);
+        }
+        // 补充1000...000
+        rec[src.length() &gt;&gt; 2] |= (0x80 &lt;&lt; ((src.length() % 4)*8));
+        // 填充原文长度
+        rec[rec.size()-2] = (src.length() &lt;&lt; 3);
+        return rec;
+    }
+    // F函数
+    unsigned int F(unsigned int b, unsigned int c, unsigned int d) {
+        return (b &amp; c) | ((~b) &amp; d);
+    }
+    // G函数
+    unsigned int G(unsigned int b, unsigned int c, unsigned int d) {
+        return (b &amp; d) | (c &amp; (~d));
+    }
+    // H函数
+    unsigned int H(unsigned int b, unsigned int c, unsigned int d) {
+        return b ^ c ^ d;
+    }
+    // I函数
+    unsigned int I(unsigned int b, unsigned int c, unsigned int d) {
+        return c ^ (b | (~d));
+    }
+    // 移位操作函数
+    unsigned int shift(unsigned int a, unsigned int n) {
+        return (a &lt;&lt; n) | (a &gt;&gt; (32 - n));
+    }
+    // 循环压缩
+    void iterateFunc(unsigned int* X, int size = 16) {
+        unsigned int a = tempA,
+                     b = tempB,
+                     c = tempC,
+                     d = tempD,
+                     rec = 0,
+                     g, k;
+        for(int i = 0; i &lt; 64; i++) {
+            if(i &lt; 16) {
+                // F迭代
+                g = F(b, c, d);
+                k = i;
+            }
+            else if(i &lt; 32) {
+                // G迭代
+                g = G(b, c, d);
+                k = (1 + 5*i) % 16;
+            }
+            else if(i &lt; 48) {
+                // H迭代
+                g = H(b, c, d);
+                k = (5 + 3*i) % 16;
+            }
+            else {
+                // I迭代
+                g = I(b, c, d);
+                k = (7*i) % 16;
+            }
+            rec = d;
+            d = c;
+            c = b;
+            b = b + shift(a + g + X[k] + T[i], s[i]);
+            a = rec;
+        }
+        tempA += a;
+        tempB += b;
+        tempC += c;
+        tempD += d;
+    }
+    // 整理输出
+    string format(unsigned int num) {
+        string res = "";
+        unsigned int base = 1 &lt;&lt; 8;
+        for(int i = 0; i &lt; 4; i++) {
+            string tmp = "";
+            unsigned int b = (num &gt;&gt; (i * 8)) % base &amp; 0xff;
+            for(int j = 0; j &lt; 2; j++) {
+                tmp = str16[b%16] + tmp;
+                b /= 16;
+            }
+            res += tmp;
+        }
+        return res;
+    }
+    // 编码函数
+    string encode(string src) {
+        vector&lt;unsigned int&gt; rec = padding(src);
+        for(unsigned int i = 0; i &lt; strlength/16; i++) {
+            unsigned int num[16];
+            for(int j = 0; j &lt; 16; j++) {
+                num[j] = rec[i*16+j];
+            }
+            iterateFunc(num, 16);
+        }
+        return format(tempA) + format(tempB) + format(tempC) + format(tempD);
+    }
+};
+</code></pre>
+<pre><code class="C++">\\MD5.cpp
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cstdlib&gt;
+#include &lt;string&gt;
+#include &lt;string.h&gt;
+#include "MD5.h"
+
+using namespace std;
+
+int main() {
+    MD5 test;
+    string a = "";
+    cout &lt;&lt; "Plain Text: ";
+    getline(cin,a);
+    cout &lt;&lt; "result: " &lt;&lt; test.encode(a) &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
 
     </div>
 
