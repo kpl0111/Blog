@@ -8,6 +8,119 @@
 ]]></content>
   </entry>
   <entry>
+    <title>数字签名算法DSA</title>
+    <url>/blog/2022/059d9eab6e.html</url>
+    <content><![CDATA[<blockquote>
+<p>本文为作者个人作业，仅供参考</p>
+</blockquote>
+<!-- toc -->
+
+<ul>
+<li><a href="#%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82">实验要求</a></li>
+</ul>
+<!-- tocstop -->
+
+<h3><span id="实验要求">实验要求</span></h3><p>通过对数字签字算法DSA的实际操作，理解DSS的基本工作原理。</p>
+<h4><span id="实验内容">实验内容</span></h4><ol>
+<li>参照教材，熟悉数字签名算法DSA；</li>
+<li>参照教材，熟悉杂凑函数算法SHA；</li>
+<li>这里给出一个可运行的DSA数字签字演示程序，运行这个程序，对一段文字进行签字和验证，了解DSA算法的签字和验证过程。</li>
+</ol>
+<h4><span id="杂凑函数sha-1">杂凑函数SHA-1</span></h4><p>安全哈希算法(SHA)是基于MD4算法，其结构与MD4非常类似，用于数字签名的标准算法DSS中。</p>
+<h5><span id="算法实现步骤">算法实现步骤</span></h5><ol>
+<li><p>将消息摘要转换成位字符串<br> 因为在SHA-算法中，它的输入必须为位，所以首先要将其转化为位字符串，以“abc”字符串来说明问题，因为’a’=97, ‘b’=98, ‘c’=99，所以将其转换为位串后为：</p>
+<blockquote>
+<p>01100001 01100010 01100011</p>
+</blockquote>
+</li>
+<li><p>对转换后的位字符串进行补位操作<br> SHA-算法标准规定，必须对消息摘要进行补位操作，即将输入的数据进行填充，使得数据长度对512求余的结果为448，填充比特位的最高位补一个1，其余的位补0，如果在补位之前已经满足对512取模余数为448，也要进行补位，在其后补一位1即可。总之，补位是至少补一位，最多补512位，依然以“abc”为例，其补位过程如下：</p>
+<ul>
+<li>初始的信息摘要：01100001 01100010 01100011</li>
+<li>第一步补位：01100001 01100010 01100011 1…..  ……</li>
+<li>补位最后一位：01100001 01100010 01100011 10…….0(后面补了423个0)</li>
+</ul>
+<p> 而后将补位操作后的信息摘要转换为十六进制，如下所示：<br> 61626380 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000000<br> 00000000 00000000</p>
+</li>
+<li><p>附加长度值<br> 在信息摘要后面附加64bit的信息，用来表示原始信息摘要的长度，在这步操作之后，信息报文便是512bit的倍数。通常来说用一个64位的数据表示原始消息的长度，如果消息长度不大于2^64，那么前32bit就为0，在进行附加长度值操作后，其“abc”数据报文即变成如下形式：<br> 61626380 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000018<br> 因为“abc”占3个字节，即24位 ，换算为十六进制即为0x18。</p>
+</li>
+<li><p>初始化缓存<br> 一个160位MD缓冲区用以保存中间和最终散列函数的结果。它可以表示为5个32位的寄存器($H_0$,$H_1$,$H_2$,$H_3$,$H_4$)。初始化为：<br> $H_0$ = 0x67452301<br> $H_1$ = 0xEFCDAB89<br> $H_2$ = 0x98BADCFE<br> $H_3$ = 0x10325476<br> $H_4$ = 0xC3D2E1F0<br> 前四个与上周的MD-5一样，但不同之处为存储为大端序</p>
+</li>
+<li><p>计算消息摘要<br> 在计算报文之前还要做一些基本的工作，就是在计算过程中要用到的方法。</p>
+<ol>
+<li>循环左移操作符Sn(x),x是一个字，也就是32bit大小的变量，n是一个整数且0&lt;=n&lt;=32。Sn(X) = (X&lt;&lt;n)OR(X&gt;&gt;32-n)</li>
+<li>在程序中所要用到的常量，这一系列常量字k(0)、k(1)、…k(79)，将其以十六进制表示如下：<br> $K_t$ = 0x5A827999  (0 &lt;= t &lt;= 19)<br> $K_t$ = 0x6ED9EBA1 (20 &lt;= t &lt;= 39)<br> $K_t$ = 0x8F1BBCDC (40 &lt;= t &lt;= 59)<br> $K_t$ = 0xCA62C1D6 (60 &lt;= t &lt;= 79)</li>
+<li>所要用到的一系列函数<br> Ft(b,c,d)  ((b&amp;c)|((~b)&amp;d))    (0 &lt;= t &lt;= 19)<br> Ft(b,c,d) (b^c^d)             (20 &lt;= t &lt;= 39)<br> Ft(b,c,d) ((b&amp;c)|(b&amp;d)|(c&amp;d))  (40 &lt;= t &lt;= 59)<br> Ft(b,c,d) (b^c^d)               (60 &lt;= t &lt;= 79)</li>
+<li>计算<br> 计算需要一个缓冲区，由5个32位的字组成，还需要一个80个32位字的缓冲区。第一个5个字的缓冲区被标识为A，B，C，D，E。80个字的缓冲区被标识为$W_0, W_1,…, W_{79}$<br> 另外还需要一个一个字的TEMP缓冲区。<br> 为了产生消息摘要，在第4部分中定义的16个字的数据块$M_1, M_2,…, M_n$会依次进行处理，处理每个数据块$M_i$ 包含80个步骤。</li>
+</ol>
+<p> 现在开始处理$M_1, M_2, … , M_n$。为了处理 $M_i$,需要进行下面的步骤</p>
+<ul>
+<li>将 Mi 分成 16 个字 $W_0, W_1, … , W_{15},  W_0$ 是最左边的字</li>
+<li>对于 t = 16 到 79 令 $W_t = S_1(W_{t-3} XOR W_{t-8} XOR W_{t- 14} XOR W_{t-16})$.</li>
+<li>令 A = $H_0$, B = $H_1$, C = $H_2$, D = $H_3$, E = $H_4$.</li>
+<li>对于 t = 0 到 79，执行下面的循环<br> TEMP = S5(A) + ft(B,C,D) + E + Wt + $K_t$;<br> E = D; D = C; C = S30(B); B = A; A = TEMP;</li>
+</ul>
+<ol start="5">
+<li>令 $H_0$ = $H_0$ + A, $H_1$ = $H_1$ + B, $H_2$ = $H_2$ + C, $H_3$ = $H_3$ + D, $H_4$ = $H_4$ + E.</li>
+</ol>
+</li>
+</ol>
+<p>在处理完所有的 Mn, 后，消息摘要是一个160位的字符串，以下面的顺序标识<br>$H_0$ $H_1$ $H_2$ $H_3$ $H_4$.</p>
+<h5><span id="sha-1在dss中的应用">SHA-1在DSS中的应用</span></h5><p>在DSS（数字签名标准）中，使用数字签名算法DSA和哈希函数SHA-1结合完成数字签名。</p>
+<h4><span id="数字签名算法dsa">数字签名算法DSA</span></h4><p>DSA是在ElGamal和Schnorr两个签名方案的基础上设计的，其安全性基于求离散对数的困难性。</p>
+<h5><span id="算法描述">算法描述</span></h5><ol>
+<li><p>全局变量</p>
+<ul>
+<li>p：满足$2^{L-1}&lt;p&lt;2^L$的大素数，其中$512\leq L\leq 1024$且$L$是64的倍数。</li>
+<li>q：$p-1$的素因子，满足$2^{159}&lt;p&lt;2{160}$，即$q$长为160比特。</li>
+<li>g：$g\equiv h^{(p-1)/q}modp$，其中$h$是满足$1&lt;h&lt;p-1$且使得$h^{(p-1)/q}modp&gt;1$的任一整数。</li>
+</ul>
+</li>
+<li><p>密钥x</p>
+<ul>
+<li>$x$是满足$0&lt;x&lt;q$的随机数或伪随机数。</li>
+</ul>
+</li>
+<li><p>公钥y</p>
+<ul>
+<li>$y\equiv g^xmodp$</li>
+</ul>
+</li>
+<li><p>用户的随机数选择k</p>
+<ul>
+<li>$k$是满足$0&lt;k&lt;q$的随机数或伪随机数。</li>
+</ul>
+</li>
+<li><p>签名过程<br> 用户对消息$M$的签名为$(r,s)$，其中$r\equiv (g^kmodp)modq$，$s\equiv [k^{-1}(H(M)+xr)]modq$，$H(M)$是由SHA求出的哈希值。</p>
+</li>
+<li><p>验证过程<br> 设接收方接收到的消息为$M’$，签名为$(r’,s’)$。计算</p>
+<ul>
+<li>$\omega \equiv (s’)^{-1}modq$</li>
+<li>$u_1\equiv [H(M’)\omega ]modq$</li>
+<li>$u_2\equiv r’\omega modq$</li>
+<li>$v\equiv [(g^{u_1}y^{u_2})modp]modq$。</li>
+</ul>
+<p> 检查$v$是否等于$r’$，若相等，则证明签名有效，这是因为<br> 若$(M’,r’,s’)=(M,r,s)$，<br> 则$v\equiv [(g^{H(M)\omega }g^{xr\omega })modp]modq\equiv [g^{(H(M)+xr)^{-1}}modp]modq\equiv (g^kmodp)modq\equiv r$</p>
+</li>
+</ol>
+<p>算法的其中的4个函数分别为：</p>
+<ul>
+<li>$s\equiv f_1[H(M),k,x,r,q]\equiv [k^{-1}(H(M)+xr)]modq$</li>
+<li>$r=f_2(k,q,p,g)\equiv (g^kmodp)modq$</li>
+<li>$\omega =f_3(s’,q)\equiv (s’)^{-1}modq$</li>
+<li>$v\equiv f_4(y,q,g,H(M’),\omega ,r’)\equiv [(g^{(H(M’)\omega )modq}y^{r’\omega modq})modp]modq$</li>
+</ul>
+<h5><span id="dsa实例">DSA实例</span></h5><p>实验将对消息“i love you，china”进行签名。</p>
+<ol>
+<li><p>在DSATool.exe程序中，选择大素数P的位数为512，数据呈现格式为10进制，生成如下所示的大素数P、素因子Q、G以及用户秘密钥X和用户公开钥Y。<br><img src="https://s2.loli.net/2022/05/27/pw6t42NP7fxJc8u.png" alt="20220527172547"></p>
+</li>
+<li><p>为待签消息选取如下所示的随机秘密数K，并产生签名(r,s)。K=2553DD1A0EEEABFC7781E5444DCD517932AB269E<br> <img src="https://s2.loli.net/2022/05/27/MAbkWnjx2v5XS7p.png" alt="20220527172705"></p>
+<p> 对该签名进行验证，计算能成功通过。<br> <img src="https://s2.loli.net/2022/05/27/NKkyctCQ3T5EBLm.png" alt="20220527172737"><br> 当修改签名中的某一位时（如将第一位7改为8），则验证将无法通过。<br> <img src="https://s2.loli.net/2022/05/27/pjOqMy64mBC5fFx.png" alt="end{center}"></p>
+<p> 通过上述检测可以验证DSA的有效性和雪崩效应。</p>
+</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>一些方便好用的常用命令</title>
     <url>/blog/2022/056ac63caa.html</url>
     <content><![CDATA[<blockquote>
@@ -200,7 +313,8 @@
 <li>头节点和其他节点分开处理</li>
 </ol>
 <p>Pyhton、Java等语言可以自动释放内存，C++记得要手动释放内存节约空间。</p>
-<h3><span id="c示例">C++示例：</span></h3><figure class="highlight c++"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyLinkedList</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 定义链表节点结构体</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">LinkedNode</span> {</span><br><span class="line">        <span class="type">int</span> val;</span><br><span class="line">        LinkedNode* next;</span><br><span class="line">        <span class="built_in">LinkedNode</span>(<span class="type">int</span> val):<span class="built_in">val</span>(val), <span class="built_in">next</span>(<span class="literal">nullptr</span>){}</span><br><span class="line">    };</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化链表</span></span><br><span class="line">    <span class="built_in">MyLinkedList</span>() {</span><br><span class="line">        _dummyHead = <span class="keyword">new</span> <span class="built_in">LinkedNode</span>(<span class="number">0</span>); <span class="comment">// 这里定义的头结点 是一个虚拟头结点，而不是真正的链表头结点</span></span><br><span class="line">        _size = <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取到第index个节点数值，如果index是非法数值直接返回-1， 注意index是从0开始的，第0个节点就是头结点</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> index)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (index &gt; (_size - <span class="number">1</span>) || index &lt; <span class="number">0</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        }</span><br><span class="line">        LinkedNode* cur = _dummyHead-&gt;next;</span><br><span class="line">        <span class="keyword">while</span>(index--){ <span class="comment">// 如果--index 就会陷入死循环</span></span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> cur-&gt;val;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在链表最前面插入一个节点，插入完成后，新插入的节点为链表的新的头结点</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addAtHead</span><span class="params">(<span class="type">int</span> val)</span> </span>{</span><br><span class="line">        LinkedNode* newNode = <span class="keyword">new</span> <span class="built_in">LinkedNode</span>(val);</span><br><span class="line">        newNode-&gt;next = _dummyHead-&gt;next;</span><br><span class="line">        _dummyHead-&gt;next = newNode;</span><br><span class="line">        _size++;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在链表最后面添加一个节点</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addAtTail</span><span class="params">(<span class="type">int</span> val)</span> </span>{</span><br><span class="line">        LinkedNode* newNode = <span class="keyword">new</span> <span class="built_in">LinkedNode</span>(val);</span><br><span class="line">        LinkedNode* cur = _dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(cur-&gt;next != <span class="literal">nullptr</span>){</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        }</span><br><span class="line">        cur-&gt;next = newNode;</span><br><span class="line">        _size++;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在第index个节点之前插入一个新节点，例如index为0，那么新插入的节点为链表的新头节点。</span></span><br><span class="line">    <span class="comment">// 如果index 等于链表的长度，则说明是新插入的节点为链表的尾结点</span></span><br><span class="line">    <span class="comment">// 如果index大于链表的长度，则返回空</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addAtIndex</span><span class="params">(<span class="type">int</span> index, <span class="type">int</span> val)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (index &gt; _size) {</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        LinkedNode* newNode = <span class="keyword">new</span> <span class="built_in">LinkedNode</span>(val);</span><br><span class="line">        LinkedNode* cur = _dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(index--) {</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        }</span><br><span class="line">        newNode-&gt;next = cur-&gt;next;</span><br><span class="line">        cur-&gt;next = newNode;</span><br><span class="line">        _size++;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除第index个节点，如果index 大于等于链表的长度，直接return，注意index是从0开始的</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">deleteAtIndex</span><span class="params">(<span class="type">int</span> index)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (index &gt;= _size || index &lt; <span class="number">0</span>) {</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        LinkedNode* cur = _dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(index--) {</span><br><span class="line">            cur = cur -&gt;next;</span><br><span class="line">        }</span><br><span class="line">        LinkedNode* tmp = cur-&gt;next;</span><br><span class="line">        cur-&gt;next = cur-&gt;next-&gt;next;</span><br><span class="line">        <span class="keyword">delete</span> tmp;</span><br><span class="line">        _size--;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印链表</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">printLinkedList</span><span class="params">()</span> </span>{</span><br><span class="line">        LinkedNode* cur = _dummyHead;</span><br><span class="line">        <span class="keyword">while</span> (cur-&gt;next != <span class="literal">nullptr</span>) {</span><br><span class="line">            cout &lt;&lt; cur-&gt;next-&gt;val &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        }</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    }</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> _size;</span><br><span class="line">    LinkedNode* _dummyHead;</span><br><span class="line"></span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>]]></content>
+<h3><span id="c示例">C++示例：</span></h3><figure class="highlight c++"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyLinkedList</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 定义链表节点结构体</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">LinkedNode</span> {</span><br><span class="line">        <span class="type">int</span> val;</span><br><span class="line">        LinkedNode* next;</span><br><span class="line">        <span class="built_in">LinkedNode</span>(<span class="type">int</span> val):<span class="built_in">val</span>(val), <span class="built_in">next</span>(<span class="literal">nullptr</span>){}</span><br><span class="line">    };</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化链表</span></span><br><span class="line">    <span class="built_in">MyLinkedList</span>() {</span><br><span class="line">        _dummyHead = <span class="keyword">new</span> <span class="built_in">LinkedNode</span>(<span class="number">0</span>); <span class="comment">// 这里定义的头结点 是一个虚拟头结点，而不是真正的链表头结点</span></span><br><span class="line">        _size = <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取到第index个节点数值，如果index是非法数值直接返回-1， 注意index是从0开始的，第0个节点就是头结点</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> index)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (index &gt; (_size - <span class="number">1</span>) || index &lt; <span class="number">0</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        }</span><br><span class="line">        LinkedNode* cur = _dummyHead-&gt;next;</span><br><span class="line">        <span class="keyword">while</span>(index--){ <span class="comment">// 如果--index 就会陷入死循环</span></span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> cur-&gt;val;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在链表最前面插入一个节点，插入完成后，新插入的节点为链表的新的头结点</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addAtHead</span><span class="params">(<span class="type">int</span> val)</span> </span>{</span><br><span class="line">        LinkedNode* newNode = <span class="keyword">new</span> <span class="built_in">LinkedNode</span>(val);</span><br><span class="line">        newNode-&gt;next = _dummyHead-&gt;next;</span><br><span class="line">        _dummyHead-&gt;next = newNode;</span><br><span class="line">        _size++;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在链表最后面添加一个节点</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addAtTail</span><span class="params">(<span class="type">int</span> val)</span> </span>{</span><br><span class="line">        LinkedNode* newNode = <span class="keyword">new</span> <span class="built_in">LinkedNode</span>(val);</span><br><span class="line">        LinkedNode* cur = _dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(cur-&gt;next != <span class="literal">nullptr</span>){</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        }</span><br><span class="line">        cur-&gt;next = newNode;</span><br><span class="line">        _size++;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在第index个节点之前插入一个新节点，例如index为0，那么新插入的节点为链表的新头节点。</span></span><br><span class="line">    <span class="comment">// 如果index 等于链表的长度，则说明是新插入的节点为链表的尾结点</span></span><br><span class="line">    <span class="comment">// 如果index大于链表的长度，则返回空</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addAtIndex</span><span class="params">(<span class="type">int</span> index, <span class="type">int</span> val)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (index &gt; _size) {</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        LinkedNode* newNode = <span class="keyword">new</span> <span class="built_in">LinkedNode</span>(val);</span><br><span class="line">        LinkedNode* cur = _dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(index--) {</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        }</span><br><span class="line">        newNode-&gt;next = cur-&gt;next;</span><br><span class="line">        cur-&gt;next = newNode;</span><br><span class="line">        _size++;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除第index个节点，如果index 大于等于链表的长度，直接return，注意index是从0开始的</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">deleteAtIndex</span><span class="params">(<span class="type">int</span> index)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (index &gt;= _size || index &lt; <span class="number">0</span>) {</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        LinkedNode* cur = _dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(index--) {</span><br><span class="line">            cur = cur -&gt;next;</span><br><span class="line">        }</span><br><span class="line">        LinkedNode* tmp = cur-&gt;next;</span><br><span class="line">        cur-&gt;next = cur-&gt;next-&gt;next;</span><br><span class="line">        <span class="keyword">delete</span> tmp;</span><br><span class="line">        _size--;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印链表</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">printLinkedList</span><span class="params">()</span> </span>{</span><br><span class="line">        LinkedNode* cur = _dummyHead;</span><br><span class="line">        <span class="keyword">while</span> (cur-&gt;next != <span class="literal">nullptr</span>) {</span><br><span class="line">            cout &lt;&lt; cur-&gt;next-&gt;val &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        }</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    }</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> _size;</span><br><span class="line">    LinkedNode* _dummyHead;</span><br><span class="line"></span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+]]></content>
       <tags>
         <tag>LeetCode</tag>
       </tags>
