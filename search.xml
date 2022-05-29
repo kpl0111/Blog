@@ -1,249 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello kpl!</title>
-    <url>/blog/2022/054a17b156.html</url>
-    <content><![CDATA[<p><img src="https://i.loli.net/2021/04/07/BHgA5RqQeZTv8Wt.png" alt="image-20210407205253791"></p>
-<p><img src="https://ftp.bmp.ovh/imgs/2021/04/f2a64b655c8367e8.jpg" alt="lkp"></p>
+    <title>Hexo+Github搭建自己的博客</title>
+    <url>/blog/2021/03711.html</url>
+    <content><![CDATA[<p>​	今天算是把自己的简易博客给搭建了起来，虽然说很丑，很多地方优化还没做好，功能也不太全，但是，做事情嘛，总是要一步步来的，哪有一蹴而就的事情，自己慢慢摸索，踩了许多坑之后，也把这其中的原理摸索了个七七八八，虽然说要我写个主题是天大的难题，但是理解博客的架构，以及github的用法也是很容易的，甚至就连命令也因为出错太多，四处填坑而记得些常用的，所以说做事情别人教给自己的和自己摸索的是完全不一样的，当然这个摸索也是在其他大佬教程和错误修正基础之上摸索的，并不是“白手起家”，废话不多说，进入正题，记录一些我自己的搭建过程，也是那些像我一样的小白提供一个同样水平的教程，绝对包教包会，首先我们先来了解一下他们的工作原理，通俗理解，如有不对，欢迎指正。</p>
+<h2><span id="关于github">关于Github</span></h2><p>​		首先关于Github，本质上讲就是一个比较通用的代码托管平台。你可以将自己做的项目之类balabala的都放在里面，取用方便，最重要的是他完全免费，是一个很好的托管平台，做一些比较大的项目也可以多人协作（扯远了），回来说我们的博客，你可以在Github上面建立一个或者多个仓库，名字可以任意取，这些仓库本质没有区别，Github还为每个仓库提供一个页面还有主题（当然主体比较单一，还比较<del>漂亮</del>chou），当然你也可以选择自己搭配喜欢的主题。唯一不同之处就是Github给每个用户提供一个域名（username.github.io），当你的仓库以这个格式命名的时候，他就会默认这个仓库的界面就是你的网站主界面，其他的仓库就是他的子目录，就这么点区别，举个栗子，我的用户名是Test，那么我的网站主界面就是<a href="https://test.github.io,/">https://Test.github.io，</a> 他所代表的仓库名字就是Test.github.io，如果我还有一个仓库名字是Blog，那么这个仓库的主界面就要用<a href="https://test.github.io/Blog">https://Test.github.io/Blog</a> 打开，这样说就很简单易懂了吧，其他区别完全没有，名字你可随便改，当你给哪个仓库命名为username.github.io时，默认打开就是这个仓库主界面（当然站点配置也要改，不然会出错的）。</p>
+<h2><span id="关于git">关于Git</span></h2><p>​		Git本身就是一个工具，这里我们用它来实现我们的各种命令，大致可以等同于命令行，可以用Git来安装各种插件，实现命令，这里不多介绍，后面过程中你就会明白。</p>
+<h2><span id="关于hexo">关于Hexo</span></h2><p>​		我们所使用的主题以及大部分插件都由Hexo提供，你可以把它理解为一家衣服店铺，我们来挑选我们喜欢的衣服（theme），同时它也提供裁裤腿，钉扣子（插件）服务，这样就可以理解了吧。</p>
+<h2><span id="流程">流程</span></h2><p>​		简单介绍一下流程，非常简单。首先我们建立一个仓库以便我们能够放一些我们主题的配置文件在里面，当然仓库名字就要命名为username.github.io格式了，这样我们的主页面才会使我们配置的那样，然后我们需要在本地也创建一个仓库，在里面把我们平时用的代码等等都放在里面，然后把本地仓库和远程仓库连接，再把本地文件代码上传就可以得到我们想要的简洁漂亮的网站了，是不是很简单呢。</p>
+<h2><span id="具体步骤">具体步骤</span></h2><h3><span id="仓库搭建">仓库搭建</span></h3><p>仓库搭建可以参考一下这位大佬的博客：<a href="https://godweiyang.com/2018/04/13/hexo-blog/">超详细Hexo+Github博客搭建小白教程</a></p>
+<p>讲得非常详细，我就不再介绍了，做点其他有用的东西。</p>
+<h3><span id="网站配置">网站配置</span></h3><p>在你的本地文件夹里面会有一个_config.yml文件，这个就是你的网站的配置文件了，可以在里面配置你的网站名字，图标等等，基本上你想到的都可以在里面设置，具体每一项对应那个部分，hexo官网很详细，也不再多补充，可以参考<a href="https://hexo.io/zh-cn/docs/configuration">Hexo文档</a>，里面没有的话<a href="https://www.baidu.com/">百度一下，你就知道</a>，总的来说，不难要善用搜索引擎。</p>
+<h3><span id="主题更换">主题更换</span></h3><p>主题选择的话可以从<a href="https://hexo.io/themes/index.html">Themes|Hexo</a>上选你喜欢的，具体步骤里面每个主题作者都会介绍，大致过程是一样的，不管你是clone也好，下载zip主题文件也好，要保证你的主题文件夹在themes文件夹下面，然后回到你的网站的文件夹里面找到_config.yml配置文件，在里面找到theme，将其更改为你的主题，比如说我的是<a href="https://shen-yu.gitee.io/2019/ayer/">Ayer</a>，就是这样</p>
+<p><img src="https://i.loli.net/2021/04/07/c58fxSXgOuYEDka.png" alt="image-20210407212409875"></p>
+<p>然后基本上就可以了，之后需要做的就是一些优化工作，讲几点大家会遇到的关键的：</p>
+<ul>
+<li>会有两个_config.yml文件，一个位于你网站的页面，是你网站的配置文件，另一个是在你的主题文件夹里面，两个名字一样，但是千万不要弄混，不要修改错文件，这两个都是配置文件，所以名字相同，但是配置的对象不一样，这点明白，应该就很简单了。</li>
+<li>更换主题的步骤基本上就是theme后面换上你的主题名字，然后在安装你的主题所需要的插件，比如说你的网站想要有一个播放器小图标，但是你不给安装插件，就算主题配置里面作者配置的再全，也不可能有用，所以说要按照主题安装说明安装插件（在网站主页面右键Git Bush Here),然后修改主题配置文件就可以</li>
+<li>格式极其重要，修改配置问件事要注意中间要有一个空格才能有效<img src="https://i.loli.net/2021/04/07/NYXb42JR18uTphm.png" alt="image-20210407214015182">注意注释前也要有空格</li>
+<li>最后放两张我的文件夹，以便大家区分两个配置文件，看不懂的话可以看文件夹上方的路径，路径也看不懂那就没办法了</li>
+<li>主文件夹<img src="https://i.loli.net/2021/04/07/BsuyYMQEZJPoDfF.png" alt="image-20210407214254076"></li>
+<li>主题页<img src="https://i.loli.net/2021/04/07/EzaDdKH7URk5B6O.png" alt="image-20210407214413945"></li>
+<li>最后一点：不要怕出错，实践出真知，搞这个东西没错一段时间是没有游戏体验的，你懂的，这也是一个学习的过程，所以不要急，慢慢来，涨涨姿势，等到把雏形弄出来再慢慢搞UI也不迟。</li>
+</ul>
+<p>最后欢迎大家补充，有地方不懂得可以留言，也可以发邮件，看到会回复的，祝大家能尽快拥有自己的网站。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>数字签名算法DSA</title>
-    <url>/blog/2022/059d9eab6e.html</url>
-    <content><![CDATA[<blockquote>
-<p>本文为作者个人作业，仅供参考</p>
-</blockquote>
-<!-- toc -->
-
-<ul>
-<li><a href="#%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82">实验要求</a></li>
-</ul>
-<!-- tocstop -->
-
-<h3><span id="实验要求">实验要求</span></h3><p>通过对数字签字算法DSA的实际操作，理解DSS的基本工作原理。</p>
-<h4><span id="实验内容">实验内容</span></h4><ol>
-<li>参照教材，熟悉数字签名算法DSA；</li>
-<li>参照教材，熟悉杂凑函数算法SHA；</li>
-<li>这里给出一个可运行的DSA数字签字演示程序，运行这个程序，对一段文字进行签字和验证，了解DSA算法的签字和验证过程。</li>
-</ol>
-<h4><span id="杂凑函数sha-1">杂凑函数SHA-1</span></h4><p>安全哈希算法(SHA)是基于MD4算法，其结构与MD4非常类似，用于数字签名的标准算法DSS中。</p>
-<h5><span id="算法实现步骤">算法实现步骤</span></h5><ol>
-<li><p>将消息摘要转换成位字符串<br> 因为在SHA-算法中，它的输入必须为位，所以首先要将其转化为位字符串，以“abc”字符串来说明问题，因为’a’=97, ‘b’=98, ‘c’=99，所以将其转换为位串后为：</p>
-<blockquote>
-<p>01100001 01100010 01100011</p>
-</blockquote>
-</li>
-<li><p>对转换后的位字符串进行补位操作<br> SHA-算法标准规定，必须对消息摘要进行补位操作，即将输入的数据进行填充，使得数据长度对512求余的结果为448，填充比特位的最高位补一个1，其余的位补0，如果在补位之前已经满足对512取模余数为448，也要进行补位，在其后补一位1即可。总之，补位是至少补一位，最多补512位，依然以“abc”为例，其补位过程如下：</p>
-<ul>
-<li>初始的信息摘要：01100001 01100010 01100011</li>
-<li>第一步补位：01100001 01100010 01100011 1…..  ……</li>
-<li>补位最后一位：01100001 01100010 01100011 10…….0(后面补了423个0)</li>
-</ul>
-<p> 而后将补位操作后的信息摘要转换为十六进制，如下所示：<br> 61626380 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000000<br> 00000000 00000000</p>
-</li>
-<li><p>附加长度值<br> 在信息摘要后面附加64bit的信息，用来表示原始信息摘要的长度，在这步操作之后，信息报文便是512bit的倍数。通常来说用一个64位的数据表示原始消息的长度，如果消息长度不大于2^64，那么前32bit就为0，在进行附加长度值操作后，其“abc”数据报文即变成如下形式：<br> 61626380 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000018<br> 因为“abc”占3个字节，即24位 ，换算为十六进制即为0x18。</p>
-</li>
-<li><p>初始化缓存<br> 一个160位MD缓冲区用以保存中间和最终散列函数的结果。它可以表示为5个32位的寄存器($H_0$,$H_1$,$H_2$,$H_3$,$H_4$)。初始化为：<br> $H_0$ = 0x67452301<br> $H_1$ = 0xEFCDAB89<br> $H_2$ = 0x98BADCFE<br> $H_3$ = 0x10325476<br> $H_4$ = 0xC3D2E1F0<br> 前四个与上周的MD-5一样，但不同之处为存储为大端序</p>
-</li>
-<li><p>计算消息摘要<br> 在计算报文之前还要做一些基本的工作，就是在计算过程中要用到的方法。</p>
-<ol>
-<li>循环左移操作符Sn(x),x是一个字，也就是32bit大小的变量，n是一个整数且0&lt;=n&lt;=32。Sn(X) = (X&lt;&lt;n)OR(X&gt;&gt;32-n)</li>
-<li>在程序中所要用到的常量，这一系列常量字k(0)、k(1)、…k(79)，将其以十六进制表示如下：<br> $K_t$ = 0x5A827999  (0 &lt;= t &lt;= 19)<br> $K_t$ = 0x6ED9EBA1 (20 &lt;= t &lt;= 39)<br> $K_t$ = 0x8F1BBCDC (40 &lt;= t &lt;= 59)<br> $K_t$ = 0xCA62C1D6 (60 &lt;= t &lt;= 79)</li>
-<li>所要用到的一系列函数<br> Ft(b,c,d)  ((b&amp;c)|((~b)&amp;d))    (0 &lt;= t &lt;= 19)<br> Ft(b,c,d) (b^c^d)             (20 &lt;= t &lt;= 39)<br> Ft(b,c,d) ((b&amp;c)|(b&amp;d)|(c&amp;d))  (40 &lt;= t &lt;= 59)<br> Ft(b,c,d) (b^c^d)               (60 &lt;= t &lt;= 79)</li>
-<li>计算<br> 计算需要一个缓冲区，由5个32位的字组成，还需要一个80个32位字的缓冲区。第一个5个字的缓冲区被标识为A，B，C，D，E。80个字的缓冲区被标识为$W_0, W_1,…, W_{79}$<br> 另外还需要一个一个字的TEMP缓冲区。<br> 为了产生消息摘要，在第4部分中定义的16个字的数据块$M_1, M_2,…, M_n$会依次进行处理，处理每个数据块$M_i$ 包含80个步骤。</li>
-</ol>
-<p> 现在开始处理$M_1, M_2, … , M_n$。为了处理 $M_i$,需要进行下面的步骤</p>
-<ul>
-<li>将 Mi 分成 16 个字 $W_0, W_1, … , W_{15},  W_0$ 是最左边的字</li>
-<li>对于 t = 16 到 79 令 $W_t = S_1(W_{t-3} XOR W_{t-8} XOR W_{t- 14} XOR W_{t-16})$.</li>
-<li>令 A = $H_0$, B = $H_1$, C = $H_2$, D = $H_3$, E = $H_4$.</li>
-<li>对于 t = 0 到 79，执行下面的循环<br> TEMP = S5(A) + ft(B,C,D) + E + Wt + $K_t$;<br> E = D; D = C; C = S30(B); B = A; A = TEMP;</li>
-</ul>
-<ol start="5">
-<li>令 $H_0$ = $H_0$ + A, $H_1$ = $H_1$ + B, $H_2$ = $H_2$ + C, $H_3$ = $H_3$ + D, $H_4$ = $H_4$ + E.</li>
-</ol>
-</li>
-</ol>
-<p>在处理完所有的 Mn, 后，消息摘要是一个160位的字符串，以下面的顺序标识<br>$H_0$ $H_1$ $H_2$ $H_3$ $H_4$.</p>
-<h5><span id="sha-1在dss中的应用">SHA-1在DSS中的应用</span></h5><p>在DSS（数字签名标准）中，使用数字签名算法DSA和哈希函数SHA-1结合完成数字签名。</p>
-<h4><span id="数字签名算法dsa">数字签名算法DSA</span></h4><p>DSA是在ElGamal和Schnorr两个签名方案的基础上设计的，其安全性基于求离散对数的困难性。</p>
-<h5><span id="算法描述">算法描述</span></h5><ol>
-<li><p>全局变量</p>
-<ul>
-<li>p：满足$2^{L-1}&lt;p&lt;2^L$的大素数，其中$512\leq L\leq 1024$且$L$是64的倍数。</li>
-<li>q：$p-1$的素因子，满足$2^{159}&lt;p&lt;2{160}$，即$q$长为160比特。</li>
-<li>g：$g\equiv h^{(p-1)/q}modp$，其中$h$是满足$1&lt;h&lt;p-1$且使得$h^{(p-1)/q}modp&gt;1$的任一整数。</li>
-</ul>
-</li>
-<li><p>密钥x</p>
-<ul>
-<li>$x$是满足$0&lt;x&lt;q$的随机数或伪随机数。</li>
-</ul>
-</li>
-<li><p>公钥y</p>
-<ul>
-<li>$y\equiv g^xmodp$</li>
-</ul>
-</li>
-<li><p>用户的随机数选择k</p>
-<ul>
-<li>$k$是满足$0&lt;k&lt;q$的随机数或伪随机数。</li>
-</ul>
-</li>
-<li><p>签名过程<br> 用户对消息$M$的签名为$(r,s)$，其中$r\equiv (g^kmodp)modq$，$s\equiv [k^{-1}(H(M)+xr)]modq$，$H(M)$是由SHA求出的哈希值。</p>
-</li>
-<li><p>验证过程<br> 设接收方接收到的消息为$M’$，签名为$(r’,s’)$。计算</p>
-<ul>
-<li>$\omega \equiv (s’)^{-1}modq$</li>
-<li>$u_1\equiv [H(M’)\omega ]modq$</li>
-<li>$u_2\equiv r’\omega modq$</li>
-<li>$v\equiv [(g^{u_1}y^{u_2})modp]modq$。</li>
-</ul>
-<p> 检查$v$是否等于$r’$，若相等，则证明签名有效，这是因为<br> 若$(M’,r’,s’)=(M,r,s)$，<br> 则$v\equiv [(g^{H(M)\omega }g^{xr\omega })modp]modq\equiv [g^{(H(M)+xr)^{-1}}modp]modq\equiv (g^kmodp)modq\equiv r$</p>
-</li>
-</ol>
-<p>算法的其中的4个函数分别为：</p>
-<ul>
-<li>$s\equiv f_1[H(M),k,x,r,q]\equiv [k^{-1}(H(M)+xr)]modq$</li>
-<li>$r=f_2(k,q,p,g)\equiv (g^kmodp)modq$</li>
-<li>$\omega =f_3(s’,q)\equiv (s’)^{-1}modq$</li>
-<li>$v\equiv f_4(y,q,g,H(M’),\omega ,r’)\equiv [(g^{(H(M’)\omega )modq}y^{r’\omega modq})modp]modq$</li>
-</ul>
-<h5><span id="dsa实例">DSA实例</span></h5><p>实验将对消息“i love you，china”进行签名。</p>
-<ol>
-<li><p>在DSATool.exe程序中，选择大素数P的位数为512，数据呈现格式为10进制，生成如下所示的大素数P、素因子Q、G以及用户秘密钥X和用户公开钥Y。<br><img src="https://s2.loli.net/2022/05/27/pw6t42NP7fxJc8u.png" alt="20220527172547"></p>
-</li>
-<li><p>为待签消息选取如下所示的随机秘密数K，并产生签名(r,s)。K=2553DD1A0EEEABFC7781E5444DCD517932AB269E<br> <img src="https://s2.loli.net/2022/05/27/MAbkWnjx2v5XS7p.png" alt="20220527172705"></p>
-<p> 对该签名进行验证，计算能成功通过。<br> <img src="https://s2.loli.net/2022/05/27/NKkyctCQ3T5EBLm.png" alt="20220527172737"><br> 当修改签名中的某一位时（如将第一位7改为8），则验证将无法通过。<br> <img src="https://s2.loli.net/2022/05/27/pjOqMy64mBC5fFx.png" alt="end{center}"></p>
-<p> 通过上述检测可以验证DSA的有效性和雪崩效应。</p>
-</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>一些方便好用的常用命令</title>
-    <url>/blog/2022/056ac63caa.html</url>
-    <content><![CDATA[<blockquote>
-<p>本文记录一些平时遇到的没必要记忆却又需要的指令</p>
-</blockquote>
-<!-- toc -->
-
-
-
-<!-- tocstop -->
-
-<h4><span id="vscode终端编码方式修改">VSCode终端编码方式修改</span></h4><p>VScode的默认编码方式为UTF-8，中国地区下cmd的编码方式GBK，所以会导致在终端运行程序打印中文出乱码的情况，修改编码方式即可</p>
-<p>在终端运行以下指令即可修改cmd编码方式：</p>
-<pre><code class="C++">chcp 65001 //UTF-8编码
-chcp 936 //GBK编码
-</code></pre>
-<h4><span id="国内快速访问github">国内快速访问Github</span></h4><ol>
-<li><p>打开IPAddress.com网站,查询下列三个地址的ip</p>
-<blockquote>
-<p>github.com<br>assets-cnd.github.com<br>gibhut.global.ssl.fastly.net</p>
-</blockquote>
-</li>
-<li><p>修改本地hosts文件(window系统)</p>
-<p> 在C:\Windows\System32\drivers\etc 找到hosts文件，然后添加下列数据，注意把下面的ip改成你自己查询到ip地址。</p>
-<blockquote>
-<p>140.82.114.3 github.com<br> 185.199.108.153 assets-cdn.github.com<br> 199.232.69.194 github.global.ssl.fastly.net</p>
-</blockquote>
-</li>
-<li><p>刷新本地dns缓存<br> Win+R打开cmd，输入命令 ipconfig/flushdns<br> 此时就配置成功了，然后就可以去访问啦</p>
-</li>
-</ol>
-<blockquote>
-<p>当然科学上网也是可以的</p>
-</blockquote>
-]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
       <tags>
-        <tag>command</tag>
+        <tag>Hexo</tag>
+        <tag>Blog</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
   <entry>
-    <title>MarkDown常用语法</title>
-    <url>/blog/2022/05d18ae5e4.html</url>
-    <content><![CDATA[<blockquote>
-<p>一些常用基本语法不过多介绍，详细可以参看<a href="https://markdown.com.cn/cheat-sheet.html">MarkDown官方教程</a><br>这里只介绍一些实用但是容易被忽视的一些语法</p>
-</blockquote>
-<!-- toc -->
-
-<ul>
-<li><a href="#%E7%BB%99%E5%87%BA%E4%B8%80%E4%BA%9B%E4%BE%8B%E5%AD%90%E4%BB%A3%E7%A0%81">给出一些例子代码：</a></li>
-</ul>
-<!-- tocstop -->
-
-<h4><span id="markdown引用">MarkDown引用</span></h4><p>使用标记符 &gt; 对内容进行引用：</p>
-<ol>
-<li>引用一段内容<blockquote>
-<p>引用一段内容</p>
-</blockquote>
+    <title>LightSensor</title>
+    <url>/blog/2021/0420210424.html</url>
+    <content><![CDATA[<h1><span id="光线传感器"><center>光线传感器<center></center></center></span></h1><h3><span id="实验目的">实验目的</span></h3><p>本次实验的目的是让大家了解Android中光线传感器的基本知识，掌握Android中光线传感器的使用方法。</p>
+<h3><span id="实验要求">实验要求</span></h3><ol>
+<li><pre><code>了解Android中光线传感器基本知识
+</code></pre>
 </li>
-<li>引用的多层嵌套：只要根据层次加上不同数量的 &gt; 符号</li>
+<li><pre><code>掌握Android中光线传感器使用方法
+</code></pre>
+</li>
 </ol>
-<p>示例：</p>
-<pre><code class="C++">&gt;  请问  Markdwon  怎么用？  -  小白
-&gt;&gt;  自己看教程！  -  愤青
-&gt;&gt;&gt;  教程在哪？  -  小白
-&gt;&gt;&gt;&gt;  我也不知道在哪！  -  愤青
-&gt;&gt;&gt;&gt;&gt;  那你回答个屁。  -  小白
-</code></pre>
-<p>显示效果：</p>
-<blockquote>
-<p>请问  Markdwon  怎么用？  -  小白</p>
-<blockquote>
-<p>自己看教程！  -  愤青</p>
-<blockquote>
-<p>教程在哪？  -  小白</p>
-<blockquote>
-<p>我也不知道在哪！  -  愤青</p>
-<blockquote>
-<p>那你回答个屁。  -  小白</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>引用其它要素：<br>引用的区块内也可以使用其他的语法，包括标题、列表、代码区块等。</p>
-<p>示例：</p>
-<pre><code class="C++">&gt; 1.1 这是第一行列表项。
-&gt;&gt; 2.1 这是第二行列表项。
-&gt;&gt;&gt; - 这是第三行列表项。
-&gt; ### 给出一些例子代码：
-</code></pre>
-<p>显示效果：</p>
-<blockquote>
-<p>1.1 这是第一行列表项。</p>
-<blockquote>
-<p>2.1 这是第二行列表项。</p>
-<blockquote>
+<h3><span id="基础知识">基础知识</span></h3><p>光线传感器基础  </p>
+<p>光线传感器的好处是可以根据手机所处环境的光线来调节手机屏幕的亮度和键盘灯。例如在光线充足的地方屏幕会很亮，键盘灯就会关闭。相反如果在暗处，键盘灯就会亮，屏幕较暗（与屏幕亮度的设置也有关系），这样既保护了眼睛又节省了电量。光线传感器在进入睡眠模式时候会发出蓝色周期性闪动的光，非常美观。在本节的内容中，将详细讲解Android系统光线传感器的基本知识。<br>光线传感器介绍<br>在Android设备中，光线传感器通常位于前摄像头旁边的一个小点，如果在光线充足的情况下（室外或者是灯光充足的室内），大约在2～3秒之后键盘灯会自动熄灭，即使再操作机器键盘灯也不会亮，除非到了光线比较暗的地方才会自动地亮起来。如果在光线充足的情况下用手将光线感应器遮上，在2～3秒后键盘灯会自动亮起来，在此过程中光线感应器起到了一个节电的功能。<br>要想在Android设备中监听光线传感器，需要掌握如下所示的监听方法。</p>
+<ol>
+<li>registerListenr(SensorListenerlistenr,int sensors,int rate)：已过时。</li>
+<li>registerListenr(SensorListenerlistenr,int sensors)：已过时。</li>
+<li>registerListenr(SensorEventListenerlistenr,Sensor sensors,int rate)。</li>
+<li>registerListenr(SensorEventListenerlistenr,Sensor sensors,int rate,Handlerhandler)：因为SensorListener已经过时，所以相应的注册方法也过时了。</li>
+</ol>
+<p>在上述方法中，各个参数的具体说明如下所示。</p>
 <ul>
-<li>这是第三行列表项。</li>
+<li>Listener：相应监听器的引用。</li>
+<li>Sensor：相应的感应器引用。</li>
+<li>Rate：感应器的反应速度，这个必须是系统提供的4个常量之一。</li>
+<li>SENSOR_DELAY_NORMAL：匹配屏幕方向的变化。</li>
+<li>SENSOR_DELAY_UI：匹配用户接口。</li>
+<li>SENSOR_DELAY_GAME：匹配游戏。</li>
+<li>SENSOR_DELAY_FASTEST.：匹配所能达到的最快。</li>
 </ul>
-</blockquote>
-</blockquote>
-<h3><span id="给出一些例子代码">给出一些例子代码：</span></h3></blockquote>
-<p>引用中内容换行：<br>有时候引用的内容太长，需要分段落层次，可以使用 &lt; br &gt; 实现换行。</p>
-<p>举例：</p>
-<pre><code class="C++">&gt; $\underline{幽默小故事，笑死人不偿命}$&lt;br&gt;
-我：“老板，你这清炒油麦菜是荤菜还是素菜？
-老板：“当然是素菜了”&lt;br&gt;
-我：“那这条虫是怎么回事”
-老板：“呃……它也是来吃饭的。”&lt;br&gt;
-我：“它吃饭凭什么我付钱？我又不认识它！”
-老板哭着说：“它为了这顿饭，把命都丢了，你还能要求它AA制吗？”
+<h3><span id="实验内容">实验内容</span></h3><p>按照实验的内容进行操作，掌握Android中光线传感器的使用方法等内容。<br>完成实验内容后，设计一个光线传感器的app，至少包含如下功能：</p>
+<ul>
+<li>显示当前光线传感器的光照强度；</li>
+<li>显示当前光线传感器的名称，耗电量，以及最大测量范围。</li>
+</ul>
+<p>获取上述参数方法如下：</p>
+<p>myS  =  mySm.getDefaultSensor(Sensor.TYPE_LIGHT);</p>
+<p>名称：myS.getName() ;</p>
+<p>耗电量（mA）：myS.getPower();</p>
+<p>最大测量范围：myS.getMaximumRange()</p>
+<h3><span id="实验过程">实验过程</span></h3><ol>
+<li>利用Android studio创建一个工程，并利用实体机或者安卓虚拟机进行测试（这里我先利用逍遥模拟器进行测试，成功之后，连接真机进行测试）</li>
+<li>修改activity_main.yml文件，新建一个静态文本控件用来输出我们要输出的亮度传感器的有关信息，这里新建工程初始化时会自动生成一个文本控件，文本内容默认为“Hello World！”，所以只需在其基础上进行修改即可</li>
+</ol>
+<pre><code>&lt;TextView
+        android:id="@+id/textView1"//为控件添加编号textView1
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"//初始化文本内容
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
 </code></pre>
-<p>显示效果：</p>
-<p><img src="https://s2.loli.net/2022/05/27/nIWKcB4P9GOlXSg.png" alt="20220527001606"></p>
-<h4><span id="下划线">下划线</span></h4><p>示例：</p>
-<pre><code class="C++">$\underline{给这条语句加一个下划线}$
+<ol start="3">
+<li>修改Mainactivity.java文件对传感器进行控制并进行文本输出</li>
+</ol>
+<pre><code>//这里仅展示所需主要代码。具体代码见工程文件
+public class MainActivity extends Activity implements SensorEventListener {
+    private SensorManager sensor;//定义一个传感器管理器
+    private TextView text;//定义一个文本控件
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {//项目初始化函数
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        sensor = (SensorManager)getSystemService(SENSOR_SERVICE);//调用getSystemService函数来获取传感器控制权
+        text = (TextView)findViewById(R.id.textView1);//通过控件ID将实体文本控件与代码连接起来
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        // 在传感器控制函数里面实现我们的功能
+        float[] values = event.values; //定义变量来获取事件的值
+        int sensorType = event.sensor.TYPE_LIGHT; //定义值为事件发生时的传感器变量值
+        if(sensorType==Sensor.TYPE_LIGHT){//如果对应系统中的亮度传感器，则证明是亮度发生变化
+            String detail="\n传感器名称："+(event.sensor.getType()==Sensor.TYPE_LIGHT?(event.sensor.getName()+"\n中文名称：光照传感器"):"")+"\n耗电量："+event.sensor.getPower()+"\n最大测量范围："+event.sensor.getMaximumRange();//定义字符串来实现输出，调用getName，getPower，getMaximumRange函数来获取传感器参数
+            text.setText(detail+"\n当前光照强度："+String.valueOf(values[0])+"Lux\n");//将静态文本控件内容更新为传感器信息
+            text.setTextSize(30);//设置字体大小
+            text.setTextColor(Color.parseColor("#ff5e9cff"));//#7E0C6E设置字体颜色
+        }
+    }
+}
 </code></pre>
-<p>$\underline{给这条语句加一个下划线}$</p>
-<p>效果：</p>
-<p><img src="https://s2.loli.net/2022/05/27/4swLn8ib3XdOQ1f.png" alt="20220527001632"></p>
+<h3><span id="软件效果展示">软件效果展示</span></h3><p><img src="https://i.loli.net/2021/04/24/OR4gjAQVUtnKr7z.png" alt="image-20210424025040667"></p>
 ]]></content>
+      <categories>
+        <category>Homework</category>
+      </categories>
       <tags>
-        <tag>MarkDown</tag>
+        <tag>Android</tag>
+        <tag>Homework</tag>
       </tags>
   </entry>
   <entry>
@@ -263,7 +144,8 @@ chcp 936 //GBK编码
 </li>
 <li><a href="#%E9%93%BE%E8%A1%A8">链表</a><ul>
 <li><a href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90">性能分析</a></li>
-<li><a href="#c%E7%A4%BA%E4%BE%8B">C++示例：</a></li>
+<li><a href="#c%E7%A4%BA%E4%BE%8B">C++示例</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E5%92%8C%E5%85%A5%E5%8F%A3%E9%97%AE%E9%A2%98">关于环形链表和入口问题</a></li>
 </ul>
 </li>
 </ul>
@@ -334,7 +216,7 @@ struct ListNode {
 <li>头节点和其他节点分开处理</li>
 </ol>
 <p>Pyhton、Java等语言可以自动释放内存，C++记得要手动释放内存节约空间。</p>
-<h3><span id="c示例">C++示例：</span></h3><pre><code class="C++">class MyLinkedList {
+<h3><span id="c示例">C++示例</span></h3><pre><code class="C++">class MyLinkedList {
 public:
     // 定义链表节点结构体
     struct LinkedNode {
@@ -427,9 +309,98 @@ private:
 
 };
 </code></pre>
+<h3><span id="关于环形链表和入口问题">关于环形链表和入口问题</span></h3><p>链表是否存在环可以用双指针快速判定，fast每次移动两个节点，slow一个节点，如果相遇（即fast == slow），则必定存在环  </p>
+<p>环的入口可以这样求：在相遇位置设置tmp1，在链表头结点处设置tmp2，每次走一个节点，相遇位置即为环入口节点</p>
+<p>理论比较简单，详细可参见<a href="https://programmercarl.com/0142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II.html">链表：环找到了，那入口呢？</a>,dalao写的非常详细</p>
 ]]></content>
       <tags>
         <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MarkDown常用语法</title>
+    <url>/blog/2022/05d18ae5e4.html</url>
+    <content><![CDATA[<blockquote>
+<p>一些常用基本语法不过多介绍，详细可以参看<a href="https://markdown.com.cn/cheat-sheet.html">MarkDown官方教程</a><br>这里只介绍一些实用但是容易被忽视的一些语法</p>
+</blockquote>
+<!-- toc -->
+
+<ul>
+<li><a href="#%E7%BB%99%E5%87%BA%E4%B8%80%E4%BA%9B%E4%BE%8B%E5%AD%90%E4%BB%A3%E7%A0%81">给出一些例子代码：</a></li>
+</ul>
+<!-- tocstop -->
+
+<h4><span id="markdown引用">MarkDown引用</span></h4><p>使用标记符 &gt; 对内容进行引用：</p>
+<ol>
+<li>引用一段内容<blockquote>
+<p>引用一段内容</p>
+</blockquote>
+</li>
+<li>引用的多层嵌套：只要根据层次加上不同数量的 &gt; 符号</li>
+</ol>
+<p>示例：</p>
+<pre><code class="C++">&gt;  请问  Markdwon  怎么用？  -  小白
+&gt;&gt;  自己看教程！  -  愤青
+&gt;&gt;&gt;  教程在哪？  -  小白
+&gt;&gt;&gt;&gt;  我也不知道在哪！  -  愤青
+&gt;&gt;&gt;&gt;&gt;  那你回答个屁。  -  小白
+</code></pre>
+<p>显示效果：</p>
+<blockquote>
+<p>请问  Markdwon  怎么用？  -  小白</p>
+<blockquote>
+<p>自己看教程！  -  愤青</p>
+<blockquote>
+<p>教程在哪？  -  小白</p>
+<blockquote>
+<p>我也不知道在哪！  -  愤青</p>
+<blockquote>
+<p>那你回答个屁。  -  小白</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>引用其它要素：<br>引用的区块内也可以使用其他的语法，包括标题、列表、代码区块等。</p>
+<p>示例：</p>
+<pre><code class="C++">&gt; 1.1 这是第一行列表项。
+&gt;&gt; 2.1 这是第二行列表项。
+&gt;&gt;&gt; - 这是第三行列表项。
+&gt; ### 给出一些例子代码：
+</code></pre>
+<p>显示效果：</p>
+<blockquote>
+<p>1.1 这是第一行列表项。</p>
+<blockquote>
+<p>2.1 这是第二行列表项。</p>
+<blockquote>
+<ul>
+<li>这是第三行列表项。</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><span id="给出一些例子代码">给出一些例子代码：</span></h3></blockquote>
+<p>引用中内容换行：<br>有时候引用的内容太长，需要分段落层次，可以使用 &lt; br &gt; 实现换行。</p>
+<p>举例：</p>
+<pre><code class="C++">&gt; $\underline{幽默小故事，笑死人不偿命}$&lt;br&gt;
+我：“老板，你这清炒油麦菜是荤菜还是素菜？
+老板：“当然是素菜了”&lt;br&gt;
+我：“那这条虫是怎么回事”
+老板：“呃……它也是来吃饭的。”&lt;br&gt;
+我：“它吃饭凭什么我付钱？我又不认识它！”
+老板哭着说：“它为了这顿饭，把命都丢了，你还能要求它AA制吗？”
+</code></pre>
+<p>显示效果：</p>
+<p><img src="https://s2.loli.net/2022/05/27/nIWKcB4P9GOlXSg.png" alt="20220527001606"></p>
+<h4><span id="下划线">下划线</span></h4><p>示例：</p>
+<pre><code class="C++">$\underline{给这条语句加一个下划线}$
+</code></pre>
+<p>$$\underline{给这条语句加一个下划线}$$</p>
+<p>效果：</p>
+<p><img src="https://s2.loli.net/2022/05/27/4swLn8ib3XdOQ1f.png" alt="20220527001632"></p>
+]]></content>
+      <tags>
+        <tag>MarkDown</tag>
       </tags>
   </entry>
   <entry>
@@ -812,6 +783,257 @@ int main() {
       </tags>
   </entry>
   <entry>
+    <title>Hello kpl!</title>
+    <url>/blog/2022/054a17b156.html</url>
+    <content><![CDATA[<p><img src="https://i.loli.net/2021/04/07/BHgA5RqQeZTv8Wt.png" alt="image-20210407205253791"></p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/04/f2a64b655c8367e8.jpg" alt="lkp"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>一些方便好用的常用命令</title>
+    <url>/blog/2022/056ac63caa.html</url>
+    <content><![CDATA[<blockquote>
+<p>本文记录一些平时遇到的没必要记忆却又需要的指令</p>
+</blockquote>
+<!-- toc -->
+
+
+
+<!-- tocstop -->
+
+<h4><span id="vscode终端编码方式修改">VSCode终端编码方式修改</span></h4><p>VScode的默认编码方式为UTF-8，中国地区下cmd的编码方式GBK，所以会导致在终端运行程序打印中文出乱码的情况，修改编码方式即可</p>
+<p>在终端运行以下指令即可修改cmd编码方式：</p>
+<pre><code class="C++">chcp 65001 //UTF-8编码
+chcp 936 //GBK编码
+</code></pre>
+<h4><span id="国内快速访问github">国内快速访问Github</span></h4><ol>
+<li><p>打开IPAddress.com网站,查询下列三个地址的ip</p>
+<blockquote>
+<p>github.com<br>assets-cnd.github.com<br>gibhut.global.ssl.fastly.net</p>
+</blockquote>
+</li>
+<li><p>修改本地hosts文件(window系统)</p>
+<p> 在C:\Windows\System32\drivers\etc 找到hosts文件，然后添加下列数据，注意把下面的ip改成你自己查询到ip地址。</p>
+<blockquote>
+<p>140.82.114.3 github.com<br> 185.199.108.153 assets-cdn.github.com<br> 199.232.69.194 github.global.ssl.fastly.net</p>
+</blockquote>
+</li>
+<li><p>刷新本地dns缓存<br> Win+R打开cmd，输入命令 ipconfig/flushdns<br> 此时就配置成功了，然后就可以去访问啦</p>
+</li>
+</ol>
+<blockquote>
+<p>当然科学上网也是可以的</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>command</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vim参数推荐</title>
+    <url>/blog/2022/0257c5ab7b.html</url>
+    <content><![CDATA[<p>“ All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by<br>“ the call to :runtime you can find below.  If you wish to change any of those<br>“ settings, you should do it in this file (/etc/vim/vimrc), since debian.vim<br>“ will be overwritten everytime an upgrade of the vim packages is performed.<br>“ It is recommended to make changes after sourcing debian.vim since it alters<br>“ the value of the ‘compatible’ option.</p>
+<p>runtime! debian.vim</p>
+<p>“ Vim will load $VIMRUNTIME/defaults.vim if the user does not have a vimrc.<br>“ This happens after /etc/vim/vimrc(.local) are loaded, so it will override<br>“ any settings in these files.<br>“ If you don’t want that to happen, uncomment the below line to prevent<br>“ defaults.vim from being loaded.<br>“ let g:skip_defaults_vim = 1</p>
+<p>“ Uncomment the next line to make Vim more Vi-compatible<br>“ NOTE: debian.vim sets ‘nocompatible’.  Setting ‘compatible’ changes numerous<br>“ options, so any other options should be set AFTER setting ‘compatible’.<br>“set compatible</p>
+<p>“ Vim5 and later versions support syntax highlighting. Uncommenting the next<br>“ line enables syntax highlighting by default.<br>syntax on</p>
+<p>“ If using a dark background within the editing area and syntax highlighting<br>“ turn on this option as well<br>set background=dark</p>
+<p>“ Uncomment the following to have Vim jump to the last position when<br>“ reopening a file<br>“au BufReadPost * if line(“‘"“) &gt; 1 &amp;&amp; line(“‘"“) &lt;= line(“$”) | exe “normal! g’"“ | endif</p>
+<p>“ Uncomment the following to have Vim load indentation rules and plugins<br>“ according to the detected filetype.<br>if has(“autocmd”)<br>  filetype plugin indent on<br>endif</p>
+<p>“ The following are commented out as they cause vim to behave a lot<br>“ differently from regular Vi. They are highly recommended though.<br>“set showcmd		“ Show (partial) command in status line.<br>set showmatch		“ Show matching brackets.<br>set ignorecase		“ Do case insensitive matching<br>set smartcase		“ Do smart case matching<br>set incsearch		“ Incremental search<br>“set autowrite		“ Automatically save before commands like :next and :make<br>set hidden		“ Hide buffers when they are abandoned<br>“set mouse=a		“ Enable mouse usage (all modes)</p>
+<p>“ Source a global configuration file if available<br>if filereadable(“/etc/vim/vimrc.local”)<br>  source /etc/vim/vimrc.local<br>endif</p>
+<p>setlocal noswapfile<br>set bufhidden = hide<br>“colorscheme evening<br>set number<br>set cursorline<br>set ruler<br>set shiftwidth = 4<br>set softtabstop = 4<br>set tabstop = 4<br>set nobackup<br>set autochdir<br>set backupcopy = yes<br>set hlsearch<br>set noerrorbells<br>set novisualbell<br>set t_vb=<br>set matchtime=2<br>set magic<br>set smartindent<br>set backspace=ident,eol,start<br>set cmdheight=1<br>set laststatus=2<br>set statusline=\ %&lt;%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&amp;fileformat}\ %{&amp;encoding}\ Ln\ %l.\Col\ %c/%L%)<br>set foldenable<br>set foldmethod=syntax<br>set foldcolumn=0<br>setlocal foldlevel=1<br>nnoremap <space> @=((foldclosed(line(‘,’)) &lt; 0) ? ‘zc’ : ‘zo’)<cr></cr></space></p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Vim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>可视化第一次作业</title>
+    <url>/blog/2021/042021410.html</url>
+    <content><![CDATA[<h2><span id="作业内容">作业内容</span></h2><p>1．编程实现消息测试程序，满足以下要求：</p>
+<ul>
+<li>按下键盘任意字符键（至少识别两个功能键），客户区中显示按键信息（字符或功能键内容）；</li>
+<li>单击鼠标左键，消息对话框中显示鼠标信息（鼠标左键+坐标）；</li>
+<li>假设鼠标右键失灵，用Ctrl+鼠标左键代替，消息对话框中显示鼠标信息（鼠标右键+坐标）；</li>
+<li>自定义WM_MY_MESSAGE消息，带10和100两个参数，由“#”（不是“3”）键激活，客户区中显示相应信息（自定义消息+参数）。</li>
+</ul>
+<p>2．编程实现SmallBall程序，满足以下要求：</p>
+<ul>
+<li><p>黑色小球，从左上角开始，沿着45度方向移动，遇到边界反弹；</p>
+</li>
+<li><p>通过两个菜单项（加速与减速），调节小球的移动幅度（递增或递减）；</p>
+</li>
+<li><p>通过两个工具栏按钮，控制小球停止与再次启动。</p>
+<h2><span id="展示">展示</span></h2><h3><span id="key">Key</span></h3></li>
+<li><p>常规按键<img src="https://i.loli.net/2021/04/10/LtxDPg4NpKm3bJX.png" alt="image-20210410023017458"></p>
+</li>
+<li><p>功能键<img src="https://i.loli.net/2021/04/10/HPatbpGTQgdBCJN.png" alt="image-20210410023048135"></p>
+</li>
+<li><p>单击鼠标左键<img src="https://i.loli.net/2021/04/10/JfwLslFUXH6tzTB.png" alt="image-20210410023059952"></p>
+</li>
+<li><p>Ctrl+鼠标左键替代鼠标右键<img src="https://i.loli.net/2021/04/10/PYLnBzyw5SKOXeI.png" alt="image-20210410023133667"></p>
+</li>
+<li><p>自定义Message<img src="https://i.loli.net/2021/04/10/cCtlwdvs8QXrESo.png" alt="image-20210410023153774"></p>
+<h3><span id="ball">Ball</span></h3></li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/10/WS6rURfknB49DNc.png" alt="image-20210410030903621"></p>
+<ul>
+<li><p>加速<img src="https://i.loli.net/2021/04/10/PHjtbaTiSw37Xl6.png" alt="image-20210410030933797"></p>
+</li>
+<li><p>减速<img src="https://i.loli.net/2021/04/10/YzKMdRfaXbGpCDI.png" alt="image-20210410030948776"><img src="https://i.loli.net/2021/04/10/Uq483YVEaDMZKc2.png" alt="image-20210410031001983"></p>
+</li>
+<li><p>暂停<img src="https://i.loli.net/2021/04/10/7n9xGEIcN6SXsrw.png" alt="image-20210410031024027"></p>
+</li>
+<li><p>启动<img src="https://i.loli.net/2021/04/10/VkzQeE72lSgiXbr.png" alt="image-20210410031045983"></p>
+</li>
+<li><p>有轨迹<img src="https://i.loli.net/2021/04/10/eG64R9viCbpTWoL.png" alt="image-20210410031059904"></p>
+</li>
+<li><p>状态栏<img src="https://i.loli.net/2021/04/10/CBJrvedRExpFKhy.png" alt="image-20210410031125221"></p>
+<h2><span id="实现过程">实现过程</span></h2><h3><span id="key">Key</span></h3><h5><span id="添加命令">添加命令</span></h5><p>在MESSAGE_MAP处添加本项目所需所有打印命令，包括自定义命令。</p>
+<pre><code>BEGIN_MESSAGE_MAP(CKeyView, CView)
+  //标准打印命令
+  ON_COMMAND(ID_FILE_PRINT, &amp;CView::OnFilePrint)
+  ON_COMMAND(ID_FILE_PRINT_DIRECT, &amp;CView::OnFilePrint)
+  ON_COMMAND(ID_FILE_PRINT_PREVIEW, &amp;CView::OnFilePrintPreview)
+  ON_WM_LBUTTONUP()
+  ON_WM_CHAR()
+  ON_WM_KEYDOWN()
+  ON_MESSAGE(WM_MYMESSAGE, OnMyMessage)
+END_MESSAGE_MAP()
+</code></pre>
+<h5><span id="头文件函数声明">头文件函数声明</span></h5><p>在KeyView.h头文件里面声明OnLButtonUp，OnChar，PreTranslateMessages，以及OnMyMessage函数</p>
+<pre><code>protected:
+  afx_msg void OnLButtonUp(UINT nFlags, CPoint point);      //添加鼠标左键点击函数，以及按键事件函数
+  afx_msg void OnChar(UINT nChar, UINT nRedCnt, UINT nFlags);
+  virtual BOOL PreTranslateMessage(MSG* pMsg);
+  afx_msg LRESULT OnMyMessage(WPARAM wParam, LPARAM lParam);
+</code></pre>
+<h5><span id="void-ckeyviewonlbuttonupuint-nflags-cpoint-point">void CKeyView::OnLButtonUp(UINT nFlags, CPoint point)</span></h5><p>本函数主要实现鼠标左键点击以及替代右键功能，利用if语句如果是Ctrl+鼠标左键的话，则输出右键点击，并利用point来获取当前坐标，使用TextOutW来输出，如果if条件不成立，则输出左键点击</p>
+<pre><code>void CKeyView::OnLButtonUp(UINT nFlags, CPoint point)
+{
+  CDC* pDC = GetDC();
+  CString m_str;
+  if (nFlags &amp; MK_CONTROL)//ctrl+左键代表右键
+      m_str.Format(L"X:%d,Y:%d:Right Mouse Button Clicked!", point.x, point.y);
+  else
+      m_str.Format(L"X:%d,Y:%d:Left Mouse Button Clicked!", point.x, point.y);
+  pDC-&gt;TextOutW(point.x, point.y, m_str);
+}
+</code></pre>
+<h5><span id="void-ckeyviewoncharuint-nchar-uint-nredcnt-uint-nflags">void CKeyView::OnChar(UINT nChar, UINT nRedCnt, UINT nFlags)</span></h5><p>本函数主要实现常规按键和自定义消息#键（在自定义消息里面讲）的输出，首先获取当前按键的字符，如果不是#，则弹出弹框声明</p>
+<pre><code>void CKeyView::OnChar(UINT nChar, UINT nRedCnt, UINT nFlags)
+{
+  if (nChar == '#') //按键如果是#则调用自定义消息，其他则调用系统消息
+      SendMessage(WM_MYMESSAGE, 10, 100);
+  else
+  {
+      CString str;
+      str.Format(L"%c Key Entered!", nChar);
+      MessageBox(str);
+  }
+  CView::OnChar(nChar, nRedCnt, nFlags);
+}
+</code></pre>
+<h5><span id="bool-ckeyviewpretranslatemessagemsg-pmsg">BOOL CKeyView::PreTranslateMessage(MSG* pMsg)</span></h5><p>本函数实现功能按键，主要思路就是通过pMsg的wParam来对应不同功能键，从而进行输出，考虑到shift和ctrl的常用性，并没有对其进行添加，其他功能键也类似<br>```<br>BOOL CKeyView::PreTranslateMessage(MSG* pMsg)<br>{<br>  if (pMsg-&gt;message == WM_KEYDOWN)//添加功能键，方法类似可添加更多，常用ctrl和shift注释掉了以免影响其他键的操作<br>  {<br>  if (pMsg-&gt;wParam == VK_F1)  MessageBox(L”F1 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F2)  MessageBox(L”F2 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F3)  MessageBox(L”F3 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F4)  MessageBox(L”F4 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F5)  MessageBox(L”F5 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F6)  MessageBox(L”F6 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F7)  MessageBox(L”F7 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F8)  MessageBox(L”F8 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F9)  MessageBox(L”F9 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F10)  MessageBox(L”F10 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F11)  MessageBox(L”F11 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F12)  MessageBox(L”F12 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_UP)  MessageBox(L”↑ Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_DOWN)  MessageBox(L”↓ Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_LEFT)  MessageBox(L”← Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_RIGHT)  MessageBox(L”→ Key Entered!”);<br>  //if (pMsg-&gt;wParam == VK_CONTROL)  MessageBox(L”Ctrl Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_CAPITAL)  MessageBox(L”CapsLk Key Entered!”);<br>  //if (pMsg-&gt;wParam == VK_SHIFT)  MessageBox(L”Shift Key Entered!”);<br>  }</p>
+<p>  return CView::PreTranslateMessage(pMsg);</p>
+</li>
+</ul>
+<p>}</p>
+<pre><code>##### 自定义消息
+- 首先声明自己的消息名字和编号
+</code></pre>
+<p>  #define WM_MYMESSAGE WM_USER+10</p>
+<pre><code>- 声明一个关于自定义消息的响应函数OnMyMessage
+- 在Onchar里面实现，如果按下#键，则SendMessage，含有两个参数10和100
+</code></pre>
+<p>  if (nChar == ‘#’) //按键如果是#则调用自定义消息，其他则调用系统消息<br>        SendMessage(WM_MYMESSAGE, 10, 100);</p>
+<pre><code>##### 定义主面板名称
+</code></pre>
+<p>cs.style &amp;= ~FWS_ADDTOTITLE;                    //修改主窗口标题<br>m_strTitle = _T(“Key”);</p>
+<pre><code>### Ball
+小球采用异或方法来实现小球的消除，也可以实现小球的轨迹消除，通过Timer来实现小球的不断移动和刷新，从而造成一种小球运动的现象，
+##### 声明Ball类变量
+</code></pre>
+<p>public:<br>    afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);//声明timer<br>    afx_msg void OnDestroy();<br>    afx_msg void OnTimer(UINT_PTR nIDEvent);<br>private:<br>    int x;        //x，y表示当前坐标，step_num表示步幅倍数，step_x,step_y表示每次移动距离的单位<br>    int y;<br>    int step_num;<br>    int step_x;<br>    int step_y;<br>    int size;   //小球大小<br>    bool begin_pause;   //小球状态<br>    bool trail;     //小球轨迹状态<br>public:<br>    afx_msg void OnSpeedUp();   //声明加速函数<br>    afx_msg void OnSpeedDown();  //声明减速函数<br>    afx_msg void OnTrail();     //声明轨迹函数<br>    afx_msg void OnBegin_Pause();  //声明状态函数</p>
+<pre><code>
+##### 实现小球运动
+不断函数调用来实现小球的运动，采用step_num来控制小球的速度，当按下加速键是step_num加1，加速，减速同理，当速度为1是，如果继续减速，将强制停止此操作，并弹出消息提示，暂停功能的实现是通过阶数当前计时器，开始则重新开启一个同样编号的计时器，轨迹的消除通过控制变量trail来实现，如果不需要轨迹，则执行异或操作将轨迹消除，并进行清屏，反之则不执行
+</code></pre>
+<p>int CBallView::OnCreate(LPCREATESTRUCT lpCreateStruct)<br>{<br>    if (CView::OnCreate(lpCreateStruct) == -1)<br>        return -1;</p>
+<pre><code>// TODO:  在此添加您专用的创建代码
+SetTimer(1, 100, NULL);//计时器编号，刷新时间（ms)可以通过刷新时间来实现加速和减速
+return 0;
+</code></pre>
+<p>}</p>
+<p>void CBallView::OnDestroy()<br>{<br>    CView::OnDestroy();</p>
+<pre><code>KillTimer(1);
+</code></pre>
+<p>}</p>
+<p>void CBallView::OnTimer(UINT_PTR nIDEvent)<br>{<br>    if (nIDEvent == 1)<br>    {<br>        CRect rect;<br>        GetClientRect(&amp;rect);<br>        CDC* pDC = GetDC();<br>        pDC-&gt;SetROP2(R2_XORPEN);<br>        pDC-&gt;Ellipse(x, y, x + size, y + size);<br>        x += step_x<em>step_num;  //通过改变步幅倍率来改变速度<br>        y += step_y</em>step_num;<br>        theApp.x_ = x;<br>        theApp.y_ = y;<br>        if (x&lt;0 || x&gt;rect.right - size)  //转向操作<br>        {<br>            step_x = 0 - step_x;<br>        }<br>        if (y&lt;0 || y&gt;rect.bottom - size)<br>        {<br>            step_y = 0 - step_y;<br>        }<br>        if (!trail) //是否保留轨迹，不保留则通过异或消除<br>            pDC-&gt;Ellipse(x,y,x+size,y+size);<br>    }<br>    CView::OnTimer(nIDEvent);<br>}</p>
+<pre><code>##### 菜单栏的实现
+在资源视图中找到主视图进行添加相应部分，并添加事件来响应![image-20210410031318645](https://i.loli.net/2021/04/10/CGXbiHruFw5kjBp.png)
+</code></pre>
+<p>void CBallView::OnSpeedUp() //加速函数，并弹出弹框提示速度信息<br>{<br>    // TODO: 在此添加命令处理程序代码<br>    step_num++;<br>    theApp.speed_ = step_num;<br>    CString str;<br>    str.Format(L”Current speed:%d”, step_num);<br>    MessageBox(str);<br>}</p>
+<p>void CBallView::OnSpeedDown()  //减速函数，并弹出弹框提示速度信息，如果速度为1，仍要减速，则不允许减速，弹出提示消息<br>{<br>    // TODO: 在此添加命令处理程序代码<br>    if (step_num &gt; 1)<br>    {<br>        step_num–;<br>        theApp.speed_ = step_num;<br>        CString str;<br>        str.Format(L”Current speed:%d”, step_num);<br>        MessageBox(str);<br>    }<br>    else//速度为1<br>    {<br>        CString str;<br>        str.Format(L”                          Current speed:%d\n\dThe current speed is already the minimum.\n           No more deceleration is allowed.”, step_num);<br>        MessageBox(str);<br>    }<br>}</p>
+<p>void CBallView::OnTrail()//是否保留轨迹，不保留则通过用白色刷新全屏来实现清屏<br>{<br>    // TODO: 在此添加命令处理程序代码<br>    if (trail)<br>    {<br>        trail = false;<br>        CDC* pDC = GetDC();<br>        CRect rc;<br>        GetClientRect(&amp;rc);</p>
+<pre><code>    pDC-&gt;FillSolidRect(&amp;rc, RGB(255, 255, 255));
+    pDC-&gt;SetROP2(R2_XORPEN);
+    pDC-&gt;Ellipse(x, y, x + size, y + size);
+    ReleaseDC(pDC);
+}
+else
+    trail = true; 
+</code></pre>
+<p>}</p>
+<p>//void CBallView::OnBegin_Pause()//暂停实现方法一，步幅倍率为0，则一直在原地刷新，小球会一直闪动<br>//{<br>//	// TODO: 在此添加命令处理程序代码<br>//	if (begin_pause == 0)<br>//	{<br>//		begin_pause = step_num;<br>//		step_num = 0;<br>//	}<br>//	else<br>//	{<br>//		step_num = begin_pause;<br>//		begin_pause = 0;<br>//	}<br>//}<br>void CBallView::OnBegin_Pause()//暂停实现方法二，通过kill掉Timer来实现暂停，开始则重新申请一个Timer<br>{<br>    // TODO: 在此添加命令处理程序代码<br>    if (!begin_pause)<br>    {<br>        begin_pause = true;<br>        KillTimer(1);<br>    }<br>    else<br>    {<br>        SetTimer(1, 100, NULL);<br>        begin_pause = false;<br>    }<br>}</p>
+<pre><code>##### 状态栏的实现
+新建三个状态 速度，位置和时间，并将其添加到indicators数组里面，使用SetPaneInfo函数来设置三个状态的信息以及宽度，然后继续利用Timer来不断刷新，速度和位置采用全局变量来获得，时间则通过CTime::GetCurrentTime()函数实现。![image-20210410031352719](https://i.loli.net/2021/04/10/5Q8AhTBCuRIslO7.png)
+</code></pre>
+<p>m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));</p>
+<p>m_wndStatusBar.SetPaneInfo(4, IDS_INDICATOR_SPEED, SBPS_POPOUT, 50);//设置三个信息的位置和宽度<br>m_wndStatusBar.SetPaneInfo(5, IDS_INDICATOR_MESSAGE, SBPS_POPOUT, 110);<br>m_wndStatusBar.SetPaneInfo(6, IDS_INDICATOR_TIME, SBPS_POPOUT, 50);<br>RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, IDS_INDICATOR_TIME);</p>
+<p>//添加时间显示函数<br>SetTimer(2, 100, NULL);<br>CTime t1;</p>
+<p>CString str_1;                                      //对三栏信息进行初始化<br>str_1.Format(L”Speed:%d”, theApp.speed_);<br>m_wndStatusBar.SetPaneText(4, str_1);</p>
+<p>CString str_2;<br>str_2.Format(L”Location(%d,%d)”, theApp.x_, theApp.y_);<br>m_wndStatusBar.SetPaneText(5, str_2);</p>
+<p>t1 = CTime::GetCurrentTime();<br>m_wndStatusBar.SetPaneText(6, t1.Format(“%H:%M:%S”));</p>
+<pre><code>
+</code></pre>
+<p>void CMainFrame::OnTimer(UINT_PTR nIDEvent)//通过timer来实现刷新<br>{<br>    CTime t1;</p>
+<pre><code>CString str_1;
+str_1.Format(L"Speed:%d", theApp.speed_);
+m_wndStatusBar.SetPaneText(4, str_1);
+
+CString str_2;
+str_2.Format(L"Location(%d,%d)", theApp.x_, theApp.y_);
+m_wndStatusBar.SetPaneText(5, str_2);
+
+t1 = CTime::GetCurrentTime();//获取当前时间来刷新状态栏
+m_wndStatusBar.SetPaneText(6, t1.Format("%H:%M:%S"));
+
+
+CFrameWnd::OnTimer(nIDEvent);
+</code></pre>
+<p>}</p>
+<pre><code>##### 定义主面板名称
+</code></pre>
+<p>cs.style &amp;= ~FWS_ADDTOTITLE;                    //修改主窗口标题<br>m_strTitle = _T(“Ball”);</p>
+<pre><code>
+## 实验收获
+通过本次实验掌握了MFC的基本操作，理解了其实现功能的机制（消息的发送和执行），了解了一些基本函数的使用的，在对其界面优化过程中，通过实践对其理解加深，主要存在困难就是对函数的使用，以及初步接触MFc对其实现机制不太了解，实验过后相信会有所提升。
+</code></pre>
+]]></content>
+      <categories>
+        <category>Homework</category>
+      </categories>
+      <tags>
+        <tag>Homework</tag>
+        <tag>MFC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>关于Eclipse安卓开发中的文件调用</title>
     <url>/blog/2022/05442e8a7e.html</url>
     <content><![CDATA[<h2><span id="问题描述">问题描述</span></h2><p>最近在用Eclipse做Android的时候使用jxl库简单处理了xls文件，由于我对xls文件处理不太熟练，于是创建了一个Java项目进行简单测试，没问题之后直接在安卓项目使用，但是却发现<strong>即使我把xls文件放在assets文件夹下并在Build Path里面勾选了assets文件夹</strong>依旧会抛出找不到文件的错误：FileNotFoundException，采用了</p>
@@ -838,28 +1060,6 @@ int main() {
       <tags>
         <tag>Android</tag>
         <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vim参数推荐</title>
-    <url>/blog/2022/0257c5ab7b.html</url>
-    <content><![CDATA[<p>“ All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by<br>“ the call to :runtime you can find below.  If you wish to change any of those<br>“ settings, you should do it in this file (/etc/vim/vimrc), since debian.vim<br>“ will be overwritten everytime an upgrade of the vim packages is performed.<br>“ It is recommended to make changes after sourcing debian.vim since it alters<br>“ the value of the ‘compatible’ option.</p>
-<p>runtime! debian.vim</p>
-<p>“ Vim will load $VIMRUNTIME/defaults.vim if the user does not have a vimrc.<br>“ This happens after /etc/vim/vimrc(.local) are loaded, so it will override<br>“ any settings in these files.<br>“ If you don’t want that to happen, uncomment the below line to prevent<br>“ defaults.vim from being loaded.<br>“ let g:skip_defaults_vim = 1</p>
-<p>“ Uncomment the next line to make Vim more Vi-compatible<br>“ NOTE: debian.vim sets ‘nocompatible’.  Setting ‘compatible’ changes numerous<br>“ options, so any other options should be set AFTER setting ‘compatible’.<br>“set compatible</p>
-<p>“ Vim5 and later versions support syntax highlighting. Uncommenting the next<br>“ line enables syntax highlighting by default.<br>syntax on</p>
-<p>“ If using a dark background within the editing area and syntax highlighting<br>“ turn on this option as well<br>set background=dark</p>
-<p>“ Uncomment the following to have Vim jump to the last position when<br>“ reopening a file<br>“au BufReadPost * if line(“‘"“) &gt; 1 &amp;&amp; line(“‘"“) &lt;= line(“$”) | exe “normal! g’"“ | endif</p>
-<p>“ Uncomment the following to have Vim load indentation rules and plugins<br>“ according to the detected filetype.<br>if has(“autocmd”)<br>  filetype plugin indent on<br>endif</p>
-<p>“ The following are commented out as they cause vim to behave a lot<br>“ differently from regular Vi. They are highly recommended though.<br>“set showcmd		“ Show (partial) command in status line.<br>set showmatch		“ Show matching brackets.<br>set ignorecase		“ Do case insensitive matching<br>set smartcase		“ Do smart case matching<br>set incsearch		“ Incremental search<br>“set autowrite		“ Automatically save before commands like :next and :make<br>set hidden		“ Hide buffers when they are abandoned<br>“set mouse=a		“ Enable mouse usage (all modes)</p>
-<p>“ Source a global configuration file if available<br>if filereadable(“/etc/vim/vimrc.local”)<br>  source /etc/vim/vimrc.local<br>endif</p>
-<p>setlocal noswapfile<br>set bufhidden = hide<br>“colorscheme evening<br>set number<br>set cursorline<br>set ruler<br>set shiftwidth = 4<br>set softtabstop = 4<br>set tabstop = 4<br>set nobackup<br>set autochdir<br>set backupcopy = yes<br>set hlsearch<br>set noerrorbells<br>set novisualbell<br>set t_vb=<br>set matchtime=2<br>set magic<br>set smartindent<br>set backspace=ident,eol,start<br>set cmdheight=1<br>set laststatus=2<br>set statusline=\ %&lt;%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&amp;fileformat}\ %{&amp;encoding}\ Ln\ %l.\Col\ %c/%L%)<br>set foldenable<br>set foldmethod=syntax<br>set foldcolumn=0<br>setlocal foldlevel=1<br>nnoremap <space> @=((foldclosed(line(‘,’)) &lt; 0) ? ‘zc’ : ‘zo’)<cr></cr></space></p>
-]]></content>
-      <categories>
-        <category>杂项</category>
-      </categories>
-      <tags>
-        <tag>Vim</tag>
       </tags>
   </entry>
   <entry>
@@ -1236,6 +1436,119 @@ int main() {
       </tags>
   </entry>
   <entry>
+    <title>数字签名算法DSA</title>
+    <url>/blog/2022/059d9eab6e.html</url>
+    <content><![CDATA[<blockquote>
+<p>本文为作者个人作业，仅供参考</p>
+</blockquote>
+<!-- toc -->
+
+<ul>
+<li><a href="#%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82">实验要求</a></li>
+</ul>
+<!-- tocstop -->
+
+<h3><span id="实验要求">实验要求</span></h3><p>通过对数字签字算法DSA的实际操作，理解DSS的基本工作原理。</p>
+<h4><span id="实验内容">实验内容</span></h4><ol>
+<li>参照教材，熟悉数字签名算法DSA；</li>
+<li>参照教材，熟悉杂凑函数算法SHA；</li>
+<li>这里给出一个可运行的DSA数字签字演示程序，运行这个程序，对一段文字进行签字和验证，了解DSA算法的签字和验证过程。</li>
+</ol>
+<h4><span id="杂凑函数sha-1">杂凑函数SHA-1</span></h4><p>安全哈希算法(SHA)是基于MD4算法，其结构与MD4非常类似，用于数字签名的标准算法DSS中。</p>
+<h5><span id="算法实现步骤">算法实现步骤</span></h5><ol>
+<li><p>将消息摘要转换成位字符串<br> 因为在SHA-算法中，它的输入必须为位，所以首先要将其转化为位字符串，以“abc”字符串来说明问题，因为’a’=97, ‘b’=98, ‘c’=99，所以将其转换为位串后为：</p>
+<blockquote>
+<p>01100001 01100010 01100011</p>
+</blockquote>
+</li>
+<li><p>对转换后的位字符串进行补位操作<br> SHA-算法标准规定，必须对消息摘要进行补位操作，即将输入的数据进行填充，使得数据长度对512求余的结果为448，填充比特位的最高位补一个1，其余的位补0，如果在补位之前已经满足对512取模余数为448，也要进行补位，在其后补一位1即可。总之，补位是至少补一位，最多补512位，依然以“abc”为例，其补位过程如下：</p>
+<ul>
+<li>初始的信息摘要：01100001 01100010 01100011</li>
+<li>第一步补位：01100001 01100010 01100011 1…..  ……</li>
+<li>补位最后一位：01100001 01100010 01100011 10…….0(后面补了423个0)</li>
+</ul>
+<p> 而后将补位操作后的信息摘要转换为十六进制，如下所示：<br> 61626380 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000000<br> 00000000 00000000</p>
+</li>
+<li><p>附加长度值<br> 在信息摘要后面附加64bit的信息，用来表示原始信息摘要的长度，在这步操作之后，信息报文便是512bit的倍数。通常来说用一个64位的数据表示原始消息的长度，如果消息长度不大于2^64，那么前32bit就为0，在进行附加长度值操作后，其“abc”数据报文即变成如下形式：<br> 61626380 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000000<br> 00000000 00000000 00000000 00000018<br> 因为“abc”占3个字节，即24位 ，换算为十六进制即为0x18。</p>
+</li>
+<li><p>初始化缓存<br> 一个160位MD缓冲区用以保存中间和最终散列函数的结果。它可以表示为5个32位的寄存器($H_0$,$H_1$,$H_2$,$H_3$,$H_4$)。初始化为：<br> $H_0$ = 0x67452301<br> $H_1$ = 0xEFCDAB89<br> $H_2$ = 0x98BADCFE<br> $H_3$ = 0x10325476<br> $H_4$ = 0xC3D2E1F0<br> 前四个与上周的MD-5一样，但不同之处为存储为大端序</p>
+</li>
+<li><p>计算消息摘要<br> 在计算报文之前还要做一些基本的工作，就是在计算过程中要用到的方法。</p>
+<ol>
+<li>循环左移操作符Sn(x),x是一个字，也就是32bit大小的变量，n是一个整数且0&lt;=n&lt;=32。Sn(X) = (X&lt;&lt;n)OR(X&gt;&gt;32-n)</li>
+<li>在程序中所要用到的常量，这一系列常量字k(0)、k(1)、…k(79)，将其以十六进制表示如下：<br> $K_t$ = 0x5A827999  (0 &lt;= t &lt;= 19)<br> $K_t$ = 0x6ED9EBA1 (20 &lt;= t &lt;= 39)<br> $K_t$ = 0x8F1BBCDC (40 &lt;= t &lt;= 59)<br> $K_t$ = 0xCA62C1D6 (60 &lt;= t &lt;= 79)</li>
+<li>所要用到的一系列函数<br> Ft(b,c,d)  ((b&amp;c)|((~b)&amp;d))    (0 &lt;= t &lt;= 19)<br> Ft(b,c,d) (b^c^d)             (20 &lt;= t &lt;= 39)<br> Ft(b,c,d) ((b&amp;c)|(b&amp;d)|(c&amp;d))  (40 &lt;= t &lt;= 59)<br> Ft(b,c,d) (b^c^d)               (60 &lt;= t &lt;= 79)</li>
+<li>计算<br> 计算需要一个缓冲区，由5个32位的字组成，还需要一个80个32位字的缓冲区。第一个5个字的缓冲区被标识为A，B，C，D，E。80个字的缓冲区被标识为$W_0, W_1,…, W_{79}$<br> 另外还需要一个一个字的TEMP缓冲区。<br> 为了产生消息摘要，在第4部分中定义的16个字的数据块$M_1, M_2,…, M_n$会依次进行处理，处理每个数据块$M_i$ 包含80个步骤。</li>
+</ol>
+<p> 现在开始处理$M_1, M_2, … , M_n$。为了处理 $M_i$,需要进行下面的步骤</p>
+<ul>
+<li>将 Mi 分成 16 个字 $W_0, W_1, … , W_{15},  W_0$ 是最左边的字</li>
+<li>对于 t = 16 到 79 令 $W_t = S_1(W_{t-3} XOR W_{t-8} XOR W_{t- 14} XOR W_{t-16})$.</li>
+<li>令 A = $H_0$, B = $H_1$, C = $H_2$, D = $H_3$, E = $H_4$.</li>
+<li>对于 t = 0 到 79，执行下面的循环<br> TEMP = S5(A) + ft(B,C,D) + E + Wt + $K_t$;<br> E = D; D = C; C = S30(B); B = A; A = TEMP;</li>
+</ul>
+<ol start="5">
+<li>令 $H_0$ = $H_0$ + A, $H_1$ = $H_1$ + B, $H_2$ = $H_2$ + C, $H_3$ = $H_3$ + D, $H_4$ = $H_4$ + E.</li>
+</ol>
+</li>
+</ol>
+<p>在处理完所有的 Mn, 后，消息摘要是一个160位的字符串，以下面的顺序标识<br>$H_0$ $H_1$ $H_2$ $H_3$ $H_4$.</p>
+<h5><span id="sha-1在dss中的应用">SHA-1在DSS中的应用</span></h5><p>在DSS（数字签名标准）中，使用数字签名算法DSA和哈希函数SHA-1结合完成数字签名。</p>
+<h4><span id="数字签名算法dsa">数字签名算法DSA</span></h4><p>DSA是在ElGamal和Schnorr两个签名方案的基础上设计的，其安全性基于求离散对数的困难性。</p>
+<h5><span id="算法描述">算法描述</span></h5><ol>
+<li><p>全局变量</p>
+<ul>
+<li>p：满足$2^{L-1}&lt;p&lt;2^L$的大素数，其中$512\leq L\leq 1024$且$L$是64的倍数。</li>
+<li>q：$p-1$的素因子，满足$2^{159}&lt;p&lt;2{160}$，即$q$长为160比特。</li>
+<li>g：$g\equiv h^{(p-1)/q}modp$，其中$h$是满足$1&lt;h&lt;p-1$且使得$h^{(p-1)/q}modp&gt;1$的任一整数。</li>
+</ul>
+</li>
+<li><p>密钥x</p>
+<ul>
+<li>$x$是满足$0&lt;x&lt;q$的随机数或伪随机数。</li>
+</ul>
+</li>
+<li><p>公钥y</p>
+<ul>
+<li>$y\equiv g^xmodp$</li>
+</ul>
+</li>
+<li><p>用户的随机数选择k</p>
+<ul>
+<li>$k$是满足$0&lt;k&lt;q$的随机数或伪随机数。</li>
+</ul>
+</li>
+<li><p>签名过程<br> 用户对消息$M$的签名为$(r,s)$，其中$r\equiv (g^kmodp)modq$，$s\equiv [k^{-1}(H(M)+xr)]modq$，$H(M)$是由SHA求出的哈希值。</p>
+</li>
+<li><p>验证过程<br> 设接收方接收到的消息为$M’$，签名为$(r’,s’)$。计算</p>
+<ul>
+<li>$\omega \equiv (s’)^{-1}modq$</li>
+<li>$u_1\equiv [H(M’)\omega ]modq$</li>
+<li>$u_2\equiv r’\omega modq$</li>
+<li>$v\equiv [(g^{u_1}y^{u_2})modp]modq$。</li>
+</ul>
+<p> 检查$v$是否等于$r’$，若相等，则证明签名有效，这是因为<br> 若$(M’,r’,s’)=(M,r,s)$，<br> 则$v\equiv [(g^{H(M)\omega }g^{xr\omega })modp]modq\equiv [g^{(H(M)+xr)^{-1}}modp]modq\equiv (g^kmodp)modq\equiv r$</p>
+</li>
+</ol>
+<p>算法的其中的4个函数分别为：</p>
+<ul>
+<li>$s\equiv f_1[H(M),k,x,r,q]\equiv [k^{-1}(H(M)+xr)]modq$</li>
+<li>$r=f_2(k,q,p,g)\equiv (g^kmodp)modq$</li>
+<li>$\omega =f_3(s’,q)\equiv (s’)^{-1}modq$</li>
+<li>$v\equiv f_4(y,q,g,H(M’),\omega ,r’)\equiv [(g^{(H(M’)\omega )modq}y^{r’\omega modq})modp]modq$</li>
+</ul>
+<h5><span id="dsa实例">DSA实例</span></h5><p>实验将对消息“i love you，china”进行签名。</p>
+<ol>
+<li><p>在DSATool.exe程序中，选择大素数P的位数为512，数据呈现格式为10进制，生成如下所示的大素数P、素因子Q、G以及用户秘密钥X和用户公开钥Y。<br><img src="https://s2.loli.net/2022/05/27/pw6t42NP7fxJc8u.png" alt="20220527172547"></p>
+</li>
+<li><p>为待签消息选取如下所示的随机秘密数K，并产生签名(r,s)。K=2553DD1A0EEEABFC7781E5444DCD517932AB269E<br> <img src="https://s2.loli.net/2022/05/27/MAbkWnjx2v5XS7p.png" alt="20220527172705"></p>
+<p> 对该签名进行验证，计算能成功通过。<br> <img src="https://s2.loli.net/2022/05/27/NKkyctCQ3T5EBLm.png" alt="20220527172737"><br> 当修改签名中的某一位时（如将第一位7改为8），则验证将无法通过。<br> <img src="https://s2.loli.net/2022/05/27/pjOqMy64mBC5fFx.png" alt="end{center}"></p>
+<p> 通过上述检测可以验证DSA的有效性和雪崩效应。</p>
+</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>编译系统原理复习提纲</title>
     <url>/blog/2022/0178868943.html</url>
     <content><![CDATA[<h1><span id="编译系统原理">编译系统原理</span></h1><p>[toc]</p>
@@ -1482,6 +1795,499 @@ int main() {
         <tag>Yacc</tag>
         <tag>编译系统原理</tag>
         <tag>编译器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ucore_lab1</title>
+    <url>/blog/2021/0420210413.html</url>
+    <content><![CDATA[<h2><span id="说明">说明</span></h2><p>在解压后的ucroe源码包中使用make命令即可以生成所需的目标文件,例如在本次实验中</p>
+<pre><code>user@system:~../lab1$ make
+</code></pre>
+<p>之后就会在bin文件夹生成一系列的目标文件：</p>
+<ul>
+<li>user.img : 被qemu访问的虚拟硬盘文件</li>
+<li>kernel : ELF格式的toy ucore kernel执行文，嵌入到了ucore.img中</li>
+<li>bootblock : 虚拟的硬盘主引导扇区(512字节)，包含了bootloader执行代码，同样嵌入了</li>
+<li>sign : 外部执行程序，用来生成虚拟的硬盘主引导扇区<br>还有其他文件，不一一列举。</li>
+</ul>
+<p>如果要对修改后的ucore代码和ucore 源码进行比较，可以使用diff命令。</p>
+<pre><code>user@system:~../lab1$ diff 目标文件 源文件
+</code></pre>
+<h2><span id="练习1">练习1</span></h2><h3><span id="1-操作系统镜像文件ucoreimg如何生成">1. 操作系统镜像文件ucore.img如何生成？</span></h3><p> 执行指令</p>
+<pre><code>user@system:~../lab1$ make "V="
+</code></pre>
+<p> 可以获得Makefile中执行的具体指令，详细信息如下（仅列举有关ucore.img文件生成相关指令）:</p>
+<pre><code>   + cc kern/init/init.c           
+     gcc -c kern/init/init.c -o obj/kern/init/init.o
+
+   + cc kern/libs/readline.c       
+     gcc -c kern/libs/readline.c -o 
+     obj/kern/libs/readline.o
+
+   + cc kern/libs/stdio.c          
+     gcc -c kern/libs/stdio.c -o obj/kern/libs/stdio.o
+
+   + cc kern/debug/kdebug.c        
+     gcc -c kern/debug/kdebug.c -o obj/kern/debug/kdebug.o
+
+   + cc kern/debug/kmonitor.c      
+     gcc  -c kern/debug/kmonitor.c -o         
+     obj/kern/debug/kmonitor.o
+
+   + cc kern/debug/panic.c         
+     gcc  -c kern/debug/panic.c -o obj/kern/debug/panic.o
+
+   + cc kern/driver/clock.c       
+     gcc  -c kern/driver/clock.c -o obj/kern/driver/clock.o
+
+   + cc kern/driver/console.c    
+     gcc -c kern/driver/console.c -o 
+     obj/kern/driver/console.o
+
+   + cc kern/driver/intr.c       
+     gcc -c kern/driver/intr.c -o obj/kern/driver/intr.o
+
+   + cc kern/driver/picirq.c     
+     gcc -c kern/driver/picirq.c -o 
+     obj/kern/driver/picirq.o
+
+   + cc kern/trap/trap.c          
+     gcc -c kern/trap/trap.c -o obj/kern/trap/trap.o
+
+   + cc kern/trap/trapentry.S      
+     gcc -c kern/trap/trapentry.S -o 
+     obj/kern/trap/trapentry.o
+
+   + cc kern/trap/vectors.S        
+     gcc -c kern/trap/vectors.S -o obj/kern/trap/vectors.o
+
+   + cc kern/mm/pmm.c              
+     gcc -c kern/mm/pmm.c -o obj/kern/mm/pmm.o
+
+   + cc libs/printfmt.c            
+     gcc -c libs/printfmt.c -o obj/libs/printfmt.o
+
+   + cc libs/string.c             
+     gcc -c libs/string.c -o obj/libs/string.o
+
+   + ld bin/kernel                 
+     ld -o bin/kernel  
+     obj/kern/init/init.o      obj/kern/libs/readline.o 
+     obj/kern/libs/stdio.o     obj/kern/debug/kdebug.o 
+     obj/kern/debug/kmonitor.o obj/kern/debug/panic.o 
+     obj/kern/driver/clock.o   obj/kern/driver/console.o 
+     obj/kern/driver/intr.o    obj/kern/driver/picirq.o
+     obj/kern/trap/trap.o      obj/kern/trap/trapentry.o 
+     obj/kern/trap/vectors.o   obj/kern/mm/pmm.o  
+     obj/libs/printfmt.o       obj/libs/string.o
+
+   + cc boot/bootasm.S             //编译bootasm.S
+    gcc  -c boot/bootasm.S -o obj/boot/bootasm.o
+
+   + cc boot/bootmain.c            //编译bootmain.c
+    gcc -c boot/bootmain.c -o obj/boot/bootmain.o
+
+   + cc tools/sign.c               //编译sign.c
+   gcc -c tools/sign.c -o obj/sign/tools/sign.o
+   gcc -O2 obj/sign/tools/sign.o -o bin/sign
+
+   + ld bin/bootblock              //根据sign规范生成bootblock
+   ld -m  elf_i386 -nostdlib -N -e start -Ttext 0x7C00 
+   obj/boot/bootasm.o  obj/boot/bootmain.o
+   -o obj/bootblock.o
+</code></pre>
+<p> 在makefile文件中搜索ucore.img可以找到</p>
+<pre><code>    #create ucore.img
+    UCOREIMG	:=$(call totarget,ucore.img)
+    $(UCOREIMG):$(kernel)$(bootblock)
+        
+        $
+        $(V)dd if=$(kernel) of=$@ seek=1 conv=notrunc
+    $(call create_target,ucore.img)
+</code></pre>
+<p> 可以看出ucore.img镜像文件是由kernel和bootblock文件生成的。</p>
+<pre><code>    $(V)dd if=/dev/zero of=$@
+    count=100000
+</code></pre>
+<p> 这句语句可以看到UCOREIMG分配了一定空间。</p>
+<pre><code>    (V)dd if=$(bootblock) of=$@ conv=notrunc
+</code></pre>
+<p> 这句语句将bootblock复制到上面分配的空间当中。</p>
+<pre><code>    $(V)dd if=$(kernel) of=$@ seek=1 conv=notrunc
+</code></pre>
+<p> 该语句将kernel复制到分配的空间当中。</p>
+<h4><span id="1kernel生成">1.kernel生成</span></h4><pre><code>    kernel = $(call totarget,kernel)
+    $(kernel): tools/kernel.ld
+</code></pre>
+<p> 通过链接来生成kernel目标文件</p>
+<pre><code>    $(kernel): $(KOBJS)     
+</code></pre>
+<p> kernel的生成还依赖KOBJS</p>
+<pre><code>    @echo + ld $@                
+    $(V)$(LD) $(LDFLAGS) -T tools/kernel.ld -o $@ $(KOBJS)   
+    @$(OBJDUMP) -S $@ &gt; $(call asmfile,kernel)  
+    @$(OBJDUMP) -t $@ | $(SED) '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' &gt; $(call symfile,kernel)
+    $(call symfile,kernel)
+    kernel = $(call totarget,kernel)
+</code></pre>
+<h4><span id="2bootblock生成">2.bootblock生成</span></h4><pre><code>    bootfiles = $(call listf_cc,boot) 
+</code></pre>
+<p> 用boot替换listf_cc里面的变量，将listf_cc的返回值赋给bootfiles,也就是滤出.c,.s文件</p>
+<pre><code>    $(foreach f,$(bootfiles),$(call cc_compile,$(f),$(CC),$(CFLAGS) -Os -nostdinc))
+</code></pre>
+<p> 编译bookfiles</p>
+<pre><code>    bootblock = $(call totarget,bootblock) 
+</code></pre>
+<p> 生成bootblock</p>
+<pre><code>    $(bootblock): $(call toobj,$(bootfiles)) | $(call totarget,sign)
+</code></pre>
+<p> 生成目标文件bootblock需要依赖于sign和bootfiles</p>
+<pre><code>    @echo + ld $@       
+</code></pre>
+<p> 将以下文件与bootblock连接起来</p>
+<pre><code>    $(V)$(LD) $(LDFLAGS) -N -e start -Ttext 0x7C00 $^ -o $(call toobj,bootblock)
+    @$(OBJDUMP) -S $(call objfile,bootblock) &gt; $(call asmfile,bootblock)    
+    @$(OBJCOPY) -S -O binary $(call objfile,bootblock) $(call outfile,bootblock)
+    @$(call totarget,sign) $(call outfile,bootblock) $(bootblock)
+
+    $(call create_target,bootblock)
+</code></pre>
+<h4><span id="3生成sign工具">3.生成sign工具</span></h4><pre><code>    $(call add_files_host,tools/sign.c,sign,sign)
+    $(call create_target_host,sign,sign)
+</code></pre>
+<ul>
+<li>由sign工具、bootfile生成bootblock</li>
+<li>由KOBJS生成kernel</li>
+<li>由kernel和bootblock生成最终的ucore.img</li>
+</ul>
+<h3><span id="2一个被系统认为是符合规范的硬盘主引导扇区的特征是什么">2.一个被系统认为是符合规范的硬盘主引导扇区的特征是什么?</span></h3><p> 通过查阅资料我们可以知道bootblock区域包含用于引导的最小指令集，而在上一个问题中我们发现bootblock的生成需要依赖于sign.c文件和bootfiles文件，其中bootfiles提供开机启动所需要的文件，而sign.c则代表生成bootblock的规范。<br> 因此，我们去在文件夹中查看sign.c文件。<br> 文件代码如下：</p>
+<pre><code>    char buf[512];  //定义buf数组
+    memset(buf, 0, sizeof(buf));
+      // 把buf数组的最后两位置为 0x55, 0xAA
+    buf[510] = 0x55;  
+    buf[511] = 0xAA;
+    FILE *ofp = fopen(argv[2], "wb+");
+    size = fwrite(buf, 1, 512, ofp);
+    if (size != 512) {       //大小为512字节
+        fprintf(stderr, "write '%s' error, size is %d.\n", argv[2], size);            
+        return -1;
+    }
+</code></pre>
+<p> 通过查看这里的代码，我们可以发现sign规范中给buf提供了512个字节的空间，而且bootblock的格式是最后两个字节分别是0x55和0xAA，而这也是操作系统课上提到的两个神奇的数。</p>
+<h2><span id="练习2">练习2</span></h2><h4><span id="1使用qemu调试make文件">1.使用qemu调试make文件</span></h4><p> 在进入lab1文件夹之后，使用命令 make debug 进入调试模式。<br> （1）在查看了tools文件夹中的gdbinit文件之后，可以看到存在代码</p>
+<pre><code>    target remote localhost：1234
+</code></pre>
+<p>   这代表着在启动之后会连接qemu和gdb。<br> （2）在make debug之后输入stepi，可以按照机器指令单步执行。<br> （3）一开始进入的是init.c程序。提示是init the console。<br><img src="https://i.loli.net/2021/04/12/BYtSXi2GRELoAWr.jpg" alt="mmexport1618159483754"><br> （4）再执行几次step执行源代码之后，就进入stdio.c文件。<br> （5）像这样反复执行step/next语句，就可以按照程序源代码一步一步执行了。</p>
+<h4><span id="2在初始化位置0x7c00设置实地址断点">2.在初始化位置0x7c00设置实地址断点</span></h4><p> 在tools文件夹中的gdbinit文件中增加”b*0x7c00”语句，可以在实地址0x7c00位置设置一个断点。<br><img src="https://i.loli.net/2021/04/12/tLjaWr6zifSFGms.jpg" alt="mmexport1618159486187"></p>
+<h4><span id="3单步跟踪反汇编得到的代码与bootasms和bootblockasm进行比较">3.单步跟踪反汇编得到的代码与bootasm.s和bootblock.asm进行比较</span></h4><p> 在位置0x7c00位置之后单步执行机器指令并且查看反汇编语句，和gedit打开的bootblock.asm文件进行对比。可以找到这个位置正好在bootblock.asm文件中。在位置0x7c00这里有着相同的语句。<br><img src="https://i.loli.net/2021/04/12/jPdDXh3wg8rTqIy.jpg" alt="mmexport1618159487968"><br> 注意在这里要在gdb中执行如下的指令</p>
+<pre><code>    define hook-stop
+    x/i $pc
+    end
+</code></pre>
+<p> 这样才可以进入反汇编的状态<br> 同时我们查看bootasm.s文件之后，可以看到这样的代码</p>
+<pre><code>    \#Set up the stack pointer and call into C. The stack region is from 0--start(0x7c00)
+    movl $0x0, %ebp
+    movl $start, %esp
+    call bootmain
+</code></pre>
+<p> 意味着从这里开始跳转到0x7c00.</p>
+<h4><span id="4自己找一个bootloader或者内核中的代码位置设置断点并进行测试">4.自己找一个bootloader或者内核中的代码位置，设置断点并进行测试</span></h4><p> 像上个问题一样在gdbinit里面写入*b 0x7c1a，设置断点，然后类似的进行单步调试。</p>
+<h2><span id="练习3">练习3</span></h2><p>分析bootloader进入保护模式的过程。<br>BIOS将通过读取硬盘主引导扇区到内存，并转跳到对应内存中的位置执行bootloader。请分析bootloader是如何完成从实模式进入保护模式的。<br>提示：需要阅读小节“保护模式和分段机制”和lab1/boot/bootasm.S源码，了解如何从实模式切换到保护模式，需要了解：<br>1、为何开启A20<br>2、以及如何开启A20<br>3、 如何初始化GDT表<br>4、如何使能和进入保护模式</p>
+<h3><span id="分析">分析</span></h3><h4><span id="首先bootloader从实模式进入保护模式要经过一下几个步骤">首先bootloader从实模式进入保护模式要经过一下几个步骤：</span></h4><p> 1、开启A20门<br> 2、建立GDT表并对其进行初始化操作<br> 3、设置cr0寄存器的值为1  </p>
+<h4><span id="当寄存器值切换后方可表示模式切换成功">当寄存器值切换后方可表示模式切换成功</span></h4><h4><span id="初始状态a20地址线被屏蔽所以一直保持为0我们要进一步访问内存需要a20地址线需要将其打开">初始状态A20地址线被屏蔽所以一直保持为0，我们要进一步访问内存需要A20地址线，需要将其打开。</span></h4><h3><span id="一-开启a20">一、开启A20</span></h3><h4><span id="打开a20-gate的具体步骤大致如下">打开A20 Gate的具体步骤大致如下：</span></h4><p> 1、等待8042 Input buffer为空<br> 2、发送Write 8042 Output Port （P2） 命令到8042 Input buffer<br> 3、等待8042 Input buffer为空<br> 4、将8042 Output Port（P2） 对应字节的第2位置1，然后写入8042 Input buffer     </p>
+<pre><code>    #  开启A20：通过将键盘控制器上的A20线置于高电位，全部32条地址线可用，
+    #  可以访问4G的内存空间。
+seta20.1:
+    inb $0x64, %al                                  # Wait for not busy(8042 input buffer empty).
+    testb $0x2, %al
+    jnz seta20.1
+
+    movb $0xd1, %al                                 # 0xd1 -&gt; port 0x64
+    outb %al, $0x64                                 # 0xd1 means: write data to 8042's P2 port
+
+seta20.2:
+    inb $0x64, %al                                  # Wait for not busy(8042 input buffer empty).
+    testb $0x2, %al
+    jnz seta20.2
+
+    movb $0xdf, %al                                 # 0xdf -&gt; port 0x60
+    outb %al, $0x60                                 # 0xdf = 11011111, means set P2's A20 bit(the 1 bit) to 1
+</code></pre>
+<h3><span id="二-建立并初始化gdt寄存器置为1">二、建立并初始化GDT,寄存器置为1</span></h3><pre><code># Switch from real to protected mode, using a bootstrap GDT
+# and segment translation that makes virtual addresses
+# identical to physical addresses, so that the
+# effective memory map does not change during the switch.
+#  初始化GDT表：一个简单的GDT表和其描述符已经静态储存在引导区中，载入即可
+lgdt gdtdesc
+movl %cr0, %eax            #进入保护模式：通过将cr0寄存器PE位置1便开启了保护模式
+orl $CR0_PE_ON, %eax
+movl %eax, %cr0
+</code></pre>
+<h4><span id="完成以后步骤后bootloader已经从实模式进入到了保护模式">完成以后步骤后bootloader已经从实模式进入到了保护模式</span></h4><h2><span id="练习4">练习4</span></h2><pre><code>分析BootLoader加载ELF格式的OS的过程
+通过阅读bootmain.c,了解bootloader如何加载ELF文件。通过分析代码和通过qemu来运行调试
+</code></pre>
+<h3><span id="分析">分析</span></h3><p>首先看bootmain函数</p>
+<pre><code class="C">void bootmain(void){
+   //read the 1st page off disk
+   readseg((uintptr_t)ELFHDR,SECTSIZE*8,0);
+
+   //is this a valid ELF?
+   if (ELFHDR-&gt;e_magic !=ELF_MAGIC){
+           goto bad;
+   }
+
+   struct proghdr *ph,*eph;
+
+   // load each program segment(ignores ph flags)
+   ph = (struct proghdr *)((uintptr_t)ELFHDR+ELFHDR-&gt;e_phoff);
+   eph = ph + ELFHDR-&gt;e_phnum;
+   for(;ph&lt;eph;ph++){
+           readseg(ph-&gt;p_va &amp; 0xFFFFFF, ph-&gt;p_memsz, ph-&gt;p_offset);
+   }
+
+   // call the entry point from the ELF header
+   // note:does not return
+   ((void(*)(void))(ELFHDR-&gt;e_entry &amp; 0xFFFFFF))();
+bad:
+   outw(0x8A00,0x8A00);
+   outw(0x8A00,0x8E00);
+
+   /* do nothing */
+   while(1);
+}
+</code></pre>
+<p>先是读磁盘，转入readseg函数</p>
+<pre><code class="C">static void readseg(uintptr_t va,uint32_t count,uint32_t offset){
+      uintptr_t end_va = va + count;
+
+      //round down to sector boundary
+      va -= offset % SECTSIZE ;
+
+      //translate from bytes to sectors; kernel starts at sector 1
+      uint32_t secno = (offset / SECTSIZE) + 1;
+
+      //If this is too slow , we could read lots of sectors at  a time.
+      //We'd write more to memory than asked,but it doesn't matter --
+      //We load in increasing order.
+      for(; va &lt; end_va; va += SECTSIZE, secno ++){
+            readsect((void*)va,secno);
+      }
+}
+</code></pre>
+<p>从readseg函数发现又调用了readsect函数</p>
+<pre><code class="C">static void readsect(void *dst,unit32_t secno){
+      //wait for disk to be ready
+      waitdisk();
+
+      outb(0x1F2, 1);//要读写的扇区数，需要表明要读写几个扇区
+      outb(0x1F3, secno &amp; 0xFF);//LBA参数的0~7位
+      outb(0x1F4, (secno &gt;&gt; 8) &amp; 0xFF);//LBA参数的8~15位
+      outb(0x1F5, (secno &gt;&gt; 16) &amp; 0xFF);//LBA参数的16~23位
+      outb(0x1F6, ((secno &gt;&gt; 24) &amp; 0xF) | 0xE0);//第0~3位：LBA参数的24-27位 第4位：为0主盘；为1从盘
+      outb(0x1F7,0x20);//状态和命令寄存器。操作时先给命令，再读取，如果不是忙状态就从0x1f0端口 读数据
+
+       //wait for disk to be ready
+      waitdisk();
+
+      //read a sector
+      insl(0x1F0,dst,SECTSIZE/4);//读取扇区
+</code></pre>
+<h4><span id="读一个扇区的流程大致如下">读一个扇区的流程大致如下：</span></h4><ol>
+<li>等待磁盘准备好 </li>
+<li>发出读取扇区的命令 </li>
+<li>等待磁盘准备好 </li>
+<li>把磁盘扇区数据读到指定内存</li>
+</ol>
+<p>其中的outb是一个机器指令，是在x86.h中的</p>
+<pre><code class="C">static inline void outb(uint16_t port, unit8_t data){
+      asm volatile("outb %0, %1" :: "a"(data), "d"(port));
+}
+</code></pre>
+<p>用内联汇编实现，用了I0空间寻址方式，能将外部的数据读到内存中来，这也是x86里面的寻址方式</p>
+<p>可以发现首先是等磁盘准备好，然后是写入地址和读取磁盘的命令，最后是按照地址读取磁盘扇区（可参考代码中的中文注释）</p>
+<p>再接着看main函数，用了一个if语句判断是否为ELF文件，具体判断方式为将ELF header中的一个e_magic和一个特定值进行比较，若不是则转入bad,是则继续执行</p>
+<pre><code class="C"> struct proghdr *ph,*eph;
+
+   // load each program segment(ignores ph flags)
+   ph = (struct proghdr *)((uintptr_t)ELFHDR+ELFHDR-&gt;e_phoff);//将ELF文件的头部文表取出存到ph
+   eph = ph + ELFHDR-&gt;e_phnum;
+   for(;ph&lt;eph;ph++){ #加载ELF文件到内存
+           readseg(ph-&gt;p_va &amp; 0xFFFFFF, ph-&gt;p_memsz, ph-&gt;p_offset);
+   }
+
+   // call the entry point from the ELF header
+   // note:does not return
+   ((void(*)(void))(ELFHDR-&gt;e_entry &amp; 0xFFFFFF))();//ELF文件加载完毕后，将控制权交给ucore去执行
+</code></pre>
+<h4><span id="由此完成elf文件的加载">由此完成ELF文件的加载</span></h4><h2><span id="练习5">练习5</span></h2><pre><code>完成kdebug.c中函数print_stackframe的实现，可以通过函数&gt;print_stackframe来跟踪函数调用堆栈中记录的返回地址。
+</code></pre>
+<h3><span id="1-函数堆栈的原理">1、函数堆栈的原理</span></h3><p> 理解函数堆栈最重要的两点是：栈的结构，以及EBP寄存器的作用。</p>
+<p> 一个函数调用动作可分解为零到多个 PUSH指令（用于参数入栈）和一个 CALL 指令。CALL 指令内部其实还暗含了一个将返回地址压栈的动作，这是由硬件完成的。几乎所有本地编译器都会在每个函数体之前插入类似如下的汇编指令：</p>
+<pre><code class="php">pushl %ebp
+movl %esp,%ebp
+</code></pre>
+<p> 这两条汇编指令的含义是：首先将ebp 寄存器入栈，然后将栈顶指针 esp 赋值给 ebp。</p>
+<p> movl %esp %ebp这条指令表面上看是用esp覆盖 ebp原来的值，其实不然。因为给 ebp赋值之前，原ebp 值已经被压栈（位于栈顶），而新的ebp又恰恰指向栈顶。此时ebp寄存器就已经处于一个非常重要的地位，该寄存器中存储着栈中的一个地址（原 ebp入栈后的栈顶），从该地址为基准，向上（栈底方向）能获取返回地址、参数值，向下（栈顶方向）能获取函数局部变量值，而该地址处又存储着上一层函数调用时的ebp值。</p>
+<p> 我们可以直接根据ebp就能读取到各个栈帧的地址和值，一般而言，ss:[ebp+4]处为返回地址，ss:[ebp+8]处为第一个参数值（最后一个入栈的参数值，此处假设其占用 4 字节内存，对应32位系统），ss:[ebp-4]处为第一个局部变量，ss:[ebp]处为上一层 ebp 值。</p>
+<p> 如图<br><img src="https://www.hualigs.cn/image/60718747980ba.jpg"></p>
+<h3><span id="2-print_stackframe函数的实现">2、print_stackframe函数的实现</span></h3><p> 首先我们直接看到print_stackframe函数的注释：</p>
+<pre><code class="php">void print_stackframe(void) {
+     /* LAB1 YOUR CODE : STEP 1 */
+     /* (1) call read_ebp() to get the value of ebp. the type is (uint32_t);
+      * (2) call read_eip() to get the value of eip. the type is (uint32_t);
+      * (3) from 0 .. STACKFRAME_DEPTH
+      *    (3.1) printf value of ebp, eip
+      *    (3.2) (uint32_t)calling arguments [0..4] = the contents in address (unit32_t)ebp +2 [0..4]
+      *    (3.3) cprintf("\n");
+      *    (3.4) call print_debuginfo(eip-1) to print the C calling function name and line number, etc.
+      *    (3.5) popup a calling stackframe
+      *           NOTICE: the calling funciton's return addr eip  = ss:[ebp+4]
+      *                   the calling funciton's ebp = ss:[ebp]
+      */
+}
+</code></pre>
+<p> 这样我们直接根据注释以及之前的相关知识就能比较简单的编写成程序，如下所示：</p>
+<pre><code class="c">void print_stackframe(void) {      
+    uint32_t ebp=read_ebp();//(1) call read_ebp() to get the value of ebp. the type is (uint32_t)
+    uint32_t eip=read_eip();//(2) call read_eip() to get the value of eip. the type is (uint32_t)
+    int i;
+    for(i=0;i&lt;STACKFRAME_DEPTH&amp;&amp;ebp!=0;i++){//(3) from 0 .. STACKFRAME_DEPTH
+          cprintf("ebp:0x%08x   eip:0x%08x ",ebp,eip);//(3.1)printf value of ebp, eip
+          uint32_t *tmp=(uint32_t *)ebp+2;
+          cprintf("arg :0x%08x 0x%08x 0x%08x 0x%08x",*(tmp+0),*(tmp+1),*(tmp+2),*(tmp+3));//(3.2)(uint32_t)calling arguments [0..4] = the contents in address (unit32_t)ebp +2 [0..4]
+          cprintf("\n");//(3.3) cprintf("\n");
+          print_debuginfo(eip-1);//(3.4) call print_debuginfo(eip-1) to print the C calling function name and line number, etc.
+          eip=((uint32_t *)ebp)[1];
+          ebp=((uint32_t *)ebp)[0];//(3.5) popup a calling stackframe
+      }
+}
+</code></pre>
+<p> 实验结果截图如下：</p>
+<p><img src="https://www.hualigs.cn/image/607182a0e97c8.jpg"></p>
+<h2><span id="练习6完善中断初始化和处理">练习6：完善中断初始化和处理</span></h2><p>1、中断描述符表（也可简称为保护模式下的中断向量表）中一个表项占多少字节？其中哪几位代表中断处理代码的入口？<br>2、请编程完善kern/trap/trap.c中对中断向量表进行初始化的函数idt_init。在idt_init函数中，依次对所有中断入口进行初始化。使用mmu.h中的SETGATE宏，填充idt数组内容。每个中断的入口由tools/vectors.c生成，使用trap.c中声明的vectors数组即可。<br>3、请编程完善trap.c中的中断处理函数trap,在对时钟中断进行处理的部分填写trap函数中处理时钟中断的部分，使操作系统毎遇到100次时钟中断后，调用print_tricks子程序，在屏幕上打印一行文字“100 ticks”。</p>
+<h3><span id="1-中断描述符表中一个表项占8字节">1、中断描述符表中一个表项占8字节</span></h3><p><img src="https://i.loli.net/2021/04/12/AgIlN5Sc1YDE9oP.png" alt="mmexport1618159489650"></p>
+<p>如上图所示，其中的0-15位是offset的低16位，48-63位是offset的高16位，16-31位是段选择子，用于索引全局描述符表GDT来获取中断处理代码对应的段地址，再加上段内偏移量即可得到中断处理代码的入口。</p>
+<h3><span id="2-完善初始化函数">2、完善初始化函数</span></h3><pre><code>  （1）根据函数中的注释提示，第一步是声明__vertors[];
+    (2) 第二步是使用SETGATE填充中段描述符表IDT
+    (3) 第三步是使用lidt指令让CPU加载中断描述符表IDT
+</code></pre>
+<p> 具体的代码如下：</p>
+<pre><code class="C">void idt_init(void){
+      extern uintptr_t __vecors[];
+      int i;
+      for(i=0; i &lt; 256; i++){
+          SETGATE(idt[i],0,GD_KTEXT,__vectors[i],DPL_KERNEL);
+      }
+      SETGATE(idt[T_SWITCH_TOK],0,GD_KTEXT,__vectors[T_SWITCH_TOK],DPL_USER);
+      lidt(&amp;idit_pd);
+}
+</code></pre>
+<p> 其中宏SETGATE的定义为</p>
+<pre><code>#define SETGATE(gate, istrap, sel, off, dpl)
+</code></pre>
+<p> GD_KTEXT和DPL_KERNEL的定义在memlayout.h中<br><img src="https://i.loli.net/2021/04/12/FitCeqP7261J3jn.png" alt="mmexport1618159491208"><br> gate表示处理函数的入口地址，此处即idt[]数组中的内容<br>istrap表示1为异常门，0为中断门<br>sel表示段选择子<br>off表示偏移量，此处即__vectors[]数组中的内容<br>dpl表示设置等级，此处设置为DPL_KERNEL，恒为0</p>
+<h3><span id="3-编写函数">3、编写函数</span></h3><p>根据提示，需要用一个全局变量记录每次时钟中断，然后用print_ticks()打印“100 ticks”后重新从0开始计数，参照clock.c,写出如下函数：</p>
+<pre><code class="C">case IRQ_OFFSET+IRQ_TIMER:
+ticks=ticks+1;
+if(ticks==TICK_NUM){
+      print_ticks();
+      ticks=0;
+}
+break;
+</code></pre>
+<p> 其中TICK_NUM已被定义为100<br> 最后的运行结果为下图：<br><img src="https://i.loli.net/2021/04/12/5UolSrpgHAkIKDv.png" alt="mmexport1618159492686"><br><img src="https://i.loli.net/2021/04/12/LeNXnSIkDY26UGE.png" alt="mmexport1618159481302"></p>
+<h2><span id="challenge-1amp2-新建用户态并进行内核态互换">Challenge 1&amp;2 新建用户态并进行内核态互换</span></h2><p>通过编写c++内联汇编函数，来实现用户态和内核态的切换。</p>
+<p>已知初始化内核的函数如下：</p>
+<pre><code>static void
+switch_test(void) {
+    print_cur_status(); // print 当前 cs/ss/ds 等寄存器状态
+    cprintf("+++ switch to user mode +++\n");
+    switch_to_user(); // switch to user mode
+    print_cur_status();
+    cprintf("+++ switch to kernel mode +++\n");
+    switch_to_kernel(); // switch to kernel mode
+    print_cur_status();
+}
+</code></pre>
+<p>而在init.c里面没有switch_to_user函数的内容以及switch_to_kernel函数的内容，因此这些部分需要编程。</p>
+<h3><span id="1调到用户态">1.调到用户态</span></h3><p> 通过编写switch_to_user的内容来使在内核初始化的时候可以切换到用户态。</p>
+<pre><code>asm volatile (
+    "sub $0x8, %%esp \n"
+    "int %0 \n"
+    "movl %%ebp, %%esp"
+    : 
+    : "i"(T_SWITCH_TOU)
+);
+</code></pre>
+<p> 通过编写内联汇编语句来实现切换，用中断处理int 0来实现，需要输入的“i”也就是T_SWITCH_TOU。调整栈顶指针和栈底指针开辟程序空间之后，进行中断来实现切换。<br> 在trap.c中要修改t_switch_tou的内容</p>
+<pre><code>case T_SWITCH_TOU:
+    if (tf-&gt;tf_cs != USER_CS) {
+        switchk2u = *tf;
+        switchk2u.tf_cs = USER_CS;
+        switchk2u.tf_ds = switchk2u.tf_es = switchk2u.tf_ss = USER_DS;
+        switchk2u.tf_esp = (uint32_t)tf + sizeof(struct trapframe) - 8;
+        switchk2u.tf_eflags |= FL_IOPL_MASK;
+        *((uint32_t *)tf - 1) = (uint32_t)&amp;switchk2u;
+      }
+      break;
+</code></pre>
+<p> 这段代码可以使原来的状态不是用户态时候，将原来的状态修改成用户态。</p>
+<pre><code>switchk2u.tf_eflags |= FL_IOPL_MASK;
+*((uint32_t*)tf - 1) = (uint32_t)&amp;switchk2u;
+</code></pre>
+<p> 将这里的标记确认成为用户态，并且中断返回到正确的栈。</p>
+<h3><span id="2用户态到内核态">2.用户态到内核态</span></h3><p> 用类似的内联汇编处理。</p>
+<pre><code>asm volatile (
+    "int %0 \n"
+    "movl %%ebp, %%esp \n"
+    : 
+    : "i"(T_SWITCH_TOK)
+);
+</code></pre>
+<p> 因为切换到的是内核态，不需要更多空间，所以相比内核到用户的内联汇编不再需要在栈指针减去一个值来开辟空间。</p>
+<p> 然后我们同样需要在trap.c中修改T_SWITCH_TOK的内容</p>
+<pre><code>case T_SWITCH_TOK:
+    if (tf-&gt;tf_cs != KERNEL_CS) {
+        tf-&gt;tf_cs = KERNEL_CS;
+        tf-&gt;tf_ds = tf-&gt;tf_es = KERNEL_DS;
+        tf-&gt;tf_eflags &amp;= ~FL_IOPL_MASK;
+        switchu2k = (struct trapframe *)(tf-&gt;tf_esp (sizeof(struct trapframe) - 8));
+        memmove(switchu2k, tf, sizeof(struct trapframe) - 8);
+        *((uint32_t *)tf - 1) = (uint32_t)switchu2k;
+      }
+</code></pre>
+<p> 跟之前切换的修改类似</p>
+<h3><span id="3实现切换">3.实现切换</span></h3><pre><code>case IRQ_OFFSET + IRQ_KBD:
+        c = cons_getc();
+        cprintf("kbd [%03d] %c\n", c, c);
+        if(c == '0' &amp;&amp; (tf-&gt;tf_cs &amp; 3) != 0)
+        {
+                cprintf("Input 0......switch to kernel\n");
+                tf-&gt;tf_cs = KERNEL_CS;
+                tf-&gt;tf_ds = tf-&gt;tf_es = KERNEL_DS;
+                tf-&gt;tf_eflags &amp;= ~FL_IOPL_MASK;
+        }
+        else if (c == '3' &amp;&amp; (tf-&gt;tf_cs &amp; 3) != 3)
+        {
+                cprintf("Input 3......switch to user\n");
+                tf-&gt;tf_cs = USER_CS;
+                tf-&gt;tf_ds = tf-&gt;tf_es = tf-&gt;tf_ss = USER_DS;
+                tf-&gt;tf_eflags |= FL_IOPL_MASK;
+        }
+        break;
+</code></pre>
+<p>修改完代码之后执行</p>
+<pre><code>make qemu
+</code></pre>
+<p>键盘输入0或3即可实现切换<br><img src="https://i.loli.net/2021/04/12/BlXaezgdp5FUqCi.png" alt="image-20210412215946076"></p>
+<h4><span id="最终评分">最终评分</span></h4><p><img src="https://i.loli.net/2021/04/12/lsaMBPhk21v57wG.png" alt="image-20210412042453346"></p>
+]]></content>
+      <categories>
+        <category>Homework</category>
+      </categories>
+      <tags>
+        <tag>Homework</tag>
+        <tag>OS</tag>
       </tags>
   </entry>
   <entry>
@@ -2870,808 +3676,6 @@ int main() {
       </categories>
       <tags>
         <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LightSensor</title>
-    <url>/blog/2021/0420210424.html</url>
-    <content><![CDATA[<h1><span id="光线传感器"><center>光线传感器<center></center></center></span></h1><h3><span id="实验目的">实验目的</span></h3><p>本次实验的目的是让大家了解Android中光线传感器的基本知识，掌握Android中光线传感器的使用方法。</p>
-<h3><span id="实验要求">实验要求</span></h3><ol>
-<li><pre><code>了解Android中光线传感器基本知识
-</code></pre>
-</li>
-<li><pre><code>掌握Android中光线传感器使用方法
-</code></pre>
-</li>
-</ol>
-<h3><span id="基础知识">基础知识</span></h3><p>光线传感器基础  </p>
-<p>光线传感器的好处是可以根据手机所处环境的光线来调节手机屏幕的亮度和键盘灯。例如在光线充足的地方屏幕会很亮，键盘灯就会关闭。相反如果在暗处，键盘灯就会亮，屏幕较暗（与屏幕亮度的设置也有关系），这样既保护了眼睛又节省了电量。光线传感器在进入睡眠模式时候会发出蓝色周期性闪动的光，非常美观。在本节的内容中，将详细讲解Android系统光线传感器的基本知识。<br>光线传感器介绍<br>在Android设备中，光线传感器通常位于前摄像头旁边的一个小点，如果在光线充足的情况下（室外或者是灯光充足的室内），大约在2～3秒之后键盘灯会自动熄灭，即使再操作机器键盘灯也不会亮，除非到了光线比较暗的地方才会自动地亮起来。如果在光线充足的情况下用手将光线感应器遮上，在2～3秒后键盘灯会自动亮起来，在此过程中光线感应器起到了一个节电的功能。<br>要想在Android设备中监听光线传感器，需要掌握如下所示的监听方法。</p>
-<ol>
-<li>registerListenr(SensorListenerlistenr,int sensors,int rate)：已过时。</li>
-<li>registerListenr(SensorListenerlistenr,int sensors)：已过时。</li>
-<li>registerListenr(SensorEventListenerlistenr,Sensor sensors,int rate)。</li>
-<li>registerListenr(SensorEventListenerlistenr,Sensor sensors,int rate,Handlerhandler)：因为SensorListener已经过时，所以相应的注册方法也过时了。</li>
-</ol>
-<p>在上述方法中，各个参数的具体说明如下所示。</p>
-<ul>
-<li>Listener：相应监听器的引用。</li>
-<li>Sensor：相应的感应器引用。</li>
-<li>Rate：感应器的反应速度，这个必须是系统提供的4个常量之一。</li>
-<li>SENSOR_DELAY_NORMAL：匹配屏幕方向的变化。</li>
-<li>SENSOR_DELAY_UI：匹配用户接口。</li>
-<li>SENSOR_DELAY_GAME：匹配游戏。</li>
-<li>SENSOR_DELAY_FASTEST.：匹配所能达到的最快。</li>
-</ul>
-<h3><span id="实验内容">实验内容</span></h3><p>按照实验的内容进行操作，掌握Android中光线传感器的使用方法等内容。<br>完成实验内容后，设计一个光线传感器的app，至少包含如下功能：</p>
-<ul>
-<li>显示当前光线传感器的光照强度；</li>
-<li>显示当前光线传感器的名称，耗电量，以及最大测量范围。</li>
-</ul>
-<p>获取上述参数方法如下：</p>
-<p>myS  =  mySm.getDefaultSensor(Sensor.TYPE_LIGHT);</p>
-<p>名称：myS.getName() ;</p>
-<p>耗电量（mA）：myS.getPower();</p>
-<p>最大测量范围：myS.getMaximumRange()</p>
-<h3><span id="实验过程">实验过程</span></h3><ol>
-<li>利用Android studio创建一个工程，并利用实体机或者安卓虚拟机进行测试（这里我先利用逍遥模拟器进行测试，成功之后，连接真机进行测试）</li>
-<li>修改activity_main.yml文件，新建一个静态文本控件用来输出我们要输出的亮度传感器的有关信息，这里新建工程初始化时会自动生成一个文本控件，文本内容默认为“Hello World！”，所以只需在其基础上进行修改即可</li>
-</ol>
-<pre><code>&lt;TextView
-        android:id="@+id/textView1"//为控件添加编号textView1
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"//初始化文本内容
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /&gt;
-</code></pre>
-<ol start="3">
-<li>修改Mainactivity.java文件对传感器进行控制并进行文本输出</li>
-</ol>
-<pre><code>//这里仅展示所需主要代码。具体代码见工程文件
-public class MainActivity extends Activity implements SensorEventListener {
-    private SensorManager sensor;//定义一个传感器管理器
-    private TextView text;//定义一个文本控件
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {//项目初始化函数
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        sensor = (SensorManager)getSystemService(SENSOR_SERVICE);//调用getSystemService函数来获取传感器控制权
-        text = (TextView)findViewById(R.id.textView1);//通过控件ID将实体文本控件与代码连接起来
-    }
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        // 在传感器控制函数里面实现我们的功能
-        float[] values = event.values; //定义变量来获取事件的值
-        int sensorType = event.sensor.TYPE_LIGHT; //定义值为事件发生时的传感器变量值
-        if(sensorType==Sensor.TYPE_LIGHT){//如果对应系统中的亮度传感器，则证明是亮度发生变化
-            String detail="\n传感器名称："+(event.sensor.getType()==Sensor.TYPE_LIGHT?(event.sensor.getName()+"\n中文名称：光照传感器"):"")+"\n耗电量："+event.sensor.getPower()+"\n最大测量范围："+event.sensor.getMaximumRange();//定义字符串来实现输出，调用getName，getPower，getMaximumRange函数来获取传感器参数
-            text.setText(detail+"\n当前光照强度："+String.valueOf(values[0])+"Lux\n");//将静态文本控件内容更新为传感器信息
-            text.setTextSize(30);//设置字体大小
-            text.setTextColor(Color.parseColor("#ff5e9cff"));//#7E0C6E设置字体颜色
-        }
-    }
-}
-</code></pre>
-<h3><span id="软件效果展示">软件效果展示</span></h3><p><img src="https://i.loli.net/2021/04/24/OR4gjAQVUtnKr7z.png" alt="image-20210424025040667"></p>
-]]></content>
-      <categories>
-        <category>Homework</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Homework</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ucore_lab1</title>
-    <url>/blog/2021/0420210413.html</url>
-    <content><![CDATA[<h2><span id="说明">说明</span></h2><p>在解压后的ucroe源码包中使用make命令即可以生成所需的目标文件,例如在本次实验中</p>
-<pre><code>user@system:~../lab1$ make
-</code></pre>
-<p>之后就会在bin文件夹生成一系列的目标文件：</p>
-<ul>
-<li>user.img : 被qemu访问的虚拟硬盘文件</li>
-<li>kernel : ELF格式的toy ucore kernel执行文，嵌入到了ucore.img中</li>
-<li>bootblock : 虚拟的硬盘主引导扇区(512字节)，包含了bootloader执行代码，同样嵌入了</li>
-<li>sign : 外部执行程序，用来生成虚拟的硬盘主引导扇区<br>还有其他文件，不一一列举。</li>
-</ul>
-<p>如果要对修改后的ucore代码和ucore 源码进行比较，可以使用diff命令。</p>
-<pre><code>user@system:~../lab1$ diff 目标文件 源文件
-</code></pre>
-<h2><span id="练习1">练习1</span></h2><h3><span id="1-操作系统镜像文件ucoreimg如何生成">1. 操作系统镜像文件ucore.img如何生成？</span></h3><p> 执行指令</p>
-<pre><code>user@system:~../lab1$ make "V="
-</code></pre>
-<p> 可以获得Makefile中执行的具体指令，详细信息如下（仅列举有关ucore.img文件生成相关指令）:</p>
-<pre><code>   + cc kern/init/init.c           
-     gcc -c kern/init/init.c -o obj/kern/init/init.o
-
-   + cc kern/libs/readline.c       
-     gcc -c kern/libs/readline.c -o 
-     obj/kern/libs/readline.o
-
-   + cc kern/libs/stdio.c          
-     gcc -c kern/libs/stdio.c -o obj/kern/libs/stdio.o
-
-   + cc kern/debug/kdebug.c        
-     gcc -c kern/debug/kdebug.c -o obj/kern/debug/kdebug.o
-
-   + cc kern/debug/kmonitor.c      
-     gcc  -c kern/debug/kmonitor.c -o         
-     obj/kern/debug/kmonitor.o
-
-   + cc kern/debug/panic.c         
-     gcc  -c kern/debug/panic.c -o obj/kern/debug/panic.o
-
-   + cc kern/driver/clock.c       
-     gcc  -c kern/driver/clock.c -o obj/kern/driver/clock.o
-
-   + cc kern/driver/console.c    
-     gcc -c kern/driver/console.c -o 
-     obj/kern/driver/console.o
-
-   + cc kern/driver/intr.c       
-     gcc -c kern/driver/intr.c -o obj/kern/driver/intr.o
-
-   + cc kern/driver/picirq.c     
-     gcc -c kern/driver/picirq.c -o 
-     obj/kern/driver/picirq.o
-
-   + cc kern/trap/trap.c          
-     gcc -c kern/trap/trap.c -o obj/kern/trap/trap.o
-
-   + cc kern/trap/trapentry.S      
-     gcc -c kern/trap/trapentry.S -o 
-     obj/kern/trap/trapentry.o
-
-   + cc kern/trap/vectors.S        
-     gcc -c kern/trap/vectors.S -o obj/kern/trap/vectors.o
-
-   + cc kern/mm/pmm.c              
-     gcc -c kern/mm/pmm.c -o obj/kern/mm/pmm.o
-
-   + cc libs/printfmt.c            
-     gcc -c libs/printfmt.c -o obj/libs/printfmt.o
-
-   + cc libs/string.c             
-     gcc -c libs/string.c -o obj/libs/string.o
-
-   + ld bin/kernel                 
-     ld -o bin/kernel  
-     obj/kern/init/init.o      obj/kern/libs/readline.o 
-     obj/kern/libs/stdio.o     obj/kern/debug/kdebug.o 
-     obj/kern/debug/kmonitor.o obj/kern/debug/panic.o 
-     obj/kern/driver/clock.o   obj/kern/driver/console.o 
-     obj/kern/driver/intr.o    obj/kern/driver/picirq.o
-     obj/kern/trap/trap.o      obj/kern/trap/trapentry.o 
-     obj/kern/trap/vectors.o   obj/kern/mm/pmm.o  
-     obj/libs/printfmt.o       obj/libs/string.o
-
-   + cc boot/bootasm.S             //编译bootasm.S
-    gcc  -c boot/bootasm.S -o obj/boot/bootasm.o
-
-   + cc boot/bootmain.c            //编译bootmain.c
-    gcc -c boot/bootmain.c -o obj/boot/bootmain.o
-
-   + cc tools/sign.c               //编译sign.c
-   gcc -c tools/sign.c -o obj/sign/tools/sign.o
-   gcc -O2 obj/sign/tools/sign.o -o bin/sign
-
-   + ld bin/bootblock              //根据sign规范生成bootblock
-   ld -m  elf_i386 -nostdlib -N -e start -Ttext 0x7C00 
-   obj/boot/bootasm.o  obj/boot/bootmain.o
-   -o obj/bootblock.o
-</code></pre>
-<p> 在makefile文件中搜索ucore.img可以找到</p>
-<pre><code>    #create ucore.img
-    UCOREIMG	:=$(call totarget,ucore.img)
-    $(UCOREIMG):$(kernel)$(bootblock)
-        
-        $
-        $(V)dd if=$(kernel) of=$@ seek=1 conv=notrunc
-    $(call create_target,ucore.img)
-</code></pre>
-<p> 可以看出ucore.img镜像文件是由kernel和bootblock文件生成的。</p>
-<pre><code>    $(V)dd if=/dev/zero of=$@
-    count=100000
-</code></pre>
-<p> 这句语句可以看到UCOREIMG分配了一定空间。</p>
-<pre><code>    (V)dd if=$(bootblock) of=$@ conv=notrunc
-</code></pre>
-<p> 这句语句将bootblock复制到上面分配的空间当中。</p>
-<pre><code>    $(V)dd if=$(kernel) of=$@ seek=1 conv=notrunc
-</code></pre>
-<p> 该语句将kernel复制到分配的空间当中。</p>
-<h4><span id="1kernel生成">1.kernel生成</span></h4><pre><code>    kernel = $(call totarget,kernel)
-    $(kernel): tools/kernel.ld
-</code></pre>
-<p> 通过链接来生成kernel目标文件</p>
-<pre><code>    $(kernel): $(KOBJS)     
-</code></pre>
-<p> kernel的生成还依赖KOBJS</p>
-<pre><code>    @echo + ld $@                
-    $(V)$(LD) $(LDFLAGS) -T tools/kernel.ld -o $@ $(KOBJS)   
-    @$(OBJDUMP) -S $@ &gt; $(call asmfile,kernel)  
-    @$(OBJDUMP) -t $@ | $(SED) '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' &gt; $(call symfile,kernel)
-    $(call symfile,kernel)
-    kernel = $(call totarget,kernel)
-</code></pre>
-<h4><span id="2bootblock生成">2.bootblock生成</span></h4><pre><code>    bootfiles = $(call listf_cc,boot) 
-</code></pre>
-<p> 用boot替换listf_cc里面的变量，将listf_cc的返回值赋给bootfiles,也就是滤出.c,.s文件</p>
-<pre><code>    $(foreach f,$(bootfiles),$(call cc_compile,$(f),$(CC),$(CFLAGS) -Os -nostdinc))
-</code></pre>
-<p> 编译bookfiles</p>
-<pre><code>    bootblock = $(call totarget,bootblock) 
-</code></pre>
-<p> 生成bootblock</p>
-<pre><code>    $(bootblock): $(call toobj,$(bootfiles)) | $(call totarget,sign)
-</code></pre>
-<p> 生成目标文件bootblock需要依赖于sign和bootfiles</p>
-<pre><code>    @echo + ld $@       
-</code></pre>
-<p> 将以下文件与bootblock连接起来</p>
-<pre><code>    $(V)$(LD) $(LDFLAGS) -N -e start -Ttext 0x7C00 $^ -o $(call toobj,bootblock)
-    @$(OBJDUMP) -S $(call objfile,bootblock) &gt; $(call asmfile,bootblock)    
-    @$(OBJCOPY) -S -O binary $(call objfile,bootblock) $(call outfile,bootblock)
-    @$(call totarget,sign) $(call outfile,bootblock) $(bootblock)
-
-    $(call create_target,bootblock)
-</code></pre>
-<h4><span id="3生成sign工具">3.生成sign工具</span></h4><pre><code>    $(call add_files_host,tools/sign.c,sign,sign)
-    $(call create_target_host,sign,sign)
-</code></pre>
-<ul>
-<li>由sign工具、bootfile生成bootblock</li>
-<li>由KOBJS生成kernel</li>
-<li>由kernel和bootblock生成最终的ucore.img</li>
-</ul>
-<h3><span id="2一个被系统认为是符合规范的硬盘主引导扇区的特征是什么">2.一个被系统认为是符合规范的硬盘主引导扇区的特征是什么?</span></h3><p> 通过查阅资料我们可以知道bootblock区域包含用于引导的最小指令集，而在上一个问题中我们发现bootblock的生成需要依赖于sign.c文件和bootfiles文件，其中bootfiles提供开机启动所需要的文件，而sign.c则代表生成bootblock的规范。<br> 因此，我们去在文件夹中查看sign.c文件。<br> 文件代码如下：</p>
-<pre><code>    char buf[512];  //定义buf数组
-    memset(buf, 0, sizeof(buf));
-      // 把buf数组的最后两位置为 0x55, 0xAA
-    buf[510] = 0x55;  
-    buf[511] = 0xAA;
-    FILE *ofp = fopen(argv[2], "wb+");
-    size = fwrite(buf, 1, 512, ofp);
-    if (size != 512) {       //大小为512字节
-        fprintf(stderr, "write '%s' error, size is %d.\n", argv[2], size);            
-        return -1;
-    }
-</code></pre>
-<p> 通过查看这里的代码，我们可以发现sign规范中给buf提供了512个字节的空间，而且bootblock的格式是最后两个字节分别是0x55和0xAA，而这也是操作系统课上提到的两个神奇的数。</p>
-<h2><span id="练习2">练习2</span></h2><h4><span id="1使用qemu调试make文件">1.使用qemu调试make文件</span></h4><p> 在进入lab1文件夹之后，使用命令 make debug 进入调试模式。<br> （1）在查看了tools文件夹中的gdbinit文件之后，可以看到存在代码</p>
-<pre><code>    target remote localhost：1234
-</code></pre>
-<p>   这代表着在启动之后会连接qemu和gdb。<br> （2）在make debug之后输入stepi，可以按照机器指令单步执行。<br> （3）一开始进入的是init.c程序。提示是init the console。<br><img src="https://i.loli.net/2021/04/12/BYtSXi2GRELoAWr.jpg" alt="mmexport1618159483754"><br> （4）再执行几次step执行源代码之后，就进入stdio.c文件。<br> （5）像这样反复执行step/next语句，就可以按照程序源代码一步一步执行了。</p>
-<h4><span id="2在初始化位置0x7c00设置实地址断点">2.在初始化位置0x7c00设置实地址断点</span></h4><p> 在tools文件夹中的gdbinit文件中增加”b*0x7c00”语句，可以在实地址0x7c00位置设置一个断点。<br><img src="https://i.loli.net/2021/04/12/tLjaWr6zifSFGms.jpg" alt="mmexport1618159486187"></p>
-<h4><span id="3单步跟踪反汇编得到的代码与bootasms和bootblockasm进行比较">3.单步跟踪反汇编得到的代码与bootasm.s和bootblock.asm进行比较</span></h4><p> 在位置0x7c00位置之后单步执行机器指令并且查看反汇编语句，和gedit打开的bootblock.asm文件进行对比。可以找到这个位置正好在bootblock.asm文件中。在位置0x7c00这里有着相同的语句。<br><img src="https://i.loli.net/2021/04/12/jPdDXh3wg8rTqIy.jpg" alt="mmexport1618159487968"><br> 注意在这里要在gdb中执行如下的指令</p>
-<pre><code>    define hook-stop
-    x/i $pc
-    end
-</code></pre>
-<p> 这样才可以进入反汇编的状态<br> 同时我们查看bootasm.s文件之后，可以看到这样的代码</p>
-<pre><code>    \#Set up the stack pointer and call into C. The stack region is from 0--start(0x7c00)
-    movl $0x0, %ebp
-    movl $start, %esp
-    call bootmain
-</code></pre>
-<p> 意味着从这里开始跳转到0x7c00.</p>
-<h4><span id="4自己找一个bootloader或者内核中的代码位置设置断点并进行测试">4.自己找一个bootloader或者内核中的代码位置，设置断点并进行测试</span></h4><p> 像上个问题一样在gdbinit里面写入*b 0x7c1a，设置断点，然后类似的进行单步调试。</p>
-<h2><span id="练习3">练习3</span></h2><p>分析bootloader进入保护模式的过程。<br>BIOS将通过读取硬盘主引导扇区到内存，并转跳到对应内存中的位置执行bootloader。请分析bootloader是如何完成从实模式进入保护模式的。<br>提示：需要阅读小节“保护模式和分段机制”和lab1/boot/bootasm.S源码，了解如何从实模式切换到保护模式，需要了解：<br>1、为何开启A20<br>2、以及如何开启A20<br>3、 如何初始化GDT表<br>4、如何使能和进入保护模式</p>
-<h3><span id="分析">分析</span></h3><h4><span id="首先bootloader从实模式进入保护模式要经过一下几个步骤">首先bootloader从实模式进入保护模式要经过一下几个步骤：</span></h4><p> 1、开启A20门<br> 2、建立GDT表并对其进行初始化操作<br> 3、设置cr0寄存器的值为1  </p>
-<h4><span id="当寄存器值切换后方可表示模式切换成功">当寄存器值切换后方可表示模式切换成功</span></h4><h4><span id="初始状态a20地址线被屏蔽所以一直保持为0我们要进一步访问内存需要a20地址线需要将其打开">初始状态A20地址线被屏蔽所以一直保持为0，我们要进一步访问内存需要A20地址线，需要将其打开。</span></h4><h3><span id="一-开启a20">一、开启A20</span></h3><h4><span id="打开a20-gate的具体步骤大致如下">打开A20 Gate的具体步骤大致如下：</span></h4><p> 1、等待8042 Input buffer为空<br> 2、发送Write 8042 Output Port （P2） 命令到8042 Input buffer<br> 3、等待8042 Input buffer为空<br> 4、将8042 Output Port（P2） 对应字节的第2位置1，然后写入8042 Input buffer     </p>
-<pre><code>    #  开启A20：通过将键盘控制器上的A20线置于高电位，全部32条地址线可用，
-    #  可以访问4G的内存空间。
-seta20.1:
-    inb $0x64, %al                                  # Wait for not busy(8042 input buffer empty).
-    testb $0x2, %al
-    jnz seta20.1
-
-    movb $0xd1, %al                                 # 0xd1 -&gt; port 0x64
-    outb %al, $0x64                                 # 0xd1 means: write data to 8042's P2 port
-
-seta20.2:
-    inb $0x64, %al                                  # Wait for not busy(8042 input buffer empty).
-    testb $0x2, %al
-    jnz seta20.2
-
-    movb $0xdf, %al                                 # 0xdf -&gt; port 0x60
-    outb %al, $0x60                                 # 0xdf = 11011111, means set P2's A20 bit(the 1 bit) to 1
-</code></pre>
-<h3><span id="二-建立并初始化gdt寄存器置为1">二、建立并初始化GDT,寄存器置为1</span></h3><pre><code># Switch from real to protected mode, using a bootstrap GDT
-# and segment translation that makes virtual addresses
-# identical to physical addresses, so that the
-# effective memory map does not change during the switch.
-#  初始化GDT表：一个简单的GDT表和其描述符已经静态储存在引导区中，载入即可
-lgdt gdtdesc
-movl %cr0, %eax            #进入保护模式：通过将cr0寄存器PE位置1便开启了保护模式
-orl $CR0_PE_ON, %eax
-movl %eax, %cr0
-</code></pre>
-<h4><span id="完成以后步骤后bootloader已经从实模式进入到了保护模式">完成以后步骤后bootloader已经从实模式进入到了保护模式</span></h4><h2><span id="练习4">练习4</span></h2><pre><code>分析BootLoader加载ELF格式的OS的过程
-通过阅读bootmain.c,了解bootloader如何加载ELF文件。通过分析代码和通过qemu来运行调试
-</code></pre>
-<h3><span id="分析">分析</span></h3><p>首先看bootmain函数</p>
-<pre><code class="C">void bootmain(void){
-   //read the 1st page off disk
-   readseg((uintptr_t)ELFHDR,SECTSIZE*8,0);
-
-   //is this a valid ELF?
-   if (ELFHDR-&gt;e_magic !=ELF_MAGIC){
-           goto bad;
-   }
-
-   struct proghdr *ph,*eph;
-
-   // load each program segment(ignores ph flags)
-   ph = (struct proghdr *)((uintptr_t)ELFHDR+ELFHDR-&gt;e_phoff);
-   eph = ph + ELFHDR-&gt;e_phnum;
-   for(;ph&lt;eph;ph++){
-           readseg(ph-&gt;p_va &amp; 0xFFFFFF, ph-&gt;p_memsz, ph-&gt;p_offset);
-   }
-
-   // call the entry point from the ELF header
-   // note:does not return
-   ((void(*)(void))(ELFHDR-&gt;e_entry &amp; 0xFFFFFF))();
-bad:
-   outw(0x8A00,0x8A00);
-   outw(0x8A00,0x8E00);
-
-   /* do nothing */
-   while(1);
-}
-</code></pre>
-<p>先是读磁盘，转入readseg函数</p>
-<pre><code class="C">static void readseg(uintptr_t va,uint32_t count,uint32_t offset){
-      uintptr_t end_va = va + count;
-
-      //round down to sector boundary
-      va -= offset % SECTSIZE ;
-
-      //translate from bytes to sectors; kernel starts at sector 1
-      uint32_t secno = (offset / SECTSIZE) + 1;
-
-      //If this is too slow , we could read lots of sectors at  a time.
-      //We'd write more to memory than asked,but it doesn't matter --
-      //We load in increasing order.
-      for(; va &lt; end_va; va += SECTSIZE, secno ++){
-            readsect((void*)va,secno);
-      }
-}
-</code></pre>
-<p>从readseg函数发现又调用了readsect函数</p>
-<pre><code class="C">static void readsect(void *dst,unit32_t secno){
-      //wait for disk to be ready
-      waitdisk();
-
-      outb(0x1F2, 1);//要读写的扇区数，需要表明要读写几个扇区
-      outb(0x1F3, secno &amp; 0xFF);//LBA参数的0~7位
-      outb(0x1F4, (secno &gt;&gt; 8) &amp; 0xFF);//LBA参数的8~15位
-      outb(0x1F5, (secno &gt;&gt; 16) &amp; 0xFF);//LBA参数的16~23位
-      outb(0x1F6, ((secno &gt;&gt; 24) &amp; 0xF) | 0xE0);//第0~3位：LBA参数的24-27位 第4位：为0主盘；为1从盘
-      outb(0x1F7,0x20);//状态和命令寄存器。操作时先给命令，再读取，如果不是忙状态就从0x1f0端口 读数据
-
-       //wait for disk to be ready
-      waitdisk();
-
-      //read a sector
-      insl(0x1F0,dst,SECTSIZE/4);//读取扇区
-</code></pre>
-<h4><span id="读一个扇区的流程大致如下">读一个扇区的流程大致如下：</span></h4><ol>
-<li>等待磁盘准备好 </li>
-<li>发出读取扇区的命令 </li>
-<li>等待磁盘准备好 </li>
-<li>把磁盘扇区数据读到指定内存</li>
-</ol>
-<p>其中的outb是一个机器指令，是在x86.h中的</p>
-<pre><code class="C">static inline void outb(uint16_t port, unit8_t data){
-      asm volatile("outb %0, %1" :: "a"(data), "d"(port));
-}
-</code></pre>
-<p>用内联汇编实现，用了I0空间寻址方式，能将外部的数据读到内存中来，这也是x86里面的寻址方式</p>
-<p>可以发现首先是等磁盘准备好，然后是写入地址和读取磁盘的命令，最后是按照地址读取磁盘扇区（可参考代码中的中文注释）</p>
-<p>再接着看main函数，用了一个if语句判断是否为ELF文件，具体判断方式为将ELF header中的一个e_magic和一个特定值进行比较，若不是则转入bad,是则继续执行</p>
-<pre><code class="C"> struct proghdr *ph,*eph;
-
-   // load each program segment(ignores ph flags)
-   ph = (struct proghdr *)((uintptr_t)ELFHDR+ELFHDR-&gt;e_phoff);//将ELF文件的头部文表取出存到ph
-   eph = ph + ELFHDR-&gt;e_phnum;
-   for(;ph&lt;eph;ph++){ #加载ELF文件到内存
-           readseg(ph-&gt;p_va &amp; 0xFFFFFF, ph-&gt;p_memsz, ph-&gt;p_offset);
-   }
-
-   // call the entry point from the ELF header
-   // note:does not return
-   ((void(*)(void))(ELFHDR-&gt;e_entry &amp; 0xFFFFFF))();//ELF文件加载完毕后，将控制权交给ucore去执行
-</code></pre>
-<h4><span id="由此完成elf文件的加载">由此完成ELF文件的加载</span></h4><h2><span id="练习5">练习5</span></h2><pre><code>完成kdebug.c中函数print_stackframe的实现，可以通过函数&gt;print_stackframe来跟踪函数调用堆栈中记录的返回地址。
-</code></pre>
-<h3><span id="1-函数堆栈的原理">1、函数堆栈的原理</span></h3><p> 理解函数堆栈最重要的两点是：栈的结构，以及EBP寄存器的作用。</p>
-<p> 一个函数调用动作可分解为零到多个 PUSH指令（用于参数入栈）和一个 CALL 指令。CALL 指令内部其实还暗含了一个将返回地址压栈的动作，这是由硬件完成的。几乎所有本地编译器都会在每个函数体之前插入类似如下的汇编指令：</p>
-<pre><code class="php">pushl %ebp
-movl %esp,%ebp
-</code></pre>
-<p> 这两条汇编指令的含义是：首先将ebp 寄存器入栈，然后将栈顶指针 esp 赋值给 ebp。</p>
-<p> movl %esp %ebp这条指令表面上看是用esp覆盖 ebp原来的值，其实不然。因为给 ebp赋值之前，原ebp 值已经被压栈（位于栈顶），而新的ebp又恰恰指向栈顶。此时ebp寄存器就已经处于一个非常重要的地位，该寄存器中存储着栈中的一个地址（原 ebp入栈后的栈顶），从该地址为基准，向上（栈底方向）能获取返回地址、参数值，向下（栈顶方向）能获取函数局部变量值，而该地址处又存储着上一层函数调用时的ebp值。</p>
-<p> 我们可以直接根据ebp就能读取到各个栈帧的地址和值，一般而言，ss:[ebp+4]处为返回地址，ss:[ebp+8]处为第一个参数值（最后一个入栈的参数值，此处假设其占用 4 字节内存，对应32位系统），ss:[ebp-4]处为第一个局部变量，ss:[ebp]处为上一层 ebp 值。</p>
-<p> 如图<br><img src="https://www.hualigs.cn/image/60718747980ba.jpg"></p>
-<h3><span id="2-print_stackframe函数的实现">2、print_stackframe函数的实现</span></h3><p> 首先我们直接看到print_stackframe函数的注释：</p>
-<pre><code class="php">void print_stackframe(void) {
-     /* LAB1 YOUR CODE : STEP 1 */
-     /* (1) call read_ebp() to get the value of ebp. the type is (uint32_t);
-      * (2) call read_eip() to get the value of eip. the type is (uint32_t);
-      * (3) from 0 .. STACKFRAME_DEPTH
-      *    (3.1) printf value of ebp, eip
-      *    (3.2) (uint32_t)calling arguments [0..4] = the contents in address (unit32_t)ebp +2 [0..4]
-      *    (3.3) cprintf("\n");
-      *    (3.4) call print_debuginfo(eip-1) to print the C calling function name and line number, etc.
-      *    (3.5) popup a calling stackframe
-      *           NOTICE: the calling funciton's return addr eip  = ss:[ebp+4]
-      *                   the calling funciton's ebp = ss:[ebp]
-      */
-}
-</code></pre>
-<p> 这样我们直接根据注释以及之前的相关知识就能比较简单的编写成程序，如下所示：</p>
-<pre><code class="c">void print_stackframe(void) {      
-    uint32_t ebp=read_ebp();//(1) call read_ebp() to get the value of ebp. the type is (uint32_t)
-    uint32_t eip=read_eip();//(2) call read_eip() to get the value of eip. the type is (uint32_t)
-    int i;
-    for(i=0;i&lt;STACKFRAME_DEPTH&amp;&amp;ebp!=0;i++){//(3) from 0 .. STACKFRAME_DEPTH
-          cprintf("ebp:0x%08x   eip:0x%08x ",ebp,eip);//(3.1)printf value of ebp, eip
-          uint32_t *tmp=(uint32_t *)ebp+2;
-          cprintf("arg :0x%08x 0x%08x 0x%08x 0x%08x",*(tmp+0),*(tmp+1),*(tmp+2),*(tmp+3));//(3.2)(uint32_t)calling arguments [0..4] = the contents in address (unit32_t)ebp +2 [0..4]
-          cprintf("\n");//(3.3) cprintf("\n");
-          print_debuginfo(eip-1);//(3.4) call print_debuginfo(eip-1) to print the C calling function name and line number, etc.
-          eip=((uint32_t *)ebp)[1];
-          ebp=((uint32_t *)ebp)[0];//(3.5) popup a calling stackframe
-      }
-}
-</code></pre>
-<p> 实验结果截图如下：</p>
-<p><img src="https://www.hualigs.cn/image/607182a0e97c8.jpg"></p>
-<h2><span id="练习6完善中断初始化和处理">练习6：完善中断初始化和处理</span></h2><p>1、中断描述符表（也可简称为保护模式下的中断向量表）中一个表项占多少字节？其中哪几位代表中断处理代码的入口？<br>2、请编程完善kern/trap/trap.c中对中断向量表进行初始化的函数idt_init。在idt_init函数中，依次对所有中断入口进行初始化。使用mmu.h中的SETGATE宏，填充idt数组内容。每个中断的入口由tools/vectors.c生成，使用trap.c中声明的vectors数组即可。<br>3、请编程完善trap.c中的中断处理函数trap,在对时钟中断进行处理的部分填写trap函数中处理时钟中断的部分，使操作系统毎遇到100次时钟中断后，调用print_tricks子程序，在屏幕上打印一行文字“100 ticks”。</p>
-<h3><span id="1-中断描述符表中一个表项占8字节">1、中断描述符表中一个表项占8字节</span></h3><p><img src="https://i.loli.net/2021/04/12/AgIlN5Sc1YDE9oP.png" alt="mmexport1618159489650"></p>
-<p>如上图所示，其中的0-15位是offset的低16位，48-63位是offset的高16位，16-31位是段选择子，用于索引全局描述符表GDT来获取中断处理代码对应的段地址，再加上段内偏移量即可得到中断处理代码的入口。</p>
-<h3><span id="2-完善初始化函数">2、完善初始化函数</span></h3><pre><code>  （1）根据函数中的注释提示，第一步是声明__vertors[];
-    (2) 第二步是使用SETGATE填充中段描述符表IDT
-    (3) 第三步是使用lidt指令让CPU加载中断描述符表IDT
-</code></pre>
-<p> 具体的代码如下：</p>
-<pre><code class="C">void idt_init(void){
-      extern uintptr_t __vecors[];
-      int i;
-      for(i=0; i &lt; 256; i++){
-          SETGATE(idt[i],0,GD_KTEXT,__vectors[i],DPL_KERNEL);
-      }
-      SETGATE(idt[T_SWITCH_TOK],0,GD_KTEXT,__vectors[T_SWITCH_TOK],DPL_USER);
-      lidt(&amp;idit_pd);
-}
-</code></pre>
-<p> 其中宏SETGATE的定义为</p>
-<pre><code>#define SETGATE(gate, istrap, sel, off, dpl)
-</code></pre>
-<p> GD_KTEXT和DPL_KERNEL的定义在memlayout.h中<br><img src="https://i.loli.net/2021/04/12/FitCeqP7261J3jn.png" alt="mmexport1618159491208"><br> gate表示处理函数的入口地址，此处即idt[]数组中的内容<br>istrap表示1为异常门，0为中断门<br>sel表示段选择子<br>off表示偏移量，此处即__vectors[]数组中的内容<br>dpl表示设置等级，此处设置为DPL_KERNEL，恒为0</p>
-<h3><span id="3-编写函数">3、编写函数</span></h3><p>根据提示，需要用一个全局变量记录每次时钟中断，然后用print_ticks()打印“100 ticks”后重新从0开始计数，参照clock.c,写出如下函数：</p>
-<pre><code class="C">case IRQ_OFFSET+IRQ_TIMER:
-ticks=ticks+1;
-if(ticks==TICK_NUM){
-      print_ticks();
-      ticks=0;
-}
-break;
-</code></pre>
-<p> 其中TICK_NUM已被定义为100<br> 最后的运行结果为下图：<br><img src="https://i.loli.net/2021/04/12/5UolSrpgHAkIKDv.png" alt="mmexport1618159492686"><br><img src="https://i.loli.net/2021/04/12/LeNXnSIkDY26UGE.png" alt="mmexport1618159481302"></p>
-<h2><span id="challenge-1amp2-新建用户态并进行内核态互换">Challenge 1&amp;2 新建用户态并进行内核态互换</span></h2><p>通过编写c++内联汇编函数，来实现用户态和内核态的切换。</p>
-<p>已知初始化内核的函数如下：</p>
-<pre><code>static void
-switch_test(void) {
-    print_cur_status(); // print 当前 cs/ss/ds 等寄存器状态
-    cprintf("+++ switch to user mode +++\n");
-    switch_to_user(); // switch to user mode
-    print_cur_status();
-    cprintf("+++ switch to kernel mode +++\n");
-    switch_to_kernel(); // switch to kernel mode
-    print_cur_status();
-}
-</code></pre>
-<p>而在init.c里面没有switch_to_user函数的内容以及switch_to_kernel函数的内容，因此这些部分需要编程。</p>
-<h3><span id="1调到用户态">1.调到用户态</span></h3><p> 通过编写switch_to_user的内容来使在内核初始化的时候可以切换到用户态。</p>
-<pre><code>asm volatile (
-    "sub $0x8, %%esp \n"
-    "int %0 \n"
-    "movl %%ebp, %%esp"
-    : 
-    : "i"(T_SWITCH_TOU)
-);
-</code></pre>
-<p> 通过编写内联汇编语句来实现切换，用中断处理int 0来实现，需要输入的“i”也就是T_SWITCH_TOU。调整栈顶指针和栈底指针开辟程序空间之后，进行中断来实现切换。<br> 在trap.c中要修改t_switch_tou的内容</p>
-<pre><code>case T_SWITCH_TOU:
-    if (tf-&gt;tf_cs != USER_CS) {
-        switchk2u = *tf;
-        switchk2u.tf_cs = USER_CS;
-        switchk2u.tf_ds = switchk2u.tf_es = switchk2u.tf_ss = USER_DS;
-        switchk2u.tf_esp = (uint32_t)tf + sizeof(struct trapframe) - 8;
-        switchk2u.tf_eflags |= FL_IOPL_MASK;
-        *((uint32_t *)tf - 1) = (uint32_t)&amp;switchk2u;
-      }
-      break;
-</code></pre>
-<p> 这段代码可以使原来的状态不是用户态时候，将原来的状态修改成用户态。</p>
-<pre><code>switchk2u.tf_eflags |= FL_IOPL_MASK;
-*((uint32_t*)tf - 1) = (uint32_t)&amp;switchk2u;
-</code></pre>
-<p> 将这里的标记确认成为用户态，并且中断返回到正确的栈。</p>
-<h3><span id="2用户态到内核态">2.用户态到内核态</span></h3><p> 用类似的内联汇编处理。</p>
-<pre><code>asm volatile (
-    "int %0 \n"
-    "movl %%ebp, %%esp \n"
-    : 
-    : "i"(T_SWITCH_TOK)
-);
-</code></pre>
-<p> 因为切换到的是内核态，不需要更多空间，所以相比内核到用户的内联汇编不再需要在栈指针减去一个值来开辟空间。</p>
-<p> 然后我们同样需要在trap.c中修改T_SWITCH_TOK的内容</p>
-<pre><code>case T_SWITCH_TOK:
-    if (tf-&gt;tf_cs != KERNEL_CS) {
-        tf-&gt;tf_cs = KERNEL_CS;
-        tf-&gt;tf_ds = tf-&gt;tf_es = KERNEL_DS;
-        tf-&gt;tf_eflags &amp;= ~FL_IOPL_MASK;
-        switchu2k = (struct trapframe *)(tf-&gt;tf_esp (sizeof(struct trapframe) - 8));
-        memmove(switchu2k, tf, sizeof(struct trapframe) - 8);
-        *((uint32_t *)tf - 1) = (uint32_t)switchu2k;
-      }
-</code></pre>
-<p> 跟之前切换的修改类似</p>
-<h3><span id="3实现切换">3.实现切换</span></h3><pre><code>case IRQ_OFFSET + IRQ_KBD:
-        c = cons_getc();
-        cprintf("kbd [%03d] %c\n", c, c);
-        if(c == '0' &amp;&amp; (tf-&gt;tf_cs &amp; 3) != 0)
-        {
-                cprintf("Input 0......switch to kernel\n");
-                tf-&gt;tf_cs = KERNEL_CS;
-                tf-&gt;tf_ds = tf-&gt;tf_es = KERNEL_DS;
-                tf-&gt;tf_eflags &amp;= ~FL_IOPL_MASK;
-        }
-        else if (c == '3' &amp;&amp; (tf-&gt;tf_cs &amp; 3) != 3)
-        {
-                cprintf("Input 3......switch to user\n");
-                tf-&gt;tf_cs = USER_CS;
-                tf-&gt;tf_ds = tf-&gt;tf_es = tf-&gt;tf_ss = USER_DS;
-                tf-&gt;tf_eflags |= FL_IOPL_MASK;
-        }
-        break;
-</code></pre>
-<p>修改完代码之后执行</p>
-<pre><code>make qemu
-</code></pre>
-<p>键盘输入0或3即可实现切换<br><img src="https://i.loli.net/2021/04/12/BlXaezgdp5FUqCi.png" alt="image-20210412215946076"></p>
-<h4><span id="最终评分">最终评分</span></h4><p><img src="https://i.loli.net/2021/04/12/lsaMBPhk21v57wG.png" alt="image-20210412042453346"></p>
-]]></content>
-      <categories>
-        <category>Homework</category>
-      </categories>
-      <tags>
-        <tag>Homework</tag>
-        <tag>OS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>可视化第一次作业</title>
-    <url>/blog/2021/042021410.html</url>
-    <content><![CDATA[<h2><span id="作业内容">作业内容</span></h2><p>1．编程实现消息测试程序，满足以下要求：</p>
-<ul>
-<li>按下键盘任意字符键（至少识别两个功能键），客户区中显示按键信息（字符或功能键内容）；</li>
-<li>单击鼠标左键，消息对话框中显示鼠标信息（鼠标左键+坐标）；</li>
-<li>假设鼠标右键失灵，用Ctrl+鼠标左键代替，消息对话框中显示鼠标信息（鼠标右键+坐标）；</li>
-<li>自定义WM_MY_MESSAGE消息，带10和100两个参数，由“#”（不是“3”）键激活，客户区中显示相应信息（自定义消息+参数）。</li>
-</ul>
-<p>2．编程实现SmallBall程序，满足以下要求：</p>
-<ul>
-<li><p>黑色小球，从左上角开始，沿着45度方向移动，遇到边界反弹；</p>
-</li>
-<li><p>通过两个菜单项（加速与减速），调节小球的移动幅度（递增或递减）；</p>
-</li>
-<li><p>通过两个工具栏按钮，控制小球停止与再次启动。</p>
-<h2><span id="展示">展示</span></h2><h3><span id="key">Key</span></h3></li>
-<li><p>常规按键<img src="https://i.loli.net/2021/04/10/LtxDPg4NpKm3bJX.png" alt="image-20210410023017458"></p>
-</li>
-<li><p>功能键<img src="https://i.loli.net/2021/04/10/HPatbpGTQgdBCJN.png" alt="image-20210410023048135"></p>
-</li>
-<li><p>单击鼠标左键<img src="https://i.loli.net/2021/04/10/JfwLslFUXH6tzTB.png" alt="image-20210410023059952"></p>
-</li>
-<li><p>Ctrl+鼠标左键替代鼠标右键<img src="https://i.loli.net/2021/04/10/PYLnBzyw5SKOXeI.png" alt="image-20210410023133667"></p>
-</li>
-<li><p>自定义Message<img src="https://i.loli.net/2021/04/10/cCtlwdvs8QXrESo.png" alt="image-20210410023153774"></p>
-<h3><span id="ball">Ball</span></h3></li>
-</ul>
-<p><img src="https://i.loli.net/2021/04/10/WS6rURfknB49DNc.png" alt="image-20210410030903621"></p>
-<ul>
-<li><p>加速<img src="https://i.loli.net/2021/04/10/PHjtbaTiSw37Xl6.png" alt="image-20210410030933797"></p>
-</li>
-<li><p>减速<img src="https://i.loli.net/2021/04/10/YzKMdRfaXbGpCDI.png" alt="image-20210410030948776"><img src="https://i.loli.net/2021/04/10/Uq483YVEaDMZKc2.png" alt="image-20210410031001983"></p>
-</li>
-<li><p>暂停<img src="https://i.loli.net/2021/04/10/7n9xGEIcN6SXsrw.png" alt="image-20210410031024027"></p>
-</li>
-<li><p>启动<img src="https://i.loli.net/2021/04/10/VkzQeE72lSgiXbr.png" alt="image-20210410031045983"></p>
-</li>
-<li><p>有轨迹<img src="https://i.loli.net/2021/04/10/eG64R9viCbpTWoL.png" alt="image-20210410031059904"></p>
-</li>
-<li><p>状态栏<img src="https://i.loli.net/2021/04/10/CBJrvedRExpFKhy.png" alt="image-20210410031125221"></p>
-<h2><span id="实现过程">实现过程</span></h2><h3><span id="key">Key</span></h3><h5><span id="添加命令">添加命令</span></h5><p>在MESSAGE_MAP处添加本项目所需所有打印命令，包括自定义命令。</p>
-<pre><code>BEGIN_MESSAGE_MAP(CKeyView, CView)
-  //标准打印命令
-  ON_COMMAND(ID_FILE_PRINT, &amp;CView::OnFilePrint)
-  ON_COMMAND(ID_FILE_PRINT_DIRECT, &amp;CView::OnFilePrint)
-  ON_COMMAND(ID_FILE_PRINT_PREVIEW, &amp;CView::OnFilePrintPreview)
-  ON_WM_LBUTTONUP()
-  ON_WM_CHAR()
-  ON_WM_KEYDOWN()
-  ON_MESSAGE(WM_MYMESSAGE, OnMyMessage)
-END_MESSAGE_MAP()
-</code></pre>
-<h5><span id="头文件函数声明">头文件函数声明</span></h5><p>在KeyView.h头文件里面声明OnLButtonUp，OnChar，PreTranslateMessages，以及OnMyMessage函数</p>
-<pre><code>protected:
-  afx_msg void OnLButtonUp(UINT nFlags, CPoint point);      //添加鼠标左键点击函数，以及按键事件函数
-  afx_msg void OnChar(UINT nChar, UINT nRedCnt, UINT nFlags);
-  virtual BOOL PreTranslateMessage(MSG* pMsg);
-  afx_msg LRESULT OnMyMessage(WPARAM wParam, LPARAM lParam);
-</code></pre>
-<h5><span id="void-ckeyviewonlbuttonupuint-nflags-cpoint-point">void CKeyView::OnLButtonUp(UINT nFlags, CPoint point)</span></h5><p>本函数主要实现鼠标左键点击以及替代右键功能，利用if语句如果是Ctrl+鼠标左键的话，则输出右键点击，并利用point来获取当前坐标，使用TextOutW来输出，如果if条件不成立，则输出左键点击</p>
-<pre><code>void CKeyView::OnLButtonUp(UINT nFlags, CPoint point)
-{
-  CDC* pDC = GetDC();
-  CString m_str;
-  if (nFlags &amp; MK_CONTROL)//ctrl+左键代表右键
-      m_str.Format(L"X:%d,Y:%d:Right Mouse Button Clicked!", point.x, point.y);
-  else
-      m_str.Format(L"X:%d,Y:%d:Left Mouse Button Clicked!", point.x, point.y);
-  pDC-&gt;TextOutW(point.x, point.y, m_str);
-}
-</code></pre>
-<h5><span id="void-ckeyviewoncharuint-nchar-uint-nredcnt-uint-nflags">void CKeyView::OnChar(UINT nChar, UINT nRedCnt, UINT nFlags)</span></h5><p>本函数主要实现常规按键和自定义消息#键（在自定义消息里面讲）的输出，首先获取当前按键的字符，如果不是#，则弹出弹框声明</p>
-<pre><code>void CKeyView::OnChar(UINT nChar, UINT nRedCnt, UINT nFlags)
-{
-  if (nChar == '#') //按键如果是#则调用自定义消息，其他则调用系统消息
-      SendMessage(WM_MYMESSAGE, 10, 100);
-  else
-  {
-      CString str;
-      str.Format(L"%c Key Entered!", nChar);
-      MessageBox(str);
-  }
-  CView::OnChar(nChar, nRedCnt, nFlags);
-}
-</code></pre>
-<h5><span id="bool-ckeyviewpretranslatemessagemsg-pmsg">BOOL CKeyView::PreTranslateMessage(MSG* pMsg)</span></h5><p>本函数实现功能按键，主要思路就是通过pMsg的wParam来对应不同功能键，从而进行输出，考虑到shift和ctrl的常用性，并没有对其进行添加，其他功能键也类似<br>```<br>BOOL CKeyView::PreTranslateMessage(MSG* pMsg)<br>{<br>  if (pMsg-&gt;message == WM_KEYDOWN)//添加功能键，方法类似可添加更多，常用ctrl和shift注释掉了以免影响其他键的操作<br>  {<br>  if (pMsg-&gt;wParam == VK_F1)  MessageBox(L”F1 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F2)  MessageBox(L”F2 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F3)  MessageBox(L”F3 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F4)  MessageBox(L”F4 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F5)  MessageBox(L”F5 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F6)  MessageBox(L”F6 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F7)  MessageBox(L”F7 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F8)  MessageBox(L”F8 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F9)  MessageBox(L”F9 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F10)  MessageBox(L”F10 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F11)  MessageBox(L”F11 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_F12)  MessageBox(L”F12 Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_UP)  MessageBox(L”↑ Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_DOWN)  MessageBox(L”↓ Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_LEFT)  MessageBox(L”← Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_RIGHT)  MessageBox(L”→ Key Entered!”);<br>  //if (pMsg-&gt;wParam == VK_CONTROL)  MessageBox(L”Ctrl Key Entered!”);<br>  if (pMsg-&gt;wParam == VK_CAPITAL)  MessageBox(L”CapsLk Key Entered!”);<br>  //if (pMsg-&gt;wParam == VK_SHIFT)  MessageBox(L”Shift Key Entered!”);<br>  }</p>
-<p>  return CView::PreTranslateMessage(pMsg);</p>
-</li>
-</ul>
-<p>}</p>
-<pre><code>##### 自定义消息
-- 首先声明自己的消息名字和编号
-</code></pre>
-<p>  #define WM_MYMESSAGE WM_USER+10</p>
-<pre><code>- 声明一个关于自定义消息的响应函数OnMyMessage
-- 在Onchar里面实现，如果按下#键，则SendMessage，含有两个参数10和100
-</code></pre>
-<p>  if (nChar == ‘#’) //按键如果是#则调用自定义消息，其他则调用系统消息<br>        SendMessage(WM_MYMESSAGE, 10, 100);</p>
-<pre><code>##### 定义主面板名称
-</code></pre>
-<p>cs.style &amp;= ~FWS_ADDTOTITLE;                    //修改主窗口标题<br>m_strTitle = _T(“Key”);</p>
-<pre><code>### Ball
-小球采用异或方法来实现小球的消除，也可以实现小球的轨迹消除，通过Timer来实现小球的不断移动和刷新，从而造成一种小球运动的现象，
-##### 声明Ball类变量
-</code></pre>
-<p>public:<br>    afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);//声明timer<br>    afx_msg void OnDestroy();<br>    afx_msg void OnTimer(UINT_PTR nIDEvent);<br>private:<br>    int x;        //x，y表示当前坐标，step_num表示步幅倍数，step_x,step_y表示每次移动距离的单位<br>    int y;<br>    int step_num;<br>    int step_x;<br>    int step_y;<br>    int size;   //小球大小<br>    bool begin_pause;   //小球状态<br>    bool trail;     //小球轨迹状态<br>public:<br>    afx_msg void OnSpeedUp();   //声明加速函数<br>    afx_msg void OnSpeedDown();  //声明减速函数<br>    afx_msg void OnTrail();     //声明轨迹函数<br>    afx_msg void OnBegin_Pause();  //声明状态函数</p>
-<pre><code>
-##### 实现小球运动
-不断函数调用来实现小球的运动，采用step_num来控制小球的速度，当按下加速键是step_num加1，加速，减速同理，当速度为1是，如果继续减速，将强制停止此操作，并弹出消息提示，暂停功能的实现是通过阶数当前计时器，开始则重新开启一个同样编号的计时器，轨迹的消除通过控制变量trail来实现，如果不需要轨迹，则执行异或操作将轨迹消除，并进行清屏，反之则不执行
-</code></pre>
-<p>int CBallView::OnCreate(LPCREATESTRUCT lpCreateStruct)<br>{<br>    if (CView::OnCreate(lpCreateStruct) == -1)<br>        return -1;</p>
-<pre><code>// TODO:  在此添加您专用的创建代码
-SetTimer(1, 100, NULL);//计时器编号，刷新时间（ms)可以通过刷新时间来实现加速和减速
-return 0;
-</code></pre>
-<p>}</p>
-<p>void CBallView::OnDestroy()<br>{<br>    CView::OnDestroy();</p>
-<pre><code>KillTimer(1);
-</code></pre>
-<p>}</p>
-<p>void CBallView::OnTimer(UINT_PTR nIDEvent)<br>{<br>    if (nIDEvent == 1)<br>    {<br>        CRect rect;<br>        GetClientRect(&amp;rect);<br>        CDC* pDC = GetDC();<br>        pDC-&gt;SetROP2(R2_XORPEN);<br>        pDC-&gt;Ellipse(x, y, x + size, y + size);<br>        x += step_x<em>step_num;  //通过改变步幅倍率来改变速度<br>        y += step_y</em>step_num;<br>        theApp.x_ = x;<br>        theApp.y_ = y;<br>        if (x&lt;0 || x&gt;rect.right - size)  //转向操作<br>        {<br>            step_x = 0 - step_x;<br>        }<br>        if (y&lt;0 || y&gt;rect.bottom - size)<br>        {<br>            step_y = 0 - step_y;<br>        }<br>        if (!trail) //是否保留轨迹，不保留则通过异或消除<br>            pDC-&gt;Ellipse(x,y,x+size,y+size);<br>    }<br>    CView::OnTimer(nIDEvent);<br>}</p>
-<pre><code>##### 菜单栏的实现
-在资源视图中找到主视图进行添加相应部分，并添加事件来响应![image-20210410031318645](https://i.loli.net/2021/04/10/CGXbiHruFw5kjBp.png)
-</code></pre>
-<p>void CBallView::OnSpeedUp() //加速函数，并弹出弹框提示速度信息<br>{<br>    // TODO: 在此添加命令处理程序代码<br>    step_num++;<br>    theApp.speed_ = step_num;<br>    CString str;<br>    str.Format(L”Current speed:%d”, step_num);<br>    MessageBox(str);<br>}</p>
-<p>void CBallView::OnSpeedDown()  //减速函数，并弹出弹框提示速度信息，如果速度为1，仍要减速，则不允许减速，弹出提示消息<br>{<br>    // TODO: 在此添加命令处理程序代码<br>    if (step_num &gt; 1)<br>    {<br>        step_num–;<br>        theApp.speed_ = step_num;<br>        CString str;<br>        str.Format(L”Current speed:%d”, step_num);<br>        MessageBox(str);<br>    }<br>    else//速度为1<br>    {<br>        CString str;<br>        str.Format(L”                          Current speed:%d\n\dThe current speed is already the minimum.\n           No more deceleration is allowed.”, step_num);<br>        MessageBox(str);<br>    }<br>}</p>
-<p>void CBallView::OnTrail()//是否保留轨迹，不保留则通过用白色刷新全屏来实现清屏<br>{<br>    // TODO: 在此添加命令处理程序代码<br>    if (trail)<br>    {<br>        trail = false;<br>        CDC* pDC = GetDC();<br>        CRect rc;<br>        GetClientRect(&amp;rc);</p>
-<pre><code>    pDC-&gt;FillSolidRect(&amp;rc, RGB(255, 255, 255));
-    pDC-&gt;SetROP2(R2_XORPEN);
-    pDC-&gt;Ellipse(x, y, x + size, y + size);
-    ReleaseDC(pDC);
-}
-else
-    trail = true; 
-</code></pre>
-<p>}</p>
-<p>//void CBallView::OnBegin_Pause()//暂停实现方法一，步幅倍率为0，则一直在原地刷新，小球会一直闪动<br>//{<br>//	// TODO: 在此添加命令处理程序代码<br>//	if (begin_pause == 0)<br>//	{<br>//		begin_pause = step_num;<br>//		step_num = 0;<br>//	}<br>//	else<br>//	{<br>//		step_num = begin_pause;<br>//		begin_pause = 0;<br>//	}<br>//}<br>void CBallView::OnBegin_Pause()//暂停实现方法二，通过kill掉Timer来实现暂停，开始则重新申请一个Timer<br>{<br>    // TODO: 在此添加命令处理程序代码<br>    if (!begin_pause)<br>    {<br>        begin_pause = true;<br>        KillTimer(1);<br>    }<br>    else<br>    {<br>        SetTimer(1, 100, NULL);<br>        begin_pause = false;<br>    }<br>}</p>
-<pre><code>##### 状态栏的实现
-新建三个状态 速度，位置和时间，并将其添加到indicators数组里面，使用SetPaneInfo函数来设置三个状态的信息以及宽度，然后继续利用Timer来不断刷新，速度和位置采用全局变量来获得，时间则通过CTime::GetCurrentTime()函数实现。![image-20210410031352719](https://i.loli.net/2021/04/10/5Q8AhTBCuRIslO7.png)
-</code></pre>
-<p>m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));</p>
-<p>m_wndStatusBar.SetPaneInfo(4, IDS_INDICATOR_SPEED, SBPS_POPOUT, 50);//设置三个信息的位置和宽度<br>m_wndStatusBar.SetPaneInfo(5, IDS_INDICATOR_MESSAGE, SBPS_POPOUT, 110);<br>m_wndStatusBar.SetPaneInfo(6, IDS_INDICATOR_TIME, SBPS_POPOUT, 50);<br>RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, IDS_INDICATOR_TIME);</p>
-<p>//添加时间显示函数<br>SetTimer(2, 100, NULL);<br>CTime t1;</p>
-<p>CString str_1;                                      //对三栏信息进行初始化<br>str_1.Format(L”Speed:%d”, theApp.speed_);<br>m_wndStatusBar.SetPaneText(4, str_1);</p>
-<p>CString str_2;<br>str_2.Format(L”Location(%d,%d)”, theApp.x_, theApp.y_);<br>m_wndStatusBar.SetPaneText(5, str_2);</p>
-<p>t1 = CTime::GetCurrentTime();<br>m_wndStatusBar.SetPaneText(6, t1.Format(“%H:%M:%S”));</p>
-<pre><code>
-</code></pre>
-<p>void CMainFrame::OnTimer(UINT_PTR nIDEvent)//通过timer来实现刷新<br>{<br>    CTime t1;</p>
-<pre><code>CString str_1;
-str_1.Format(L"Speed:%d", theApp.speed_);
-m_wndStatusBar.SetPaneText(4, str_1);
-
-CString str_2;
-str_2.Format(L"Location(%d,%d)", theApp.x_, theApp.y_);
-m_wndStatusBar.SetPaneText(5, str_2);
-
-t1 = CTime::GetCurrentTime();//获取当前时间来刷新状态栏
-m_wndStatusBar.SetPaneText(6, t1.Format("%H:%M:%S"));
-
-
-CFrameWnd::OnTimer(nIDEvent);
-</code></pre>
-<p>}</p>
-<pre><code>##### 定义主面板名称
-</code></pre>
-<p>cs.style &amp;= ~FWS_ADDTOTITLE;                    //修改主窗口标题<br>m_strTitle = _T(“Ball”);</p>
-<pre><code>
-## 实验收获
-通过本次实验掌握了MFC的基本操作，理解了其实现功能的机制（消息的发送和执行），了解了一些基本函数的使用的，在对其界面优化过程中，通过实践对其理解加深，主要存在困难就是对函数的使用，以及初步接触MFc对其实现机制不太了解，实验过后相信会有所提升。
-</code></pre>
-]]></content>
-      <categories>
-        <category>Homework</category>
-      </categories>
-      <tags>
-        <tag>Homework</tag>
-        <tag>MFC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo+Github搭建自己的博客</title>
-    <url>/blog/2021/03711.html</url>
-    <content><![CDATA[<p>​	今天算是把自己的简易博客给搭建了起来，虽然说很丑，很多地方优化还没做好，功能也不太全，但是，做事情嘛，总是要一步步来的，哪有一蹴而就的事情，自己慢慢摸索，踩了许多坑之后，也把这其中的原理摸索了个七七八八，虽然说要我写个主题是天大的难题，但是理解博客的架构，以及github的用法也是很容易的，甚至就连命令也因为出错太多，四处填坑而记得些常用的，所以说做事情别人教给自己的和自己摸索的是完全不一样的，当然这个摸索也是在其他大佬教程和错误修正基础之上摸索的，并不是“白手起家”，废话不多说，进入正题，记录一些我自己的搭建过程，也是那些像我一样的小白提供一个同样水平的教程，绝对包教包会，首先我们先来了解一下他们的工作原理，通俗理解，如有不对，欢迎指正。</p>
-<h2><span id="关于github">关于Github</span></h2><p>​		首先关于Github，本质上讲就是一个比较通用的代码托管平台。你可以将自己做的项目之类balabala的都放在里面，取用方便，最重要的是他完全免费，是一个很好的托管平台，做一些比较大的项目也可以多人协作（扯远了），回来说我们的博客，你可以在Github上面建立一个或者多个仓库，名字可以任意取，这些仓库本质没有区别，Github还为每个仓库提供一个页面还有主题（当然主体比较单一，还比较<del>漂亮</del>chou），当然你也可以选择自己搭配喜欢的主题。唯一不同之处就是Github给每个用户提供一个域名（username.github.io），当你的仓库以这个格式命名的时候，他就会默认这个仓库的界面就是你的网站主界面，其他的仓库就是他的子目录，就这么点区别，举个栗子，我的用户名是Test，那么我的网站主界面就是<a href="https://test.github.io,/">https://Test.github.io，</a> 他所代表的仓库名字就是Test.github.io，如果我还有一个仓库名字是Blog，那么这个仓库的主界面就要用<a href="https://test.github.io/Blog">https://Test.github.io/Blog</a> 打开，这样说就很简单易懂了吧，其他区别完全没有，名字你可随便改，当你给哪个仓库命名为username.github.io时，默认打开就是这个仓库主界面（当然站点配置也要改，不然会出错的）。</p>
-<h2><span id="关于git">关于Git</span></h2><p>​		Git本身就是一个工具，这里我们用它来实现我们的各种命令，大致可以等同于命令行，可以用Git来安装各种插件，实现命令，这里不多介绍，后面过程中你就会明白。</p>
-<h2><span id="关于hexo">关于Hexo</span></h2><p>​		我们所使用的主题以及大部分插件都由Hexo提供，你可以把它理解为一家衣服店铺，我们来挑选我们喜欢的衣服（theme），同时它也提供裁裤腿，钉扣子（插件）服务，这样就可以理解了吧。</p>
-<h2><span id="流程">流程</span></h2><p>​		简单介绍一下流程，非常简单。首先我们建立一个仓库以便我们能够放一些我们主题的配置文件在里面，当然仓库名字就要命名为username.github.io格式了，这样我们的主页面才会使我们配置的那样，然后我们需要在本地也创建一个仓库，在里面把我们平时用的代码等等都放在里面，然后把本地仓库和远程仓库连接，再把本地文件代码上传就可以得到我们想要的简洁漂亮的网站了，是不是很简单呢。</p>
-<h2><span id="具体步骤">具体步骤</span></h2><h3><span id="仓库搭建">仓库搭建</span></h3><p>仓库搭建可以参考一下这位大佬的博客：<a href="https://godweiyang.com/2018/04/13/hexo-blog/">超详细Hexo+Github博客搭建小白教程</a></p>
-<p>讲得非常详细，我就不再介绍了，做点其他有用的东西。</p>
-<h3><span id="网站配置">网站配置</span></h3><p>在你的本地文件夹里面会有一个_config.yml文件，这个就是你的网站的配置文件了，可以在里面配置你的网站名字，图标等等，基本上你想到的都可以在里面设置，具体每一项对应那个部分，hexo官网很详细，也不再多补充，可以参考<a href="https://hexo.io/zh-cn/docs/configuration">Hexo文档</a>，里面没有的话<a href="https://www.baidu.com/">百度一下，你就知道</a>，总的来说，不难要善用搜索引擎。</p>
-<h3><span id="主题更换">主题更换</span></h3><p>主题选择的话可以从<a href="https://hexo.io/themes/index.html">Themes|Hexo</a>上选你喜欢的，具体步骤里面每个主题作者都会介绍，大致过程是一样的，不管你是clone也好，下载zip主题文件也好，要保证你的主题文件夹在themes文件夹下面，然后回到你的网站的文件夹里面找到_config.yml配置文件，在里面找到theme，将其更改为你的主题，比如说我的是<a href="https://shen-yu.gitee.io/2019/ayer/">Ayer</a>，就是这样</p>
-<p><img src="https://i.loli.net/2021/04/07/c58fxSXgOuYEDka.png" alt="image-20210407212409875"></p>
-<p>然后基本上就可以了，之后需要做的就是一些优化工作，讲几点大家会遇到的关键的：</p>
-<ul>
-<li>会有两个_config.yml文件，一个位于你网站的页面，是你网站的配置文件，另一个是在你的主题文件夹里面，两个名字一样，但是千万不要弄混，不要修改错文件，这两个都是配置文件，所以名字相同，但是配置的对象不一样，这点明白，应该就很简单了。</li>
-<li>更换主题的步骤基本上就是theme后面换上你的主题名字，然后在安装你的主题所需要的插件，比如说你的网站想要有一个播放器小图标，但是你不给安装插件，就算主题配置里面作者配置的再全，也不可能有用，所以说要按照主题安装说明安装插件（在网站主页面右键Git Bush Here),然后修改主题配置文件就可以</li>
-<li>格式极其重要，修改配置问件事要注意中间要有一个空格才能有效<img src="https://i.loli.net/2021/04/07/NYXb42JR18uTphm.png" alt="image-20210407214015182">注意注释前也要有空格</li>
-<li>最后放两张我的文件夹，以便大家区分两个配置文件，看不懂的话可以看文件夹上方的路径，路径也看不懂那就没办法了</li>
-<li>主文件夹<img src="https://i.loli.net/2021/04/07/BsuyYMQEZJPoDfF.png" alt="image-20210407214254076"></li>
-<li>主题页<img src="https://i.loli.net/2021/04/07/EzaDdKH7URk5B6O.png" alt="image-20210407214413945"></li>
-<li>最后一点：不要怕出错，实践出真知，搞这个东西没错一段时间是没有游戏体验的，你懂的，这也是一个学习的过程，所以不要急，慢慢来，涨涨姿势，等到把雏形弄出来再慢慢搞UI也不迟。</li>
-</ul>
-<p>最后欢迎大家补充，有地方不懂得可以留言，也可以发邮件，看到会回复的，祝大家能尽快拥有自己的网站。</p>
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Blog</tag>
-        <tag>Github</tag>
       </tags>
   </entry>
 </search>
