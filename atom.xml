@@ -6,7 +6,7 @@
   <link href="https://kpl0111.github.io/blog/atom.xml" rel="self"/>
   
   <link href="https://kpl0111.github.io/blog/"/>
-  <updated>2022-06-02T09:00:45.560Z</updated>
+  <updated>2022-06-02T14:51:49.024Z</updated>
   <id>https://kpl0111.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C++中string、char *、char[]、const char*的转换</title>
+    <link href="https://kpl0111.github.io/blog/2022/066dcc5737.html"/>
+    <id>https://kpl0111.github.io/blog/2022/066dcc5737.html</id>
+    <published>2022-06-02T14:49:17.000Z</published>
+    <updated>2022-06-02T14:51:49.024Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;先放着，有空写&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>VS Code集成终端字体修改 &amp; 字体颜色、大小修改方法</title>
@@ -44,8 +66,22 @@
     <link href="https://kpl0111.github.io/blog/2022/052824aa7.html"/>
     <id>https://kpl0111.github.io/blog/2022/052824aa7.html</id>
     <published>2022-05-31T09:40:39.000Z</published>
-    <updated>2022-06-02T08:56:43.411Z</updated>
+    <updated>2022-06-02T14:46:53.518Z</updated>
     
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本篇为作者个人作业，仅供参考，转载请注明出处&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- toc --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
     
     
     
