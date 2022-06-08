@@ -6,7 +6,7 @@
   <link href="https://kpl0111.github.io/blog/atom.xml" rel="self"/>
   
   <link href="https://kpl0111.github.io/blog/"/>
-  <updated>2022-06-02T14:51:49.024Z</updated>
+  <updated>2022-06-08T11:57:44.621Z</updated>
   <id>https://kpl0111.github.io/blog/</id>
   
   <author>
@@ -17,19 +17,47 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>智能电灯</title>
+    <link href="https://kpl0111.github.io/blog/2022/06373cfef8.html"/>
+    <id>https://kpl0111.github.io/blog/2022/06373cfef8.html</id>
+    <published>2022-06-03T02:53:20.000Z</published>
+    <updated>2022-06-08T11:57:44.621Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#esp8266%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E7%94%B5%E7%81%AF&quot;&gt;ESP8266实现智能电灯&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>C++中string、char *、char[]、const char*的转换</title>
     <link href="https://kpl0111.github.io/blog/2022/066dcc5737.html"/>
     <id>https://kpl0111.github.io/blog/2022/066dcc5737.html</id>
     <published>2022-06-02T14:49:17.000Z</published>
-    <updated>2022-06-02T14:51:49.024Z</updated>
+    <updated>2022-06-08T11:57:27.953Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;先放着，有空写&lt;/p&gt;
-</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;在C++中string、const char&lt;em&gt;、 char&lt;/em&gt; 、char[]四者类型经常会需要转化。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- toc --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
         
       
     
@@ -66,7 +94,7 @@
     <link href="https://kpl0111.github.io/blog/2022/052824aa7.html"/>
     <id>https://kpl0111.github.io/blog/2022/052824aa7.html</id>
     <published>2022-05-31T09:40:39.000Z</published>
-    <updated>2022-06-02T14:46:53.518Z</updated>
+    <updated>2022-06-02T14:56:22.869Z</updated>
     
     
       

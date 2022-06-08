@@ -611,17 +611,17 @@ struct key_pair {
  
 //生成两个大素数
 mpz_t * gen_primes()
-{										
-    gmp_randstate_t grt;				
-    gmp_randinit_default(grt);	
-    gmp_randseed_ui(grt, time(NULL));	
+{                                        
+    gmp_randstate_t grt;                
+    gmp_randinit_default(grt);    
+    gmp_randseed_ui(grt, time(NULL));    
     
     mpz_t key_p, key_q;
     mpz_init(key_p);
     mpz_init(key_q);
  
-    mpz_urandomb(key_p, grt, KEY_LENGTH / 2);		
-    mpz_urandomb(key_q, grt, KEY_LENGTH / 2);	//随机生成两个大整数
+    mpz_urandomb(key_p, grt, KEY_LENGTH / 2);        
+    mpz_urandomb(key_q, grt, KEY_LENGTH / 2);    //随机生成两个大整数
  
     mpz_t * result = new mpz_t[2];
     mpz_init(result[0]);
@@ -633,7 +633,7 @@ mpz_t * gen_primes()
     mpz_clear(key_p);
     mpz_clear(key_q);
  
-    return result;	
+    return result;    
 }
  
 //生成密钥对
@@ -644,14 +644,14 @@ key_pair * gen_key_pair()
     mpz_t key_n, key_e, key_f;
     mpz_init(key_n);
     mpz_init(key_f);
-    mpz_init_set_ui(key_e, 65537);	//设置e为65537
+    mpz_init_set_ui(key_e, 65537);    //设置e为65537
  
-    mpz_mul(key_n, primes[0], primes[1]);		//计算n=p*q
-    mpz_sub_ui(primes[0], primes[0], 1);		//p=p-1
-    mpz_sub_ui(primes[1], primes[1], 1);		//q=q-1
-    mpz_mul(key_f, primes[0], primes[1]);		//计算欧拉函数φ(n)=(p-1)*(q-1)
+    mpz_mul(key_n, primes[0], primes[1]);        //计算n=p*q
+    mpz_sub_ui(primes[0], primes[0], 1);        //p=p-1
+    mpz_sub_ui(primes[1], primes[1], 1);        //q=q-1
+    mpz_mul(key_f, primes[0], primes[1]);        //计算欧拉函数φ(n)=(p-1)*(q-1)
  
-    mpz_t key_d;	
+    mpz_t key_d;    
     mpz_init(key_d);
     mpz_invert(key_d, key_e, key_f);   //计算数论倒数
  
@@ -695,7 +695,7 @@ void generateABKey() {
 }
 
 int main()
-{		
+{        
     generateABKey();
     return 0;
 }
