@@ -8,6 +8,68 @@
 ]]></content>
   </entry>
   <entry>
+    <title>LeetCode笔记-双指针大法</title>
+    <url>/blog/2022/06c54e8d28.html</url>
+    <content><![CDATA[<blockquote>
+<p>本篇为个人笔记，内容或有错误。<br>图片部分源于<a href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
+</blockquote>
+<!-- toc -->
+
+
+
+<!-- tocstop -->
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>LeetCode笔记-字符串</title>
+    <url>/blog/2022/063572401b.html</url>
+    <content><![CDATA[<blockquote>
+<p>本篇为个人笔记，内容或有错误。<br>图片部分源于<a href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
+</blockquote>
+<!-- toc -->
+
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%97%E7%AC%A6%E4%B8%B2">什么是字符串</a></li>
+<li><a href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95">双指针法</a></li>
+<li><a href="#kmp">KMP</a></li>
+</ul>
+<!-- tocstop -->
+
+<h3><span id="什么是字符串">什么是字符串</span></h3><p>字符串是若干字符组成的有限序列，也可以理解为是一个字符数组，但是很多语言对字符串做了特殊的规定。</p>
+<p>在C语言中，把一个字符串存入一个数组时，也把结束符 ‘\0’存入数组，并以此作为该字符串是否结束的标志。</p>
+<p>例如这段代码：</p>
+<pre><code class="C++">char a[5] = "asd";
+for (int i = 0; a[i] != '\0'; i++) {
+}
+</code></pre>
+<p>在C++中，提供一个string类，string类会提供 size接口，可以用来判断string类字符串是否结束，就不用’\0’来判断是否结束。</p>
+<p>例如这段代码:</p>
+<pre><code class="C++">string a = "asd";
+for (int i = 0; i &lt; a.size(); i++) {
+}
+</code></pre>
+<p>那么vector&lt; char &gt; 和 string 又有什么区别呢？</p>
+<p>其实在基本操作上没有区别，但是 string提供更多的字符串处理的相关接口，例如string 重载了+，而vector却没有。</p>
+<p>所以想处理字符串，我们还是会定义一个string类型。</p>
+<h3><span id="双指针法">双指针法</span></h3><p>双指针法在数组，链表和字符串中很常用。其实很多数组填充类的问题，都可以先预先给数组扩容带填充后的大小，然后在从后向前进行操作。</p>
+<h3><span id="kmp">KMP</span></h3><p>KMP的主要思想是当出现字符串不匹配时，可以知道一部分之前已经匹配的文本内容，可以利用这些信息避免从头再去做匹配了。</p>
+<p>KMP的精髓所在就是前缀表</p>
+<p>前缀表：起始位置到下标i之前（包括i）的子串中，有多大长度的相同前缀后缀。</p>
+<p>那么使用KMP可以解决两类经典问题：</p>
+<ul>
+<li>匹配问题：28. 实现 strStr()</li>
+<li>重复子串问题：459.重复的子字符串</li>
+</ul>
+<p>再一次强调了什么是前缀，什么是后缀，什么又是最长相等前后缀。</p>
+<p>前缀：指不包含最后一个字符的所有以第一个字符开头的连续子串。</p>
+<p>后缀：指不包含第一个字符的所有以最后一个字符结尾的连续子串。</p>
+<p>然后针对前缀表到底要不要减一，这其实是不同KMP实现的方式，在KMP精讲 中针对之前两个问题，分别给出了两个不同版本的的KMP实现。</p>
+<p>其中主要理解j=next[x]这一步最为关键！</p>
+]]></content>
+  </entry>
+  <entry>
     <title>LeetCode笔记-KMP</title>
     <url>/blog/2022/063572401b.html</url>
     <content><![CDATA[<blockquote>
@@ -2505,6 +2567,10 @@ chcp 936 //GBK编码
 <blockquote>
 <p>当然科学上网也是可以的</p>
 </blockquote>
+<h4><span id="windows查看文件命令">windows查看文件命令</span></h4><pre><code class="C++">dir        //查看当前文件下文件夹详细信息 
+dir /b     //查看当前文件夹下文件夹
+dir /b /s  //查看当前文件夹下文件夹及文件信息
+</code></pre>
 ]]></content>
       <tags>
         <tag>command</tag>

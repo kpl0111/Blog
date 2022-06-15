@@ -6,7 +6,7 @@
   <link href="https://kpl0111.github.io/blog/atom.xml" rel="self"/>
   
   <link href="https://kpl0111.github.io/blog/"/>
-  <updated>2022-06-15T10:10:06.159Z</updated>
+  <updated>2022-06-15T10:17:04.803Z</updated>
   <id>https://kpl0111.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode笔记-双指针大法</title>
+    <link href="https://kpl0111.github.io/blog/2022/06c54e8d28.html"/>
+    <id>https://kpl0111.github.io/blog/2022/06c54e8d28.html</id>
+    <published>2022-06-15T10:15:41.000Z</published>
+    <updated>2022-06-15T10:17:04.803Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本篇为个人笔记，内容或有错误。&lt;br&gt;图片部分源于&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- toc --&gt;
+
+
+
+&lt;!-- tocstop</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode笔记-字符串</title>
+    <link href="https://kpl0111.github.io/blog/2022/063572401b.html"/>
+    <id>https://kpl0111.github.io/blog/2022/063572401b.html</id>
+    <published>2022-06-15T10:15:24.000Z</published>
+    <updated>2022-06-15T10:22:00.236Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本篇为个人笔记，内容或有错误。&lt;br&gt;图片部分源于&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- toc --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>LeetCode笔记-KMP</title>
@@ -229,7 +284,7 @@
     <link href="https://kpl0111.github.io/blog/2022/056ac63caa.html"/>
     <id>https://kpl0111.github.io/blog/2022/056ac63caa.html</id>
     <published>2022-05-26T15:27:14.000Z</published>
-    <updated>2022-05-26T16:22:05.823Z</updated>
+    <updated>2022-06-15T10:13:32.165Z</updated>
     
     
       
@@ -502,61 +557,6 @@
     
     
     <category term="计算机网络" scheme="https://kpl0111.github.io/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LightSensor</title>
-    <link href="https://kpl0111.github.io/blog/2021/0420210424.html"/>
-    <id>https://kpl0111.github.io/blog/2021/0420210424.html</id>
-    <published>2021-04-23T19:31:03.000Z</published>
-    <updated>2021-04-23T19:33:11.992Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;光线传感器&quot;&gt;&lt;center&gt;光线传感器&lt;center&gt;&lt;/center&gt;&lt;/center&gt;&lt;/span&gt;&lt;/h1&gt;&lt;h3&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="Homework" scheme="https://kpl0111.github.io/blog/categories/Homework/"/>
-    
-    
-    <category term="Android" scheme="https://kpl0111.github.io/blog/tags/Android/"/>
-    
-    <category term="Homework" scheme="https://kpl0111.github.io/blog/tags/Homework/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ucore_lab1</title>
-    <link href="https://kpl0111.github.io/blog/2021/0420210413.html"/>
-    <id>https://kpl0111.github.io/blog/2021/0420210413.html</id>
-    <published>2021-04-13T08:26:17.000Z</published>
-    <updated>2021-05-02T13:18:42.731Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2&gt;&lt;span id=&quot;说明&quot;&gt;说明&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;在解压后的ucroe源码包中使用make命令即可以生成所需的目标文件,例如在本次实验中&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;user@system:~../lab1$</summary>
-        
-      
-    
-    
-    
-    <category term="Homework" scheme="https://kpl0111.github.io/blog/categories/Homework/"/>
-    
-    
-    <category term="Homework" scheme="https://kpl0111.github.io/blog/tags/Homework/"/>
-    
-    <category term="OS" scheme="https://kpl0111.github.io/blog/tags/OS/"/>
     
   </entry>
   
