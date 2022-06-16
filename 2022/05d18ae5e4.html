@@ -16,11 +16,12 @@
 
     
 <link rel="stylesheet" href="/blog/css/fonts.css">
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
 <meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
+
     <body>
         <div class="paper">
             <div class="paper-main">
@@ -47,25 +48,26 @@
 
     <div class="post-md">
         <blockquote>
-<p>一些常用基本语法不过多介绍，详细可以参看<a target="_blank" rel="noopener" href="https://markdown.com.cn/cheat-sheet.html">MarkDown官方教程</a><br>这里只介绍一些实用但是容易被忽视的一些语法</p>
+<p>一些常用基本语法不过多介绍，详细可以参看<a target="_blank" rel="noopener" href="https://markdown.com.cn/cheat-sheet.html">MarkDown官方教程</a><br>
+这里只介绍一些实用但是容易被忽视的一些语法</p>
 </blockquote>
 <!-- toc -->
-
 <ul>
 <li><a href="#%E7%BB%99%E5%87%BA%E4%B8%80%E4%BA%9B%E4%BE%8B%E5%AD%90%E4%BB%A3%E7%A0%81">给出一些例子代码：</a></li>
 </ul>
 <!-- tocstop -->
-
-<h4><span id="markdown引用">MarkDown引用</span></h4><p>使用标记符 &gt; 对内容进行引用：</p>
+<h4><span id="markdown引用"> MarkDown引用</span></h4>
+<p>使用标记符 &gt; 对内容进行引用：</p>
 <ol>
-<li>引用一段内容<blockquote>
+<li>引用一段内容
+<blockquote>
 <p>引用一段内容</p>
 </blockquote>
 </li>
 <li>引用的多层嵌套：只要根据层次加上不同数量的 &gt; 符号</li>
 </ol>
 <p>示例：</p>
-<pre><code class="C++">&gt;  请问  Markdwon  怎么用？  -  小白
+<pre class="highlight"><code class="C++">&gt;  请问  Markdwon  怎么用？  -  小白
 &gt;&gt;  自己看教程！  -  愤青
 &gt;&gt;&gt;  教程在哪？  -  小白
 &gt;&gt;&gt;&gt;  我也不知道在哪！  -  愤青
@@ -87,10 +89,11 @@
 </blockquote>
 </blockquote>
 </blockquote>
-<p>引用其它要素：<br>引用的区块内也可以使用其他的语法，包括标题、列表、代码区块等。</p>
+<p>引用其它要素：<br>
+引用的区块内也可以使用其他的语法，包括标题、列表、代码区块等。</p>
 <p>示例：</p>
-<pre><code class="C++">&gt; 1.1 这是第一行列表项。
-&gt;&gt; 2.1 这是第二行列表项。
+<pre class="highlight"><code class="C++">&gt; <span class="hljs-number">1.1</span> 这是第一行列表项。
+&gt;&gt; <span class="hljs-number">2.1</span> 这是第二行列表项。
 &gt;&gt;&gt; - 这是第三行列表项。
 &gt; ### 给出一些例子代码：
 </code></pre>
@@ -105,10 +108,12 @@
 </ul>
 </blockquote>
 </blockquote>
-<h3><span id="给出一些例子代码">给出一些例子代码：</span></h3></blockquote>
-<p>引用中内容换行：<br>有时候引用的内容太长，需要分段落层次，可以使用 &lt; br &gt; 实现换行。</p>
+<h3><span id="给出一些例子代码"> 给出一些例子代码：</span></h3>
+</blockquote>
+<p>引用中内容换行：<br>
+有时候引用的内容太长，需要分段落层次，可以使用 &lt; br &gt; 实现换行。</p>
 <p>举例：</p>
-<pre><code class="C++">&gt; $\underline{幽默小故事，笑死人不偿命}$&lt;br&gt;
+<pre class="highlight"><code class="C++">&gt; $\underline{幽默小故事，笑死人不偿命}$&lt;br&gt;
 我：“老板，你这清炒油麦菜是荤菜还是素菜？
 老板：“当然是素菜了”&lt;br&gt;
 我：“那这条虫是怎么回事”
@@ -118,10 +123,12 @@
 </code></pre>
 <p>显示效果：</p>
 <p><img src="https://s2.loli.net/2022/05/27/nIWKcB4P9GOlXSg.png" alt="20220527001606"></p>
-<h4><span id="下划线">下划线</span></h4><p>示例：</p>
-<pre><code class="C++">$\underline{给这条语句加一个下划线}$
+<h4><span id="下划线"> 下划线</span></h4>
+<p>示例：</p>
+<pre class="highlight"><code class="C++">$\underline{给这条语句加一个下划线}$
 </code></pre>
-<p>$$\underline{给这条语句加一个下划线}$$</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><munder accentunder="true"><mrow><mi mathvariant="normal">给</mi><mi mathvariant="normal">这</mi><mi mathvariant="normal">条</mi><mi mathvariant="normal">语</mi><mi mathvariant="normal">句</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">个</mi><mi mathvariant="normal">下</mi><mi mathvariant="normal">划</mi><mi mathvariant="normal">线</mi></mrow><mo stretchy="true">‾</mo></munder></mrow><annotation encoding="application/x-tex">\underline{给这条语句加一个下划线}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.2em;vertical-align:-0.2em;"></span><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0em;"><span style="top:-2.84em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">给</span><span class="mord cjk_fallback">这</span><span class="mord cjk_fallback">条</span><span class="mord cjk_fallback">语</span><span class="mord cjk_fallback">句</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">下</span><span class="mord cjk_fallback">划</span><span class="mord cjk_fallback">线</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span></span></span></span></span></span></span></span></span></span></p>
 <p>效果：</p>
 <p><img src="https://s2.loli.net/2022/05/27/4swLn8ib3XdOQ1f.png" alt="20220527001632"></p>
 

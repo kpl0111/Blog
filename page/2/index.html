@@ -16,11 +16,12 @@
 
     
 <link rel="stylesheet" href="/blog/css/fonts.css">
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
 <meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
+
     <body>
         <div class="paper">
             <div class="paper-main">
@@ -43,6 +44,45 @@
 </div>
                 
                 <div class="post-list">
+    
+    <div class="post">
+        <a class="post-title" href="/blog/2022/066dcc5737.html">C++中string、char *、char[]、const char*的转换</a>
+        <div class="post-except">
+            
+在C++中string、const char、 char 、char[]四者类型经常会需要转化。
+
+
+
+
+转化方法
+C和C++中char和string区别
+
+
+
+转化方法
+
+char*转string：可以直接赋值。
+char[]转string：可以直接赋值。
+char*转char[]：不能直接赋值，可以循环char*字符串逐个字符赋值,也可以使用strcpy_s等函数。
+string转char[]:不能直接赋值，可以循环char*字符串逐个字符赋值,也可以使用strcpy_
+            <a class="read-more" href="/blog/2022/066dcc5737.html"> ... </a>
+        </div>
+        <div class="post-date">2022.06.02</div>
+    </div>
+    
+    <div class="post">
+        <a class="post-title" href="/blog/2022/068a4c5ed0.html">VS Code集成终端字体修改 &amp; 字体颜色、大小修改方法</a>
+        <div class="post-except">
+            打开VScode，Ctrl + ,或者设置 -&gt; 设置搜索workbenck，如下图：点击Edit in settings.json在配置文件最后加上以下参数：
+//终端颜色配置
+"workbench.colorCustomizations" : {
+    //可以将鼠标放到下面的色号上根据自己的偏好进行选择
+    "terminal.foreground" : "#37FF13",//字体颜色
+     "terminal.background" : "#2b24
+            <a class="read-more" href="/blog/2022/068a4c5ed0.html"> ... </a>
+        </div>
+        <div class="post-date">2022.06.02</div>
+    </div>
     
     <div class="post">
         <a class="post-title" href="/blog/2022/052824aa7.html">利用RSA加密算法和MD5哈希算法实现加密通信（C++）</a>
@@ -142,18 +182,19 @@ github.comassets-cnd
         <a class="post-title" href="/blog/2022/05d18ae5e4.html">MarkDown常用语法</a>
         <div class="post-except">
             
-一些常用基本语法不过多介绍，详细可以参看MarkDown官方教程这里只介绍一些实用但是容易被忽视的一些语法
-
+一些常用基本语法不过多介绍，详细可以参看MarkDown官方教程
+这里只介绍一些实用但是容易被忽视的一些语法
 
 
 
 给出一些例子代码：
 
 
-
-MarkDown引用使用标记符 &gt; 对内容进行引用：
+ MarkDown引用
+使用标记符 &gt; 对内容进行引用：
 
 引用一段内容
+
 引用一段内容
 
 
@@ -163,7 +204,7 @@ MarkDown引用使用标记符 &gt; 对内容进行引用：
 &gt;  请问  Markdwon  怎么用？  -  小白
 &gt;&gt;  自己看教程！  -  愤青
 &gt;&gt;&gt;  教程在哪？  -  小白
-&gt
+&
             <a class="read-more" href="/blog/2022/05d18ae5e4.html"> ... </a>
         </div>
         <div class="post-date">2022.05.26</div>
@@ -235,69 +276,6 @@ file:///android_asset/xxx.html
             <a class="read-more" href="/blog/2022/0257c5ab7b.html"> ... </a>
         </div>
         <div class="post-date">2022.02.18</div>
-    </div>
-    
-    <div class="post">
-        <a class="post-title" href="/blog/2022/018a8f3fb6.html">物联网安全复习总结</a>
-        <div class="post-except">
-            
-  
-    
-      复习时随手记录，并不完整
-    
-  
-
-
-物联网安全根据国际电信联盟的定义, 物联网( internet of things, IOT) 主要解决:
-
-物品到物品( thing to thing,T2T)
-人到物品( human to thing, H2T)
-人到人( human to human, H2H)之间的互联
-
-第1章 物联网安全需求分析与其他传统网络相比, 物联网感知节点大都部署在无人监控的场景中, 具有能力脆弱、资源受限等特点,
-            <a class="read-more" href="/blog/2022/018a8f3fb6.html"> ... </a>
-        </div>
-        <div class="post-date">2022.01.04</div>
-    </div>
-    
-    <div class="post">
-        <a class="post-title" href="/blog/2022/0178868943.html">编译系统原理复习提纲</a>
-        <div class="post-except">
-            编译系统原理[toc]
-内容过多，未完全整理
-题型设计
-单项选择（12*2）
-编译阶段所做事情考察
-编译器和解释器的区分
-ϵ是空符号串
-正则表达式本质上表述的是符号串集合
-NFA，DFA和CFG
-
-
-设计题（6*4）
-正则表达式表示的含义
-设计正则表达式
-设计上下文无关文法
-
-
-
-解答题
-Thompson构造法
-子集构造法
-终结符，非终结符，开始符号
-消除左递归
-构造预测分析表
-流图
-三地址码
-优化
-
-
-
-真题C++编译器检查数组下标越界是在_____阶段?ϵ为空符号串
-概述
-            <a class="read-more" href="/blog/2022/0178868943.html"> ... </a>
-        </div>
-        <div class="post-date">2022.01.01</div>
     </div>
     
 </div>

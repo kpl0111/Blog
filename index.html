@@ -16,11 +16,12 @@
 
     
 <link rel="stylesheet" href="/blog/css/fonts.css">
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
 <meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
+
     <body>
         <div class="paper">
             <div class="paper-main">
@@ -53,6 +54,47 @@
             <a class="read-more" href="/blog/2022/054a17b156.html"> ... </a>
         </div>
         <div class="post-date">2022.05.16</div>
+    </div>
+    
+    <div class="post">
+        <a class="post-title" href="/blog/2022/06c538da4.html">添加公式渲染功能</a>
+        <div class="post-except">
+            
+主题添加公式渲染功能
+
+本文以 Hexo 主题 one-paper (其他博客理论上都可以使用这种方法配置)为例，介绍如何添加对数学公式的显示支持。
+ 配置过程
+ 安装渲染插件
+首先执行以下命令卸载掉hexo默认的渲染插件hexo-renderer-marked ，替换为hexo-renderer-markdown-it-plus 。
+npm un hexo-renderer-marked --save
+npm i hexo-renderer-markdown-it-plu
+            <a class="read-more" href="/blog/2022/06c538da4.html"> ... </a>
+        </div>
+        <div class="post-date">2022.06.16</div>
+    </div>
+    
+    <div class="post">
+        <a class="post-title" href="/blog/2022/06784dd132.html">公式渲染测试</a>
+        <div class="post-except">
+            
+主题添加公式渲染功能，测试
+
+整行：
+$$sin^2\theta + cos^2\theta = 1$$
+
+sin2θ+cos2θ=1sin^2\theta + cos^2\theta = 1
+sin2θ+cos2θ=1
+行内：
+这是一个行内公式： $sin^2\theta + cos^2\theta = 1$
+
+效果：
+这是一个行内公式： sin2θ+cos2θ=1sin^2\theta + cos^2\theta = 1sin2θ+cos2θ=1
+数学公式测试：
+$$
+
+            <a class="read-more" href="/blog/2022/06784dd132.html"> ... </a>
+        </div>
+        <div class="post-date">2022.06.16</div>
     </div>
     
     <div class="post">
@@ -259,45 +301,6 @@ ESP8266实现智能电灯本实验目的是要通过腾讯云服务器和ESP8266
             <a class="read-more" href="/blog/2022/06373cfef8.html"> ... </a>
         </div>
         <div class="post-date">2022.06.03</div>
-    </div>
-    
-    <div class="post">
-        <a class="post-title" href="/blog/2022/066dcc5737.html">C++中string、char *、char[]、const char*的转换</a>
-        <div class="post-except">
-            
-在C++中string、const char、 char 、char[]四者类型经常会需要转化。
-
-
-
-
-转化方法
-C和C++中char和string区别
-
-
-
-转化方法
-
-char*转string：可以直接赋值。
-char[]转string：可以直接赋值。
-char*转char[]：不能直接赋值，可以循环char*字符串逐个字符赋值,也可以使用strcpy_s等函数。
-string转char[]:不能直接赋值，可以循环char*字符串逐个字符赋值,也可以使用strcpy_
-            <a class="read-more" href="/blog/2022/066dcc5737.html"> ... </a>
-        </div>
-        <div class="post-date">2022.06.02</div>
-    </div>
-    
-    <div class="post">
-        <a class="post-title" href="/blog/2022/068a4c5ed0.html">VS Code集成终端字体修改 &amp; 字体颜色、大小修改方法</a>
-        <div class="post-except">
-            打开VScode，Ctrl + ,或者设置 -&gt; 设置搜索workbenck，如下图：点击Edit in settings.json在配置文件最后加上以下参数：
-//终端颜色配置
-"workbench.colorCustomizations" : {
-    //可以将鼠标放到下面的色号上根据自己的偏好进行选择
-    "terminal.foreground" : "#37FF13",//字体颜色
-     "terminal.background" : "#2b24
-            <a class="read-more" href="/blog/2022/068a4c5ed0.html"> ... </a>
-        </div>
-        <div class="post-date">2022.06.02</div>
     </div>
     
 </div>
