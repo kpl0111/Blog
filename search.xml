@@ -8,6 +8,287 @@
 ]]></content>
   </entry>
   <entry>
+    <title>C++中STL常用库函数</title>
+    <url>/blog/2022/06b47eaf04.html</url>
+    <content><![CDATA[<blockquote>
+<p>总结下C++中STL常用函数</p>
+</blockquote>
+<!-- toc -->
+<ul>
+<li><a href="#sort%E5%BF%AB%E6%8E%92">sort()快排</a></li>
+<li><a href="#reverse%E9%80%86%E7%BD%AE">reverse()逆置</a></li>
+<li><a href="#unique%E5%8E%BB%E9%87%8D">unique()去重</a></li>
+<li><a href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0">二分查找函数</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0">字符串查找函数</a></li>
+<li><a href="#vector">vector</a></li>
+<li><a href="#pairint-int">pair&lt;int, int&gt;</a></li>
+<li><a href="#string%E5%AD%97%E7%AC%A6%E4%B8%B2">string，字符串</a></li>
+<li><a href="#queue-%E9%98%9F%E5%88%97">queue, 队列</a></li>
+<li><a href="#priority_queue">priority_queue</a></li>
+<li><a href="#stack-%E6%A0%88">stack, 栈</a></li>
+<li><a href="#deque-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97">deque, 双端队列</a></li>
+</ul>
+<!-- tocstop -->
+<h3><span id="sort快排"> sort()快排</span></h3>
+<p>函数原型：<code>sort(起始地址, 末尾地址, cmp)</code>,其中cmp是可以自己定义的函数名,默认递增排列</p>
+<p>cmp函数示例:</p>
+<pre class="highlight"><code class="C++"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;a, <span class="hljs-keyword">int</span> &amp;b)</span></span>{
+    <span class="hljs-keyword">return</span> a &gt; b;
+}
+</code></pre>
+<h3><span id="reverse逆置"> reverse()逆置</span></h3>
+<p>函数原型：<code>reverse(起始地址, 末尾地址)</code></p>
+<h3><span id="unique去重"> unique()去重</span></h3>
+<p>函数原型：<code>unique(起始地址, 末尾地址, fun)</code>;其中fun为自定义的函数名。</p>
+<p>注意：unique函数去重并不是真正的去重，它是不断的将后面不重复的元素覆盖前面重复的元素，最后返回最后一个不重复的元素的地址。</p>
+<h3><span id="二分查找函数"> 二分查找函数</span></h3>
+<p><code>lower_bound(起始地址, 末尾地址, target)</code>：查找第一个大于等于target目标值的位置</p>
+<p><code>upper_bound(起始地址, 末尾地址, target)</code>：查找第一个大于target目标值的位置</p>
+<p><code>binary_search(起始地址, 末尾地址, target)</code>：查找target是否存在于数组或vector中，找到返回true，否则返回false</p>
+<h3><span id="字符串查找函数"> 字符串查找函数</span></h3>
+<p><code>s1.find(s2)</code>：在s1字符串中查找s2，查找到返回第一个字符的位置，查找失败返回s1.npos</p>
+<p><code>set.count(a)</code>：本来是计算a出现的次数，但是由于集合中是没有重复元素的，于是count函数也就被作为查找函数了，因为a只能出现1次或者0次，查找成功，返回1；查找失败返回0.</p>
+<p><code>map.find()</code>：主要用于查找key是否存在map中，不存在返回map.end()，用法和set一样</p>
+<h3><span id="vector"> vector</span></h3>
+<blockquote>
+<p>vector, 变长数组，倍增的思想</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">size()</td>
+<td style="text-align:center">返回元素个数</td>
+</tr>
+<tr>
+<td style="text-align:center">empty()</td>
+<td style="text-align:center">返回是否为空</td>
+</tr>
+<tr>
+<td style="text-align:center">clear()</td>
+<td style="text-align:center">清空</td>
+</tr>
+<tr>
+<td style="text-align:center">front()/back()</td>
+<td style="text-align:center">访问第一个元素/最后一个元素</td>
+</tr>
+<tr>
+<td style="text-align:center">push_back()/pop_back()</td>
+<td style="text-align:center">插入/弹出最后一个元素</td>
+</tr>
+<tr>
+<td style="text-align:center">begin()/end()</td>
+<td style="text-align:center">开始元素迭代器/结尾元素迭代器</td>
+</tr>
+</tbody>
+</table>
+<h3><span id="pairltint-intgt"> pair&lt;int, int&gt;</span></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">first</td>
+<td style="text-align:center">第一个元素</td>
+</tr>
+<tr>
+<td style="text-align:center">second</td>
+<td style="text-align:center">第二个元素</td>
+</tr>
+</tbody>
+</table>
+<h3><span id="string字符串"> string，字符串</span></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">size()/length()</td>
+<td style="text-align:center">返回字符串长度</td>
+</tr>
+<tr>
+<td style="text-align:center">empty()</td>
+<td style="text-align:center">返回是否为空</td>
+</tr>
+<tr>
+<td style="text-align:center">clear()</td>
+<td style="text-align:center">清空</td>
+</tr>
+<tr>
+<td style="text-align:center">substr(起始下标，(子串长度))</td>
+<td style="text-align:center">返回子串</td>
+</tr>
+<tr>
+<td style="text-align:center">c_str()</td>
+<td style="text-align:center">返回字符串所在字符数组的起始地址</td>
+</tr>
+</tbody>
+</table>
+<h3><span id="queue-队列"> queue, 队列</span></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">size()</td>
+<td style="text-align:center">返回队列长度</td>
+</tr>
+<tr>
+<td style="text-align:center">empty()</td>
+<td style="text-align:center">返回是否为空</td>
+</tr>
+<tr>
+<td style="text-align:center">push()</td>
+<td style="text-align:center">向队尾插入一个元素</td>
+</tr>
+<tr>
+<td style="text-align:center">front()</td>
+<td style="text-align:center">返回队头元素</td>
+</tr>
+<tr>
+<td style="text-align:center">back()</td>
+<td style="text-align:center">返回队尾元素</td>
+</tr>
+<tr>
+<td style="text-align:center">pop()</td>
+<td style="text-align:center">弹出队头元素</td>
+</tr>
+</tbody>
+</table>
+<h3><span id="priority_queue"> priority_queue</span></h3>
+<blockquote>
+<p>优先队列，默认是大根堆</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">size()</td>
+<td style="text-align:center">返回队列长度</td>
+</tr>
+<tr>
+<td style="text-align:center">empty()</td>
+<td style="text-align:center">返回是否为空</td>
+</tr>
+<tr>
+<td style="text-align:center">push()</td>
+<td style="text-align:center">插入一个元素</td>
+</tr>
+<tr>
+<td style="text-align:center">top()</td>
+<td style="text-align:center">返回堆顶元素</td>
+</tr>
+<tr>
+<td style="text-align:center">pop()</td>
+<td style="text-align:center">弹出堆顶元素</td>
+</tr>
+</tbody>
+</table>
+<p>定义成小根堆的方式：</p>
+<pre class="highlight"><code class="C++">priority_queue&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;, greater&lt;<span class="hljs-keyword">int</span>&gt;&gt; q;
+</code></pre>
+<h3><span id="stack-栈"> stack, 栈</span></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">size()</td>
+<td style="text-align:center">返回栈长度</td>
+</tr>
+<tr>
+<td style="text-align:center">empty()</td>
+<td style="text-align:center">返回是否为空</td>
+</tr>
+<tr>
+<td style="text-align:center">push()</td>
+<td style="text-align:center">向栈顶插入一个元素</td>
+</tr>
+<tr>
+<td style="text-align:center">top()</td>
+<td style="text-align:center">返回栈顶元素</td>
+</tr>
+<tr>
+<td style="text-align:center">pop()</td>
+<td style="text-align:center">弹出栈顶元素</td>
+</tr>
+</tbody>
+</table>
+<h3><span id="deque-双端队列"> deque, 双端队列</span></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">size()</td>
+<td style="text-align:center">返回队列长度</td>
+</tr>
+<tr>
+<td style="text-align:center">empty()</td>
+<td style="text-align:center">返回是否为空</td>
+</tr>
+<tr>
+<td style="text-align:center">clear()</td>
+<td style="text-align:center">清空队列</td>
+</tr>
+<tr>
+<td style="text-align:center">front()/back()</td>
+<td style="text-align:center">返回队头元素</td>
+</tr>
+<tr>
+<td style="text-align:center">push_back()/pop_back()</td>
+<td style="text-align:center">插入/弹出最后一个元素</td>
+</tr>
+<tr>
+<td style="text-align:center">push_front()/pop_front()</td>
+<td style="text-align:center">插入/弹出第一个元素</td>
+</tr>
+<tr>
+<td style="text-align:center">begin()/end()</td>
+<td style="text-align:center">开始元素迭代器/结尾元素迭代器</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>STL</tag>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>添加公式渲染功能</title>
     <url>/blog/2022/06c538da4.html</url>
     <content><![CDATA[<blockquote>
