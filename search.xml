@@ -8,6 +8,17 @@
 ]]></content>
   </entry>
   <entry>
+    <title>LeetCode笔记-二叉树</title>
+    <url>/blog/2022/0621aed2ac.html</url>
+    <content><![CDATA[<blockquote>
+<p>本篇为个人笔记，内容或有错误。<br>
+图片部分源于<a href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
+</blockquote>
+<!-- toc -->
+<!-- tocstop -->
+]]></content>
+  </entry>
+  <entry>
     <title>C++中STL常用库函数</title>
     <url>/blog/2022/06b47eaf04.html</url>
     <content><![CDATA[<blockquote>
@@ -17,6 +28,7 @@
 <ul>
 <li><a href="#sort%E5%BF%AB%E6%8E%92">sort()快排</a></li>
 <li><a href="#reverse%E9%80%86%E7%BD%AE">reverse()逆置</a></li>
+<li><a href="#stoi">stoi()</a></li>
 <li><a href="#unique%E5%8E%BB%E9%87%8D">unique()去重</a></li>
 <li><a href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0">二分查找函数</a></li>
 <li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0">字符串查找函数</a></li>
@@ -38,6 +50,9 @@
 </code></pre>
 <h3><span id="reverse逆置"> reverse()逆置</span></h3>
 <p>函数原型：<code>reverse(起始地址, 末尾地址)</code></p>
+<h3><span id="stoi"> stoi()</span></h3>
+<p>函数原型:<code>stoi(string类型)</code><br>
+将string类型转换为int类型</p>
 <h3><span id="unique去重"> unique()去重</span></h3>
 <p>函数原型：<code>unique(起始地址, 末尾地址, fun)</code>;其中fun为自定义的函数名。</p>
 <p>注意：unique函数去重并不是真正的去重，它是不断的将后面不重复的元素覆盖前面重复的元素，最后返回最后一个不重复的元素的地址。</p>
