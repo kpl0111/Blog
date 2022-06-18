@@ -47,17 +47,79 @@
     
 
     <div class="post-md">
-        <p>“ All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by<br>“ the call to :runtime you can find below.  If you wish to change any of those<br>“ settings, you should do it in this file (/etc/vim/vimrc), since debian.vim<br>“ will be overwritten everytime an upgrade of the vim packages is performed.<br>“ It is recommended to make changes after sourcing debian.vim since it alters<br>“ the value of the ‘compatible’ option.</p>
+        <p>" All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by<br>
+" the call to :runtime you can find below.  If you wish to change any of those<br>
+" settings, you should do it in this file (/etc/vim/vimrc), since debian.vim<br>
+" will be overwritten everytime an upgrade of the vim packages is performed.<br>
+" It is recommended to make changes after sourcing debian.vim since it alters<br>
+" the value of the ‘compatible’ option.</p>
 <p>runtime! debian.vim</p>
-<p>“ Vim will load $VIMRUNTIME/defaults.vim if the user does not have a vimrc.<br>“ This happens after /etc/vim/vimrc(.local) are loaded, so it will override<br>“ any settings in these files.<br>“ If you don’t want that to happen, uncomment the below line to prevent<br>“ defaults.vim from being loaded.<br>“ let g:skip_defaults_vim = 1</p>
-<p>“ Uncomment the next line to make Vim more Vi-compatible<br>“ NOTE: debian.vim sets ‘nocompatible’.  Setting ‘compatible’ changes numerous<br>“ options, so any other options should be set AFTER setting ‘compatible’.<br>“set compatible</p>
-<p>“ Vim5 and later versions support syntax highlighting. Uncommenting the next<br>“ line enables syntax highlighting by default.<br>syntax on</p>
-<p>“ If using a dark background within the editing area and syntax highlighting<br>“ turn on this option as well<br>set background=dark</p>
-<p>“ Uncomment the following to have Vim jump to the last position when<br>“ reopening a file<br>“au BufReadPost * if line(“‘"“) &gt; 1 &amp;&amp; line(“‘"“) &lt;= line(“$”) | exe “normal! g’"“ | endif</p>
-<p>“ Uncomment the following to have Vim load indentation rules and plugins<br>“ according to the detected filetype.<br>if has(“autocmd”)<br>  filetype plugin indent on<br>endif</p>
-<p>“ The following are commented out as they cause vim to behave a lot<br>“ differently from regular Vi. They are highly recommended though.<br>“set showcmd		“ Show (partial) command in status line.<br>set showmatch		“ Show matching brackets.<br>set ignorecase		“ Do case insensitive matching<br>set smartcase		“ Do smart case matching<br>set incsearch		“ Incremental search<br>“set autowrite		“ Automatically save before commands like :next and :make<br>set hidden		“ Hide buffers when they are abandoned<br>“set mouse=a		“ Enable mouse usage (all modes)</p>
-<p>“ Source a global configuration file if available<br>if filereadable(“/etc/vim/vimrc.local”)<br>  source /etc/vim/vimrc.local<br>endif</p>
-<p>setlocal noswapfile<br>set bufhidden = hide<br>“colorscheme evening<br>set number<br>set cursorline<br>set ruler<br>set shiftwidth = 4<br>set softtabstop = 4<br>set tabstop = 4<br>set nobackup<br>set autochdir<br>set backupcopy = yes<br>set hlsearch<br>set noerrorbells<br>set novisualbell<br>set t_vb=<br>set matchtime=2<br>set magic<br>set smartindent<br>set backspace=ident,eol,start<br>set cmdheight=1<br>set laststatus=2<br>set statusline=\ %&lt;%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&amp;fileformat}\ %{&amp;encoding}\ Ln\ %l.\Col\ %c/%L%)<br>set foldenable<br>set foldmethod=syntax<br>set foldcolumn=0<br>setlocal foldlevel=1<br>nnoremap <space> @=((foldclosed(line(‘,’)) &lt; 0) ? ‘zc’ : ‘zo’)<cr></cr></space></p>
+<p>" Vim will load $VIMRUNTIME/defaults.vim if the user does not have a vimrc.<br>
+" This happens after /etc/vim/vimrc(.local) are loaded, so it will override<br>
+" any settings in these files.<br>
+" If you don’t want that to happen, uncomment the below line to prevent<br>
+" defaults.vim from being loaded.<br>
+" let g:skip_defaults_vim = 1</p>
+<p>" Uncomment the next line to make Vim more Vi-compatible<br>
+" NOTE: debian.vim sets ‘nocompatible’.  Setting ‘compatible’ changes numerous<br>
+" options, so any other options should be set AFTER setting ‘compatible’.<br>
+"set compatible</p>
+<p>" Vim5 and later versions support syntax highlighting. Uncommenting the next<br>
+" line enables syntax highlighting by default.<br>
+syntax on</p>
+<p>" If using a dark background within the editing area and syntax highlighting<br>
+" turn on this option as well<br>
+set background=dark</p>
+<p>" Uncomment the following to have Vim jump to the last position when<br>
+" reopening a file<br>
+“au BufReadPost * if line(”’"") &gt; 1 &amp;&amp; line("’"") &lt;= line("$") | exe “normal! g’”" | endif</p>
+<p>" Uncomment the following to have Vim load indentation rules and plugins<br>
+" according to the detected filetype.<br>
+if has(“autocmd”)<br>
+filetype plugin indent on<br>
+endif</p>
+<p>" The following are commented out as they cause vim to behave a lot<br>
+" differently from regular Vi. They are highly recommended though.<br>
+"set showcmd		" Show (partial) command in status line.<br>
+set showmatch		" Show matching brackets.<br>
+set ignorecase		" Do case insensitive matching<br>
+set smartcase		" Do smart case matching<br>
+set incsearch		" Incremental search<br>
+"set autowrite		" Automatically save before commands like :next and :make<br>
+set hidden		" Hide buffers when they are abandoned<br>
+"set mouse=a		" Enable mouse usage (all modes)</p>
+<p>" Source a global configuration file if available<br>
+if filereadable("/etc/vim/vimrc.local")<br>
+source /etc/vim/vimrc.local<br>
+endif</p>
+<p>setlocal noswapfile<br>
+set bufhidden = hide<br>
+"colorscheme evening<br>
+set number<br>
+set cursorline<br>
+set ruler<br>
+set shiftwidth = 4<br>
+set softtabstop = 4<br>
+set tabstop = 4<br>
+set nobackup<br>
+set autochdir<br>
+set backupcopy = yes<br>
+set hlsearch<br>
+set noerrorbells<br>
+set novisualbell<br>
+set t_vb=<br>
+set matchtime=2<br>
+set magic<br>
+set smartindent<br>
+set backspace=ident,eol,start<br>
+set cmdheight=1<br>
+set laststatus=2<br>
+set statusline=\ %&lt;%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&amp;fileformat}\ %{&amp;encoding}\ Ln\ %l.\Col\ %c/%L%)<br>
+set foldenable<br>
+set foldmethod=syntax<br>
+set foldcolumn=0<br>
+setlocal foldlevel=1<br>
+nnoremap <space> @=((foldclosed(line(’,’)) &lt; 0) ? ‘zc’ : ‘zo’)<cr></cr></space></p>
 
     </div>
 

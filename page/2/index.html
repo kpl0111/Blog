@@ -49,12 +49,13 @@
         <a class="post-title" href="/blog/2022/064d5af563.html">LeetCode笔记-链表</a>
         <div class="post-except">
             
-本篇为个人笔记，内容或有错误。图片部分源于代码随想录，侵删。
-
+本篇为个人笔记，内容或有错误。
+图片部分源于代码随想录，侵删。
 
 
 
 链表
+
 性能分析
 C++示例
 关于环形链表和入口问题
@@ -62,17 +63,24 @@ C++示例
 
 
 
+ 链表
+链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。
 
-链表链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。
 
 链接的入口节点称为链表的头结点也就是head。
 
+
+
 双链表：
 
-循环链表：循环链表可用来解决约瑟夫环问题
 
 
-链表中的节点在内存中不是连续分布的 ，而是散乱分布在内存中的某
+循环链表：
+循环链表可用来解决约瑟夫环问题
+
+
+
+链表中的节点在内存中不是连续分布的 ，而是散
             <a class="read-more" href="/blog/2022/064d5af563.html"> ... </a>
         </div>
         <div class="post-date">2022.06.12</div>
@@ -83,23 +91,27 @@ C++示例
         <div class="post-except">
             
 ESP8266实现智能电灯
+
 实验原理
 实验步骤
 演示
 
 
 Esp32实现光照传感器
+
 原理
 实验步骤
 验证光照传感器
 
 
 Esp32的网关实现
+
 部署
 设置场景联动
 
 
 源代码
+
 智能电灯
 光照传感器
 esp32的网关实现
@@ -107,9 +119,10 @@ esp32的网关实现
 
 
 
-
-ESP8266实现智能电灯本实验目的是要通过腾讯云服务器和ESP8266芯片实现远程操纵一个LED灯的颜色和亮度
-实验原理首先在腾讯云物联网开发平台注册一个项目，并设置一个电灯产品，采用Wifi通信，然后在芯片上编写代码实现对LED灯的控制以及对信号
+ ESP8266实现智能电灯
+本实验目的是要通过腾讯云服务器和ESP8266芯片实现远程操纵一个LED灯的颜色和亮度
+ 实验原理
+首先在腾讯云物联网开发平台注册一个项目，并设置一个电灯产品，采用Wifi通信，然后在芯片上编写代码实现对LED灯的
             <a class="read-more" href="/blog/2022/06373cfef8.html"> ... </a>
         </div>
         <div class="post-date">2022.06.03</div>
@@ -119,8 +132,7 @@ ESP8266实现智能电灯本实验目的是要通过腾讯云服务器和ESP8266
         <a class="post-title" href="/blog/2022/066dcc5737.html">C++中string、char *、char[]、const char*的转换</a>
         <div class="post-except">
             
-在C++中string、const char、 char 、char[]四者类型经常会需要转化。
-
+在C++中string、const char*、 char* 、char[]四者类型经常会需要转化。
 
 
 
@@ -128,13 +140,13 @@ ESP8266实现智能电灯本实验目的是要通过腾讯云服务器和ESP8266
 C和C++中char和string区别
 
 
+ 转化方法
 
-转化方法
 
 char*转string：可以直接赋值。
 char[]转string：可以直接赋值。
 char*转char[]：不能直接赋值，可以循环char*字符串逐个字符赋值,也可以使用strcpy_s等函数。
-string转char[]:不能直接赋值，可以循环char*字符串逐个字符赋值,也可以使用strcpy_
+string转char[]:不能直接赋值，可以循环char*字符串逐个字符赋值,也可以使用strcp
             <a class="read-more" href="/blog/2022/066dcc5737.html"> ... </a>
         </div>
         <div class="post-date">2022.06.02</div>
@@ -143,12 +155,14 @@ string转char[]:不能直接赋值，可以循环char*字符串逐个字符赋�
     <div class="post">
         <a class="post-title" href="/blog/2022/068a4c5ed0.html">VS Code集成终端字体修改 &amp; 字体颜色、大小修改方法</a>
         <div class="post-except">
-            打开VScode，Ctrl + ,或者设置 -&gt; 设置搜索workbenck，如下图：点击Edit in settings.json在配置文件最后加上以下参数：
+            打开VScode，Ctrl + ,或者设置 -&gt; 设置搜索workbenck，如下图：
+
+点击Edit in settings.json在配置文件最后加上以下参数：
 //终端颜色配置
 "workbench.colorCustomizations" : {
     //可以将鼠标放到下面的色号上根据自己的偏好进行选择
-    "terminal.foreground" : "#37FF13",//字体颜色
-     "terminal.background" : "#2b24
+	"terminal.foreground" : "#37FF13",//字体颜色
+ 	"terminal.background" : "#2b2424"/
             <a class="read-more" href="/blog/2022/068a4c5ed0.html"> ... </a>
         </div>
         <div class="post-date">2022.06.02</div>
@@ -162,13 +176,13 @@ string转char[]:不能直接赋值，可以循环char*字符串逐个字符赋�
 
 
 
-
 实验目的
 实验要求
 设计思路
 实验设计流程图
 MD5算法实现身份验证
 RSA实现信息加密解密
+
 RSA原理
 实现过程
 
@@ -176,6 +190,7 @@ RSA原理
 主程序
 实验演示截图
 源代码
+
 文件树
 MD5.h
 generateKey.cpp
@@ -187,9 +202,9 @@ Client.cpp
 
 
 
-
-实验目的在保密通信过程中，对消息完整性的检验和对消息来源的认证，是一个非常重要的问题，本次大作业的内容为：
-设计一个协议，利用rsa
+ 实验目的
+在保密通信过程中，对消息完整性的检验和对消息来源的认证，是一个非常重要的问题，本次大作业的内容为：
+设计一个协议，利用r
             <a class="read-more" href="/blog/2022/052824aa7.html"> ... </a>
         </div>
         <div class="post-date">2022.05.31</div>
@@ -203,20 +218,23 @@ Client.cpp
 
 
 
-
 实验要求
 
 
+ 实验要求
+通过对数字签字算法DSA的实际操作，理解DSS的基本工作原理。
+ 实验内容
 
-实验要求通过对数字签字算法DSA的实际操作，理解DSS的基本工作原理。
-实验内容
 参照教材，熟悉数字签名算法DSA；
 参照教材，熟悉杂凑函数算法SHA；
 这里给出一个可运行的DSA数字签字演示程序，运行这个程序，对一段文字进行签字和验证，了解DSA算法的签字和验证过程。
 
-杂凑函数SHA-1安全哈希算法(SHA)是基于MD4算法，其结构与MD4非常类似，用于数字签名的标准算法DSS中。
-算法实现步骤
-将消息摘要转换成位字
+ 杂凑函数SHA-1
+安全哈希算法(SHA)是基于MD4算法，其结构与MD4非常类似，用于数字签名的标准算法DSS中。
+ 算法实现步骤
+
+
+将消息
             <a class="read-more" href="/blog/2022/059d9eab6e.html"> ... </a>
         </div>
         <div class="post-date">2022.05.27</div>
@@ -230,19 +248,19 @@ Client.cpp
 
 
 
-
-
-
-
-VSCode终端编码方式修改VScode的默认编码方式为UTF-8，中国地区下cmd的编码方式GBK，所以会导致在终端运行程序打印中文出乱码的情况，修改编码方式即可
+ VSCode终端编码方式修改
+VScode的默认编码方式为UTF-8，中国地区下cmd的编码方式GBK，所以会导致在终端运行程序打印中文出乱码的情况，修改编码方式即可
 在终端运行以下指令即可修改cmd编码方式：
 chcp 65001 //UTF-8编码
 chcp 936 //GBK编码
 
-国内快速访问Github
+ 国内快速访问Github
+
+
 打开IPAddress.com网站,查询下列三个地址的ip
 
-github.comassets-cnd
+github.com
+assets-c
             <a class="read-more" href="/blog/2022/056ac63caa.html"> ... </a>
         </div>
         <div class="post-date">2022.05.26</div>
@@ -284,12 +302,13 @@ github.comassets-cnd
         <a class="post-title" href="/blog/2022/05fcf9ff47.html">LeetCode笔记-数组</a>
         <div class="post-except">
             
-本篇为个人笔记，内容或有错误。图片部分源于代码随想录，侵删。
-
+本篇为个人笔记，内容或有错误。
+图片部分源于代码随想录，侵删。
 
 
 
 数组
+
 二分
 双指针
 螺旋矩阵
@@ -297,14 +316,14 @@ github.comassets-cnd
 
 
 
-
-数组需要两点注意的是：
+ 数组
+需要两点注意的是：
 
 数组下标都是从0开始的
 数组内存空间的地址是连续的
 
-正是因为数组的在内存空间的地址是连续的，所以我们在删除或者增添元素的时候，就难免要移动其他元素的地址，而且数组不能增删，只能覆盖。在C++中二维数组在地址空间上是连续的。但是Java是没有指针的，同时也不对程序员暴露其元素的地址，寻址操作完全交给虚拟机。所以看不到每个元素的地址情况。
-二
+正是因为数组的在内存空间的地址是连续的，所以我们在删除或者增添元素的时候，就难免要移动其他元素的地址，而且数组不能增删，只能覆盖。
+在C++中二维数组在地址空间上是连续的。但是Java是没有指针的，同时也不对程序员暴露其元素的地址，寻址操作完全交给虚拟机。所以看不到每个元素的地址情况
             <a class="read-more" href="/blog/2022/05fcf9ff47.html"> ... </a>
         </div>
         <div class="post-date">2022.05.25</div>
@@ -313,12 +332,14 @@ github.comassets-cnd
     <div class="post">
         <a class="post-title" href="/blog/2022/05d90a8c79.html">MD5加密算法C++实现</a>
         <div class="post-except">
-            实验目的本次实验通过C++编程实现MD5加密算法，通过了解MD5算法加深对Hash函数的认识
-实验原理Hash 函数是将任意长的数字串转换成一个较短的定长输出数字串的函数，输出的结果称为 Hash 值。Hash 函数具有如下特点：
+             实验目的
+本次实验通过C++编程实现MD5加密算法，通过了解MD5算法加深对Hash函数的认识
+ 实验原理
+Hash 函数是将任意长的数字串转换成一个较短的定长输出数字串的函数，输出的结果称为 Hash 值。Hash 函数具有如下特点：
 
 快速性：对于任意一个输入值 x，由 Hash 函数H(x) ，计算 Hash值 y，即H(x) = y是非常容易的
 单向性：对于任意一个输出值 y，希望反向推出输入值 x，使得H(x) = y，是非常困难的。
-无碰撞性：包括强无碰撞性和弱无碰撞性
+无碰撞性：包括强无碰撞性和弱
             <a class="read-more" href="/blog/2022/05d90a8c79.html"> ... </a>
         </div>
         <div class="post-date">2022.05.23</div>

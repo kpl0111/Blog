@@ -51,21 +51,22 @@
 <p>本篇为作者个人作业，仅供参考，转载请注明出处</p>
 </blockquote>
 <!-- toc -->
-
 <ul>
 <li><a href="#%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84">实验目的</a></li>
 <li><a href="#%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82">实验要求</a></li>
 <li><a href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF">设计思路</a></li>
 <li><a href="#%E5%AE%9E%E9%AA%8C%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B%E5%9B%BE">实验设计流程图</a></li>
 <li><a href="#md5%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81">MD5算法实现身份验证</a></li>
-<li><a href="#rsa%E5%AE%9E%E7%8E%B0%E4%BF%A1%E6%81%AF%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86">RSA实现信息加密解密</a><ul>
+<li><a href="#rsa%E5%AE%9E%E7%8E%B0%E4%BF%A1%E6%81%AF%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86">RSA实现信息加密解密</a>
+<ul>
 <li><a href="#rsa%E5%8E%9F%E7%90%86">RSA原理</a></li>
 <li><a href="#%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B">实现过程</a></li>
 </ul>
 </li>
 <li><a href="#%E4%B8%BB%E7%A8%8B%E5%BA%8F">主程序</a></li>
 <li><a href="#%E5%AE%9E%E9%AA%8C%E6%BC%94%E7%A4%BA%E6%88%AA%E5%9B%BE">实验演示截图</a></li>
-<li><a href="#%E6%BA%90%E4%BB%A3%E7%A0%81">源代码</a><ul>
+<li><a href="#%E6%BA%90%E4%BB%A3%E7%A0%81">源代码</a>
+<ul>
 <li><a href="#%E6%96%87%E4%BB%B6%E6%A0%91">文件树</a></li>
 <li><a href="#md5h">MD5.h</a></li>
 <li><a href="#generatekeycpp">generateKey.cpp</a></li>
@@ -77,22 +78,26 @@
 </li>
 </ul>
 <!-- tocstop -->
-
-<h2><span id="实验目的">实验目的</span></h2><p>在保密通信过程中，对消息完整性的检验和对消息来源的认证，是一个非常重要的问题，本次大作业的内容为：</p>
+<h2><span id="实验目的"> 实验目的</span></h2>
+<p>在保密通信过程中，对消息完整性的检验和对消息来源的认证，是一个非常重要的问题，本次大作业的内容为：</p>
 <p>设计一个协议，利用rsa公钥加密算法和MD5哈希算法，实现对消息的完整性检验和发送者身份验证的功能，并编程实现这个协议。程序的要求是假设通讯双方为A和B，并假设发方拥有自己的RSA公钥PKA和私钥SKA ，同时收方B已经通过某种方式知道了发方的公钥PKA  。协议要求对发方A发来的消息，收方B通过检验，能够确定：</p>
 <ol>
 <li>B收到的消息是完整的，即消息在传送过程中没有遭到非法修改；</li>
 <li>B收到的消息来源是真实的，即该消息的确是由A发来的，而不是由其他人伪造的。</li>
 </ol>
-<h2><span id="实验要求">实验要求</span></h2><ol>
+<h2><span id="实验要求"> 实验要求</span></h2>
+<ol>
 <li>分别编写两个程序，一个为发方程序，一个为收方程序，写清楚两个程序分别要完成的功能，并能够在两个程序间进行通讯。</li>
 <li>大作业的提交方式同实验报告的提交，也就是说既要提交程序实现的说明文档，也要提交源代码和可执行程序。</li>
 </ol>
-<h2><span id="设计思路">设计思路</span></h2><p>RSA公钥加密算法可以实现对消息的加密和解密，而MD5仅可对消息进行加密处理，且在之前的实验中经过测试均满足雪崩效应，因此初步思路是：</p>
+<h2><span id="设计思路"> 设计思路</span></h2>
+<p>RSA公钥加密算法可以实现对消息的加密和解密，而MD5仅可对消息进行加密处理，且在之前的实验中经过测试均满足雪崩效应，因此初步思路是：</p>
 <ol>
-<li>利用MD5算法实现对发送方和接收方的身份确认<ul>
+<li>利用MD5算法实现对发送方和接收方的身份确认
+<ul>
 <li>双方均知道对方身份，因此可以发送方对自己的ID使用MD5算法进行加密，并把加密后的密文ID发送给接收方</li>
-<li>接收方接收到发送方的密文ID之后，利用自己已知的发送方ID（ID双方均已知，攻击者未知）同样对发送方原始ID进行MD5加密，并与发送方发送的密文ID进行比较，<ul>
+<li>接收方接收到发送方的密文ID之后，利用自己已知的发送方ID（ID双方均已知，攻击者未知）同样对发送方原始ID进行MD5加密，并与发送方发送的密文ID进行比较，
+<ul>
 <li>如果一致，由于MD5算法具有雪崩效应，因此可认为发送方即为本人</li>
 <li>如果不一致，则立即中止对话，保证信息的安全性</li>
 </ul>
@@ -100,67 +105,79 @@
 <li>身份确认之后即可进行消息发送接收</li>
 </ul>
 </li>
-<li>身份确认之后利用RSA公钥体系对双方发送消息进行加密和解密<ul>
+<li>身份确认之后利用RSA公钥体系对双方发送消息进行加密和解密
+<ul>
 <li>双方输入消息，利用RSA对消息进行加密，并把加密后消息使用TCP协议进行发送，这样即便消息被截获没有密钥也无法破译</li>
-<li>接收方接收到密文后，利用密钥对其进行解密即可获取消息内容，同样也可发送消息<br>利用TCP协议进行消息的收发，这里仅用来实现发送消息，TCP协议的安全性暂不考虑</li>
+<li>接收方接收到密文后，利用密钥对其进行解密即可获取消息内容，同样也可发送消息<br>
+利用TCP协议进行消息的收发，这里仅用来实现发送消息，TCP协议的安全性暂不考虑</li>
 </ul>
 </li>
 </ol>
-<h2><span id="实验设计流程图">实验设计流程图</span></h2><p>实验流程图如下：<br><img src="https://s2.loli.net/2022/06/02/HJvAI4Raqdk1nxi.png" alt="1654167804"></p>
+<h2><span id="实验设计流程图"> 实验设计流程图</span></h2>
+<p>实验流程图如下：<br>
+<img src="https://s2.loli.net/2022/06/02/HJvAI4Raqdk1nxi.png" alt="1654167804"></p>
 <p>RSA算法流程图如下：</p>
 <p><img src="https://s2.loli.net/2022/06/02/oHS6y7IKfLsnj2D.png" alt="20220602191118"></p>
 <p>MD5算法流程图如下：</p>
 <p><img src="https://s2.loli.net/2022/05/23/Uj4DuPtrp7wq82v.png" alt="result4"></p>
-<h2><span id="md5算法实现身份验证">MD5算法实现身份验证</span></h2><ol>
-<li><p>获取输入，该模块用于获取一段明文字符，不定长</p>
+<h2><span id="md5算法实现身份验证"> MD5算法实现身份验证</span></h2>
+<ol>
+<li>
+<p>获取输入，该模块用于获取一段明文字符，不定长</p>
 </li>
-<li><p>对获取的不定长字符串进行填充,使其字节长度满足n*512 + 448, 填充规则是第一位填充1，后续填充0，直至满足上述条件，最后再用一个64为二进制字符串表示明文长度，这样填充之后长度为(n + 1)*512</p>
-<pre><code class="C++">// 填充字符串
-vector&lt;unsigned int&gt; padding(string src) {
-    // 以512位,64个字节为一组
-    unsigned int num = ((src.length() + 8) / 64) + 1;
-    vector&lt;unsigned int&gt; rec(num*16);
-    strlength = num*16;
-    for(unsigned int i = 0; i &lt; src.length(); i++){
-        // 一个unsigned int对应4个字节，保存4个字符信息
-        rec[i&gt;&gt;2] |= (int)(src[i]) &lt;&lt; ((i % 4) * 8);
+<li>
+<p>对获取的不定长字符串进行填充,使其字节长度满足n*512 + 448, 填充规则是第一位填充1，后续填充0，直至满足上述条件，最后再用一个64为二进制字符串表示明文长度，这样填充之后长度为(n + 1)*512</p>
+<pre class="highlight"><code class="C++"><span class="hljs-comment">// 填充字符串</span>
+<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>&gt; <span class="hljs-title">padding</span><span class="hljs-params">(<span class="hljs-built_in">string</span> src)</span> </span>{
+    <span class="hljs-comment">// 以512位,64个字节为一组</span>
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> num = ((src.length() + <span class="hljs-number">8</span>) / <span class="hljs-number">64</span>) + <span class="hljs-number">1</span>;
+    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>&gt; <span class="hljs-title">rec</span><span class="hljs-params">(num*<span class="hljs-number">16</span>)</span></span>;
+    strlength = num*<span class="hljs-number">16</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; src.length(); i++){
+        <span class="hljs-comment">// 一个unsigned int对应4个字节，保存4个字符信息</span>
+        rec[i&gt;&gt;<span class="hljs-number">2</span>] |= (<span class="hljs-keyword">int</span>)(src[i]) &lt;&lt; ((i % <span class="hljs-number">4</span>) * <span class="hljs-number">8</span>);
     }
-    // 补充1000...000
-    rec[src.length() &gt;&gt; 2] |= (0x80 &lt;&lt; ((src.length() % 4)*8));
-    // 填充原文长度
-    rec[rec.size()-2] = (src.length() &lt;&lt; 3);
-    return rec;
+    <span class="hljs-comment">// 补充1000...000</span>
+    rec[src.length() &gt;&gt; <span class="hljs-number">2</span>] |= (<span class="hljs-number">0x80</span> &lt;&lt; ((src.length() % <span class="hljs-number">4</span>)*<span class="hljs-number">8</span>));
+    <span class="hljs-comment">// 填充原文长度</span>
+    rec[rec.<span class="hljs-built_in">size</span>()<span class="hljs-number">-2</span>] = (src.length() &lt;&lt; <span class="hljs-number">3</span>);
+    <span class="hljs-keyword">return</span> rec;
 }
 </code></pre>
 </li>
-<li><p>字符串分块函数，将上述填充之后的字符串分割为L个512字节长度的字符串</p>
+<li>
+<p>字符串分块函数，将上述填充之后的字符串分割为L个512字节长度的字符串</p>
 </li>
-<li><p>循环压缩函数：对每个512-bit分组进行64轮迭代运算</p>
+<li>
+<p>循环压缩函数：对每个512-bit分组进行64轮迭代运算</p>
 <ol>
-<li><p>对分组（A, B, C, D）中的A进行迭代运算<br>  公式为：A &lt;= B + ((A + f(B,C,D) + X[k] + T[i])) &lt;&lt; S[i]<br>  其中：</p>
+<li>
+<p>对分组（A, B, C, D）中的A进行迭代运算<br>
+公式为：A &lt;= B + ((A + f(B,C,D) + X[k] + T[i])) &lt;&lt; S[i]<br>
+其中：</p>
 <ul>
 <li>A,B,C,D代表MD5缓冲区当前的数值</li>
 <li>f为轮函数，1-16轮迭代使用F函数，17-32轮迭代使用G函数，33-48轮迭 代使用H函数，49-64轮迭代使用I函数</li>
 </ul>
-<pre><code class="C++">// F函数
-unsigned int F(unsigned int b, unsigned int c, unsigned int d) {
-    return (b &amp; c) | ((~b) &amp; d);
+<pre class="highlight"><code class="C++"><span class="hljs-comment">// F函数</span>
+<span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">F</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> c, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> d)</span> </span>{
+    <span class="hljs-keyword">return</span> (b &amp; c) | ((~b) &amp; d);
 }
-// G函数
-unsigned int G(unsigned int b, unsigned int c, unsigned int d) {
-    return (b &amp; d) | (c &amp; (~d));
+<span class="hljs-comment">// G函数</span>
+<span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">G</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> c, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> d)</span> </span>{
+    <span class="hljs-keyword">return</span> (b &amp; d) | (c &amp; (~d));
 }
-// H函数
-unsigned int H(unsigned int b, unsigned int c, unsigned int d) {
-    return b ^ c ^ d;
+<span class="hljs-comment">// H函数</span>
+<span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">H</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> c, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> d)</span> </span>{
+    <span class="hljs-keyword">return</span> b ^ c ^ d;
 }
-// I函数
-unsigned int I(unsigned int b, unsigned int c, unsigned int d) {
-    return c ^ (b | (~d));
+<span class="hljs-comment">// I函数</span>
+<span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">I</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> c, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> d)</span> </span>{
+    <span class="hljs-keyword">return</span> c ^ (b | (~d));
 }
-// 移位操作函数
-unsigned int shift(unsigned int a, unsigned int n) {
-    return (a &lt;&lt; n) | (a &gt;&gt; (32 - n));
+<span class="hljs-comment">// 移位操作函数</span>
+<span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">shift</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> a, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">return</span> (a &lt;&lt; n) | (a &gt;&gt; (<span class="hljs-number">32</span> - n));
 }
 </code></pre>
 <ul>
@@ -169,39 +186,42 @@ unsigned int shift(unsigned int a, unsigned int n) {
 <li>S[i]对应第i轮的左循环移位的s值</li>
 </ul>
 </li>
-<li><p>对分组（A,B,C,D）作循环轮换<br>  公式为：（B,C,D,A）&lt;=（A,B,C,D）</p>
+<li>
+<p>对分组（A,B,C,D）作循环轮换<br>
+公式为：（B,C,D,A）&lt;=（A,B,C,D）</p>
 </li>
-<li><p>按照1， 2步骤进行四轮循环压缩</p>
+<li>
+<p>按照1， 2步骤进行四轮循环压缩</p>
 </li>
 </ol>
-<pre><code class="C++">    // 循环压缩
- void iterateFunc(unsigned int* X, int size = 16) {
-     unsigned int a = tempA,
+<pre class="highlight"><code class="C++">    <span class="hljs-comment">// 循环压缩</span>
+ <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">iterateFunc</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>* X, <span class="hljs-keyword">int</span> <span class="hljs-built_in">size</span> = <span class="hljs-number">16</span>)</span> </span>{
+     <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> a = tempA,
                   b = tempB,
                   c = tempC,
                   d = tempD,
-                  rec = 0,
+                  rec = <span class="hljs-number">0</span>,
                   g, k;
-     for(int i = 0; i &lt; 64; i++) {
-         if(i &lt; 16) {
-             // F迭代
+     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">64</span>; i++) {
+         <span class="hljs-keyword">if</span>(i &lt; <span class="hljs-number">16</span>) {
+             <span class="hljs-comment">// F迭代</span>
              g = F(b, c, d);
              k = i;
          }
-         else if(i &lt; 32) {
-             // G迭代
+         <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(i &lt; <span class="hljs-number">32</span>) {
+             <span class="hljs-comment">// G迭代</span>
              g = G(b, c, d);
-             k = (1 + 5*i) % 16;
+             k = (<span class="hljs-number">1</span> + <span class="hljs-number">5</span>*i) % <span class="hljs-number">16</span>;
          }
-         else if(i &lt; 48) {
-             // H迭代
+         <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(i &lt; <span class="hljs-number">48</span>) {
+             <span class="hljs-comment">// H迭代</span>
              g = H(b, c, d);
-             k = (5 + 3*i) % 16;
+             k = (<span class="hljs-number">5</span> + <span class="hljs-number">3</span>*i) % <span class="hljs-number">16</span>;
          }
-         else {
-             // I迭代
+         <span class="hljs-keyword">else</span> {
+             <span class="hljs-comment">// I迭代</span>
              g = I(b, c, d);
-             k = (7*i) % 16;
+             k = (<span class="hljs-number">7</span>*i) % <span class="hljs-number">16</span>;
          }
          rec = d;
          d = c;
@@ -216,341 +236,375 @@ unsigned int shift(unsigned int a, unsigned int n) {
  }
 </code></pre>
 </li>
-<li><p>MD5编码主函数：用于调用前面的功能函数对明文字符串进行MD5编码</p>
+<li>
+<p>MD5编码主函数：用于调用前面的功能函数对明文字符串进行MD5编码</p>
 <ol>
 <li>输入待加密的明文字符串</li>
 <li>对明文字符串进行填充</li>
-<li>对填充后的明文字符串进行分块（$Y_q$）</li>
+<li>对填充后的明文字符串进行分块（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mi>q</mi></msub></mrow><annotation encoding="application/x-tex">Y_q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">q</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>）</li>
 <li>使用预设的初始值初始化MD5缓冲区间（IV）</li>
-<li>对各个分块字符串利用公式HMD5($CV_(i-1), Y_i$)进行循环压缩，运算结果作为下一块的输入（$CV_i$）</li>
-<li>当所有的分块迭代完成后，输出结果$CV_L$，L表示最后一个分块的序号</li>
+<li>对各个分块字符串利用公式HMD5(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><msub><mi>V</mi><mo stretchy="false">(</mo></msub><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo separator="true">,</mo><msub><mi>Y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">CV_(i-1), Y_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.03853em;vertical-align:-0.3551999999999999em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mopen mtight">(</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>)进行循环压缩，运算结果作为下一块的输入（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><msub><mi>V</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">CV_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）</li>
+<li>当所有的分块迭代完成后，输出结果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><msub><mi>V</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">CV_L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，L表示最后一个分块的序号</li>
 </ol>
-<pre><code class="C++">// MD5加密函数
- string encode(string src) {
-     vector&lt;unsigned int&gt; rec = padding(src);
-     for(unsigned int i = 0; i &lt; strlength/16; i++) {
-         unsigned int num[16];
-         for(int j = 0; j &lt; 16; j++) {
-             num[j] = rec[i*16+j];
+<pre class="highlight"><code class="C++"><span class="hljs-comment">// MD5加密函数</span>
+ <span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">encode</span><span class="hljs-params">(<span class="hljs-built_in">string</span> src)</span> </span>{
+     <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>&gt; rec = padding(src);
+     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; strlength/<span class="hljs-number">16</span>; i++) {
+         <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> num[<span class="hljs-number">16</span>];
+         <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">16</span>; j++) {
+             num[j] = rec[i*<span class="hljs-number">16</span>+j];
          }
-         iterateFunc(num, 16);
+         iterateFunc(num, <span class="hljs-number">16</span>);
      }
-     return format(tempA) + format(tempB) + format(tempC) + format(tempD);
+     <span class="hljs-keyword">return</span> format(tempA) + format(tempB) + format(tempC) + format(tempD);
  }
 </code></pre>
 </li>
 </ol>
-<h2><span id="rsa实现信息加密解密">RSA实现信息加密解密</span></h2><h3><span id="rsa原理">RSA原理</span></h3><ol>
-<li>公钥<br> 选择两个不同的大素数p和q，n是二者的乘积，即$ n=pq $，<br> 使$$ \varphi (n)=(p-1)(q-1) $$为欧拉函数。<br> 随机选取正整数e，使其满足$ gcd(e,\varphi (n))=1 $，即e和$\phi (n)$互素，则将(e,n)作为公钥。</li>
-<li>私钥<br> 求出正数d，使其满足$ e \times d \equiv 1mod\varphi (n) $，则将(d,n)作为私钥。</li>
-<li>加密算法<br> 对于明文m，由$ c \equiv m^emodn $，得到密文c，这里需要注意明文的分组方法。</li>
-<li>解密算法<br> 对于密文c，由$ m \equiv c^dmodn $，得到明文m。</li>
+<h2><span id="rsa实现信息加密解密"> RSA实现信息加密解密</span></h2>
+<h3><span id="rsa原理"> RSA原理</span></h3>
+<ol>
+<li>公钥<br>
+选择两个不同的大素数p和q，n是二者的乘积，即$ n=pq <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">，</mi><mi mathvariant="normal">使</mi></mrow><annotation encoding="application/x-tex">，
+ 使</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">使</span></span></span></span>$ \varphi (n)=(p-1)(q-1) $$为欧拉函数。<br>
+随机选取正整数e，使其满足$ gcd(e,\varphi (n))=1 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">，</mi><mi mathvariant="normal">即</mi><mi>e</mi><mi mathvariant="normal">和</mi></mrow><annotation encoding="application/x-tex">，即e和</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">即</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">和</span></span></span></span>\phi (n)$互素，则将(e,n)作为公钥。</li>
+<li>私钥<br>
+求出正数d，使其满足$ e \times d \equiv 1mod\varphi (n) $，则将(d,n)作为私钥。</li>
+<li>加密算法<br>
+对于明文m，由$ c \equiv m^emodn $，得到密文c，这里需要注意明文的分组方法。</li>
+<li>解密算法<br>
+对于密文c，由$ m \equiv c^dmodn $，得到明文m。</li>
 </ol>
-<h3><span id="实现过程">实现过程</span></h3><p>C++中大数需要用到gmp库,简单说下怎么安装</p>
+<h3><span id="实现过程"> 实现过程</span></h3>
+<p>C++中大数需要用到gmp库,简单说下怎么安装</p>
 <ul>
-<li><p>Linux一行命令的事情</p>
-<pre><code class="C++">sudo apt-get install libgmp-dev
+<li>
+<p>Linux一行命令的事情</p>
+<pre class="highlight"><code class="C++">sudo apt-<span class="hljs-built_in">get</span> install libgmp-dev
 </code></pre>
 </li>
-<li><p>Windows下需要MinGW,打开<code>MinGW Installation Manager</code>,左侧<code>All Packages</code>选中，然后找到<code>MinGW-gmp</code>，版本的话选择<code>dev</code>，右键<code>Mark for Installation</code>，然后菜单栏<code>Installation</code>选择<code>Apply Changes</code>即可，等待安装即可。<br><img src="https://s2.loli.net/2022/06/02/WMX1Tlh4Q2aUpLb.png" alt="20220602224307"></p>
+<li>
+<p>Windows下需要MinGW,打开<code>MinGW Installation Manager</code>,左侧<code>All Packages</code>选中，然后找到<code>MinGW-gmp</code>，版本的话选择<code>dev</code>，右键<code>Mark for Installation</code>，然后菜单栏<code>Installation</code>选择<code>Apply Changes</code>即可，等待安装即可。<br>
+<img src="https://s2.loli.net/2022/06/02/WMX1Tlh4Q2aUpLb.png" alt="20220602224307"></p>
 </li>
 </ul>
 <ol>
 <li>首先定义一个密钥对结构体：</li>
 </ol>
-<pre><code class="C++">struct key_pair {
-    string n;
-    string d;
-    int e;
+<pre class="highlight"><code class="C++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">key_pair</span> {</span>
+    <span class="hljs-built_in">string</span> n;
+    <span class="hljs-built_in">string</span> d;
+    <span class="hljs-keyword">int</span> e;
 };
 </code></pre>
 <ol start="2">
 <li>利用GMP的素性测试和数据生成完成两个大素数p，q的生成</li>
 </ol>
-<pre><code class="C++">//生成两个大素数
-mpz_t * gen_primes() {
-    gmp_randstate_t grt;
+<pre class="highlight"><code class="C++"><span class="hljs-comment">//生成两个大素数</span>
+<span class="hljs-function"><span class="hljs-keyword">mpz_t</span> * <span class="hljs-title">gen_primes</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">gmp_randstate_t</span> grt;
     gmp_randinit_default(grt);
-    gmp_randseed_ui(grt, time(NULL));
+    gmp_randseed_ui(grt, time(<span class="hljs-literal">NULL</span>));
     
-    mpz_t key_p, key_q;
+    <span class="hljs-keyword">mpz_t</span> key_p, key_q;
     mpz_init(key_p);
     mpz_init(key_q);
  
-    mpz_urandomb(key_p, grt, KEY_LENGTH / 2);
-    mpz_urandomb(key_q, grt, KEY_LENGTH / 2); //随机生成两个大整数
+    mpz_urandomb(key_p, grt, KEY_LENGTH / <span class="hljs-number">2</span>);
+    mpz_urandomb(key_q, grt, KEY_LENGTH / <span class="hljs-number">2</span>); <span class="hljs-comment">//随机生成两个大整数</span>
  
-    mpz_t * result = new mpz_t[2];
-    mpz_init(result[0]);
-    mpz_init(result[1]);
+    <span class="hljs-keyword">mpz_t</span> * result = <span class="hljs-keyword">new</span> <span class="hljs-keyword">mpz_t</span>[<span class="hljs-number">2</span>];
+    mpz_init(result[<span class="hljs-number">0</span>]);
+    mpz_init(result[<span class="hljs-number">1</span>]);
  
-    mpz_nextprime(result[0], key_p);  //使用GMP自带的素数生成函数
-    mpz_nextprime(result[1], key_q);
+    mpz_nextprime(result[<span class="hljs-number">0</span>], key_p);  <span class="hljs-comment">//使用GMP自带的素数生成函数</span>
+    mpz_nextprime(result[<span class="hljs-number">1</span>], key_q);
  
     mpz_clear(key_p);
     mpz_clear(key_q);
  
-    return result;    
+    <span class="hljs-keyword">return</span> result;    
 }
 </code></pre>
 <ol start="3">
 <li>根据RSA原理生成密钥对</li>
 </ol>
-<pre><code class="C++">//生成密钥对
-key_pair * gen_key_pair() {
-    mpz_t * primes = gen_primes();
+<pre class="highlight"><code class="C++"><span class="hljs-comment">//生成密钥对</span>
+<span class="hljs-function">key_pair * <span class="hljs-title">gen_key_pair</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">mpz_t</span> * primes = gen_primes();
  
-    mpz_t key_n, key_e, key_f;
+    <span class="hljs-keyword">mpz_t</span> key_n, key_e, key_f;
     mpz_init(key_n);
     mpz_init(key_f);
-    mpz_init_set_ui(key_e, 65537);    //设置e为65537
+    mpz_init_set_ui(key_e, <span class="hljs-number">65537</span>);    <span class="hljs-comment">//设置e为65537</span>
  
-    mpz_mul(key_n, primes[0], primes[1]);        //计算n=p*q
-    mpz_sub_ui(primes[0], primes[0], 1);        //p=p-1
-    mpz_sub_ui(primes[1], primes[1], 1);        //q=q-1
-    mpz_mul(key_f, primes[0], primes[1]);        //计算欧拉函数φ(n)=(p-1)*(q-1)
+    mpz_mul(key_n, primes[<span class="hljs-number">0</span>], primes[<span class="hljs-number">1</span>]);        <span class="hljs-comment">//计算n=p*q</span>
+    mpz_sub_ui(primes[<span class="hljs-number">0</span>], primes[<span class="hljs-number">0</span>], <span class="hljs-number">1</span>);        <span class="hljs-comment">//p=p-1</span>
+    mpz_sub_ui(primes[<span class="hljs-number">1</span>], primes[<span class="hljs-number">1</span>], <span class="hljs-number">1</span>);        <span class="hljs-comment">//q=q-1</span>
+    mpz_mul(key_f, primes[<span class="hljs-number">0</span>], primes[<span class="hljs-number">1</span>]);        <span class="hljs-comment">//计算欧拉函数φ(n)=(p-1)*(q-1)</span>
  
-    mpz_t key_d;    
+    <span class="hljs-keyword">mpz_t</span> key_d;    
     mpz_init(key_d);
-    mpz_invert(key_d, key_e, key_f);   //计算数论倒数
+    mpz_invert(key_d, key_e, key_f);   <span class="hljs-comment">//计算数论倒数</span>
  
-    key_pair * result = new key_pair;
+    key_pair * result = <span class="hljs-keyword">new</span> key_pair;
  
-    char * buf_n = new char[KEY_LENGTH + 10];
-    char * buf_d = new char[KEY_LENGTH + 10];
+    <span class="hljs-keyword">char</span> * buf_n = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[KEY_LENGTH + <span class="hljs-number">10</span>];
+    <span class="hljs-keyword">char</span> * buf_d = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[KEY_LENGTH + <span class="hljs-number">10</span>];
  
     mpz_get_str(buf_n, BASE, key_n);
     result-&gt;n = buf_n;
     mpz_get_str(buf_d, BASE, key_d);
     result-&gt;d = buf_d;
-    result-&gt;e = 65537;
+    result-&gt;e = <span class="hljs-number">65537</span>;
  
-    mpz_clear(primes[0]);   //释放内存
-    mpz_clear(primes[1]);
+    mpz_clear(primes[<span class="hljs-number">0</span>]);   <span class="hljs-comment">//释放内存</span>
+    mpz_clear(primes[<span class="hljs-number">1</span>]);
     mpz_clear(key_n);
     mpz_clear(key_d);
     mpz_clear(key_e);
     mpz_clear(key_f);
-    delete []primes;
+    <span class="hljs-keyword">delete</span> []primes;
 
-    return result;
+    <span class="hljs-keyword">return</span> result;
 }
 </code></pre>
 <ol start="4">
 <li>加密函数</li>
 </ol>
-<pre><code class="C++">char * encrypt(char * plain_text, const char * key_n, int key_e)  {
-    mpz_t M, C1, n;
+<pre class="highlight"><code class="C++"><span class="hljs-function"><span class="hljs-keyword">char</span> * <span class="hljs-title">encrypt</span><span class="hljs-params">(<span class="hljs-keyword">char</span> * plain_text, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * key_n, <span class="hljs-keyword">int</span> key_e)</span>  </span>{
+    <span class="hljs-keyword">mpz_t</span> M, C1, n;
     mpz_init_set_str(M, plain_text, BASE); 
     mpz_init_set_str(n, key_n, BASE);
-    mpz_init_set_ui(C1, 0);
+    mpz_init_set_ui(C1, <span class="hljs-number">0</span>);
  
-    mpz_powm_ui(C1, M, key_e, n);    //使用GMP中模幂计算函数
+    mpz_powm_ui(C1, M, key_e, n);    <span class="hljs-comment">//使用GMP中模幂计算函数</span>
  
-    char * result = new char[KEY_LENGTH + 10];
+    <span class="hljs-keyword">char</span> * result = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[KEY_LENGTH + <span class="hljs-number">10</span>];
     mpz_get_str(result, BASE, C1);
  
-    return result;
+    <span class="hljs-keyword">return</span> result;
 }
 </code></pre>
 <ol start="5">
 <li>解密函数</li>
 </ol>
-<pre><code class="C++">char * decrypt(char * cipher_text, const char * key_n, const char * key_d)  {
-    mpz_t M, C1, n, d;
+<pre class="highlight"><code class="C++"><span class="hljs-function"><span class="hljs-keyword">char</span> * <span class="hljs-title">decrypt</span><span class="hljs-params">(<span class="hljs-keyword">char</span> * cipher_text, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * key_n, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * key_d)</span>  </span>{
+    <span class="hljs-keyword">mpz_t</span> M, C1, n, d;
     mpz_init_set_str(C1, cipher_text, BASE); 
     mpz_init_set_str(n, key_n, BASE);
     mpz_init_set_str(d, key_d, BASE);
     mpz_init(M);
  
-    mpz_powm(M, C1, d, n);   //使用GMP中的模幂计算函数
+    mpz_powm(M, C1, d, n);   <span class="hljs-comment">//使用GMP中的模幂计算函数</span>
  
-    char * result = new char[KEY_LENGTH + 10];
+    <span class="hljs-keyword">char</span> * result = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[KEY_LENGTH + <span class="hljs-number">10</span>];
     mpz_get_str(result, BASE, M);
  
-    return result;
+    <span class="hljs-keyword">return</span> result;
 }
 </code></pre>
-<h2><span id="主程序">主程序</span></h2><ol>
+<h2><span id="主程序"> 主程序</span></h2>
+<ol>
 <li>对A,B双方分别创建套接字，采用TCP，IPv4协议，输入自己的昵称之后经过TCP的三次握手即可连接成功</li>
 <li>接下来进入身份确认环节，对AB双方发送的身份信息进行确认，利用对方昵称生成MD5密文，对比发送密文即可判断</li>
 </ol>
-<pre><code class="C++">    MD5 tmp_name;
-    string tmp_s = tmp_name.encode(client_name_tmp);
-    for (int i = 0; i &lt; tmp_s.length(); i++) {
+<pre class="highlight"><code class="C++">    MD5 tmp_name;
+    <span class="hljs-built_in">string</span> tmp_s = tmp_name.encode(client_name_tmp);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; tmp_s.length(); i++) {
         client_name[i] = tmp_s[i];
     }
 
-    send_len = send(client, client_name, sizeof(client_name), 0);
-    receive_len = recv(client, server_name, sizeof(server_name), 0);
+    send_len = send(client, client_name, <span class="hljs-keyword">sizeof</span>(client_name), <span class="hljs-number">0</span>);
+    receive_len = recv(client, server_name, <span class="hljs-keyword">sizeof</span>(server_name), <span class="hljs-number">0</span>);
 
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY|FOREGROUND_RED);
-    cout &lt;&lt; endl;
-    if (IdConfirm(server_name, "lkp1")) {
-        cout &lt;&lt; "ID Confirm success, Let's chatting..." &lt;&lt; endl &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; "ID Confirm failed, Conversation aborted...";
-        return 0;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-keyword">if</span> (IdConfirm(server_name, <span class="hljs-string">"lkp1"</span>)) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"ID Confirm success, Let's chatting..."</span> &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"ID Confirm failed, Conversation aborted..."</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     }
 </code></pre>
 <ol start="3">
-<li>身份确认成功之后即可进入发送环节，双方回合制发送信息<ul>
+<li>身份确认成功之后即可进入发送环节，双方回合制发送信息
+<ul>
 <li>如果输入12582则表示当前回合结束，对方可发送信息</li>
 <li>如果输入12581则表示想要退出聊天，则发送双方结束本次聊天</li>
 <li>如果是其他信息，则相对信息进行加密然后发送，为了演示加密过程，在发送信息下方打印出密文和明文详情</li>
 </ul>
 </li>
 </ol>
-<h2><span id="实验演示截图">实验演示截图</span></h2><p>为了演示清晰，程序对文字进行了颜色处理，采用最原始聊天的蓝绿风格，并对身份确认环节进行红色处理。  </p>
+<h2><span id="实验演示截图"> 实验演示截图</span></h2>
+<p>为了演示清晰，程序对文字进行了颜色处理，采用最原始聊天的蓝绿风格，并对身份确认环节进行红色处理。</p>
 <p>默认双方昵称为lkp1和lkp2。</p>
-<p>双方正常对话发送消息<br><img src="https://s2.loli.net/2022/06/02/XO8BGUYbve3xVuC.png" alt="20220602193209"></p>
-<p>client结束本轮对话，由server发送消息<br><img src="https://s2.loli.net/2022/06/02/JeGg7Fcfu6vq8CE.png" alt="20220602193357"></p>
-<p>server发送完消息之后输入12581结束本次对话<br><img src="https://s2.loli.net/2022/06/02/QT1hBk8ixKj7pGv.png" alt="20220602193553"></p>
-<p>接下来演示身份错误环节<br><img src="https://s2.loli.net/2022/06/02/3DixqSKjXVzYZ9M.png" alt="20220602194244"></p>
+<p>双方正常对话发送消息<br>
+<img src="https://s2.loli.net/2022/06/02/XO8BGUYbve3xVuC.png" alt="20220602193209"></p>
+<p>client结束本轮对话，由server发送消息<br>
+<img src="https://s2.loli.net/2022/06/02/JeGg7Fcfu6vq8CE.png" alt="20220602193357"></p>
+<p>server发送完消息之后输入12581结束本次对话<br>
+<img src="https://s2.loli.net/2022/06/02/QT1hBk8ixKj7pGv.png" alt="20220602193553"></p>
+<p>接下来演示身份错误环节<br>
+<img src="https://s2.loli.net/2022/06/02/3DixqSKjXVzYZ9M.png" alt="20220602194244"></p>
 <p>实验实现了目标里面的功能并且能够双向通信。</p>
-<h2><span id="源代码">源代码</span></h2><h3><span id="文件树">文件树</span></h3><p>├───Client<br>│——|——client.cpp<br>│——|——client.exe<br>│——|——client.h<br>│——|——MD5.h<br>├───Server<br>│——|——generateKey.cpp<br>│——|——generateKey.exe<br>│——|——MD5.h<br>│——|——server.cpp<br>│——|——server.exe<br>│——|——server.h</p>
-<h3><span id="md5h">MD5.h</span></h3><pre><code class="C++">#pragma once
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;cstdlib&gt;
-#include &lt;string&gt;
+<h2><span id="源代码"> 源代码</span></h2>
+<h3><span id="文件树"> 文件树</span></h3>
+<p>├───Client<br>
+│——|——client.cpp<br>
+│——|——client.exe<br>
+│——|——client.h<br>
+│——|——MD5.h<br>
+├───Server<br>
+│——|——generateKey.cpp<br>
+│——|——generateKey.exe<br>
+│——|——MD5.h<br>
+│——|——server.cpp<br>
+│——|——server.exe<br>
+│——|——server.h</p>
+<h3><span id="md5h"> MD5.h</span></h3>
+<pre class="highlight"><code class="C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdlib&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
 
-using namespace std;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
 
-#define A 0x67452301
-#define B 0xefcdab89
-#define C 0x98badcfe
-#define D 0x10325476
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> A 0x67452301</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> B 0xefcdab89</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> C 0x98badcfe</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> D 0x10325476</span>
 
-const char str16[] = "0123456789abcdef";
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> str16[] = <span class="hljs-string">"0123456789abcdef"</span>;
 
-const unsigned int T[] = {
-    0xd76aa478,0xe8c7b756,0x242070db,0xc1bdceee,
-    0xf57c0faf,0x4787c62a,0xa8304613,0xfd469501,
-    0x698098d8,0x8b44f7af,0xffff5bb1,0x895cd7be,
-    0x6b901122,0xfd987193,0xa679438e,0x49b40821,
-    0xf61e2562,0xc040b340,0x265e5a51,0xe9b6c7aa,
-    0xd62f105d,0x02441453,0xd8a1e681,0xe7d3fbc8,
-    0x21e1cde6,0xc33707d6,0xf4d50d87,0x455a14ed,
-    0xa9e3e905,0xfcefa3f8,0x676f02d9,0x8d2a4c8a,
-    0xfffa3942,0x8771f681,0x6d9d6122,0xfde5380c,
-    0xa4beea44,0x4bdecfa9,0xf6bb4b60,0xbebfbc70,
-    0x289b7ec6,0xeaa127fa,0xd4ef3085,0x04881d05,
-    0xd9d4d039,0xe6db99e5,0x1fa27cf8,0xc4ac5665,
-    0xf4292244,0x432aff97,0xab9423a7,0xfc93a039,
-    0x655b59c3,0x8f0ccc92,0xffeff47d,0x85845dd1,
-    0x6fa87e4f,0xfe2ce6e0,0xa3014314,0x4e0811a1,
-    0xf7537e82,0xbd3af235,0x2ad7d2bb,0xeb86d391 };
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> T[] = {
+    <span class="hljs-number">0xd76aa478</span>,<span class="hljs-number">0xe8c7b756</span>,<span class="hljs-number">0x242070db</span>,<span class="hljs-number">0xc1bdceee</span>,
+    <span class="hljs-number">0xf57c0faf</span>,<span class="hljs-number">0x4787c62a</span>,<span class="hljs-number">0xa8304613</span>,<span class="hljs-number">0xfd469501</span>,
+    <span class="hljs-number">0x698098d8</span>,<span class="hljs-number">0x8b44f7af</span>,<span class="hljs-number">0xffff5bb1</span>,<span class="hljs-number">0x895cd7be</span>,
+    <span class="hljs-number">0x6b901122</span>,<span class="hljs-number">0xfd987193</span>,<span class="hljs-number">0xa679438e</span>,<span class="hljs-number">0x49b40821</span>,
+    <span class="hljs-number">0xf61e2562</span>,<span class="hljs-number">0xc040b340</span>,<span class="hljs-number">0x265e5a51</span>,<span class="hljs-number">0xe9b6c7aa</span>,
+    <span class="hljs-number">0xd62f105d</span>,<span class="hljs-number">0x02441453</span>,<span class="hljs-number">0xd8a1e681</span>,<span class="hljs-number">0xe7d3fbc8</span>,
+    <span class="hljs-number">0x21e1cde6</span>,<span class="hljs-number">0xc33707d6</span>,<span class="hljs-number">0xf4d50d87</span>,<span class="hljs-number">0x455a14ed</span>,
+    <span class="hljs-number">0xa9e3e905</span>,<span class="hljs-number">0xfcefa3f8</span>,<span class="hljs-number">0x676f02d9</span>,<span class="hljs-number">0x8d2a4c8a</span>,
+    <span class="hljs-number">0xfffa3942</span>,<span class="hljs-number">0x8771f681</span>,<span class="hljs-number">0x6d9d6122</span>,<span class="hljs-number">0xfde5380c</span>,
+    <span class="hljs-number">0xa4beea44</span>,<span class="hljs-number">0x4bdecfa9</span>,<span class="hljs-number">0xf6bb4b60</span>,<span class="hljs-number">0xbebfbc70</span>,
+    <span class="hljs-number">0x289b7ec6</span>,<span class="hljs-number">0xeaa127fa</span>,<span class="hljs-number">0xd4ef3085</span>,<span class="hljs-number">0x04881d05</span>,
+    <span class="hljs-number">0xd9d4d039</span>,<span class="hljs-number">0xe6db99e5</span>,<span class="hljs-number">0x1fa27cf8</span>,<span class="hljs-number">0xc4ac5665</span>,
+    <span class="hljs-number">0xf4292244</span>,<span class="hljs-number">0x432aff97</span>,<span class="hljs-number">0xab9423a7</span>,<span class="hljs-number">0xfc93a039</span>,
+    <span class="hljs-number">0x655b59c3</span>,<span class="hljs-number">0x8f0ccc92</span>,<span class="hljs-number">0xffeff47d</span>,<span class="hljs-number">0x85845dd1</span>,
+    <span class="hljs-number">0x6fa87e4f</span>,<span class="hljs-number">0xfe2ce6e0</span>,<span class="hljs-number">0xa3014314</span>,<span class="hljs-number">0x4e0811a1</span>,
+    <span class="hljs-number">0xf7537e82</span>,<span class="hljs-number">0xbd3af235</span>,<span class="hljs-number">0x2ad7d2bb</span>,<span class="hljs-number">0xeb86d391</span> };
 
-const unsigned int s[] = { 7,12,17,22,7,12,17,22,7,12,17,22,7,12,17,22,
-                           5,9,14,20,5,9,14,20,5,9,14,20,5,9,14,20,
-                           4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,
-                           6,10,15,21,6,10,15,21,6,10,15,21,6,10,15,21};
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> s[] = { <span class="hljs-number">7</span>,<span class="hljs-number">12</span>,<span class="hljs-number">17</span>,<span class="hljs-number">22</span>,<span class="hljs-number">7</span>,<span class="hljs-number">12</span>,<span class="hljs-number">17</span>,<span class="hljs-number">22</span>,<span class="hljs-number">7</span>,<span class="hljs-number">12</span>,<span class="hljs-number">17</span>,<span class="hljs-number">22</span>,<span class="hljs-number">7</span>,<span class="hljs-number">12</span>,<span class="hljs-number">17</span>,<span class="hljs-number">22</span>,
+                           <span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">14</span>,<span class="hljs-number">20</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">14</span>,<span class="hljs-number">20</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">14</span>,<span class="hljs-number">20</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">14</span>,<span class="hljs-number">20</span>,
+                           <span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>,<span class="hljs-number">23</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>,<span class="hljs-number">23</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>,<span class="hljs-number">23</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>,<span class="hljs-number">23</span>,
+                           <span class="hljs-number">6</span>,<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">21</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">21</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">21</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">21</span>};
 
-// 第一部分是要进行 HASH 运算的原始明文，第二部分则是其对应的 HASH 值
-static const struct data{
-    string msg;
-    unsigned char hash[16];
+<span class="hljs-comment">// 第一部分是要进行 HASH 运算的原始明文，第二部分则是其对应的 HASH 值</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">data</span>{</span>
+    <span class="hljs-built_in">string</span> msg;
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> hash[<span class="hljs-number">16</span>];
 }tests[] = {
-    { "",
-      { 0xd4, 0x1d, 0x8c, 0xd9, 0x8f, 0x00, 0xb2, 0x04, 
-        0xe9, 0x80, 0x09, 0x98, 0xec, 0xf8, 0x42, 0x7e } },
-    { "a",
-      {0x0c, 0xc1, 0x75, 0xb9, 0xc0, 0xf1, 0xb6, 0xa8, 
-       0x31, 0xc3, 0x99, 0xe2, 0x69, 0x77, 0x26, 0x61 } },
-    { "abc",
-      { 0x90, 0x01, 0x50, 0x98, 0x3c, 0xd2, 0x4f, 0xb0, 
-        0xd6, 0x96, 0x3f, 0x7d, 0x28, 0xe1, 0x7f, 0x72 } },
-    { "message digest", 
-      { 0xf9, 0x6b, 0x69, 0x7d, 0x7c, 0xb7, 0x93, 0x8d, 
-        0x52, 0x5a, 0x2f, 0x31, 0xaa, 0xf1, 0x61, 0xd0 } }, 
-    { "abcdefghijklmnopqrstuvwxyz",
-      { 0xc3, 0xfc, 0xd3, 0xd7, 0x61, 0x92, 0xe4, 0x00, 
-        0x7d, 0xfb, 0x49, 0x6c, 0xca, 0x67, 0xe1, 0x3b } },
-    { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
-      { 0xd1, 0x74, 0xab, 0x98, 0xd2, 0x77, 0xd9, 0xf5, 
-        0xa5, 0x61, 0x1c, 0x2c, 0x9f, 0x41, 0x9d, 0x9f } },
-    { "12345678901234567890123456789012345678901234567890123456789012345678901234567890",
-      { 0x57, 0xed, 0xf4, 0xa2, 0x2b, 0xe3, 0xc9, 0x55, 
-        0xac, 0x49, 0xda, 0x2e, 0x21, 0x07, 0xb6, 0x7a } },
+    { <span class="hljs-string">""</span>,
+      { <span class="hljs-number">0xd4</span>, <span class="hljs-number">0x1d</span>, <span class="hljs-number">0x8c</span>, <span class="hljs-number">0xd9</span>, <span class="hljs-number">0x8f</span>, <span class="hljs-number">0x00</span>, <span class="hljs-number">0xb2</span>, <span class="hljs-number">0x04</span>, 
+        <span class="hljs-number">0xe9</span>, <span class="hljs-number">0x80</span>, <span class="hljs-number">0x09</span>, <span class="hljs-number">0x98</span>, <span class="hljs-number">0xec</span>, <span class="hljs-number">0xf8</span>, <span class="hljs-number">0x42</span>, <span class="hljs-number">0x7e</span> } },
+    { <span class="hljs-string">"a"</span>,
+      {<span class="hljs-number">0x0c</span>, <span class="hljs-number">0xc1</span>, <span class="hljs-number">0x75</span>, <span class="hljs-number">0xb9</span>, <span class="hljs-number">0xc0</span>, <span class="hljs-number">0xf1</span>, <span class="hljs-number">0xb6</span>, <span class="hljs-number">0xa8</span>, 
+       <span class="hljs-number">0x31</span>, <span class="hljs-number">0xc3</span>, <span class="hljs-number">0x99</span>, <span class="hljs-number">0xe2</span>, <span class="hljs-number">0x69</span>, <span class="hljs-number">0x77</span>, <span class="hljs-number">0x26</span>, <span class="hljs-number">0x61</span> } },
+    { <span class="hljs-string">"abc"</span>,
+      { <span class="hljs-number">0x90</span>, <span class="hljs-number">0x01</span>, <span class="hljs-number">0x50</span>, <span class="hljs-number">0x98</span>, <span class="hljs-number">0x3c</span>, <span class="hljs-number">0xd2</span>, <span class="hljs-number">0x4f</span>, <span class="hljs-number">0xb0</span>, 
+        <span class="hljs-number">0xd6</span>, <span class="hljs-number">0x96</span>, <span class="hljs-number">0x3f</span>, <span class="hljs-number">0x7d</span>, <span class="hljs-number">0x28</span>, <span class="hljs-number">0xe1</span>, <span class="hljs-number">0x7f</span>, <span class="hljs-number">0x72</span> } },
+    { <span class="hljs-string">"message digest"</span>, 
+      { <span class="hljs-number">0xf9</span>, <span class="hljs-number">0x6b</span>, <span class="hljs-number">0x69</span>, <span class="hljs-number">0x7d</span>, <span class="hljs-number">0x7c</span>, <span class="hljs-number">0xb7</span>, <span class="hljs-number">0x93</span>, <span class="hljs-number">0x8d</span>, 
+        <span class="hljs-number">0x52</span>, <span class="hljs-number">0x5a</span>, <span class="hljs-number">0x2f</span>, <span class="hljs-number">0x31</span>, <span class="hljs-number">0xaa</span>, <span class="hljs-number">0xf1</span>, <span class="hljs-number">0x61</span>, <span class="hljs-number">0xd0</span> } }, 
+    { <span class="hljs-string">"abcdefghijklmnopqrstuvwxyz"</span>,
+      { <span class="hljs-number">0xc3</span>, <span class="hljs-number">0xfc</span>, <span class="hljs-number">0xd3</span>, <span class="hljs-number">0xd7</span>, <span class="hljs-number">0x61</span>, <span class="hljs-number">0x92</span>, <span class="hljs-number">0xe4</span>, <span class="hljs-number">0x00</span>, 
+        <span class="hljs-number">0x7d</span>, <span class="hljs-number">0xfb</span>, <span class="hljs-number">0x49</span>, <span class="hljs-number">0x6c</span>, <span class="hljs-number">0xca</span>, <span class="hljs-number">0x67</span>, <span class="hljs-number">0xe1</span>, <span class="hljs-number">0x3b</span> } },
+    { <span class="hljs-string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"</span>,
+      { <span class="hljs-number">0xd1</span>, <span class="hljs-number">0x74</span>, <span class="hljs-number">0xab</span>, <span class="hljs-number">0x98</span>, <span class="hljs-number">0xd2</span>, <span class="hljs-number">0x77</span>, <span class="hljs-number">0xd9</span>, <span class="hljs-number">0xf5</span>, 
+        <span class="hljs-number">0xa5</span>, <span class="hljs-number">0x61</span>, <span class="hljs-number">0x1c</span>, <span class="hljs-number">0x2c</span>, <span class="hljs-number">0x9f</span>, <span class="hljs-number">0x41</span>, <span class="hljs-number">0x9d</span>, <span class="hljs-number">0x9f</span> } },
+    { <span class="hljs-string">"12345678901234567890123456789012345678901234567890123456789012345678901234567890"</span>,
+      { <span class="hljs-number">0x57</span>, <span class="hljs-number">0xed</span>, <span class="hljs-number">0xf4</span>, <span class="hljs-number">0xa2</span>, <span class="hljs-number">0x2b</span>, <span class="hljs-number">0xe3</span>, <span class="hljs-number">0xc9</span>, <span class="hljs-number">0x55</span>, 
+        <span class="hljs-number">0xac</span>, <span class="hljs-number">0x49</span>, <span class="hljs-number">0xda</span>, <span class="hljs-number">0x2e</span>, <span class="hljs-number">0x21</span>, <span class="hljs-number">0x07</span>, <span class="hljs-number">0xb6</span>, <span class="hljs-number">0x7a</span> } },
 
 };
 
-class MD5 {
-private:
-    unsigned int tempA, tempB, tempC, tempD, strlength;
-public:
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MD5</span> {</span>
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> tempA, tempB, tempC, tempD, strlength;
+<span class="hljs-keyword">public</span>:
     MD5() {
         tempA = A;
         tempB = B;
         tempC = C;
         tempD = D;
-        strlength = 0;
+        strlength = <span class="hljs-number">0</span>;
     }
-    // 填充字符串
-    vector&lt;unsigned int&gt; padding(string src) {
-        // 以512位,64个字节为一组
-        unsigned int num = ((src.length() + 8) / 64) + 1;
-        vector&lt;unsigned int&gt; rec(num*16);
-        strlength = num*16;
-        for(unsigned int i = 0; i &lt; src.length(); i++){
-            // 一个unsigned int对应4个字节，保存4个字符信息
-            rec[i&gt;&gt;2] |= (int)(src[i]) &lt;&lt; ((i % 4) * 8);
+    <span class="hljs-comment">// 填充字符串</span>
+    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>&gt; <span class="hljs-title">padding</span><span class="hljs-params">(<span class="hljs-built_in">string</span> src)</span> </span>{
+        <span class="hljs-comment">// 以512位,64个字节为一组</span>
+        <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> num = ((src.length() + <span class="hljs-number">8</span>) / <span class="hljs-number">64</span>) + <span class="hljs-number">1</span>;
+        <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>&gt; <span class="hljs-title">rec</span><span class="hljs-params">(num*<span class="hljs-number">16</span>)</span></span>;
+        strlength = num*<span class="hljs-number">16</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; src.length(); i++){
+            <span class="hljs-comment">// 一个unsigned int对应4个字节，保存4个字符信息</span>
+            rec[i&gt;&gt;<span class="hljs-number">2</span>] |= (<span class="hljs-keyword">int</span>)(src[i]) &lt;&lt; ((i % <span class="hljs-number">4</span>) * <span class="hljs-number">8</span>);
         }
-        // 补充1000...000
-        rec[src.length() &gt;&gt; 2] |= (0x80 &lt;&lt; ((src.length() % 4)*8));
-        // 填充原文长度
-        rec[rec.size()-2] = (src.length() &lt;&lt; 3);
-        return rec;
+        <span class="hljs-comment">// 补充1000...000</span>
+        rec[src.length() &gt;&gt; <span class="hljs-number">2</span>] |= (<span class="hljs-number">0x80</span> &lt;&lt; ((src.length() % <span class="hljs-number">4</span>)*<span class="hljs-number">8</span>));
+        <span class="hljs-comment">// 填充原文长度</span>
+        rec[rec.<span class="hljs-built_in">size</span>()<span class="hljs-number">-2</span>] = (src.length() &lt;&lt; <span class="hljs-number">3</span>);
+        <span class="hljs-keyword">return</span> rec;
     }
-    // F函数
-    unsigned int F(unsigned int b, unsigned int c, unsigned int d) {
-        return (b &amp; c) | ((~b) &amp; d);
+    <span class="hljs-comment">// F函数</span>
+    <span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">F</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> c, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> d)</span> </span>{
+        <span class="hljs-keyword">return</span> (b &amp; c) | ((~b) &amp; d);
     }
-    // G函数
-    unsigned int G(unsigned int b, unsigned int c, unsigned int d) {
-        return (b &amp; d) | (c &amp; (~d));
+    <span class="hljs-comment">// G函数</span>
+    <span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">G</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> c, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> d)</span> </span>{
+        <span class="hljs-keyword">return</span> (b &amp; d) | (c &amp; (~d));
     }
-    // H函数
-    unsigned int H(unsigned int b, unsigned int c, unsigned int d) {
-        return b ^ c ^ d;
+    <span class="hljs-comment">// H函数</span>
+    <span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">H</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> c, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> d)</span> </span>{
+        <span class="hljs-keyword">return</span> b ^ c ^ d;
     }
-    // I函数
-    unsigned int I(unsigned int b, unsigned int c, unsigned int d) {
-        return c ^ (b | (~d));
+    <span class="hljs-comment">// I函数</span>
+    <span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">I</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> c, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> d)</span> </span>{
+        <span class="hljs-keyword">return</span> c ^ (b | (~d));
     }
-    // 移位操作函数
-    unsigned int shift(unsigned int a, unsigned int n) {
-        return (a &lt;&lt; n) | (a &gt;&gt; (32 - n));
+    <span class="hljs-comment">// 移位操作函数</span>
+    <span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">shift</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> a, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> n)</span> </span>{
+        <span class="hljs-keyword">return</span> (a &lt;&lt; n) | (a &gt;&gt; (<span class="hljs-number">32</span> - n));
     }
-    // 循环压缩
-    void iterateFunc(unsigned int* X, int size = 16) {
-        unsigned int a = tempA,
+    <span class="hljs-comment">// 循环压缩</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">iterateFunc</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>* X, <span class="hljs-keyword">int</span> <span class="hljs-built_in">size</span> = <span class="hljs-number">16</span>)</span> </span>{
+        <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> a = tempA,
                      b = tempB,
                      c = tempC,
                      d = tempD,
-                     rec = 0,
+                     rec = <span class="hljs-number">0</span>,
                      g, k;
-        for(int i = 0; i &lt; 64; i++) {
-            if(i &lt; 16) {
-                // F迭代
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">64</span>; i++) {
+            <span class="hljs-keyword">if</span>(i &lt; <span class="hljs-number">16</span>) {
+                <span class="hljs-comment">// F迭代</span>
                 g = F(b, c, d);
                 k = i;
             }
-            else if(i &lt; 32) {
-                // G迭代
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(i &lt; <span class="hljs-number">32</span>) {
+                <span class="hljs-comment">// G迭代</span>
                 g = G(b, c, d);
-                k = (1 + 5*i) % 16;
+                k = (<span class="hljs-number">1</span> + <span class="hljs-number">5</span>*i) % <span class="hljs-number">16</span>;
             }
-            else if(i &lt; 48) {
-                // H迭代
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(i &lt; <span class="hljs-number">48</span>) {
+                <span class="hljs-comment">// H迭代</span>
                 g = H(b, c, d);
-                k = (5 + 3*i) % 16;
+                k = (<span class="hljs-number">5</span> + <span class="hljs-number">3</span>*i) % <span class="hljs-number">16</span>;
             }
-            else {
-                // I迭代
+            <span class="hljs-keyword">else</span> {
+                <span class="hljs-comment">// I迭代</span>
                 g = I(b, c, d);
-                k = (7*i) % 16;
+                k = (<span class="hljs-number">7</span>*i) % <span class="hljs-number">16</span>;
             }
             rec = d;
             d = c;
@@ -563,588 +617,593 @@ public:
         tempC += c;
         tempD += d;
     }
-    // 整理输出
-    string format(unsigned int num) {
-        string res = "";
-        unsigned int base = 1 &lt;&lt; 8;
-        for(int i = 0; i &lt; 4; i++) {
-            string tmp = "";
-            unsigned int b = (num &gt;&gt; (i * 8)) % base &amp; 0xff;
-            for(int j = 0; j &lt; 2; j++) {
-                tmp = str16[b%16] + tmp;
-                b /= 16;
+    <span class="hljs-comment">// 整理输出</span>
+    <span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">format</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> num)</span> </span>{
+        <span class="hljs-built_in">string</span> res = <span class="hljs-string">""</span>;
+        <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> base = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">8</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++) {
+            <span class="hljs-built_in">string</span> tmp = <span class="hljs-string">""</span>;
+            <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> b = (num &gt;&gt; (i * <span class="hljs-number">8</span>)) % base &amp; <span class="hljs-number">0xff</span>;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">2</span>; j++) {
+                tmp = str16[b%<span class="hljs-number">16</span>] + tmp;
+                b /= <span class="hljs-number">16</span>;
             }
             res += tmp;
         }
-        return res;
+        <span class="hljs-keyword">return</span> res;
     }
-    // 编码函数
-    string encode(string src) {
-        vector&lt;unsigned int&gt; rec = padding(src);
-        for(unsigned int i = 0; i &lt; strlength/16; i++) {
-            unsigned int num[16];
-            for(int j = 0; j &lt; 16; j++) {
-                num[j] = rec[i*16+j];
+    <span class="hljs-comment">// 编码函数</span>
+    <span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">encode</span><span class="hljs-params">(<span class="hljs-built_in">string</span> src)</span> </span>{
+        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>&gt; rec = padding(src);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; strlength/<span class="hljs-number">16</span>; i++) {
+            <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> num[<span class="hljs-number">16</span>];
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">16</span>; j++) {
+                num[j] = rec[i*<span class="hljs-number">16</span>+j];
             }
-            iterateFunc(num, 16);
+            iterateFunc(num, <span class="hljs-number">16</span>);
         }
-        return format(tempA) + format(tempB) + format(tempC) + format(tempD);
+        <span class="hljs-keyword">return</span> format(tempA) + format(tempB) + format(tempC) + format(tempD);
     }
 };
 </code></pre>
-<h3><span id="generatekeycpp">generateKey.cpp</span></h3><pre><code class="C++">#include &lt;cstdio&gt;
-#include &lt;ctime&gt;
-#include &lt;cstring&gt;
-#include &lt;cstdlib&gt;
-#include &lt;iostream&gt;
-#include &lt;gmp.h&gt;
+<h3><span id="generatekeycpp"> generateKey.cpp</span></h3>
+<pre class="highlight"><code class="C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;ctime&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdlib&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;gmp.h&gt;</span></span>
  
-#define KEY_LENGTH 2048  //公钥的长度
-#define BASE 16    //输入输出的数字进制
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> KEY_LENGTH 2048  <span class="hljs-comment">//公钥的长度</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BASE 16    <span class="hljs-comment">//输入输出的数字进制</span></span>
  
-using namespace std;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
  
-struct key_pair {
-    string n;
-    string d;
-    int e;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">key_pair</span> {</span>
+    <span class="hljs-built_in">string</span> n;
+    <span class="hljs-built_in">string</span> d;
+    <span class="hljs-keyword">int</span> e;
 };
  
-//生成两个大素数
-mpz_t * gen_primes()
-{                                        
-    gmp_randstate_t grt;                
+<span class="hljs-comment">//生成两个大素数</span>
+<span class="hljs-function"><span class="hljs-keyword">mpz_t</span> * <span class="hljs-title">gen_primes</span><span class="hljs-params">()</span>
+</span>{                                        
+    <span class="hljs-keyword">gmp_randstate_t</span> grt;                
     gmp_randinit_default(grt);    
-    gmp_randseed_ui(grt, time(NULL));    
+    gmp_randseed_ui(grt, time(<span class="hljs-literal">NULL</span>));    
     
-    mpz_t key_p, key_q;
+    <span class="hljs-keyword">mpz_t</span> key_p, key_q;
     mpz_init(key_p);
     mpz_init(key_q);
  
-    mpz_urandomb(key_p, grt, KEY_LENGTH / 2);        
-    mpz_urandomb(key_q, grt, KEY_LENGTH / 2);    //随机生成两个大整数
+    mpz_urandomb(key_p, grt, KEY_LENGTH / <span class="hljs-number">2</span>);        
+    mpz_urandomb(key_q, grt, KEY_LENGTH / <span class="hljs-number">2</span>);    <span class="hljs-comment">//随机生成两个大整数</span>
  
-    mpz_t * result = new mpz_t[2];
-    mpz_init(result[0]);
-    mpz_init(result[1]);
+    <span class="hljs-keyword">mpz_t</span> * result = <span class="hljs-keyword">new</span> <span class="hljs-keyword">mpz_t</span>[<span class="hljs-number">2</span>];
+    mpz_init(result[<span class="hljs-number">0</span>]);
+    mpz_init(result[<span class="hljs-number">1</span>]);
  
-    mpz_nextprime(result[0], key_p);  //使用GMP自带的素数生成函数
-    mpz_nextprime(result[1], key_q);
+    mpz_nextprime(result[<span class="hljs-number">0</span>], key_p);  <span class="hljs-comment">//使用GMP自带的素数生成函数</span>
+    mpz_nextprime(result[<span class="hljs-number">1</span>], key_q);
  
     mpz_clear(key_p);
     mpz_clear(key_q);
  
-    return result;    
+    <span class="hljs-keyword">return</span> result;    
 }
  
-//生成密钥对
-key_pair * gen_key_pair()
-{
-    mpz_t * primes = gen_primes();
+<span class="hljs-comment">//生成密钥对</span>
+<span class="hljs-function">key_pair * <span class="hljs-title">gen_key_pair</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">mpz_t</span> * primes = gen_primes();
  
-    mpz_t key_n, key_e, key_f;
+    <span class="hljs-keyword">mpz_t</span> key_n, key_e, key_f;
     mpz_init(key_n);
     mpz_init(key_f);
-    mpz_init_set_ui(key_e, 65537);    //设置e为65537
+    mpz_init_set_ui(key_e, <span class="hljs-number">65537</span>);    <span class="hljs-comment">//设置e为65537</span>
  
-    mpz_mul(key_n, primes[0], primes[1]);        //计算n=p*q
-    mpz_sub_ui(primes[0], primes[0], 1);        //p=p-1
-    mpz_sub_ui(primes[1], primes[1], 1);        //q=q-1
-    mpz_mul(key_f, primes[0], primes[1]);        //计算欧拉函数φ(n)=(p-1)*(q-1)
+    mpz_mul(key_n, primes[<span class="hljs-number">0</span>], primes[<span class="hljs-number">1</span>]);        <span class="hljs-comment">//计算n=p*q</span>
+    mpz_sub_ui(primes[<span class="hljs-number">0</span>], primes[<span class="hljs-number">0</span>], <span class="hljs-number">1</span>);        <span class="hljs-comment">//p=p-1</span>
+    mpz_sub_ui(primes[<span class="hljs-number">1</span>], primes[<span class="hljs-number">1</span>], <span class="hljs-number">1</span>);        <span class="hljs-comment">//q=q-1</span>
+    mpz_mul(key_f, primes[<span class="hljs-number">0</span>], primes[<span class="hljs-number">1</span>]);        <span class="hljs-comment">//计算欧拉函数φ(n)=(p-1)*(q-1)</span>
  
-    mpz_t key_d;    
+    <span class="hljs-keyword">mpz_t</span> key_d;    
     mpz_init(key_d);
-    mpz_invert(key_d, key_e, key_f);   //计算数论倒数
+    mpz_invert(key_d, key_e, key_f);   <span class="hljs-comment">//计算数论倒数</span>
  
-    key_pair * result = new key_pair;
+    key_pair * result = <span class="hljs-keyword">new</span> key_pair;
  
-    char * buf_n = new char[KEY_LENGTH + 10];
-    char * buf_d = new char[KEY_LENGTH + 10];
+    <span class="hljs-keyword">char</span> * buf_n = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[KEY_LENGTH + <span class="hljs-number">10</span>];
+    <span class="hljs-keyword">char</span> * buf_d = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[KEY_LENGTH + <span class="hljs-number">10</span>];
  
     mpz_get_str(buf_n, BASE, key_n);
     result-&gt;n = buf_n;
     mpz_get_str(buf_d, BASE, key_d);
     result-&gt;d = buf_d;
-    result-&gt;e = 65537;
+    result-&gt;e = <span class="hljs-number">65537</span>;
  
-    mpz_clear(primes[0]);   //释放内存
-    mpz_clear(primes[1]);
+    mpz_clear(primes[<span class="hljs-number">0</span>]);   <span class="hljs-comment">//释放内存</span>
+    mpz_clear(primes[<span class="hljs-number">1</span>]);
     mpz_clear(key_n);
     mpz_clear(key_d);
     mpz_clear(key_e);
     mpz_clear(key_f);
-    delete []primes;
+    <span class="hljs-keyword">delete</span> []primes;
 
-    return result;
+    <span class="hljs-keyword">return</span> result;
 }
 
-key_pair* getKey (char name) {
+<span class="hljs-function">key_pair* <span class="hljs-title">getKey</span> <span class="hljs-params">(<span class="hljs-keyword">char</span> name)</span> </span>{
     key_pair * p = gen_key_pair();
  
-    cout &lt;&lt; "n = " &lt;&lt; p-&gt;n &lt;&lt; endl;
-    cout &lt;&lt; "d = " &lt;&lt; p-&gt;d &lt;&lt; endl;
-    cout &lt;&lt; "e = " &lt;&lt; p-&gt;e &lt;&lt; endl;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"n = "</span> &lt;&lt; p-&gt;n &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"d = "</span> &lt;&lt; p-&gt;d &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"e = "</span> &lt;&lt; p-&gt;e &lt;&lt; <span class="hljs-built_in">endl</span>;
 
-    cout &lt;&lt; name &lt;&lt; "s public key is:(" &lt;&lt; p-&gt;n &lt;&lt; ", " &lt;&lt; p-&gt;e &lt;&lt; ")" &lt;&lt; endl &lt;&lt; endl; //输出公钥(n, e)
-    cout &lt;&lt; name &lt;&lt; "s private key is:(" &lt;&lt; p-&gt;n &lt;&lt; ", " &lt;&lt; p-&gt;d &lt;&lt; ")" &lt;&lt; endl &lt;&lt; endl; //输出私钥(n, d)
-    return p;
+    <span class="hljs-built_in">cout</span> &lt;&lt; name &lt;&lt; <span class="hljs-string">"s public key is:("</span> &lt;&lt; p-&gt;n &lt;&lt; <span class="hljs-string">", "</span> &lt;&lt; p-&gt;e &lt;&lt; <span class="hljs-string">")"</span> &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">//输出公钥(n, e)</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; name &lt;&lt; <span class="hljs-string">"s private key is:("</span> &lt;&lt; p-&gt;n &lt;&lt; <span class="hljs-string">", "</span> &lt;&lt; p-&gt;d &lt;&lt; <span class="hljs-string">")"</span> &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">//输出私钥(n, d)</span>
+    <span class="hljs-keyword">return</span> p;
 }
 
-void generateABKey() {
-    key_pair * A = getKey('A');
-    key_pair * B = getKey('B');
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">generateABKey</span><span class="hljs-params">()</span> </span>{
+    key_pair * A = <span class="hljs-built_in">getKey</span>(<span class="hljs-string">'A'</span>);
+    key_pair * B = <span class="hljs-built_in">getKey</span>(<span class="hljs-string">'B'</span>);
 }
 
-int main()
-{        
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{        
     generateABKey();
-    return 0;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </code></pre>
-<h3><span id="serverh">Server.h</span></h3><pre><code class="C++">#pragma once
-#include &lt;cstdio&gt;
-#include &lt;ctime&gt;
-#include &lt;cstring&gt;
-#include &lt;cstdlib&gt;
-#include &lt;iostream&gt;
-#include &lt;gmp.h&gt;
-#include "MD5.h"
+<h3><span id="serverh"> Server.h</span></h3>
+<pre class="highlight"><code class="C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;ctime&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdlib&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;gmp.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"MD5.h"</span></span>
  
-#define KEY_LENGTH 2048  //公钥的长度
-#define BASE 16    //输入输出的数字进制
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> KEY_LENGTH 2048  <span class="hljs-comment">//公钥的长度</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BASE 16    <span class="hljs-comment">//输入输出的数字进制</span></span>
  
-using namespace std;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
  
-struct key_pair
-{
-    string n;
-    string d;
-    int e;
-    string k;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">key_pair</span>
+{</span>
+    <span class="hljs-built_in">string</span> n;
+    <span class="hljs-built_in">string</span> d;
+    <span class="hljs-keyword">int</span> e;
+    <span class="hljs-built_in">string</span> k;
 };
 
-key_pair* key = new key_pair;
+key_pair* key = <span class="hljs-keyword">new</span> key_pair;
 
-void keyInit() {
-    key-&gt;n = "42ed95a8c26d10e856d7ac17e9451037457d5f6e66b824471229ac1422d28f868d6699492c7c31b6d10ed32ee6ad3cbb00bbefe2e76de75b924342781f3f67fd09a3d67c639363c97af569fb52863901f1b6b5e7901c00c989dd7847fc7f55989bf4775969254c2dc0d8e9f7e7dbb5e158c97f5d7d18de47766ee1efb2a3d7e899d019240701e2dec5ca8473a34cea6b6dcb62cff25d40858df7b37e3c14bac390d26926cf30c977b7417130bced9fcce5b7ff6923ab21652a2bf73c3dd0c40a3398f02261e9bd75a24134264412b3371c03daa715e2ad74c20d0ab895ab7025b0bec1eea316146127a5a6d97aa4f09c82624d7f897ef93a7d114cc0757d4253";
-    key-&gt;d = "1f3c797be0fa3c48e3b716e7b60478b40327a77184596efd089a1068f973a26edef1c29ae73b338caa77abd298f0c38657aa5f245c74ebe4ce17bc1f0a1e72af235fa70c3901223277c3b06a0eb2fc4a4f00c25747e7f9ea16011a5126a45b53b57ddc720b63cff10eaf6e4b38984f83d4077efd281482318231f01b0a19f3fb58f835baa189bd387e4ba9d7da4b597d84fdcffc22e707be41adb6ca20f05787cf7e6d1ef27fb8e18ecb4d7ba9f544488e0d109cad4e7befa47020b8e568cf509543fc972b79aa1a8fb49149b517384b5b458f7a8052c299e3605fe12c786cd80f3fd8a2dc7f0ae67ecf1c3b2212d2b21fe5b7588a2d977af636cc461ec78c99";
-    key-&gt;e = 65537;
-    key-&gt;k = "77232546f0b2983adb0ab839b04b81278bcbdc2d34f06a248333cd33e3c139fb578ca19b389e0253fa6f3b3b41e2fd0f6f1fa7e94499fa212afa7f0b2a89f8681dd00e3207c09586c7c6f923016455b652e93ae4bf3b905d7e955fb3102286d9947247f1e75921aaa35840ad3359091e701c167f28be312116c43a13946d0c8d5da8fa21938be40c1f60821d45ef8530d6e24adfd5ab2a1a6ad34545d83c5fcca02a7f29541d6d4cf29778593958957c9b4ad9693289db7743a05bf88480473dc028e4f8e32ff6bdd206910b971ae00c649038aa59baebe8b7af542e9a9b65f69e7efcc17d6a88244cc9520d4b009371c268058e62d707561825ad5a98a81d11";
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">keyInit</span><span class="hljs-params">()</span> </span>{
+    key-&gt;n = <span class="hljs-string">"42ed95a8c26d10e856d7ac17e9451037457d5f6e66b824471229ac1422d28f868d6699492c7c31b6d10ed32ee6ad3cbb00bbefe2e76de75b924342781f3f67fd09a3d67c639363c97af569fb52863901f1b6b5e7901c00c989dd7847fc7f55989bf4775969254c2dc0d8e9f7e7dbb5e158c97f5d7d18de47766ee1efb2a3d7e899d019240701e2dec5ca8473a34cea6b6dcb62cff25d40858df7b37e3c14bac390d26926cf30c977b7417130bced9fcce5b7ff6923ab21652a2bf73c3dd0c40a3398f02261e9bd75a24134264412b3371c03daa715e2ad74c20d0ab895ab7025b0bec1eea316146127a5a6d97aa4f09c82624d7f897ef93a7d114cc0757d4253"</span>;
+    key-&gt;d = <span class="hljs-string">"1f3c797be0fa3c48e3b716e7b60478b40327a77184596efd089a1068f973a26edef1c29ae73b338caa77abd298f0c38657aa5f245c74ebe4ce17bc1f0a1e72af235fa70c3901223277c3b06a0eb2fc4a4f00c25747e7f9ea16011a5126a45b53b57ddc720b63cff10eaf6e4b38984f83d4077efd281482318231f01b0a19f3fb58f835baa189bd387e4ba9d7da4b597d84fdcffc22e707be41adb6ca20f05787cf7e6d1ef27fb8e18ecb4d7ba9f544488e0d109cad4e7befa47020b8e568cf509543fc972b79aa1a8fb49149b517384b5b458f7a8052c299e3605fe12c786cd80f3fd8a2dc7f0ae67ecf1c3b2212d2b21fe5b7588a2d977af636cc461ec78c99"</span>;
+    key-&gt;e = <span class="hljs-number">65537</span>;
+    key-&gt;k = <span class="hljs-string">"77232546f0b2983adb0ab839b04b81278bcbdc2d34f06a248333cd33e3c139fb578ca19b389e0253fa6f3b3b41e2fd0f6f1fa7e94499fa212afa7f0b2a89f8681dd00e3207c09586c7c6f923016455b652e93ae4bf3b905d7e955fb3102286d9947247f1e75921aaa35840ad3359091e701c167f28be312116c43a13946d0c8d5da8fa21938be40c1f60821d45ef8530d6e24adfd5ab2a1a6ad34545d83c5fcca02a7f29541d6d4cf29778593958957c9b4ad9693289db7743a05bf88480473dc028e4f8e32ff6bdd206910b971ae00c649038aa59baebe8b7af542e9a9b65f69e7efcc17d6a88244cc9520d4b009371c268058e62d707561825ad5a98a81d11"</span>;
 }
 
-//加密函数
-char * encrypt(const char * plain_text, const char * key_n, int key_e)  
-{
-    mpz_t M, C1, n;
+<span class="hljs-comment">//加密函数</span>
+<span class="hljs-function"><span class="hljs-keyword">char</span> * <span class="hljs-title">encrypt</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * plain_text, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * key_n, <span class="hljs-keyword">int</span> key_e)</span>  
+</span>{
+    <span class="hljs-keyword">mpz_t</span> M, C1, n;
     mpz_init_set_str(M, plain_text, BASE); 
     mpz_init_set_str(n, key_n, BASE);
-    mpz_init_set_ui(C1, 0);
+    mpz_init_set_ui(C1, <span class="hljs-number">0</span>);
  
-    mpz_powm_ui(C1, M, key_e, n);    //使用GMP中模幂计算函数
+    mpz_powm_ui(C1, M, key_e, n);    <span class="hljs-comment">//使用GMP中模幂计算函数</span>
  
-    char * result = new char[KEY_LENGTH + 10];
+    <span class="hljs-keyword">char</span> * result = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[KEY_LENGTH + <span class="hljs-number">10</span>];
     mpz_get_str(result, BASE, C1);
  
-    return result;
+    <span class="hljs-keyword">return</span> result;
 }
  
-//解密函数
-char * decrypt(const char * cipher_text, const char * key_n, const char * key_d)  
-{
-    mpz_t M, C1, n, d;
+<span class="hljs-comment">//解密函数</span>
+<span class="hljs-function"><span class="hljs-keyword">char</span> * <span class="hljs-title">decrypt</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * cipher_text, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * key_n, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * key_d)</span>  
+</span>{
+    <span class="hljs-keyword">mpz_t</span> M, C1, n, d;
     mpz_init_set_str(C1, cipher_text, BASE); 
     mpz_init_set_str(n, key_n, BASE);
     mpz_init_set_str(d, key_d, BASE);
     mpz_init(M);
  
-    mpz_powm(M, C1, d, n);   //使用GMP中的模幂计算函数
+    mpz_powm(M, C1, d, n);   <span class="hljs-comment">//使用GMP中的模幂计算函数</span>
  
-    char * result = new char[KEY_LENGTH + 10];
+    <span class="hljs-keyword">char</span> * result = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[KEY_LENGTH + <span class="hljs-number">10</span>];
     mpz_get_str(result, BASE, M);
  
-    return result;
+    <span class="hljs-keyword">return</span> result;
 }
 
-string getTime() {//时间函数，返回一个时间戳
-    time_t timep;
+<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">getTime</span><span class="hljs-params">()</span> </span>{<span class="hljs-comment">//时间函数，返回一个时间戳</span>
+    <span class="hljs-keyword">time_t</span> timep;
     time(&amp;timep);
-    char tmp[64];
-    strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S", localtime(&amp;timep));
-    return tmp;
+    <span class="hljs-keyword">char</span> tmp[<span class="hljs-number">64</span>];
+    strftime(tmp, <span class="hljs-keyword">sizeof</span>(tmp), <span class="hljs-string">"%Y-%m-%d %H:%M:%S"</span>, localtime(&amp;timep));
+    <span class="hljs-keyword">return</span> tmp;
 }
 
-bool IdConfirm (string ID, string name) {
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">IdConfirm</span> <span class="hljs-params">(<span class="hljs-built_in">string</span> ID, <span class="hljs-built_in">string</span> name)</span> </span>{
     MD5 tmp;
-    string hash = tmp.encode(name);
-    if (ID.compare(hash)) {
-        return false;
+    <span class="hljs-built_in">string</span> hash = tmp.encode(name);
+    <span class="hljs-keyword">if</span> (ID.compare(hash)) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
     }
-    return true;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
 }
 </code></pre>
-<h3><span id="servercpp">Server.cpp</span></h3><pre><code class="C++">#include&lt;iostream&gt;
-#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;winsock.h&gt;
-#include&lt;time.h&gt;
-#include"windows.h"
-#include "server.h"
+<h3><span id="servercpp"> Server.cpp</span></h3>
+<pre class="highlight"><code class="C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;winsock.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;time.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">"windows.h"</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"server.h"</span></span>
 
-#pragma comment(lib,"ws2_32.lib")//加载ws2_32.dll
+<span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> comment(lib,<span class="hljs-meta-string">"ws2_32.lib"</span>)<span class="hljs-comment">//加载ws2_32.dll</span></span>
 
-#define BUF_SIZE 4096   //指定聊天信息缓冲区大小
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BUF_SIZE 4096   <span class="hljs-comment">//指定聊天信息缓冲区大小</span></span>
 
-using namespace std;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
 
-int main() {
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
     WSADATA wsaData;
-    WSAStartup(MAKEWORD(2, 2), &amp;wsaData);
+    WSAStartup(MAKEWORD(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>), &amp;wsaData);
 
-    SOCKET server = socket(AF_INET, SOCK_STREAM, 0);//创建server套接字，采用ipv4地址，默认TCP协议
+    SOCKET server = socket(AF_INET, SOCK_STREAM, <span class="hljs-number">0</span>);<span class="hljs-comment">//创建server套接字，采用ipv4地址，默认TCP协议</span>
 
     sockaddr_in server_addr;
-    memset(&amp;server_addr, 0, sizeof(server_addr));
-    server_addr.sin_family = AF_INET;//套接字地址也采用IPv4地址
-    server_addr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");//本机地址
-    server_addr.sin_port = htons(1234);//端口号
-    bind(server, (SOCKADDR*)&amp;server_addr, sizeof(server_addr));//将套接字和地址绑定
+    <span class="hljs-built_in">memset</span>(&amp;server_addr, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(server_addr));
+    server_addr.sin_family = AF_INET;<span class="hljs-comment">//套接字地址也采用IPv4地址</span>
+    server_addr.sin_addr.S_un.S_addr = inet_addr(<span class="hljs-string">"127.0.0.1"</span>);<span class="hljs-comment">//本机地址</span>
+    server_addr.sin_port = htons(<span class="hljs-number">1234</span>);<span class="hljs-comment">//端口号</span>
+    bind(server, (SOCKADDR*)&amp;server_addr, <span class="hljs-keyword">sizeof</span>(server_addr));<span class="hljs-comment">//将套接字和地址绑定</span>
 
-    char server_name[2048] = { 0 };//申请一个2048字节的缓冲区，用于储存服务器的名称
-    char server_name_tmp[2048] = { 0 };
-    cout &lt;&lt; getTime() &lt;&lt; " " &lt;&lt; "Please enter your nickname:";
-    cin.getline(server_name_tmp, 2048);  //gets()  
-    cout &lt;&lt; getTime() &lt;&lt; " " &lt;&lt; "Waiting for connection...\n";
+    <span class="hljs-keyword">char</span> server_name[<span class="hljs-number">2048</span>] = { <span class="hljs-number">0</span> };<span class="hljs-comment">//申请一个2048字节的缓冲区，用于储存服务器的名称</span>
+    <span class="hljs-keyword">char</span> server_name_tmp[<span class="hljs-number">2048</span>] = { <span class="hljs-number">0</span> };
+    <span class="hljs-built_in">cout</span> &lt;&lt; getTime() &lt;&lt; <span class="hljs-string">" "</span> &lt;&lt; <span class="hljs-string">"Please enter your nickname:"</span>;
+    <span class="hljs-built_in">cin</span>.getline(server_name_tmp, <span class="hljs-number">2048</span>);  <span class="hljs-comment">//gets()  </span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; getTime() &lt;&lt; <span class="hljs-string">" "</span> &lt;&lt; <span class="hljs-string">"Waiting for connection...\n"</span>;
 
-    listen(server, 1);//进入监听状态，数字1表示队列中只能存在一个请求
+    <span class="hljs-built_in">listen</span>(server, <span class="hljs-number">1</span>);<span class="hljs-comment">//进入监听状态，数字1表示队列中只能存在一个请求</span>
 
-    /*服务器已经初始化完毕，等待客户机连接*/
+    <span class="hljs-comment">/*服务器已经初始化完毕，等待客户机连接*/</span>
 
-    char client_name[2048] = { 0 };
+    <span class="hljs-keyword">char</span> client_name[<span class="hljs-number">2048</span>] = { <span class="hljs-number">0</span> };
     SOCKET client;
     SOCKADDR_IN client_addr;
-    int client_addr_len = sizeof(client_addr);
+    <span class="hljs-keyword">int</span> client_addr_len = <span class="hljs-keyword">sizeof</span>(client_addr);
 
-    while (true) {
+    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
         client = accept(server, (SOCKADDR*)&amp;client_addr, &amp;client_addr_len);
-        if (client == INVALID_SOCKET) {
-            cout &lt;&lt; getTime() &lt;&lt; " " &lt;&lt; "Connection failed.\n" &lt;&lt; WSAGetLastError();
+        <span class="hljs-keyword">if</span> (client == INVALID_SOCKET) {
+            <span class="hljs-built_in">cout</span> &lt;&lt; getTime() &lt;&lt; <span class="hljs-string">" "</span> &lt;&lt; <span class="hljs-string">"Connection failed.\n"</span> &lt;&lt; WSAGetLastError();
         }
-        else {
-            cout &lt;&lt; getTime() &lt;&lt; " " &lt;&lt; "Connection succeeded!!!\n";
-            break;
+        <span class="hljs-keyword">else</span> {
+            <span class="hljs-built_in">cout</span> &lt;&lt; getTime() &lt;&lt; <span class="hljs-string">" "</span> &lt;&lt; <span class="hljs-string">"Connection succeeded!!!\n"</span>;
+            <span class="hljs-keyword">break</span>;
         }
     }
     
-    char buffer[BUF_SIZE] = { 0 };
-    char buffer_send[BUF_SIZE + 100] = { 0 };
-    char buffer_receive[BUF_SIZE + 100] = { 0 };
-    int receive_len = 0;
-    int send_len = 0;
-    /*通过建立的连接进行通信*/
-    //发送和接受客户端与服务端的名字  
+    <span class="hljs-keyword">char</span> <span class="hljs-built_in">buffer</span>[BUF_SIZE] = { <span class="hljs-number">0</span> };
+    <span class="hljs-keyword">char</span> buffer_send[BUF_SIZE + <span class="hljs-number">100</span>] = { <span class="hljs-number">0</span> };
+    <span class="hljs-keyword">char</span> buffer_receive[BUF_SIZE + <span class="hljs-number">100</span>] = { <span class="hljs-number">0</span> };
+    <span class="hljs-keyword">int</span> receive_len = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> send_len = <span class="hljs-number">0</span>;
+    <span class="hljs-comment">/*通过建立的连接进行通信*/</span>
+    <span class="hljs-comment">//发送和接受客户端与服务端的名字  </span>
 
     MD5 tmp_name;
-    string tmp_s = tmp_name.encode(server_name_tmp);
-    for (int i = 0; i &lt; tmp_s.length(); i++) {
+    <span class="hljs-built_in">string</span> tmp_s = tmp_name.encode(server_name_tmp);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; tmp_s.length(); i++) {
         server_name[i] = tmp_s[i];
     }
-    send_len = send(client, server_name, sizeof(server_name), 0);
-    receive_len = recv(client, client_name, sizeof(client_name), 0);
+    send_len = send(client, server_name, <span class="hljs-keyword">sizeof</span>(server_name), <span class="hljs-number">0</span>);
+    receive_len = recv(client, client_name, <span class="hljs-keyword">sizeof</span>(client_name), <span class="hljs-number">0</span>);
     
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY|FOREGROUND_RED);
-    cout &lt;&lt; endl;
-    if (IdConfirm(client_name, "lkp2")) {
-        cout &lt;&lt; "ID Confirm success, Let's chatting..." &lt;&lt; endl &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; "ID Confirm failed, Conversation aborted...";
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-keyword">if</span> (IdConfirm(client_name, <span class="hljs-string">"lkp2"</span>)) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"ID Confirm success, Let's chatting..."</span> &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"ID Confirm failed, Conversation aborted..."</span>;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_INTENSITY|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);
-        return 0;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     }
 
     keyInit();
 
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_INTENSITY|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);
-    cout &lt;&lt; "Please enter the message(just number) you want to send, or enter \"12582\" to abort this conversation, or enter \"12581\" to abort this chat" &lt;&lt; endl;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Please enter the message(just number) you want to send, or enter \"12582\" to abort this conversation, or enter \"12581\" to abort this chat"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
 
-    while (true) {
-        while (true) {//接收消息
-            memset(buffer_receive, 0, sizeof(buffer_receive));//初始化缓冲区  
-            receive_len = recv(client, buffer_receive, sizeof(buffer_receive), 0);
-            //string tmp(buffer_receive);
-            string tmp = decrypt(buffer_receive, key-&gt;n.data(), key-&gt;d.data());
-            if (strcmp(buffer_receive, "12581") == 0) {//如果聊天内容中含有12581，则退出聊天，关闭socket
+    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {<span class="hljs-comment">//接收消息</span>
+            <span class="hljs-built_in">memset</span>(buffer_receive, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(buffer_receive));<span class="hljs-comment">//初始化缓冲区  </span>
+            receive_len = recv(client, buffer_receive, <span class="hljs-keyword">sizeof</span>(buffer_receive), <span class="hljs-number">0</span>);
+            <span class="hljs-comment">//string tmp(buffer_receive);</span>
+            <span class="hljs-built_in">string</span> tmp = decrypt(buffer_receive, key-&gt;n.data(), key-&gt;d.data());
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(buffer_receive, <span class="hljs-string">"12581"</span>) == <span class="hljs-number">0</span>) {<span class="hljs-comment">//如果聊天内容中含有12581，则退出聊天，关闭socket</span>
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY);
-                cout &lt;&lt; "The program will exit in 3 seconds..." &lt;&lt; endl;
-                Sleep(1000);
-                cout &lt;&lt; "The program will exit in 2 seconds..." &lt;&lt; endl;
-                Sleep(1000);
-                cout &lt;&lt; "The program will exit in 1 seconds...";
-                Sleep(1000);
-                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_INTENSITY|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);//恢复原来的颜色
+                <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The program will exit in 3 seconds..."</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+                Sleep(<span class="hljs-number">1000</span>);
+                <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The program will exit in 2 seconds..."</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+                Sleep(<span class="hljs-number">1000</span>);
+                <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The program will exit in 1 seconds..."</span>;
+                Sleep(<span class="hljs-number">1000</span>);
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_INTENSITY|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);<span class="hljs-comment">//恢复原来的颜色</span>
                 closesocket(server);
                 closesocket(client);
                 WSACleanup();
-                return 0;
+                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
             }
-            else if (strcmp(buffer_receive, "12582") == 0)//如果聊天内容中含有12582，则本回合聊天结束，不然可以继续发送信息
-                break;
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_BLUE);//设置蓝色
-            if (tmp.find("0") != string::npos) {
-                continue;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(buffer_receive, <span class="hljs-string">"12582"</span>) == <span class="hljs-number">0</span>)<span class="hljs-comment">//如果聊天内容中含有12582，则本回合聊天结束，不然可以继续发送信息</span>
+                <span class="hljs-keyword">break</span>;
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_BLUE);<span class="hljs-comment">//设置蓝色</span>
+            <span class="hljs-keyword">if</span> (tmp.<span class="hljs-built_in">find</span>(<span class="hljs-string">"0"</span>) != <span class="hljs-built_in">string</span>::npos) {
+                <span class="hljs-keyword">continue</span>;
             }
-            cout &lt;&lt; tmp &lt;&lt; endl;
-            cout &lt;&lt; "----------------------Detail--------------------" &lt;&lt; endl &lt;&lt; "Message:" &lt;&lt; tmp &lt;&lt; endl;
-            cout &lt;&lt; "Ciphertext:" &lt;&lt; buffer_receive &lt;&lt; endl;
-            cout &lt;&lt; "----------------------Detail--------------------" &lt;&lt; endl;
+            <span class="hljs-built_in">cout</span> &lt;&lt; tmp &lt;&lt; <span class="hljs-built_in">endl</span>;
+            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"----------------------Detail--------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; <span class="hljs-string">"Message:"</span> &lt;&lt; tmp &lt;&lt; <span class="hljs-built_in">endl</span>;
+            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Ciphertext:"</span> &lt;&lt; buffer_receive &lt;&lt; <span class="hljs-built_in">endl</span>;
+            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"----------------------Detail--------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
         }
-        while (true) {//发送消息
-            memset(buffer, 0, sizeof(buffer));//清空缓冲区
-            memset(buffer_send, 0, sizeof(buffer_send));
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_GREEN);//设置绿色
-            string tmp_time = getTime();
-            cout &lt;&lt; tmp_time &lt;&lt; " " &lt;&lt; server_name_tmp &lt;&lt; ":";
-            cin.getline(buffer, BUF_SIZE);
-            if (strcmp(buffer, "12582") == 0) {
-                send_len = send(client, buffer, sizeof(buffer), 0);
-                break;
+        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {<span class="hljs-comment">//发送消息</span>
+            <span class="hljs-built_in">memset</span>(<span class="hljs-built_in">buffer</span>, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">buffer</span>));<span class="hljs-comment">//清空缓冲区</span>
+            <span class="hljs-built_in">memset</span>(buffer_send, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(buffer_send));
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_GREEN);<span class="hljs-comment">//设置绿色</span>
+            <span class="hljs-built_in">string</span> tmp_time = getTime();
+            <span class="hljs-built_in">cout</span> &lt;&lt; tmp_time &lt;&lt; <span class="hljs-string">" "</span> &lt;&lt; server_name_tmp &lt;&lt; <span class="hljs-string">":"</span>;
+            <span class="hljs-built_in">cin</span>.getline(<span class="hljs-built_in">buffer</span>, BUF_SIZE);
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(<span class="hljs-built_in">buffer</span>, <span class="hljs-string">"12582"</span>) == <span class="hljs-number">0</span>) {
+                send_len = send(client, <span class="hljs-built_in">buffer</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">buffer</span>), <span class="hljs-number">0</span>);
+                <span class="hljs-keyword">break</span>;
             }
-            else if (strcmp(buffer, "12581") == 0) {
-                send_len = send(client, buffer, sizeof(buffer), 0);
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(<span class="hljs-built_in">buffer</span>, <span class="hljs-string">"12581"</span>) == <span class="hljs-number">0</span>) {
+                send_len = send(client, <span class="hljs-built_in">buffer</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">buffer</span>), <span class="hljs-number">0</span>);
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY);
-                cout &lt;&lt; "The program will exit in 3 seconds..." &lt;&lt; endl;
-                Sleep(1000);
-                cout &lt;&lt; "The program will exit in 2 seconds..." &lt;&lt; endl;
-                Sleep(1000);
-                cout &lt;&lt; "The program will exit in 1 seconds...";
-                Sleep(1000);
-                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_INTENSITY|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);//恢复原来的颜色
+                <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The program will exit in 3 seconds..."</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+                Sleep(<span class="hljs-number">1000</span>);
+                <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The program will exit in 2 seconds..."</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+                Sleep(<span class="hljs-number">1000</span>);
+                <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The program will exit in 1 seconds..."</span>;
+                Sleep(<span class="hljs-number">1000</span>);
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_INTENSITY|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);<span class="hljs-comment">//恢复原来的颜色</span>
                 closesocket(server);
                 closesocket(client);
                 WSACleanup();
-                return 0;
+                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
             }
-            cout &lt;&lt; "----------------------Detail--------------------" &lt;&lt; endl &lt;&lt; "Message:" &lt;&lt; buffer &lt;&lt; endl;
-            char* tmp = encrypt(buffer, key-&gt;k.data(), key-&gt;e);
-            cout &lt;&lt; "Ciphertext:" &lt;&lt; tmp &lt;&lt; endl;
-            cout &lt;&lt; "----------------------Detail--------------------" &lt;&lt; endl;
-            char tmp1[10240];
-            strncpy(tmp1, tmp, strlen(tmp) + 1);
-            send_len = send(client, tmp1, sizeof(tmp1), 0);
+            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"----------------------Detail--------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; <span class="hljs-string">"Message:"</span> &lt;&lt; <span class="hljs-built_in">buffer</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+            <span class="hljs-keyword">char</span>* tmp = encrypt(<span class="hljs-built_in">buffer</span>, key-&gt;k.data(), key-&gt;e);
+            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Ciphertext:"</span> &lt;&lt; tmp &lt;&lt; <span class="hljs-built_in">endl</span>;
+            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"----------------------Detail--------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+            <span class="hljs-keyword">char</span> tmp1[<span class="hljs-number">10240</span>];
+            <span class="hljs-built_in">strncpy</span>(tmp1, tmp, <span class="hljs-built_in">strlen</span>(tmp) + <span class="hljs-number">1</span>);
+            send_len = send(client, tmp1, <span class="hljs-keyword">sizeof</span>(tmp1), <span class="hljs-number">0</span>);
         }
     }
-    return 0;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </code></pre>
-<h3><span id="clienth">Client.h</span></h3><pre><code class="C++">#pragma once
-#include &lt;cstdio&gt;
-#include &lt;ctime&gt;
-#include &lt;cstring&gt;
-#include &lt;cstdlib&gt;
-#include &lt;iostream&gt;
-#include &lt;gmp.h&gt;
-#include "MD5.h"
+<h3><span id="clienth"> Client.h</span></h3>
+<pre class="highlight"><code class="C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;ctime&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdlib&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;gmp.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"MD5.h"</span></span>
 
-#define KEY_LENGTH 2048  //公钥的长度
-#define BASE 16    //输入输出的数字进制
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> KEY_LENGTH 2048  <span class="hljs-comment">//公钥的长度</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BASE 16    <span class="hljs-comment">//输入输出的数字进制</span></span>
  
-using namespace std;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
  
-struct key_pair
-{
-    string n;
-    string d;
-    int e;
-    string k;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">key_pair</span>
+{</span>
+    <span class="hljs-built_in">string</span> n;
+    <span class="hljs-built_in">string</span> d;
+    <span class="hljs-keyword">int</span> e;
+    <span class="hljs-built_in">string</span> k;
 };
 
-key_pair* key = new key_pair;
+key_pair* key = <span class="hljs-keyword">new</span> key_pair;
 
-void keyInit() {
-    key-&gt;n = "77232546f0b2983adb0ab839b04b81278bcbdc2d34f06a248333cd33e3c139fb578ca19b389e0253fa6f3b3b41e2fd0f6f1fa7e94499fa212afa7f0b2a89f8681dd00e3207c09586c7c6f923016455b652e93ae4bf3b905d7e955fb3102286d9947247f1e75921aaa35840ad3359091e701c167f28be312116c43a13946d0c8d5da8fa21938be40c1f60821d45ef8530d6e24adfd5ab2a1a6ad34545d83c5fcca02a7f29541d6d4cf29778593958957c9b4ad9693289db7743a05bf88480473dc028e4f8e32ff6bdd206910b971ae00c649038aa59baebe8b7af542e9a9b65f69e7efcc17d6a88244cc9520d4b009371c268058e62d707561825ad5a98a81d11";
-    key-&gt;d = "369979d5082ca14d9fe34ac8cd7ddd0415b26906a2d367a1b22b8468ba816ca43edc6997ec9ba5af7cff8b22be305c0fbdbac1464bb55187efdd7b69cfa6099d15c4ab2ccc96bb3058d05c8f696ce54738ba40ce62c1d688b2a19c8940e4c1ee6774f479edafd099166134caebd46b3472e6bc7cac5c75c1976078c94e65a7b164a983dc15d98ed7d95041fa52adb643f87d7590bc1f476264caad4ea47adc7ec6aaedb5afe341a68afc6b8ee32a8eacf17b0d372afcf14258e87901395349a797443e50ee8bddf2fbf121799ba40a3e3b22e76341f07606dc7a810fb000dcbed3fc05a15223b04ff5f9610e9febae25a27a2871a2b75eacaba745e63bbc295d";
-    key-&gt;e = 65537;
-    key-&gt;k = "42ed95a8c26d10e856d7ac17e9451037457d5f6e66b824471229ac1422d28f868d6699492c7c31b6d10ed32ee6ad3cbb00bbefe2e76de75b924342781f3f67fd09a3d67c639363c97af569fb52863901f1b6b5e7901c00c989dd7847fc7f55989bf4775969254c2dc0d8e9f7e7dbb5e158c97f5d7d18de47766ee1efb2a3d7e899d019240701e2dec5ca8473a34cea6b6dcb62cff25d40858df7b37e3c14bac390d26926cf30c977b7417130bced9fcce5b7ff6923ab21652a2bf73c3dd0c40a3398f02261e9bd75a24134264412b3371c03daa715e2ad74c20d0ab895ab7025b0bec1eea316146127a5a6d97aa4f09c82624d7f897ef93a7d114cc0757d4253";
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">keyInit</span><span class="hljs-params">()</span> </span>{
+    key-&gt;n = <span class="hljs-string">"77232546f0b2983adb0ab839b04b81278bcbdc2d34f06a248333cd33e3c139fb578ca19b389e0253fa6f3b3b41e2fd0f6f1fa7e94499fa212afa7f0b2a89f8681dd00e3207c09586c7c6f923016455b652e93ae4bf3b905d7e955fb3102286d9947247f1e75921aaa35840ad3359091e701c167f28be312116c43a13946d0c8d5da8fa21938be40c1f60821d45ef8530d6e24adfd5ab2a1a6ad34545d83c5fcca02a7f29541d6d4cf29778593958957c9b4ad9693289db7743a05bf88480473dc028e4f8e32ff6bdd206910b971ae00c649038aa59baebe8b7af542e9a9b65f69e7efcc17d6a88244cc9520d4b009371c268058e62d707561825ad5a98a81d11"</span>;
+    key-&gt;d = <span class="hljs-string">"369979d5082ca14d9fe34ac8cd7ddd0415b26906a2d367a1b22b8468ba816ca43edc6997ec9ba5af7cff8b22be305c0fbdbac1464bb55187efdd7b69cfa6099d15c4ab2ccc96bb3058d05c8f696ce54738ba40ce62c1d688b2a19c8940e4c1ee6774f479edafd099166134caebd46b3472e6bc7cac5c75c1976078c94e65a7b164a983dc15d98ed7d95041fa52adb643f87d7590bc1f476264caad4ea47adc7ec6aaedb5afe341a68afc6b8ee32a8eacf17b0d372afcf14258e87901395349a797443e50ee8bddf2fbf121799ba40a3e3b22e76341f07606dc7a810fb000dcbed3fc05a15223b04ff5f9610e9febae25a27a2871a2b75eacaba745e63bbc295d"</span>;
+    key-&gt;e = <span class="hljs-number">65537</span>;
+    key-&gt;k = <span class="hljs-string">"42ed95a8c26d10e856d7ac17e9451037457d5f6e66b824471229ac1422d28f868d6699492c7c31b6d10ed32ee6ad3cbb00bbefe2e76de75b924342781f3f67fd09a3d67c639363c97af569fb52863901f1b6b5e7901c00c989dd7847fc7f55989bf4775969254c2dc0d8e9f7e7dbb5e158c97f5d7d18de47766ee1efb2a3d7e899d019240701e2dec5ca8473a34cea6b6dcb62cff25d40858df7b37e3c14bac390d26926cf30c977b7417130bced9fcce5b7ff6923ab21652a2bf73c3dd0c40a3398f02261e9bd75a24134264412b3371c03daa715e2ad74c20d0ab895ab7025b0bec1eea316146127a5a6d97aa4f09c82624d7f897ef93a7d114cc0757d4253"</span>;
 }
 
-//加密函数
-char * encrypt(char * plain_text, const char * key_n, int key_e)  
-{
-    mpz_t M, C1, n;
+<span class="hljs-comment">//加密函数</span>
+<span class="hljs-function"><span class="hljs-keyword">char</span> * <span class="hljs-title">encrypt</span><span class="hljs-params">(<span class="hljs-keyword">char</span> * plain_text, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * key_n, <span class="hljs-keyword">int</span> key_e)</span>  
+</span>{
+    <span class="hljs-keyword">mpz_t</span> M, C1, n;
     mpz_init_set_str(M, plain_text, BASE); 
     mpz_init_set_str(n, key_n, BASE);
-    mpz_init_set_ui(C1, 0);
+    mpz_init_set_ui(C1, <span class="hljs-number">0</span>);
  
-    mpz_powm_ui(C1, M, key_e, n);    //使用GMP中模幂计算函数
+    mpz_powm_ui(C1, M, key_e, n);    <span class="hljs-comment">//使用GMP中模幂计算函数</span>
  
-    char * result = new char[KEY_LENGTH + 10];
+    <span class="hljs-keyword">char</span> * result = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[KEY_LENGTH + <span class="hljs-number">10</span>];
     mpz_get_str(result, BASE, C1);
  
-    return result;
+    <span class="hljs-keyword">return</span> result;
 }
  
-//解密函数
-char * decrypt(char * cipher_text, const char * key_n, const char * key_d)  
-{
-    mpz_t M, C1, n, d;
+<span class="hljs-comment">//解密函数</span>
+<span class="hljs-function"><span class="hljs-keyword">char</span> * <span class="hljs-title">decrypt</span><span class="hljs-params">(<span class="hljs-keyword">char</span> * cipher_text, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * key_n, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * key_d)</span>  
+</span>{
+    <span class="hljs-keyword">mpz_t</span> M, C1, n, d;
     mpz_init_set_str(C1, cipher_text, BASE); 
     mpz_init_set_str(n, key_n, BASE);
     mpz_init_set_str(d, key_d, BASE);
     mpz_init(M);
  
-    mpz_powm(M, C1, d, n);   //使用GMP中的模幂计算函数
+    mpz_powm(M, C1, d, n);   <span class="hljs-comment">//使用GMP中的模幂计算函数</span>
  
-    char * result = new char[KEY_LENGTH + 10];
+    <span class="hljs-keyword">char</span> * result = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[KEY_LENGTH + <span class="hljs-number">10</span>];
     mpz_get_str(result, BASE, M);
  
-    return result;
+    <span class="hljs-keyword">return</span> result;
 }
 
-string getTime() {
-    time_t timep;
+<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">getTime</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">time_t</span> timep;
     time(&amp;timep);
-    char tmp[64];
-    strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S", localtime(&amp;timep));
-    return tmp;
+    <span class="hljs-keyword">char</span> tmp[<span class="hljs-number">64</span>];
+    strftime(tmp, <span class="hljs-keyword">sizeof</span>(tmp), <span class="hljs-string">"%Y-%m-%d %H:%M:%S"</span>, localtime(&amp;timep));
+    <span class="hljs-keyword">return</span> tmp;
 }
 
-bool IdConfirm (string ID, string name) {
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">IdConfirm</span> <span class="hljs-params">(<span class="hljs-built_in">string</span> ID, <span class="hljs-built_in">string</span> name)</span> </span>{
     MD5 tmp;
-    string hash = tmp.encode(name);
-    if (ID.compare(hash)) {
-        return false;
+    <span class="hljs-built_in">string</span> hash = tmp.encode(name);
+    <span class="hljs-keyword">if</span> (ID.compare(hash)) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
     }
-    return true;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
 }
 </code></pre>
-<h3><span id="clientcpp">Client.cpp</span></h3><pre><code class="C++">#include&lt;iostream&gt;
-#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;winsock.h&gt;
-#include&lt;time.h&gt;
-#include"windows.h"
-#include "client.h"
+<h3><span id="clientcpp"> Client.cpp</span></h3>
+<pre class="highlight"><code class="C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;winsock.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;time.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">"windows.h"</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"client.h"</span></span>
 
-#pragma comment(lib,"ws2_32.lib")//加载ws2_32.dll
+<span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> comment(lib,<span class="hljs-meta-string">"ws2_32.lib"</span>)<span class="hljs-comment">//加载ws2_32.dll</span></span>
 
-#define BUF_SIZE 4096   //指定聊天信息缓冲区大小
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BUF_SIZE 4096   <span class="hljs-comment">//指定聊天信息缓冲区大小</span></span>
 
-using namespace std;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
 
-int main() {
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
     WSADATA wsaData;
-    WSAStartup(MAKEWORD(2, 2), &amp;wsaData);
+    WSAStartup(MAKEWORD(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>), &amp;wsaData);
 
-    SOCKET client = socket(AF_INET, SOCK_STREAM, 0);
+    SOCKET client = socket(AF_INET, SOCK_STREAM, <span class="hljs-number">0</span>);
 
     sockaddr_in server_addr;
-    memset(&amp;server_addr, 0, sizeof(server_addr));
+    <span class="hljs-built_in">memset</span>(&amp;server_addr, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(server_addr));
     server_addr.sin_family = AF_INET;
-    server_addr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");
-    server_addr.sin_port = htons(1234);
+    server_addr.sin_addr.S_un.S_addr = inet_addr(<span class="hljs-string">"127.0.0.1"</span>);
+    server_addr.sin_port = htons(<span class="hljs-number">1234</span>);
 
-    char client_name[2048] = { 0 };
-    char client_name_tmp[2048] = { 0 };
-    cout &lt;&lt; getTime() &lt;&lt; " " &lt;&lt; "Please enter your nickname:";
-    cin.getline(client_name_tmp, 2048);
-    connect(client, (SOCKADDR*)&amp;server_addr, sizeof(server_addr));
-    cout &lt;&lt; getTime() &lt;&lt; " " &lt;&lt; "Connection ready.\n";
+    <span class="hljs-keyword">char</span> client_name[<span class="hljs-number">2048</span>] = { <span class="hljs-number">0</span> };
+    <span class="hljs-keyword">char</span> client_name_tmp[<span class="hljs-number">2048</span>] = { <span class="hljs-number">0</span> };
+    <span class="hljs-built_in">cout</span> &lt;&lt; getTime() &lt;&lt; <span class="hljs-string">" "</span> &lt;&lt; <span class="hljs-string">"Please enter your nickname:"</span>;
+    <span class="hljs-built_in">cin</span>.getline(client_name_tmp, <span class="hljs-number">2048</span>);
+    <span class="hljs-built_in">connect</span>(client, (SOCKADDR*)&amp;server_addr, <span class="hljs-keyword">sizeof</span>(server_addr));
+    <span class="hljs-built_in">cout</span> &lt;&lt; getTime() &lt;&lt; <span class="hljs-string">" "</span> &lt;&lt; <span class="hljs-string">"Connection ready.\n"</span>;
 
 
-    char server_name[2048] = { 0 };
-    char buffer[BUF_SIZE] = { 0 };
-    char buffer_send[BUF_SIZE + 100] = { 0 };
-    char buffer_receive[BUF_SIZE + 100] = { 0 };
-    int receive_len = 0;
-    int send_len = 0;
+    <span class="hljs-keyword">char</span> server_name[<span class="hljs-number">2048</span>] = { <span class="hljs-number">0</span> };
+    <span class="hljs-keyword">char</span> <span class="hljs-built_in">buffer</span>[BUF_SIZE] = { <span class="hljs-number">0</span> };
+    <span class="hljs-keyword">char</span> buffer_send[BUF_SIZE + <span class="hljs-number">100</span>] = { <span class="hljs-number">0</span> };
+    <span class="hljs-keyword">char</span> buffer_receive[BUF_SIZE + <span class="hljs-number">100</span>] = { <span class="hljs-number">0</span> };
+    <span class="hljs-keyword">int</span> receive_len = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> send_len = <span class="hljs-number">0</span>;
 
     MD5 tmp_name;
-    string tmp_s = tmp_name.encode(client_name_tmp);
-    for (int i = 0; i &lt; tmp_s.length(); i++) {
+    <span class="hljs-built_in">string</span> tmp_s = tmp_name.encode(client_name_tmp);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; tmp_s.length(); i++) {
         client_name[i] = tmp_s[i];
     }
 
-    send_len = send(client, client_name, sizeof(client_name), 0);
-    receive_len = recv(client, server_name, sizeof(server_name), 0);
+    send_len = send(client, client_name, <span class="hljs-keyword">sizeof</span>(client_name), <span class="hljs-number">0</span>);
+    receive_len = recv(client, server_name, <span class="hljs-keyword">sizeof</span>(server_name), <span class="hljs-number">0</span>);
 
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY|FOREGROUND_RED);
-    cout &lt;&lt; endl;
-    if (IdConfirm(server_name, "lkp1")) {
-        cout &lt;&lt; "ID Confirm success, Let's chatting..." &lt;&lt; endl &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; "ID Confirm failed, Conversation aborted...";
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-keyword">if</span> (IdConfirm(server_name, <span class="hljs-string">"lkp1"</span>)) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"ID Confirm success, Let's chatting..."</span> &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"ID Confirm failed, Conversation aborted..."</span>;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_INTENSITY|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);
-        return 0;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     }
 
     keyInit();
 
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_INTENSITY|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);
-    cout &lt;&lt; "Please enter the message(just number) you want to send, or enter \"12582\" to abort this conversation, or enter \"12581\" to abort this chat" &lt;&lt; endl;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Please enter the message(just number) you want to send, or enter \"12582\" to abort this conversation, or enter \"12581\" to abort this chat"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
 
-    while (true) {
-        while (true) {
-            memset(buffer, 0, sizeof(buffer));
-            memset(buffer_send, 0, sizeof(buffer_send));
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_GREEN);//设置绿色
-            string tmp_time = getTime();
-            cout &lt;&lt; tmp_time &lt;&lt; " " &lt;&lt; client_name_tmp &lt;&lt; ":";
-            cin.getline(buffer, sizeof(buffer));
-            if (strcmp(buffer, "12581") == 0) {
-                send_len = send(client, buffer, sizeof(buffer), 0);
+    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+            <span class="hljs-built_in">memset</span>(<span class="hljs-built_in">buffer</span>, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">buffer</span>));
+            <span class="hljs-built_in">memset</span>(buffer_send, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(buffer_send));
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_GREEN);<span class="hljs-comment">//设置绿色</span>
+            <span class="hljs-built_in">string</span> tmp_time = getTime();
+            <span class="hljs-built_in">cout</span> &lt;&lt; tmp_time &lt;&lt; <span class="hljs-string">" "</span> &lt;&lt; client_name_tmp &lt;&lt; <span class="hljs-string">":"</span>;
+            <span class="hljs-built_in">cin</span>.getline(<span class="hljs-built_in">buffer</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">buffer</span>));
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(<span class="hljs-built_in">buffer</span>, <span class="hljs-string">"12581"</span>) == <span class="hljs-number">0</span>) {
+                send_len = send(client, <span class="hljs-built_in">buffer</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">buffer</span>), <span class="hljs-number">0</span>);
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY);
-                cout &lt;&lt; "The program will exit in 3 seconds..." &lt;&lt; endl;
-                Sleep(1000);
-                cout &lt;&lt; "The program will exit in 2 seconds..." &lt;&lt; endl;
-                Sleep(1000);
-                cout &lt;&lt; "The program will exit in 1 seconds...";
-                Sleep(1000);
-                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_INTENSITY|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);//恢复原来的颜色
+                <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The program will exit in 3 seconds..."</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+                Sleep(<span class="hljs-number">1000</span>);
+                <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The program will exit in 2 seconds..."</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+                Sleep(<span class="hljs-number">1000</span>);
+                <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The program will exit in 1 seconds..."</span>;
+                Sleep(<span class="hljs-number">1000</span>);
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_INTENSITY|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);<span class="hljs-comment">//恢复原来的颜色</span>
                 closesocket(client);
                 WSACleanup();
-                return 0;
+                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
             }
-            else if (strcmp(buffer, "12582") == 0) {
-                send_len = send(client, buffer, sizeof(buffer), 0);
-                break;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(<span class="hljs-built_in">buffer</span>, <span class="hljs-string">"12582"</span>) == <span class="hljs-number">0</span>) {
+                send_len = send(client, <span class="hljs-built_in">buffer</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">buffer</span>), <span class="hljs-number">0</span>);
+                <span class="hljs-keyword">break</span>;
             }
-            cout &lt;&lt; "----------------------Detail--------------------" &lt;&lt; endl &lt;&lt; "Message:" &lt;&lt; buffer &lt;&lt; endl;
-            char * tmp = encrypt(buffer, key-&gt;k.data(), key-&gt;e);
-            cout &lt;&lt; "Ciphertext:" &lt;&lt; tmp &lt;&lt; endl;
-            cout &lt;&lt; "----------------------Detail--------------------" &lt;&lt; endl;
-            char tmp1[10240];
-            strncpy(tmp1, tmp, strlen(tmp) + 1);
-            send_len = send(client, tmp1, sizeof(tmp1), 0);
+            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"----------------------Detail--------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; <span class="hljs-string">"Message:"</span> &lt;&lt; <span class="hljs-built_in">buffer</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+            <span class="hljs-keyword">char</span> * tmp = encrypt(<span class="hljs-built_in">buffer</span>, key-&gt;k.data(), key-&gt;e);
+            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Ciphertext:"</span> &lt;&lt; tmp &lt;&lt; <span class="hljs-built_in">endl</span>;
+            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"----------------------Detail--------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+            <span class="hljs-keyword">char</span> tmp1[<span class="hljs-number">10240</span>];
+            <span class="hljs-built_in">strncpy</span>(tmp1, tmp, <span class="hljs-built_in">strlen</span>(tmp) + <span class="hljs-number">1</span>);
+            send_len = send(client, tmp1, <span class="hljs-keyword">sizeof</span>(tmp1), <span class="hljs-number">0</span>);
         }
-        while (true) {
-            memset(buffer_receive, 0, sizeof(buffer_receive));
-            receive_len = recv(client, buffer_receive, sizeof(buffer_receive), 0);
-            string tmp = decrypt(buffer_receive, key-&gt;n.data(), key-&gt;d.data());
-            if (strcmp(buffer_receive, "12581") == 0) {
+        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+            <span class="hljs-built_in">memset</span>(buffer_receive, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(buffer_receive));
+            receive_len = recv(client, buffer_receive, <span class="hljs-keyword">sizeof</span>(buffer_receive), <span class="hljs-number">0</span>);
+            <span class="hljs-built_in">string</span> tmp = decrypt(buffer_receive, key-&gt;n.data(), key-&gt;d.data());
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(buffer_receive, <span class="hljs-string">"12581"</span>) == <span class="hljs-number">0</span>) {
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY);
-                cout &lt;&lt; "The program will exit in 3 seconds..." &lt;&lt; endl;
-                Sleep(1000);
-                cout &lt;&lt; "The program will exit in 2 seconds..." &lt;&lt; endl;
-                Sleep(1000);
-                cout &lt;&lt; "The program will exit in 1 seconds...";
-                Sleep(1000);
-                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_INTENSITY|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);//恢复原来的颜色
+                <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The program will exit in 3 seconds..."</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+                Sleep(<span class="hljs-number">1000</span>);
+                <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The program will exit in 2 seconds..."</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+                Sleep(<span class="hljs-number">1000</span>);
+                <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The program will exit in 1 seconds..."</span>;
+                Sleep(<span class="hljs-number">1000</span>);
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_INTENSITY|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);<span class="hljs-comment">//恢复原来的颜色</span>
                 closesocket(client);
                 WSACleanup();
-                return 0;
+                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
             }
-            else if (strcmp(buffer_receive, "12582") == 0)
-                break;
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_BLUE);//设置蓝色
-            if (tmp.find("0") != string::npos) {
-                continue;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(buffer_receive, <span class="hljs-string">"12582"</span>) == <span class="hljs-number">0</span>)
+                <span class="hljs-keyword">break</span>;
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_BLUE);<span class="hljs-comment">//设置蓝色</span>
+            <span class="hljs-keyword">if</span> (tmp.<span class="hljs-built_in">find</span>(<span class="hljs-string">"0"</span>) != <span class="hljs-built_in">string</span>::npos) {
+                <span class="hljs-keyword">continue</span>;
             }
-            cout &lt;&lt; tmp &lt;&lt; endl;
-            cout &lt;&lt; "----------------------Detail--------------------" &lt;&lt; endl &lt;&lt; "Message:" &lt;&lt; tmp &lt;&lt; endl;
-            cout &lt;&lt; "Ciphertext:" &lt;&lt; buffer_receive &lt;&lt; endl;
-            cout &lt;&lt; "----------------------Detail--------------------" &lt;&lt; endl;
+            <span class="hljs-built_in">cout</span> &lt;&lt; tmp &lt;&lt; <span class="hljs-built_in">endl</span>;
+            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"----------------------Detail--------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; <span class="hljs-string">"Message:"</span> &lt;&lt; tmp &lt;&lt; <span class="hljs-built_in">endl</span>;
+            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Ciphertext:"</span> &lt;&lt; buffer_receive &lt;&lt; <span class="hljs-built_in">endl</span>;
+            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"----------------------Detail--------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
         }
     }
-    return 0;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </code></pre>
 

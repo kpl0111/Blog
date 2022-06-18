@@ -47,17 +47,24 @@
     
 
     <div class="post-md">
-        <h1><span id="光线传感器"><center>光线传感器<center></center></center></span></h1><h3><span id="实验目的">实验目的</span></h3><p>本次实验的目的是让大家了解Android中光线传感器的基本知识，掌握Android中光线传感器的使用方法。</p>
-<h3><span id="实验要求">实验要求</span></h3><ol>
-<li><pre><code>了解Android中光线传感器基本知识
-</code></pre>
+        <h1><span id="光线传感器"> <center>光线传感器<center></center></center></span></h1>
+<h3><span id="实验目的"> 实验目的</span></h3>
+<p>本次实验的目的是让大家了解Android中光线传感器的基本知识，掌握Android中光线传感器的使用方法。</p>
+<h3><span id="实验要求"> 实验要求</span></h3>
+<ol>
+<li>
+<p>了解Android中光线传感器基本知识</p>
 </li>
-<li><pre><code>掌握Android中光线传感器使用方法
-</code></pre>
+<li>
+<p>掌握Android中光线传感器使用方法</p>
 </li>
 </ol>
-<h3><span id="基础知识">基础知识</span></h3><p>光线传感器基础  </p>
-<p>光线传感器的好处是可以根据手机所处环境的光线来调节手机屏幕的亮度和键盘灯。例如在光线充足的地方屏幕会很亮，键盘灯就会关闭。相反如果在暗处，键盘灯就会亮，屏幕较暗（与屏幕亮度的设置也有关系），这样既保护了眼睛又节省了电量。光线传感器在进入睡眠模式时候会发出蓝色周期性闪动的光，非常美观。在本节的内容中，将详细讲解Android系统光线传感器的基本知识。<br>光线传感器介绍<br>在Android设备中，光线传感器通常位于前摄像头旁边的一个小点，如果在光线充足的情况下（室外或者是灯光充足的室内），大约在2～3秒之后键盘灯会自动熄灭，即使再操作机器键盘灯也不会亮，除非到了光线比较暗的地方才会自动地亮起来。如果在光线充足的情况下用手将光线感应器遮上，在2～3秒后键盘灯会自动亮起来，在此过程中光线感应器起到了一个节电的功能。<br>要想在Android设备中监听光线传感器，需要掌握如下所示的监听方法。</p>
+<h3><span id="基础知识"> 基础知识</span></h3>
+<p>光线传感器基础</p>
+<p>光线传感器的好处是可以根据手机所处环境的光线来调节手机屏幕的亮度和键盘灯。例如在光线充足的地方屏幕会很亮，键盘灯就会关闭。相反如果在暗处，键盘灯就会亮，屏幕较暗（与屏幕亮度的设置也有关系），这样既保护了眼睛又节省了电量。光线传感器在进入睡眠模式时候会发出蓝色周期性闪动的光，非常美观。在本节的内容中，将详细讲解Android系统光线传感器的基本知识。<br>
+光线传感器介绍<br>
+在Android设备中，光线传感器通常位于前摄像头旁边的一个小点，如果在光线充足的情况下（室外或者是灯光充足的室内），大约在2～3秒之后键盘灯会自动熄灭，即使再操作机器键盘灯也不会亮，除非到了光线比较暗的地方才会自动地亮起来。如果在光线充足的情况下用手将光线感应器遮上，在2～3秒后键盘灯会自动亮起来，在此过程中光线感应器起到了一个节电的功能。<br>
+要想在Android设备中监听光线传感器，需要掌握如下所示的监听方法。</p>
 <ol>
 <li>registerListenr(SensorListenerlistenr,int sensors,int rate)：已过时。</li>
 <li>registerListenr(SensorListenerlistenr,int sensors)：已过时。</li>
@@ -74,7 +81,9 @@
 <li>SENSOR_DELAY_GAME：匹配游戏。</li>
 <li>SENSOR_DELAY_FASTEST.：匹配所能达到的最快。</li>
 </ul>
-<h3><span id="实验内容">实验内容</span></h3><p>按照实验的内容进行操作，掌握Android中光线传感器的使用方法等内容。<br>完成实验内容后，设计一个光线传感器的app，至少包含如下功能：</p>
+<h3><span id="实验内容"> 实验内容</span></h3>
+<p>按照实验的内容进行操作，掌握Android中光线传感器的使用方法等内容。<br>
+完成实验内容后，设计一个光线传感器的app，至少包含如下功能：</p>
 <ul>
 <li>显示当前光线传感器的光照强度；</li>
 <li>显示当前光线传感器的名称，耗电量，以及最大测量范围。</li>
@@ -84,11 +93,12 @@
 <p>名称：myS.getName() ;</p>
 <p>耗电量（mA）：myS.getPower();</p>
 <p>最大测量范围：myS.getMaximumRange()</p>
-<h3><span id="实验过程">实验过程</span></h3><ol>
+<h3><span id="实验过程"> 实验过程</span></h3>
+<ol>
 <li>利用Android studio创建一个工程，并利用实体机或者安卓虚拟机进行测试（这里我先利用逍遥模拟器进行测试，成功之后，连接真机进行测试）</li>
 <li>修改activity_main.yml文件，新建一个静态文本控件用来输出我们要输出的亮度传感器的有关信息，这里新建工程初始化时会自动生成一个文本控件，文本内容默认为“Hello World！”，所以只需在其基础上进行修改即可</li>
 </ol>
-<pre><code>&lt;TextView
+<pre class="highlight"><code class>&lt;TextView
         android:id="@+id/textView1"//为控件添加编号textView1
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -101,7 +111,7 @@
 <ol start="3">
 <li>修改Mainactivity.java文件对传感器进行控制并进行文本输出</li>
 </ol>
-<pre><code>//这里仅展示所需主要代码。具体代码见工程文件
+<pre class="highlight"><code class>//这里仅展示所需主要代码。具体代码见工程文件
 public class MainActivity extends Activity implements SensorEventListener {
     private SensorManager sensor;//定义一个传感器管理器
     private TextView text;//定义一个文本控件
@@ -127,7 +137,8 @@ public class MainActivity extends Activity implements SensorEventListener {
     }
 }
 </code></pre>
-<h3><span id="软件效果展示">软件效果展示</span></h3><p><img src="https://i.loli.net/2021/04/24/OR4gjAQVUtnKr7z.png" alt="image-20210424025040667"></p>
+<h3><span id="软件效果展示"> 软件效果展示</span></h3>
+<p><img src="https://i.loli.net/2021/04/24/OR4gjAQVUtnKr7z.png" alt="image-20210424025040667"></p>
 
     </div>
 

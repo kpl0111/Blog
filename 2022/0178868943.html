@@ -47,10 +47,13 @@
     
 
     <div class="post-md">
-        <h1><span id="编译系统原理">编译系统原理</span></h1><p>[toc]</p>
+        <h1><span id="编译系统原理"> 编译系统原理</span></h1>
+<p>[toc]</p>
 <p><strong>内容过多，未完全整理</strong></p>
-<h2><span id="题型设计">题型设计</span></h2><ul>
-<li>单项选择（12*2）<ul>
+<h2><span id="题型设计"> 题型设计</span></h2>
+<ul>
+<li>单项选择（12*2）
+<ul>
 <li>编译阶段所做事情考察</li>
 <li>编译器和解释器的区分</li>
 <li>ϵ是空符号串</li>
@@ -58,14 +61,16 @@
 <li>NFA，DFA和CFG</li>
 </ul>
 </li>
-<li>设计题（6*4）<ul>
+<li>设计题（6*4）
+<ul>
 <li>正则表达式表示的含义</li>
 <li>设计正则表达式</li>
 <li>设计上下文无关文法</li>
 <li><img src="https://s2.loli.net/2022/01/02/qnjOP91pUJG8AND.png" alt="image-20220102183721573"></li>
 </ul>
 </li>
-<li>解答题<ul>
+<li>解答题
+<ul>
 <li>Thompson构造法</li>
 <li>子集构造法</li>
 <li>终结符，非终结符，开始符号</li>
@@ -77,12 +82,17 @@
 </ul>
 </li>
 </ul>
-<h2><span id="真题">真题</span></h2><p>C++编译器检查数组下标越界是在_____阶段?<br>ϵ为空符号串</p>
-<h2><span id="概述">概述</span></h2><p>广义的编译器：浏览器</p>
+<h2><span id="真题"> 真题</span></h2>
+<p>C++编译器检查数组下标越界是在_____阶段?<br>
+ϵ为空符号串</p>
+<h2><span id="概述"> 概述</span></h2>
+<p>广义的编译器：浏览器</p>
 <p><img src="https://s2.loli.net/2022/01/02/3Anf8JchwoUvt17.png" alt="image-20220102012213479"></p>
-<h3><span id="分析-综合模型">分析-综合模型</span></h3><p>两个基本部分</p>
+<h3><span id="分析-综合模型"> 分析-综合模型</span></h3>
+<p>两个基本部分</p>
 <ul>
-<li>分析：将源程序分解为基本组成部分，生成中间表示形式<ul>
+<li>分析：将源程序分解为基本组成部分，生成中间表示形式
+<ul>
 <li>中间表示形式：树</li>
 <li>节点-操作</li>
 <li>孩子-参数</li>
@@ -92,18 +102,21 @@
 </ul>
 <p>源程序分析的三个阶段</p>
 <ul>
-<li>线性分析/词法分析/扫描<ul>
+<li>线性分析/词法分析/扫描
+<ul>
 <li>由左至右扫描源程序字符序列➔token，单词（记号）——具有组合意义的字符序列</li>
 <li>忽略空格、回车等，将字符组合为单词</li>
 </ul>
 </li>
-<li>层次分析/语法分析<ul>
+<li>层次分析/语法分析
+<ul>
 <li>单词序列➔有意义的集合，语法单位</li>
 <li>将词法分析产生的单词组合为语法短语</li>
 <li>语法分析树：内部节点-运算符，叶节点-运算对象</li>
 </ul>
 </li>
-<li>语义分析<ul>
+<li>语义分析
+<ul>
 <li>检查程序各部分是否正确符合语义</li>
 </ul>
 </li>
@@ -137,14 +150,17 @@
 <li>过程间优化能力仍然受限</li>
 <li>面向GPU等新型体系结构的编译优化还有空间</li>
 </ul>
-<h2><span id="一个简单的编译器">一个简单的编译器</span></h2><p>字符流 → 词法分析器 → 单词流 → 语法制导翻译器 → 中间表示形式</p>
+<h2><span id="一个简单的编译器"> 一个简单的编译器</span></h2>
+<p>字符流 → 词法分析器 → 单词流 → 语法制导翻译器 → 中间表示形式</p>
 <p>语法制导翻译器：语法分析 + 中间代码生成</p>
-<h3><span id="语法定义">语法定义</span></h3><p>上下文无关文法：描述语言的语法结构</p>
+<h3><span id="语法定义"> 语法定义</span></h3>
+<p>上下文无关文法：描述语言的语法结构</p>
 <p>组成：</p>
 <ol>
 <li>一组终结符号，单词，基本符号</li>
 <li>一组非终结符号（语法变量），语法范畴，语法概念</li>
-<li>一组产生式，定义语法范畴<ul>
+<li>一组产生式，定义语法范畴
+<ul>
 <li>产生式：A→α</li>
 <li>A—一个非终结符，左部</li>
 <li>α—终结符或/与非终结符串，右部</li>
@@ -161,73 +177,89 @@
 <li>φ：空集{}，区分ε，{}，{ε}</li>
 <li>Σ*的子集U、V的积（连接）{ αβ|α ∈ U 且 β ∈ V}</li>
 <li>UV≠VU，(UV)W=U(VW)</li>
-<li>V自身的n次积（连接）记为$V^{n}$</li>
-<li>$V^{0}={ε}$</li>
-<li>V的闭包（closure）<ul>
-<li>$V* = V^{0} ⋃ V^{1} ⋃ V^{2} ⋃ V^{3} ⋃ …$</li>
+<li>V自身的n次积（连接）记为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>V</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">V^{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>V</mi><mn>0</mn></msup><mo>=</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">V^{0}={ε}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">ε</span></span></span></span></span></li>
+<li>V的闭包（closure）
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>V</mi><mo>∗</mo><mo>=</mo><msup><mi>V</mi><mn>0</mn></msup><mo>⋃</mo><msup><mi>V</mi><mn>1</mn></msup><mo>⋃</mo><msup><mi>V</mi><mn>2</mn></msup><mo>⋃</mo><msup><mi>V</mi><mn>3</mn></msup><mo>⋃</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">V* = V^{0} ⋃ V^{1} ⋃ V^{2} ⋃ V^{3} ⋃ ...</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord">∗</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.064118em;vertical-align:-0.25001em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">⋃</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">⋃</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">⋃</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">⋃</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span></li>
 <li>每个符号串，都是V中符号串有限次连接</li>
 </ul>
 </li>
-<li>正则闭包，$V^{+}=VV*$</li>
+<li>正则闭包，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>V</mi><mo>+</mo></msup><mo>=</mo><mi>V</mi><mi>V</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">V^{+}=VV*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">+</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord">∗</span></span></span></span></li>
 </ul>
 <p>四元式定义上下文无关文法</p>
 <ul>
-<li>$(V_{T}, V_{N}, S, P)$</li>
-<li>$V_{T}$：非空有限集，终结符号集合</li>
-<li>$V_{N}$：非空有限集，非终结符号集合</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><msub><mi>V</mi><mi>T</mi></msub><mo separator="true">,</mo><msub><mi>V</mi><mi>N</mi></msub><mo separator="true">,</mo><mi>S</mi><mo separator="true">,</mo><mi>P</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(V_{T}, V_{N}, S, P)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mclose">)</span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mi>T</mi></msub></mrow><annotation encoding="application/x-tex">V_{T}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：非空有限集，终结符号集合</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">V_{N}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：非空有限集，非终结符号集合</li>
 <li>S：开始符号</li>
-<li>P：产生式集合（有限集）<ul>
+<li>P：产生式集合（有限集）
+<ul>
 <li>每个产生式形式A→α，其中</li>
-<li>$A ∈ V_{N},α ∈(V_{T} ⋃ V_{N})*$</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>∈</mo><msub><mi>V</mi><mi>N</mi></msub><mo separator="true">,</mo><mi>α</mi><mo>∈</mo><mo stretchy="false">(</mo><msub><mi>V</mi><mi>T</mi></msub><mo>⋃</mo><msub><mi>V</mi><mi>N</mi></msub><mo stretchy="false">)</mo><mo>∗</mo></mrow><annotation encoding="application/x-tex">A ∈ V_{N},α ∈(V_{T} ⋃ V_{N})*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.00001em;vertical-align:-0.25001em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">⋃</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">∗</span></span></span></span></li>
 <li>关于A的产生式S至少在某个产生式左部出现一次</li>
 </ul>
 </li>
 </ul>
 <p>符号约定</p>
 <ul>
-<li><p><em>expr → expr + digit</em></p>
+<li>
+<p><em>expr → expr + digit</em></p>
 </li>
-<li><p><em>expr → expr – digit</em></p>
+<li>
+<p><em>expr → expr – digit</em></p>
 </li>
-<li><p><em>expr → digit</em></p>
+<li>
+<p><em>expr → digit</em></p>
 </li>
-<li><p><em>digit</em> → 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9</p>
+<li>
+<p><em>digit</em> → 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9</p>
 </li>
-<li><p>数字、运算符、黑体字符串——终结符</p>
+<li>
+<p>数字、运算符、黑体字符串——终结符</p>
 </li>
-<li><p>斜体字符串——非终结符</p>
+<li>
+<p>斜体字符串——非终结符</p>
 </li>
-<li><p>左部相同可合并，‘|’——“或”的意思<em>expr → expr + digit |  expr - digit | digit</em>候选式</p>
+<li>
+<p>左部相同可合并，‘|’——“或”的意思<em>expr → expr + digit |  expr - digit | digit</em>候选式</p>
 </li>
 </ul>
 <p>推导</p>
 <ul>
 <li>单词串(string)：0个或多个单词构成的序列</li>
-<li>推导(derive)<ul>
+<li>推导(derive)
+<ul>
 <li>由<strong>开始符号作为推导起点</strong></li>
 <li>用产生式<strong>右部</strong>替换左部非终结符</li>
 <li>反复替换，最终得到单词串</li>
 </ul>
 </li>
-<li>语言(language)<ul>
+<li>语言(language)
+<ul>
 <li>语法所定义的语言——可由开始符号推导出的所有单词串的集合</li>
 </ul>
 </li>
 </ul>
 <p>二义性：多个语法分析树生成相同的单词串——多个意义</p>
-<h3><span id="语法制导翻译">语法制导翻译</span></h3><ul>
+<h3><span id="语法制导翻译"> 语法制导翻译</span></h3>
+<ul>
 <li>翻译：为生成代码，需保存语言结构的类型、代码位置、代码数量等</li>
 <li>属性(attribute)：类型、串、内存位置等</li>
-<li>语法制导翻译syntax-directed translation<ul>
+<li>语法制导翻译syntax-directed translation
+<ul>
 <li>语法制导定义syntax-directed definition</li>
 <li>属性与语法结构相关联➔指明翻译方法</li>
 <li>翻译模式，translation scheme</li>
 </ul>
 </li>
-<li>表达式E的后缀形式Postfix(E)如何生成：<ol>
+<li>表达式E的后缀形式Postfix(E)如何生成：
+<ol>
 <li>E为变量或常量：Postfix(E) = E</li>
-<li>$E = E_{1} op E_{2}$，op—二元运算符，$E_{1}、E_{2}$—子表达式：<br> $Postfix(E) = Postfix(E_{1} op E_{2})= Postfix(E_{1}) Postfix(E_{2}) op$</li>
-<li>$E = (E_{1})$：<br> $Postfix(E) = Postfix(E_{1})$</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>=</mo><msub><mi>E</mi><mn>1</mn></msub><mi>o</mi><mi>p</mi><msub><mi>E</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">E = E_{1} op E_{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，op—二元运算符，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>E</mi><mn>1</mn></msub><mi mathvariant="normal">、</mi><msub><mi>E</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">E_{1}、E_{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">、</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>—子表达式：<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mi>o</mi><mi>s</mi><mi>t</mi><mi>f</mi><mi>i</mi><mi>x</mi><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo><mo>=</mo><mi>P</mi><mi>o</mi><mi>s</mi><mi>t</mi><mi>f</mi><mi>i</mi><mi>x</mi><mo stretchy="false">(</mo><msub><mi>E</mi><mn>1</mn></msub><mi>o</mi><mi>p</mi><msub><mi>E</mi><mn>2</mn></msub><mo stretchy="false">)</mo><mo>=</mo><mi>P</mi><mi>o</mi><mi>s</mi><mi>t</mi><mi>f</mi><mi>i</mi><mi>x</mi><mo stretchy="false">(</mo><msub><mi>E</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mi>P</mi><mi>o</mi><mi>s</mi><mi>t</mi><mi>f</mi><mi>i</mi><mi>x</mi><mo stretchy="false">(</mo><msub><mi>E</mi><mn>2</mn></msub><mo stretchy="false">)</mo><mi>o</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">Postfix(E) = Postfix(E_{1} op E_{2})= Postfix(E_{1}) Postfix(E_{2}) op</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">i</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">i</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">i</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">i</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>=</mo><mo stretchy="false">(</mo><msub><mi>E</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E = (E_{1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>：<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mi>o</mi><mi>s</mi><mi>t</mi><mi>f</mi><mi>i</mi><mi>x</mi><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo><mo>=</mo><mi>P</mi><mi>o</mi><mi>s</mi><mi>t</mi><mi>f</mi><mi>i</mi><mi>x</mi><mo stretchy="false">(</mo><msub><mi>E</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Postfix(E) = Postfix(E_{1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">i</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">i</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
 </ol>
 </li>
 <li>(9 - 5) + 2 ➔9 5 - 2 +</li>
@@ -261,12 +293,17 @@
 <li>语法分析树添加额外节点</li>
 <li>指明了语义动作执行顺序</li>
 </ul>
-<h3><span id="语法分析">语法分析</span></h3><ul>
+<h3><span id="语法分析"> 语法分析</span></h3>
+<ul>
 <li>确定一个单词串是否可由一个文法生成</li>
 <li>构造语法分析树</li>
-<li>时间复杂度$O(n^3)➔O(n)$</li>
-<li>自顶向下分析方法，top-down<br>语法树构造——由根向叶<br>适合手工编写语法分析器</li>
-<li>自底向上分析方法，bottom-up<br>语法树构造——由叶向根<br>适用更多文法，自动生成工具</li>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy="false">)</mo><mi mathvariant="normal">➔</mi><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^3)➔O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">➔</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></li>
+<li>自顶向下分析方法，top-down<br>
+语法树构造——由根向叶<br>
+适合手工编写语法分析器</li>
+<li>自底向上分析方法，bottom-up<br>
+语法树构造——由叶向根<br>
+适用更多文法，自动生成工具</li>
 </ul>
 <p>自顶向下分析方法</p>
 <ul>
@@ -279,8 +316,13 @@
 <p><strong>平凡算法</strong></p>
 <ol>
 <li>初始状态，只有一个根节点，标记为开始符号，输入指针指向第一个单词</li>
-<li>对于NT节点<br> a) 选择产生式（尝试、回溯）构造孩子节点<br> b) 对孩子节点从左至右继续分析</li>
-<li>对于T节点<br> a) 与当前输入单词进行比较<br> b) 若匹配，输入指针前移，处理下一个节点<br> c) 不匹配，可能需要回溯或报告错误</li>
+<li>对于NT节点<br>
+a) 选择产生式（尝试、回溯）构造孩子节点<br>
+b) 对孩子节点从左至右继续分析</li>
+<li>对于T节点<br>
+a) 与当前输入单词进行比较<br>
+b) 若匹配，输入指针前移，处理下一个节点<br>
+c) 不匹配，可能需要回溯或报告错误</li>
 </ol>
 
     </div>
