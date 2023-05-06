@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。    树的基本知识  节点：包含一个数据元素及若干指向子树分支的信息 节点的度：一个节点拥有子树的数目称为节点的度 叶子节点：也称为终端节点，没有子树的节点或者度为零的节点 分支节点：也称为非终端节点，度不为零的节点称为非终端节点 树的度：树中所有节点的度的最大值 节点的层次：从根节点开始，假设根节点为第1层，根节点的子节点为第2层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode笔记-二叉树">
+<meta property="og:url" content="https://kpl0111.github.io/blog/2022/0621aed2ac.html">
+<meta property="og:site_name" content="Nefelibata">
+<meta property="og:description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。    树的基本知识  节点：包含一个数据元素及若干指向子树分支的信息 节点的度：一个节点拥有子树的数目称为节点的度 叶子节点：也称为终端节点，没有子树的节点或者度为零的节点 分支节点：也称为非终端节点，度不为零的节点称为非终端节点 树的度：树中所有节点的度的最大值 节点的层次：从根节点开始，假设根节点为第1层，根节点的子节点为第2层">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806185805576.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806190304693.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806190511967.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020092019554618.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200920200429452.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806191109896.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/20/1waD7EyU86soVMn.png">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008eGmZEly1gnbmss7603g30eq0d4b2a.gif">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008eGmZEly1gnbmuj244bg30eq0d4kjm.gif">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200808200338924.png">
+<meta property="article:published_time" content="2022-06-17T11:07:45.000Z">
+<meta property="article:modified_time" content="2022-07-02T07:42:32.238Z">
+<meta property="article:author" content="Nefelibata">
+<meta property="article:tag" content="Simple">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200806185805576.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/blog/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/blog/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>LeetCode笔记-二叉树</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/blog/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Nefelibata</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/blog/2022/079716a2d4.html"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/blog/2022/06b47eaf04.html"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2022/0621aed2ac.html"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&text=LeetCode笔记-二叉树"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&title=LeetCode笔记-二叉树"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&is_video=false&description=LeetCode笔记-二叉树"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=LeetCode笔记-二叉树&body=Check out this article: https://kpl0111.github.io/blog/2022/0621aed2ac.html"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&title=LeetCode笔记-二叉树"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&title=LeetCode笔记-二叉树"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&title=LeetCode笔记-二叉树"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&title=LeetCode笔记-二叉树"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&name=LeetCode笔记-二叉树&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text"> 树的基本知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%B4%A8"><span class="toc-number">2.</span> <span class="toc-text"> 树的基本性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">3.</span> <span class="toc-text"> 二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number">3.1.</span> <span class="toc-text"> 二叉树的种类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BB%A1%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">3.1.1.</span> <span class="toc-text"> 满二叉树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">3.1.2.</span> <span class="toc-text"> 完全二叉树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">3.1.3.</span> <span class="toc-text"> 二叉搜索树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">3.1.4.</span> <span class="toc-text"> 平衡二叉搜索树</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text"> 二叉树的存储方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text"> 二叉树的遍历方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.4.</span> <span class="toc-text"> 二叉树的代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E5%92%8C%E8%BF%AD%E4%BB%A3"><span class="toc-number">3.5.</span> <span class="toc-text"> 递归和迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86%E9%80%92%E5%BD%92%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81"><span class="toc-number">3.6.</span> <span class="toc-text"> 二叉树的递归遍历(递归非常重要！！！)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%BF%AD%E4%BB%A3%E9%81%8D%E5%8E%86"><span class="toc-number">3.7.</span> <span class="toc-text"> 二叉树的迭代遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="toc-number">3.7.1.</span> <span class="toc-text"> 前序遍历（迭代法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="toc-number">3.7.2.</span> <span class="toc-text"> 中序遍历（迭代法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="toc-number">3.7.3.</span> <span class="toc-text"> 后序遍历（迭代法）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%BB%9F%E4%B8%80%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="toc-number">3.8.</span> <span class="toc-text"> 二叉树的统一迭代法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B%E8%AF%A6%E7%BB%86%E6%B3%A8%E9%87%8A"><span class="toc-number">3.8.1.</span> <span class="toc-text"> 中序遍历代码如下：（详细注释）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E6%B3%95%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">3.8.2.</span> <span class="toc-text"> 迭代法前序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E6%B3%95%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">3.8.3.</span> <span class="toc-text"> 迭代法后序遍历</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">3.9.</span> <span class="toc-text"> 二叉树的层序遍历</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        LeetCode笔记-二叉树
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nefelibata</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2022-06-17T11:07:45.000Z" itemprop="datePublished">2022-06-17</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>本篇为个人笔记，内容或有错误。<br>
+图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
+</blockquote>
+<!-- toc -->
+<h2 id="树的基本知识"><a class="markdownIt-Anchor" href="#树的基本知识"></a> 树的基本知识</h2>
+<ol>
+<li>节点：包含一个数据元素及若干指向子树分支的信息</li>
+<li>节点的度：一个节点拥有子树的数目称为节点的度</li>
+<li>叶子节点：也称为终端节点，没有子树的节点或者度为零的节点</li>
+<li>分支节点：也称为非终端节点，度不为零的节点称为非终端节点</li>
+<li>树的度：树中所有节点的度的最大值</li>
+<li>节点的层次：从根节点开始，假设根节点为第1层，根节点的子节点为第2层，依此类推，如果某一个节点位于第L层，则其子节点位于第L+1层</li>
+<li>树的深度：也称为树的高度，树中所有节点的层次最大值称为树的深度</li>
+<li>有序树：如果树中各棵子树的次序是有先后次序，则称该树为有序树</li>
+<li>无序树：如果树中各棵子树的次序没有先后次序，则称该树为无序树</li>
+<li>森林：由m（m≥0）棵互不相交的树构成一片森林。如果把一棵非空的树的根节点删除，则该树就变成了一片森林，森林中的树由原来根节点的各棵子树构成</li>
+</ol>
+<h2 id="树的基本性质"><a class="markdownIt-Anchor" href="#树的基本性质"></a> 树的基本性质</h2>
+<ol>
+<li>二叉树的第i层上至多有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mo stretchy="false">(</mo></msup><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mtext>（</mtext><mi>i</mi><mo>≥</mo><mn>1</mn><mtext>）</mtext></mrow><annotation encoding="application/x-tex">2^(i-1)（i≥1）</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9713299999999999em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mopen mtight">(</span></span></span></span></span></span></span></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord cjk_fallback">（</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord cjk_fallback">）</span></span></span></span>个节点</li>
+<li>深度为h的二叉树中至多含有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>h</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^h - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.932438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">h</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>个节点</li>
+<li>若在任意一棵二叉树中，有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">n_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>个叶子节点，有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">n_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>个度为2的节点，则必有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>0</mn></msub><mo>=</mo><msub><mi>n</mi><mn>2</mn></msub><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n_0 = n_2 + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.73333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></li>
+<li>具有n个节点的满二叉树深为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">log_2 (n + 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></li>
+<li>若对一棵有n个节点的完全二叉树进行顺序编号（1≤i≤n），那么，对于编号为i（i≥1）的节点：
+<ul>
+<li>当i=1时，该节点为根，它无双亲节点</li>
+<li>当i&gt;1时，该节点的双亲节点的编号为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>i</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{i}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.200664em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.855664em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></li>
+<li>若2i≤n，则有编号为2i的左节点，否则没有左节点</li>
+<li>若2i+1≤n，则有编号为2i+1的右节点，否则没有右节点</li>
+</ul>
+</li>
+</ol>
+<h2 id="二叉树"><a class="markdownIt-Anchor" href="#二叉树"></a> 二叉树</h2>
+<h3 id="二叉树的种类"><a class="markdownIt-Anchor" href="#二叉树的种类"></a> 二叉树的种类</h3>
+<p>二叉树有两种主要的形式：满二叉树和完全二叉树。</p>
+<h4 id="满二叉树"><a class="markdownIt-Anchor" href="#满二叉树"></a> 满二叉树</h4>
+<p><strong>满二叉树：</strong> 如果一棵二叉树只有<strong>度</strong> (简单理解为孩子节点个数)为0的结点和度为2的结点，并且度为0的结点在同一层上，则这棵二叉树为满二叉树。</p>
+<p>如图所示：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200806185805576.png" width="600"> </p>
+<p>这棵二叉树为满二叉树，也可以说<strong>深度</strong> (就是有几层)为k，有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>k</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^k - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.932438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>个节点的二叉树，比如本图，4层，那么4层的满二叉树就有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>4</mn></msup><mo>−</mo><mn>1</mn><mo>=</mo><mn>15</mn></mrow><annotation encoding="application/x-tex">2^4 - 1 = 15</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">5</span></span></span></span>个节点</p>
+<h4 id="完全二叉树"><a class="markdownIt-Anchor" href="#完全二叉树"></a> 完全二叉树</h4>
+<blockquote>
+<p>在完全二叉树中，除了最底层节点可能没填满外，其余每层节点数都达到最大值，并且最下面一层的节点都集中在该层最左边的若干位置。若最底层为第 h 层，则该层包含 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mtext>&nbsp;&nbsp;</mtext><msup><mn>2</mn><mo stretchy="false">(</mo></msup><mi>h</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">1~&nbsp;2^(h-1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9713299999999999em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace nobreak">&nbsp;</span><span class="mord">&nbsp;</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mopen mtight">(</span></span></span></span></span></span></span></span><span class="mord mathnormal">h</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span> &nbsp;个节点。</p>
+</blockquote>
+<p><strong>优先级队列其实是一个堆，而堆就是一棵完全二叉树，同时保证父子节点的顺序关系。</strong></p>
+<h4 id="二叉搜索树"><a class="markdownIt-Anchor" href="#二叉搜索树"></a> 二叉搜索树</h4>
+<p>二叉搜索树是有数值的树，<strong>二叉搜索树是一个有序树</strong>，它有一下几条性质：</p>
+<ul>
+<li>若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值</li>
+<li>若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值</li>
+<li>它的左、右子树也分别为二叉排序树</li>
+</ul>
+<p>eg：<br>
+<img src="https://img-blog.csdnimg.cn/20200806190304693.png" width="600"> </p>
+<h4 id="平衡二叉搜索树"><a class="markdownIt-Anchor" href="#平衡二叉搜索树"></a> 平衡二叉搜索树</h4>
+<blockquote>
+<p>平衡二叉搜索树：又被称为AVL（Adelson-Velsky and&nbsp;Landis）树，且具有以下性质：</p>
+<blockquote>
+<p>它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。(递归定义)</p>
+</blockquote>
+</blockquote>
+<p>如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200806190511967.png" width="600"> </p>
+<p>最后一棵 不是平衡二叉树，因为它的左右两个子树的高度差的绝对值超过了1。</p>
+<p><strong>C++中map、set、multimap，multiset的底层实现都是平衡二叉搜索树</strong>，所以map、set的增删操作时间时间复杂度是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">log n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span></span></span></span>，而unordered_map、unordered_set，unordered_map、unordered_map底层实现是哈希表。</p>
+<h3 id="二叉树的存储方式"><a class="markdownIt-Anchor" href="#二叉树的存储方式"></a> 二叉树的存储方式</h3>
+<blockquote>
+<p>二叉树可以链式存储，也可以顺序存储</p>
+</blockquote>
+<p>链式存储用指针， 顺序存储用数组。</p>
+<p>顾名思义就是顺序存储的元素在内存是连续分布的，而链式存储则是通过指针把分布在散落在各个地址的节点串联一起。</p>
+<p>链式存储如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020092019554618.png" width="600"> </p>
+<p>顺序存储呢其实就是用数组来存储二叉树，顺序存储的方式如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200920200429452.png" width="600"> </p>
+<p>用数组来存储二叉树如何遍历的呢？</p>
+<p><strong>如果父节点的数组下标是 i，那么它的左孩子就是 i * 2 + 1，右孩子就是 i * 2 + 2。</strong></p>
+<p>但是用链式表示的二叉树，更有利于理解，所以一般都是用链式存储二叉树。</p>
+<p><strong>所以大家要了解，用数组依然可以表示二叉树。</strong></p>
+<h3 id="二叉树的遍历方式"><a class="markdownIt-Anchor" href="#二叉树的遍历方式"></a> 二叉树的遍历方式</h3>
+<p>二叉树主要有两种遍历方式：</p>
+<ol>
+<li>深度优先遍历：先往深走，遇到叶子节点再往回走。</li>
+<li>广度优先遍历(层级遍历)：一层一层的去遍历。</li>
+</ol>
+<p><strong>这两种遍历是图论中最基本的两种遍历方式</strong><br>
+那么从深度优先遍历和广度优先遍历进一步拓展，才有如下遍历方式：</p>
+<ul>
+<li>深度优先遍历
+<ul>
+<li>前序遍历（递归法，迭代法）</li>
+<li>中序遍历（递归法，迭代法）</li>
+<li>后序遍历（递归法，迭代法）</li>
+</ul>
+</li>
+<li>广度优先遍历
+<ul>
+<li>层次遍历（迭代法）</li>
+</ul>
+</li>
+</ul>
+<p><strong>这里前中后，其实指的就是中间节点的遍历顺序</strong>，只要记住 前中后序指的就是中间节点的位置就可以了。</p>
+<p>看如下中间节点的顺序，就可以发现，中间节点的顺序就是所谓的遍历方式</p>
+<ul>
+<li>前序遍历：中左右</li>
+<li>中序遍历：左中右</li>
+<li>后序遍历：左右中</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200806191109896.png" width="600"> </p>
+<p><strong>栈其实就是递归的一种实现结构</strong>，也就说前中后序遍历的逻辑其实都是可以借助栈使用非递归的方式来实现的。</p>
+<p>而广度优先遍历的实现一般使用队列来实现，这也是队列先进先出的特点所决定的，因为需要先进先出的结构，才能一层一层的来遍历二叉树。</p>
+<h3 id="二叉树的代码实现"><a class="markdownIt-Anchor" href="#二叉树的代码实现"></a> 二叉树的代码实现</h3>
+<p>C++代码如下：</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">TreeNode</span> {
+    <span class="hljs-type">int</span> val;
+    TreeNode *left;
+    TreeNode *right;
+    <span class="hljs-built_in">TreeNode</span>(<span class="hljs-type">int</span> x) : <span class="hljs-built_in">val</span>(x), <span class="hljs-built_in">left</span>(<span class="hljs-literal">NULL</span>), <span class="hljs-built_in">right</span>(<span class="hljs-literal">NULL</span>) {}
+};
+</code></pre>
+<p>相对于链表 ，二叉树的节点里多了一个指针， 有两个指针，指向左右孩子。</p>
+<h3 id="递归和迭代"><a class="markdownIt-Anchor" href="#递归和迭代"></a> 递归和迭代</h3>
+<blockquote>
+<p>在讲二叉树的遍历方式前，首先要搞明白递归和遍历的区别</p>
+</blockquote>
+<p><strong>递归（recursion）：</strong> 递归常被用来描述以自相似方法重复事物的过程，在数学和计算机科学中，指的是在函数定义中使用函数自身的方法。（A调用A）</p>
+<p><strong>迭代（iteration）：</strong> 重复反馈过程的活动，每一次迭代的结果会作为下一次迭代的初始值。（A重复调用B）</p>
+<p>递归是一个树结构，从字面可以其理解为重复“递推”和“回归”的过程，当“递推”到达底部时就会开始“回归”，其过程相当于树的深度优先遍历。</p>
+<p>迭代是一个环结构，从初始状态开始，每次迭代都遍历这个环，并更新状态，多次迭代直到到达结束状态。</p>
+<p>理论上递归和迭代时间复杂度方面是一样的，但实际应用中（函数调用和函数调用堆栈的开销）递归比迭代效率要低。<br>
+<img src="https://s2.loli.net/2022/06/20/1waD7EyU86soVMn.png" alt="20220620201425"></p>
+<h3 id="二叉树的递归遍历递归非常重要"><a class="markdownIt-Anchor" href="#二叉树的递归遍历递归非常重要"></a> 二叉树的递归遍历(递归非常重要！！！)</h3>
+<blockquote>
+<p>一看就会，一写就废！</p>
+</blockquote>
+<p>首先要知道递归算法的三个要素：</p>
+<ol>
+<li>
+<p><strong>确定递归函数的参数和返回值：</strong><br>
+确定哪些参数是递归的过程中需要处理的，那么就在递归函数里加上这个参数， 并且还要明确每次递归的返回值是什么进而确定递归函数的返回类型。</p>
+</li>
+<li>
+<p><strong>确定终止条件：</strong><br>
+写完了递归算法,  运行的时候，经常会遇到栈溢出的错误，就是没写终止条件或者终止条件写的不对，操作系统也是用一个栈的结构来保存每一层递归的信息，如果递归没有终止，操作系统的内存栈必然就会溢出。</p>
+</li>
+<li>
+<p><strong>确定单层递归的逻辑：</strong><br>
+确定每一层递归需要处理的信息。在这里也就会重复调用自己来实现递归的过程。</p>
+</li>
+</ol>
+<p><strong>以下以前序遍历为例：</strong></p>
+<ol>
+<li>
+<p><strong>确定递归函数的参数和返回值</strong>：因为要打印出前序遍历节点的数值，所以参数里需要传入vector在放节点的数值，除了这一点就不需要在处理什么数据了也不需要有返回值，所以递归函数返回类型就是void，代码如下：</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">traversal</span><span class="hljs-params">(TreeNode* cur, vector&lt;<span class="hljs-type">int</span>&gt;&amp; vec)</span>
+</span></code></pre>
+</li>
+<li>
+<p><strong>确定终止条件</strong>：在递归的过程中，如何算是递归结束了呢，当然是当前遍历的节点是空了，那么本层递归就要要结束了，所以如果当前遍历的这个节点是空，就直接return，代码如下：</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">if</span> (cur == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;
+</code></pre>
+</li>
+<li>
+<p><strong>确定单层递归的逻辑</strong>：前序遍历是中左右的循序，所以在单层递归的逻辑，是要先取中节点的数值，代码如下：</p>
+<pre class="highlight"><code class="cpp">vec.<span class="hljs-built_in">push_back</span>(cur-&gt;val);    <span class="hljs-comment">// 中</span>
+<span class="hljs-built_in">traversal</span>(cur-&gt;left, vec);  <span class="hljs-comment">// 左</span>
+<span class="hljs-built_in">traversal</span>(cur-&gt;right, vec); <span class="hljs-comment">// 右</span>
+</code></pre>
+</li>
+</ol>
+<p>单层递归的逻辑就是按照中左右的顺序来处理的，代码如下：</p>
+<pre class="highlight"><code class="CPP"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">traversal</span><span class="hljs-params">(TreeNode* cur, vector&lt;<span class="hljs-type">int</span>&gt;&amp; vec)</span> </span>{
+        <span class="hljs-keyword">if</span> (cur == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;
+        vec.<span class="hljs-built_in">push_back</span>(cur-&gt;val);    <span class="hljs-comment">// 中</span>
+        <span class="hljs-built_in">traversal</span>(cur-&gt;left, vec);  <span class="hljs-comment">// 左</span>
+        <span class="hljs-built_in">traversal</span>(cur-&gt;right, vec); <span class="hljs-comment">// 右</span>
+    }
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>{
+        vector&lt;<span class="hljs-type">int</span>&gt; result;
+        <span class="hljs-built_in">traversal</span>(root, result);
+        <span class="hljs-keyword">return</span> result;
+    }
+};
+</code></pre>
+<p>中序和后序代码如下：</p>
+<p>中序遍历：</p>
+<pre class="highlight"><code class="CPP"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">traversal</span><span class="hljs-params">(TreeNode* cur, vector&lt;<span class="hljs-type">int</span>&gt;&amp; vec)</span> </span>{
+    <span class="hljs-keyword">if</span> (cur == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;
+    <span class="hljs-built_in">traversal</span>(cur-&gt;left, vec);  <span class="hljs-comment">// 左</span>
+    vec.<span class="hljs-built_in">push_back</span>(cur-&gt;val);    <span class="hljs-comment">// 中</span>
+    <span class="hljs-built_in">traversal</span>(cur-&gt;right, vec); <span class="hljs-comment">// 右</span>
+}
+</code></pre>
+<p>后序遍历：</p>
+<pre class="highlight"><code class="CPP"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">traversal</span><span class="hljs-params">(TreeNode* cur, vector&lt;<span class="hljs-type">int</span>&gt;&amp; vec)</span> </span>{
+    <span class="hljs-keyword">if</span> (cur == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;
+    <span class="hljs-built_in">traversal</span>(cur-&gt;left, vec);  <span class="hljs-comment">// 左</span>
+    <span class="hljs-built_in">traversal</span>(cur-&gt;right, vec); <span class="hljs-comment">// 右</span>
+    vec.<span class="hljs-built_in">push_back</span>(cur-&gt;val);    <span class="hljs-comment">// 中</span>
+}
+</code></pre>
+<h3 id="二叉树的迭代遍历"><a class="markdownIt-Anchor" href="#二叉树的迭代遍历"></a> 二叉树的迭代遍历</h3>
+<blockquote>
+<p>听说还可以用非递归的方式</p>
+</blockquote>
+<p><strong>递归的实现就是：每一次递归调用都会把函数的局部变量、参数值和返回地址等压入调用栈中</strong>，然后递归返回的时候，从栈顶弹出上一次递归的各项参数，所以这就是递归为什么可以返回上一层位置的原因。</p>
+<h4 id="前序遍历迭代法"><a class="markdownIt-Anchor" href="#前序遍历迭代法"></a> 前序遍历（迭代法）</h4>
+<p>前序遍历是中左右，每次先处理的是中间节点，那么先将根节点放入栈中，然后将右孩子加入栈，再加入左孩子。</p>
+<p>为什么要先加入 右孩子，再加入左孩子呢？ 因为这样出栈的时候才是中左右的顺序。</p>
+<p>动画如下：</p>
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gnbmss7603g30eq0d4b2a.gif" alt="二叉树前序遍历（迭代法）"></p>
+<p>不难写出如下代码: （<strong>注意代码中空节点不入栈</strong>）</p>
+<pre class="highlight"><code class="CPP"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>{
+        stack&lt;TreeNode*&gt; st;
+        vector&lt;<span class="hljs-type">int</span>&gt; result;
+        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> result;
+        st.<span class="hljs-built_in">push</span>(root);
+        <span class="hljs-keyword">while</span> (!st.<span class="hljs-built_in">empty</span>()) {
+            TreeNode* node = st.<span class="hljs-built_in">top</span>();                       <span class="hljs-comment">// 中</span>
+            st.<span class="hljs-built_in">pop</span>();
+            result.<span class="hljs-built_in">push_back</span>(node-&gt;val);
+            <span class="hljs-keyword">if</span> (node-&gt;right) st.<span class="hljs-built_in">push</span>(node-&gt;right);           <span class="hljs-comment">// 右（空节点不入栈）</span>
+            <span class="hljs-keyword">if</span> (node-&gt;left) st.<span class="hljs-built_in">push</span>(node-&gt;left);             <span class="hljs-comment">// 左（空节点不入栈）</span>
+        }
+        <span class="hljs-keyword">return</span> result;
+    }
+};
+</code></pre>
+<h4 id="中序遍历迭代法"><a class="markdownIt-Anchor" href="#中序遍历迭代法"></a> 中序遍历（迭代法）</h4>
+<blockquote>
+<p>注意：中序遍历不能像递归那样微调前序遍历的代码</p>
+</blockquote>
+<p>在迭代的过程中，有两个操作：</p>
+<ol>
+<li><strong>处理：将元素放进result数组中</strong></li>
+<li><strong>访问：遍历节点</strong></li>
+</ol>
+<p>分析一下为什么刚刚写的前序遍历的代码，不能和中序遍历通用呢，因为前序遍历的顺序是中左右，先访问的元素是中间节点，要处理的元素也是中间节点，所以刚刚才能写出相对简洁的代码，<strong>因为要访问的元素和要处理的元素顺序是一致的，都是中间节点。</strong></p>
+<p>那么再看看中序遍历，中序遍历是左中右，先访问的是二叉树顶部的节点，然后一层一层向下访问，直到到达树左面的最底部，再开始处理节点（也就是在把节点的数值放进result数组中），这就造成了<strong>处理顺序和访问顺序是不一致的。</strong></p>
+<p>那么<strong>在使用迭代法写中序遍历，我们就可以添加一个栈用来存放左孩子节点，就需要借用指针的遍历来帮助访问节点，栈则用来处理节点上的元素。</strong></p>
+<p>动画如下：</p>
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gnbmuj244bg30eq0d4kjm.gif" alt="二叉树中序遍历（迭代法）"></p>
+<p><strong>中序遍历，可以写出如下代码：</strong></p>
+<pre class="highlight"><code class="CPP"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>{
+        vector&lt;<span class="hljs-type">int</span>&gt; result;
+        stack&lt;TreeNode*&gt; st;
+        TreeNode* cur = root;
+        <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">NULL</span> || !st.<span class="hljs-built_in">empty</span>()) {
+            <span class="hljs-keyword">if</span> (cur != <span class="hljs-literal">NULL</span>) { <span class="hljs-comment">// 指针来访问节点，访问到最底层</span>
+                st.<span class="hljs-built_in">push</span>(cur); <span class="hljs-comment">// 将访问的节点放进栈</span>
+                cur = cur-&gt;left;                <span class="hljs-comment">// 左</span>
+            } <span class="hljs-keyword">else</span> {
+                cur = st.<span class="hljs-built_in">top</span>(); <span class="hljs-comment">// 从栈里弹出的数据，就是要处理的数据（放进result数组里的数据）</span>
+                st.<span class="hljs-built_in">pop</span>();
+                result.<span class="hljs-built_in">push_back</span>(cur-&gt;val);     <span class="hljs-comment">// 中</span>
+                cur = cur-&gt;right;               <span class="hljs-comment">// 右</span>
+            }
+        }
+        <span class="hljs-keyword">return</span> result;
+    }
+};
+
+</code></pre>
+<h4 id="后序遍历迭代法"><a class="markdownIt-Anchor" href="#后序遍历迭代法"></a> 后序遍历（迭代法）</h4>
+<blockquote>
+<p>数组部分更改前后顺序，要考虑向更改局部，然后整体反转这种思路能不能行的通</p>
+</blockquote>
+<p>再来看后序遍历，先序遍历是中左右，后续遍历是左右中，那么我们只需要调整一下先序遍历的代码顺序，就变成中右左的遍历顺序，然后在反转result数组，输出的结果顺序就是左右中了，如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200808200338924.png" alt="前序到后序"></p>
+<p><strong>所以后序遍历只需要前序遍历的代码稍作修改就可以了，代码如下：</strong></p>
+<pre class="highlight"><code class="CPP"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">postorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>{
+        stack&lt;TreeNode*&gt; st;
+        vector&lt;<span class="hljs-type">int</span>&gt; result;
+        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> result;
+        st.<span class="hljs-built_in">push</span>(root);
+        <span class="hljs-keyword">while</span> (!st.<span class="hljs-built_in">empty</span>()) {
+            TreeNode* node = st.<span class="hljs-built_in">top</span>();
+            st.<span class="hljs-built_in">pop</span>();
+            result.<span class="hljs-built_in">push_back</span>(node-&gt;val);
+            <span class="hljs-keyword">if</span> (node-&gt;left) st.<span class="hljs-built_in">push</span>(node-&gt;left); <span class="hljs-comment">// 相对于前序遍历，这更改一下入栈顺序 （空节点不入栈）</span>
+            <span class="hljs-keyword">if</span> (node-&gt;right) st.<span class="hljs-built_in">push</span>(node-&gt;right); <span class="hljs-comment">// 空节点不入栈</span>
+        }
+        <span class="hljs-built_in">reverse</span>(result.<span class="hljs-built_in">begin</span>(), result.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 将结果反转之后就是左右中的顺序了</span>
+        <span class="hljs-keyword">return</span> result;
+    }
+};
+
+</code></pre>
+<h3 id="二叉树的统一迭代法"><a class="markdownIt-Anchor" href="#二叉树的统一迭代法"></a> 二叉树的统一迭代法</h3>
+<h4 id="中序遍历代码如下详细注释"><a class="markdownIt-Anchor" href="#中序遍历代码如下详细注释"></a> 中序遍历代码如下：（详细注释）</h4>
+<pre class="highlight"><code class="CPP"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>{
+        vector&lt;<span class="hljs-type">int</span>&gt; result;
+        stack&lt;TreeNode*&gt; st;
+        <span class="hljs-keyword">if</span> (root != <span class="hljs-literal">NULL</span>) st.<span class="hljs-built_in">push</span>(root);
+        <span class="hljs-keyword">while</span> (!st.<span class="hljs-built_in">empty</span>()) {
+            TreeNode* node = st.<span class="hljs-built_in">top</span>();
+            <span class="hljs-keyword">if</span> (node != <span class="hljs-literal">NULL</span>) {
+                st.<span class="hljs-built_in">pop</span>(); <span class="hljs-comment">// 将该节点弹出，避免重复操作，下面再将右中左节点添加到栈中</span>
+                <span class="hljs-keyword">if</span> (node-&gt;right) st.<span class="hljs-built_in">push</span>(node-&gt;right);  <span class="hljs-comment">// 添加右节点（空节点不入栈）</span>
+
+                st.<span class="hljs-built_in">push</span>(node);                          <span class="hljs-comment">// 添加中节点</span>
+                st.<span class="hljs-built_in">push</span>(<span class="hljs-literal">NULL</span>); <span class="hljs-comment">// 中节点访问过，但是还没有处理，加入空节点做为标记。</span>
+
+                <span class="hljs-keyword">if</span> (node-&gt;left) st.<span class="hljs-built_in">push</span>(node-&gt;left);    <span class="hljs-comment">// 添加左节点（空节点不入栈）</span>
+            } <span class="hljs-keyword">else</span> { <span class="hljs-comment">// 只有遇到空节点的时候，才将下一个节点放进结果集</span>
+                st.<span class="hljs-built_in">pop</span>();           <span class="hljs-comment">// 将空节点弹出</span>
+                node = st.<span class="hljs-built_in">top</span>();    <span class="hljs-comment">// 重新取出栈中元素</span>
+                st.<span class="hljs-built_in">pop</span>();
+                result.<span class="hljs-built_in">push_back</span>(node-&gt;val); <span class="hljs-comment">// 加入到结果集</span>
+            }
+        }
+        <span class="hljs-keyword">return</span> result;
+    }
+};
+</code></pre>
+<p>同理，前序和后续只需要微调一下加入栈的顺序就可以了，我们利用根节点先把所有节点按照我们需要的遍历方法存储到栈里面，然后把需要特定顺序遍历的节点用NULL节点标记，即可实现迭代的统一写法。</p>
+<h4 id="迭代法前序遍历"><a class="markdownIt-Anchor" href="#迭代法前序遍历"></a> 迭代法前序遍历</h4>
+<pre class="highlight"><code class="CPP"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>{
+        vector&lt;<span class="hljs-type">int</span>&gt; result;
+        stack&lt;TreeNode*&gt; st;
+        <span class="hljs-keyword">if</span> (root != <span class="hljs-literal">NULL</span>) st.<span class="hljs-built_in">push</span>(root);
+        <span class="hljs-keyword">while</span> (!st.<span class="hljs-built_in">empty</span>()) {
+            TreeNode* node = st.<span class="hljs-built_in">top</span>();
+            <span class="hljs-keyword">if</span> (node != <span class="hljs-literal">NULL</span>) {
+                st.<span class="hljs-built_in">pop</span>();
+                <span class="hljs-keyword">if</span> (node-&gt;right) st.<span class="hljs-built_in">push</span>(node-&gt;right);  <span class="hljs-comment">// 右</span>
+                <span class="hljs-keyword">if</span> (node-&gt;left) st.<span class="hljs-built_in">push</span>(node-&gt;left);    <span class="hljs-comment">// 左</span>
+                st.<span class="hljs-built_in">push</span>(node);                          <span class="hljs-comment">// 中</span>
+                st.<span class="hljs-built_in">push</span>(<span class="hljs-literal">NULL</span>);
+            } <span class="hljs-keyword">else</span> {
+                st.<span class="hljs-built_in">pop</span>();
+                node = st.<span class="hljs-built_in">top</span>();
+                st.<span class="hljs-built_in">pop</span>();
+                result.<span class="hljs-built_in">push_back</span>(node-&gt;val);
+            }
+        }
+        <span class="hljs-keyword">return</span> result;
+    }
+};
+</code></pre>
+<h4 id="迭代法后序遍历"><a class="markdownIt-Anchor" href="#迭代法后序遍历"></a> 迭代法后序遍历</h4>
+<pre class="highlight"><code class="CPP"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">postorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>{
+        vector&lt;<span class="hljs-type">int</span>&gt; result;
+        stack&lt;TreeNode*&gt; st;
+        <span class="hljs-keyword">if</span> (root != <span class="hljs-literal">NULL</span>) st.<span class="hljs-built_in">push</span>(root);
+        <span class="hljs-keyword">while</span> (!st.<span class="hljs-built_in">empty</span>()) {
+            TreeNode* node = st.<span class="hljs-built_in">top</span>();
+            <span class="hljs-keyword">if</span> (node != <span class="hljs-literal">NULL</span>) {
+                st.<span class="hljs-built_in">pop</span>();
+                st.<span class="hljs-built_in">push</span>(node);                          <span class="hljs-comment">// 中</span>
+                st.<span class="hljs-built_in">push</span>(<span class="hljs-literal">NULL</span>);
+
+                <span class="hljs-keyword">if</span> (node-&gt;right) st.<span class="hljs-built_in">push</span>(node-&gt;right);  <span class="hljs-comment">// 右</span>
+                <span class="hljs-keyword">if</span> (node-&gt;left) st.<span class="hljs-built_in">push</span>(node-&gt;left);    <span class="hljs-comment">// 左</span>
+
+            } <span class="hljs-keyword">else</span> {
+                st.<span class="hljs-built_in">pop</span>();
+                node = st.<span class="hljs-built_in">top</span>();
+                st.<span class="hljs-built_in">pop</span>();
+                result.<span class="hljs-built_in">push_back</span>(node-&gt;val);
+            }
+        }
+        <span class="hljs-keyword">return</span> result;
+    }
+};
+</code></pre>
+<h3 id="二叉树的层序遍历"><a class="markdownIt-Anchor" href="#二叉树的层序遍历"></a> 二叉树的层序遍历</h3>
+<p>层序遍历一个二叉树。就是从左到右一层一层的去遍历二叉树。</p>
+<p>需要借用一个辅助数据结构即队列来实现，队列先进先出，符合一层一层遍历的逻辑。</p>
+<pre class="highlight"><code class="C++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">levelOrder</span>(TreeNode* root) {
+        queue&lt;TreeNode*&gt; que;
+        <span class="hljs-keyword">if</span> (root != <span class="hljs-literal">NULL</span>) que.<span class="hljs-built_in">push</span>(root);
+        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; result;
+        <span class="hljs-keyword">while</span> (!que.<span class="hljs-built_in">empty</span>()) {
+            <span class="hljs-type">int</span> size = que.<span class="hljs-built_in">size</span>();
+            vector&lt;<span class="hljs-type">int</span>&gt; tmp;
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) {
+                TreeNode* node = que.<span class="hljs-built_in">front</span>();
+                que.<span class="hljs-built_in">pop</span>();
+                tmp.<span class="hljs-built_in">push_back</span>(node-&gt;val);
+                <span class="hljs-keyword">if</span> (node-&gt;left) que.<span class="hljs-built_in">push</span>(node-&gt;left);
+                <span class="hljs-keyword">if</span> (node-&gt;right) que.<span class="hljs-built_in">push</span>(node-&gt;right);
+            }
+            result.<span class="hljs-built_in">push_back</span>(tmp);
+        }
+        <span class="hljs-keyword">return</span> result;
+    }
+};
+</code></pre>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text"> 树的基本知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%B4%A8"><span class="toc-number">2.</span> <span class="toc-text"> 树的基本性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">3.</span> <span class="toc-text"> 二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number">3.1.</span> <span class="toc-text"> 二叉树的种类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BB%A1%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">3.1.1.</span> <span class="toc-text"> 满二叉树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">3.1.2.</span> <span class="toc-text"> 完全二叉树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">3.1.3.</span> <span class="toc-text"> 二叉搜索树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">3.1.4.</span> <span class="toc-text"> 平衡二叉搜索树</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text"> 二叉树的存储方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text"> 二叉树的遍历方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.4.</span> <span class="toc-text"> 二叉树的代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E5%92%8C%E8%BF%AD%E4%BB%A3"><span class="toc-number">3.5.</span> <span class="toc-text"> 递归和迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86%E9%80%92%E5%BD%92%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81"><span class="toc-number">3.6.</span> <span class="toc-text"> 二叉树的递归遍历(递归非常重要！！！)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%BF%AD%E4%BB%A3%E9%81%8D%E5%8E%86"><span class="toc-number">3.7.</span> <span class="toc-text"> 二叉树的迭代遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="toc-number">3.7.1.</span> <span class="toc-text"> 前序遍历（迭代法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="toc-number">3.7.2.</span> <span class="toc-text"> 中序遍历（迭代法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="toc-number">3.7.3.</span> <span class="toc-text"> 后序遍历（迭代法）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%BB%9F%E4%B8%80%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="toc-number">3.8.</span> <span class="toc-text"> 二叉树的统一迭代法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B%E8%AF%A6%E7%BB%86%E6%B3%A8%E9%87%8A"><span class="toc-number">3.8.1.</span> <span class="toc-text"> 中序遍历代码如下：（详细注释）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E6%B3%95%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">3.8.2.</span> <span class="toc-text"> 迭代法前序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E6%B3%95%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">3.8.3.</span> <span class="toc-text"> 迭代法后序遍历</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">3.9.</span> <span class="toc-text"> 二叉树的层序遍历</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2022/0621aed2ac.html"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&text=LeetCode笔记-二叉树"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&title=LeetCode笔记-二叉树"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&is_video=false&description=LeetCode笔记-二叉树"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=LeetCode笔记-二叉树&body=Check out this article: https://kpl0111.github.io/blog/2022/0621aed2ac.html"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&title=LeetCode笔记-二叉树"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&title=LeetCode笔记-二叉树"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&title=LeetCode笔记-二叉树"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&title=LeetCode笔记-二叉树"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2022/0621aed2ac.html&name=LeetCode笔记-二叉树&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2023 Nefelibata
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/blog/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/blog/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>

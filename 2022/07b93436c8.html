@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="VSCode作为一款非常轻便的编辑器，以轻量，插件丰富收到大家欢迎，我个人是非常喜欢使用VSCode的，用VSCode去编辑Markdown文件也十分方便，当然Typora在这方便也很受欢迎，但是Typora正式版上线之后要收费，不可避免地会损失一部分用户，接下来我就介绍一下使用VSCode来进行编辑Markdown文件时图传的配置方法   前置要求:安装VSCode即可  插件 只需安装一个M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VSCode+PicGo+Aliyun配置MarkDown图床">
+<meta property="og:url" content="https://kpl0111.github.io/blog/2022/07b93436c8.html">
+<meta property="og:site_name" content="Nefelibata">
+<meta property="og:description" content="VSCode作为一款非常轻便的编辑器，以轻量，插件丰富收到大家欢迎，我个人是非常喜欢使用VSCode的，用VSCode去编辑Markdown文件也十分方便，当然Typora在这方便也很受欢迎，但是Typora正式版上线之后要收费，不可避免地会损失一部分用户，接下来我就介绍一下使用VSCode来进行编辑Markdown文件时图传的配置方法   前置要求:安装VSCode即可  插件 只需安装一个M">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725171244.png">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172229.png">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172337.png">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172629.png">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172737.png">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172857.png">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173058.png">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173246.png">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173446.png">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173825.png">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725174406.png">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725174617.png">
+<meta property="article:published_time" content="2022-07-25T09:04:42.000Z">
+<meta property="article:modified_time" content="2022-07-25T09:49:20.942Z">
+<meta property="article:author" content="Nefelibata">
+<meta property="article:tag" content="Simple">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725171244.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/blog/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/blog/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>VSCode+PicGo+Aliyun配置MarkDown图床</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/blog/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Nefelibata</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/blog/2022/072a2449dc.html"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/blog/2022/0762e9162.html"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2022/07b93436c8.html"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&text=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&title=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&is_video=false&description=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=VSCode+PicGo+Aliyun配置MarkDown图床&body=Check out this article: https://kpl0111.github.io/blog/2022/07b93436c8.html"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&title=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&title=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&title=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&title=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&name=VSCode+PicGo+Aliyun配置MarkDown图床&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text"> 插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#aliyun%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8oss"><span class="toc-number">2.</span> <span class="toc-text"> Aliyun对象存储OSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEvscode-picgo%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text"> 配置VSCode PicGo配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">4.</span> <span class="toc-text"> 快捷键</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        VSCode+PicGo+Aliyun配置MarkDown图床
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nefelibata</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2022-07-25T09:04:42.000Z" itemprop="datePublished">2022-07-25</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>VSCode作为一款非常轻便的编辑器，以轻量，插件丰富收到大家欢迎，我个人是非常喜欢使用VSCode的，用VSCode去编辑Markdown文件也十分方便，当然Typora在这方便也很受欢迎，但是Typora正式版上线之后要收费，不可避免地会损失一部分用户，接下来我就介绍一下使用VSCode来进行编辑Markdown文件时图传的配置方法</p>
+</blockquote>
+<!-- toc -->
+<p>前置要求:安装VSCode即可</p>
+<h2 id="插件"><a class="markdownIt-Anchor" href="#插件"></a> 插件</h2>
+<p>只需安装一个<code>Markdown All in One</code>即可使用VSCode编辑Markdown文件，非常方便</p>
+<p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725171244.png" alt="20220725171244"></p>
+<p>但是这个插件不提供图床功能，仍需要将图片转换成网络链接复制到md文件中，非常不方便</p>
+<p>接下来继续安装一个<code>PicGo</code>插件即可</p>
+<h2 id="aliyun对象存储oss"><a class="markdownIt-Anchor" href="#aliyun对象存储oss"></a> Aliyun对象存储OSS</h2>
+<blockquote>
+<p>PicGo默认存储为SMMS，我也一直在用这个，但是今天突然就打不开了，Github也可以，但是其服务器在国外，国内使用经常会显示不了图片，所以综合一下选择了Aliyun，而且新用户免费体验三个月，作为图床仓库，40G存储量一年的价格为5元，也可以说是非常划算了，接下来讲一下详细配置。</p>
+</blockquote>
+<ol>
+<li>打开<a target="_blank" rel="noopener" href="https://www.aliyun.com/">阿里云官网</a>，登陆或注册，在产品里面找到对象存储OSS<br>
+<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172229.png" alt="20220725172229"></li>
+<li>根据需要直接购买，作为图床使用40G空间已经足够了，选项默认的即可，直接购买即可<br>
+<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172337.png" alt="20220725172337"></li>
+<li>购买之后直接进入OSS管理控制台<br>
+<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172629.png" alt="20220725172629"></li>
+<li>在Bucket列表中新建一个Bucket，地域选择离自己最近的，复制下这个<code>地域名称英文</code>，待会要用<br>
+<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172737.png" alt="20220725172737"><br>
+读写权限选择公共读<br>
+<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172857.png" alt="20220725172857"><br>
+其他选择默认配置即可。</li>
+<li>创建成功之后进入创建的Bucket，进入概述界面，下方的访问域名中有一个外网访问，记录后面的<code>Bucket域名</code>，待会要使用<br>
+<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173058.png" alt="20220725173058"></li>
+<li>然后点击头像的AccessKey管理<br>
+<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173246.png" alt="20220725173246"><br>
+创建一个AccessKey<br>
+<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173446.png" alt="20220725173446"><br>
+记录<code>AccessKey ID</code>和<code>AccessKey Secret</code>即可</li>
+</ol>
+<h2 id="配置vscode-picgo配置"><a class="markdownIt-Anchor" href="#配置vscode-picgo配置"></a> 配置VSCode PicGo配置</h2>
+<p>打开VSCode<code>设置</code>，搜索<code>PicGo</code>,首先找到<code>Pic Bed：current</code>，将其更换为<code>aliyun</code></p>
+<p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173825.png" alt="20220725173825"></p>
+<p>然后找到<code>aliyun</code>的配置，进行如下配置：</p>
+<p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725174406.png" alt="20220725174406"></p>
+<p>到此为止图床就已经全部配置完成了</p>
+<h2 id="快捷键"><a class="markdownIt-Anchor" href="#快捷键"></a> 快捷键</h2>
+<p>PicGo默认上传快捷键如下：<br>
+<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725174617.png" alt="20220725174617"><br>
+我们可以直接按下<code>Ctrl+Alt+U</code>直接从剪贴板复制图片，非常好用，当然也可以更改为自己更加方便的快捷键。</p>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text"> 插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#aliyun%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8oss"><span class="toc-number">2.</span> <span class="toc-text"> Aliyun对象存储OSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEvscode-picgo%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text"> 配置VSCode PicGo配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">4.</span> <span class="toc-text"> 快捷键</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2022/07b93436c8.html"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&text=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&title=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&is_video=false&description=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=VSCode+PicGo+Aliyun配置MarkDown图床&body=Check out this article: https://kpl0111.github.io/blog/2022/07b93436c8.html"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&title=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&title=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&title=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&title=VSCode+PicGo+Aliyun配置MarkDown图床"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2022/07b93436c8.html&name=VSCode+PicGo+Aliyun配置MarkDown图床&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2023 Nefelibata
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/blog/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/blog/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>

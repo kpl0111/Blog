@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Nefelibata</title>
+  
+  <subtitle>Nefelibata</subtitle>
+  <link href="https://kpl0111.github.io/blog/atom.xml" rel="self"/>
+  
+  <link href="https://kpl0111.github.io/blog/"/>
+  <updated>2023-05-06T14:24:22.346Z</updated>
+  <id>https://kpl0111.github.io/blog/</id>
+  
+  <author>
+    <name>Nefelibata</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello kpl!</title>
+    <link href="https://kpl0111.github.io/blog/2023/054a17b156.html"/>
+    <id>https://kpl0111.github.io/blog/2023/054a17b156.html</id>
+    <published>2023-05-06T17:10:39.353Z</published>
+    <updated>2023-05-06T14:24:22.346Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2021/04/07/BHgA5RqQeZTv8Wt.png&quot; alt=&quot;image-20210407205253791&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux指令</title>
+    <link href="https://kpl0111.github.io/blog/2023/0589550d80.html"/>
+    <id>https://kpl0111.github.io/blog/2023/0589550d80.html</id>
+    <published>2023-05-02T12:54:51.000Z</published>
+    <updated>2023-05-06T16:14:53.965Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;转载自&lt;a href=&quot;https://blog.csdn.net/m0_46422300/article/details/104645072&quot;&gt;Engineer-Yao&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git常用指令</title>
+    <link href="https://kpl0111.github.io/blog/2023/044b8db958.html"/>
+    <id>https://kpl0111.github.io/blog/2023/044b8db958.html</id>
+    <published>2023-04-07T09:43:00.000Z</published>
+    <updated>2023-04-20T06:22:44.586Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;创建仓库
+&lt;ul&gt;
+&lt;li&gt;git clone &amp;lt;url&amp;gt; [directory]&lt;/li&gt;
+&lt;li&gt;git init&lt;/li&gt;
+&lt;li&gt;git config --global &lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>C++数组的机理</title>
+    <link href="https://kpl0111.github.io/blog/2023/0445fbc665.html"/>
+    <id>https://kpl0111.github.io/blog/2023/0445fbc665.html</id>
+    <published>2023-04-07T06:52:16.000Z</published>
+    <updated>2023-04-07T07:57:51.442Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;深入理解c二维数组&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#深入理解c二维数组&quot;&gt;&lt;/a&gt; 深入理解C++二维数组&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;提问：定义一个3 *</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>VSCode设置自动识别文件编码格式</title>
+    <link href="https://kpl0111.github.io/blog/2023/041be02434.html"/>
+    <id>https://kpl0111.github.io/blog/2023/041be02434.html</id>
+    <published>2023-04-06T11:38:30.000Z</published>
+    <updated>2023-04-06T11:48:36.202Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示：&lt;br&gt;
+&lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SVM</title>
+    <link href="https://kpl0111.github.io/blog/2023/0375378e04.html"/>
+    <id>https://kpl0111.github.io/blog/2023/0375378e04.html</id>
+    <published>2023-03-06T07:59:48.000Z</published>
+    <updated>2023-03-06T09:11:39.902Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;个人笔记&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Seven</title>
+    <link href="https://kpl0111.github.io/blog/2022/1257958268.html"/>
+    <id>https://kpl0111.github.io/blog/2022/1257958268.html</id>
+    <published>2022-12-18T09:25:55.000Z</published>
+    <updated>2023-01-30T03:50:15.189Z</updated>
+    
+    
+    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>梦</title>
+    <link href="https://kpl0111.github.io/blog/2022/12f1aaadb6.html"/>
+    <id>https://kpl0111.github.io/blog/2022/12f1aaadb6.html</id>
+    <published>2022-12-16T02:45:52.000Z</published>
+    <updated>2022-12-18T09:26:18.769Z</updated>
+    
+    
+    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>随手记(政治)</title>
+    <link href="https://kpl0111.github.io/blog/2022/11b85d3e4c.html"/>
+    <id>https://kpl0111.github.io/blog/2022/11b85d3e4c.html</id>
+    <published>2022-11-16T01:08:43.000Z</published>
+    <updated>2022-12-12T03:45:50.338Z</updated>
+    
+    
+    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>盲区</title>
+    <link href="https://kpl0111.github.io/blog/2022/11b8858517.html"/>
+    <id>https://kpl0111.github.io/blog/2022/11b8858517.html</id>
+    <published>2022-11-10T11:06:12.000Z</published>
+    <updated>2023-05-02T14:01:27.738Z</updated>
+    
+    
+    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>排序</title>
+    <link href="https://kpl0111.github.io/blog/2022/10a444b428.html"/>
+    <id>https://kpl0111.github.io/blog/2022/10a444b428.html</id>
+    <published>2022-10-15T03:08:40.000Z</published>
+    <updated>2022-10-15T07:03:58.793Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20221015114004.png&quot; alt=&quot;20221015114004&quot;&gt;&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>中缀表达式转后缀表达式</title>
+    <link href="https://kpl0111.github.io/blog/2022/1072a96e3d.html"/>
+    <id>https://kpl0111.github.io/blog/2022/1072a96e3d.html</id>
+    <published>2022-10-08T06:36:51.000Z</published>
+    <updated>2022-10-08T07:01:18.090Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;后缀表达式&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#后缀表达式&quot;&gt;&lt;/a&gt; 后缀表达式&lt;/h2&gt;
+&lt;p&gt;后缀表达式也叫&lt;strong&gt;逆波兰表达式&lt;/strong&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>win10时间显示精确到秒</title>
+    <link href="https://kpl0111.github.io/blog/2022/1091d7ef4e.html"/>
+    <id>https://kpl0111.github.io/blog/2022/1091d7ef4e.html</id>
+    <published>2022-10-06T01:43:49.000Z</published>
+    <updated>2023-01-12T06:51:30.832Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;任意位置新建txt文件，打开编辑&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;复制以下代码&lt;/p&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;console&quot;&gt;@echo off
+
+reg add</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>原码、反码、补码、移码</title>
+    <link href="https://kpl0111.github.io/blog/2022/0920d1f156.html"/>
+    <id>https://kpl0111.github.io/blog/2022/0920d1f156.html</id>
+    <published>2022-09-25T05:55:49.000Z</published>
+    <updated>2022-09-25T06:42:26.285Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;真值：&lt;/strong&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>随手记(除政治)</title>
+    <link href="https://kpl0111.github.io/blog/2022/09aa25a989.html"/>
+    <id>https://kpl0111.github.io/blog/2022/09aa25a989.html</id>
+    <published>2022-09-18T07:33:17.000Z</published>
+    <updated>2023-01-29T13:27:50.660Z</updated>
+    
+    
+    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>物联网通信技术总结</title>
+    <link href="https://kpl0111.github.io/blog/2022/084e33805f.html"/>
+    <id>https://kpl0111.github.io/blog/2022/084e33805f.html</id>
+    <published>2022-08-28T01:09:36.000Z</published>
+    <updated>2022-08-29T09:21:48.333Z</updated>
+    
+    
+    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>矩阵的等价、相似、合同之间的关系</title>
+    <link href="https://kpl0111.github.io/blog/2022/082689765e.html"/>
+    <id>https://kpl0111.github.io/blog/2022/082689765e.html</id>
+    <published>2022-08-23T02:26:39.000Z</published>
+    <updated>2022-08-23T06:16:09.063Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;矩阵等价&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#矩阵等价&quot;&gt;&lt;/a&gt; 矩阵等价&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;定义：对同型矩阵A、B，存在可逆阵P和Q，使得&lt;span class=&quot;katex&quot;&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>背包理论基础多重背包</title>
+    <link href="https://kpl0111.github.io/blog/2022/0871e46bfb.html"/>
+    <id>https://kpl0111.github.io/blog/2022/0871e46bfb.html</id>
+    <published>2022-08-10T05:42:04.000Z</published>
+    <updated>2022-08-10T06:26:03.444Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;转载自&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;
+&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>背包理论基础完全背包</title>
+    <link href="https://kpl0111.github.io/blog/2022/08806f2082.html"/>
+    <id>https://kpl0111.github.io/blog/2022/08806f2082.html</id>
+    <published>2022-08-10T05:22:02.000Z</published>
+    <updated>2022-08-10T06:26:20.979Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;转载自&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;
+&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>背包理论基础01背包2</title>
+    <link href="https://kpl0111.github.io/blog/2022/08517e3a8f.html"/>
+    <id>https://kpl0111.github.io/blog/2022/08517e3a8f.html</id>
+    <published>2022-08-10T05:21:14.000Z</published>
+    <updated>2022-08-10T06:28:30.544Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;转载自&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;
+&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。    贪心的本质是选择每一阶段的局部最优，从而达到全局最优。   思路 贪心的题目没有固定套路，但都遵循着一个思想：局部最优从而达到全局最优 简单的问题直接遵循这个思想解决即可，稍微麻烦一点的可能会涉及到两个维度最优，且两个维度相互有联系，相互牵制，就比如下面这道题，首先要根据题目确定一个合适的维度保持最优，然后调整另一个维度。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode笔记-贪心算法">
+<meta property="og:url" content="https://kpl0111.github.io/blog/2022/072a2449dc.html">
+<meta property="og:site_name" content="Nefelibata">
+<meta property="og:description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。    贪心的本质是选择每一阶段的局部最优，从而达到全局最优。   思路 贪心的题目没有固定套路，但都遵循着一个思想：局部最优从而达到全局最优 简单的问题直接遵循这个思想解决即可，稍微麻烦一点的可能会涉及到两个维度最优，且两个维度相互有联系，相互牵制，就比如下面这道题，首先要根据题目确定一个合适的维度保持最优，然后调整另一个维度。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220806181804.png">
+<meta property="article:published_time" content="2022-07-25T12:03:50.000Z">
+<meta property="article:modified_time" content="2022-08-06T10:18:20.495Z">
+<meta property="article:author" content="Nefelibata">
+<meta property="article:tag" content="Simple">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220806181804.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/blog/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/blog/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>LeetCode笔记-贪心算法</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/blog/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Nefelibata</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/blog/2022/0826e7783f.html"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/blog/2022/07b93436c8.html"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2022/072a2449dc.html"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&text=LeetCode笔记-贪心算法"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&title=LeetCode笔记-贪心算法"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&is_video=false&description=LeetCode笔记-贪心算法"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=LeetCode笔记-贪心算法&body=Check out this article: https://kpl0111.github.io/blog/2022/072a2449dc.html"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&title=LeetCode笔记-贪心算法"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&title=LeetCode笔记-贪心算法"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&title=LeetCode笔记-贪心算法"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&title=LeetCode笔记-贪心算法"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&name=LeetCode笔记-贪心算法&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text"> 思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#eg"><span class="toc-number">2.</span> <span class="toc-text"> eg</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#202286"><span class="toc-number">3.</span> <span class="toc-text"> 2022&#x2F;8&#x2F;6</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        LeetCode笔记-贪心算法
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nefelibata</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2022-07-25T12:03:50.000Z" itemprop="datePublished">2022-07-25</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>本篇为个人笔记，内容或有错误。<br>
+图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
+</blockquote>
+<!-- toc -->
+<blockquote>
+<p>贪心的本质是选择每一阶段的局部最优，从而达到全局最优。</p>
+</blockquote>
+<h2 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路</h2>
+<p>贪心的题目没有固定套路，但都遵循着一个思想：局部最优从而达到全局最优</p>
+<p>简单的问题直接遵循这个思想解决即可，稍微麻烦一点的可能会涉及到两个维度最优，且两个维度相互有联系，相互牵制，就比如下面这道题，首先要根据题目确定一个合适的维度保持最优，然后调整另一个维度。</p>
+<h2 id="eg"><a class="markdownIt-Anchor" href="#eg"></a> eg</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/queue-reconstruction-by-height/">406.根据身高重建队列</a></p>
+<p>假设有打乱顺序的一群人站成一个队列，数组 people 表示队列中一些人的属性（不一定按顺序）。每个 people[i] = [<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">h_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">k_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03148em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>] 表示第 i 个人的身高为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">h_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> ，前面 正好 有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">k_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03148em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 个身高大于或等于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">h_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的人。</p>
+<p>请你重新构造并返回输入数组&nbsp;people 所表示的队列。返回的队列应该格式化为数组 queue ，其中 queue[j] = [hj, kj] 是队列中第 j 个人的属性（queue[0] 是排在队列前面的人）。</p>
+<p>示例 1：</p>
+<ul>
+<li>输入：people = [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]</li>
+<li>输出：[[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]</li>
+<li>解释：
+<ul>
+<li>编号为 0 的人身高为 5 ，没有身高更高或者相同的人排在他前面。</li>
+<li>编号为 1 的人身高为 7 ，没有身高更高或者相同的人排在他前面。</li>
+<li>编号为 2 的人身高为 5 ，有 2 个身高更高或者相同的人排在他前面，即编号为 0 和 1 的人。</li>
+<li>编号为 3 的人身高为 6 ，有 1 个身高更高或者相同的人排在他前面，即编号为 1 的人。</li>
+<li>编号为 4 的人身高为 4 ，有 4 个身高更高或者相同的人排在他前面，即编号为 0、1、2、3 的人。</li>
+<li>编号为 5 的人身高为 7 ，有 1 个身高更高或者相同的人排在他前面，即编号为 1 的人。</li>
+<li>因此 [[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]] 是重新构造后的队列。</li>
+</ul>
+</li>
+</ul>
+<p>示例 2：</p>
+<ul>
+<li>输入：people = [[6,0],[5,0],[4,0],[3,2],[2,2],[1,4]]</li>
+<li>输出：[[4,0],[5,0],[2,2],[3,2],[1,4],[6,0]]</li>
+</ul>
+<p>提示：</p>
+<ul>
+<li>1 &lt;= people.length &lt;= 2000</li>
+<li>0 &lt;= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">h_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> &lt;= 10^6</li>
+<li>0 &lt;= <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">k_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03148em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> &lt; people.length</li>
+</ul>
+<p>题目数据确保队列可以被重建</p>
+</blockquote>
+<p>本题有两个维度，h和k，看到这种题目一定要想如何确定一个维度，然后在按照另一个维度重新排列。</p>
+<p><strong>如果两个维度一起考虑一定会顾此失彼</strong>。</p>
+<p>对于本题究竟先按h排序呢，还先按照k排序呢？</p>
+<p>如果按照k来从小到大排序，排完之后，会发现k的排列并不符合条件，身高也不符合条件，两个维度哪一个都没确定下来。</p>
+<p>那么按照身高h来排序呢，身高一定是从大到小排（身高相同的话则k小的站前面），让高个子在前面。</p>
+<p><strong>此时我们可以确定一个维度了，就是身高，前面的节点一定都比本节点高！</strong></p>
+<p>那么只需要按照k为下标重新插入队列即可。</p>
+<p><strong>局部最优：优先按身高高的people的k来插入。插入操作过后的people满足队列属性</strong></p>
+<p><strong>全局最优：最后都做完插入操作，整个队列满足题目队列属性</strong></p>
+<p>本题整个插入过程如下：</p>
+<p>排序完的people：<br>
+[[7,0], [7,1], [6,1], [5,0], [5,2]，[4,4]]</p>
+<p>插入的过程：</p>
+<ul>
+<li>插入[7,0]：[[7,0]]</li>
+<li>插入[7,1]：[[7,0],[7,1]]</li>
+<li>插入[6,1]：[[7,0],[6,1],[7,1]]</li>
+<li>插入[5,0]：[[5,0],[7,0],[6,1],[7,1]]</li>
+<li>插入[5,2]：[[5,0],[7,0],[5,2],[6,1],[7,1]]</li>
+<li>插入[4,4]：[[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]</li>
+</ul>
+<p>此时就按照题目的要求完成了重新排列。</p>
+<pre class="highlight"><code class="CPP"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">bool</span> <span class="hljs-title">cmp</span> <span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; a, vector&lt;<span class="hljs-type">int</span>&gt;&amp; b)</span> </span>{
+        <span class="hljs-keyword">if</span> (a[<span class="hljs-number">0</span>] == b[<span class="hljs-number">0</span>]) <span class="hljs-keyword">return</span> a[<span class="hljs-number">1</span>] &lt; b[<span class="hljs-number">1</span>];
+        <span class="hljs-keyword">return</span> a[<span class="hljs-number">0</span>] &gt; b[<span class="hljs-number">0</span>];
+    }
+    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">reconstructQueue</span>(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; people) {
+        <span class="hljs-built_in">sort</span>(people.<span class="hljs-built_in">begin</span>(), people.<span class="hljs-built_in">end</span>(), cmp);
+        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; res;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; people.<span class="hljs-built_in">size</span>(); i++) {
+            res.<span class="hljs-built_in">insert</span>(res.<span class="hljs-built_in">begin</span>() + people[i][<span class="hljs-number">1</span>], people[i]);
+        }
+        <span class="hljs-keyword">return</span> res;
+    }
+};
+</code></pre>
+<ul>
+<li>时间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>+</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlog n + n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+<li>空间复杂度：O(n)</li>
+</ul>
+<h2 id="202286"><a class="markdownIt-Anchor" href="#202286"></a> 2022/8/6</h2>
+<p>有一类区间最优问题非常适合贪心，比如下面几题：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/">用最少数量的箭引爆气球</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/non-overlapping-intervals/">无重叠区间</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-labels/">划分字母区间</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-intervals/submissions/">合并区间</a></li>
+</ul>
+<p>这类区间问题有一个套路就是可以先对区间排序，至于是根据左边界排序还是右边界没有太大影响，个人习惯左边界排序，之后通过控制右边界即可轻松解决问题，上文也提到不要一起考虑，不然容易顾此失彼。</p>
+<p>根据左边界排序之后，所有的区间左边界必定是递增的（当然不是严格递增，存在相等的情况），而右边界无非三种情况，相对于我们选定的右边界来说，大于，小于，等于，此时只需要根据题目要求针对三种情况处理即可，这样就可以保证处理位置之前的区间都是最优的，也就是局部最优，待遍历到末尾之后，前面都是局部最优解，最终也就是全局最优，总之还是贪心没有固定套路，最多只能是几类问题有相似之处而已，从问题中找到局部最优解，然后扩展到全局即可。</p>
+<p>最后附上贪心的知识图（图源知识星球：<a target="_blank" rel="noopener" href="https://wx.zsxq.com/dweb2/index/footprint/844412858822412">海螺人</a>）：</p>
+<p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220806181804.png" alt="20220806181804"></p>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text"> 思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#eg"><span class="toc-number">2.</span> <span class="toc-text"> eg</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#202286"><span class="toc-number">3.</span> <span class="toc-text"> 2022&#x2F;8&#x2F;6</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2022/072a2449dc.html"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&text=LeetCode笔记-贪心算法"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&title=LeetCode笔记-贪心算法"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&is_video=false&description=LeetCode笔记-贪心算法"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=LeetCode笔记-贪心算法&body=Check out this article: https://kpl0111.github.io/blog/2022/072a2449dc.html"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&title=LeetCode笔记-贪心算法"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&title=LeetCode笔记-贪心算法"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&title=LeetCode笔记-贪心算法"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&title=LeetCode笔记-贪心算法"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2022/072a2449dc.html&name=LeetCode笔记-贪心算法&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2023 Nefelibata
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/blog/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/blog/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="复习时随手记录，并不完整           物联网安全 根据国际电信联盟的定义, 物联网( internet of things, IOT) 主要解决:  物品到物品( thing to thing,T2T) 人到物品( human to thing, H2T) 人到人( human to human, H2H)之间的互联   第1章 物联网安全需求分析 与其他传统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="物联网安全复习总结">
+<meta property="og:url" content="https://kpl0111.github.io/blog/2022/018a8f3fb6.html">
+<meta property="og:site_name" content="Nefelibata">
+<meta property="og:description" content="复习时随手记录，并不完整           物联网安全 根据国际电信联盟的定义, 物联网( internet of things, IOT) 主要解决:  物品到物品( thing to thing,T2T) 人到物品( human to thing, H2T) 人到人( human to human, H2H)之间的互联   第1章 物联网安全需求分析 与其他传统">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/01/05/yjtSYm7vFAwiCfh.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/05/6SzTRxg5KlDH2cC.png">
+<meta property="article:published_time" content="2022-01-04T04:29:58.000Z">
+<meta property="article:modified_time" content="2022-01-05T14:23:49.020Z">
+<meta property="article:author" content="Nefelibata">
+<meta property="article:tag" content="物联网安全">
+<meta property="article:tag" content="复习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/01/05/yjtSYm7vFAwiCfh.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/blog/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/blog/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>物联网安全复习总结</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/blog/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Nefelibata</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/blog/2022/0257c5ab7b.html"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/blog/2022/0178868943.html"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2022/018a8f3fb6.html"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&text=物联网安全复习总结"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&title=物联网安全复习总结"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&is_video=false&description=物联网安全复习总结"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=物联网安全复习总结&body=Check out this article: https://kpl0111.github.io/blog/2022/018a8f3fb6.html"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&title=物联网安全复习总结"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&title=物联网安全复习总结"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&title=物联网安全复习总结"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&title=物联网安全复习总结"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&name=物联网安全复习总结&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8"><span class="toc-number">1.</span> <span class="toc-text"> 物联网安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC1%E7%AB%A0-%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text"> 第1章 物联网安全需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6"><span class="toc-number">1.2.</span> <span class="toc-text"> 第2章 物联网安全技术框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 安全技术简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E4%B8%AD%E7%9A%84%E5%8A%A0%E5%AF%86%E6%9C%BA%E5%88%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 物联网中的加密机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC3%E7%AB%A0-%E5%AF%86%E7%A0%81%E4%B8%8E%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.</span> <span class="toc-text"> 第3章 密码与身份认证技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 密码学基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 现代加密算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.1.</span> <span class="toc-text"> 对称加密算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.2.</span> <span class="toc-text"> 非对称加密算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%81%E4%B8%8E%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%98%8E"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 认证与身份证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E4%B8%8E%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 物联网认证与访问控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC4%E7%AB%A0-rfid%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E4%B8%8E%E9%9A%90%E7%A7%81"><span class="toc-number">1.4.</span> <span class="toc-text"> 第4章 RFID系统安全与隐私</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC5%E7%AB%A0-wsn%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8"><span class="toc-number">1.5.</span> <span class="toc-text"> 第5章 WSN无线传感器网络安全</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        物联网安全复习总结
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nefelibata</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2022-01-04T04:29:58.000Z" itemprop="datePublished">2022-01-04</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/blog/tags/%E5%A4%8D%E4%B9%A0/" rel="tag">复习</a>, <a class="tag-link-link" href="/blog/tags/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/" rel="tag">物联网安全</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+  <p>
+    <font size="4" color="#7E0C6E">
+      复习时随手记录，并不完整
+    </font>
+  </p>
+</blockquote>
+<h1 id="物联网安全"><a class="markdownIt-Anchor" href="#物联网安全"></a> 物联网安全</h1>
+<p>根据国际电信联盟的定义, 物联网( internet of things, IOT) 主要解决:</p>
+<ul>
+<li>物品到物品( thing to thing,T2T)</li>
+<li>人到物品( human to thing, H2T)</li>
+<li>人到人( human to human, H2H)之间的互联</li>
+</ul>
+<h2 id="第1章-物联网安全需求分析"><a class="markdownIt-Anchor" href="#第1章-物联网安全需求分析"></a> 第1章 物联网安全需求分析</h2>
+<p>与其他传统网络相比, 物联网感知节点大都部署在无人监控的场景中, 具有<strong>能力脆弱、资源受限</strong>等特点,这些都导致很难直接将传统计算机网络的安全算法和协议应用于物联网</p>
+<p>从物联网的功能上来说，应该具备四个特征：</p>
+<ul>
+<li>一是<strong>全面感知能力</strong>，可以利用RFID、传感器、二维条形码等获取被控/被测物体的信息;</li>
+<li>二是<strong>数据信息的可靠传递</strong>，可以通过各种电信网络与互联网的融合，将物体的信息实时准确地传递出去;</li>
+<li>三是<strong>可以智能处理</strong>，利用现代控制技术提供的智能计算方法，对大量数据和信息进行分析和处理，对物体实施智能化的控制。</li>
+<li>四是可以根据各个行业、各种业务的具体特点形成各种单独的业务应用，或者整个行业及系统的建成应用解决方案</li>
+</ul>
+<p><strong>物联网结构和层次：</strong></p>
+<ul>
+<li>感知识别层：重点考虑数据隐私的保护；
+<ul>
+<li>传感器，RFID，二维条形码…</li>
+</ul>
+</li>
+<li>网络构建层：重点考虑网络传输安全；
+<ul>
+<li>互联网</li>
+<li>无线宽带网</li>
+<li>无线低速网</li>
+<li>移动通信网</li>
+</ul>
+</li>
+<li>管理服务层：重点考虑信息安全；
+<ul>
+<li>管理服务层位于感知识别和网络构建层之上，综合应用层之下，人们通常把物联网应用冠以“智能”的名称，如智能电网、智能交通、智能物流等，其中的智慧就来自这一层</li>
+<li>数据库：海量性，多态性，关联性，语义性</li>
+<li>海量信息存储：网络附加存储（NAS ，Network Attached Storage）和专用存储区域网络（SAN ,Storage Area Network）</li>
+<li>数据中心</li>
+<li>搜索引擎</li>
+<li>数据挖掘技术</li>
+</ul>
+</li>
+<li>综合应用层：重点考虑应用系统安全；
+<ul>
+<li>智能物流</li>
+<li>智能交通</li>
+<li>绿色建筑</li>
+<li>智能电网</li>
+<li>环境监测</li>
+</ul>
+</li>
+</ul>
+<p>与互联网相比, 物联网主要实现人与物、物与物之间的通信, 通信的对象扩大到了物品。</p>
+<p>感知层的安全需求可以总结为如下几点：</p>
+<ol>
+<li>机密性：多数网络内部不需要认证和密钥管理，如统一部署的共享一个密钥的传感网。</li>
+<li>密钥协商：部分内部节点进行数据传输前需要预先协商会话密钥。</li>
+<li>节点认证：个别网络（特别当数据共享时）需要节点认证，确保非法节点不能接入。</li>
+<li>信誉评估：一些重要网络需要对可能被敌手控制的节点行为进行评估，以降低敌手入侵后的危害（某种程度上相当于入侵检测）。</li>
+<li>安全路由：几乎所有网络内部都需要不同的安全路由技术。</li>
+</ol>
+<p>物联网网络构建层将会主要遇到下列安全挑战：</p>
+<ol>
+<li>拒绝服务攻击（DOS）攻击、分布式拒绝服务攻击（DDOS）攻击；</li>
+<li>假冒攻击、中间人攻击等；</li>
+<li>跨异构网络的网络攻击。</li>
+</ol>
+<p>网络构建层的安全机制可分为端到端机密性和节点到节点机密性。</p>
+<p>对于端到端机密性，需要建立如下安全机制：</p>
+<ul>
+<li>端到端认证机制、</li>
+<li>端到端密钥协商机制、</li>
+<li>密钥管理机制</li>
+<li>机密性算法选取机制等。</li>
+</ul>
+<p>管理服务层的安全挑战包括如下几个方面：</p>
+<ol>
+<li>来自于超大量终端的海量数据的识别和处理；</li>
+<li>智能变为低能；</li>
+<li>自动变为失控（可控性是信息安全的重要指标之一）；</li>
+<li>灾难控制和恢复；</li>
+<li>非法人为干预（内部攻击）；</li>
+<li>设备（特别是移动设备）的丢失</li>
+</ol>
+<p>为了满足物联网智能管理服务层的基本安全需求，需要如下的安全机制。</p>
+<ol>
+<li>可靠的认证机制和密钥管理方案；</li>
+<li>高强度数据机密性和完整性服务；</li>
+<li>可靠的密钥管理机制，包括PKI和对称密钥的有机结合机制；</li>
+<li>可靠的高智能处理手段；</li>
+<li>入侵检测和病毒检测；</li>
+<li>恶意指令分析和预防，访问控制及灾难恢复机制；</li>
+<li>保密日志跟踪和行为分析，恶意行为模型的建立；</li>
+<li>密文查询、秘密数据挖掘、安全多方计算、安全云计算技术等；</li>
+<li>移动设备文件（包括秘密文件）的可备份和恢复；</li>
+<li>移动设备识别、定位和追踪机制</li>
+</ol>
+<p>应用层的安全挑战和安全需求主要来自于：</p>
+<ol>
+<li>如何根据不同访问权限对同一数据库内容进行筛选；</li>
+<li>如何提供用户隐私信息保护，同时又能正确认证；</li>
+<li>如何解决信息泄露追踪问题；</li>
+<li>如何进行计算机取证；</li>
+<li>如何销毁计算机数据；</li>
+<li>如何保护电子产品和软件的知识产权。</li>
+</ol>
+<p>基于物联网综合应用层的安全挑战和安全需求，需要如下的安全机制：</p>
+<ol>
+<li>有效的数据库访问控制和内容筛选机制；</li>
+<li>不同场景的隐私信息保护技术；</li>
+<li>叛逆追踪和其他信息泄露追踪机制；</li>
+<li>有效的计算机取证技术；</li>
+<li>安全的计算机数据销毁技术；</li>
+<li>安全的电子产品和软件的知识产权保护技术</li>
+</ol>
+<h2 id="第2章-物联网安全技术框架"><a class="markdownIt-Anchor" href="#第2章-物联网安全技术框架"></a> 第2章 物联网安全技术框架</h2>
+<p>现代经常涉及的信息安全技术主要有数据加密、身份认证、访问控制和口令、数字证书、电子签证机关（CA）、数字签名等常用信息安全技术</p>
+<h3 id="安全技术简介"><a class="markdownIt-Anchor" href="#安全技术简介"></a> 安全技术简介</h3>
+<ol>
+<li>数据加密</li>
+<li>身份验证</li>
+<li>访问控制
+<ol>
+<li>自由访问控制：用户有权对自身所创建的访问对象进行访问</li>
+<li>强制访问控制，按照系统规则对用户所创建对象进行控制，即便是创建者，也可能无权访问对象</li>
+</ol>
+</li>
+<li>口令（密码）：实际上，弱口令。缺省口令和没有口令的账号均应该从数据库中删除
+<ol>
+<li>网络数据流窃听口令，如果明文传输，则可能被窃取</li>
+<li>认证消息截取/重放，用加密口令实现系统登录</li>
+<li>字典攻击</li>
+<li>穷举攻击，字典攻击的加强版，使用字符串的全集作为字典</li>
+<li>窥探，窥探合法用户输入口令过程</li>
+<li>社交工程</li>
+<li>垃圾搜索</li>
+</ol>
+</li>
+<li>数字证书：一个数字文件，一般由四部分构成
+<ol>
+<li>持有人的姓名，地址等信息</li>
+<li>公开密钥</li>
+<li>证书序号，有效期限</li>
+<li>发证单位的数字签名</li>
+</ol>
+</li>
+<li>数字签名
+<ol>
+<li>本身是一种解密过程，而且是非对称密钥，类似于与校验和</li>
+<li>使用用途，区别身份，鉴权，保证完整性，不可抵赖（即承认发送来源）</li>
+</ol>
+</li>
+</ol>
+<p>数据加密</p>
+<ul>
+<li>分类
+<ul>
+<li>私用密钥（对称密钥）
+<ul>
+<li>信息的发送方和接收方使用同一个密钥进行加密和解密</li>
+<li>适合对大数据量进行加密，密钥管理困难</li>
+</ul>
+</li>
+<li>公共密钥（非对称密钥）
+<ul>
+<li>信息发送者用公开密钥去加密，而信息接收者则用私用密钥去解密。公钥机制灵活，但加密和解密速度却比对称密钥加密慢得多</li>
+<li>能够完成发送方的身份认证和接收方无法伪造报文的功能</li>
+</ul>
+</li>
+<li>通过公钥推算出私钥的算法必须不可能实现</li>
+</ul>
+</li>
+</ul>
+<h3 id="物联网中的加密机制"><a class="markdownIt-Anchor" href="#物联网中的加密机制"></a> 物联网中的加密机制</h3>
+<p>传统的IP网络加密：需要在感知层运行加密/解密算法，需要存储开销，CPU开销，而且需要能量</p>
+<ol>
+<li>节点认证机制：PKI（Public Key Infrastructure ）即“公钥基础设施”，是一种遵循既定标准的密钥管理平台,它能够为所有网络应用提供加密和数字签名等密码服务及所必需的密钥和证书管理体系。简单来说，PKI就是利用公钥理论和技术建立的提供安全服务的基础设施</li>
+<li>访问控制，由给人授权访问转变为给机器授权访问</li>
+<li>态势分析及其他：评估现在以及未来一段时间内的网络运行状态</li>
+</ol>
+<p>实现统一的密钥管理系统可以采用两种方式:</p>
+<ul>
+<li>一是以互联网为中心的集中式管理方式</li>
+<li>二是以各自网络为中心的分布式管理方式</li>
+</ul>
+<p>其安全需求体现在</p>
+<ol>
+<li>密钥生成或更新算法的安全性</li>
+<li>前向私密性</li>
+<li>后向私密性或可扩展性</li>
+<li>抗同谋攻击</li>
+<li>源端认证和新鲜性</li>
+</ol>
+<h2 id="第3章-密码与身份认证技术"><a class="markdownIt-Anchor" href="#第3章-密码与身份认证技术"></a> 第3章 密码与身份认证技术</h2>
+<h3 id="密码学基本概念"><a class="markdownIt-Anchor" href="#密码学基本概念"></a> 密码学基本概念</h3>
+<p>密码学是主要研究通信安全和保密的学科，他包括两个分支：密码编码学和密码分析学</p>
+<ul>
+<li>密码编码学主要研究对信息进行变换，以保护信息在传递过程中不被敌方窃取、解读和利用的方法</li>
+<li>密码分析学则于密码编码学相反，它主要研究如何分析和破译密码</li>
+</ul>
+<p>使用密码学可以达到以下目的：</p>
+<ol>
+<li>保密性：防止用户的标识或数据被读取。</li>
+<li>数据完整性：防止数据被更改。</li>
+<li>身份验证：确保数据发自特定的一方</li>
+</ol>
+<p>加密算法应在公开时不影响明文和密钥的安全</p>
+<p>从密码学发展历程来看，可分为：</p>
+<ul>
+<li>古典密码（以字符为基本加密单元的密码）
+<ul>
+<li>代替密码
+<ul>
+<li>单表替换密码
+<ul>
+<li>凯撒密码：某字母用右边第k个字母表示，Z后面是A</li>
+<li>密钥短语密码</li>
+</ul>
+</li>
+<li>同音替换密码</li>
+<li>多字母 组替换 密码</li>
+<li>多表替换密码</li>
+</ul>
+</li>
+<li>置换密码</li>
+</ul>
+</li>
+<li>现代密码（以信息块为基本加密单元的密码）
+<ul>
+<li>分组密码</li>
+<li>流密码</li>
+</ul>
+</li>
+</ul>
+<p>密钥加密系统</p>
+<ul>
+<li>对称密码系统的安全性依赖于以下两个因素。
+<ul>
+<li>第一，加密算法必须是足够强的，仅仅基于密文本身去解密信息在实践上是不可能的；</li>
+<li>第二，加密方法的安全性依赖于密钥的秘密性，而不是算法的秘密性，因此我们没有必要确保算法的秘密性，而需要保证密钥的秘密性</li>
+<li>对称密码体制的特点是：对称加密算法使用起来简单快捷，密钥较短，且破译困难。
+<ol>
+<li>密钥难于安全传送。</li>
+<li>密钥量太大，难于进行管理。</li>
+<li>无法满足互不相识的人进行私人谈话时保密要求。</li>
+<li>难于解决数字签名验证的问题。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>相对于对称密钥密码体系，非对称密钥加密系统最大的特点在于加密和解密使用不同的密钥
+<ul>
+<li>非对称密钥技术的优点是：易于实现，使用灵活，密钥较少，可以满足互不相识的人之间进行私人谈话时的保密性要求，可以完成数字签名和数字鉴别。</li>
+<li>弱点在于：要取得较好的加密效果和强度，必须使用较长的密钥。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/01/05/yjtSYm7vFAwiCfh.png" alt="image-20220105204726516"></p>
+<h3 id="现代加密算法"><a class="markdownIt-Anchor" href="#现代加密算法"></a> 现代加密算法</h3>
+<h4 id="对称加密算法"><a class="markdownIt-Anchor" href="#对称加密算法"></a> 对称加密算法</h4>
+<p>在对称加密算法中，只有一个密钥用来加密和解密信息，即加密和解密采用相同的密钥。常用的算法包括：</p>
+<ul>
+<li>DES（Data Encryption Standard）：
+<ul>
+<li>数据加密标准，速度较快，适用于加密大量数据的场合。</li>
+</ul>
+</li>
+<li>3DES（Triple DES）：
+<ul>
+<li>是基于DES，对一块数据用三个不同的密钥进行三次加密，强度更高。</li>
+</ul>
+</li>
+<li>AES（Advanced Encryption Standard）：
+<ul>
+<li>AES高级加密标准，是下一代的加密算法标准，速度快，安全级别高</li>
+</ul>
+</li>
+</ul>
+<h4 id="非对称加密算法"><a class="markdownIt-Anchor" href="#非对称加密算法"></a> 非对称加密算法</h4>
+<ul>
+<li>RSA：由 RSA 公司发明，是一个支持变长密钥的公共密钥算法，需要加密的文件块的长度也是可变的；
+<ul>
+<li>RSA是第一个既能用于数据加密也能用于数字签名的算法</li>
+</ul>
+</li>
+<li>DSA（Digital Signature Algorithm）：
+<ul>
+<li>数字签名算法，是一种标准的 DSS（数字签名标准）；</li>
+<li>除了加密外，公开密钥密码学最显著的成就是实现了数字签名。</li>
+</ul>
+</li>
+</ul>
+<p>加密算法的选择</p>
+<p>我们应该根据自己的使用特点来确定：</p>
+<ul>
+<li>由于非对称加密算法的运行速度比对称加密算法的速度慢很多，当我们需要加密大量的数据时，建议采用对称加密算法，提高加解密速度。</li>
+<li><strong>对称加密算法不能实现签名</strong>，因此签名只能非对称算法。</li>
+<li>由于对称加密算法的密钥管理是一个复杂的过程，密钥的管理直接决定着他的安全性，因此当数据量很小时，我们可以考虑采用非对称加密算法。</li>
+</ul>
+<p>在实际的操作过程中，我们通常采用的方式是：</p>
+<ul>
+<li>采用非对称加密算法管理对称算法的密钥，然后用对称加密算法加密数据，这样我们就集成了两类加密算法的优点，既实现了加密速度快的优点，又实现了安全方便管理密钥的优点。</li>
+</ul>
+<h3 id="认证与身份证明"><a class="markdownIt-Anchor" href="#认证与身份证明"></a> 认证与身份证明</h3>
+<p>身份证明系统的组成</p>
+<ol>
+<li>示证者P(Prover)，出示证件的人，又称作申请者(Claimant)，提出某种要求；</li>
+<li>验证者V(Verifier)，检验示证者提出的证件的正确性和合法性，决定是否满足其要求；</li>
+<li>攻击者，可以窃听和伪装示证者骗取验证者的信任。</li>
+<li>可信赖者，参与调解纠纷。必要时的第四方</li>
+</ol>
+<h3 id="物联网认证与访问控制"><a class="markdownIt-Anchor" href="#物联网认证与访问控制"></a> 物联网认证与访问控制</h3>
+<p>目前常用的身份识别技术可以分为两大类</p>
+<ul>
+<li>一类是基于密码技术的各种电子ID身份鉴别技术；</li>
+<li>另一类是基于生物特征识别的识别技术</li>
+</ul>
+<p>基于零知识证明的识别技术</p>
+<ul>
+<li>零知识洞穴</li>
+</ul>
+<h2 id="第4章-rfid系统安全与隐私"><a class="markdownIt-Anchor" href="#第4章-rfid系统安全与隐私"></a> 第4章 RFID系统安全与隐私</h2>
+<p>RFID系统一般由3大部分构成：</p>
+<ul>
+<li>标签
+<ul>
+<li>标签放置在要识别的物体上，携带目标识别数据，是RFID系统真正的数据载体，由耦合元件以及微电子芯片(包含调制器、编码发生器、时钟及存储器)组成</li>
+</ul>
+</li>
+<li>读写器
+<ul>
+<li>用于读或读/写标签数据的装置，由射频模块(发送器和接收器)、控制单元、与标签连接的藕合单元组成</li>
+</ul>
+</li>
+<li>后台数据库
+<ul>
+<li>后台服务器包含数据库处理系统，存储和管理标签相关信息，如标签标识、阅读器定位、读取时间等</li>
+</ul>
+</li>
+</ul>
+<p>工作原理</p>
+<ul>
+<li>RFID系统的基本工作原理是：阅读器与标签之间通过无线信号建立双方通信的通道，阅读器通过天线发出电磁信号，电磁信号携带了阅读器向标签的查询指令。</li>
+<li>当标签处于阅读器工作范围时，标签将从电磁信号中获得指令数据和能量，并根据指令将标签标识和数据以电磁信号的形式发送给阅读器，或根据阅读器的指令改写存储在RFID标签中的数据</li>
+<li>阅读器可接收RFID标签发送的数据或向标签发送数据，并能通过标准接口与后台服务器通信网络进行对接，实现数据的通信传输。</li>
+<li>根据标签能量获取方式，RFID系统工作方式可分为：近距离的电感耦合方式和远距离的电磁耦合方式</li>
+</ul>
+<p>RFID的安全和攻击模式</p>
+<ul>
+<li>安全
+<ol>
+<li>信息及隐私泄露</li>
+<li>RFID的隐私威胁
+<ol>
+<li>隐私信息泄露</li>
+<li>跟踪</li>
+<li>效率和隐私保护的矛盾</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>攻击模式
+<ol>
+<li>窃听</li>
+<li>中间人攻击</li>
+<li>欺骗、重放、克隆
+<ol>
+<li>欺骗(spoofing)：基于已掌握的标签数据通过阅读器</li>
+<li>重放(replaying)：将标签的回复记录并回放</li>
+<li>克隆(cloning)：形成原来标签的一个副本</li>
+</ol>
+</li>
+<li>拒绝服务攻击(Denial-of-service attack, DoS)拒绝服务攻击是通过不完整的交互请求消耗系统资源，使系统不能正常工作</li>
+<li>物理破解(corrupt)物理破解采用如下一些步骤对RFID射频系统进行破坏</li>
+<li>篡改信息(modification)进行非授权的修改或擦除标签数据，从而达到篡改信息的目的。</li>
+<li>RFID病毒(virus, malware)包括EPC标签在内的RFID标签可以被用来携带病毒，并能攻击电脑系统。</li>
+<li>其他隐患：RFID的安全和隐私问题涉及到的其他隐患还包括：电子破坏、屏蔽干扰和拆除等。</li>
+</ol>
+</li>
+</ul>
+<p>RFID系统根据分层模型可划分为3层：应用层、通信层和物理层，ISO／IEC 18000标准定义了读写器与标签之间的双向通信协议，其基本的通信模型如下图。</p>
+<p><img src="https://s2.loli.net/2022/01/05/6SzTRxg5KlDH2cC.png" alt="image-20220105214519785"></p>
+<p>安全RFID系统的基本特征</p>
+<ol>
+<li>机密性</li>
+<li>完整性</li>
+<li>可用性</li>
+<li>真实性</li>
+<li>隐私性</li>
+</ol>
+<h2 id="第5章-wsn无线传感器网络安全"><a class="markdownIt-Anchor" href="#第5章-wsn无线传感器网络安全"></a> 第5章 WSN无线传感器网络安全</h2>
+<p>无线传感器网络与安全相关的特点</p>
+<ol>
+<li>资源受限，通信环境恶劣。</li>
+<li>部署区域的安全无法保证，节点易失效。</li>
+<li>网络无基础框架。</li>
+<li>部署前地理位置具有不确定性。</li>
+</ol>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8"><span class="toc-number">1.</span> <span class="toc-text"> 物联网安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC1%E7%AB%A0-%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text"> 第1章 物联网安全需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6"><span class="toc-number">1.2.</span> <span class="toc-text"> 第2章 物联网安全技术框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 安全技术简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E4%B8%AD%E7%9A%84%E5%8A%A0%E5%AF%86%E6%9C%BA%E5%88%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 物联网中的加密机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC3%E7%AB%A0-%E5%AF%86%E7%A0%81%E4%B8%8E%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.</span> <span class="toc-text"> 第3章 密码与身份认证技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 密码学基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 现代加密算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.1.</span> <span class="toc-text"> 对称加密算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.2.</span> <span class="toc-text"> 非对称加密算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%81%E4%B8%8E%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%98%8E"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 认证与身份证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E4%B8%8E%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 物联网认证与访问控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC4%E7%AB%A0-rfid%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E4%B8%8E%E9%9A%90%E7%A7%81"><span class="toc-number">1.4.</span> <span class="toc-text"> 第4章 RFID系统安全与隐私</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC5%E7%AB%A0-wsn%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8"><span class="toc-number">1.5.</span> <span class="toc-text"> 第5章 WSN无线传感器网络安全</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2022/018a8f3fb6.html"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&text=物联网安全复习总结"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&title=物联网安全复习总结"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&is_video=false&description=物联网安全复习总结"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=物联网安全复习总结&body=Check out this article: https://kpl0111.github.io/blog/2022/018a8f3fb6.html"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&title=物联网安全复习总结"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&title=物联网安全复习总结"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&title=物联网安全复习总结"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&title=物联网安全复习总结"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2022/018a8f3fb6.html&name=物联网安全复习总结&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2023 Nefelibata
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/blog/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/blog/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>

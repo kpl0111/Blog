@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="冒泡排序（Bubble Sort）（稳定排序）（超出时间限制） 比较相邻元素，如果第一个比第二个大，则交换。 时间复杂度n2n^2n2，空间复杂度1 代码： class Solution { public:     vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {         &#x2F;&#x2F; bubbleSort         i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序">
+<meta property="og:url" content="https://kpl0111.github.io/blog/2022/10a444b428.html">
+<meta property="og:site_name" content="Nefelibata">
+<meta property="og:description" content="冒泡排序（Bubble Sort）（稳定排序）（超出时间限制） 比较相邻元素，如果第一个比第二个大，则交换。 时间复杂度n2n^2n2，空间复杂度1 代码： class Solution { public:     vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {         &#x2F;&#x2F; bubbleSort         i">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20221015114004.png">
+<meta property="article:published_time" content="2022-10-15T03:08:40.000Z">
+<meta property="article:modified_time" content="2022-10-15T07:03:58.793Z">
+<meta property="article:author" content="Nefelibata">
+<meta property="article:tag" content="Simple">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20221015114004.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/blog/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/blog/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>排序</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/blog/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Nefelibata</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/blog/2022/11b8858517.html"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/blog/2022/1072a96e3d.html"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2022/10a444b428.html"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2022/10a444b428.html&text=排序"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2022/10a444b428.html&title=排序"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2022/10a444b428.html&is_video=false&description=排序"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=排序&body=Check out this article: https://kpl0111.github.io/blog/2022/10a444b428.html"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2022/10a444b428.html&title=排序"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2022/10a444b428.html&title=排序"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2022/10a444b428.html&title=排序"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2022/10a444b428.html&title=排序"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2022/10a444b428.html&name=排序&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8Fbubble-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text"> 冒泡排序（Bubble Sort）（稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8Fselect-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text"> 选择排序（Select Sort）（非稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8Finsect-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6"><span class="toc-number">3.</span> <span class="toc-text"> 插入排序（Insect Sort）（稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8Fshell-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">4.</span> <span class="toc-text"> 希尔排序（Shell Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8Fmerge-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text"> 归并排序（Merge Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8Fquick-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">6.</span> <span class="toc-text"> 快速排序（Quick Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8Fheap-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">7.</span> <span class="toc-text"> 堆排序（Heap Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8Fcount-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">8.</span> <span class="toc-text"> 计数排序（Count Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%B6%E6%8E%92%E5%BA%8Fbucket-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">9.</span> <span class="toc-text"> 桶排序（Bucket Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8Fradix-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">10.</span> <span class="toc-text"> 基数排序（Radix Sort）（稳定排序）</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        排序
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nefelibata</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2022-10-15T03:08:40.000Z" itemprop="datePublished">2022-10-15</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20221015114004.png" alt="20221015114004"></p>
+<h2 id="冒泡排序bubble-sort稳定排序超出时间限制"><a class="markdownIt-Anchor" href="#冒泡排序bubble-sort稳定排序超出时间限制"></a> 冒泡排序（Bubble Sort）（稳定排序）（超出时间限制）</h2>
+<p>比较相邻元素，如果第一个比第二个大，则交换。</p>
+<p>时间复杂度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>，空间复杂度1</p>
+<p>代码：</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-comment">// bubbleSort</span>
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">1</span>; ++i) {
+            <span class="hljs-type">bool</span> flag = <span class="hljs-literal">false</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; n - <span class="hljs-number">1</span> - i; ++j) {
+                <span class="hljs-keyword">if</span> (nums[j] &gt; nums[j + <span class="hljs-number">1</span>]) {
+                    <span class="hljs-built_in">swap</span>(nums[j], nums[j + <span class="hljs-number">1</span>]);
+                    flag = <span class="hljs-literal">true</span>;
+                }                 
+            }
+            <span class="hljs-keyword">if</span> (flag == <span class="hljs-literal">false</span>) <span class="hljs-keyword">break</span>; <span class="hljs-comment">//无交换，代表当前序列已经最优 </span>
+        }
+        <span class="hljs-keyword">return</span> nums;
+    }
+};
+</code></pre>
+<h2 id="选择排序select-sort非稳定排序超出时间限制"><a class="markdownIt-Anchor" href="#选择排序select-sort非稳定排序超出时间限制"></a> 选择排序（Select Sort）（非稳定排序）（超出时间限制）</h2>
+<p>依次给每个位置选择当前位置及以后最小的元素（交换当前元素与之后最小元素的位置）。</p>
+<p>不稳定举例：<br>
+排序前：5, 5*, 1, 7<br>
+排序后：1, 5*, 5, 7</p>
+<p>时间复杂度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>，空间复杂度1</p>
+<p>代码：</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-comment">// selectSort 选择排序</span>
+        <span class="hljs-type">int</span> minIndex;
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">1</span>; ++i) {
+            minIndex = i;
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt; n; ++j) {
+                <span class="hljs-keyword">if</span> (nums[j] &lt; nums[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            <span class="hljs-built_in">swap</span>(nums[i], nums[minIndex]);
+        }
+        <span class="hljs-keyword">return</span> nums;
+    }
+};
+</code></pre>
+<h2 id="插入排序insect-sort稳定排序超出时间限制"><a class="markdownIt-Anchor" href="#插入排序insect-sort稳定排序超出时间限制"></a> 插入排序（Insect Sort）（稳定排序）（超出时间限制）</h2>
+<p>在前 1~i - 1元素有序的情况下，（依次）将第 i 个元素插入前面已经有序的小序列，使其有序。使用哨兵减少比较</p>
+<p>时间复杂度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>，空间复杂度1</p>
+<p>代码：</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-type">int</span> i, j;
+        <span class="hljs-keyword">for</span> (i = <span class="hljs-number">2</span>; i &lt;= nums.<span class="hljs-built_in">size</span>(); i++) {
+            <span class="hljs-keyword">if</span> (nums[i] &lt; nums[i - <span class="hljs-number">1</span>]) {
+                nums[<span class="hljs-number">0</span>] = nums[i]; <span class="hljs-comment">//nums[0]为哨兵</span>
+                <span class="hljs-keyword">for</span> (j = i - <span class="hljs-number">1</span>; nums[<span class="hljs-number">0</span>] &lt; nums[j]; j--) {
+                    nums[j + <span class="hljs-number">1</span>] =nums[j];
+                }
+                nums[j + <span class="hljs-number">1</span>] = nums[<span class="hljs-number">0</span>];
+            }
+        }
+        <span class="hljs-keyword">return</span> nums;
+    }
+};
+</code></pre>
+<p>插入排序在此基础上也可以将搜索和移动分开，使用二分查找先找到要插入位置，然后再移动</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-type">int</span> i, j, low, high, mid;
+        <span class="hljs-keyword">for</span> (i = <span class="hljs-number">2</span>; i &lt;= nums.<span class="hljs-built_in">size</span>(); i++) {
+            nums[<span class="hljs-number">0</span>] = nums[i];
+            low = <span class="hljs-number">1</span>; high = i - <span class="hljs-number">1</span>;
+            <span class="hljs-keyword">while</span> (low &lt;= high) {
+                mid = (low + high) / <span class="hljs-number">2</span>;
+                <span class="hljs-keyword">if</span> (nums[mid] &gt; nums[<span class="hljs-number">0</span>]) high = mid - <span class="hljs-number">1</span>;
+                <span class="hljs-keyword">else</span> low = mid + <span class="hljs-number">1</span>;
+            }
+            <span class="hljs-keyword">for</span> (j = i - <span class="hljs-number">1</span>; j &gt; high + <span class="hljs-number">1</span>; j--)
+                nums[j + <span class="hljs-number">1</span>] = nums[j];
+            nums[high + <span class="hljs-number">1</span>] = nums[<span class="hljs-number">0</span>];
+        }
+        <span class="hljs-keyword">return</span> nums;
+    }
+};
+</code></pre>
+<h2 id="希尔排序shell-sort非稳定排序"><a class="markdownIt-Anchor" href="#希尔排序shell-sort非稳定排序"></a> 希尔排序（Shell Sort）（非稳定排序）</h2>
+<p>改进的插入排序（优化：原数组的一个元素距离正确位置很远的情况）<br>
+先让间隔 h 的元素有序，在使得间隔为 h / 2，一直缩小，一直到 h = 1（此时数组有序）。</p>
+<p>时间复杂度介于nlogn和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>之间，空间复杂度1</p>
+<p>代码：</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">shellSort</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp;nums, <span class="hljs-type">int</span> gap, <span class="hljs-type">int</span> i)</span> </span>{
+        <span class="hljs-type">int</span> j, tmp = nums[i];
+        <span class="hljs-keyword">for</span> (j = i - gap; j &gt;= <span class="hljs-number">0</span> &amp;&amp; tmp &lt; nums[j]; j -= gap) {
+            <span class="hljs-comment">// 依次后移</span>
+            nums[j + gap] = nums[j];
+        }
+        nums[j + gap] = tmp;
+    }
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-comment">// 分组，最开始时，间隔 gap 为数组的一半</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> gap = n / <span class="hljs-number">2</span>; gap &gt;= <span class="hljs-number">1</span> ; gap /= <span class="hljs-number">2</span>) {
+            <span class="hljs-comment">// 对各个分组进行插入分组</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = gap; i &lt; n; ++i) {
+                <span class="hljs-built_in">shellSort</span>(nums, gap, i);
+            }
+        }
+        <span class="hljs-keyword">return</span> nums;
+    }
+};
+</code></pre>
+<h2 id="归并排序merge-sort稳定排序"><a class="markdownIt-Anchor" href="#归并排序merge-sort稳定排序"></a> 归并排序（Merge Sort）（稳定排序）</h2>
+<p>将无序数组拆分，排序后再合并成大的有序数组。</p>
+<p>时间复杂度nlogn，空间复杂度n</p>
+<p>代码：</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    vector&lt;<span class="hljs-type">int</span>&gt; tmp;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span> <span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> low, <span class="hljs-type">int</span> mid, <span class="hljs-type">int</span> high)</span> </span>{
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = low; k &lt;= high; k++) {
+            tmp[k] = nums[k];
+        }
+
+        <span class="hljs-type">int</span> i, j;
+        <span class="hljs-keyword">for</span> (i = low, j = mid + <span class="hljs-number">1</span>, k = i; i &lt;= mid &amp;&amp; j &lt;=high; k++) {
+            <span class="hljs-keyword">if</span> (tmp[i] &lt;= tmp[j]) {
+                nums[k] = tmp[i++];
+            } <span class="hljs-keyword">else</span> {
+                nums[k] = tmp[j++];
+            }
+        }
+        <span class="hljs-keyword">while</span> (i &lt;= mid) nums[k++] = tmp[i++];
+        <span class="hljs-keyword">while</span> (j &lt;= high) nums[k++] = tmp[j++];
+    }
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">mergeSort</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> low, <span class="hljs-type">int</span> high)</span> </span>{
+        <span class="hljs-keyword">if</span> (low &lt; high) {
+            <span class="hljs-type">int</span> mid = (low + high) / <span class="hljs-number">2</span>;
+            <span class="hljs-built_in">mergeSort</span>(nums, low, mid + <span class="hljs-number">1</span>);
+            <span class="hljs-built_in">mergeSort</span>(nums, mid + <span class="hljs-number">1</span>, high);
+            <span class="hljs-built_in">merge</span>(nums, low, mid, high);
+        }
+    }
+};
+</code></pre>
+<h2 id="快速排序quick-sort非稳定排序"><a class="markdownIt-Anchor" href="#快速排序quick-sort非稳定排序"></a> 快速排序（Quick Sort）（非稳定排序）</h2>
+<p>随机选取一个数（x = rand() % len + startIndex）作为基准；<br>
+把比基准小的数交换到前面，比基准大的数交换到后面；<br>
+对左右区间递归重复。</p>
+<p>时间复杂度nlogn，空间复杂度logn</p>
+<p>代码：</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp;nums, <span class="hljs-type">int</span> startIndex, <span class="hljs-type">int</span> endIndex)</span> </span>{
+        <span class="hljs-keyword">if</span> (startIndex &gt;= endIndex) <span class="hljs-keyword">return</span>;
+        
+        <span class="hljs-type">int</span> x = <span class="hljs-built_in">rand</span>() % (endIndex - startIndex + <span class="hljs-number">1</span>) + startIndex; <span class="hljs-comment">// 基于随机的原则</span>
+        <span class="hljs-built_in">swap</span>(nums[startIndex], nums[x]);
+        <span class="hljs-type">int</span> firstNum = nums[startIndex];
+        
+        <span class="hljs-type">int</span> l = startIndex, r = endIndex;
+        <span class="hljs-keyword">while</span> (l &lt; r) {
+            <span class="hljs-comment">// 从后往前走，将比第一个小的移到前面</span>
+            <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; nums[r] &gt;= firstNum) --r;
+            <span class="hljs-keyword">if</span> (l &lt; r) {
+                nums[l] = nums[r];
+            }
+            <span class="hljs-comment">// 从前往后走，将比第一个大的移到后面</span>
+            <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; nums[l] &lt;= firstNum) ++l;
+            <span class="hljs-keyword">if</span> (l &lt; r) {
+                nums[r] = nums[l];
+            }
+        }
+        nums[l] = firstNum;
+        <span class="hljs-comment">// 自顶向下</span>
+        <span class="hljs-built_in">quickSort</span>(nums, startIndex, l - <span class="hljs-number">1</span>);
+        <span class="hljs-built_in">quickSort</span>(nums, l + <span class="hljs-number">1</span>, endIndex);
+    }
+
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-built_in">quickSort</span>(nums, <span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>);
+        <span class="hljs-keyword">return</span> nums;
+    }
+};
+</code></pre>
+<h2 id="堆排序heap-sort非稳定排序"><a class="markdownIt-Anchor" href="#堆排序heap-sort非稳定排序"></a> 堆排序（Heap Sort）（非稳定排序）</h2>
+<p>先在原先数组的基础上构造大根堆（时间复杂度nlogn）；<br>
+再依次弹出最大元素（每次弹出的时间复杂度为logk，k为当前大根堆中元素数目）。</p>
+<p>时间复杂度nlogn，空间复杂度1</p>
+<p>代码：</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">buildMaxHeap</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = (n - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">0</span>; --i) {
+            <span class="hljs-built_in">maxHeapify</span>(nums, i, n);
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">maxHeapify</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> n)</span> </span>{
+        <span class="hljs-keyword">while</span> (i * <span class="hljs-number">2</span> + <span class="hljs-number">1</span> &lt; n) {
+            <span class="hljs-comment">// 代表当前 i 节点的左右儿子；</span>
+            <span class="hljs-comment">// 超出数组大小则代表当前 i 节点为叶子节点，不需要移位</span>
+            <span class="hljs-type">int</span> lSon = <span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>;
+            <span class="hljs-type">int</span> rSon = <span class="hljs-number">2</span> * i + <span class="hljs-number">2</span>;
+            <span class="hljs-type">int</span> large = i;
+            <span class="hljs-keyword">if</span> (lSon &lt; n &amp;&amp; nums[lSon] &gt; nums[i]) large = lSon;
+            <span class="hljs-keyword">if</span> (rSon &lt; n &amp;&amp; nums[rSon] &gt; nums[large]) large = rSon;
+
+            <span class="hljs-keyword">if</span> (large != i) {
+                <span class="hljs-built_in">swap</span>(nums[i], nums[large]);
+                <span class="hljs-comment">// 迭代判断对应子节点及其儿子节点的大小关系</span>
+                i = large;
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">break</span>;
+            }
+        }
+    }
+
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-comment">// heapSort 堆排序</span>
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-comment">// 将数组整理成大根堆</span>
+        <span class="hljs-built_in">buildMaxHeap</span>(nums);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = n - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">1</span>; --i) {
+            <span class="hljs-comment">// 依次弹出最大元素，放到数组最后，当前排序对应数组大小 - 1</span>
+            <span class="hljs-built_in">swap</span>(nums[<span class="hljs-number">0</span>], nums[i]);
+            --n;
+            <span class="hljs-built_in">maxHeapify</span>(nums, <span class="hljs-number">0</span>, n);
+        }
+        <span class="hljs-keyword">return</span> nums;
+    }
+};
+</code></pre>
+<h2 id="计数排序count-sort稳定排序"><a class="markdownIt-Anchor" href="#计数排序count-sort稳定排序"></a> 计数排序（Count Sort）（稳定排序）</h2>
+<p>创建数组 counts，用于统计原数组 nums 中各元素值的出现次数；<br>
+再依次将元素值赋值到 nums 中对应位置。</p>
+<p>计数排序，时间复杂度n + k，空间复杂度k（k = maxNum - minNum + 1）</p>
+<p>代码：</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-comment">// CountSort 计数排序</span>
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-type">int</span> minNum = INT_MAX, maxNum = INT_MIN;
+        <span class="hljs-comment">// 找到数组中的最小和最大元素</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) {
+            <span class="hljs-keyword">if</span> (nums[i] &lt; minNum) minNum = nums[i];
+            <span class="hljs-keyword">if</span> (nums[i] &gt; maxNum) maxNum = nums[i];
+        }
+        <span class="hljs-comment">// 构造计数数组</span>
+        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">counts</span><span class="hljs-params">(maxNum - minNum + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>)</span></span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) {
+            ++counts[nums[i] - minNum];
+        }
+        <span class="hljs-comment">// 计数排序</span>
+        <span class="hljs-type">int</span> index = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; counts.<span class="hljs-built_in">size</span>(); ++i) {
+            <span class="hljs-keyword">while</span> (counts[i] != <span class="hljs-number">0</span>) {
+                nums[index++] = i + minNum;
+                counts[i]--;
+            }
+        }
+        <span class="hljs-keyword">return</span> nums;
+    }
+};
+</code></pre>
+<h2 id="桶排序bucket-sort稳定排序"><a class="markdownIt-Anchor" href="#桶排序bucket-sort稳定排序"></a> 桶排序（Bucket Sort）（稳定排序）</h2>
+<p>将原数组的元素分到有限数量的桶里（大编号桶里的所有元素均大于小编号桶里的任意元素）；<br>
+分别对每个桶进行排序；<br>
+依次合并。</p>
+<p>时间复杂度n + k，空间复杂度n + k（k为桶的数量）</p>
+<p>代码：</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-comment">// BucketSort 桶排序</span>
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-comment">// 获取数组的最小值和最大值</span>
+        <span class="hljs-type">int</span> maxNum = nums[<span class="hljs-number">0</span>], minNum = nums[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; n; ++i) {
+            <span class="hljs-keyword">if</span> (nums[i] &gt; maxNum) maxNum = nums[i];
+            <span class="hljs-keyword">if</span> (nums[i] &lt; minNum) minNum = nums[i];
+        }
+        <span class="hljs-comment">// 初始化桶</span>
+        <span class="hljs-type">int</span> bucketNum = <span class="hljs-number">5</span>, bucketSize = (maxNum - minNum) / bucketNum + <span class="hljs-number">1</span>;
+        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">buckets</span>(bucketNum, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">0</span>));
+        <span class="hljs-comment">// 小至大分桶</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : nums) {
+            <span class="hljs-type">int</span> bucketIndex = (num - minNum) / bucketSize;
+            buckets[bucketIndex].<span class="hljs-built_in">emplace_back</span>(num);
+        }
+        <span class="hljs-comment">// 桶内排序</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; buckets.<span class="hljs-built_in">size</span>(); ++i) {
+            <span class="hljs-built_in">sort</span>(buckets[i].<span class="hljs-built_in">begin</span>(), buckets[i].<span class="hljs-built_in">end</span>());
+        }
+        <span class="hljs-comment">// 从桶中依次取数</span>
+        <span class="hljs-type">int</span> index = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; bucket : buckets) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : bucket) {
+                nums[index++] = num;
+            }
+        }
+
+        <span class="hljs-keyword">return</span> nums;
+    }
+};
+</code></pre>
+<h2 id="基数排序radix-sort稳定排序"><a class="markdownIt-Anchor" href="#基数排序radix-sort稳定排序"></a> 基数排序（Radix Sort）（稳定排序）</h2>
+<p>对数组中所有数依次按由低到高的位数进行多次排序；<br>
+每次排序都基于上次排序的结果。<br>
+（相对位置顺序保持不变）</p>
+<p>例：原始数组 1，23，21，11，32<br>
+第一次排序后 1，21，11，32，23<br>
+第二次排序后 1，11，21，23，32<br>
+时间复杂度n x k，空间复杂度k（k为最大元素的位数）</p>
+<p>代码：</p>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    vector&lt;<span class="hljs-type">int</span>&gt; counts;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">radixSort</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, vector&lt;<span class="hljs-type">int</span>&gt;&amp; tmp, <span class="hljs-type">int</span> divisor)</span> </span>{
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        counts = <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">10</span>, <span class="hljs-number">0</span>);
+        <span class="hljs-comment">// 统计个、十、百、千、万上对应 0 ~ 9 的出现次数</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) {
+            <span class="hljs-type">int</span> x = (nums[i] / divisor) % <span class="hljs-number">10</span>;
+            ++counts[x];
+        }
+        <span class="hljs-comment">// 前缀和</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">9</span>; ++i) {
+            counts[i] += counts[i - <span class="hljs-number">1</span>];
+        }
+        <span class="hljs-comment">// 从后向前赋值</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = n - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; --i) {
+            <span class="hljs-type">int</span> x = (nums[i] / divisor) % <span class="hljs-number">10</span>;
+            <span class="hljs-type">int</span> index = counts[x] - <span class="hljs-number">1</span>;
+            tmp[index] = nums[i];
+            --counts[x];
+        }
+    }
+
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-comment">// RadixSort 基数排序</span>
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-comment">// 预处理，让所有的数都大于等于0</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) {
+            nums[i] += <span class="hljs-number">50000</span>; <span class="hljs-comment">// 50000为最小可能的数组大小</span>
+        }
+        <span class="hljs-comment">// 找出最大的数字，并获得其最大位数</span>
+        <span class="hljs-type">int</span> maxNum = nums[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) {
+            <span class="hljs-keyword">if</span> (nums[i] &gt; maxNum) {
+                maxNum = nums[i];
+            }
+        }
+        <span class="hljs-type">int</span> num = maxNum, maxLen = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span> (num) {
+            ++maxLen;
+            num /= <span class="hljs-number">10</span>;
+        }
+        <span class="hljs-comment">// 基数排序，低位优先</span>
+        <span class="hljs-type">int</span> divisor = <span class="hljs-number">1</span>;
+        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">tmp</span><span class="hljs-params">(n, <span class="hljs-number">0</span>)</span></span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; maxLen; ++i) {
+            <span class="hljs-built_in">radixSort</span>(nums, tmp, divisor);
+            <span class="hljs-built_in">swap</span>(tmp, nums);
+            divisor *= <span class="hljs-number">10</span>;
+        }
+        <span class="hljs-comment">// 减去预处理量</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) {
+            nums[i] -= <span class="hljs-number">50000</span>;
+        }
+        <span class="hljs-keyword">return</span> nums;
+    }
+};
+</code></pre>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8Fbubble-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text"> 冒泡排序（Bubble Sort）（稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8Fselect-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text"> 选择排序（Select Sort）（非稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8Finsect-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6"><span class="toc-number">3.</span> <span class="toc-text"> 插入排序（Insect Sort）（稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8Fshell-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">4.</span> <span class="toc-text"> 希尔排序（Shell Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8Fmerge-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text"> 归并排序（Merge Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8Fquick-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">6.</span> <span class="toc-text"> 快速排序（Quick Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8Fheap-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">7.</span> <span class="toc-text"> 堆排序（Heap Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8Fcount-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">8.</span> <span class="toc-text"> 计数排序（Count Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%B6%E6%8E%92%E5%BA%8Fbucket-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">9.</span> <span class="toc-text"> 桶排序（Bucket Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8Fradix-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">10.</span> <span class="toc-text"> 基数排序（Radix Sort）（稳定排序）</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2022/10a444b428.html"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2022/10a444b428.html&text=排序"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2022/10a444b428.html&title=排序"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2022/10a444b428.html&is_video=false&description=排序"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=排序&body=Check out this article: https://kpl0111.github.io/blog/2022/10a444b428.html"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2022/10a444b428.html&title=排序"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2022/10a444b428.html&title=排序"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2022/10a444b428.html&title=排序"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2022/10a444b428.html&title=排序"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2022/10a444b428.html&name=排序&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2023 Nefelibata
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/blog/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/blog/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>

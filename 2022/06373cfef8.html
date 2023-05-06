@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="ESP8266实现智能电灯 本实验目的是要通过腾讯云服务器和ESP8266芯片实现远程操纵一个LED灯的颜色和亮度  实验原理 首先在腾讯云物联网开发平台注册一个项目，并设置一个电灯产品，采用Wifi通信，然后在芯片上编写代码实现对LED灯的控制以及对信号的接收，然后用腾讯云配套小程序即可实现远程控制。  实验步骤  使用一根提供USB数据线将NodeMCU开发板和电脑连接起来，在命令行执行指令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="智能电灯">
+<meta property="og:url" content="https://kpl0111.github.io/blog/2022/06373cfef8.html">
+<meta property="og:site_name" content="Nefelibata">
+<meta property="og:description" content="ESP8266实现智能电灯 本实验目的是要通过腾讯云服务器和ESP8266芯片实现远程操纵一个LED灯的颜色和亮度  实验原理 首先在腾讯云物联网开发平台注册一个项目，并设置一个电灯产品，采用Wifi通信，然后在芯片上编写代码实现对LED灯的控制以及对信号的接收，然后用腾讯云配套小程序即可实现远程控制。  实验步骤  使用一根提供USB数据线将NodeMCU开发板和电脑连接起来，在命令行执行指令">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/06/07/WlHSxXRKCFIP4pD.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/07/x1y9UAjHKvGMBVu.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/07/u68xodkXEBMLZ7S.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/07/5uzbKpsS7JDcRVZ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/07/Gy7ZlrDf3OwXM2j.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/07/o6sxtJjz9YInaD7.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/06/07/6b9H5JChOUswyFc.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/06/07/4ADxrkJauIsqP85.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/06/07/XaBInrARLp9MySZ.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/06/08/8Jy3nYC2ENzUhp4.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/08/4ITymNwzp87QEZx.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/08/BN6cl591dCTAwbH.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/08/afO8ilYupnDoxKc.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/06/08/vMQ89oRFUXLNe5J.jpg">
+<meta property="article:published_time" content="2022-06-03T02:53:20.000Z">
+<meta property="article:modified_time" content="2022-06-08T12:07:13.644Z">
+<meta property="article:author" content="Nefelibata">
+<meta property="article:tag" content="Simple">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/06/07/WlHSxXRKCFIP4pD.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/blog/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/blog/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>智能电灯</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/blog/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Nefelibata</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/blog/2022/064d5af563.html"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/blog/2022/066dcc5737.html"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2022/06373cfef8.html"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&text=智能电灯"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&title=智能电灯"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&is_video=false&description=智能电灯"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=智能电灯&body=Check out this article: https://kpl0111.github.io/blog/2022/06373cfef8.html"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&title=智能电灯"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&title=智能电灯"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&title=智能电灯"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&title=智能电灯"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&name=智能电灯&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#esp8266%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E7%94%B5%E7%81%AF"><span class="toc-number">1.</span> <span class="toc-text"> ESP8266实现智能电灯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text"> 实验原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.2.</span> <span class="toc-text"> 实验步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">1.3.</span> <span class="toc-text"> 演示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#esp32%E5%AE%9E%E7%8E%B0%E5%85%89%E7%85%A7%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text"> Esp32实现光照传感器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text"> 原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4-2"><span class="toc-number">2.2.</span> <span class="toc-text"> 实验步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E5%85%89%E7%85%A7%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text"> 验证光照传感器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#esp32%E7%9A%84%E7%BD%91%E5%85%B3%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text"> Esp32的网关实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2"><span class="toc-number">3.1.</span> <span class="toc-text"> 部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%9C%BA%E6%99%AF%E8%81%94%E5%8A%A8"><span class="toc-number">3.2.</span> <span class="toc-text"> 设置场景联动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text"> 源代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E7%94%B5%E7%81%AF"><span class="toc-number">4.1.</span> <span class="toc-text"> 智能电灯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%89%E7%85%A7%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">4.2.</span> <span class="toc-text"> 光照传感器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#esp32%E7%9A%84%E7%BD%91%E5%85%B3%E5%AE%9E%E7%8E%B0-2"><span class="toc-number">4.3.</span> <span class="toc-text"> esp32的网关实现</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        智能电灯
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nefelibata</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2022-06-03T02:53:20.000Z" itemprop="datePublished">2022-06-03</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="esp8266实现智能电灯"><a class="markdownIt-Anchor" href="#esp8266实现智能电灯"></a> ESP8266实现智能电灯</h2>
+<p>本实验目的是要通过腾讯云服务器和ESP8266芯片实现远程操纵一个LED灯的颜色和亮度</p>
+<h3 id="实验原理"><a class="markdownIt-Anchor" href="#实验原理"></a> 实验原理</h3>
+<p>首先在<a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/iotexplorer">腾讯云物联网开发平台</a>注册一个项目，并设置一个电灯产品，采用Wifi通信，然后在芯片上编写代码实现对LED灯的控制以及对信号的接收，然后用腾讯云配套小程序即可实现远程控制。</p>
+<h3 id="实验步骤"><a class="markdownIt-Anchor" href="#实验步骤"></a> 实验步骤</h3>
+<ol>
+<li>使用一根提供USB数据线将NodeMCU开发板和电脑连接起来，在命令行执行指令<code>pip install esptool</code>,然后执行<code>esptool read_mac·</code>查看开发板信息<br>
+<img src="https://s2.loli.net/2022/06/07/WlHSxXRKCFIP4pD.png" alt="20220607190411"><br>
+图中红框内即为使用的接口，如果缺少驱动可以通过驱动精灵下载</li>
+<li>烧录固件，首先执行<code>esptool --port COM9 erase_flash</code>擦除flash芯片，接口名称要更换为自己的设备名称，然后执行<code>esptool --port COM9 write_flash --flash_size=detect 0 esp8266-20220117-v1.18.bin</code>重新烧录固件,之后重启即可</li>
+<li>在<a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/iotexplorer">腾讯云物联网开发平台</a>注册一个项目，命名为智能家居<br>
+<img src="https://s2.loli.net/2022/06/07/x1y9UAjHKvGMBVu.png" alt="20220607190919"></li>
+<li>进入项目创建一个新产品’智能电灯’，设置几个参数
+<ul>
+<li>产品品类：直接选择“智能生活”–&gt;“电工照明”–&gt;“灯”</li>
+<li>认证方式：选择密钥认证，这个比较简单，而且适合我们的开发板 NodeMCU。</li>
+<li>通信方式：选择 Wi-Fi。</li>
+<li>数据协议：选择物模型来解析数据。</li>
+</ul>
+</li>
+<li>设置完成后其他默认配置就可以，这样即可生成一个新产品，之后再测试设备列表里面可以查看我们的设备信息<br>
+<img src="https://s2.loli.net/2022/06/07/u68xodkXEBMLZ7S.png" alt="20220607191329"><br>
+记录下设备名称、设备密钥、和产品ID，然后在调试标签页点击下图中二维码<br>
+<img src="https://s2.loli.net/2022/06/07/5uzbKpsS7JDcRVZ.png" alt="20220607191456"><br>
+然后利用<code>腾讯连连</code>小程序添加该设备即可</li>
+<li>代码部分我们需要将产品信息的三元组和利用password生成器生成的Username和Password替换main文件里面对应部分，并完善Button.py和LED.py文件实现NodeMCU开发板引脚和LED灯的绑定</li>
+<li>实现远程控制需要在 NodeMCU 开发板上安装一个 MQTT 客户端代码库 umqtt.simple 库。它来自MicroPython 官方维护的非内核标准库 micropython-lib</li>
+<li>使用Putty，协议选择<code>Serial</code>，频率设置为<code>115200</code>,流控制选择<code>None</code>即可使用Putty来连接开发板，执行以下指令连接WiFi并安装库<pre class="highlight"><code class="py"> <span class="hljs-keyword">import</span> network
+ 
+ wifi = network.WLAN(network.STA_IF)
+ wifi.active(<span class="hljs-literal">True</span>)
+ wifi.scan() <span class="hljs-comment">#扫描WIFI列表</span>
+ wifi.isconnected() <span class="hljs-comment">#查看当前连接状态，理论上应该是False</span>
+ wifi.connect(<span class="hljs-string">'Wi-Fi的SSID'</span>, <span class="hljs-string">'Wi-Fi密码'</span>) <span class="hljs-comment"># 连接对应WiFi</span>
+ wifi.isconnected() <span class="hljs-comment">#再次查看状态，应该是True</span>
+
+ <span class="hljs-keyword">import</span> upip
+ upip.install(<span class="hljs-string">'micropython-umqtt.simple'</span>)
+</code></pre>
+</li>
+<li>烧写代码，执行<code>ampy --port COM9 --baud 115200 --delay 0.5 put main.py</code>烧写main文件,同样方式烧写其他三个文件，烧写完成之后重启即可实现远程控制</li>
+<li>按照下图连接LED灯和开发板<br>
+<img src="https://s2.loli.net/2022/06/07/Gy7ZlrDf3OwXM2j.png" alt="20220607193258"><br>
+要注意面包板的正负极，连接好如下图所示<br>
+<img src="https://s2.loli.net/2022/06/07/o6sxtJjz9YInaD7.jpg" alt="1654601661755"></li>
+<li>打开小程序即可操控LED灯</li>
+</ol>
+<h3 id="演示"><a class="markdownIt-Anchor" href="#演示"></a> 演示</h3>
+<p>见演示视频Esp8266.mp4</p>
+<h2 id="esp32实现光照传感器"><a class="markdownIt-Anchor" href="#esp32实现光照传感器"></a> Esp32实现光照传感器</h2>
+<h3 id="原理"><a class="markdownIt-Anchor" href="#原理"></a> 原理</h3>
+<p>因为光照传感器设备的部署位置比较灵活，不太可能像智能电灯一样连接房间里的电源线，所以我们要用一种比 Wi-Fi 功耗更低的通信技术。这样的话，就算使用电池供电，也可以长时间（一年以上）持续工作。因此选择 BLE 低功耗蓝牙技术。</p>
+<p>BLE 设备可以在 4 种模式下工作：</p>
+<ol>
+<li>广播模式（Broadcaster），这里特指单纯的广播模式。这种模式下设备不可以被连接，只能够以一定的时间间隔把数据广播出来，供其他设备使用，比如手机扫描处理。蓝牙 Beacon 设备就是工作在这种模式。</li>
+<li>从机模式（Peripheral），这种模式下设备仍然可以广播数据，同时也可以被连接。建立连接后，双方可以进行双向通信。比如你用手机连接一个具有蓝牙功能的体温计，这时体温计就是从机（Peripheral）。</li>
+<li>主机模式（Central），这种模式下设备不进行广播，但是可以扫描周围的蓝牙广播包，发现其他设备，然后主动对这些设备发起连接。还是刚才那个例子，主动连接蓝牙体温计的手机就是主机（Central）角色。</li>
+<li>观察者模式（Observer），这种模式下设备像主机模式一样，也不进行广播，而是扫描周围的蓝牙广播包，但是不同的地方是，它不会与从机设备建立连接。一般收集蓝牙设备广播包的网关就是在这种模式下工作的，它会将收集的广播数据通过网线、Wi-Fi 或者 4G 等蜂窝网络上传到云平台。</li>
+</ol>
+<h3 id="实验步骤-2"><a class="markdownIt-Anchor" href="#实验步骤-2"></a> 实验步骤</h3>
+<ol>
+<li>
+<p>用面包板连接NodeMCU和感光元件，如下图所示：<br>
+<img src="https://s2.loli.net/2022/06/07/6b9H5JChOUswyFc.jpg" alt="1654603216377"></p>
+</li>
+<li>
+<p>基于 PT550 环保型光敏二极管的光照传感器元器件，它的灵敏度更高，测量范围是 0Lux～6000Lux。这个元器件通过信号管脚输出模拟量，我们读取 NodeMCU ESP32 的 ADC 模数转换器（ADC0，对应GPIO36）的数值，就可以得到光照强度。这个数值越大，表示光照强度越大。因为 ADC 支持的最大位数是 12bit，所以这个数值范围是 0~4095 之间。这里我们粗略地按照线性关系做一个转换,代码如下：</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">LightSensor</span>():
+
+ <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, pin</span>):
+     self.light = ADC(Pin(pin))
+
+ <span class="hljs-keyword">def</span> <span class="hljs-title function_">value</span>(<span class="hljs-params">self</span>):
+     value = self.light.read()
+     <span class="hljs-built_in">print</span>(<span class="hljs-string">"Light ADC value:"</span>,value)
+     <span class="hljs-keyword">return</span> <span class="hljs-built_in">int</span>(value / <span class="hljs-number">4095</span> * <span class="hljs-number">6000</span>)
+</code></pre>
+</li>
+<li>
+<p>和Esp8266一样，擦除固件，然后重装固件，将补充好的代码文件写入开发板</p>
+<pre class="highlight"><code class="python">esptool --chip esp32 --port COM9 erase_flash <span class="hljs-comment">#擦除固件</span>
+esptool --chip esp32 --port COM9 write_flash -z <span class="hljs-number">0x1000</span> esp32-<span class="hljs-number">20220117</span>-v1<span class="hljs-number">.18</span>.<span class="hljs-built_in">bin</span> <span class="hljs-comment">#烧写固件</span>
+</code></pre>
+</li>
+</ol>
+<h3 id="验证光照传感器"><a class="markdownIt-Anchor" href="#验证光照传感器"></a> 验证光照传感器</h3>
+<p>使用nRF Connect，扫描到开发板如下：<br>
+<img src="https://s2.loli.net/2022/06/07/4ADxrkJauIsqP85.jpg" alt="1654603649419"><br>
+<img src="https://s2.loli.net/2022/06/07/XaBInrARLp9MySZ.jpg" alt="1654603668287"></p>
+<h2 id="esp32的网关实现"><a class="markdownIt-Anchor" href="#esp32的网关实现"></a> Esp32的网关实现</h2>
+<p>NodeMCU ESP32 开发板是蓝牙设备，本身无法直接联网上报数据，因此需要借助网关来实现联网的目的。</p>
+<p>网关的主要功能是协议转换，一方面它需要接收低功耗蓝牙技术的光照传感器的广播数据，另一方面，它需要把解析的数据上传到云平台：<br>
+<img src="https://s2.loli.net/2022/06/08/8Jy3nYC2ENzUhp4.png" alt="20220608150802"><br>
+配置完虚拟机环境之后，虚拟机即充当了树莓派的作用</p>
+<p>在<a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/iotexplorer">腾讯云物联网开发平台</a>同样按照上述方式配置一个Lightsensor_1部件，把光照值在<code>智能联动配置</code>里面设置为联动值，后面要用到光照值为灯泡提供光照数据，记录下三元组。</p>
+<p>接下来补充<code>gateway.py</code>缺失部分代码，把三元组替换为我们的生成的三元组以及username和password,中间光照的loop函数调用bles成员函数读取扫描到的光照强度数值并上传扫描到的光照强度数值，代码如下：<br>
+<img src="https://s2.loli.net/2022/06/08/4ITymNwzp87QEZx.png" alt="20220608151535"></p>
+<h3 id="部署"><a class="markdownIt-Anchor" href="#部署"></a> 部署</h3>
+<p>接下来就是可以让程序作为后台服务运行，首先打开虚拟机，执行以下几条命令,为虚拟机增添Pi Gateway服务</p>
+<pre class="highlight"><code class="C++">$ sudo cp /home/pi/pi-gateway/pi-gateway.service /etc/systemd/system/
+$ sudo systemctl daemon-reload
+$ sudo systemctl start pi-gateway
+$ sudo systemctl status pi-gateway
+$ sudo systemctl enable pi-gateway
+</code></pre>
+<p>执行之后，网关程序就在虚拟机上运行起来了，在腾讯云平台上可以看到，光照传感器变为在线状态。<br>
+<img src="https://s2.loli.net/2022/06/08/BN6cl591dCTAwbH.png" alt="1654673109845"><br>
+<img src="https://s2.loli.net/2022/06/08/afO8ilYupnDoxKc.jpg" alt="1654672929610"></p>
+<h3 id="设置场景联动"><a class="markdownIt-Anchor" href="#设置场景联动"></a> 设置场景联动</h3>
+<p>我们希望实现的联动场景是，基于环境的光照强度自动控制电灯的开和关。具体来说，这个目标可以拆解为 3 个自动触发任务：</p>
+<ol>
+<li>当光照强度大于 1024Lux 时，关闭电灯。</li>
+<li>当光照强度小于 1024Lux 时，打开电灯。</li>
+<li>至于光照强度等于 1024Lux 时，也打开电灯。</li>
+</ol>
+<p>在腾讯连连小程序上面添加上述三个场景<br>
+<img src="https://s2.loli.net/2022/06/08/vMQ89oRFUXLNe5J.jpg" alt="1a43aac93a87fd3ab3fbc6785c875e0"></p>
+<h2 id="源代码"><a class="markdownIt-Anchor" href="#源代码"></a> 源代码</h2>
+<h3 id="智能电灯"><a class="markdownIt-Anchor" href="#智能电灯"></a> 智能电灯</h3>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># main.py</span>
+<span class="hljs-keyword">from</span> LED <span class="hljs-keyword">import</span> Led
+<span class="hljs-keyword">from</span> Button <span class="hljs-keyword">import</span> Button
+<span class="hljs-keyword">from</span> Relay <span class="hljs-keyword">import</span> Relay
+
+<span class="hljs-keyword">import</span> time
+<span class="hljs-keyword">import</span> uasyncio
+<span class="hljs-keyword">import</span> network
+<span class="hljs-keyword">import</span> ujson
+<span class="hljs-keyword">from</span> umqtt.simple <span class="hljs-keyword">import</span> MQTTClient
+
+<span class="hljs-string">"""
+Wi-Fi Gateway : SSID and Password
+"""</span>
+WIFI_AP_SSID = <span class="hljs-string">"Xiaomi_301"</span>
+WIFI_AP_PSW = <span class="hljs-string">"76780211"</span>
+
+<span class="hljs-string">"""
+QCloud Device Info
+"""</span>
+DEVICE_NAME = <span class="hljs-string">"Led_1"</span>
+PRODUCT_ID = <span class="hljs-string">"XICW4V8C51"</span>
+DEVICE_KEY = <span class="hljs-string">"sBgj/K/mb+/F01FYk5IJcw=="</span>
+
+<span class="hljs-string">"""
+MQTT topic
+"""</span>
+MQTT_CONTROL_TOPIC = <span class="hljs-string">"$thing/down/property/"</span>+PRODUCT_ID+<span class="hljs-string">"/"</span>+DEVICE_NAME
+MQTT_CONTROL_REPLY_TOPIC = <span class="hljs-string">"$thing/up/property/"</span>+PRODUCT_ID+<span class="hljs-string">"/"</span>+DEVICE_NAME
+
+led = Led(<span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0</span>)
+relay = Relay(<span class="hljs-number">16</span>)
+button = Button(<span class="hljs-number">14</span>)
+
+mqtt_client = <span class="hljs-literal">None</span>
+color = <span class="hljs-number">0</span>   <span class="hljs-comment">#enum 0=red, 1=green, 2=blue</span>
+name= <span class="hljs-string">""</span>    <span class="hljs-comment">#light name. it is optional</span>
+brightness = <span class="hljs-number">100</span>  <span class="hljs-comment"># 0%~100%</span>
+light_changed = <span class="hljs-literal">False</span>
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">wifi_connect</span>(<span class="hljs-params">ssid, pwd</span>):
+    sta = network.WLAN(network.STA_IF)
+    sta.active(<span class="hljs-literal">True</span>)
+    sta.connect(ssid, pwd)
+
+    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> sta.isconnected():
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"Wi-Fi Connecting..."</span>)
+        time.sleep_ms(<span class="hljs-number">500</span>)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">mqtt_callback</span>(<span class="hljs-params">topic, msg</span>):
+    <span class="hljs-keyword">global</span> led, relay, button
+    <span class="hljs-keyword">global</span> color, name, brightness, light_changed
+
+    <span class="hljs-built_in">print</span>((topic, msg))
+    msg_json = ujson.loads(msg)
+    <span class="hljs-keyword">if</span> msg_json[<span class="hljs-string">'method'</span>] == <span class="hljs-string">'control'</span>:
+        params = msg_json[<span class="hljs-string">'params'</span>]
+
+        power_switch_tmp = params.get(<span class="hljs-string">'power_switch'</span>)
+        <span class="hljs-keyword">if</span> power_switch_tmp <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:
+            power_switch = power_switch_tmp
+            relay.set_state(power_switch)
+
+        brightness_tmp = params.get(<span class="hljs-string">'brightness'</span>)
+        <span class="hljs-keyword">if</span> brightness_tmp <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:
+            brightness = brightness_tmp
+
+        color_tmp = params.get(<span class="hljs-string">'color'</span>)
+        <span class="hljs-keyword">if</span> color_tmp <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:
+            color = color_tmp
+
+        name_tmp = params.get(<span class="hljs-string">'name'</span>)
+        <span class="hljs-keyword">if</span> name_tmp <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:
+            name = name_tmp
+
+        <span class="hljs-keyword">if</span> brightness_tmp <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">or</span> color_tmp <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:
+            light_changed = <span class="hljs-literal">True</span>
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">mqtt_connect</span>():
+    <span class="hljs-keyword">global</span> mqtt_client
+
+    MQTT_SERVER = PRODUCT_ID + <span class="hljs-string">".iotcloud.tencentdevices.com"</span>
+    MQTT_PORT = <span class="hljs-number">1883</span>
+    MQTT_CLIENT_ID = PRODUCT_ID+DEVICE_NAME
+    MQTT_USER_NAME = <span class="hljs-string">"XICW4V8C51Led_1;12010126;DUQ2I;1655185098"</span>
+    MQTTT_PASSWORD = <span class="hljs-string">"c8e0d3a2c3b568091747e5eba7de4a6edb6280dd20d1dade64efa6debd3492cd;hmacsha256"</span>
+
+    mqtt_client = MQTTClient(MQTT_CLIENT_ID, MQTT_SERVER, MQTT_PORT,MQTT_USER_NAME, MQTTT_PASSWORD, <span class="hljs-number">60</span>)
+    mqtt_client.set_callback(mqtt_callback)
+    mqtt_client.connect()
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">mqtt_report</span>(<span class="hljs-params">client, color, name, switch, brightness</span>):
+
+    msg = {
+        <span class="hljs-string">"method"</span>: <span class="hljs-string">"report"</span>,
+        <span class="hljs-string">"clientToken"</span>: <span class="hljs-string">"clientToken-2444532211"</span>,
+        <span class="hljs-string">"params"</span>: {
+            <span class="hljs-string">"color"</span>: color,
+            <span class="hljs-string">"color_temp"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-string">"name"</span>: name,
+            <span class="hljs-string">"power_switch"</span>: switch,
+            <span class="hljs-string">"brightness"</span>: brightness
+        }
+    }
+
+    client.publish(MQTT_CONTROL_REPLY_TOPIC.encode(), ujson.dumps(msg).encode())
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">light_loop</span>():
+    <span class="hljs-keyword">global</span> led, relay, button
+    <span class="hljs-keyword">global</span> color, name, brightness, light_changed
+
+    switch_status_last = <span class="hljs-number">1</span>
+    LED_status = <span class="hljs-number">0</span>
+
+    color = <span class="hljs-number">2</span>   <span class="hljs-comment">#blue</span>
+    brightness = <span class="hljs-number">100</span>    <span class="hljs-comment">#here 100% == 1</span>
+    led.rgb_light(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>, brightness/<span class="hljs-number">100.0</span>)
+
+    <span class="hljs-comment"># 该循环为测试LED等的开闭循环</span>
+    <span class="hljs-comment"># while True:</span>
+    <span class="hljs-comment">#     relay.set_on()</span>
+    <span class="hljs-comment">#     await uasyncio.sleep_ms(2000)</span>
+    <span class="hljs-comment">#     relay.set_off()</span>
+    <span class="hljs-comment">#     await uasyncio.sleep_ms(2000)</span>
+
+    time_cnt = <span class="hljs-number">0</span>
+
+    mqtt_client.subscribe(MQTT_CONTROL_TOPIC.encode())
+
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        mqtt_client.check_msg()
+
+        switch_status = button.state()
+        LED_status = relay.state()
+        <span class="hljs-keyword">if</span> switch_status != switch_status_last:
+            <span class="hljs-keyword">if</span> switch_status == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> switch_status_last == <span class="hljs-number">1</span>:
+                LED_status = <span class="hljs-number">0</span> <span class="hljs-keyword">if</span> LED_status <span class="hljs-keyword">else</span> <span class="hljs-number">1</span>
+            relay.set_state(LED_status)
+            switch_status_last = switch_status
+
+        <span class="hljs-keyword">if</span> light_changed:
+            light_changed = <span class="hljs-literal">False</span>
+            led.rgb_light(<span class="hljs-number">255</span> <span class="hljs-keyword">if</span> color==<span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>, <span class="hljs-number">255</span> <span class="hljs-keyword">if</span> color==<span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>, <span class="hljs-number">255</span> <span class="hljs-keyword">if</span> color==<span class="hljs-number">2</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>, brightness/<span class="hljs-number">100.0</span>)
+
+        <span class="hljs-comment"># 调整为0.02*100=2秒上报一次</span>
+        <span class="hljs-keyword">if</span> time_cnt &gt;= <span class="hljs-number">100</span>:
+            mqtt_report(mqtt_client, color, name, LED_status, brightness)
+            time_cnt = <span class="hljs-number">0</span>
+        time_cnt = time_cnt+<span class="hljs-number">1</span>
+        <span class="hljs-keyword">await</span> uasyncio.sleep_ms(<span class="hljs-number">20</span>)<span class="hljs-comment"># 时间间隔最好别超过50ms，否则按钮按下时间在休眠期间的话会无效，导致按钮很不好操作</span>
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
+    <span class="hljs-keyword">global</span> mqtt_client
+
+    <span class="hljs-comment"># Wi-Fi connection</span>
+    <span class="hljs-keyword">try</span>:
+        <span class="hljs-keyword">await</span> uasyncio.wait_for(wifi_connect(WIFI_AP_SSID, WIFI_AP_PSW), <span class="hljs-number">20</span>)
+    <span class="hljs-keyword">except</span> uasyncio.TimeoutError:
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"wifi connected timeout!"</span>)
+
+    <span class="hljs-comment"># MQTT connection</span>
+    <span class="hljs-keyword">try</span>:
+        <span class="hljs-keyword">await</span> uasyncio.wait_for(mqtt_connect(), <span class="hljs-number">20</span>)
+    <span class="hljs-keyword">except</span> uasyncio.TimeoutError:
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"mqtt connected timeout!"</span>)
+
+    <span class="hljs-keyword">await</span> uasyncio.gather(light_loop())
+
+uasyncio.run(main())
+</code></pre>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Relay.py</span>
+
+<span class="hljs-keyword">from</span> machine <span class="hljs-keyword">import</span> ADC
+<span class="hljs-keyword">from</span> machine <span class="hljs-keyword">import</span> Pin, Signal
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Relay</span>():
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, pin</span>):
+        self.relaypin = Pin(pin, Pin.OUT)
+        self.relayled = Signal(self.relaypin, invert=<span class="hljs-literal">True</span>) <span class="hljs-comment"># 将信号置反, 实现开与关和输入信号对应</span>
+        <span class="hljs-comment">#self.last_status = 1</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">set_state</span>(<span class="hljs-params">self, state</span>):
+        self.relayled.value(state)
+        <span class="hljs-comment">#self.relaypin.value(state)</span>
+        <span class="hljs-comment">#self.last_status = state</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">set_on</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-comment">#self.relaypin.on() value: 1 but light is off</span>
+        self.relayled.value(<span class="hljs-number">1</span>)
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">'Relay on value: '</span> + <span class="hljs-built_in">str</span>(self.relayled.value()))
+    
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">set_off</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-comment"># self.relaypin.off() value: 0 but light is on</span>
+        self.relayled.value(<span class="hljs-number">0</span>)
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">'Relay off value: '</span> + <span class="hljs-built_in">str</span>(self.relayled.value()))
+    
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">state</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> self.relayled.value()
+</code></pre>
+<pre class="highlight"><code class="python"><span class="hljs-comment">#LED.py</span>
+
+<span class="hljs-keyword">from</span> machine <span class="hljs-keyword">import</span> PWM
+<span class="hljs-keyword">from</span> machine <span class="hljs-keyword">import</span> Pin
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Led</span>():
+    <span class="hljs-string">"""
+    创建LED类
+    """</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, rpin, gpin, bpin, sfreq=<span class="hljs-number">1000</span></span>):
+        <span class="hljs-string">"""
+        构造函数
+        :param pin: 接LED的管脚，必须支持PWM
+        :param freq: PWM的默认频率是1000
+        """</span>
+        <span class="hljs-comment">#以rpin, gpin, bpin为参数，使用Pin和PWM来绑定三个引脚来控制led灯的红黄蓝的三个PWM信号</span>
+        self.led_red = PWM(Pin(rpin), freq = sfreq)
+        self.led_green = PWM(Pin(gpin), freq = sfreq)
+        self.led_blue = PWM(Pin(bpin), freq = sfreq)
+		
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">rgb_light</span>(<span class="hljs-params">self, red, green, blue, brightness</span>):
+		<span class="hljs-comment">#red green blue的范围在range(256)内，brightness的范围在[0,1]内，如果取值不在正确范围内，什么也不做</span>
+        <span class="hljs-comment">#调用duty成员函数来设置三种颜色的占空比</span>
+        <span class="hljs-keyword">if</span> brightness &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> brightness &lt;= <span class="hljs-number">1</span>:
+            <span class="hljs-keyword">if</span> red <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):
+                self.led_red.duty(<span class="hljs-built_in">int</span>(red/<span class="hljs-number">255</span>*brightness*<span class="hljs-number">1023</span>))
+            <span class="hljs-keyword">if</span> green <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):
+                self.led_green.duty(<span class="hljs-built_in">int</span>(green/<span class="hljs-number">255</span>*brightness*<span class="hljs-number">1023</span>))
+            <span class="hljs-keyword">if</span> blue <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):
+                self.led_blue.duty(<span class="hljs-built_in">int</span>(blue/<span class="hljs-number">255</span>*brightness*<span class="hljs-number">1023</span>))
+		
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">deinit</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-string">"""
+        析构函数
+        """</span>
+        self.led_red.deinit()
+        self.led_green.deinit()
+        self.led_blue.deinit()
+</code></pre>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Button.py</span>
+<span class="hljs-keyword">from</span> machine <span class="hljs-keyword">import</span> ADC 
+<span class="hljs-keyword">from</span> machine <span class="hljs-keyword">import</span> Pin
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Button</span>():
+    
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, pin</span>):
+        self.button = Pin(pin, Pin.IN)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">state</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> self.button.value()
+
+</code></pre>
+<h3 id="光照传感器"><a class="markdownIt-Anchor" href="#光照传感器"></a> 光照传感器</h3>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># main.py</span>
+<span class="hljs-keyword">from</span> ble_lightsensor <span class="hljs-keyword">import</span> BLELightSensor
+<span class="hljs-keyword">from</span> lightsensor <span class="hljs-keyword">import</span> LightSensor
+<span class="hljs-keyword">import</span> time
+<span class="hljs-keyword">import</span> bluetooth
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
+    ble = bluetooth.BLE()
+    ble.active(<span class="hljs-literal">True</span>)
+    ble_light = BLELightSensor(ble)
+
+    light = LightSensor(<span class="hljs-number">36</span>)
+    light_density = light.value()
+    i = <span class="hljs-number">0</span>
+
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        <span class="hljs-comment"># Write every second, notify every 10 seconds.</span>
+        i = (i + <span class="hljs-number">1</span>) % <span class="hljs-number">10</span>
+        ble_light.set_light(light_density, notify=i == <span class="hljs-number">0</span>)
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"Light Lux:"</span>, light_density)
+
+        light_density = light.value()
+        time.sleep_ms(<span class="hljs-number">1000</span>)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    main()
+</code></pre>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># ble_advertising.py</span>
+<span class="hljs-comment"># Helpers for generating BLE advertising payloads.</span>
+
+<span class="hljs-keyword">from</span> micropython <span class="hljs-keyword">import</span> const
+<span class="hljs-keyword">import</span> struct
+<span class="hljs-keyword">import</span> bluetooth
+
+<span class="hljs-comment"># Advertising payloads are repeated packets of the following form:</span>
+<span class="hljs-comment">#   1 byte data length (N + 1)</span>
+<span class="hljs-comment">#   1 byte type (see constants below)</span>
+<span class="hljs-comment">#   N bytes type-specific data</span>
+
+_ADV_TYPE_FLAGS = const(<span class="hljs-number">0x01</span>)
+_ADV_TYPE_NAME = const(<span class="hljs-number">0x09</span>)
+_ADV_TYPE_UUID16_COMPLETE = const(<span class="hljs-number">0x3</span>)
+_ADV_TYPE_UUID32_COMPLETE = const(<span class="hljs-number">0x5</span>)
+_ADV_TYPE_UUID128_COMPLETE = const(<span class="hljs-number">0x7</span>)
+_ADV_TYPE_UUID16_MORE = const(<span class="hljs-number">0x2</span>)
+_ADV_TYPE_UUID32_MORE = const(<span class="hljs-number">0x4</span>)
+_ADV_TYPE_UUID128_MORE = const(<span class="hljs-number">0x6</span>)
+_ADV_TYPE_APPEARANCE = const(<span class="hljs-number">0x19</span>)
+_ADV_TYPE_SERVICE_DATA = const(<span class="hljs-number">0x16</span>)
+
+
+<span class="hljs-comment"># Generate a payload to be passed to gap_advertise(adv_data=...).</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">advertising_payload</span>(<span class="hljs-params">limited_disc=<span class="hljs-literal">False</span>, br_edr=<span class="hljs-literal">False</span>, name=<span class="hljs-literal">None</span>, services=<span class="hljs-literal">None</span>, appearance=<span class="hljs-number">0</span>, service_data = <span class="hljs-literal">None</span></span>):
+    payload = <span class="hljs-built_in">bytearray</span>()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_append</span>(<span class="hljs-params">adv_type, value</span>):
+        <span class="hljs-keyword">nonlocal</span> payload
+        payload += struct.pack(<span class="hljs-string">"BB"</span>, <span class="hljs-built_in">len</span>(value) + <span class="hljs-number">1</span>, adv_type) + value
+
+    _append(
+        _ADV_TYPE_FLAGS,
+        struct.pack(<span class="hljs-string">"B"</span>, (<span class="hljs-number">0x01</span> <span class="hljs-keyword">if</span> limited_disc <span class="hljs-keyword">else</span> <span class="hljs-number">0x02</span>) + (<span class="hljs-number">0x18</span> <span class="hljs-keyword">if</span> br_edr <span class="hljs-keyword">else</span> <span class="hljs-number">0x04</span>)),
+    )
+
+    <span class="hljs-keyword">if</span> name:
+        _append(_ADV_TYPE_NAME, name)
+
+    <span class="hljs-keyword">if</span> services:
+        <span class="hljs-keyword">for</span> uuid <span class="hljs-keyword">in</span> services:
+            b = <span class="hljs-built_in">bytes</span>(uuid)
+            <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(b) == <span class="hljs-number">2</span>:
+                _append(_ADV_TYPE_UUID16_COMPLETE, b)
+            <span class="hljs-keyword">elif</span> <span class="hljs-built_in">len</span>(b) == <span class="hljs-number">4</span>:
+                _append(_ADV_TYPE_UUID32_COMPLETE, b)
+            <span class="hljs-keyword">elif</span> <span class="hljs-built_in">len</span>(b) == <span class="hljs-number">16</span>:
+                _append(_ADV_TYPE_UUID128_COMPLETE, b)
+
+    <span class="hljs-comment"># See org.bluetooth.characteristic.gap.appearance.xml</span>
+    <span class="hljs-keyword">if</span> appearance:
+        _append(_ADV_TYPE_APPEARANCE, struct.pack(<span class="hljs-string">"&lt;h"</span>, appearance))
+
+    <span class="hljs-keyword">if</span> service_data:
+        _append(_ADV_TYPE_SERVICE_DATA, service_data)
+
+    <span class="hljs-keyword">return</span> payload
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">decode_field</span>(<span class="hljs-params">payload, adv_type</span>):
+    i = <span class="hljs-number">0</span>
+    result = []
+    <span class="hljs-keyword">while</span> i + <span class="hljs-number">1</span> &lt; <span class="hljs-built_in">len</span>(payload):
+        <span class="hljs-keyword">if</span> payload[i + <span class="hljs-number">1</span>] == adv_type:
+            result.append(payload[i + <span class="hljs-number">2</span> : i + payload[i] + <span class="hljs-number">1</span>])
+        i += <span class="hljs-number">1</span> + payload[i]
+    <span class="hljs-keyword">return</span> result
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">decode_name</span>(<span class="hljs-params">payload</span>):
+    n = decode_field(payload, _ADV_TYPE_NAME)
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">str</span>(n[<span class="hljs-number">0</span>], <span class="hljs-string">"utf-8"</span>) <span class="hljs-keyword">if</span> n <span class="hljs-keyword">else</span> <span class="hljs-string">""</span>
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">decode_services</span>(<span class="hljs-params">payload</span>):
+    services = []
+    <span class="hljs-keyword">for</span> u <span class="hljs-keyword">in</span> decode_field(payload, _ADV_TYPE_UUID16_COMPLETE):
+        services.append(bluetooth.UUID(struct.unpack(<span class="hljs-string">"&lt;h"</span>, u)[<span class="hljs-number">0</span>]))
+    <span class="hljs-keyword">for</span> u <span class="hljs-keyword">in</span> decode_field(payload, _ADV_TYPE_UUID32_COMPLETE):
+        services.append(bluetooth.UUID(struct.unpack(<span class="hljs-string">"&lt;d"</span>, u)[<span class="hljs-number">0</span>]))
+    <span class="hljs-keyword">for</span> u <span class="hljs-keyword">in</span> decode_field(payload, _ADV_TYPE_UUID128_COMPLETE):
+        services.append(bluetooth.UUID(u))
+    <span class="hljs-keyword">return</span> services
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">demo</span>():
+    payload = advertising_payload(
+        name=<span class="hljs-string">"micropython"</span>,
+        services=[bluetooth.UUID(<span class="hljs-number">0x181A</span>), bluetooth.UUID(<span class="hljs-string">"6E400001-B5A3-F393-E0A9-E50E24DCCA9E"</span>)],
+    )
+    <span class="hljs-built_in">print</span>(payload)
+    <span class="hljs-built_in">print</span>(decode_name(payload))
+    <span class="hljs-built_in">print</span>(decode_services(payload))
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    demo()
+</code></pre>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># ble_lightsensor.py</span>
+<span class="hljs-keyword">import</span> bluetooth
+<span class="hljs-keyword">import</span> struct
+<span class="hljs-keyword">import</span> time
+<span class="hljs-keyword">from</span> ble_advertising <span class="hljs-keyword">import</span> advertising_payload
+
+<span class="hljs-keyword">from</span> micropython <span class="hljs-keyword">import</span> const
+
+_IRQ_CENTRAL_CONNECT = const(<span class="hljs-number">1</span>)
+_IRQ_CENTRAL_DISCONNECT = const(<span class="hljs-number">2</span>)
+_IRQ_GATTS_INDICATE_DONE = const(<span class="hljs-number">20</span>)
+
+_FLAG_READ = const(<span class="hljs-number">0x0002</span>)
+_FLAG_NOTIFY = const(<span class="hljs-number">0x0010</span>)
+
+_ADV_SERVICE_DATA_UUID = <span class="hljs-number">0xFE95</span>
+_SERVICE_UUID_ENV_SENSE = <span class="hljs-number">0x181A</span>
+_CHAR_UUID_AMBIENT_LIGHT = <span class="hljs-string">'FEC66B35-937E-4938-9F8D-6E44BBD533EE'</span>
+
+<span class="hljs-comment"># Service environmental sensing</span>
+_ENV_SENSE_UUID = bluetooth.UUID(_SERVICE_UUID_ENV_SENSE)
+<span class="hljs-comment"># Characteristic ambient light density</span>
+_AMBIENT_LIGHT_CHAR = (
+    bluetooth.UUID(_CHAR_UUID_AMBIENT_LIGHT),
+    _FLAG_READ | _FLAG_NOTIFY ,
+)
+_ENV_SENSE_SERVICE = (
+    _ENV_SENSE_UUID,
+    (_AMBIENT_LIGHT_CHAR,),
+)
+
+<span class="hljs-comment"># https://specificationrefs.bluetooth.com/assigned-values/Appearance%20Values.pdf</span>
+_ADV_APPEARANCE_GENERIC_AMBIENT_LIGHT = const(<span class="hljs-number">1344</span>)
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">BLELightSensor</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, ble, name=<span class="hljs-string">'Nodemcu'</span></span>):
+        self._ble = ble
+        self._ble.active(<span class="hljs-literal">True</span>)
+        self._ble.irq(self._irq)
+        ((self._handle,),) = self._ble.gatts_register_services((_ENV_SENSE_SERVICE,))
+        self._connections = <span class="hljs-built_in">set</span>()
+        time.sleep_ms(<span class="hljs-number">500</span>)
+        self._payload = advertising_payload(
+            name=name, services=[_ENV_SENSE_UUID], appearance=_ADV_APPEARANCE_GENERIC_AMBIENT_LIGHT
+        )
+        self._sd_adv = <span class="hljs-literal">None</span>
+        self._advertise()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_irq</span>(<span class="hljs-params">self, event, data</span>):
+        <span class="hljs-comment"># Track connections so we can send notifications.</span>
+        <span class="hljs-keyword">if</span> event == _IRQ_CENTRAL_CONNECT:
+            conn_handle, _, _ = data
+            self._connections.add(conn_handle)
+        <span class="hljs-keyword">elif</span> event == _IRQ_CENTRAL_DISCONNECT:
+            conn_handle, _, _ = data
+            self._connections.remove(conn_handle)
+            <span class="hljs-comment"># Start advertising again to allow a new connection.</span>
+            self._advertise()
+        <span class="hljs-keyword">elif</span> event == _IRQ_GATTS_INDICATE_DONE:
+            conn_handle, value_handle, status = data
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">set_light</span>(<span class="hljs-params">self, light_den, notify=<span class="hljs-literal">False</span></span>):
+        self._ble.gatts_write(self._handle, struct.pack(<span class="hljs-string">"!h"</span>, <span class="hljs-built_in">int</span>(light_den)))
+        self._sd_adv = self.build_mi_sdadv(light_den)
+        self._advertise()
+        <span class="hljs-keyword">if</span> notify:
+            <span class="hljs-keyword">for</span> conn_handle <span class="hljs-keyword">in</span> self._connections:
+                <span class="hljs-keyword">if</span> notify:
+                    <span class="hljs-comment"># Notify connected centrals.</span>
+                    self._ble.gatts_notify(conn_handle, self._handle)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">build_mi_sdadv</span>(<span class="hljs-params">self, density</span>):
+        
+        uuid = <span class="hljs-number">0xFE95</span>
+        fc = <span class="hljs-number">0x0010</span>
+        pid = <span class="hljs-number">0x0002</span>
+        fcnt = <span class="hljs-number">0x01</span>
+        mac = self._ble.config(<span class="hljs-string">'mac'</span>)
+        objid = <span class="hljs-number">0x1007</span>
+        objlen = <span class="hljs-number">0x03</span>
+        objval = density
+
+        <span class="hljs-comment">#service_data = struct.pack("&lt;3HB",uuid,fc,pid,fcnt)+mac+struct.pack("&lt;H2BH",objid,objlen,0,objval)</span>
+        <span class="hljs-comment">#mac获取得到的是一个tuple对象 ex: (0, b'4\\x86]\\xb6\\xeb\\x0e'), 取第二个</span>
+        service_data = struct.pack(<span class="hljs-string">"&lt;3HB"</span>,uuid,fc,pid,fcnt)+mac[<span class="hljs-number">1</span>]+struct.pack(<span class="hljs-string">"&lt;H2BH"</span>,objid,objlen,<span class="hljs-number">0</span>,objval)
+
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"Service Data:"</span>,service_data)
+        
+        <span class="hljs-keyword">return</span> advertising_payload(service_data=service_data)
+        
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_advertise</span>(<span class="hljs-params">self, interval_us=<span class="hljs-number">500000</span></span>):
+        self._ble.gap_advertise(interval_us, adv_data=self._payload)
+        time.sleep_ms(<span class="hljs-number">100</span>)
+
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"sd_adv"</span>,self._sd_adv)
+        <span class="hljs-keyword">if</span> self._sd_adv <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">"sdddd_adv"</span>,self._sd_adv)
+            self._ble.gap_advertise(interval_us, adv_data=self._sd_adv)
+</code></pre>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># lightsensor.py</span>
+
+<span class="hljs-keyword">from</span> machine <span class="hljs-keyword">import</span> ADC
+<span class="hljs-keyword">from</span> machine <span class="hljs-keyword">import</span> Pin
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">LightSensor</span>():
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, pin</span>):
+        self.light = ADC(Pin(pin))
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">value</span>(<span class="hljs-params">self</span>):
+        value = self.light.read()
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"Light ADC value:"</span>,value)
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">int</span>(value / <span class="hljs-number">4095</span> * <span class="hljs-number">6000</span>)
+</code></pre>
+<h3 id="esp32的网关实现-2"><a class="markdownIt-Anchor" href="#esp32的网关实现-2"></a> esp32的网关实现</h3>
+<pre class="highlight"><code class="py"><span class="hljs-comment"># blescan.py</span>
+<span class="hljs-keyword">import</span> time
+<span class="hljs-keyword">from</span> threading <span class="hljs-keyword">import</span> Thread
+<span class="hljs-keyword">from</span> interruptingcow <span class="hljs-keyword">import</span> timeout
+
+<span class="hljs-keyword">from</span> bluepy.btle <span class="hljs-keyword">import</span> DefaultDelegate, Peripheral, Scanner, UUID, capitaliseName, BTLEInternalError
+<span class="hljs-keyword">from</span> bluepy.btle <span class="hljs-keyword">import</span> BTLEDisconnectError, BTLEManagementError, BTLEGattError
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">LightScanner</span>():
+    SCAN_TIMEOUT = <span class="hljs-number">5</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name</span>):
+        self._name = name
+    
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">status_update</span>(<span class="hljs-params">self</span>):
+        results = self._get_data()
+
+        <span class="hljs-comment"># messages = [</span>
+        <span class="hljs-comment">#     MqttMessage(</span>
+        <span class="hljs-comment">#         topic=self.format_topic("property/light"),</span>
+        <span class="hljs-comment">#         payload=results.lightlevel,</span>
+        <span class="hljs-comment">#     )</span>
+        <span class="hljs-comment"># ]</span>
+
+        <span class="hljs-keyword">return</span> results
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_get_data</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-string">"""
+        获取光照强度数据，并对超时异常进行处理
+        """</span>
+        scan_processor = ScanProcessor(self._name)
+        scanner = Scanner().withDelegate(scan_processor)
+        scanner.scan(self.SCAN_TIMEOUT, passive=<span class="hljs-literal">True</span>)
+
+        <span class="hljs-keyword">with</span> timeout(
+            self.SCAN_TIMEOUT,
+            exception=Exception(
+                <span class="hljs-string">"Retrieving data from {} device {} timed out after {} seconds"</span>.<span class="hljs-built_in">format</span>(
+                    <span class="hljs-built_in">repr</span>(self), self._name, self.SCAN_TIMEOUT
+                )
+            ),
+        ):
+            <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> scan_processor.ready:
+                time.sleep(<span class="hljs-number">1</span>)
+            <span class="hljs-keyword">return</span> scan_processor.results
+
+        <span class="hljs-keyword">return</span> scan_processor.results
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ScanProcessor</span>:
+
+    ADV_TYPE_SERVICE_DATA = <span class="hljs-number">0x16</span> <span class="hljs-comment">#设置数据格式为十六进制</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name</span>):
+        self._ready = <span class="hljs-literal">False</span>
+        self._name = name
+        self._results = MiBeaconData()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">handleDiscovery</span>(<span class="hljs-params">self, dev, isNewDev, _</span>):
+        is_nodemcu = <span class="hljs-literal">False</span>
+        <span class="hljs-keyword">if</span> isNewDev:
+            <span class="hljs-keyword">for</span> (adtype, desc, value) <span class="hljs-keyword">in</span> dev.getScanData():
+                <span class="hljs-comment">#Service Data UUID == 0xFE95 according to MiBeacon</span>
+                <span class="hljs-keyword">if</span> adtype == self.ADV_TYPE_SERVICE_DATA <span class="hljs-keyword">and</span> value.startswith(<span class="hljs-string">"95fe"</span>):
+                    <span class="hljs-built_in">print</span>(<span class="hljs-string">"FOUND service Data:"</span>,adtype, desc, value)
+                    <span class="hljs-comment">#Object ID == 0x1007 according to MiBeacon</span>
+                    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(value) == <span class="hljs-number">38</span> <span class="hljs-keyword">and</span> value[<span class="hljs-number">26</span>:<span class="hljs-number">30</span>] == <span class="hljs-string">'0710'</span>:
+                        light_den = <span class="hljs-built_in">int</span>((value[-<span class="hljs-number">2</span>:] + value[-<span class="hljs-number">4</span>:-<span class="hljs-number">2</span>]), <span class="hljs-number">16</span>)
+                        mac = value[<span class="hljs-number">14</span>:<span class="hljs-number">26</span>]
+
+                        self._results.lightlevel = light_den
+                        self._results.mac = mac
+
+                        self.ready = <span class="hljs-literal">True</span>
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">mac</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> self._mac
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">ready</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> self._ready
+
+<span class="hljs-meta">    @ready.setter</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">ready</span>(<span class="hljs-params">self, var</span>):
+        self._ready = var
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">results</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> self._results
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MiBeaconData</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):
+        self._lightlevel = <span class="hljs-literal">None</span>
+        self._mac = <span class="hljs-literal">None</span>
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">lightlevel</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> self._lightlevel
+
+<span class="hljs-meta">    @lightlevel.setter</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">lightlevel</span>(<span class="hljs-params">self, var</span>):
+        self._lightlevel = var
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">mac</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> self._mac
+
+<span class="hljs-meta">    @mac.setter</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">mac</span>(<span class="hljs-params">self, var</span>):
+        self._mac = var
+</code></pre>
+<pre class="highlight"><code class="py"><span class="hljs-comment"># gateway.py</span>
+<span class="hljs-keyword">from</span> blescan <span class="hljs-keyword">import</span> LightScanner, MiBeaconData
+
+<span class="hljs-keyword">import</span> time 
+<span class="hljs-keyword">import</span> asyncio
+<span class="hljs-keyword">import</span> json
+<span class="hljs-keyword">import</span> uuid
+<span class="hljs-keyword">import</span> paho.mqtt.client <span class="hljs-keyword">as</span> MQTTClient
+
+<span class="hljs-string">"""
+QCloud Device Info
+"""</span>
+DEVICE_NAME = <span class="hljs-string">"Lightsensor_1"</span>
+PRODUCT_ID = <span class="hljs-string">"X2OQT7NRTP"</span>
+DEVICE_KEY = <span class="hljs-string">"h0ftJ153maTi6jJWg9KCQA=="</span>
+
+<span class="hljs-string">"""
+MQTT topic
+"""</span>
+MQTT_CONTROL_TOPIC = <span class="hljs-string">"$thing/down/property/"</span>+PRODUCT_ID+<span class="hljs-string">"/"</span>+DEVICE_NAME
+MQTT_CONTROL_REPLY_TOPIC = <span class="hljs-string">"$thing/up/property/"</span>+PRODUCT_ID+<span class="hljs-string">"/"</span>+DEVICE_NAME
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">mqtt_callback</span>(<span class="hljs-params">client, userdata, msg</span>):
+    <span class="hljs-comment"># Callback</span>
+    <span class="hljs-comment"># print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")</span>
+    <span class="hljs-keyword">return</span>
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">mqtt_connect</span>():
+    <span class="hljs-comment">#connect callback</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">on_connect</span>(<span class="hljs-params">client, userdata, flags, rc</span>):
+        <span class="hljs-keyword">if</span> rc == <span class="hljs-number">0</span>:
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">"Connected to MQTT Broker!"</span>)
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">"Failed to connect, return code %d\n"</span>, rc)
+
+    mqtt_client = <span class="hljs-literal">None</span>
+    MQTT_SERVER = PRODUCT_ID + <span class="hljs-string">".iotcloud.tencentdevices.com"</span>
+    MQTT_PORT = <span class="hljs-number">1883</span>
+    MQTT_CLIENT_ID = PRODUCT_ID+DEVICE_NAME
+    MQTT_USER_NAME = <span class="hljs-string">"X2OQT7NRTPLightsensor_1;12010126;DTXFZ;1655263739"</span>
+    MQTTT_PASSWORD = <span class="hljs-string">"c02c6980d125f3846de11e1ab1d256f864e78f7377d2d4f94d992c5703a056c1;hmacsha256"</span>
+
+    mqtt_client = MQTTClient.Client(MQTT_CLIENT_ID)
+    mqtt_client.username_pw_set(MQTT_USER_NAME, MQTTT_PASSWORD)
+    mqtt_client.on_connect = on_connect
+    
+    mqtt_client.connect(MQTT_SERVER, MQTT_PORT, <span class="hljs-number">60</span>)
+
+    <span class="hljs-keyword">return</span> mqtt_client
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">mqtt_report</span>(<span class="hljs-params">client, light_level</span>):
+    client_token = <span class="hljs-string">"clientToken-"</span> + <span class="hljs-built_in">str</span>(uuid.uuid4())
+
+    msg = {
+        <span class="hljs-string">"method"</span>: <span class="hljs-string">"report"</span>,
+        <span class="hljs-string">"clientToken"</span>: client_token,
+        <span class="hljs-string">"params"</span>: {
+            <span class="hljs-string">"Illuminance"</span>: light_level
+        }
+    }
+
+    client.publish(MQTT_CONTROL_REPLY_TOPIC, json.dumps(msg))
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">light_loop</span>(<span class="hljs-params">mclient</span>):
+
+    bles = LightScanner(<span class="hljs-string">'Nodemcu'</span>)
+
+    mclient.subscribe(MQTT_CONTROL_TOPIC)
+    mclient.on_message = mqtt_callback
+
+    mclient.loop_start()
+
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        <span class="hljs-keyword">try</span>:
+            <span class="hljs-comment">#调用bles成员函数读取扫描到的光照强度数值</span>
+            data = bles._get_data()
+        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">"BLE SCAN error:"</span>, e)
+            <span class="hljs-keyword">continue</span>
+		<span class="hljs-comment">#上传扫描到的光照强度数值</span>
+        mqtt_report(mclient, data)
+        
+        <span class="hljs-keyword">await</span> time.sleep(<span class="hljs-number">0.3</span>)
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
+    mqtt_client = <span class="hljs-literal">None</span>
+    <span class="hljs-comment"># MQTT connection</span>
+    <span class="hljs-keyword">try</span>:
+        mqtt_client = <span class="hljs-keyword">await</span> asyncio.wait_for(mqtt_connect(), <span class="hljs-number">20</span>)
+    <span class="hljs-keyword">except</span> asyncio.TimeoutError:
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"mqtt connected timeout!"</span>)
+
+    <span class="hljs-keyword">if</span> mqtt_client <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:
+        <span class="hljs-keyword">await</span> asyncio.gather(light_loop(mqtt_client))
+
+asyncio.get_event_loop().run_until_complete(main())
+</code></pre>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#esp8266%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E7%94%B5%E7%81%AF"><span class="toc-number">1.</span> <span class="toc-text"> ESP8266实现智能电灯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text"> 实验原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.2.</span> <span class="toc-text"> 实验步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">1.3.</span> <span class="toc-text"> 演示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#esp32%E5%AE%9E%E7%8E%B0%E5%85%89%E7%85%A7%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text"> Esp32实现光照传感器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text"> 原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4-2"><span class="toc-number">2.2.</span> <span class="toc-text"> 实验步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E5%85%89%E7%85%A7%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text"> 验证光照传感器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#esp32%E7%9A%84%E7%BD%91%E5%85%B3%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text"> Esp32的网关实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2"><span class="toc-number">3.1.</span> <span class="toc-text"> 部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%9C%BA%E6%99%AF%E8%81%94%E5%8A%A8"><span class="toc-number">3.2.</span> <span class="toc-text"> 设置场景联动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text"> 源代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E7%94%B5%E7%81%AF"><span class="toc-number">4.1.</span> <span class="toc-text"> 智能电灯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%89%E7%85%A7%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">4.2.</span> <span class="toc-text"> 光照传感器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#esp32%E7%9A%84%E7%BD%91%E5%85%B3%E5%AE%9E%E7%8E%B0-2"><span class="toc-number">4.3.</span> <span class="toc-text"> esp32的网关实现</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2022/06373cfef8.html"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&text=智能电灯"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&title=智能电灯"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&is_video=false&description=智能电灯"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=智能电灯&body=Check out this article: https://kpl0111.github.io/blog/2022/06373cfef8.html"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&title=智能电灯"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&title=智能电灯"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&title=智能电灯"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&title=智能电灯"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2022/06373cfef8.html&name=智能电灯&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2023 Nefelibata
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">主  页</a></li>
+         
+          <li><a href="/blog/archives/">时间轴</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/blog/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/blog/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>
