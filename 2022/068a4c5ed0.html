@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="打开VScode，Ctrl + ,或者设置 -&gt; 设置搜索workbenck，如下图：  点击Edit in settings.json在配置文件最后加上以下参数： &#x2F;&#x2F;终端颜色配置 &quot;workbench.colorCustomizations&quot; : {     &#x2F;&#x2F;可以将鼠标放到下面的色号上根据自己的偏好进行选择 	&quot;terminal.foreground&quot; : &quot;#37FF13&quot;,&#x2F;&#x2F;字">
+    <meta name="description" content="打开VScode，Ctrl + ,或者设置 -&gt; 设置搜索workbenck，如下图：点击Edit in settings.json在配置文件最后加上以下参数： &#x2F;&#x2F;终端颜色配置 &quot;workbench.colorCustomizations&quot; : {     &#x2F;&#x2F;可以将鼠标放到下面的色号上根据自己的偏好进行选择     &quot;terminal.foreground&quot; : &quot;#37FF13&quot;,&#x2F;&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VS Code集成终端字体修改 &amp; 字体颜色、大小修改方法">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2022/068a4c5ed0.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="打开VScode，Ctrl + ,或者设置 -&gt; 设置搜索workbenck，如下图：  点击Edit in settings.json在配置文件最后加上以下参数： &#x2F;&#x2F;终端颜色配置 &quot;workbench.colorCustomizations&quot; : {     &#x2F;&#x2F;可以将鼠标放到下面的色号上根据自己的偏好进行选择 	&quot;terminal.foreground&quot; : &quot;#37FF13&quot;,&#x2F;&#x2F;字">
+<meta property="og:description" content="打开VScode，Ctrl + ,或者设置 -&gt; 设置搜索workbenck，如下图：点击Edit in settings.json在配置文件最后加上以下参数： &#x2F;&#x2F;终端颜色配置 &quot;workbench.colorCustomizations&quot; : {     &#x2F;&#x2F;可以将鼠标放到下面的色号上根据自己的偏好进行选择     &quot;terminal.foreground&quot; : &quot;#37FF13&quot;,&#x2F;&#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/06/02/nsmiWrDHCwZ8GzQ.png">
 <meta property="og:image" content="https://s2.loli.net/2022/06/02/Fky9ocazPMngN3Q.png">
@@ -107,13 +107,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </span>
@@ -190,26 +190,23 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>打开VScode，<code>Ctrl + ,</code>或者<code>设置 -&gt; 设置</code>搜索<code>workbenck</code>，如下图：<br>
-<img src="https://s2.loli.net/2022/06/02/nsmiWrDHCwZ8GzQ.png" alt=""><br>
-点击<code>Edit in settings.json</code>在配置文件最后加上以下参数：</p>
-<pre class="highlight"><code class="json"><span class="hljs-comment">//终端颜色配置</span>
-<span class="hljs-attr">"workbench.colorCustomizations"</span> <span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-    <span class="hljs-comment">//可以将鼠标放到下面的色号上根据自己的偏好进行选择</span>
-	<span class="hljs-attr">"terminal.foreground"</span> <span class="hljs-punctuation">:</span> <span class="hljs-string">"#37FF13"</span><span class="hljs-punctuation">,</span><span class="hljs-comment">//字体颜色</span>
- 	<span class="hljs-attr">"terminal.background"</span> <span class="hljs-punctuation">:</span> <span class="hljs-string">"#2b2424"</span><span class="hljs-comment">//背景颜色</span>
-<span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <p>打开VScode，<code>Ctrl + ,</code>或者<code>设置 -&gt; 设置</code>搜索<code>workbenck</code>，如下图：<br><img src="https://s2.loli.net/2022/06/02/nsmiWrDHCwZ8GzQ.png" alt="![](imageVS-Code集成终端字体修改-字体颜色、大小修改方法1654159805450.png)"><br>点击<code>Edit in settings.json</code>在配置文件最后加上以下参数：</p>
+<pre><code class="json">//终端颜色配置
+"workbench.colorCustomizations" : {
+    //可以将鼠标放到下面的色号上根据自己的偏好进行选择
+    "terminal.foreground" : "#37FF13",//字体颜色
+     "terminal.background" : "#2b2424"//背景颜色
+},
 
-<span class="hljs-attr">"terminal.integrated.cursorBlinking"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
-<span class="hljs-attr">"terminal.integrated.lineHeight"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1.2</span><span class="hljs-punctuation">,</span>
-<span class="hljs-attr">"terminal.integrated.letterSpacing"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0.1</span><span class="hljs-punctuation">,</span>
-<span class="hljs-attr">"terminal.integrated.fontSize"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">14</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">//字体大小设置</span>
-<span class="hljs-attr">"terminal.integrated.fontFamily"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Lucida Console"</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">//字体设置</span>
+"terminal.integrated.cursorBlinking": true,
+"terminal.integrated.lineHeight": 1.2,
+"terminal.integrated.letterSpacing": 0.1,
+"terminal.integrated.fontSize": 14, //字体大小设置
+"terminal.integrated.fontFamily": "Lucida Console", //字体设置
 </code></pre>
 <p>保存即可</p>
 <p>具体颜色可根据个人喜好配置，如果想恢复默认颜色或者背景，删除该行代码即可</p>
-<p>配置之后效果如下：<br>
-<img src="https://s2.loli.net/2022/06/02/Fky9ocazPMngN3Q.png" alt=""></p>
+<p>配置之后效果如下：<br><img src="https://s2.loli.net/2022/06/02/Fky9ocazPMngN3Q.png" alt="![](imageVS-Code集成终端字体修改-字体颜色、大小修改方法1654160184142.png)"></p>
 
   </div>
 </article>
@@ -226,13 +223,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </div>
@@ -280,13 +277,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </nav>

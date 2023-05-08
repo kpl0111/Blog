@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。    动态规划，英文：Dynamic Programming，简称DP，如果某一问题有很多重叠子问题，使用动态规划是最有效的。 所以动态规划中每一个状态一定是由上一个状态推导出来的，这一点就区分于贪心，贪心没有状态推导，而是从局部直接选最优的   动规的五部曲  确定dp数组（dp table）以及下标的含义 确定递推公式 dp数组">
+    <meta name="description" content="本篇为个人笔记，内容或有错误。图片部分源于代码随想录，侵删。     动态规划，英文：Dynamic Programming，简称DP，如果某一问题有很多重叠子问题，使用动态规划是最有效的。所以动态规划中每一个状态一定是由上一个状态推导出来的，这一点就区分于贪心，贪心没有状态推导，而是从局部直接选最优的  动规的五部曲 确定dp数组（dp table）以及下标的含义 确定递推公式 dp数组如何初">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode笔记-动态规划">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2022/0826e7783f.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。    动态规划，英文：Dynamic Programming，简称DP，如果某一问题有很多重叠子问题，使用动态规划是最有效的。 所以动态规划中每一个状态一定是由上一个状态推导出来的，这一点就区分于贪心，贪心没有状态推导，而是从局部直接选最优的   动规的五部曲  确定dp数组（dp table）以及下标的含义 确定递推公式 dp数组">
+<meta property="og:description" content="本篇为个人笔记，内容或有错误。图片部分源于代码随想录，侵删。     动态规划，英文：Dynamic Programming，简称DP，如果某一问题有很多重叠子问题，使用动态规划是最有效的。所以动态规划中每一个状态一定是由上一个状态推导出来的，这一点就区分于贪心，贪心没有状态推导，而是从局部直接选最优的  动规的五部曲 确定dp数组（dp table）以及下标的含义 确定递推公式 dp数组如何初">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://code-thinking-1253855093.file.myqcloud.com/pics/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%981.jpeg">
 <meta property="article:published_time" content="2022-08-06T09:41:48.000Z">
@@ -106,13 +106,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </span>
@@ -150,7 +150,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E8%A7%84%E7%9A%84%E4%BA%94%E9%83%A8%E6%9B%B2"><span class="toc-number">1.</span> <span class="toc-text"> 动规的五部曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#202289"><span class="toc-number">2.</span> <span class="toc-text"> 2022.8.9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%9820220810"><span class="toc-number">3.</span> <span class="toc-text"> 背包问题2022.08.10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85%E5%92%8C%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%8520220813"><span class="toc-number">4.</span> <span class="toc-text"> 01背包和完全背包2022.08.13</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85-%E4%BA%8C%E7%BB%B4-%E5%85%88%E7%89%A9%E5%93%81%E5%90%8E%E8%83%8C%E5%8C%85"><span class="toc-number">4.1.</span> <span class="toc-text"> 01背包-二维-先物品后背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85-%E4%BA%8C%E7%BB%B4-%E5%85%88%E8%83%8C%E5%8C%85%E5%90%8E%E7%89%A9%E5%93%81"><span class="toc-number">4.2.</span> <span class="toc-text"> 01背包-二维-先背包后物品</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85-%E4%B8%80%E7%BB%B4"><span class="toc-number">4.3.</span> <span class="toc-text"> 01背包-一维</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="toc-number">4.4.</span> <span class="toc-text"> 完全背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%8E%92%E5%88%97%E5%92%8C%E7%BB%84%E5%90%88"><span class="toc-number">4.5.</span> <span class="toc-text"> 关于排列和组合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="toc-number">4.6.</span> <span class="toc-text"> 多重背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E5%8C%85%E6%80%BB%E7%BB%93"><span class="toc-number">4.7.</span> <span class="toc-text"> 背包总结</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E8%A7%84%E7%9A%84%E4%BA%94%E9%83%A8%E6%9B%B2"><span class="toc-number">1.</span> <span class="toc-text">动规的五部曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2022-8-9"><span class="toc-number">2.</span> <span class="toc-text">2022.8.9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%982022-08-10"><span class="toc-number">3.</span> <span class="toc-text">背包问题2022.08.10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85%E5%92%8C%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%852022-08-13"><span class="toc-number">4.</span> <span class="toc-text">01背包和完全背包2022.08.13</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85-%E4%BA%8C%E7%BB%B4-%E5%85%88%E7%89%A9%E5%93%81%E5%90%8E%E8%83%8C%E5%8C%85"><span class="toc-number">4.1.</span> <span class="toc-text">01背包-二维-先物品后背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85-%E4%BA%8C%E7%BB%B4-%E5%85%88%E8%83%8C%E5%8C%85%E5%90%8E%E7%89%A9%E5%93%81"><span class="toc-number">4.2.</span> <span class="toc-text">01背包-二维-先背包后物品</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85-%E4%B8%80%E7%BB%B4"><span class="toc-number">4.3.</span> <span class="toc-text">01背包-一维</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="toc-number">4.4.</span> <span class="toc-text">完全背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%8E%92%E5%88%97%E5%92%8C%E7%BB%84%E5%90%88"><span class="toc-number">4.5.</span> <span class="toc-text">关于排列和组合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="toc-number">4.6.</span> <span class="toc-text">多重背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E5%8C%85%E6%80%BB%E7%BB%93"><span class="toc-number">4.7.</span> <span class="toc-text">背包总结</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -185,16 +185,14 @@
 
   <div class="content" itemprop="articleBody">
     <blockquote>
-<p>本篇为个人笔记，内容或有错误。<br>
-图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
+<p>本篇为个人笔记，内容或有错误。<br>图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
 </blockquote>
 <!-- toc -->
+
 <blockquote>
-<p>动态规划，英文：Dynamic Programming，简称DP，如果某一问题有很多重叠子问题，使用动态规划是最有效的。<br>
-所以动态规划中每一个状态一定是由上一个状态推导出来的，这一点就区分于贪心，贪心没有状态推导，而是从局部直接选最优的</p>
+<p>动态规划，英文：Dynamic Programming，简称DP，如果某一问题有很多重叠子问题，使用动态规划是最有效的。<br>所以动态规划中每一个状态一定是由上一个状态推导出来的，这一点就区分于贪心，贪心没有状态推导，而是从局部直接选最优的</p>
 </blockquote>
-<h2 id="动规的五部曲"><a class="markdownIt-Anchor" href="#动规的五部曲"></a> 动规的五部曲</h2>
-<ol>
+<h2 id="动规的五部曲"><a href="#动规的五部曲" class="headerlink" title="动规的五部曲"></a>动规的五部曲</h2><ol>
 <li>确定dp数组（dp table）以及下标的含义</li>
 <li>确定递推公式</li>
 <li>dp数组如何初始化</li>
@@ -208,8 +206,7 @@
 <li>打印出来了dp数组和我想的一样么？</li>
 </ol>
 <p>首先要明白dp数组的含义是什么，下表代表什么，确定了这个之后按照套路走就行，手动推导dp数组本质上也是一种检验的过程，当打印出结果符合预期手动推导结果时，基本就没太大问题</p>
-<h2 id="202289"><a class="markdownIt-Anchor" href="#202289"></a> 2022.8.9</h2>
-<p>动态规划的习题我认为最重要的就是要确定dp数组的定义，下标代表什么，该如何初始化，举个例子：</p>
+<h2 id="2022-8-9"><a href="#2022-8-9" class="headerlink" title="2022.8.9"></a>2022.8.9</h2><p>动态规划的习题我认为最重要的就是要确定dp数组的定义，下标代表什么，该如何初始化，举个例子：</p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/integer-break/">LeetCode304：整数拆分</a></p>
 <blockquote>
 <p>给定一个正整数&nbsp;n，将其拆分为至少两个正整数的和，并使这些整数的乘积最大化。 返回你可以获得的最大乘积。</p>
@@ -221,32 +218,28 @@
 </ul>
 <p>示例&nbsp;2:</p>
 <ul>
-<li>
-<p>输入: 10</p>
+<li><p>输入: 10</p>
 </li>
-<li>
-<p>输出: 36</p>
+<li><p>输出: 36</p>
 </li>
-<li>
-<p>解释: 10 = 3 + 3 + 4, 3 ×&nbsp;3 ×&nbsp;4 = 36。</p>
+<li><p>解释: 10 = 3 + 3 + 4, 3 ×&nbsp;3 ×&nbsp;4 = 36。</p>
 </li>
-<li>
-<p>说明: 你可以假设&nbsp;n&nbsp;不小于 2 且不大于 58。</p>
+<li><p>说明: 你可以假设&nbsp;n&nbsp;不小于 2 且不大于 58。</p>
 </li>
 </ul>
 </blockquote>
 <p>这道题在我的做法中dp数组表示的是i这个数字的最大拆分乘积，初始化<code>dp[2] = 1</code>,这是易知的，而在一些题解中就把dp[0]和dp[1]也进行了初始化，这么做当然也可以AC，但是dp数组的意义已经模糊了，暂不谈题目限制`$$2 \le n \ge 58$$,就按照题目说明，0和1就不能拆分为两个正整数的和，更不用谈乘积，虽然这么初始化问题也不大，但是我感觉要透过题去理解，要明白dp数组的含义，下标表示了什么更为重要，下面是本题C++代码：</p>
-<pre class="highlight"><code class="CPP"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">integerBreak</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>{
-        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;
-        dp[<span class="hljs-number">2</span>] = <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">3</span>; i &lt;= n ; i++) {
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt; i - <span class="hljs-number">1</span>; j++) {
-                dp[i] = <span class="hljs-built_in">max</span>(dp[i], <span class="hljs-built_in">max</span>((i - j) * j, dp[i - j] * j));
+<pre><code class="CPP">class Solution {
+public:
+    int integerBreak(int n) {
+        vector&lt;int&gt; dp(n + 1);
+        dp[2] = 1;
+        for (int i = 3; i &lt;= n ; i++) {
+            for (int j = 1; j &lt; i - 1; j++) {
+                dp[i] = max(dp[i], max((i - j) * j, dp[i - j] * j));
             }
         }
-        <span class="hljs-keyword">return</span> dp[n];
+        return dp[n];
     }
 };
 </code></pre>
@@ -254,93 +247,79 @@
 <li>时间复杂度：O(n^2)</li>
 <li>空间复杂度：O(n)</li>
 </ul>
-<h2 id="背包问题20220810"><a class="markdownIt-Anchor" href="#背包问题20220810"></a> 背包问题2022.08.10</h2>
-<blockquote>
+<h2 id="背包问题2022-08-10"><a href="#背包问题2022-08-10" class="headerlink" title="背包问题2022.08.10"></a>背包问题2022.08.10</h2><blockquote>
 <p>转载自<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删</p>
 </blockquote>
-<p>建议按照如下顺序观看：<br>
-<a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a><br>
-<a href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2</a><br>
-<a href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br>
-<a href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包</a></p>
-<h2 id="01背包和完全背包20220813"><a class="markdownIt-Anchor" href="#01背包和完全背包20220813"></a> 01背包和完全背包2022.08.13</h2>
-<blockquote>
+<p>建议按照如下顺序观看：<br><a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a><br><a href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2</a><br><a href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br><a href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包</a></p>
+<h2 id="01背包和完全背包2022-08-13"><a href="#01背包和完全背包2022-08-13" class="headerlink" title="01背包和完全背包2022.08.13"></a>01背包和完全背包2022.08.13</h2><blockquote>
 <p>背包问题大概描述是：有一个承重m的背包，旁边有一堆物品共n个，每个物品重量不一，价值不易，weight[i]和value[i]分别代表第i个物品的重量和价值，求背包最多能装下物品的价值</p>
 <blockquote>
-<p>01背包是说每个物品只有一个，怎么装价值最大<br>
-完全背包是说每种物品有无限多个，怎么装价值最大，比如一辆卡车去进货，每种货占的空间不同，价值也不同，但是每种货数量是不限制的，怎么装，一卡车货价值最大</p>
+<p>01背包是说每个物品只有一个，怎么装价值最大<br>完全背包是说每种物品有无限多个，怎么装价值最大，比如一辆卡车去进货，每种货占的空间不同，价值也不同，但是每种货数量是不限制的，怎么装，一卡车货价值最大</p>
 </blockquote>
 </blockquote>
-<h3 id="01背包-二维-先物品后背包"><a class="markdownIt-Anchor" href="#01背包-二维-先物品后背包"></a> 01背包-二维-先物品后背包</h3>
-<p>采用二维数组遍历必然要考虑遍历顺序，是先遍历背包，还是先遍历物品，不妨设先遍历物品，那么循环内层遍历的就是背包了</p>
+<h3 id="01背包-二维-先物品后背包"><a href="#01背包-二维-先物品后背包" class="headerlink" title="01背包-二维-先物品后背包"></a>01背包-二维-先物品后背包</h3><p>采用二维数组遍历必然要考虑遍历顺序，是先遍历背包，还是先遍历物品，不妨设先遍历物品，那么循环内层遍历的就是背包了</p>
 <p>当对于num[i]，无非两种情况:</p>
 <ol>
 <li>背包可以装的下，继续装那么价值就是<code>dp[i - 1][j - weight[i]] + value[i]</code>,表示未装<code>num[i]</code>物品前，背包最大容量必然是<code>j - weight[i]</code>（因为还要装第<code>i</code>件物品，所以预留出<code>weight[i]</code>的空间，剩下的空间可以装的最大值就是<code>dp[i - 1][j - weight[i]]</code>）</li>
 <li>装不下，背包里面物品价值还是不变，就是<code>dp[i - 1][j]</code></li>
 </ol>
 <p>那么二者取最大值，就是i件物品容量为j的背包可以装的物品最大价值，依次递推即可</p>
-<pre class="highlight"><code class="cpp"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; num[i]; i++) {
-    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = weight[i]; j &lt;= target; j++) { <span class="hljs-comment">//j从weight[i]开始，是因为小于weight[i]的背包根本装不下第i件物品，所以一定都是dp[i - 1][j]</span>
-        dp[i][j] = <span class="hljs-built_in">max</span>(dp[i - <span class="hljs-number">1</span>][j], dp[i - <span class="hljs-number">1</span>][j - weight[i]] + value[i]);
+<pre><code class="cpp">for (int i = 0; i &lt; num[i]; i++) {
+    for (int j = weight[i]; j &lt;= target; j++) { //j从weight[i]开始，是因为小于weight[i]的背包根本装不下第i件物品，所以一定都是dp[i - 1][j]
+        dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);
     }
 }
 </code></pre>
-<h3 id="01背包-二维-先背包后物品"><a class="markdownIt-Anchor" href="#01背包-二维-先背包后物品"></a> 01背包-二维-先背包后物品</h3>
-<p>转变一下遍历顺序二维时是完全可以的，观察上述递归公式可以发现，dp[i][j]完全是由上一行的值和weight数组和value数组决定的，而后面两个是已知的，所以不管按照什么顺序遍历，dp[i][j]仅由其左上位置数值决定，所以遍历顺序怎么样都可以，下面给出先遍历背包，后遍历物品的代码：</p>
-<pre class="highlight"><code class="cpp"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= target; j++) {
-    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i++) {
-        <span class="hljs-keyword">if</span> (j &lt; weight[i]) dp[i][j] = dp[i - <span class="hljs-number">1</span>][j]; <span class="hljs-comment">//装不下</span>
-        <span class="hljs-keyword">else</span> dp[i][j] = <span class="hljs-built_in">max</span>(dp[i - <span class="hljs-number">1</span>][j], dp[i - <span class="hljs-number">1</span>][j - weight[i]] + value[i]); <span class="hljs-comment">//装得下</span>
+<h3 id="01背包-二维-先背包后物品"><a href="#01背包-二维-先背包后物品" class="headerlink" title="01背包-二维-先背包后物品"></a>01背包-二维-先背包后物品</h3><p>转变一下遍历顺序二维时是完全可以的，观察上述递归公式可以发现，dp[i][j]完全是由上一行的值和weight数组和value数组决定的，而后面两个是已知的，所以不管按照什么顺序遍历，dp[i][j]仅由其左上位置数值决定，所以遍历顺序怎么样都可以，下面给出先遍历背包，后遍历物品的代码：</p>
+<pre><code class="cpp">for (int j = 0; j &lt;= target; j++) {
+    for (int i = 1; i &lt; nums.size(); i++) {
+        if (j &lt; weight[i]) dp[i][j] = dp[i - 1][j]; //装不下
+        else dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]); //装得下
     }
 }
 </code></pre>
-<h3 id="01背包-一维"><a class="markdownIt-Anchor" href="#01背包-一维"></a> 01背包-一维</h3>
-<p>前面也已经说明过了，dp[i][j]只依赖上一行的数值，所以我们可以将dp数组降为一维，节约空间，但是要注意，二维的时候我们依赖的是上一行（i - 1行）的值，降为一维后，当不做任何变化时，当前数值就是上一行数值，但是如果j还是从前往后遍历，那么当为j时，从0 ~ （j - 1）的数值已经变为新值了，不再是上一行的值，所以不能从前往后遍历，而当我们从后往前遍历则是可以的，原因也很简单，前面说过，dp[i][j]只依赖左上方的值，当降为一维数组之后，就是只依赖左方的值，而我们从后往前遍历，左方的值一直都未变化，当然是可以的，代码如下：</p>
-<pre class="highlight"><code class="cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; weight.<span class="hljs-built_in">size</span>(); i++) { <span class="hljs-comment">// 遍历物品</span>
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = bagWeight; j &gt;= weight[i]; j--) { <span class="hljs-comment">// 遍历背包容量</span>
-        dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);
+<h3 id="01背包-一维"><a href="#01背包-一维" class="headerlink" title="01背包-一维"></a>01背包-一维</h3><p>前面也已经说明过了，dp[i][j]只依赖上一行的数值，所以我们可以将dp数组降为一维，节约空间，但是要注意，二维的时候我们依赖的是上一行（i - 1行）的值，降为一维后，当不做任何变化时，当前数值就是上一行数值，但是如果j还是从前往后遍历，那么当为j时，从0 ~ （j - 1）的数值已经变为新值了，不再是上一行的值，所以不能从前往后遍历，而当我们从后往前遍历则是可以的，原因也很简单，前面说过，dp[i][j]只依赖左上方的值，当降为一维数组之后，就是只依赖左方的值，而我们从后往前遍历，左方的值一直都未变化，当然是可以的，代码如下：</p>
+<pre><code class="cpp">for(int i = 0; i &lt; weight.size(); i++) { // 遍历物品
+    for(int j = bagWeight; j &gt;= weight[i]; j--) { // 遍历背包容量
+        dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
     }
 }
 </code></pre>
 <p>顺序在这里也很重要，一定要是先物品后背包容量，反之则不行</p>
 <p>观察二维时候的递推公式</p>
-<pre class="highlight"><code class="c++">dp[i][j] = <span class="hljs-built_in">max</span>(dp[i - <span class="hljs-number">1</span>][j], dp[i - <span class="hljs-number">1</span>][j - weight[i]] + value[i]);
+<pre><code class="c++">dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);
 </code></pre>
 <p>dp[i][j]依赖的是上一行，不是上一列，是<code>j - weight[i]</code>列，所以滚动数组完全不可行</p>
-<h3 id="完全背包"><a class="markdownIt-Anchor" href="#完全背包"></a> 完全背包</h3>
-<p>完全背包相比01背包就是物品可以用无数次，仅仅在01背包的基础上略微修改即可，从前往后遍历即可</p>
+<h3 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h3><p>完全背包相比01背包就是物品可以用无数次，仅仅在01背包的基础上略微修改即可，从前往后遍历即可</p>
 <p>上文知道，01背包从后往前遍历是为了保证每个物品仅仅使用一次，而完全背包可以用无数次，从前往后即可，代码如下：</p>
-<pre class="highlight"><code class="cpp"><span class="hljs-comment">// 先遍历物品，再遍历背包</span>
-<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; weight.<span class="hljs-built_in">size</span>(); i++) { <span class="hljs-comment">// 遍历物品</span>
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = weight[i]; j &lt;= bagWeight ; j++) { <span class="hljs-comment">// 遍历背包容量</span>
-        dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);
+<pre><code class="cpp">// 先遍历物品，再遍历背包
+for(int i = 0; i &lt; weight.size(); i++) { // 遍历物品
+    for(int j = weight[i]; j &lt;= bagWeight ; j++) { // 遍历背包容量
+        dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
 
     }
 }
 
-<span class="hljs-comment">// 先遍历背包，再遍历物品</span>
-<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= bagWeight; j++) { <span class="hljs-comment">// 遍历背包容量</span>
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; weight.<span class="hljs-built_in">size</span>(); i++) { <span class="hljs-comment">// 遍历物品</span>
-        <span class="hljs-keyword">if</span> (j - weight[i] &gt;= <span class="hljs-number">0</span>) dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);
+// 先遍历背包，再遍历物品
+for(int j = 0; j &lt;= bagWeight; j++) { // 遍历背包容量
+    for(int i = 0; i &lt; weight.size(); i++) { // 遍历物品
+        if (j - weight[i] &gt;= 0) dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
     }
     cout &lt;&lt; endl;
 }
 </code></pre>
 <p>至于遍历顺序，则同01背包</p>
-<h3 id="关于排列和组合"><a class="markdownIt-Anchor" href="#关于排列和组合"></a> 关于排列和组合</h3>
-<p>完全背包往往会涉及到排列和组合的问题</p>
+<h3 id="关于排列和组合"><a href="#关于排列和组合" class="headerlink" title="关于排列和组合"></a>关于排列和组合</h3><p>完全背包往往会涉及到排列和组合的问题</p>
 <p>就比如这个<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/combination-sum-iv/">组合总数Ⅳ</a>,求数字总和为target</p>
 <p>这道题目要求数字顺序不一样也是一种组合，其本质上就是排列问题，那么使用循环遍历时就需要注意遍历顺序了</p>
 <p>先物品后背包肯定是行不通的，因为物品只能按顺序出现，比如说{1， 3}，不可能出现{3，1}，因为物品是在外侧循环，只能按照数组顺序出现，所以说不能使用先物品后背包的方式，而要用先背包后物品才可以</p>
 <p>一句话总结就是先物品后背包是<strong>组合</strong> ， 先背包后物品是<strong>排列</strong></p>
-<h3 id="多重背包"><a class="markdownIt-Anchor" href="#多重背包"></a> 多重背包</h3>
-<p>多重背包其实跟01背包如出一辙，只是原本数量为1的物品现在数量不再一定为1了，而是由一个数量数组nums记录每件物品的数量有多少，针对多重背包，有以下两种解决方法：</p>
+<h3 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h3><p>多重背包其实跟01背包如出一辙，只是原本数量为1的物品现在数量不再一定为1了，而是由一个数量数组nums记录每件物品的数量有多少，针对多重背包，有以下两种解决方法：</p>
 <ol>
 <li>把多重背包拆分为01背包，把同一种物品拆分为一个一个的，问题就简化为了01背包，按照01背包的解决方法即可</li>
 <li>在双重遍历的时候内嵌一个for循环，遍历这个物品对应的数量即可，本质上还是把同一个物品拆分为了一个一个的</li>
 </ol>
-<h3 id="背包总结"><a class="markdownIt-Anchor" href="#背包总结"></a> 背包总结</h3>
-<p><img src="https://code-thinking-1253855093.file.myqcloud.com/pics/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%981.jpeg" alt=""></p>
+<h3 id="背包总结"><a href="#背包总结" class="headerlink" title="背包总结"></a>背包总结</h3><p><img src="https://code-thinking-1253855093.file.myqcloud.com/pics/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%981.jpeg"></p>
 <p>图源代码随想录知识星球 (opens new window)成员：<a target="_blank" rel="noopener" href="https://wx.zsxq.com/dweb2/index/footprint/844412858822412">海螺人</a></p>
 
   </div>
@@ -358,19 +337,19 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E8%A7%84%E7%9A%84%E4%BA%94%E9%83%A8%E6%9B%B2"><span class="toc-number">1.</span> <span class="toc-text"> 动规的五部曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#202289"><span class="toc-number">2.</span> <span class="toc-text"> 2022.8.9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%9820220810"><span class="toc-number">3.</span> <span class="toc-text"> 背包问题2022.08.10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85%E5%92%8C%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%8520220813"><span class="toc-number">4.</span> <span class="toc-text"> 01背包和完全背包2022.08.13</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85-%E4%BA%8C%E7%BB%B4-%E5%85%88%E7%89%A9%E5%93%81%E5%90%8E%E8%83%8C%E5%8C%85"><span class="toc-number">4.1.</span> <span class="toc-text"> 01背包-二维-先物品后背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85-%E4%BA%8C%E7%BB%B4-%E5%85%88%E8%83%8C%E5%8C%85%E5%90%8E%E7%89%A9%E5%93%81"><span class="toc-number">4.2.</span> <span class="toc-text"> 01背包-二维-先背包后物品</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85-%E4%B8%80%E7%BB%B4"><span class="toc-number">4.3.</span> <span class="toc-text"> 01背包-一维</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="toc-number">4.4.</span> <span class="toc-text"> 完全背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%8E%92%E5%88%97%E5%92%8C%E7%BB%84%E5%90%88"><span class="toc-number">4.5.</span> <span class="toc-text"> 关于排列和组合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="toc-number">4.6.</span> <span class="toc-text"> 多重背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E5%8C%85%E6%80%BB%E7%BB%93"><span class="toc-number">4.7.</span> <span class="toc-text"> 背包总结</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E8%A7%84%E7%9A%84%E4%BA%94%E9%83%A8%E6%9B%B2"><span class="toc-number">1.</span> <span class="toc-text">动规的五部曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2022-8-9"><span class="toc-number">2.</span> <span class="toc-text">2022.8.9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%982022-08-10"><span class="toc-number">3.</span> <span class="toc-text">背包问题2022.08.10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85%E5%92%8C%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%852022-08-13"><span class="toc-number">4.</span> <span class="toc-text">01背包和完全背包2022.08.13</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85-%E4%BA%8C%E7%BB%B4-%E5%85%88%E7%89%A9%E5%93%81%E5%90%8E%E8%83%8C%E5%8C%85"><span class="toc-number">4.1.</span> <span class="toc-text">01背包-二维-先物品后背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85-%E4%BA%8C%E7%BB%B4-%E5%85%88%E8%83%8C%E5%8C%85%E5%90%8E%E7%89%A9%E5%93%81"><span class="toc-number">4.2.</span> <span class="toc-text">01背包-二维-先背包后物品</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85-%E4%B8%80%E7%BB%B4"><span class="toc-number">4.3.</span> <span class="toc-text">01背包-一维</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="toc-number">4.4.</span> <span class="toc-text">完全背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%8E%92%E5%88%97%E5%92%8C%E7%BB%84%E5%90%88"><span class="toc-number">4.5.</span> <span class="toc-text">关于排列和组合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="toc-number">4.6.</span> <span class="toc-text">多重背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E5%8C%85%E6%80%BB%E7%BB%93"><span class="toc-number">4.7.</span> <span class="toc-text">背包总结</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -412,13 +391,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </nav>

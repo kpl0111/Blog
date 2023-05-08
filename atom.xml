@@ -75,11 +75,11 @@
         
         
     <summary type="html">&lt;ul&gt;
-&lt;li&gt;创建仓库
-&lt;ul&gt;
+&lt;li&gt;创建仓库&lt;ul&gt;
 &lt;li&gt;git clone &amp;lt;url&amp;gt; [directory]&lt;/li&gt;
 &lt;li&gt;git init&lt;/li&gt;
-&lt;li&gt;git config --global &lt;a</summary>
+&lt;li&gt;git config –global user.name ‘你的用户名’&lt;/li&gt;
+&lt;li&gt;git config</summary>
         
       
     
@@ -100,8 +100,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;深入理解c二维数组&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#深入理解c二维数组&quot;&gt;&lt;/a&gt; 深入理解C++二维数组&lt;/h2&gt;
-&lt;blockquote&gt;
+    <summary type="html">&lt;h2 id=&quot;深入理解C-二维数组&quot;&gt;&lt;a href=&quot;#深入理解C-二维数组&quot; class=&quot;headerlink&quot; title=&quot;深入理解C++二维数组&quot;&gt;&lt;/a&gt;深入理解C++二维数组&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;提问：定义一个3 *</summary>
         
       
@@ -123,8 +122,7 @@
       
         
         
-    <summary type="html">&lt;p&gt;vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示：&lt;br&gt;
-&lt;img</summary>
+    <summary type="html">&lt;p&gt;vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示：&lt;br&gt;&lt;img</summary>
         
       
     
@@ -206,7 +204,7 @@
     <link href="https://kpl0111.github.io/blog/2022/11b8858517.html"/>
     <id>https://kpl0111.github.io/blog/2022/11b8858517.html</id>
     <published>2022-11-10T11:06:12.000Z</published>
-    <updated>2023-05-02T14:01:27.738Z</updated>
+    <updated>2023-05-08T04:32:12.837Z</updated>
     
     
     <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
@@ -250,8 +248,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;后缀表达式&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#后缀表达式&quot;&gt;&lt;/a&gt; 后缀表达式&lt;/h2&gt;
-&lt;p&gt;后缀表达式也叫&lt;strong&gt;逆波兰表达式&lt;/strong&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;后缀表达式&quot;&gt;&lt;a href=&quot;#后缀表达式&quot; class=&quot;headerlink&quot; title=&quot;后缀表达式&quot;&gt;&lt;/a&gt;后缀表达式&lt;/h2&gt;&lt;p&gt;后缀表达式也叫&lt;strong&gt;逆波兰表达式&lt;/strong&gt;</summary>
         
       
     
@@ -273,12 +270,10 @@
         
         
     <summary type="html">&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;任意位置新建txt文件，打开编辑&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;任意位置新建txt文件，打开编辑&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;复制以下代码&lt;/p&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;console&quot;&gt;@echo off
+&lt;li&gt;&lt;p&gt;复制以下代码&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;console&quot;&gt;@echo off
 
 reg add</summary>
         
@@ -352,9 +347,7 @@ reg add</summary>
       
         
         
-    <summary type="html">&lt;h2 id=&quot;矩阵等价&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#矩阵等价&quot;&gt;&lt;/a&gt; 矩阵等价&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;定义：对同型矩阵A、B，存在可逆阵P和Q，使得&lt;span class=&quot;katex&quot;&gt;&lt;span</summary>
+    <summary type="html">&lt;h2 id=&quot;矩阵等价&quot;&gt;&lt;a href=&quot;#矩阵等价&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -378,8 +371,7 @@ reg add</summary>
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;转载自&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;
-&lt;a</summary>
+&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;&lt;a</summary>
         
       
     
@@ -403,8 +395,7 @@ reg add</summary>
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;转载自&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;
-&lt;a</summary>
+&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;&lt;a</summary>
         
       
     
@@ -428,8 +419,7 @@ reg add</summary>
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;转载自&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;
-&lt;a</summary>
+&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;&lt;a</summary>
         
       
     

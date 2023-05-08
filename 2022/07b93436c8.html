@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="VSCode作为一款非常轻便的编辑器，以轻量，插件丰富收到大家欢迎，我个人是非常喜欢使用VSCode的，用VSCode去编辑Markdown文件也十分方便，当然Typora在这方便也很受欢迎，但是Typora正式版上线之后要收费，不可避免地会损失一部分用户，接下来我就介绍一下使用VSCode来进行编辑Markdown文件时图传的配置方法   前置要求:安装VSCode即可  插件 只需安装一个M">
+    <meta name="description" content="VSCode作为一款非常轻便的编辑器，以轻量，插件丰富收到大家欢迎，我个人是非常喜欢使用VSCode的，用VSCode去编辑Markdown文件也十分方便，当然Typora在这方便也很受欢迎，但是Typora正式版上线之后要收费，不可避免地会损失一部分用户，接下来我就介绍一下使用VSCode来进行编辑Markdown文件时图传的配置方法    前置要求:安装VSCode即可 插件只需安装一个Ma">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VSCode+PicGo+Aliyun配置MarkDown图床">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2022/07b93436c8.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="VSCode作为一款非常轻便的编辑器，以轻量，插件丰富收到大家欢迎，我个人是非常喜欢使用VSCode的，用VSCode去编辑Markdown文件也十分方便，当然Typora在这方便也很受欢迎，但是Typora正式版上线之后要收费，不可避免地会损失一部分用户，接下来我就介绍一下使用VSCode来进行编辑Markdown文件时图传的配置方法   前置要求:安装VSCode即可  插件 只需安装一个M">
+<meta property="og:description" content="VSCode作为一款非常轻便的编辑器，以轻量，插件丰富收到大家欢迎，我个人是非常喜欢使用VSCode的，用VSCode去编辑Markdown文件也十分方便，当然Typora在这方便也很受欢迎，但是Typora正式版上线之后要收费，不可避免地会损失一部分用户，接下来我就介绍一下使用VSCode来进行编辑Markdown文件时图传的配置方法    前置要求:安装VSCode即可 插件只需安装一个Ma">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725171244.png">
 <meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172229.png">
@@ -117,13 +117,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </span>
@@ -161,7 +161,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text"> 插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#aliyun%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8oss"><span class="toc-number">2.</span> <span class="toc-text"> Aliyun对象存储OSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEvscode-picgo%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text"> 配置VSCode PicGo配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">4.</span> <span class="toc-text"> 快捷键</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Aliyun%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS"><span class="toc-number">2.</span> <span class="toc-text">Aliyun对象存储OSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEVSCode-PicGo%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">配置VSCode PicGo配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">4.</span> <span class="toc-text">快捷键</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -199,46 +199,29 @@
 <p>VSCode作为一款非常轻便的编辑器，以轻量，插件丰富收到大家欢迎，我个人是非常喜欢使用VSCode的，用VSCode去编辑Markdown文件也十分方便，当然Typora在这方便也很受欢迎，但是Typora正式版上线之后要收费，不可避免地会损失一部分用户，接下来我就介绍一下使用VSCode来进行编辑Markdown文件时图传的配置方法</p>
 </blockquote>
 <!-- toc -->
+
 <p>前置要求:安装VSCode即可</p>
-<h2 id="插件"><a class="markdownIt-Anchor" href="#插件"></a> 插件</h2>
-<p>只需安装一个<code>Markdown All in One</code>即可使用VSCode编辑Markdown文件，非常方便</p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>只需安装一个<code>Markdown All in One</code>即可使用VSCode编辑Markdown文件，非常方便</p>
 <p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725171244.png" alt="20220725171244"></p>
 <p>但是这个插件不提供图床功能，仍需要将图片转换成网络链接复制到md文件中，非常不方便</p>
 <p>接下来继续安装一个<code>PicGo</code>插件即可</p>
-<h2 id="aliyun对象存储oss"><a class="markdownIt-Anchor" href="#aliyun对象存储oss"></a> Aliyun对象存储OSS</h2>
-<blockquote>
+<h2 id="Aliyun对象存储OSS"><a href="#Aliyun对象存储OSS" class="headerlink" title="Aliyun对象存储OSS"></a>Aliyun对象存储OSS</h2><blockquote>
 <p>PicGo默认存储为SMMS，我也一直在用这个，但是今天突然就打不开了，Github也可以，但是其服务器在国外，国内使用经常会显示不了图片，所以综合一下选择了Aliyun，而且新用户免费体验三个月，作为图床仓库，40G存储量一年的价格为5元，也可以说是非常划算了，接下来讲一下详细配置。</p>
 </blockquote>
 <ol>
-<li>打开<a target="_blank" rel="noopener" href="https://www.aliyun.com/">阿里云官网</a>，登陆或注册，在产品里面找到对象存储OSS<br>
-<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172229.png" alt="20220725172229"></li>
-<li>根据需要直接购买，作为图床使用40G空间已经足够了，选项默认的即可，直接购买即可<br>
-<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172337.png" alt="20220725172337"></li>
-<li>购买之后直接进入OSS管理控制台<br>
-<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172629.png" alt="20220725172629"></li>
-<li>在Bucket列表中新建一个Bucket，地域选择离自己最近的，复制下这个<code>地域名称英文</code>，待会要用<br>
-<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172737.png" alt="20220725172737"><br>
-读写权限选择公共读<br>
-<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172857.png" alt="20220725172857"><br>
-其他选择默认配置即可。</li>
-<li>创建成功之后进入创建的Bucket，进入概述界面，下方的访问域名中有一个外网访问，记录后面的<code>Bucket域名</code>，待会要使用<br>
-<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173058.png" alt="20220725173058"></li>
-<li>然后点击头像的AccessKey管理<br>
-<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173246.png" alt="20220725173246"><br>
-创建一个AccessKey<br>
-<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173446.png" alt="20220725173446"><br>
-记录<code>AccessKey ID</code>和<code>AccessKey Secret</code>即可</li>
+<li>打开<a target="_blank" rel="noopener" href="https://www.aliyun.com/">阿里云官网</a>，登陆或注册，在产品里面找到对象存储OSS<br><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172229.png" alt="20220725172229"></li>
+<li>根据需要直接购买，作为图床使用40G空间已经足够了，选项默认的即可，直接购买即可<br> <img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172337.png" alt="20220725172337"></li>
+<li>购买之后直接进入OSS管理控制台<br><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172629.png" alt="20220725172629"></li>
+<li>在Bucket列表中新建一个Bucket，地域选择离自己最近的，复制下这个<code>地域名称英文</code>，待会要用<br><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172737.png" alt="20220725172737"><br>读写权限选择公共读<br><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725172857.png" alt="20220725172857"><br>其他选择默认配置即可。</li>
+<li>创建成功之后进入创建的Bucket，进入概述界面，下方的访问域名中有一个外网访问，记录后面的<code>Bucket域名</code>，待会要使用<br><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173058.png" alt="20220725173058"></li>
+<li>然后点击头像的AccessKey管理<br><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173246.png" alt="20220725173246"><br>创建一个AccessKey<br><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173446.png" alt="20220725173446"><br>记录<code>AccessKey ID</code>和<code>AccessKey Secret</code>即可</li>
 </ol>
-<h2 id="配置vscode-picgo配置"><a class="markdownIt-Anchor" href="#配置vscode-picgo配置"></a> 配置VSCode PicGo配置</h2>
-<p>打开VSCode<code>设置</code>，搜索<code>PicGo</code>,首先找到<code>Pic Bed：current</code>，将其更换为<code>aliyun</code></p>
+<h2 id="配置VSCode-PicGo配置"><a href="#配置VSCode-PicGo配置" class="headerlink" title="配置VSCode PicGo配置"></a>配置VSCode PicGo配置</h2><p>打开VSCode<code>设置</code>，搜索<code>PicGo</code>,首先找到<code>Pic Bed：current</code>，将其更换为<code>aliyun</code></p>
 <p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725173825.png" alt="20220725173825"></p>
 <p>然后找到<code>aliyun</code>的配置，进行如下配置：</p>
 <p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725174406.png" alt="20220725174406"></p>
 <p>到此为止图床就已经全部配置完成了</p>
-<h2 id="快捷键"><a class="markdownIt-Anchor" href="#快捷键"></a> 快捷键</h2>
-<p>PicGo默认上传快捷键如下：<br>
-<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725174617.png" alt="20220725174617"><br>
-我们可以直接按下<code>Ctrl+Alt+U</code>直接从剪贴板复制图片，非常好用，当然也可以更改为自己更加方便的快捷键。</p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>PicGo默认上传快捷键如下：<br><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20220725174617.png" alt="20220725174617"><br>我们可以直接按下<code>Ctrl+Alt+U</code>直接从剪贴板复制图片，非常好用，当然也可以更改为自己更加方便的快捷键。</p>
 
   </div>
 </article>
@@ -255,19 +238,19 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text"> 插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#aliyun%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8oss"><span class="toc-number">2.</span> <span class="toc-text"> Aliyun对象存储OSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEvscode-picgo%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text"> 配置VSCode PicGo配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">4.</span> <span class="toc-text"> 快捷键</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Aliyun%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS"><span class="toc-number">2.</span> <span class="toc-text">Aliyun对象存储OSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEVSCode-PicGo%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">配置VSCode PicGo配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">4.</span> <span class="toc-text">快捷键</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -309,13 +292,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </nav>

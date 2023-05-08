@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示：  这个时候可以通过VSCode右下角的编码方式点击来修改  可以看到有两个选项  以其他编码方式重新打开，此时就可以选择对应编码打开文件即可 第二个选项不建议选择，他会修改你的文件编码方式，内容会被修改  但是按选项一修改之后，下次我们重新打开这个文件，依旧会以UTF-8编码打开，">
+    <meta name="description" content="vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示： 这个时候可以通过VSCode右下角的编码方式点击来修改可以看到有两个选项  以其他编码方式重新打开，此时就可以选择对应编码打开文件即可 第二个选项不建议选择，他会修改你的文件编码方式，内容会被修改  但是按选项一修改之后，下次我们重新打开这个文件，依旧会以UTF-8编码打开，如果需">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VSCode设置自动识别文件编码格式">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2023/041be02434.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示：  这个时候可以通过VSCode右下角的编码方式点击来修改  可以看到有两个选项  以其他编码方式重新打开，此时就可以选择对应编码打开文件即可 第二个选项不建议选择，他会修改你的文件编码方式，内容会被修改  但是按选项一修改之后，下次我们重新打开这个文件，依旧会以UTF-8编码打开，">
+<meta property="og:description" content="vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示： 这个时候可以通过VSCode右下角的编码方式点击来修改可以看到有两个选项  以其他编码方式重新打开，此时就可以选择对应编码打开文件即可 第二个选项不建议选择，他会修改你的文件编码方式，内容会被修改  但是按选项一修改之后，下次我们重新打开这个文件，依旧会以UTF-8编码打开，如果需">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230406194040.png">
 <meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230406194140.png">
@@ -108,13 +108,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </span>
@@ -186,19 +186,14 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示：<br>
-<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230406194040.png" alt="20230406194040"></p>
-<p>这个时候可以通过VSCode右下角的编码方式点击来修改<br>
-<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230406194140.png" alt="20230406194140"><br>
-可以看到有两个选项</p>
+    <p>vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示：<br><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230406194040.png" alt="20230406194040"></p>
+<p>这个时候可以通过VSCode右下角的编码方式点击来修改<br><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230406194140.png" alt="20230406194140"><br>可以看到有两个选项</p>
 <ul>
 <li>以其他编码方式重新打开，此时就可以选择对应编码打开文件即可</li>
 <li>第二个选项<code>不建议选择</code>，他会修改你的文件编码方式，内容会被修改</li>
 </ul>
 <p>但是按选项一修改之后，下次我们重新打开这个文件，依旧会以UTF-8编码打开，如果需要频繁打开，就会很浪费时间。</p>
-<p>其实VSCode自带有的自动识别编码方式，只需要选中即可（默认是不选中），打开<code>Settings</code>,搜索<code>Files.AutoGuessEncoding</code><br>
-<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230406194734.png" alt="20230406194734"><br>
-选中即可，下次打开文件VSCode就会自动识别文件编码方式，并以对应编码方式打开</p>
+<p>其实VSCode自带有的自动识别编码方式，只需要选中即可（默认是不选中），打开<code>Settings</code>,搜索<code>Files.AutoGuessEncoding</code><br><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230406194734.png" alt="20230406194734"><br>选中即可，下次打开文件VSCode就会自动识别文件编码方式，并以对应编码方式打开</p>
 
   </div>
 </article>
@@ -215,13 +210,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </div>
@@ -269,13 +264,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </nav>

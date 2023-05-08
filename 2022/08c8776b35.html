@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="转载自代码随想录，侵删  建议按照如下顺序观看： 背包理论基础01背包1（本文） 背包理论基础01背包2 背包基础理论完全背包 背包基础理论多重背包  动态规划：关于01背包问题，你该了解这些！ 这周我们正式开始讲解背包问题！ 如果这几种背包，分不清，我这里画了一个图，如下：  至于背包九讲其其他背包，面试几乎不会问，都是竞赛级别的了，leetcode上连多重背包的题目都没有，所以题库也告诉我们">
+    <meta name="description" content="转载自代码随想录，侵删  建议按照如下顺序观看：背包理论基础01背包1（本文）背包理论基础01背包2背包基础理论完全背包背包基础理论多重背包 动态规划：关于01背包问题，你该了解这些！这周我们正式开始讲解背包问题！ 如果这几种背包，分不清，我这里画了一个图，如下：  至于背包九讲其其他背包，面试几乎不会问，都是竞赛级别的了，leetcode上连多重背包的题目都没有，所以题库也告诉我们，01背包和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="背包理论基础01背包1">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2022/08c8776b35.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="转载自代码随想录，侵删  建议按照如下顺序观看： 背包理论基础01背包1（本文） 背包理论基础01背包2 背包基础理论完全背包 背包基础理论多重背包  动态规划：关于01背包问题，你该了解这些！ 这周我们正式开始讲解背包问题！ 如果这几种背包，分不清，我这里画了一个图，如下：  至于背包九讲其其他背包，面试几乎不会问，都是竞赛级别的了，leetcode上连多重背包的题目都没有，所以题库也告诉我们">
+<meta property="og:description" content="转载自代码随想录，侵删  建议按照如下顺序观看：背包理论基础01背包1（本文）背包理论基础01背包2背包基础理论完全背包背包基础理论多重背包 动态规划：关于01背包问题，你该了解这些！这周我们正式开始讲解背包问题！ 如果这几种背包，分不清，我这里画了一个图，如下：  至于背包九讲其其他背包，面试几乎不会问，都是竞赛级别的了，leetcode上连多重背包的题目都没有，所以题库也告诉我们，01背包和">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210117171307407.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210117175428387.jpg">
@@ -115,13 +115,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </span>
@@ -159,7 +159,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%B3%E4%BA%8E01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E4%BD%A0%E8%AF%A5%E4%BA%86%E8%A7%A3%E8%BF%99%E4%BA%9B"><span class="toc-number">1.</span> <span class="toc-text"> 动态规划：关于01背包问题，你该了解这些！</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%E8%83%8C%E5%8C%85"><span class="toc-number">1.1.</span> <span class="toc-text"> 01 背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4dp%E6%95%B0%E7%BB%8401%E8%83%8C%E5%8C%85"><span class="toc-number">1.2.</span> <span class="toc-text"> 二维dp数组01背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4c%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text"> 完整c++测试代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text"> 总结</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%9A%E5%85%B3%E4%BA%8E01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%EF%BC%8C%E4%BD%A0%E8%AF%A5%E4%BA%86%E8%A7%A3%E8%BF%99%E4%BA%9B%EF%BC%81"><span class="toc-number">1.</span> <span class="toc-text">动态规划：关于01背包问题，你该了解这些！</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%E8%83%8C%E5%8C%85"><span class="toc-number">1.1.</span> <span class="toc-text">01 背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4dp%E6%95%B0%E7%BB%8401%E8%83%8C%E5%8C%85"><span class="toc-number">1.2.</span> <span class="toc-text">二维dp数组01背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4c-%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text">完整c++测试代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -196,13 +196,8 @@
     <blockquote>
 <p>转载自<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删</p>
 </blockquote>
-<p>建议按照如下顺序观看：<br>
-<a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1（本文）</a><br>
-<a href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2</a><br>
-<a href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br>
-<a href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包</a></p>
-<h1 id="动态规划关于01背包问题你该了解这些"><a class="markdownIt-Anchor" href="#动态规划关于01背包问题你该了解这些"></a> 动态规划：关于01背包问题，你该了解这些！</h1>
-<p>这周我们正式开始讲解背包问题！</p>
+<p>建议按照如下顺序观看：<br><a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1（本文）</a><br><a href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2</a><br><a href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br><a href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包</a></p>
+<h1 id="动态规划：关于01背包问题，你该了解这些！"><a href="#动态规划：关于01背包问题，你该了解这些！" class="headerlink" title="动态规划：关于01背包问题，你该了解这些！"></a>动态规划：关于01背包问题，你该了解这些！</h1><p>这周我们正式开始讲解背包问题！</p>
 <p>如果这几种背包，分不清，我这里画了一个图，如下：</p>
 <p><img src="https://img-blog.csdnimg.cn/20210117171307407.png" alt="416.分割等和子集1"></p>
 <p>至于背包九讲其其他背包，面试几乎不会问，都是竞赛级别的了，leetcode上连多重背包的题目都没有，所以题库也告诉我们，01背包和完全背包就够用了。</p>
@@ -211,12 +206,11 @@
 <p>leetcode上没有纯01背包的问题，都是01背包应用方面的题目，也就是需要转化为01背包问题。</p>
 <p><strong>所以我先通过纯01背包问题，把01背包原理讲清楚，后续再讲解leetcode题目的时候，重点就是讲解如何转化为01背包问题了</strong>。</p>
 <p>之前可能有些录友已经可以熟练写出背包了，但只要把这个文章仔细看完，相信你会意外收获！</p>
-<h2 id="01-背包"><a class="markdownIt-Anchor" href="#01-背包"></a> 01 背包</h2>
-<p>有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。<strong>每件物品只能用一次</strong>，求解将哪些物品装入背包里物品价值总和最大。</p>
+<h2 id="01-背包"><a href="#01-背包" class="headerlink" title="01 背包"></a>01 背包</h2><p>有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。<strong>每件物品只能用一次</strong>，求解将哪些物品装入背包里物品价值总和最大。</p>
 <p><img src="https://img-blog.csdnimg.cn/20210117175428387.jpg" alt="动态规划-背包问题"></p>
 <p>这是标准的背包问题，以至于很多同学看了这个自然就会想到背包，甚至都不知道暴力的解法应该怎么解了。</p>
 <p>这样其实是没有从底向上去思考，而是习惯性想到了背包，那么暴力的解法应该是怎么样的呢？</p>
-<p>每一件物品其实只有两个状态，取或者不取，所以可以使用回溯法搜索出所有的情况，那么时间复杂度就是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>o</mi><mo stretchy="false">(</mo><msup><mn>2</mn><mi>n</mi></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">o(2^n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">o</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，这里的n表示物品数量。</p>
+<p>每一件物品其实只有两个状态，取或者不取，所以可以使用回溯法搜索出所有的情况，那么时间复杂度就是$o(2^n)$，这里的n表示物品数量。</p>
 <p><strong>所以暴力的解法是指数级别的时间复杂度。进而才需要动态规划的解法来进行优化！</strong></p>
 <p>在下面的讲解中，我举一个例子：</p>
 <p>背包最大重量为4。</p>
@@ -224,33 +218,30 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">重量</th>
-<th style="text-align:center">价值</th>
+<th align="center"></th>
+<th align="center">重量</th>
+<th align="center">价值</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">物品0</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">15</td>
+<tbody><tr>
+<td align="center">物品0</td>
+<td align="center">1</td>
+<td align="center">15</td>
 </tr>
 <tr>
-<td style="text-align:center">物品1</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">20</td>
+<td align="center">物品1</td>
+<td align="center">3</td>
+<td align="center">20</td>
 </tr>
 <tr>
-<td style="text-align:center">物品2</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">30</td>
+<td align="center">物品2</td>
+<td align="center">4</td>
+<td align="center">30</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>问背包能背的物品最大价值是多少？</p>
 <p>以下讲解和图示中出现的数字都是以这个例子为例。</p>
-<h2 id="二维dp数组01背包"><a class="markdownIt-Anchor" href="#二维dp数组01背包"></a> 二维dp数组01背包</h2>
-<p>依然动规五部曲分析一波。</p>
+<h2 id="二维dp数组01背包"><a href="#二维dp数组01背包" class="headerlink" title="二维dp数组01背包"></a>二维dp数组01背包</h2><p>依然动规五部曲分析一波。</p>
 <ol>
 <li>确定dp数组以及下标的含义</li>
 </ol>
@@ -276,16 +267,16 @@
 <p><img src="https://img-blog.csdnimg.cn/2021011010304192.png" alt="动态规划-背包问题2"></p>
 <p>在看其他情况。</p>
 <p>状态转移方程 dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]); 可以看出i 是由 i-1 推导出来，那么i为0的时候就一定要初始化。</p>
-<p>dp[0][j]，即：i为0，存放编号0的物品的时候，各个容量的背包所能存放的最大价值。</p>
+<p>dp[0][j]，即：i为0，存放编号0的物品的时候，各个容量的背包所能存放的最大价值。 </p>
 <p>那么很明显当 j &lt; weight[0]的时候，dp[0][j] 应该是 0，因为背包容量比编号0的物品重量还小。</p>
 <p>当j &gt;= weight[0]时，dp[0][j] 应该是value[0]，因为背包容量放足够放编号0物品。</p>
 <p>代码初始化如下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span> ; j &lt; weight[<span class="hljs-number">0</span>]; j++) {  <span class="hljs-comment">// 当然这一步，如果把dp数组预先初始化为0了，这一步就可以省略，但很多同学应该没有想清楚这一点。</span>
-    dp[<span class="hljs-number">0</span>][j] = <span class="hljs-number">0</span>;
+<pre><code class="C++">for (int j = 0 ; j &lt; weight[0]; j++) {  // 当然这一步，如果把dp数组预先初始化为0了，这一步就可以省略，但很多同学应该没有想清楚这一点。
+    dp[0][j] = 0;
 }
-<span class="hljs-comment">// 正序遍历</span>
-<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = weight[<span class="hljs-number">0</span>]; j &lt;= bagweight; j++) {
-    dp[<span class="hljs-number">0</span>][j] = value[<span class="hljs-number">0</span>];
+// 正序遍历
+for (int j = weight[0]; j &lt;= bagweight; j++) {
+    dp[0][j] = value[0];
 }
 </code></pre>
 <p>此时dp数组初始化情况如图所示：</p>
@@ -297,12 +288,11 @@
 <p>如图：</p>
 <p><img src="https://code-thinking.cdn.bcebos.com/pics/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%9810.jpg" alt="动态规划-背包问题10"></p>
 <p>最后初始化代码如下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-comment">// 初始化 dp</span>
-vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">dp</span>(weight.<span class="hljs-built_in">size</span>(), <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(bagweight + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>));
-<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = weight[<span class="hljs-number">0</span>]; j &lt;= bagweight; j++) {
-    dp[<span class="hljs-number">0</span>][j] = value[<span class="hljs-number">0</span>];
+<pre><code class="C++">// 初始化 dp
+vector&lt;vector&lt;int&gt;&gt; dp(weight.size(), vector&lt;int&gt;(bagweight + 1, 0));
+for (int j = weight[0]; j &lt;= bagweight; j++) {
+    dp[0][j] = value[0];
 }
-
 </code></pre>
 <p><strong>费了这么大的功夫，才把如何初始化讲清楚，相信不少同学平时初始化dp数组是凭感觉来的，但有时候感觉是不靠谱的</strong>。</p>
 <ol start="4">
@@ -313,22 +303,22 @@ vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs
 <p>那么问题来了，<strong>先遍历 物品还是先遍历背包重量呢？</strong></p>
 <p><strong>其实都可以！！ 但是先遍历物品更好理解</strong>。</p>
 <p>那么我先给出先遍历物品，然后遍历背包重量的代码。</p>
-<pre class="highlight"><code class="C++"><span class="hljs-comment">// weight数组的大小 就是物品个数</span>
-<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; weight.<span class="hljs-built_in">size</span>(); i++) { <span class="hljs-comment">// 遍历物品</span>
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= bagweight; j++) { <span class="hljs-comment">// 遍历背包容量</span>
-        <span class="hljs-keyword">if</span> (j &lt; weight[i]) dp[i][j] = dp[i - <span class="hljs-number">1</span>][j]; 
-        <span class="hljs-keyword">else</span> dp[i][j] = <span class="hljs-built_in">max</span>(dp[i - <span class="hljs-number">1</span>][j], dp[i - <span class="hljs-number">1</span>][j - weight[i]] + value[i]);
+<pre><code class="C++">// weight数组的大小 就是物品个数
+for(int i = 1; i &lt; weight.size(); i++) { // 遍历物品
+    for(int j = 0; j &lt;= bagweight; j++) { // 遍历背包容量
+        if (j &lt; weight[i]) dp[i][j] = dp[i - 1][j]; 
+        else dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);
 
     }
 }
 </code></pre>
 <p><strong>先遍历背包，再遍历物品，也是可以的！（注意我这里使用的二维dp数组）</strong></p>
 <p>例如这样：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-comment">// weight数组的大小 就是物品个数</span>
-<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= bagweight; j++) { <span class="hljs-comment">// 遍历背包容量</span>
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; weight.<span class="hljs-built_in">size</span>(); i++) { <span class="hljs-comment">// 遍历物品</span>
-        <span class="hljs-keyword">if</span> (j &lt; weight[i]) dp[i][j] = dp[i - <span class="hljs-number">1</span>][j];
-        <span class="hljs-keyword">else</span> dp[i][j] = <span class="hljs-built_in">max</span>(dp[i - <span class="hljs-number">1</span>][j], dp[i - <span class="hljs-number">1</span>][j - weight[i]] + value[i]);
+<pre><code class="C++">// weight数组的大小 就是物品个数
+for(int j = 0; j &lt;= bagweight; j++) { // 遍历背包容量
+    for(int i = 1; i &lt; weight.size(); i++) { // 遍历物品
+        if (j &lt; weight[i]) dp[i][j] = dp[i - 1][j];
+        else dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);
     }
 }
 </code></pre>
@@ -352,45 +342,39 @@ vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs
 <p><strong>做动态规划的题目，最好的过程就是自己在纸上举一个例子把对应的dp数组的数值推导一下，然后在动手写代码！</strong></p>
 <p>很多同学做dp题目，遇到各种问题，然后凭感觉东改改西改改，怎么改都不对，或者稀里糊涂就改过了。</p>
 <p>主要就是自己没有动手推导一下dp数组的演变过程，如果推导明白了，代码写出来就算有问题，只要把dp数组打印出来，对比一下和自己推导的有什么差异，很快就可以发现问题了。</p>
-<h2 id="完整c测试代码"><a class="markdownIt-Anchor" href="#完整c测试代码"></a> 完整c++测试代码</h2>
-<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test_2_wei_bag_problem1</span><span class="hljs-params">()</span> </span>{
-    vector&lt;<span class="hljs-type">int</span>&gt; weight = {<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>};
-    vector&lt;<span class="hljs-type">int</span>&gt; value = {<span class="hljs-number">15</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>};
-    <span class="hljs-type">int</span> bagweight = <span class="hljs-number">4</span>;
+<h2 id="完整c-测试代码"><a href="#完整c-测试代码" class="headerlink" title="完整c++测试代码"></a>完整c++测试代码</h2><pre><code class="cpp">void test_2_wei_bag_problem1() {
+    vector&lt;int&gt; weight = {1, 3, 4};
+    vector&lt;int&gt; value = {15, 20, 30};
+    int bagweight = 4;
 
-    <span class="hljs-comment">// 二维数组</span>
-    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">dp</span>(weight.<span class="hljs-built_in">size</span>(), <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(bagweight + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>));
+    // 二维数组
+    vector&lt;vector&lt;int&gt;&gt; dp(weight.size(), vector&lt;int&gt;(bagweight + 1, 0));
 
-    <span class="hljs-comment">// 初始化</span>
-    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = weight[<span class="hljs-number">0</span>]; j &lt;= bagweight; j++) {
-        dp[<span class="hljs-number">0</span>][j] = value[<span class="hljs-number">0</span>];
+    // 初始化
+    for (int j = weight[0]; j &lt;= bagweight; j++) {
+        dp[0][j] = value[0];
     }
 
-    <span class="hljs-comment">// weight数组的大小 就是物品个数</span>
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; weight.<span class="hljs-built_in">size</span>(); i++) { <span class="hljs-comment">// 遍历物品</span>
-        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= bagweight; j++) { <span class="hljs-comment">// 遍历背包容量</span>
-            <span class="hljs-keyword">if</span> (j &lt; weight[i]) dp[i][j] = dp[i - <span class="hljs-number">1</span>][j];
-            <span class="hljs-keyword">else</span> dp[i][j] = <span class="hljs-built_in">max</span>(dp[i - <span class="hljs-number">1</span>][j], dp[i - <span class="hljs-number">1</span>][j - weight[i]] + value[i]);
+    // weight数组的大小 就是物品个数
+    for(int i = 1; i &lt; weight.size(); i++) { // 遍历物品
+        for(int j = 0; j &lt;= bagweight; j++) { // 遍历背包容量
+            if (j &lt; weight[i]) dp[i][j] = dp[i - 1][j];
+            else dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);
 
         }
     }
 
-    cout &lt;&lt; dp[weight.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>][bagweight] &lt;&lt; endl;
+    cout &lt;&lt; dp[weight.size() - 1][bagweight] &lt;&lt; endl;
 }
 
-<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-built_in">test_2_wei_bag_problem1</span>();
+int main() {
+    test_2_wei_bag_problem1();
 }
-
 </code></pre>
-<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
-<p>讲了这么多才刚刚把二维dp的01背包讲完，<strong>这里大家其实可以发现最简单的是推导公式了，推导公式估计看一遍就记下来了，但难就难在如何初始化和遍历顺序上</strong>。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>讲了这么多才刚刚把二维dp的01背包讲完，<strong>这里大家其实可以发现最简单的是推导公式了，推导公式估计看一遍就记下来了，但难就难在如何初始化和遍历顺序上</strong>。</p>
 <p>可能有的同学并没有注意到初始化 和 遍历顺序的重要性，我们后面做力扣上背包面试题目的时候，大家就会感受出来了。</p>
 <p>下一篇 还是理论基础，我们再来讲一维dp数组实现的01背包（滚动数组），分析一下和二维有什么区别，在初始化和遍历顺序上又有什么差异，敬请期待！</p>
-<p><a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1（本文）</a><br>
-<a href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2</a><br>
-<a href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br>
-<a href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包</a></p>
+<p><a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1（本文）</a><br><a href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2</a><br><a href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br><a href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包</a></p>
 
   </div>
 </article>
@@ -407,19 +391,19 @@ vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%B3%E4%BA%8E01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E4%BD%A0%E8%AF%A5%E4%BA%86%E8%A7%A3%E8%BF%99%E4%BA%9B"><span class="toc-number">1.</span> <span class="toc-text"> 动态规划：关于01背包问题，你该了解这些！</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%E8%83%8C%E5%8C%85"><span class="toc-number">1.1.</span> <span class="toc-text"> 01 背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4dp%E6%95%B0%E7%BB%8401%E8%83%8C%E5%8C%85"><span class="toc-number">1.2.</span> <span class="toc-text"> 二维dp数组01背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4c%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text"> 完整c++测试代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text"> 总结</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%9A%E5%85%B3%E4%BA%8E01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%EF%BC%8C%E4%BD%A0%E8%AF%A5%E4%BA%86%E8%A7%A3%E8%BF%99%E4%BA%9B%EF%BC%81"><span class="toc-number">1.</span> <span class="toc-text">动态规划：关于01背包问题，你该了解这些！</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%E8%83%8C%E5%8C%85"><span class="toc-number">1.1.</span> <span class="toc-text">01 背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4dp%E6%95%B0%E7%BB%8401%E8%83%8C%E5%8C%85"><span class="toc-number">1.2.</span> <span class="toc-text">二维dp数组01背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4c-%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text">完整c++测试代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -461,13 +445,13 @@ vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </nav>

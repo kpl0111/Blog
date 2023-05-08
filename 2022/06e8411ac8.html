@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。   字符串操作主要考虑格式的转换。  实现strStr() LeetCode题目链接 KMP的经典思想就是:当出现字符串不匹配时，可以记录一部分之前已经匹配的文本内容，利用这些信息避免从头再去做匹配。 KMP精讲文字版 KMP精讲视频  摘要  构造next数组  next数组的本质就是前缀后缀相同的字符位数表 实现方式常见的有减一">
+    <meta name="description" content="本篇为个人笔记，内容或有错误。图片部分源于代码随想录，侵删。    字符串操作主要考虑格式的转换。 实现strStr()LeetCode题目链接 KMP的经典思想就是:当出现字符串不匹配时，可以记录一部分之前已经匹配的文本内容，利用这些信息避免从头再去做匹配。 KMP精讲文字版 KMP精讲视频 摘要构造next数组 next数组的本质就是前缀后缀相同的字符位数表实现方式常见的有减一、右移和保持不">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode笔记-KMP">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2022/06e8411ac8.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。   字符串操作主要考虑格式的转换。  实现strStr() LeetCode题目链接 KMP的经典思想就是:当出现字符串不匹配时，可以记录一部分之前已经匹配的文本内容，利用这些信息避免从头再去做匹配。 KMP精讲文字版 KMP精讲视频  摘要  构造next数组  next数组的本质就是前缀后缀相同的字符位数表 实现方式常见的有减一">
+<meta property="og:description" content="本篇为个人笔记，内容或有错误。图片部分源于代码随想录，侵删。    字符串操作主要考虑格式的转换。 实现strStr()LeetCode题目链接 KMP的经典思想就是:当出现字符串不匹配时，可以记录一部分之前已经匹配的文本内容，利用这些信息避免从头再去做匹配。 KMP精讲文字版 KMP精讲视频 摘要构造next数组 next数组的本质就是前缀后缀相同的字符位数表实现方式常见的有减一、右移和保持不">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://code-thinking.cdn.bcebos.com/gifs/KMP%E7%B2%BE%E8%AE%B23.gif">
 <meta property="article:published_time" content="2022-06-13T13:30:27.000Z">
@@ -106,13 +106,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </span>
@@ -150,7 +150,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0strstr"><span class="toc-number">1.</span> <span class="toc-text"> 实现strStr()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">2.</span> <span class="toc-text"> 摘要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0next%E6%95%B0%E7%BB%84"><span class="toc-number">2.1.</span> <span class="toc-text"> 构造next数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8next%E6%95%B0%E7%BB%84%E6%9D%A5%E5%81%9A%E5%8C%B9%E9%85%8D"><span class="toc-number">2.2.</span> <span class="toc-text"> 使用next数组来做匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E8%A1%A8%E7%BB%9F%E4%B8%80%E5%87%8F%E4%B8%80-c%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.3.</span> <span class="toc-text"> 前缀表统一减一 C++代码实现</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0strStr"><span class="toc-number">1.</span> <span class="toc-text">实现strStr()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">2.</span> <span class="toc-text">摘要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0next%E6%95%B0%E7%BB%84"><span class="toc-number">2.1.</span> <span class="toc-text">构造next数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8next%E6%95%B0%E7%BB%84%E6%9D%A5%E5%81%9A%E5%8C%B9%E9%85%8D"><span class="toc-number">2.2.</span> <span class="toc-text">使用next数组来做匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E8%A1%A8%E7%BB%9F%E4%B8%80%E5%87%8F%E4%B8%80-C-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.3.</span> <span class="toc-text">前缀表统一减一 C++代码实现</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -185,25 +185,21 @@
 
   <div class="content" itemprop="articleBody">
     <blockquote>
-<p>本篇为个人笔记，内容或有错误。<br>
-图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
+<p>本篇为个人笔记，内容或有错误。<br>图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
 </blockquote>
 <!-- toc -->
+
 <p>字符串操作主要考虑格式的转换。</p>
-<h2 id="实现strstr"><a class="markdownIt-Anchor" href="#实现strstr"></a> 实现strStr()</h2>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/implement-strstr/">LeetCode题目链接</a></p>
+<h2 id="实现strStr"><a href="#实现strStr" class="headerlink" title="实现strStr()"></a>实现strStr()</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/implement-strstr/">LeetCode题目链接</a></p>
 <p>KMP的经典思想就是:当出现字符串不匹配时，可以记录一部分之前已经匹配的文本内容，利用这些信息避免从头再去做匹配。</p>
 <p><a target="_blank" rel="noopener" href="https://programmercarl.com/0028.%E5%AE%9E%E7%8E%B0strStr.html">KMP精讲文字版</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PD4y1o7nd/?spm_id_from=pageDriver&amp;vd_source=0febcf63c24b3fda1cd2c47a2078ae54">KMP精讲视频</a></p>
-<h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
-<h3 id="构造next数组"><a class="markdownIt-Anchor" href="#构造next数组"></a> 构造next数组</h3>
-<blockquote>
-<p>next数组的本质就是前缀后缀相同的字符位数表<br>
-实现方式常见的有减一、右移和保持不变三种，但是本质都是一样的，只在细微地方有区别，本文采用减一方式，其他方式代码详见<a target="_blank" rel="noopener" href="https://programmercarl.com/0028.%E5%AE%9E%E7%8E%B0strStr.html#%E5%89%8D%E7%BC%80%E8%A1%A8-%E4%B8%8D%E5%87%8F%E4%B8%80-c-%E5%AE%9E%E7%8E%B0">前缀表（不减一）C++实现</a></p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><h3 id="构造next数组"><a href="#构造next数组" class="headerlink" title="构造next数组"></a>构造next数组</h3><blockquote>
+<p>next数组的本质就是前缀后缀相同的字符位数表<br>实现方式常见的有减一、右移和保持不变三种，但是本质都是一样的，只在细微地方有区别，本文采用减一方式，其他方式代码详见<a target="_blank" rel="noopener" href="https://programmercarl.com/0028.%E5%AE%9E%E7%8E%B0strStr.html#%E5%89%8D%E7%BC%80%E8%A1%A8-%E4%B8%8D%E5%87%8F%E4%B8%80-c-%E5%AE%9E%E7%8E%B0">前缀表（不减一）C++实现</a></p>
 </blockquote>
 <p>我们定义一个函数getNext来构建next数组，函数参数为指向next数组的指针，和一个字符串。 代码如下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">getNext</span><span class="hljs-params">(<span class="hljs-type">int</span>* next, <span class="hljs-type">const</span> string&amp; s)</span>
-</span></code></pre>
+<pre><code class="C++">void getNext(int* next, const string&amp; s)
+</code></pre>
 <p>构造next数组其实就是计算模式串s，前缀表的过程。 主要有如下三步：</p>
 <ol>
 <li>初始化</li>
@@ -211,131 +207,126 @@
 <li>处理前后缀相同的情况</li>
 </ol>
 <p>接下来我们详解详解一下。</p>
-<p><strong>初始化：</strong><br>
-定义两个指针i和j，j指向前缀末尾位置，i指向后缀末尾位置。</p>
+<p><strong>初始化：</strong><br>定义两个指针i和j，j指向前缀末尾位置，i指向后缀末尾位置。</p>
 <p>然后还要对next数组进行初始化赋值，如下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-type">int</span> j = <span class="hljs-number">-1</span>;
-next[<span class="hljs-number">0</span>] = j;
+<pre><code class="C++">int j = -1;
+next[0] = j;
 </code></pre>
 <p>j 为什么要初始化为 -1呢，因为之前说过 前缀表要统一减一的操作仅仅是其中的一种实现，我们这里选择j初始化为-1，下文我还会给出j不初始化为-1的实现代码。</p>
 <p>next[i] 表示 i（包括i）之前最长相等的前后缀长度（其实就是j）</p>
 <p>所以初始化next[0] = j 。</p>
-<p>处理前后缀不相同的情况<br>
-因为j初始化为-1，那么i就从1开始，进行s[i] 与 s[j+1]的比较。</p>
+<p>处理前后缀不相同的情况<br>因为j初始化为-1，那么i就从1开始，进行s[i] 与 s[j+1]的比较。</p>
 <p>所以遍历模式串s的循环下标i 要从 1开始，代码如下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) {
+<pre><code class="C++">for (int i = 1; i &lt; s.size(); i++) {
 </code></pre>
 <p>如果 s[i] 与 s[j+1]不相同，也就是遇到 前后缀末尾不相同的情况，就要向前回退。</p>
 <p>怎么回退呢？</p>
 <p>next[j]就是记录着j（包括j）之前的子串的相同前后缀的长度。</p>
 <p>那么 s[i] 与 s[j+1] 不相同，就要找 j+1前一个元素在next数组里的值（就是next[j]）。</p>
 <p>所以，处理前后缀不相同的情况代码如下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span> &amp;&amp; s[i] != s[j + <span class="hljs-number">1</span>]) { <span class="hljs-comment">// 前后缀不相同了</span>
-    j = next[j]; <span class="hljs-comment">// 向前回退</span>
+<pre><code class="C++">while (j &gt;= 0 &amp;&amp; s[i] != s[j + 1]) { // 前后缀不相同了
+    j = next[j]; // 向前回退
 }
 </code></pre>
-<p>处理前后缀相同的情况<br>
-如果 s[i] 与 s[j + 1] 相同，那么就同时向后移动i 和j 说明找到了相同的前后缀，同时还要将j（前缀的长度）赋给next[i], 因为next[i]要记录相同前后缀的长度。</p>
+<p>处理前后缀相同的情况<br>如果 s[i] 与 s[j + 1] 相同，那么就同时向后移动i 和j 说明找到了相同的前后缀，同时还要将j（前缀的长度）赋给next[i], 因为next[i]要记录相同前后缀的长度。</p>
 <p>代码如下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-keyword">if</span> (s[i] == s[j + <span class="hljs-number">1</span>]) { <span class="hljs-comment">// 找到相同的前后缀</span>
+<pre><code class="C++">if (s[i] == s[j + 1]) { // 找到相同的前后缀
     j++;
 }
 next[i] = j;
 </code></pre>
 <p>最后整体构建next数组的函数代码如下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">getNext</span><span class="hljs-params">(<span class="hljs-type">int</span>* next, <span class="hljs-type">const</span> string&amp; s)</span></span>{
-    <span class="hljs-type">int</span> j = <span class="hljs-number">-1</span>;
-    next[<span class="hljs-number">0</span>] = j;
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) { <span class="hljs-comment">// 注意i从1开始</span>
-        <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span> &amp;&amp; s[i] != s[j + <span class="hljs-number">1</span>]) { <span class="hljs-comment">// 前后缀不相同了</span>
-            j = next[j]; <span class="hljs-comment">// 向前回退</span>
+<pre><code class="C++">void getNext(int* next, const string&amp; s){
+    int j = -1;
+    next[0] = j;
+    for(int i = 1; i &lt; s.size(); i++) { // 注意i从1开始
+        while (j &gt;= 0 &amp;&amp; s[i] != s[j + 1]) { // 前后缀不相同了
+            j = next[j]; // 向前回退
         }
-        <span class="hljs-keyword">if</span> (s[i] == s[j + <span class="hljs-number">1</span>]) { <span class="hljs-comment">// 找到相同的前后缀</span>
+        if (s[i] == s[j + 1]) { // 找到相同的前后缀
             j++;
         }
-        next[i] = j; <span class="hljs-comment">// 将j（前缀的长度）赋给next[i]</span>
+        next[i] = j; // 将j（前缀的长度）赋给next[i]
     }
 }
 </code></pre>
 <p>代码构造next数组的逻辑流程动画如下：</p>
 <p>得到了next数组之后，就要用这个来做匹配了。</p>
-<p><img src="https://code-thinking.cdn.bcebos.com/gifs/KMP%E7%B2%BE%E8%AE%B23.gif" alt=""></p>
-<h3 id="使用next数组来做匹配"><a class="markdownIt-Anchor" href="#使用next数组来做匹配"></a> 使用next数组来做匹配</h3>
-<p>在文本串s里 找是否出现过模式串t。</p>
+<p><img src="https://code-thinking.cdn.bcebos.com/gifs/KMP%E7%B2%BE%E8%AE%B23.gif"></p>
+<h3 id="使用next数组来做匹配"><a href="#使用next数组来做匹配" class="headerlink" title="使用next数组来做匹配"></a>使用next数组来做匹配</h3><p>在文本串s里 找是否出现过模式串t。</p>
 <p>定义两个下标j 指向模式串起始位置，i指向文本串起始位置。</p>
 <p>那么j初始值依然为-1，为什么呢？ 依然因为next数组里记录的起始位置为-1。</p>
 <p>i就从0开始，遍历文本串，代码如下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) 
+<pre><code class="C++">for (int i = 0; i &lt; s.size(); i++) 
 </code></pre>
 <p>接下来就是 s[i] 与 t[j + 1] （因为j从-1开始的） 进行比较。</p>
 <p>如果 s[i] 与 t[j + 1] 不相同，j就要从next数组里寻找下一个匹配的位置。</p>
 <p>代码如下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-keyword">while</span>(j &gt;= <span class="hljs-number">0</span> &amp;&amp; s[i] != t[j + <span class="hljs-number">1</span>]) {
+<pre><code class="C++">while(j &gt;= 0 &amp;&amp; s[i] != t[j + 1]) {
     j = next[j];
 }
 </code></pre>
 <p>如果 s[i] 与 t[j + 1] 相同，那么i 和 j 同时向后移动， 代码如下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-keyword">if</span> (s[i] == t[j + <span class="hljs-number">1</span>]) {
-    j++; <span class="hljs-comment">// i的增加在for循环里</span>
+<pre><code class="C++">if (s[i] == t[j + 1]) {
+    j++; // i的增加在for循环里
 }
 </code></pre>
 <p>如何判断在文本串s里出现了模式串t呢，如果j指向了模式串t的末尾，那么就说明模式串t完全匹配文本串s里的某个子串了。</p>
 <p>本题要在文本串字符串中找出模式串出现的第一个位置 (从0开始)，所以返回当前在文本串匹配模式串的位置i 减去 模式串的长度，就是文本串字符串中出现模式串的第一个位置。</p>
 <p>代码如下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-keyword">if</span> (j == (t.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>) ) {
-    <span class="hljs-keyword">return</span> (i - t.<span class="hljs-built_in">size</span>() + <span class="hljs-number">1</span>);
+<pre><code class="C++">if (j == (t.size() - 1) ) {
+    return (i - t.size() + 1);
 }
 </code></pre>
 <p>那么使用next数组，用模式串匹配文本串的整体代码如下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-type">int</span> j = <span class="hljs-number">-1</span>; <span class="hljs-comment">// 因为next数组里记录的起始位置为-1</span>
-<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) { <span class="hljs-comment">// 注意i就从0开始</span>
-    <span class="hljs-keyword">while</span>(j &gt;= <span class="hljs-number">0</span> &amp;&amp; s[i] != t[j + <span class="hljs-number">1</span>]) { <span class="hljs-comment">// 不匹配</span>
-        j = next[j]; <span class="hljs-comment">// j 寻找之前匹配的位置</span>
+<pre><code class="C++">int j = -1; // 因为next数组里记录的起始位置为-1
+for (int i = 0; i &lt; s.size(); i++) { // 注意i就从0开始
+    while(j &gt;= 0 &amp;&amp; s[i] != t[j + 1]) { // 不匹配
+        j = next[j]; // j 寻找之前匹配的位置
     }
-    <span class="hljs-keyword">if</span> (s[i] == t[j + <span class="hljs-number">1</span>]) { <span class="hljs-comment">// 匹配，j和i同时向后移动</span>
-        j++; <span class="hljs-comment">// i的增加在for循环里</span>
+    if (s[i] == t[j + 1]) { // 匹配，j和i同时向后移动
+        j++; // i的增加在for循环里
     }
-    <span class="hljs-keyword">if</span> (j == (t.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>) ) { <span class="hljs-comment">// 文本串s里出现了模式串t</span>
-        <span class="hljs-keyword">return</span> (i - t.<span class="hljs-built_in">size</span>() + <span class="hljs-number">1</span>);
+    if (j == (t.size() - 1) ) { // 文本串s里出现了模式串t
+        return (i - t.size() + 1);
     }
 }
 </code></pre>
 <p>此时所有逻辑的代码都已经写出来了，力扣 28.实现strStr 题目的整体代码如下：</p>
-<h3 id="前缀表统一减一-c代码实现"><a class="markdownIt-Anchor" href="#前缀表统一减一-c代码实现"></a> 前缀表统一减一 C++代码实现</h3>
-<pre class="highlight"><code class="C++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">getNext</span><span class="hljs-params">(<span class="hljs-type">int</span>* next, <span class="hljs-type">const</span> string&amp; s)</span> </span>{
-        <span class="hljs-type">int</span> j = <span class="hljs-number">-1</span>;
-        next[<span class="hljs-number">0</span>] = j;
-        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) { <span class="hljs-comment">// 注意i从1开始</span>
-            <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span> &amp;&amp; s[i] != s[j + <span class="hljs-number">1</span>]) { <span class="hljs-comment">// 前后缀不相同了</span>
-                j = next[j]; <span class="hljs-comment">// 向前回退</span>
+<h3 id="前缀表统一减一-C-代码实现"><a href="#前缀表统一减一-C-代码实现" class="headerlink" title="前缀表统一减一 C++代码实现"></a>前缀表统一减一 C++代码实现</h3><pre><code class="C++">class Solution {
+public:
+    void getNext(int* next, const string&amp; s) {
+        int j = -1;
+        next[0] = j;
+        for(int i = 1; i &lt; s.size(); i++) { // 注意i从1开始
+            while (j &gt;= 0 &amp;&amp; s[i] != s[j + 1]) { // 前后缀不相同了
+                j = next[j]; // 向前回退
             }
-            <span class="hljs-keyword">if</span> (s[i] == s[j + <span class="hljs-number">1</span>]) { <span class="hljs-comment">// 找到相同的前后缀</span>
+            if (s[i] == s[j + 1]) { // 找到相同的前后缀
                 j++;
             }
-            next[i] = j; <span class="hljs-comment">// 将j（前缀的长度）赋给next[i]</span>
+            next[i] = j; // 将j（前缀的长度）赋给next[i]
         }
     }
-    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">strStr</span><span class="hljs-params">(string haystack, string needle)</span> </span>{
-        <span class="hljs-keyword">if</span> (needle.<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    int strStr(string haystack, string needle) {
+        if (needle.size() == 0) {
+            return 0;
         }
-        <span class="hljs-type">int</span> next[needle.<span class="hljs-built_in">size</span>()];
-        <span class="hljs-built_in">getNext</span>(next, needle);
-        <span class="hljs-type">int</span> j = <span class="hljs-number">-1</span>; <span class="hljs-comment">// // 因为next数组里记录的起始位置为-1</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; haystack.<span class="hljs-built_in">size</span>(); i++) { <span class="hljs-comment">// 注意i就从0开始</span>
-            <span class="hljs-keyword">while</span>(j &gt;= <span class="hljs-number">0</span> &amp;&amp; haystack[i] != needle[j + <span class="hljs-number">1</span>]) { <span class="hljs-comment">// 不匹配</span>
-                j = next[j]; <span class="hljs-comment">// j 寻找之前匹配的位置</span>
+        int next[needle.size()];
+        getNext(next, needle);
+        int j = -1; // // 因为next数组里记录的起始位置为-1
+        for (int i = 0; i &lt; haystack.size(); i++) { // 注意i就从0开始
+            while(j &gt;= 0 &amp;&amp; haystack[i] != needle[j + 1]) { // 不匹配
+                j = next[j]; // j 寻找之前匹配的位置
             }
-            <span class="hljs-keyword">if</span> (haystack[i] == needle[j + <span class="hljs-number">1</span>]) { <span class="hljs-comment">// 匹配，j和i同时向后移动</span>
-                j++; <span class="hljs-comment">// i的增加在for循环里</span>
+            if (haystack[i] == needle[j + 1]) { // 匹配，j和i同时向后移动
+                j++; // i的增加在for循环里
             }
-            <span class="hljs-keyword">if</span> (j == (needle.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>) ) { <span class="hljs-comment">// 文本串s里出现了模式串t</span>
-                <span class="hljs-keyword">return</span> (i - needle.<span class="hljs-built_in">size</span>() + <span class="hljs-number">1</span>);
+            if (j == (needle.size() - 1) ) { // 文本串s里出现了模式串t
+                return (i - needle.size() + 1);
             }
         }
-        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+        return -1;
     }
 };
 </code></pre>
@@ -355,19 +346,19 @@ next[i] = j;
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0strstr"><span class="toc-number">1.</span> <span class="toc-text"> 实现strStr()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">2.</span> <span class="toc-text"> 摘要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0next%E6%95%B0%E7%BB%84"><span class="toc-number">2.1.</span> <span class="toc-text"> 构造next数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8next%E6%95%B0%E7%BB%84%E6%9D%A5%E5%81%9A%E5%8C%B9%E9%85%8D"><span class="toc-number">2.2.</span> <span class="toc-text"> 使用next数组来做匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E8%A1%A8%E7%BB%9F%E4%B8%80%E5%87%8F%E4%B8%80-c%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.3.</span> <span class="toc-text"> 前缀表统一减一 C++代码实现</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0strStr"><span class="toc-number">1.</span> <span class="toc-text">实现strStr()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">2.</span> <span class="toc-text">摘要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0next%E6%95%B0%E7%BB%84"><span class="toc-number">2.1.</span> <span class="toc-text">构造next数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8next%E6%95%B0%E7%BB%84%E6%9D%A5%E5%81%9A%E5%8C%B9%E9%85%8D"><span class="toc-number">2.2.</span> <span class="toc-text">使用next数组来做匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E8%A1%A8%E7%BB%9F%E4%B8%80%E5%87%8F%E4%B8%80-C-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.3.</span> <span class="toc-text">前缀表统一减一 C++代码实现</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -409,13 +400,13 @@ next[i] = j;
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </nav>

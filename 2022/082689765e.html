@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="矩阵等价  定义：对同型矩阵A、B，存在可逆阵P和Q，使得B&#x3D;PAQB&#x3D;PAQB&#x3D;PAQ 充要条件：A和B的秩相等   矩阵合同  定义：对同型方阵A、B，存在可逆阵P使得PTAP&#x3D;BP^{T}AP &#x3D; BPTAP&#x3D;B,记作A≃BA ≃ BA≃B   矩阵相似  比等价严苛 定义：对同型方阵A、B，存在可逆阵P，使得P−1AP&#x3D;BP^{-1}AP &#x3D; BP−1AP&#x3D;B,记作A∼BA ∼ BA∼B">
+    <meta name="description" content="矩阵等价 定义：对同型矩阵A、B，存在可逆阵P和Q，使得$B&#x3D;PAQ$ 充要条件：A和B的秩相等  矩阵合同 定义：对同型方阵A、B，存在可逆阵P使得$P^{T}AP &#x3D; B$,记作$A ≃ B$  矩阵相似 比等价严苛 定义：对同型方阵A、B，存在可逆阵P，使得$P^{-1}AP &#x3D; B$,记作$A ∼ B$  三者关系等价（只有秩相同）$\rightarrow$ 合同（秩和正负惯性指数相同）$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="矩阵的等价、相似、合同之间的关系">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2022/082689765e.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="矩阵等价  定义：对同型矩阵A、B，存在可逆阵P和Q，使得B&#x3D;PAQB&#x3D;PAQB&#x3D;PAQ 充要条件：A和B的秩相等   矩阵合同  定义：对同型方阵A、B，存在可逆阵P使得PTAP&#x3D;BP^{T}AP &#x3D; BPTAP&#x3D;B,记作A≃BA ≃ BA≃B   矩阵相似  比等价严苛 定义：对同型方阵A、B，存在可逆阵P，使得P−1AP&#x3D;BP^{-1}AP &#x3D; BP−1AP&#x3D;B,记作A∼BA ∼ BA∼B">
+<meta property="og:description" content="矩阵等价 定义：对同型矩阵A、B，存在可逆阵P和Q，使得$B&#x3D;PAQ$ 充要条件：A和B的秩相等  矩阵合同 定义：对同型方阵A、B，存在可逆阵P使得$P^{T}AP &#x3D; B$,记作$A ≃ B$  矩阵相似 比等价严苛 定义：对同型方阵A、B，存在可逆阵P，使得$P^{-1}AP &#x3D; B$,记作$A ∼ B$  三者关系等价（只有秩相同）$\rightarrow$ 合同（秩和正负惯性指数相同）$">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-23T02:26:39.000Z">
 <meta property="article:modified_time" content="2022-08-23T06:16:09.063Z">
@@ -104,13 +104,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </span>
@@ -148,7 +148,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E7%AD%89%E4%BB%B7"><span class="toc-number">1.</span> <span class="toc-text"> 矩阵等价</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%90%88%E5%90%8C"><span class="toc-number">2.</span> <span class="toc-text"> 矩阵合同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%BC%BC"><span class="toc-number">3.</span> <span class="toc-text"> 矩阵相似</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%80%85%E5%85%B3%E7%B3%BB"><span class="toc-number">4.</span> <span class="toc-text"> 三者关系</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E7%AD%89%E4%BB%B7"><span class="toc-number">1.</span> <span class="toc-text">矩阵等价</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%90%88%E5%90%8C"><span class="toc-number">2.</span> <span class="toc-text">矩阵合同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%BC%BC"><span class="toc-number">3.</span> <span class="toc-text">矩阵相似</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%80%85%E5%85%B3%E7%B3%BB"><span class="toc-number">4.</span> <span class="toc-text">三者关系</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -182,46 +182,35 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="矩阵等价"><a class="markdownIt-Anchor" href="#矩阵等价"></a> 矩阵等价</h2>
-<ul>
-<li>定义：对同型矩阵A、B，存在可逆阵P和Q，使得<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mi>P</mi><mi>A</mi><mi>Q</mi></mrow><annotation encoding="application/x-tex">B=PAQ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">A</span><span class="mord mathnormal">Q</span></span></span></span></li>
+    <h2 id="矩阵等价"><a href="#矩阵等价" class="headerlink" title="矩阵等价"></a>矩阵等价</h2><ul>
+<li>定义：对同型矩阵A、B，存在可逆阵P和Q，使得$B=PAQ$</li>
 <li>充要条件：A和B的秩相等</li>
 </ul>
-<h2 id="矩阵合同"><a class="markdownIt-Anchor" href="#矩阵合同"></a> 矩阵合同</h2>
-<ul>
-<li>定义：对同型方阵A、B，存在可逆阵P使得<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>P</mi><mi>T</mi></msup><mi>A</mi><mi>P</mi><mo>=</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">P^{T}AP = B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>,记作<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≃</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A ≃ B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≃</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></li>
+<h2 id="矩阵合同"><a href="#矩阵合同" class="headerlink" title="矩阵合同"></a>矩阵合同</h2><ul>
+<li>定义：对同型方阵A、B，存在可逆阵P使得$P^{T}AP = B$,记作$A ≃ B$</li>
 </ul>
-<h2 id="矩阵相似"><a class="markdownIt-Anchor" href="#矩阵相似"></a> 矩阵相似</h2>
-<ul>
+<h2 id="矩阵相似"><a href="#矩阵相似" class="headerlink" title="矩阵相似"></a>矩阵相似</h2><ul>
 <li>比等价严苛</li>
-<li>定义：对同型方阵A、B，存在可逆阵P，使得<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>P</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>A</mi><mi>P</mi><mo>=</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">P^{-1}AP = B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>,记作<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∼</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A ∼ B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></li>
+<li>定义：对同型方阵A、B，存在可逆阵P，使得$P^{-1}AP = B$,记作$A ∼ B$</li>
 </ul>
-<h2 id="三者关系"><a class="markdownIt-Anchor" href="#三者关系"></a> 三者关系</h2>
-<p>等价（只有秩相同）<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 合同（秩和正负惯性指数相同）<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 相似（秩，正负惯性指数，特征值均相同），矩阵亲密关系的一步步深化。</p>
+<h2 id="三者关系"><a href="#三者关系" class="headerlink" title="三者关系"></a>三者关系</h2><p>等价（只有秩相同）$\rightarrow$ 合同（秩和正负惯性指数相同）$\rightarrow$ 相似（秩，正负惯性指数，特征值均相同），矩阵亲密关系的一步步深化。</p>
 <ul>
-<li>
-<p>相似矩阵必为等价矩阵，但等价矩阵未必为相似矩阵</p>
+<li><p>相似矩阵必为等价矩阵，但等价矩阵未必为相似矩阵</p>
 </li>
-<li>
-<p>PQ = E的等价矩阵是相似矩阵</p>
+<li><p>PQ = E的等价矩阵是相似矩阵</p>
 </li>
-<li>
-<p>合同矩阵必为等价矩阵，等价矩阵未必为合同矩阵</p>
+<li><p>合同矩阵必为等价矩阵，等价矩阵未必为合同矩阵</p>
 <ul>
 <li>正惯性指数相同的等价矩阵是合同矩阵</li>
 </ul>
 </li>
-<li>
-<p>合同矩阵未必是相似矩阵</p>
+<li><p>合同矩阵未必是相似矩阵</p>
 </li>
-<li>
-<p>相似矩阵未必合同</p>
+<li><p>相似矩阵未必合同</p>
 </li>
-<li>
-<p>正交相似矩阵必为合同矩阵，正交合同矩阵必为相似矩阵</p>
+<li><p>正交相似矩阵必为合同矩阵，正交合同矩阵必为相似矩阵</p>
 </li>
-<li>
-<p>如果A与B都是n阶实对称矩阵，且有相同的特征根．则A与B既相似又合同</p>
+<li><p>如果A与B都是n阶实对称矩阵，且有相同的特征根．则A与B既相似又合同</p>
 </li>
 </ul>
 
@@ -240,19 +229,19 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E7%AD%89%E4%BB%B7"><span class="toc-number">1.</span> <span class="toc-text"> 矩阵等价</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%90%88%E5%90%8C"><span class="toc-number">2.</span> <span class="toc-text"> 矩阵合同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%BC%BC"><span class="toc-number">3.</span> <span class="toc-text"> 矩阵相似</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%80%85%E5%85%B3%E7%B3%BB"><span class="toc-number">4.</span> <span class="toc-text"> 三者关系</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E7%AD%89%E4%BB%B7"><span class="toc-number">1.</span> <span class="toc-text">矩阵等价</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%90%88%E5%90%8C"><span class="toc-number">2.</span> <span class="toc-text">矩阵合同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%BC%BC"><span class="toc-number">3.</span> <span class="toc-text">矩阵相似</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%80%85%E5%85%B3%E7%B3%BB"><span class="toc-number">4.</span> <span class="toc-text">三者关系</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -294,13 +283,13 @@
          
           <li><a href="https://kpl0111.github.io">Home</a></li>
          
-          <li><a href="/blog/">主  页</a></li>
+          <li><a href="/blog/">Blog</a></li>
          
-          <li><a href="/blog/archives/">时间轴</a></li>
+          <li><a href="/blog/archives/">Timeline</a></li>
          
           <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
          
-          <li><a href="https://kpl0111.github.io/about">关  于</a></li>
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
         
       </ul>
     </nav>
