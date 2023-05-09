@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="复习时随手记录，并不完整           物联网安全根据国际电信联盟的定义, 物联网( internet of things, IOT) 主要解决:  物品到物品( thing to thing,T2T) 人到物品( human to thing, H2T) 人到人( human to human, H2H)之间的互联  第1章 物联网安全需求分析与其他传统网络相">
+    <meta name="description" content="复习时随手记录，并不完整           物联网安全 根据国际电信联盟的定义, 物联网( internet of things, IOT) 主要解决:  物品到物品( thing to thing,T2T) 人到物品( human to thing, H2T) 人到人( human to human, H2H)之间的互联   第1章 物联网安全需求分析 与其他传统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="物联网安全复习总结">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2022/018a8f3fb6.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="复习时随手记录，并不完整           物联网安全根据国际电信联盟的定义, 物联网( internet of things, IOT) 主要解决:  物品到物品( thing to thing,T2T) 人到物品( human to thing, H2T) 人到人( human to human, H2H)之间的互联  第1章 物联网安全需求分析与其他传统网络相">
+<meta property="og:description" content="复习时随手记录，并不完整           物联网安全 根据国际电信联盟的定义, 物联网( internet of things, IOT) 主要解决:  物品到物品( thing to thing,T2T) 人到物品( human to thing, H2T) 人到人( human to human, H2H)之间的互联   第1章 物联网安全需求分析 与其他传统">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/01/05/yjtSYm7vFAwiCfh.png">
 <meta property="og:image" content="https://s2.loli.net/2022/01/05/6SzTRxg5KlDH2cC.png">
@@ -152,7 +152,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8"><span class="toc-number">1.</span> <span class="toc-text">物联网安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC1%E7%AB%A0-%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text">第1章 物联网安全需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6"><span class="toc-number">1.2.</span> <span class="toc-text">第2章 物联网安全技术框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">安全技术简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E4%B8%AD%E7%9A%84%E5%8A%A0%E5%AF%86%E6%9C%BA%E5%88%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text">物联网中的加密机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC3%E7%AB%A0-%E5%AF%86%E7%A0%81%E4%B8%8E%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.</span> <span class="toc-text">第3章 密码与身份认证技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.1.</span> <span class="toc-text">密码学基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.</span> <span class="toc-text">现代加密算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">对称加密算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">非对称加密算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%81%E4%B8%8E%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%98%8E"><span class="toc-number">1.3.3.</span> <span class="toc-text">认证与身份证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E4%B8%8E%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-number">1.3.4.</span> <span class="toc-text">物联网认证与访问控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC4%E7%AB%A0-RFID%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E4%B8%8E%E9%9A%90%E7%A7%81"><span class="toc-number">1.4.</span> <span class="toc-text">第4章 RFID系统安全与隐私</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC5%E7%AB%A0-WSN%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8"><span class="toc-number">1.5.</span> <span class="toc-text">第5章 WSN无线传感器网络安全</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8"><span class="toc-number">1.</span> <span class="toc-text"> 物联网安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC1%E7%AB%A0-%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text"> 第1章 物联网安全需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6"><span class="toc-number">1.2.</span> <span class="toc-text"> 第2章 物联网安全技术框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 安全技术简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E4%B8%AD%E7%9A%84%E5%8A%A0%E5%AF%86%E6%9C%BA%E5%88%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 物联网中的加密机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC3%E7%AB%A0-%E5%AF%86%E7%A0%81%E4%B8%8E%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.</span> <span class="toc-text"> 第3章 密码与身份认证技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 密码学基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 现代加密算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.1.</span> <span class="toc-text"> 对称加密算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.2.</span> <span class="toc-text"> 非对称加密算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%81%E4%B8%8E%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%98%8E"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 认证与身份证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E4%B8%8E%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 物联网认证与访问控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC4%E7%AB%A0-rfid%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E4%B8%8E%E9%9A%90%E7%A7%81"><span class="toc-number">1.4.</span> <span class="toc-text"> 第4章 RFID系统安全与隐私</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC5%E7%AB%A0-wsn%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8"><span class="toc-number">1.5.</span> <span class="toc-text"> 第5章 WSN无线传感器网络安全</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -198,14 +198,15 @@
     </font>
   </p>
 </blockquote>
-
-<h1 id="物联网安全"><a href="#物联网安全" class="headerlink" title="物联网安全"></a>物联网安全</h1><p>根据国际电信联盟的定义, 物联网( internet of things, IOT) 主要解决:</p>
+<h1 id="物联网安全"><a class="markdownIt-Anchor" href="#物联网安全"></a> 物联网安全</h1>
+<p>根据国际电信联盟的定义, 物联网( internet of things, IOT) 主要解决:</p>
 <ul>
 <li>物品到物品( thing to thing,T2T)</li>
 <li>人到物品( human to thing, H2T)</li>
 <li>人到人( human to human, H2H)之间的互联</li>
 </ul>
-<h2 id="第1章-物联网安全需求分析"><a href="#第1章-物联网安全需求分析" class="headerlink" title="第1章 物联网安全需求分析"></a>第1章 物联网安全需求分析</h2><p>与其他传统网络相比, 物联网感知节点大都部署在无人监控的场景中, 具有<strong>能力脆弱、资源受限</strong>等特点,这些都导致很难直接将传统计算机网络的安全算法和协议应用于物联网</p>
+<h2 id="第1章-物联网安全需求分析"><a class="markdownIt-Anchor" href="#第1章-物联网安全需求分析"></a> 第1章 物联网安全需求分析</h2>
+<p>与其他传统网络相比, 物联网感知节点大都部署在无人监控的场景中, 具有<strong>能力脆弱、资源受限</strong>等特点,这些都导致很难直接将传统计算机网络的安全算法和协议应用于物联网</p>
 <p>从物联网的功能上来说，应该具备四个特征：</p>
 <ul>
 <li>一是<strong>全面感知能力</strong>，可以利用RFID、传感器、二维条形码等获取被控/被测物体的信息;</li>
@@ -215,18 +216,21 @@
 </ul>
 <p><strong>物联网结构和层次：</strong></p>
 <ul>
-<li>感知识别层：重点考虑数据隐私的保护；<ul>
+<li>感知识别层：重点考虑数据隐私的保护；
+<ul>
 <li>传感器，RFID，二维条形码…</li>
 </ul>
 </li>
-<li>网络构建层：重点考虑网络传输安全；<ul>
+<li>网络构建层：重点考虑网络传输安全；
+<ul>
 <li>互联网</li>
 <li>无线宽带网</li>
 <li>无线低速网</li>
 <li>移动通信网</li>
 </ul>
 </li>
-<li>管理服务层：重点考虑信息安全；<ul>
+<li>管理服务层：重点考虑信息安全；
+<ul>
 <li>管理服务层位于感知识别和网络构建层之上，综合应用层之下，人们通常把物联网应用冠以“智能”的名称，如智能电网、智能交通、智能物流等，其中的智慧就来自这一层</li>
 <li>数据库：海量性，多态性，关联性，语义性</li>
 <li>海量信息存储：网络附加存储（NAS ，Network Attached Storage）和专用存储区域网络（SAN ,Storage Area Network）</li>
@@ -235,7 +239,8 @@
 <li>数据挖掘技术</li>
 </ul>
 </li>
-<li>综合应用层：重点考虑应用系统安全；<ul>
+<li>综合应用层：重点考虑应用系统安全；
+<ul>
 <li>智能物流</li>
 <li>智能交通</li>
 <li>绿色建筑</li>
@@ -307,16 +312,20 @@
 <li>安全的计算机数据销毁技术；</li>
 <li>安全的电子产品和软件的知识产权保护技术</li>
 </ol>
-<h2 id="第2章-物联网安全技术框架"><a href="#第2章-物联网安全技术框架" class="headerlink" title="第2章 物联网安全技术框架"></a>第2章 物联网安全技术框架</h2><p>现代经常涉及的信息安全技术主要有数据加密、身份认证、访问控制和口令、数字证书、电子签证机关（CA）、数字签名等常用信息安全技术</p>
-<h3 id="安全技术简介"><a href="#安全技术简介" class="headerlink" title="安全技术简介"></a>安全技术简介</h3><ol>
+<h2 id="第2章-物联网安全技术框架"><a class="markdownIt-Anchor" href="#第2章-物联网安全技术框架"></a> 第2章 物联网安全技术框架</h2>
+<p>现代经常涉及的信息安全技术主要有数据加密、身份认证、访问控制和口令、数字证书、电子签证机关（CA）、数字签名等常用信息安全技术</p>
+<h3 id="安全技术简介"><a class="markdownIt-Anchor" href="#安全技术简介"></a> 安全技术简介</h3>
+<ol>
 <li>数据加密</li>
 <li>身份验证</li>
-<li>访问控制<ol>
+<li>访问控制
+<ol>
 <li>自由访问控制：用户有权对自身所创建的访问对象进行访问</li>
 <li>强制访问控制，按照系统规则对用户所创建对象进行控制，即便是创建者，也可能无权访问对象</li>
 </ol>
 </li>
-<li>口令（密码）：实际上，弱口令。缺省口令和没有口令的账号均应该从数据库中删除<ol>
+<li>口令（密码）：实际上，弱口令。缺省口令和没有口令的账号均应该从数据库中删除
+<ol>
 <li>网络数据流窃听口令，如果明文传输，则可能被窃取</li>
 <li>认证消息截取/重放，用加密口令实现系统登录</li>
 <li>字典攻击</li>
@@ -326,14 +335,16 @@
 <li>垃圾搜索</li>
 </ol>
 </li>
-<li>数字证书：一个数字文件，一般由四部分构成<ol>
+<li>数字证书：一个数字文件，一般由四部分构成
+<ol>
 <li>持有人的姓名，地址等信息</li>
 <li>公开密钥</li>
 <li>证书序号，有效期限</li>
 <li>发证单位的数字签名</li>
 </ol>
 </li>
-<li>数字签名<ol>
+<li>数字签名
+<ol>
 <li>本身是一种解密过程，而且是非对称密钥，类似于与校验和</li>
 <li>使用用途，区别身份，鉴权，保证完整性，不可抵赖（即承认发送来源）</li>
 </ol>
@@ -341,13 +352,16 @@
 </ol>
 <p>数据加密</p>
 <ul>
-<li>分类<ul>
-<li>私用密钥（对称密钥）<ul>
+<li>分类
+<ul>
+<li>私用密钥（对称密钥）
+<ul>
 <li>信息的发送方和接收方使用同一个密钥进行加密和解密</li>
 <li>适合对大数据量进行加密，密钥管理困难</li>
 </ul>
 </li>
-<li>公共密钥（非对称密钥）<ul>
+<li>公共密钥（非对称密钥）
+<ul>
 <li>信息发送者用公开密钥去加密，而信息接收者则用私用密钥去解密。公钥机制灵活，但加密和解密速度却比对称密钥加密慢得多</li>
 <li>能够完成发送方的身份认证和接收方无法伪造报文的功能</li>
 </ul>
@@ -356,7 +370,8 @@
 </ul>
 </li>
 </ul>
-<h3 id="物联网中的加密机制"><a href="#物联网中的加密机制" class="headerlink" title="物联网中的加密机制"></a>物联网中的加密机制</h3><p>传统的IP网络加密：需要在感知层运行加密/解密算法，需要存储开销，CPU开销，而且需要能量</p>
+<h3 id="物联网中的加密机制"><a class="markdownIt-Anchor" href="#物联网中的加密机制"></a> 物联网中的加密机制</h3>
+<p>传统的IP网络加密：需要在感知层运行加密/解密算法，需要存储开销，CPU开销，而且需要能量</p>
 <ol>
 <li>节点认证机制：PKI（Public Key Infrastructure ）即“公钥基础设施”，是一种遵循既定标准的密钥管理平台,它能够为所有网络应用提供加密和数字签名等密码服务及所必需的密钥和证书管理体系。简单来说，PKI就是利用公钥理论和技术建立的提供安全服务的基础设施</li>
 <li>访问控制，由给人授权访问转变为给机器授权访问</li>
@@ -375,7 +390,9 @@
 <li>抗同谋攻击</li>
 <li>源端认证和新鲜性</li>
 </ol>
-<h2 id="第3章-密码与身份认证技术"><a href="#第3章-密码与身份认证技术" class="headerlink" title="第3章 密码与身份认证技术"></a>第3章 密码与身份认证技术</h2><h3 id="密码学基本概念"><a href="#密码学基本概念" class="headerlink" title="密码学基本概念"></a>密码学基本概念</h3><p>密码学是主要研究通信安全和保密的学科，他包括两个分支：密码编码学和密码分析学</p>
+<h2 id="第3章-密码与身份认证技术"><a class="markdownIt-Anchor" href="#第3章-密码与身份认证技术"></a> 第3章 密码与身份认证技术</h2>
+<h3 id="密码学基本概念"><a class="markdownIt-Anchor" href="#密码学基本概念"></a> 密码学基本概念</h3>
+<p>密码学是主要研究通信安全和保密的学科，他包括两个分支：密码编码学和密码分析学</p>
 <ul>
 <li>密码编码学主要研究对信息进行变换，以保护信息在传递过程中不被敌方窃取、解读和利用的方法</li>
 <li>密码分析学则于密码编码学相反，它主要研究如何分析和破译密码</li>
@@ -389,9 +406,12 @@
 <p>加密算法应在公开时不影响明文和密钥的安全</p>
 <p>从密码学发展历程来看，可分为：</p>
 <ul>
-<li>古典密码（以字符为基本加密单元的密码）<ul>
-<li>代替密码<ul>
-<li>单表替换密码<ul>
+<li>古典密码（以字符为基本加密单元的密码）
+<ul>
+<li>代替密码
+<ul>
+<li>单表替换密码
+<ul>
 <li>凯撒密码：某字母用右边第k个字母表示，Z后面是A</li>
 <li>密钥短语密码</li>
 </ul>
@@ -404,7 +424,8 @@
 <li>置换密码</li>
 </ul>
 </li>
-<li>现代密码（以信息块为基本加密单元的密码）<ul>
+<li>现代密码（以信息块为基本加密单元的密码）
+<ul>
 <li>分组密码</li>
 <li>流密码</li>
 </ul>
@@ -412,10 +433,12 @@
 </ul>
 <p>密钥加密系统</p>
 <ul>
-<li>对称密码系统的安全性依赖于以下两个因素。<ul>
+<li>对称密码系统的安全性依赖于以下两个因素。
+<ul>
 <li>第一，加密算法必须是足够强的，仅仅基于密文本身去解密信息在实践上是不可能的；</li>
 <li>第二，加密方法的安全性依赖于密钥的秘密性，而不是算法的秘密性，因此我们没有必要确保算法的秘密性，而需要保证密钥的秘密性</li>
-<li>对称密码体制的特点是：对称加密算法使用起来简单快捷，密钥较短，且破译困难。<ol>
+<li>对称密码体制的特点是：对称加密算法使用起来简单快捷，密钥较短，且破译困难。
+<ol>
 <li>密钥难于安全传送。</li>
 <li>密钥量太大，难于进行管理。</li>
 <li>无法满足互不相识的人进行私人谈话时保密要求。</li>
@@ -424,34 +447,43 @@
 </li>
 </ul>
 </li>
-<li>相对于对称密钥密码体系，非对称密钥加密系统最大的特点在于加密和解密使用不同的密钥<ul>
+<li>相对于对称密钥密码体系，非对称密钥加密系统最大的特点在于加密和解密使用不同的密钥
+<ul>
 <li>非对称密钥技术的优点是：易于实现，使用灵活，密钥较少，可以满足互不相识的人之间进行私人谈话时的保密性要求，可以完成数字签名和数字鉴别。</li>
 <li>弱点在于：要取得较好的加密效果和强度，必须使用较长的密钥。</li>
 </ul>
 </li>
 </ul>
 <p><img src="https://s2.loli.net/2022/01/05/yjtSYm7vFAwiCfh.png" alt="image-20220105204726516"></p>
-<h3 id="现代加密算法"><a href="#现代加密算法" class="headerlink" title="现代加密算法"></a>现代加密算法</h3><h4 id="对称加密算法"><a href="#对称加密算法" class="headerlink" title="对称加密算法"></a>对称加密算法</h4><p>在对称加密算法中，只有一个密钥用来加密和解密信息，即加密和解密采用相同的密钥。常用的算法包括：</p>
+<h3 id="现代加密算法"><a class="markdownIt-Anchor" href="#现代加密算法"></a> 现代加密算法</h3>
+<h4 id="对称加密算法"><a class="markdownIt-Anchor" href="#对称加密算法"></a> 对称加密算法</h4>
+<p>在对称加密算法中，只有一个密钥用来加密和解密信息，即加密和解密采用相同的密钥。常用的算法包括：</p>
 <ul>
-<li>DES（Data Encryption Standard）：<ul>
+<li>DES（Data Encryption Standard）：
+<ul>
 <li>数据加密标准，速度较快，适用于加密大量数据的场合。</li>
 </ul>
 </li>
-<li>3DES（Triple DES）：<ul>
+<li>3DES（Triple DES）：
+<ul>
 <li>是基于DES，对一块数据用三个不同的密钥进行三次加密，强度更高。</li>
 </ul>
 </li>
-<li>AES（Advanced Encryption Standard）：<ul>
+<li>AES（Advanced Encryption Standard）：
+<ul>
 <li>AES高级加密标准，是下一代的加密算法标准，速度快，安全级别高</li>
 </ul>
 </li>
 </ul>
-<h4 id="非对称加密算法"><a href="#非对称加密算法" class="headerlink" title="非对称加密算法"></a>非对称加密算法</h4><ul>
-<li>RSA：由 RSA 公司发明，是一个支持变长密钥的公共密钥算法，需要加密的文件块的长度也是可变的；<ul>
+<h4 id="非对称加密算法"><a class="markdownIt-Anchor" href="#非对称加密算法"></a> 非对称加密算法</h4>
+<ul>
+<li>RSA：由 RSA 公司发明，是一个支持变长密钥的公共密钥算法，需要加密的文件块的长度也是可变的；
+<ul>
 <li>RSA是第一个既能用于数据加密也能用于数字签名的算法</li>
 </ul>
 </li>
-<li>DSA（Digital Signature Algorithm）：<ul>
+<li>DSA（Digital Signature Algorithm）：
+<ul>
 <li>数字签名算法，是一种标准的 DSS（数字签名标准）；</li>
 <li>除了加密外，公开密钥密码学最显著的成就是实现了数字签名。</li>
 </ul>
@@ -468,14 +500,16 @@
 <ul>
 <li>采用非对称加密算法管理对称算法的密钥，然后用对称加密算法加密数据，这样我们就集成了两类加密算法的优点，既实现了加密速度快的优点，又实现了安全方便管理密钥的优点。</li>
 </ul>
-<h3 id="认证与身份证明"><a href="#认证与身份证明" class="headerlink" title="认证与身份证明"></a>认证与身份证明</h3><p>身份证明系统的组成</p>
+<h3 id="认证与身份证明"><a class="markdownIt-Anchor" href="#认证与身份证明"></a> 认证与身份证明</h3>
+<p>身份证明系统的组成</p>
 <ol>
 <li>示证者P(Prover)，出示证件的人，又称作申请者(Claimant)，提出某种要求；</li>
 <li>验证者V(Verifier)，检验示证者提出的证件的正确性和合法性，决定是否满足其要求；</li>
 <li>攻击者，可以窃听和伪装示证者骗取验证者的信任。</li>
 <li>可信赖者，参与调解纠纷。必要时的第四方</li>
 </ol>
-<h3 id="物联网认证与访问控制"><a href="#物联网认证与访问控制" class="headerlink" title="物联网认证与访问控制"></a>物联网认证与访问控制</h3><p>目前常用的身份识别技术可以分为两大类</p>
+<h3 id="物联网认证与访问控制"><a class="markdownIt-Anchor" href="#物联网认证与访问控制"></a> 物联网认证与访问控制</h3>
+<p>目前常用的身份识别技术可以分为两大类</p>
 <ul>
 <li>一类是基于密码技术的各种电子ID身份鉴别技术；</li>
 <li>另一类是基于生物特征识别的识别技术</li>
@@ -484,17 +518,21 @@
 <ul>
 <li>零知识洞穴</li>
 </ul>
-<h2 id="第4章-RFID系统安全与隐私"><a href="#第4章-RFID系统安全与隐私" class="headerlink" title="第4章 RFID系统安全与隐私"></a>第4章 RFID系统安全与隐私</h2><p>RFID系统一般由3大部分构成：</p>
+<h2 id="第4章-rfid系统安全与隐私"><a class="markdownIt-Anchor" href="#第4章-rfid系统安全与隐私"></a> 第4章 RFID系统安全与隐私</h2>
+<p>RFID系统一般由3大部分构成：</p>
 <ul>
-<li>标签<ul>
+<li>标签
+<ul>
 <li>标签放置在要识别的物体上，携带目标识别数据，是RFID系统真正的数据载体，由耦合元件以及微电子芯片(包含调制器、编码发生器、时钟及存储器)组成</li>
 </ul>
 </li>
-<li>读写器<ul>
+<li>读写器
+<ul>
 <li>用于读或读/写标签数据的装置，由射频模块(发送器和接收器)、控制单元、与标签连接的藕合单元组成</li>
 </ul>
 </li>
-<li>后台数据库<ul>
+<li>后台数据库
+<ul>
 <li>后台服务器包含数据库处理系统，存储和管理标签相关信息，如标签标识、阅读器定位、读取时间等</li>
 </ul>
 </li>
@@ -508,9 +546,11 @@
 </ul>
 <p>RFID的安全和攻击模式</p>
 <ul>
-<li>安全<ol>
+<li>安全
+<ol>
 <li>信息及隐私泄露</li>
-<li>RFID的隐私威胁<ol>
+<li>RFID的隐私威胁
+<ol>
 <li>隐私信息泄露</li>
 <li>跟踪</li>
 <li>效率和隐私保护的矛盾</li>
@@ -518,10 +558,12 @@
 </li>
 </ol>
 </li>
-<li>攻击模式<ol>
+<li>攻击模式
+<ol>
 <li>窃听</li>
 <li>中间人攻击</li>
-<li>欺骗、重放、克隆<ol>
+<li>欺骗、重放、克隆
+<ol>
 <li>欺骗(spoofing)：基于已掌握的标签数据通过阅读器</li>
 <li>重放(replaying)：将标签的回复记录并回放</li>
 <li>克隆(cloning)：形成原来标签的一个副本</li>
@@ -545,7 +587,8 @@
 <li>真实性</li>
 <li>隐私性</li>
 </ol>
-<h2 id="第5章-WSN无线传感器网络安全"><a href="#第5章-WSN无线传感器网络安全" class="headerlink" title="第5章 WSN无线传感器网络安全"></a>第5章 WSN无线传感器网络安全</h2><p>无线传感器网络与安全相关的特点</p>
+<h2 id="第5章-wsn无线传感器网络安全"><a class="markdownIt-Anchor" href="#第5章-wsn无线传感器网络安全"></a> 第5章 WSN无线传感器网络安全</h2>
+<p>无线传感器网络与安全相关的特点</p>
 <ol>
 <li>资源受限，通信环境恶劣。</li>
 <li>部署区域的安全无法保证，节点易失效。</li>
@@ -580,7 +623,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8"><span class="toc-number">1.</span> <span class="toc-text">物联网安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC1%E7%AB%A0-%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text">第1章 物联网安全需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6"><span class="toc-number">1.2.</span> <span class="toc-text">第2章 物联网安全技术框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">安全技术简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E4%B8%AD%E7%9A%84%E5%8A%A0%E5%AF%86%E6%9C%BA%E5%88%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text">物联网中的加密机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC3%E7%AB%A0-%E5%AF%86%E7%A0%81%E4%B8%8E%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.</span> <span class="toc-text">第3章 密码与身份认证技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.1.</span> <span class="toc-text">密码学基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.</span> <span class="toc-text">现代加密算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">对称加密算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">非对称加密算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%81%E4%B8%8E%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%98%8E"><span class="toc-number">1.3.3.</span> <span class="toc-text">认证与身份证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E4%B8%8E%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-number">1.3.4.</span> <span class="toc-text">物联网认证与访问控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC4%E7%AB%A0-RFID%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E4%B8%8E%E9%9A%90%E7%A7%81"><span class="toc-number">1.4.</span> <span class="toc-text">第4章 RFID系统安全与隐私</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC5%E7%AB%A0-WSN%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8"><span class="toc-number">1.5.</span> <span class="toc-text">第5章 WSN无线传感器网络安全</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8"><span class="toc-number">1.</span> <span class="toc-text"> 物联网安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC1%E7%AB%A0-%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text"> 第1章 物联网安全需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6"><span class="toc-number">1.2.</span> <span class="toc-text"> 第2章 物联网安全技术框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 安全技术简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E4%B8%AD%E7%9A%84%E5%8A%A0%E5%AF%86%E6%9C%BA%E5%88%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 物联网中的加密机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC3%E7%AB%A0-%E5%AF%86%E7%A0%81%E4%B8%8E%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.</span> <span class="toc-text"> 第3章 密码与身份认证技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 密码学基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 现代加密算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.1.</span> <span class="toc-text"> 对称加密算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.2.</span> <span class="toc-text"> 非对称加密算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%81%E4%B8%8E%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%98%8E"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 认证与身份证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E4%B8%8E%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 物联网认证与访问控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC4%E7%AB%A0-rfid%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E4%B8%8E%E9%9A%90%E7%A7%81"><span class="toc-number">1.4.</span> <span class="toc-text"> 第4章 RFID系统安全与隐私</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC5%E7%AB%A0-wsn%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8"><span class="toc-number">1.5.</span> <span class="toc-text"> 第5章 WSN无线传感器网络安全</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

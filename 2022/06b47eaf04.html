@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="总结下C++中STL常用函数    sort()快排函数原型：sort(起始地址, 末尾地址, cmp),其中cmp是可以自己定义的函数名,默认递增排列 cmp函数示例: bool cmp(int &amp;a, int &amp;b){     return a &gt; b; }  reverse()逆置函数原型：reverse(起始地址, 末尾地址) stoi()函数原型:stoi(str">
+    <meta name="description" content="总结下C++中STL常用函数    sort()快排 函数原型：sort(起始地址, 末尾地址, cmp),其中cmp是可以自己定义的函数名,默认递增排列 cmp函数示例: bool cmp(int &amp;a, int &amp;b){     return a &gt; b; }   reverse()逆置 函数原型：reverse(起始地址, 末尾地址)  stoi() 函数原型:sto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++中STL常用库函数">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2022/06b47eaf04.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="总结下C++中STL常用函数    sort()快排函数原型：sort(起始地址, 末尾地址, cmp),其中cmp是可以自己定义的函数名,默认递增排列 cmp函数示例: bool cmp(int &amp;a, int &amp;b){     return a &gt; b; }  reverse()逆置函数原型：reverse(起始地址, 末尾地址) stoi()函数原型:stoi(str">
+<meta property="og:description" content="总结下C++中STL常用函数    sort()快排 函数原型：sort(起始地址, 末尾地址, cmp),其中cmp是可以自己定义的函数名,默认递增排列 cmp函数示例: bool cmp(int &amp;a, int &amp;b){     return a &gt; b; }   reverse()逆置 函数原型：reverse(起始地址, 末尾地址)  stoi() 函数原型:sto">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-17T09:40:03.000Z">
 <meta property="article:modified_time" content="2022-06-17T10:43:42.158Z">
@@ -149,7 +149,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#sort-%E5%BF%AB%E6%8E%92"><span class="toc-number">1.</span> <span class="toc-text">sort()快排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reverse-%E9%80%86%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">reverse()逆置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stoi"><span class="toc-number">3.</span> <span class="toc-text">stoi()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unique-%E5%8E%BB%E9%87%8D"><span class="toc-number">4.</span> <span class="toc-text">unique()去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">二分查找函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">字符串查找函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vector"><span class="toc-number">7.</span> <span class="toc-text">vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pair-lt-int-int-gt"><span class="toc-number">8.</span> <span class="toc-text">pair&lt;int, int&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">9.</span> <span class="toc-text">string，字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue-%E9%98%9F%E5%88%97"><span class="toc-number">10.</span> <span class="toc-text">queue, 队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#priority-queue"><span class="toc-number">11.</span> <span class="toc-text">priority_queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stack-%E6%A0%88"><span class="toc-number">12.</span> <span class="toc-text">stack, 栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deque-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97"><span class="toc-number">13.</span> <span class="toc-text">deque, 双端队列</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#sort%E5%BF%AB%E6%8E%92"><span class="toc-number">1.</span> <span class="toc-text"> sort()快排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reverse%E9%80%86%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text"> reverse()逆置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stoi"><span class="toc-number">3.</span> <span class="toc-text"> stoi()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unique%E5%8E%BB%E9%87%8D"><span class="toc-number">4.</span> <span class="toc-text"> unique()去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text"> 二分查找函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text"> 字符串查找函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vector"><span class="toc-number">7.</span> <span class="toc-text"> vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pairint-int"><span class="toc-number">8.</span> <span class="toc-text"> pair&lt;int, int&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">9.</span> <span class="toc-text"> string，字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue-%E9%98%9F%E5%88%97"><span class="toc-number">10.</span> <span class="toc-text"> queue, 队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#priority_queue"><span class="toc-number">11.</span> <span class="toc-text"> priority_queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stack-%E6%A0%88"><span class="toc-number">12.</span> <span class="toc-text"> stack, 栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deque-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97"><span class="toc-number">13.</span> <span class="toc-text"> deque, 双端队列</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -192,232 +192,259 @@
 <p>总结下C++中STL常用函数</p>
 </blockquote>
 <!-- toc -->
-
-<h3 id="sort-快排"><a href="#sort-快排" class="headerlink" title="sort()快排"></a>sort()快排</h3><p>函数原型：<code>sort(起始地址, 末尾地址, cmp)</code>,其中cmp是可以自己定义的函数名,默认递增排列</p>
+<h3 id="sort快排"><a class="markdownIt-Anchor" href="#sort快排"></a> sort()快排</h3>
+<p>函数原型：<code>sort(起始地址, 末尾地址, cmp)</code>,其中cmp是可以自己定义的函数名,默认递增排列</p>
 <p>cmp函数示例:</p>
-<pre><code class="C++">bool cmp(int &amp;a, int &amp;b){
-    return a &gt; b;
+<pre class="highlight"><code class="C++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-type">int</span> &amp;a, <span class="hljs-type">int</span> &amp;b)</span></span>{
+    <span class="hljs-keyword">return</span> a &gt; b;
 }
 </code></pre>
-<h3 id="reverse-逆置"><a href="#reverse-逆置" class="headerlink" title="reverse()逆置"></a>reverse()逆置</h3><p>函数原型：<code>reverse(起始地址, 末尾地址)</code></p>
-<h3 id="stoi"><a href="#stoi" class="headerlink" title="stoi()"></a>stoi()</h3><p>函数原型:<code>stoi(string类型)</code><br>将string类型转换为int类型</p>
-<h3 id="unique-去重"><a href="#unique-去重" class="headerlink" title="unique()去重"></a>unique()去重</h3><p>函数原型：<code>unique(起始地址, 末尾地址, fun)</code>;其中fun为自定义的函数名。</p>
+<h3 id="reverse逆置"><a class="markdownIt-Anchor" href="#reverse逆置"></a> reverse()逆置</h3>
+<p>函数原型：<code>reverse(起始地址, 末尾地址)</code></p>
+<h3 id="stoi"><a class="markdownIt-Anchor" href="#stoi"></a> stoi()</h3>
+<p>函数原型:<code>stoi(string类型)</code><br>
+将string类型转换为int类型</p>
+<h3 id="unique去重"><a class="markdownIt-Anchor" href="#unique去重"></a> unique()去重</h3>
+<p>函数原型：<code>unique(起始地址, 末尾地址, fun)</code>;其中fun为自定义的函数名。</p>
 <p>注意：unique函数去重并不是真正的去重，它是不断的将后面不重复的元素覆盖前面重复的元素，最后返回最后一个不重复的元素的地址。</p>
-<h3 id="二分查找函数"><a href="#二分查找函数" class="headerlink" title="二分查找函数"></a>二分查找函数</h3><p><code>lower_bound(起始地址, 末尾地址, target)</code>：查找第一个大于等于target目标值的位置</p>
+<h3 id="二分查找函数"><a class="markdownIt-Anchor" href="#二分查找函数"></a> 二分查找函数</h3>
+<p><code>lower_bound(起始地址, 末尾地址, target)</code>：查找第一个大于等于target目标值的位置</p>
 <p><code>upper_bound(起始地址, 末尾地址, target)</code>：查找第一个大于target目标值的位置</p>
 <p><code>binary_search(起始地址, 末尾地址, target)</code>：查找target是否存在于数组或vector中，找到返回true，否则返回false</p>
-<h3 id="字符串查找函数"><a href="#字符串查找函数" class="headerlink" title="字符串查找函数"></a>字符串查找函数</h3><p><code>s1.find(s2)</code>：在s1字符串中查找s2，查找到返回第一个字符的位置，查找失败返回s1.npos</p>
+<h3 id="字符串查找函数"><a class="markdownIt-Anchor" href="#字符串查找函数"></a> 字符串查找函数</h3>
+<p><code>s1.find(s2)</code>：在s1字符串中查找s2，查找到返回第一个字符的位置，查找失败返回s1.npos</p>
 <p><code>set.count(a)</code>：本来是计算a出现的次数，但是由于集合中是没有重复元素的，于是count函数也就被作为查找函数了，因为a只能出现1次或者0次，查找成功，返回1；查找失败返回0.</p>
 <p><code>map.find()</code>：主要用于查找key是否存在map中，不存在返回map.end()，用法和set一样</p>
-<h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><blockquote>
+<h3 id="vector"><a class="markdownIt-Anchor" href="#vector"></a> vector</h3>
+<blockquote>
 <p>vector, 变长数组，倍增的思想</p>
 </blockquote>
 <table>
 <thead>
 <tr>
-<th align="center">函数</th>
-<th align="center">功能</th>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">size()</td>
-<td align="center">返回元素个数</td>
+<tbody>
+<tr>
+<td style="text-align:center">size()</td>
+<td style="text-align:center">返回元素个数</td>
 </tr>
 <tr>
-<td align="center">empty()</td>
-<td align="center">返回是否为空</td>
+<td style="text-align:center">empty()</td>
+<td style="text-align:center">返回是否为空</td>
 </tr>
 <tr>
-<td align="center">clear()</td>
-<td align="center">清空</td>
+<td style="text-align:center">clear()</td>
+<td style="text-align:center">清空</td>
 </tr>
 <tr>
-<td align="center">front()/back()</td>
-<td align="center">访问第一个元素/最后一个元素</td>
+<td style="text-align:center">front()/back()</td>
+<td style="text-align:center">访问第一个元素/最后一个元素</td>
 </tr>
 <tr>
-<td align="center">push_back()/pop_back()</td>
-<td align="center">插入/弹出最后一个元素</td>
+<td style="text-align:center">push_back()/pop_back()</td>
+<td style="text-align:center">插入/弹出最后一个元素</td>
 </tr>
 <tr>
-<td align="center">begin()/end()</td>
-<td align="center">开始元素迭代器/结尾元素迭代器</td>
+<td style="text-align:center">begin()/end()</td>
+<td style="text-align:center">开始元素迭代器/结尾元素迭代器</td>
 </tr>
-</tbody></table>
-<h3 id="pair-lt-int-int-gt"><a href="#pair-lt-int-int-gt" class="headerlink" title="pair<int, int>"></a>pair&lt;int, int&gt;</h3><table>
+</tbody>
+</table>
+<h3 id="pairint-int"><a class="markdownIt-Anchor" href="#pairint-int"></a> pair&lt;int, int&gt;</h3>
+<table>
 <thead>
 <tr>
-<th align="center">函数</th>
-<th align="center">功能</th>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">first</td>
-<td align="center">第一个元素</td>
+<tbody>
+<tr>
+<td style="text-align:center">first</td>
+<td style="text-align:center">第一个元素</td>
 </tr>
 <tr>
-<td align="center">second</td>
-<td align="center">第二个元素</td>
+<td style="text-align:center">second</td>
+<td style="text-align:center">第二个元素</td>
 </tr>
-</tbody></table>
-<h3 id="string，字符串"><a href="#string，字符串" class="headerlink" title="string，字符串"></a>string，字符串</h3><table>
+</tbody>
+</table>
+<h3 id="string字符串"><a class="markdownIt-Anchor" href="#string字符串"></a> string，字符串</h3>
+<table>
 <thead>
 <tr>
-<th align="center">函数</th>
-<th align="center">功能</th>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">size()/length()</td>
-<td align="center">返回字符串长度</td>
+<tbody>
+<tr>
+<td style="text-align:center">size()/length()</td>
+<td style="text-align:center">返回字符串长度</td>
 </tr>
 <tr>
-<td align="center">empty()</td>
-<td align="center">返回是否为空</td>
+<td style="text-align:center">empty()</td>
+<td style="text-align:center">返回是否为空</td>
 </tr>
 <tr>
-<td align="center">clear()</td>
-<td align="center">清空</td>
+<td style="text-align:center">clear()</td>
+<td style="text-align:center">清空</td>
 </tr>
 <tr>
-<td align="center">substr(起始下标，(子串长度))</td>
-<td align="center">返回子串</td>
+<td style="text-align:center">substr(起始下标，(子串长度))</td>
+<td style="text-align:center">返回子串</td>
 </tr>
 <tr>
-<td align="center">c_str()</td>
-<td align="center">返回字符串所在字符数组的起始地址</td>
+<td style="text-align:center">c_str()</td>
+<td style="text-align:center">返回字符串所在字符数组的起始地址</td>
 </tr>
-</tbody></table>
-<h3 id="queue-队列"><a href="#queue-队列" class="headerlink" title="queue, 队列"></a>queue, 队列</h3><table>
+</tbody>
+</table>
+<h3 id="queue-队列"><a class="markdownIt-Anchor" href="#queue-队列"></a> queue, 队列</h3>
+<table>
 <thead>
 <tr>
-<th align="center">函数</th>
-<th align="center">功能</th>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">size()</td>
-<td align="center">返回队列长度</td>
+<tbody>
+<tr>
+<td style="text-align:center">size()</td>
+<td style="text-align:center">返回队列长度</td>
 </tr>
 <tr>
-<td align="center">empty()</td>
-<td align="center">返回是否为空</td>
+<td style="text-align:center">empty()</td>
+<td style="text-align:center">返回是否为空</td>
 </tr>
 <tr>
-<td align="center">push()</td>
-<td align="center">向队尾插入一个元素</td>
+<td style="text-align:center">push()</td>
+<td style="text-align:center">向队尾插入一个元素</td>
 </tr>
 <tr>
-<td align="center">front()</td>
-<td align="center">返回队头元素</td>
+<td style="text-align:center">front()</td>
+<td style="text-align:center">返回队头元素</td>
 </tr>
 <tr>
-<td align="center">back()</td>
-<td align="center">返回队尾元素</td>
+<td style="text-align:center">back()</td>
+<td style="text-align:center">返回队尾元素</td>
 </tr>
 <tr>
-<td align="center">pop()</td>
-<td align="center">弹出队头元素</td>
+<td style="text-align:center">pop()</td>
+<td style="text-align:center">弹出队头元素</td>
 </tr>
-</tbody></table>
-<h3 id="priority-queue"><a href="#priority-queue" class="headerlink" title="priority_queue"></a>priority_queue</h3><blockquote>
+</tbody>
+</table>
+<h3 id="priority_queue"><a class="markdownIt-Anchor" href="#priority_queue"></a> priority_queue</h3>
+<blockquote>
 <p>优先队列，默认是大根堆</p>
 </blockquote>
 <table>
 <thead>
 <tr>
-<th align="center">函数</th>
-<th align="center">功能</th>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">size()</td>
-<td align="center">返回队列长度</td>
+<tbody>
+<tr>
+<td style="text-align:center">size()</td>
+<td style="text-align:center">返回队列长度</td>
 </tr>
 <tr>
-<td align="center">empty()</td>
-<td align="center">返回是否为空</td>
+<td style="text-align:center">empty()</td>
+<td style="text-align:center">返回是否为空</td>
 </tr>
 <tr>
-<td align="center">push()</td>
-<td align="center">插入一个元素</td>
+<td style="text-align:center">push()</td>
+<td style="text-align:center">插入一个元素</td>
 </tr>
 <tr>
-<td align="center">top()</td>
-<td align="center">返回堆顶元素</td>
+<td style="text-align:center">top()</td>
+<td style="text-align:center">返回堆顶元素</td>
 </tr>
 <tr>
-<td align="center">pop()</td>
-<td align="center">弹出堆顶元素</td>
+<td style="text-align:center">pop()</td>
+<td style="text-align:center">弹出堆顶元素</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>定义成小根堆的方式：</p>
-<pre><code class="C++">priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; q;
+<pre class="highlight"><code class="C++">priority_queue&lt;<span class="hljs-type">int</span>, vector&lt;<span class="hljs-type">int</span>&gt;, greater&lt;<span class="hljs-type">int</span>&gt;&gt; q;
 </code></pre>
-<h3 id="stack-栈"><a href="#stack-栈" class="headerlink" title="stack, 栈"></a>stack, 栈</h3><table>
+<h3 id="stack-栈"><a class="markdownIt-Anchor" href="#stack-栈"></a> stack, 栈</h3>
+<table>
 <thead>
 <tr>
-<th align="center">函数</th>
-<th align="center">功能</th>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">size()</td>
-<td align="center">返回栈长度</td>
+<tbody>
+<tr>
+<td style="text-align:center">size()</td>
+<td style="text-align:center">返回栈长度</td>
 </tr>
 <tr>
-<td align="center">empty()</td>
-<td align="center">返回是否为空</td>
+<td style="text-align:center">empty()</td>
+<td style="text-align:center">返回是否为空</td>
 </tr>
 <tr>
-<td align="center">push()</td>
-<td align="center">向栈顶插入一个元素</td>
+<td style="text-align:center">push()</td>
+<td style="text-align:center">向栈顶插入一个元素</td>
 </tr>
 <tr>
-<td align="center">top()</td>
-<td align="center">返回栈顶元素</td>
+<td style="text-align:center">top()</td>
+<td style="text-align:center">返回栈顶元素</td>
 </tr>
 <tr>
-<td align="center">pop()</td>
-<td align="center">弹出栈顶元素</td>
+<td style="text-align:center">pop()</td>
+<td style="text-align:center">弹出栈顶元素</td>
 </tr>
-</tbody></table>
-<h3 id="deque-双端队列"><a href="#deque-双端队列" class="headerlink" title="deque, 双端队列"></a>deque, 双端队列</h3><table>
+</tbody>
+</table>
+<h3 id="deque-双端队列"><a class="markdownIt-Anchor" href="#deque-双端队列"></a> deque, 双端队列</h3>
+<table>
 <thead>
 <tr>
-<th align="center">函数</th>
-<th align="center">功能</th>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">功能</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">size()</td>
-<td align="center">返回队列长度</td>
+<tbody>
+<tr>
+<td style="text-align:center">size()</td>
+<td style="text-align:center">返回队列长度</td>
 </tr>
 <tr>
-<td align="center">empty()</td>
-<td align="center">返回是否为空</td>
+<td style="text-align:center">empty()</td>
+<td style="text-align:center">返回是否为空</td>
 </tr>
 <tr>
-<td align="center">clear()</td>
-<td align="center">清空队列</td>
+<td style="text-align:center">clear()</td>
+<td style="text-align:center">清空队列</td>
 </tr>
 <tr>
-<td align="center">front()/back()</td>
-<td align="center">返回队头元素</td>
+<td style="text-align:center">front()/back()</td>
+<td style="text-align:center">返回队头元素</td>
 </tr>
 <tr>
-<td align="center">push_back()/pop_back()</td>
-<td align="center">插入/弹出最后一个元素</td>
+<td style="text-align:center">push_back()/pop_back()</td>
+<td style="text-align:center">插入/弹出最后一个元素</td>
 </tr>
 <tr>
-<td align="center">push_front()/pop_front()</td>
-<td align="center">插入/弹出第一个元素</td>
+<td style="text-align:center">push_front()/pop_front()</td>
+<td style="text-align:center">插入/弹出第一个元素</td>
 </tr>
 <tr>
-<td align="center">begin()/end()</td>
-<td align="center">开始元素迭代器/结尾元素迭代器</td>
+<td style="text-align:center">begin()/end()</td>
+<td style="text-align:center">开始元素迭代器/结尾元素迭代器</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 
   </div>
 </article>
@@ -446,7 +473,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#sort-%E5%BF%AB%E6%8E%92"><span class="toc-number">1.</span> <span class="toc-text">sort()快排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reverse-%E9%80%86%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">reverse()逆置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stoi"><span class="toc-number">3.</span> <span class="toc-text">stoi()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unique-%E5%8E%BB%E9%87%8D"><span class="toc-number">4.</span> <span class="toc-text">unique()去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">二分查找函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">字符串查找函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vector"><span class="toc-number">7.</span> <span class="toc-text">vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pair-lt-int-int-gt"><span class="toc-number">8.</span> <span class="toc-text">pair&lt;int, int&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">9.</span> <span class="toc-text">string，字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue-%E9%98%9F%E5%88%97"><span class="toc-number">10.</span> <span class="toc-text">queue, 队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#priority-queue"><span class="toc-number">11.</span> <span class="toc-text">priority_queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stack-%E6%A0%88"><span class="toc-number">12.</span> <span class="toc-text">stack, 栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deque-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97"><span class="toc-number">13.</span> <span class="toc-text">deque, 双端队列</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#sort%E5%BF%AB%E6%8E%92"><span class="toc-number">1.</span> <span class="toc-text"> sort()快排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reverse%E9%80%86%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text"> reverse()逆置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stoi"><span class="toc-number">3.</span> <span class="toc-text"> stoi()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unique%E5%8E%BB%E9%87%8D"><span class="toc-number">4.</span> <span class="toc-text"> unique()去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text"> 二分查找函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text"> 字符串查找函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vector"><span class="toc-number">7.</span> <span class="toc-text"> vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pairint-int"><span class="toc-number">8.</span> <span class="toc-text"> pair&lt;int, int&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">9.</span> <span class="toc-text"> string，字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue-%E9%98%9F%E5%88%97"><span class="toc-number">10.</span> <span class="toc-text"> queue, 队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#priority_queue"><span class="toc-number">11.</span> <span class="toc-text"> priority_queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stack-%E6%A0%88"><span class="toc-number">12.</span> <span class="toc-text"> stack, 栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deque-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97"><span class="toc-number">13.</span> <span class="toc-text"> deque, 双端队列</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

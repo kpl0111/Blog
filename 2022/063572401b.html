@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="本篇为个人笔记，内容或有错误。图片部分源于代码随想录，侵删。    什么是字符串字符串是若干字符组成的有限序列，也可以理解为是一个字符数组，但是很多语言对字符串做了特殊的规定。 在C语言中，把一个字符串存入一个数组时，也把结束符 ‘\0’存入数组，并以此作为该字符串是否结束的标志。 例如这段代码： char a[5] &#x3D; &quot;asd&quot;; for (int i &#x3D; 0; a[i] !&#x3D; &#39;\0&#39;;">
+    <meta name="description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。    什么是字符串 字符串是若干字符组成的有限序列，也可以理解为是一个字符数组，但是很多语言对字符串做了特殊的规定。 在C语言中，把一个字符串存入一个数组时，也把结束符 &#39;\0’存入数组，并以此作为该字符串是否结束的标志。 例如这段代码： char a[5] &#x3D; &quot;asd&quot;; for (int i &#x3D; 0; a[i] !&#x3D; &#39;\0&#39;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode笔记-字符串">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2022/063572401b.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="本篇为个人笔记，内容或有错误。图片部分源于代码随想录，侵删。    什么是字符串字符串是若干字符组成的有限序列，也可以理解为是一个字符数组，但是很多语言对字符串做了特殊的规定。 在C语言中，把一个字符串存入一个数组时，也把结束符 ‘\0’存入数组，并以此作为该字符串是否结束的标志。 例如这段代码： char a[5] &#x3D; &quot;asd&quot;; for (int i &#x3D; 0; a[i] !&#x3D; &#39;\0&#39;;">
+<meta property="og:description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。    什么是字符串 字符串是若干字符组成的有限序列，也可以理解为是一个字符数组，但是很多语言对字符串做了特殊的规定。 在C语言中，把一个字符串存入一个数组时，也把结束符 &#39;\0’存入数组，并以此作为该字符串是否结束的标志。 例如这段代码： char a[5] &#x3D; &quot;asd&quot;; for (int i &#x3D; 0; a[i] !&#x3D; &#39;\0&#39;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-15T10:15:24.000Z">
 <meta property="article:modified_time" content="2022-09-04T08:29:13.866Z">
@@ -148,7 +148,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.</span> <span class="toc-text">什么是字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">双指针法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KMP"><span class="toc-number">3.</span> <span class="toc-text">KMP</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.</span> <span class="toc-text"> 什么是字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text"> 双指针法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kmp"><span class="toc-number">3.</span> <span class="toc-text"> KMP</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -183,28 +183,31 @@
 
   <div class="content" itemprop="articleBody">
     <blockquote>
-<p>本篇为个人笔记，内容或有错误。<br>图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
+<p>本篇为个人笔记，内容或有错误。<br>
+图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
 </blockquote>
 <!-- toc -->
-
-<h3 id="什么是字符串"><a href="#什么是字符串" class="headerlink" title="什么是字符串"></a>什么是字符串</h3><p>字符串是若干字符组成的有限序列，也可以理解为是一个字符数组，但是很多语言对字符串做了特殊的规定。</p>
-<p>在C语言中，把一个字符串存入一个数组时，也把结束符 ‘\0’存入数组，并以此作为该字符串是否结束的标志。</p>
+<h3 id="什么是字符串"><a class="markdownIt-Anchor" href="#什么是字符串"></a> 什么是字符串</h3>
+<p>字符串是若干字符组成的有限序列，也可以理解为是一个字符数组，但是很多语言对字符串做了特殊的规定。</p>
+<p>在C语言中，把一个字符串存入一个数组时，也把结束符 '\0’存入数组，并以此作为该字符串是否结束的标志。</p>
 <p>例如这段代码：</p>
-<pre><code class="C++">char a[5] = "asd";
-for (int i = 0; a[i] != '\0'; i++) {
+<pre class="highlight"><code class="C++"><span class="hljs-type">char</span> a[<span class="hljs-number">5</span>] = <span class="hljs-string">"asd"</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; a[i] != <span class="hljs-string">'\0'</span>; i++) {
 }
 </code></pre>
 <p>在C++中，提供一个string类，string类会提供 size接口，可以用来判断string类字符串是否结束，就不用’\0’来判断是否结束。</p>
 <p>例如这段代码:</p>
-<pre><code class="C++">string a = "asd";
-for (int i = 0; i &lt; a.size(); i++) {
+<pre class="highlight"><code class="C++">string a = <span class="hljs-string">"asd"</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; a.<span class="hljs-built_in">size</span>(); i++) {
 }
 </code></pre>
 <p>那么vector&lt; char &gt; 和 string 又有什么区别呢？</p>
 <p>其实在基本操作上没有区别，但是 string提供更多的字符串处理的相关接口，例如string 重载了+，而vector却没有。</p>
 <p>所以想处理字符串，我们还是会定义一个string类型。</p>
-<h3 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h3><p>双指针法在数组，链表和字符串中很常用。其实很多数组填充类的问题，都可以先预先给数组扩容带填充后的大小，然后在从后向前进行操作。</p>
-<h3 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h3><p>KMP的主要思想是当出现字符串不匹配时，可以知道一部分之前已经匹配的文本内容，可以利用这些信息避免从头再去做匹配了。</p>
+<h3 id="双指针法"><a class="markdownIt-Anchor" href="#双指针法"></a> 双指针法</h3>
+<p>双指针法在数组，链表和字符串中很常用。其实很多数组填充类的问题，都可以先预先给数组扩容带填充后的大小，然后在从后向前进行操作。</p>
+<h3 id="kmp"><a class="markdownIt-Anchor" href="#kmp"></a> KMP</h3>
+<p>KMP的主要思想是当出现字符串不匹配时，可以知道一部分之前已经匹配的文本内容，可以利用这些信息避免从头再去做匹配了。</p>
 <p>KMP的精髓所在就是前缀表</p>
 <p>前缀表：起始位置到下标i之前（包括i）的子串中，有多大长度的相同前缀后缀。</p>
 <p>那么使用KMP可以解决两类经典问题：</p>
@@ -245,7 +248,7 @@ for (int i = 0; i &lt; a.size(); i++) {
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.</span> <span class="toc-text">什么是字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">双指针法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KMP"><span class="toc-number">3.</span> <span class="toc-text">KMP</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.</span> <span class="toc-text"> 什么是字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text"> 双指针法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kmp"><span class="toc-number">3.</span> <span class="toc-text"> KMP</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
