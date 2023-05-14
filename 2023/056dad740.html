@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="本篇使用Vim编辑，个人笔记使用待使用到补充，自己用到才有体会    模式 命令模式：使用vim打开一个文件时默认模式，也叫命令模式，允许用户通过各种命令浏览代码、滚屏等操作。 插入模式：也可以叫做编辑模式，在普通模式下敲击 i 、a 或 o 就进入插入模式，允许用户通过键盘输入、编辑。 命令行模式：在普通模式下，先输入冒号:，接着输入命令，就可以通过配置命令对vim进行配置了，如改变颜色主题、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim操作指令及配置">
+<meta property="og:url" content="https://kpl0111.github.io/blog/2023/056dad740.html">
+<meta property="og:site_name" content="Nefelibata">
+<meta property="og:description" content="本篇使用Vim编辑，个人笔记使用待使用到补充，自己用到才有体会    模式 命令模式：使用vim打开一个文件时默认模式，也叫命令模式，允许用户通过各种命令浏览代码、滚屏等操作。 插入模式：也可以叫做编辑模式，在普通模式下敲击 i 、a 或 o 就进入插入模式，允许用户通过键盘输入、编辑。 命令行模式：在普通模式下，先输入冒号:，接着输入命令，就可以通过配置命令对vim进行配置了，如改变颜色主题、">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-14T09:01:53.000Z">
+<meta property="article:modified_time" content="2023-05-14T09:41:32.156Z">
+<meta property="article:author" content="Nefelibata">
+<meta property="article:tag" content="Simple">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/blog/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/blog/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>Vim操作指令及配置</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/blog/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/blog/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Nefelibata</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">Blog</a></li>
+         
+          <li><a href="/blog/archives/">Timeline</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/blog/2023/054a17b156.html"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2023/056dad740.html"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2023/056dad740.html&text=Vim操作指令及配置"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2023/056dad740.html&title=Vim操作指令及配置"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2023/056dad740.html&is_video=false&description=Vim操作指令及配置"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Vim操作指令及配置&body=Check out this article: https://kpl0111.github.io/blog/2023/056dad740.html"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2023/056dad740.html&title=Vim操作指令及配置"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2023/056dad740.html&title=Vim操作指令及配置"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2023/056dad740.html&title=Vim操作指令及配置"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2023/056dad740.html&title=Vim操作指令及配置"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2023/056dad740.html&name=Vim操作指令及配置&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98"><span class="toc-number">2.1.</span> <span class="toc-text">保存</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Vim操作指令及配置
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nefelibata</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2023-05-14T09:01:53.000Z" itemprop="datePublished">2023-05-14</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>本篇使用Vim编辑，个人笔记使用<br>待使用到补充，自己用到才有体会</p>
+</blockquote>
+<!-- TOC -->
+
+<h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><ol>
+<li>命令模式：使用vim打开一个文件时默认模式，也叫命令模式，允许用户通过各种命令浏览代码、滚屏等操作。</li>
+<li>插入模式：也可以叫做编辑模式，在普通模式下敲击 i 、a 或 o 就进入插入模式，允许用户通过键盘输入、编辑。</li>
+<li>命令行模式：在普通模式下，先输入冒号:，接着输入命令，就可以通过配置命令对vim进行配置了，如改变颜色主题、显示行号等，这些配置命令也可以保存到/etc/vim/vimrc配置文件中，每次打开默认配置执行。</li>
+<li>可视化模式：在普通模式下敲击前盘上的 v 键，就进入可视化模式，然后移动光标就可以选中一块文本，常用来完成文本的复制、粘贴、删除等操作。</li>
+<li>替换模式：如果我们想修改某个字符，不需要先进入插入模式，删除，然后再输入新的字符，直接在普通模式下，敲击R键就可以直接替换。</li>
+<li>EX模式：类似于命令行模式，可以一次运行多个命令</li>
+</ol>
+<p>Vim的各种工作模式可以通过按键进行更换，按下Esc键均可返回默认模式，然后再更换为其他模式。</p>
+<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><h3 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h3><p>按下Ecs返回默认模式后，进行保存、保存退出、不保存退出、本次操作不进行更改等</p>
+<pre><code class="shell">:q  若文件没有修改，直接退出
+:q!  文件已经被修改，放弃修改退出
+:wq  文件已经被修改，保存修改并退出
+:e!  放弃修改，重新回到文件打开时的状态
+</code></pre>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">Blog</a></li>
+         
+          <li><a href="/blog/archives/">Timeline</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98"><span class="toc-number">2.1.</span> <span class="toc-text">保存</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2023/056dad740.html"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2023/056dad740.html&text=Vim操作指令及配置"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2023/056dad740.html&title=Vim操作指令及配置"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2023/056dad740.html&is_video=false&description=Vim操作指令及配置"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Vim操作指令及配置&body=Check out this article: https://kpl0111.github.io/blog/2023/056dad740.html"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2023/056dad740.html&title=Vim操作指令及配置"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2023/056dad740.html&title=Vim操作指令及配置"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2023/056dad740.html&title=Vim操作指令及配置"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2023/056dad740.html&title=Vim操作指令及配置"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2023/056dad740.html&name=Vim操作指令及配置&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2023 Nefelibata
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="https://kpl0111.github.io">Home</a></li>
+         
+          <li><a href="/blog/">Blog</a></li>
+         
+          <li><a href="/blog/archives/">Timeline</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
+         
+          <li><a href="https://kpl0111.github.io/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/blog/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/blog/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>

@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="作业内容 1．编程实现消息测试程序，满足以下要求：  按下键盘任意字符键（至少识别两个功能键），客户区中显示按键信息（字符或功能键内容）； 单击鼠标左键，消息对话框中显示鼠标信息（鼠标左键+坐标）； 假设鼠标右键失灵，用Ctrl+鼠标左键代替，消息对话框中显示鼠标信息（鼠标右键+坐标）； 自定义WM_MY_MESSAGE消息，带10和100两个参数，由“#”（不是“3”）键激活，客户区中显示相应">
+    <meta name="description" content="作业内容1．编程实现消息测试程序，满足以下要求：  按下键盘任意字符键（至少识别两个功能键），客户区中显示按键信息（字符或功能键内容）； 单击鼠标左键，消息对话框中显示鼠标信息（鼠标左键+坐标）； 假设鼠标右键失灵，用Ctrl+鼠标左键代替，消息对话框中显示鼠标信息（鼠标右键+坐标）； 自定义WM_MY_MESSAGE消息，带10和100两个参数，由“#”（不是“3”）键激活，客户区中显示相应信息">
 <meta property="og:type" content="article">
 <meta property="og:title" content="可视化第一次作业">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2021/042021410.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="作业内容 1．编程实现消息测试程序，满足以下要求：  按下键盘任意字符键（至少识别两个功能键），客户区中显示按键信息（字符或功能键内容）； 单击鼠标左键，消息对话框中显示鼠标信息（鼠标左键+坐标）； 假设鼠标右键失灵，用Ctrl+鼠标左键代替，消息对话框中显示鼠标信息（鼠标右键+坐标）； 自定义WM_MY_MESSAGE消息，带10和100两个参数，由“#”（不是“3”）键激活，客户区中显示相应">
+<meta property="og:description" content="作业内容1．编程实现消息测试程序，满足以下要求：  按下键盘任意字符键（至少识别两个功能键），客户区中显示按键信息（字符或功能键内容）； 单击鼠标左键，消息对话框中显示鼠标信息（鼠标左键+坐标）； 假设鼠标右键失灵，用Ctrl+鼠标左键代替，消息对话框中显示鼠标信息（鼠标右键+坐标）； 自定义WM_MY_MESSAGE消息，带10和100两个参数，由“#”（不是“3”）键激活，客户区中显示相应信息">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2021/04/10/LtxDPg4NpKm3bJX.png">
 <meta property="og:image" content="https://i.loli.net/2021/04/10/HPatbpGTQgdBCJN.png">
@@ -165,7 +165,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text"> 作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%95%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text"> 展示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#key"><span class="toc-number">2.1.</span> <span class="toc-text"> Key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ball"><span class="toc-number">2.2.</span> <span class="toc-text"> Ball</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text"> 实现过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#key-2"><span class="toc-number">3.1.</span> <span class="toc-text"> Key</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%91%BD%E4%BB%A4"><span class="toc-number">3.1.0.1.</span> <span class="toc-text"> 添加命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E"><span class="toc-number">3.1.0.2.</span> <span class="toc-text"> 头文件函数声明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#void-ckeyviewonlbuttonupuint-nflags-cpoint-point"><span class="toc-number">3.1.0.3.</span> <span class="toc-text"> void CKeyView::OnLButtonUp(UINT nFlags, CPoint point)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#void-ckeyviewoncharuint-nchar-uint-nredcnt-uint-nflags"><span class="toc-number">3.1.0.4.</span> <span class="toc-text"> void CKeyView::OnChar(UINT nChar, UINT nRedCnt, UINT nFlags)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#bool-ckeyviewpretranslatemessagemsg-pmsg"><span class="toc-number">3.1.0.5.</span> <span class="toc-text"> BOOL CKeyView::PreTranslateMessage(MSG* pMsg)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF"><span class="toc-number">3.1.0.6.</span> <span class="toc-text"> 自定义消息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%9D%A2%E6%9D%BF%E5%90%8D%E7%A7%B0"><span class="toc-number">3.1.0.7.</span> <span class="toc-text"> 定义主面板名称</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ball-2"><span class="toc-number">3.2.</span> <span class="toc-text"> Ball</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A3%B0%E6%98%8Eball%E7%B1%BB%E5%8F%98%E9%87%8F"><span class="toc-number">3.2.0.1.</span> <span class="toc-text"> 声明Ball类变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%B0%8F%E7%90%83%E8%BF%90%E5%8A%A8"><span class="toc-number">3.2.0.2.</span> <span class="toc-text"> 实现小球运动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8F%9C%E5%8D%95%E6%A0%8F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.0.3.</span> <span class="toc-text"> 菜单栏的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%A0%8F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.0.4.</span> <span class="toc-text"> 状态栏的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%9D%A2%E6%9D%BF%E5%90%8D%E7%A7%B0-2"><span class="toc-number">3.2.0.5.</span> <span class="toc-text"> 定义主面板名称</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%94%B6%E8%8E%B7"><span class="toc-number">4.</span> <span class="toc-text"> 实验收获</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%95%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text">展示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Key"><span class="toc-number">2.1.</span> <span class="toc-text">Key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ball"><span class="toc-number">2.2.</span> <span class="toc-text">Ball</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">实现过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Key-1"><span class="toc-number">3.1.</span> <span class="toc-text">Key</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%91%BD%E4%BB%A4"><span class="toc-number">3.1.0.1.</span> <span class="toc-text">添加命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E"><span class="toc-number">3.1.0.2.</span> <span class="toc-text">头文件函数声明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#void-CKeyView-OnLButtonUp-UINT-nFlags-CPoint-point"><span class="toc-number">3.1.0.3.</span> <span class="toc-text">void CKeyView::OnLButtonUp(UINT nFlags, CPoint point)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#void-CKeyView-OnChar-UINT-nChar-UINT-nRedCnt-UINT-nFlags"><span class="toc-number">3.1.0.4.</span> <span class="toc-text">void CKeyView::OnChar(UINT nChar, UINT nRedCnt, UINT nFlags)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BOOL-CKeyView-PreTranslateMessage-MSG-pMsg"><span class="toc-number">3.1.0.5.</span> <span class="toc-text">BOOL CKeyView::PreTranslateMessage(MSG* pMsg)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF"><span class="toc-number">3.1.0.6.</span> <span class="toc-text">自定义消息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%9D%A2%E6%9D%BF%E5%90%8D%E7%A7%B0"><span class="toc-number">3.1.0.7.</span> <span class="toc-text">定义主面板名称</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ball-1"><span class="toc-number">3.2.</span> <span class="toc-text">Ball</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A3%B0%E6%98%8EBall%E7%B1%BB%E5%8F%98%E9%87%8F"><span class="toc-number">3.2.0.1.</span> <span class="toc-text">声明Ball类变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%B0%8F%E7%90%83%E8%BF%90%E5%8A%A8"><span class="toc-number">3.2.0.2.</span> <span class="toc-text">实现小球运动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8F%9C%E5%8D%95%E6%A0%8F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.0.3.</span> <span class="toc-text">菜单栏的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%A0%8F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.0.4.</span> <span class="toc-text">状态栏的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%9D%A2%E6%9D%BF%E5%90%8D%E7%A7%B0-1"><span class="toc-number">3.2.0.5.</span> <span class="toc-text">定义主面板名称</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%94%B6%E8%8E%B7"><span class="toc-number">4.</span> <span class="toc-text">实验收获</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -204,8 +204,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="作业内容"><a class="markdownIt-Anchor" href="#作业内容"></a> 作业内容</h2>
-<p>1．编程实现消息测试程序，满足以下要求：</p>
+    <h2 id="作业内容"><a href="#作业内容" class="headerlink" title="作业内容"></a>作业内容</h2><p>1．编程实现消息测试程序，满足以下要求：</p>
 <ul>
 <li>按下键盘任意字符键（至少识别两个功能键），客户区中显示按键信息（字符或功能键内容）；</li>
 <li>单击鼠标左键，消息对话框中显示鼠标信息（鼠标左键+坐标）；</li>
@@ -214,27 +213,21 @@
 </ul>
 <p>2．编程实现SmallBall程序，满足以下要求：</p>
 <ul>
-<li>
-<p>黑色小球，从左上角开始，沿着45度方向移动，遇到边界反弹；</p>
+<li><p>黑色小球，从左上角开始，沿着45度方向移动，遇到边界反弹；</p>
 </li>
-<li>
-<p>通过两个菜单项（加速与减速），调节小球的移动幅度（递增或递减）；</p>
+<li><p>通过两个菜单项（加速与减速），调节小球的移动幅度（递增或递减）；</p>
 </li>
-<li>
-<p>通过两个工具栏按钮，控制小球停止与再次启动。</p>
+<li><p>通过两个工具栏按钮，控制小球停止与再次启动。</p>
 </li>
 </ul>
-<h2 id="展示"><a class="markdownIt-Anchor" href="#展示"></a> 展示</h2>
-<h3 id="key"><a class="markdownIt-Anchor" href="#key"></a> Key</h3>
-<ul>
+<h2 id="展示"><a href="#展示" class="headerlink" title="展示"></a>展示</h2><h3 id="Key"><a href="#Key" class="headerlink" title="Key"></a>Key</h3><ul>
 <li>常规按键<img src="https://i.loli.net/2021/04/10/LtxDPg4NpKm3bJX.png" alt="image-20210410023017458"></li>
 <li>功能键<img src="https://i.loli.net/2021/04/10/HPatbpGTQgdBCJN.png" alt="image-20210410023048135"></li>
 <li>单击鼠标左键<img src="https://i.loli.net/2021/04/10/JfwLslFUXH6tzTB.png" alt="image-20210410023059952"></li>
 <li>Ctrl+鼠标左键替代鼠标右键<img src="https://i.loli.net/2021/04/10/PYLnBzyw5SKOXeI.png" alt="image-20210410023133667"></li>
 <li>自定义Message<img src="https://i.loli.net/2021/04/10/cCtlwdvs8QXrESo.png" alt="image-20210410023153774"></li>
 </ul>
-<h3 id="ball"><a class="markdownIt-Anchor" href="#ball"></a> Ball</h3>
-<p><img src="https://i.loli.net/2021/04/10/WS6rURfknB49DNc.png" alt="image-20210410030903621"></p>
+<h3 id="Ball"><a href="#Ball" class="headerlink" title="Ball"></a>Ball</h3><p><img src="https://i.loli.net/2021/04/10/WS6rURfknB49DNc.png" alt="image-20210410030903621"></p>
 <ul>
 <li>加速<img src="https://i.loli.net/2021/04/10/PHjtbaTiSw37Xl6.png" alt="image-20210410030933797"></li>
 <li>减速<img src="https://i.loli.net/2021/04/10/YzKMdRfaXbGpCDI.png" alt="image-20210410030948776"><img src="https://i.loli.net/2021/04/10/Uq483YVEaDMZKc2.png" alt="image-20210410031001983"></li>
@@ -243,220 +236,207 @@
 <li>有轨迹<img src="https://i.loli.net/2021/04/10/eG64R9viCbpTWoL.png" alt="image-20210410031059904"></li>
 <li>状态栏<img src="https://i.loli.net/2021/04/10/CBJrvedRExpFKhy.png" alt="image-20210410031125221"></li>
 </ul>
-<h2 id="实现过程"><a class="markdownIt-Anchor" href="#实现过程"></a> 实现过程</h2>
-<h3 id="key-2"><a class="markdownIt-Anchor" href="#key-2"></a> Key</h3>
-<h5 id="添加命令"><a class="markdownIt-Anchor" href="#添加命令"></a> 添加命令</h5>
-<p>在MESSAGE_MAP处添加本项目所需所有打印命令，包括自定义命令。</p>
-<pre class="highlight"><code class="">BEGIN_MESSAGE_MAP(CKeyView, CView)
-	//标准打印命令
-	ON_COMMAND(ID_FILE_PRINT, &amp;CView::OnFilePrint)
-	ON_COMMAND(ID_FILE_PRINT_DIRECT, &amp;CView::OnFilePrint)
-	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &amp;CView::OnFilePrintPreview)
-	ON_WM_LBUTTONUP()
-	ON_WM_CHAR()
-	ON_WM_KEYDOWN()
-	ON_MESSAGE(WM_MYMESSAGE, OnMyMessage)
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><h3 id="Key-1"><a href="#Key-1" class="headerlink" title="Key"></a>Key</h3><h5 id="添加命令"><a href="#添加命令" class="headerlink" title="添加命令"></a>添加命令</h5><p>在MESSAGE_MAP处添加本项目所需所有打印命令，包括自定义命令。</p>
+<pre><code>BEGIN_MESSAGE_MAP(CKeyView, CView)
+    //标准打印命令
+    ON_COMMAND(ID_FILE_PRINT, &amp;CView::OnFilePrint)
+    ON_COMMAND(ID_FILE_PRINT_DIRECT, &amp;CView::OnFilePrint)
+    ON_COMMAND(ID_FILE_PRINT_PREVIEW, &amp;CView::OnFilePrintPreview)
+    ON_WM_LBUTTONUP()
+    ON_WM_CHAR()
+    ON_WM_KEYDOWN()
+    ON_MESSAGE(WM_MYMESSAGE, OnMyMessage)
 END_MESSAGE_MAP()
 </code></pre>
-<h5 id="头文件函数声明"><a class="markdownIt-Anchor" href="#头文件函数声明"></a> 头文件函数声明</h5>
-<p>在KeyView.h头文件里面声明OnLButtonUp，OnChar，PreTranslateMessages，以及OnMyMessage函数</p>
-<pre class="highlight"><code class="">protected:
-	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);      //添加鼠标左键点击函数，以及按键事件函数
-	afx_msg void OnChar(UINT nChar, UINT nRedCnt, UINT nFlags);
-	virtual BOOL PreTranslateMessage(MSG* pMsg);
-	afx_msg LRESULT OnMyMessage(WPARAM wParam, LPARAM lParam);
+<h5 id="头文件函数声明"><a href="#头文件函数声明" class="headerlink" title="头文件函数声明"></a>头文件函数声明</h5><p>在KeyView.h头文件里面声明OnLButtonUp，OnChar，PreTranslateMessages，以及OnMyMessage函数</p>
+<pre><code>protected:
+    afx_msg void OnLButtonUp(UINT nFlags, CPoint point);      //添加鼠标左键点击函数，以及按键事件函数
+    afx_msg void OnChar(UINT nChar, UINT nRedCnt, UINT nFlags);
+    virtual BOOL PreTranslateMessage(MSG* pMsg);
+    afx_msg LRESULT OnMyMessage(WPARAM wParam, LPARAM lParam);
 </code></pre>
-<h5 id="void-ckeyviewonlbuttonupuint-nflags-cpoint-point"><a class="markdownIt-Anchor" href="#void-ckeyviewonlbuttonupuint-nflags-cpoint-point"></a> void CKeyView::OnLButtonUp(UINT nFlags, CPoint point)</h5>
-<p>本函数主要实现鼠标左键点击以及替代右键功能，利用if语句如果是Ctrl+鼠标左键的话，则输出右键点击，并利用point来获取当前坐标，使用TextOutW来输出，如果if条件不成立，则输出左键点击</p>
-<pre class="highlight"><code class="">void CKeyView::OnLButtonUp(UINT nFlags, CPoint point)
+<h5 id="void-CKeyView-OnLButtonUp-UINT-nFlags-CPoint-point"><a href="#void-CKeyView-OnLButtonUp-UINT-nFlags-CPoint-point" class="headerlink" title="void CKeyView::OnLButtonUp(UINT nFlags, CPoint point)"></a>void CKeyView::OnLButtonUp(UINT nFlags, CPoint point)</h5><p>本函数主要实现鼠标左键点击以及替代右键功能，利用if语句如果是Ctrl+鼠标左键的话，则输出右键点击，并利用point来获取当前坐标，使用TextOutW来输出，如果if条件不成立，则输出左键点击</p>
+<pre><code>void CKeyView::OnLButtonUp(UINT nFlags, CPoint point)
 {
-	CDC* pDC = GetDC();
-	CString m_str;
-	if (nFlags &amp; MK_CONTROL)//ctrl+左键代表右键
-		m_str.Format(L"X:%d,Y:%d:Right Mouse Button Clicked!", point.x, point.y);
-	else
-		m_str.Format(L"X:%d,Y:%d:Left Mouse Button Clicked!", point.x, point.y);
-	pDC-&gt;TextOutW(point.x, point.y, m_str);
+    CDC* pDC = GetDC();
+    CString m_str;
+    if (nFlags &amp; MK_CONTROL)//ctrl+左键代表右键
+        m_str.Format(L"X:%d,Y:%d:Right Mouse Button Clicked!", point.x, point.y);
+    else
+        m_str.Format(L"X:%d,Y:%d:Left Mouse Button Clicked!", point.x, point.y);
+    pDC-&gt;TextOutW(point.x, point.y, m_str);
 }
 </code></pre>
-<h5 id="void-ckeyviewoncharuint-nchar-uint-nredcnt-uint-nflags"><a class="markdownIt-Anchor" href="#void-ckeyviewoncharuint-nchar-uint-nredcnt-uint-nflags"></a> void CKeyView::OnChar(UINT nChar, UINT nRedCnt, UINT nFlags)</h5>
-<p>本函数主要实现常规按键和自定义消息#键（在自定义消息里面讲）的输出，首先获取当前按键的字符，如果不是#，则弹出弹框声明</p>
-<pre class="highlight"><code class="">void CKeyView::OnChar(UINT nChar, UINT nRedCnt, UINT nFlags)
+<h5 id="void-CKeyView-OnChar-UINT-nChar-UINT-nRedCnt-UINT-nFlags"><a href="#void-CKeyView-OnChar-UINT-nChar-UINT-nRedCnt-UINT-nFlags" class="headerlink" title="void CKeyView::OnChar(UINT nChar, UINT nRedCnt, UINT nFlags)"></a>void CKeyView::OnChar(UINT nChar, UINT nRedCnt, UINT nFlags)</h5><p>本函数主要实现常规按键和自定义消息#键（在自定义消息里面讲）的输出，首先获取当前按键的字符，如果不是#，则弹出弹框声明</p>
+<pre><code>void CKeyView::OnChar(UINT nChar, UINT nRedCnt, UINT nFlags)
 {
-	if (nChar == '#') //按键如果是#则调用自定义消息，其他则调用系统消息
-		SendMessage(WM_MYMESSAGE, 10, 100);
-	else
-	{
-		CString str;
-		str.Format(L"%c Key Entered!", nChar);
-		MessageBox(str);
-	}
-	CView::OnChar(nChar, nRedCnt, nFlags);
+    if (nChar == '#') //按键如果是#则调用自定义消息，其他则调用系统消息
+        SendMessage(WM_MYMESSAGE, 10, 100);
+    else
+    {
+        CString str;
+        str.Format(L"%c Key Entered!", nChar);
+        MessageBox(str);
+    }
+    CView::OnChar(nChar, nRedCnt, nFlags);
 }
 </code></pre>
-<h5 id="bool-ckeyviewpretranslatemessagemsg-pmsg"><a class="markdownIt-Anchor" href="#bool-ckeyviewpretranslatemessagemsg-pmsg"></a> BOOL CKeyView::PreTranslateMessage(MSG* pMsg)</h5>
-<p>本函数实现功能按键，主要思路就是通过pMsg的wParam来对应不同功能键，从而进行输出，考虑到shift和ctrl的常用性，并没有对其进行添加，其他功能键也类似</p>
-<pre class="highlight"><code class="">BOOL CKeyView::PreTranslateMessage(MSG* pMsg)
+<h5 id="BOOL-CKeyView-PreTranslateMessage-MSG-pMsg"><a href="#BOOL-CKeyView-PreTranslateMessage-MSG-pMsg" class="headerlink" title="BOOL CKeyView::PreTranslateMessage(MSG* pMsg)"></a>BOOL CKeyView::PreTranslateMessage(MSG* pMsg)</h5><p>本函数实现功能按键，主要思路就是通过pMsg的wParam来对应不同功能键，从而进行输出，考虑到shift和ctrl的常用性，并没有对其进行添加，其他功能键也类似</p>
+<pre><code>BOOL CKeyView::PreTranslateMessage(MSG* pMsg)
 {
-	if (pMsg-&gt;message == WM_KEYDOWN)//添加功能键，方法类似可添加更多，常用ctrl和shift注释掉了以免影响其他键的操作
-	{
-		if (pMsg-&gt;wParam == VK_F1)  MessageBox(L"F1 Key Entered!");
-		if (pMsg-&gt;wParam == VK_F2)  MessageBox(L"F2 Key Entered!");
-		if (pMsg-&gt;wParam == VK_F3)  MessageBox(L"F3 Key Entered!");
-		if (pMsg-&gt;wParam == VK_F4)  MessageBox(L"F4 Key Entered!");
-		if (pMsg-&gt;wParam == VK_F5)  MessageBox(L"F5 Key Entered!");
-		if (pMsg-&gt;wParam == VK_F6)  MessageBox(L"F6 Key Entered!");
-		if (pMsg-&gt;wParam == VK_F7)  MessageBox(L"F7 Key Entered!");
-		if (pMsg-&gt;wParam == VK_F8)  MessageBox(L"F8 Key Entered!");
-		if (pMsg-&gt;wParam == VK_F9)  MessageBox(L"F9 Key Entered!");
-		if (pMsg-&gt;wParam == VK_F10)  MessageBox(L"F10 Key Entered!");
-		if (pMsg-&gt;wParam == VK_F11)  MessageBox(L"F11 Key Entered!");
-		if (pMsg-&gt;wParam == VK_F12)  MessageBox(L"F12 Key Entered!");
-		if (pMsg-&gt;wParam == VK_UP)  MessageBox(L"↑ Key Entered!");
-		if (pMsg-&gt;wParam == VK_DOWN)  MessageBox(L"↓ Key Entered!");
-		if (pMsg-&gt;wParam == VK_LEFT)  MessageBox(L"← Key Entered!");
-		if (pMsg-&gt;wParam == VK_RIGHT)  MessageBox(L"→ Key Entered!");
-		//if (pMsg-&gt;wParam == VK_CONTROL)  MessageBox(L"Ctrl Key Entered!");
-		if (pMsg-&gt;wParam == VK_CAPITAL)  MessageBox(L"CapsLk Key Entered!");
-		//if (pMsg-&gt;wParam == VK_SHIFT)  MessageBox(L"Shift Key Entered!");
-	}
+    if (pMsg-&gt;message == WM_KEYDOWN)//添加功能键，方法类似可添加更多，常用ctrl和shift注释掉了以免影响其他键的操作
+    {
+        if (pMsg-&gt;wParam == VK_F1)  MessageBox(L"F1 Key Entered!");
+        if (pMsg-&gt;wParam == VK_F2)  MessageBox(L"F2 Key Entered!");
+        if (pMsg-&gt;wParam == VK_F3)  MessageBox(L"F3 Key Entered!");
+        if (pMsg-&gt;wParam == VK_F4)  MessageBox(L"F4 Key Entered!");
+        if (pMsg-&gt;wParam == VK_F5)  MessageBox(L"F5 Key Entered!");
+        if (pMsg-&gt;wParam == VK_F6)  MessageBox(L"F6 Key Entered!");
+        if (pMsg-&gt;wParam == VK_F7)  MessageBox(L"F7 Key Entered!");
+        if (pMsg-&gt;wParam == VK_F8)  MessageBox(L"F8 Key Entered!");
+        if (pMsg-&gt;wParam == VK_F9)  MessageBox(L"F9 Key Entered!");
+        if (pMsg-&gt;wParam == VK_F10)  MessageBox(L"F10 Key Entered!");
+        if (pMsg-&gt;wParam == VK_F11)  MessageBox(L"F11 Key Entered!");
+        if (pMsg-&gt;wParam == VK_F12)  MessageBox(L"F12 Key Entered!");
+        if (pMsg-&gt;wParam == VK_UP)  MessageBox(L"↑ Key Entered!");
+        if (pMsg-&gt;wParam == VK_DOWN)  MessageBox(L"↓ Key Entered!");
+        if (pMsg-&gt;wParam == VK_LEFT)  MessageBox(L"← Key Entered!");
+        if (pMsg-&gt;wParam == VK_RIGHT)  MessageBox(L"→ Key Entered!");
+        //if (pMsg-&gt;wParam == VK_CONTROL)  MessageBox(L"Ctrl Key Entered!");
+        if (pMsg-&gt;wParam == VK_CAPITAL)  MessageBox(L"CapsLk Key Entered!");
+        //if (pMsg-&gt;wParam == VK_SHIFT)  MessageBox(L"Shift Key Entered!");
+    }
 
-	return CView::PreTranslateMessage(pMsg);
+    return CView::PreTranslateMessage(pMsg);
 }
 </code></pre>
-<h5 id="自定义消息"><a class="markdownIt-Anchor" href="#自定义消息"></a> 自定义消息</h5>
-<ul>
-<li>首先声明自己的消息名字和编号<pre class="highlight"><code class="">#define WM_MYMESSAGE WM_USER+10
+<h5 id="自定义消息"><a href="#自定义消息" class="headerlink" title="自定义消息"></a>自定义消息</h5><ul>
+<li>首先声明自己的消息名字和编号<pre><code>#define WM_MYMESSAGE WM_USER+10
 </code></pre>
 </li>
 <li>声明一个关于自定义消息的响应函数OnMyMessage</li>
-<li>在Onchar里面实现，如果按下#键，则SendMessage，含有两个参数10和100<pre class="highlight"><code class="">if (nChar == '#') //按键如果是#则调用自定义消息，其他则调用系统消息
-  	SendMessage(WM_MYMESSAGE, 10, 100);
+<li>在Onchar里面实现，如果按下#键，则SendMessage，含有两个参数10和100<pre><code>if (nChar == '#') //按键如果是#则调用自定义消息，其他则调用系统消息
+      SendMessage(WM_MYMESSAGE, 10, 100);
 </code></pre>
 </li>
 </ul>
-<h5 id="定义主面板名称"><a class="markdownIt-Anchor" href="#定义主面板名称"></a> 定义主面板名称</h5>
-<pre class="highlight"><code class="">cs.style &amp;= ~FWS_ADDTOTITLE;                    //修改主窗口标题
+<h5 id="定义主面板名称"><a href="#定义主面板名称" class="headerlink" title="定义主面板名称"></a>定义主面板名称</h5><pre><code>cs.style &amp;= ~FWS_ADDTOTITLE;                    //修改主窗口标题
 m_strTitle = _T("Key");
 </code></pre>
-<h3 id="ball-2"><a class="markdownIt-Anchor" href="#ball-2"></a> Ball</h3>
-<p>小球采用异或方法来实现小球的消除，也可以实现小球的轨迹消除，通过Timer来实现小球的不断移动和刷新，从而造成一种小球运动的现象，</p>
-<h5 id="声明ball类变量"><a class="markdownIt-Anchor" href="#声明ball类变量"></a> 声明Ball类变量</h5>
-<pre class="highlight"><code class="">public:
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);//声明timer
-	afx_msg void OnDestroy();
-	afx_msg void OnTimer(UINT_PTR nIDEvent);
+<h3 id="Ball-1"><a href="#Ball-1" class="headerlink" title="Ball"></a>Ball</h3><p>小球采用异或方法来实现小球的消除，也可以实现小球的轨迹消除，通过Timer来实现小球的不断移动和刷新，从而造成一种小球运动的现象，</p>
+<h5 id="声明Ball类变量"><a href="#声明Ball类变量" class="headerlink" title="声明Ball类变量"></a>声明Ball类变量</h5><pre><code>public:
+    afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);//声明timer
+    afx_msg void OnDestroy();
+    afx_msg void OnTimer(UINT_PTR nIDEvent);
 private:          
-	int x;        //x，y表示当前坐标，step_num表示步幅倍数，step_x,step_y表示每次移动距离的单位
-	int y;
-	int step_num;
-	int step_x;
-	int step_y;
-	int size;   //小球大小
-	bool begin_pause;   //小球状态
-	bool trail;     //小球轨迹状态
+    int x;        //x，y表示当前坐标，step_num表示步幅倍数，step_x,step_y表示每次移动距离的单位
+    int y;
+    int step_num;
+    int step_x;
+    int step_y;
+    int size;   //小球大小
+    bool begin_pause;   //小球状态
+    bool trail;     //小球轨迹状态
 public:
-	afx_msg void OnSpeedUp();   //声明加速函数
-	afx_msg void OnSpeedDown();  //声明减速函数
-	afx_msg void OnTrail();     //声明轨迹函数
-	afx_msg void OnBegin_Pause();  //声明状态函数
+    afx_msg void OnSpeedUp();   //声明加速函数
+    afx_msg void OnSpeedDown();  //声明减速函数
+    afx_msg void OnTrail();     //声明轨迹函数
+    afx_msg void OnBegin_Pause();  //声明状态函数
 </code></pre>
-<h5 id="实现小球运动"><a class="markdownIt-Anchor" href="#实现小球运动"></a> 实现小球运动</h5>
-<p>不断函数调用来实现小球的运动，采用step_num来控制小球的速度，当按下加速键是step_num加1，加速，减速同理，当速度为1是，如果继续减速，将强制停止此操作，并弹出消息提示，暂停功能的实现是通过阶数当前计时器，开始则重新开启一个同样编号的计时器，轨迹的消除通过控制变量trail来实现，如果不需要轨迹，则执行异或操作将轨迹消除，并进行清屏，反之则不执行</p>
-<pre class="highlight"><code class="">int CBallView::OnCreate(LPCREATESTRUCT lpCreateStruct)
+<h5 id="实现小球运动"><a href="#实现小球运动" class="headerlink" title="实现小球运动"></a>实现小球运动</h5><p>不断函数调用来实现小球的运动，采用step_num来控制小球的速度，当按下加速键是step_num加1，加速，减速同理，当速度为1是，如果继续减速，将强制停止此操作，并弹出消息提示，暂停功能的实现是通过阶数当前计时器，开始则重新开启一个同样编号的计时器，轨迹的消除通过控制变量trail来实现，如果不需要轨迹，则执行异或操作将轨迹消除，并进行清屏，反之则不执行</p>
+<pre><code>int CBallView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
-	if (CView::OnCreate(lpCreateStruct) == -1)
-		return -1;
+    if (CView::OnCreate(lpCreateStruct) == -1)
+        return -1;
 
-	// TODO:  在此添加您专用的创建代码
-	SetTimer(1, 100, NULL);//计时器编号，刷新时间（ms)可以通过刷新时间来实现加速和减速
-	return 0;
+    // TODO:  在此添加您专用的创建代码
+    SetTimer(1, 100, NULL);//计时器编号，刷新时间（ms)可以通过刷新时间来实现加速和减速
+    return 0;
 }
 
 void CBallView::OnDestroy()
 {
-	CView::OnDestroy();
+    CView::OnDestroy();
 
-	KillTimer(1);
+    KillTimer(1);
 }
 
 void CBallView::OnTimer(UINT_PTR nIDEvent)
 {
-	if (nIDEvent == 1)
-	{
-		CRect rect;
-		GetClientRect(&amp;rect);
-		CDC* pDC = GetDC();
-		pDC-&gt;SetROP2(R2_XORPEN);
-		pDC-&gt;Ellipse(x, y, x + size, y + size);
-		x += step_x*step_num;  //通过改变步幅倍率来改变速度
-		y += step_y*step_num;
-		theApp.x_ = x;
-		theApp.y_ = y;
-		if (x&lt;0 || x&gt;rect.right - size)  //转向操作
-		{
-			step_x = 0 - step_x;
-		}
-		if (y&lt;0 || y&gt;rect.bottom - size)
-		{
-			step_y = 0 - step_y;
-		}
-		if (!trail) //是否保留轨迹，不保留则通过异或消除
-			pDC-&gt;Ellipse(x,y,x+size,y+size);
-	}
-	CView::OnTimer(nIDEvent);
+    if (nIDEvent == 1)
+    {
+        CRect rect;
+        GetClientRect(&amp;rect);
+        CDC* pDC = GetDC();
+        pDC-&gt;SetROP2(R2_XORPEN);
+        pDC-&gt;Ellipse(x, y, x + size, y + size);
+        x += step_x*step_num;  //通过改变步幅倍率来改变速度
+        y += step_y*step_num;
+        theApp.x_ = x;
+        theApp.y_ = y;
+        if (x&lt;0 || x&gt;rect.right - size)  //转向操作
+        {
+            step_x = 0 - step_x;
+        }
+        if (y&lt;0 || y&gt;rect.bottom - size)
+        {
+            step_y = 0 - step_y;
+        }
+        if (!trail) //是否保留轨迹，不保留则通过异或消除
+            pDC-&gt;Ellipse(x,y,x+size,y+size);
+    }
+    CView::OnTimer(nIDEvent);
 }
 </code></pre>
-<h5 id="菜单栏的实现"><a class="markdownIt-Anchor" href="#菜单栏的实现"></a> 菜单栏的实现</h5>
-<p>在资源视图中找到主视图进行添加相应部分，并添加事件来响应<img src="https://i.loli.net/2021/04/10/CGXbiHruFw5kjBp.png" alt="image-20210410031318645"></p>
-<pre class="highlight"><code class="">void CBallView::OnSpeedUp() //加速函数，并弹出弹框提示速度信息
+<h5 id="菜单栏的实现"><a href="#菜单栏的实现" class="headerlink" title="菜单栏的实现"></a>菜单栏的实现</h5><p>在资源视图中找到主视图进行添加相应部分，并添加事件来响应<img src="https://i.loli.net/2021/04/10/CGXbiHruFw5kjBp.png" alt="image-20210410031318645"></p>
+<pre><code>void CBallView::OnSpeedUp() //加速函数，并弹出弹框提示速度信息
 {
-	// TODO: 在此添加命令处理程序代码
-	step_num++;
-	theApp.speed_ = step_num;
-	CString str;
-	str.Format(L"Current speed:%d", step_num);
-	MessageBox(str);
+    // TODO: 在此添加命令处理程序代码
+    step_num++;
+    theApp.speed_ = step_num;
+    CString str;
+    str.Format(L"Current speed:%d", step_num);
+    MessageBox(str);
 }
 
 
 void CBallView::OnSpeedDown()  //减速函数，并弹出弹框提示速度信息，如果速度为1，仍要减速，则不允许减速，弹出提示消息
 {
-	// TODO: 在此添加命令处理程序代码
-	if (step_num &gt; 1)
-	{
-		step_num--;
-		theApp.speed_ = step_num;
-		CString str;
-		str.Format(L"Current speed:%d", step_num);
-		MessageBox(str);
-	}
-	else//速度为1
-	{
-		CString str;
-		str.Format(L"                          Current speed:%d\n\dThe current speed is already the minimum.\n           No more deceleration is allowed.", step_num);
-		MessageBox(str);
-	}
+    // TODO: 在此添加命令处理程序代码
+    if (step_num &gt; 1)
+    {
+        step_num--;
+        theApp.speed_ = step_num;
+        CString str;
+        str.Format(L"Current speed:%d", step_num);
+        MessageBox(str);
+    }
+    else//速度为1
+    {
+        CString str;
+        str.Format(L"                          Current speed:%d\n\dThe current speed is already the minimum.\n           No more deceleration is allowed.", step_num);
+        MessageBox(str);
+    }
 }
 
 
 void CBallView::OnTrail()//是否保留轨迹，不保留则通过用白色刷新全屏来实现清屏
 {
-	// TODO: 在此添加命令处理程序代码
-	if (trail)
-	{
-		trail = false;
-		CDC* pDC = GetDC();
-		CRect rc;
-		GetClientRect(&amp;rc);
+    // TODO: 在此添加命令处理程序代码
+    if (trail)
+    {
+        trail = false;
+        CDC* pDC = GetDC();
+        CRect rc;
+        GetClientRect(&amp;rc);
 
-		pDC-&gt;FillSolidRect(&amp;rc, RGB(255, 255, 255));
-		pDC-&gt;SetROP2(R2_XORPEN);
-		pDC-&gt;Ellipse(x, y, x + size, y + size);
-		ReleaseDC(pDC);
-	}
-	else
-		trail = true; 
+        pDC-&gt;FillSolidRect(&amp;rc, RGB(255, 255, 255));
+        pDC-&gt;SetROP2(R2_XORPEN);
+        pDC-&gt;Ellipse(x, y, x + size, y + size);
+        ReleaseDC(pDC);
+    }
+    else
+        trail = true; 
 }
 
 
@@ -476,23 +456,22 @@ void CBallView::OnTrail()//是否保留轨迹，不保留则通过用白色刷�
 //}
 void CBallView::OnBegin_Pause()//暂停实现方法二，通过kill掉Timer来实现暂停，开始则重新申请一个Timer
 {
-	// TODO: 在此添加命令处理程序代码
-	if (!begin_pause)
-	{
-		begin_pause = true;
-		KillTimer(1);
-	}
-	else
-	{
-		SetTimer(1, 100, NULL);
-		begin_pause = false;
-	}
+    // TODO: 在此添加命令处理程序代码
+    if (!begin_pause)
+    {
+        begin_pause = true;
+        KillTimer(1);
+    }
+    else
+    {
+        SetTimer(1, 100, NULL);
+        begin_pause = false;
+    }
 }
 </code></pre>
-<h5 id="状态栏的实现"><a class="markdownIt-Anchor" href="#状态栏的实现"></a> 状态栏的实现</h5>
-<p>新建三个状态 速度，位置和时间，并将其添加到indicators数组里面，使用SetPaneInfo函数来设置三个状态的信息以及宽度，然后继续利用Timer来不断刷新，速度和位置采用全局变量来获得，时间则通过CTime::GetCurrentTime()函数实现。<img src="https://i.loli.net/2021/04/10/5Q8AhTBCuRIslO7.png" alt="image-20210410031352719"></p>
-<pre class="highlight"><code class="">m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
-	
+<h5 id="状态栏的实现"><a href="#状态栏的实现" class="headerlink" title="状态栏的实现"></a>状态栏的实现</h5><p>新建三个状态 速度，位置和时间，并将其添加到indicators数组里面，使用SetPaneInfo函数来设置三个状态的信息以及宽度，然后继续利用Timer来不断刷新，速度和位置采用全局变量来获得，时间则通过CTime::GetCurrentTime()函数实现。<img src="https://i.loli.net/2021/04/10/5Q8AhTBCuRIslO7.png" alt="image-20210410031352719"></p>
+<pre><code>m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
+    
 m_wndStatusBar.SetPaneInfo(4, IDS_INDICATOR_SPEED, SBPS_POPOUT, 50);//设置三个信息的位置和宽度
 m_wndStatusBar.SetPaneInfo(5, IDS_INDICATOR_MESSAGE, SBPS_POPOUT, 110);
 m_wndStatusBar.SetPaneInfo(6, IDS_INDICATOR_TIME, SBPS_POPOUT, 50);
@@ -513,31 +492,29 @@ m_wndStatusBar.SetPaneText(5, str_2);
 t1 = CTime::GetCurrentTime();
 m_wndStatusBar.SetPaneText(6, t1.Format("%H:%M:%S"));
 </code></pre>
-<pre class="highlight"><code class="">void CMainFrame::OnTimer(UINT_PTR nIDEvent)//通过timer来实现刷新
+<pre><code>void CMainFrame::OnTimer(UINT_PTR nIDEvent)//通过timer来实现刷新
 {
-	CTime t1;
+    CTime t1;
 
-	CString str_1;
-	str_1.Format(L"Speed:%d", theApp.speed_);
-	m_wndStatusBar.SetPaneText(4, str_1);
+    CString str_1;
+    str_1.Format(L"Speed:%d", theApp.speed_);
+    m_wndStatusBar.SetPaneText(4, str_1);
 
-	CString str_2;
-	str_2.Format(L"Location(%d,%d)", theApp.x_, theApp.y_);
-	m_wndStatusBar.SetPaneText(5, str_2);
+    CString str_2;
+    str_2.Format(L"Location(%d,%d)", theApp.x_, theApp.y_);
+    m_wndStatusBar.SetPaneText(5, str_2);
 
-	t1 = CTime::GetCurrentTime();//获取当前时间来刷新状态栏
-	m_wndStatusBar.SetPaneText(6, t1.Format("%H:%M:%S"));
+    t1 = CTime::GetCurrentTime();//获取当前时间来刷新状态栏
+    m_wndStatusBar.SetPaneText(6, t1.Format("%H:%M:%S"));
 
 
-	CFrameWnd::OnTimer(nIDEvent);
+    CFrameWnd::OnTimer(nIDEvent);
 }
 </code></pre>
-<h5 id="定义主面板名称-2"><a class="markdownIt-Anchor" href="#定义主面板名称-2"></a> 定义主面板名称</h5>
-<pre class="highlight"><code class="">cs.style &amp;= ~FWS_ADDTOTITLE;                    //修改主窗口标题
+<h5 id="定义主面板名称-1"><a href="#定义主面板名称-1" class="headerlink" title="定义主面板名称"></a>定义主面板名称</h5><pre><code>cs.style &amp;= ~FWS_ADDTOTITLE;                    //修改主窗口标题
 m_strTitle = _T("Ball");
 </code></pre>
-<h2 id="实验收获"><a class="markdownIt-Anchor" href="#实验收获"></a> 实验收获</h2>
-<p>通过本次实验掌握了MFC的基本操作，理解了其实现功能的机制（消息的发送和执行），了解了一些基本函数的使用的，在对其界面优化过程中，通过实践对其理解加深，主要存在困难就是对函数的使用，以及初步接触MFc对其实现机制不太了解，实验过后相信会有所提升。</p>
+<h2 id="实验收获"><a href="#实验收获" class="headerlink" title="实验收获"></a>实验收获</h2><p>通过本次实验掌握了MFC的基本操作，理解了其实现功能的机制（消息的发送和执行），了解了一些基本函数的使用的，在对其界面优化过程中，通过实践对其理解加深，主要存在困难就是对函数的使用，以及初步接触MFc对其实现机制不太了解，实验过后相信会有所提升。</p>
 
   </div>
 </article>
@@ -566,7 +543,7 @@ m_strTitle = _T("Ball");
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text"> 作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%95%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text"> 展示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#key"><span class="toc-number">2.1.</span> <span class="toc-text"> Key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ball"><span class="toc-number">2.2.</span> <span class="toc-text"> Ball</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text"> 实现过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#key-2"><span class="toc-number">3.1.</span> <span class="toc-text"> Key</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%91%BD%E4%BB%A4"><span class="toc-number">3.1.0.1.</span> <span class="toc-text"> 添加命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E"><span class="toc-number">3.1.0.2.</span> <span class="toc-text"> 头文件函数声明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#void-ckeyviewonlbuttonupuint-nflags-cpoint-point"><span class="toc-number">3.1.0.3.</span> <span class="toc-text"> void CKeyView::OnLButtonUp(UINT nFlags, CPoint point)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#void-ckeyviewoncharuint-nchar-uint-nredcnt-uint-nflags"><span class="toc-number">3.1.0.4.</span> <span class="toc-text"> void CKeyView::OnChar(UINT nChar, UINT nRedCnt, UINT nFlags)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#bool-ckeyviewpretranslatemessagemsg-pmsg"><span class="toc-number">3.1.0.5.</span> <span class="toc-text"> BOOL CKeyView::PreTranslateMessage(MSG* pMsg)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF"><span class="toc-number">3.1.0.6.</span> <span class="toc-text"> 自定义消息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%9D%A2%E6%9D%BF%E5%90%8D%E7%A7%B0"><span class="toc-number">3.1.0.7.</span> <span class="toc-text"> 定义主面板名称</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ball-2"><span class="toc-number">3.2.</span> <span class="toc-text"> Ball</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A3%B0%E6%98%8Eball%E7%B1%BB%E5%8F%98%E9%87%8F"><span class="toc-number">3.2.0.1.</span> <span class="toc-text"> 声明Ball类变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%B0%8F%E7%90%83%E8%BF%90%E5%8A%A8"><span class="toc-number">3.2.0.2.</span> <span class="toc-text"> 实现小球运动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8F%9C%E5%8D%95%E6%A0%8F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.0.3.</span> <span class="toc-text"> 菜单栏的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%A0%8F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.0.4.</span> <span class="toc-text"> 状态栏的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%9D%A2%E6%9D%BF%E5%90%8D%E7%A7%B0-2"><span class="toc-number">3.2.0.5.</span> <span class="toc-text"> 定义主面板名称</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%94%B6%E8%8E%B7"><span class="toc-number">4.</span> <span class="toc-text"> 实验收获</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%95%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text">展示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Key"><span class="toc-number">2.1.</span> <span class="toc-text">Key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ball"><span class="toc-number">2.2.</span> <span class="toc-text">Ball</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">实现过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Key-1"><span class="toc-number">3.1.</span> <span class="toc-text">Key</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%91%BD%E4%BB%A4"><span class="toc-number">3.1.0.1.</span> <span class="toc-text">添加命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E"><span class="toc-number">3.1.0.2.</span> <span class="toc-text">头文件函数声明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#void-CKeyView-OnLButtonUp-UINT-nFlags-CPoint-point"><span class="toc-number">3.1.0.3.</span> <span class="toc-text">void CKeyView::OnLButtonUp(UINT nFlags, CPoint point)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#void-CKeyView-OnChar-UINT-nChar-UINT-nRedCnt-UINT-nFlags"><span class="toc-number">3.1.0.4.</span> <span class="toc-text">void CKeyView::OnChar(UINT nChar, UINT nRedCnt, UINT nFlags)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BOOL-CKeyView-PreTranslateMessage-MSG-pMsg"><span class="toc-number">3.1.0.5.</span> <span class="toc-text">BOOL CKeyView::PreTranslateMessage(MSG* pMsg)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF"><span class="toc-number">3.1.0.6.</span> <span class="toc-text">自定义消息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%9D%A2%E6%9D%BF%E5%90%8D%E7%A7%B0"><span class="toc-number">3.1.0.7.</span> <span class="toc-text">定义主面板名称</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ball-1"><span class="toc-number">3.2.</span> <span class="toc-text">Ball</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A3%B0%E6%98%8EBall%E7%B1%BB%E5%8F%98%E9%87%8F"><span class="toc-number">3.2.0.1.</span> <span class="toc-text">声明Ball类变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%B0%8F%E7%90%83%E8%BF%90%E5%8A%A8"><span class="toc-number">3.2.0.2.</span> <span class="toc-text">实现小球运动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8F%9C%E5%8D%95%E6%A0%8F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.0.3.</span> <span class="toc-text">菜单栏的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%A0%8F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.0.4.</span> <span class="toc-text">状态栏的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%9D%A2%E6%9D%BF%E5%90%8D%E7%A7%B0-1"><span class="toc-number">3.2.0.5.</span> <span class="toc-text">定义主面板名称</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%94%B6%E8%8E%B7"><span class="toc-number">4.</span> <span class="toc-text">实验收获</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

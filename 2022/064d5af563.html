@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。    链表 链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。   链接的入口节点称为链表的头结点也就是head。    双链表：    循环链表： 循环链表可用来解决约瑟夫环问题    链表中的节点在内存中不是连续">
+    <meta name="description" content="本篇为个人笔记，内容或有错误。图片部分源于代码随想录，侵删。    链表链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。  链接的入口节点称为链表的头结点也就是head。  双链表：  循环链表：循环链表可用来解决约瑟夫环问题   链表中的节点在内存中不是连续分布的 ，而是散乱">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode笔记-链表">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2022/064d5af563.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。    链表 链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。   链接的入口节点称为链表的头结点也就是head。    双链表：    循环链表： 循环链表可用来解决约瑟夫环问题    链表中的节点在内存中不是连续">
+<meta property="og:description" content="本篇为个人笔记，内容或有错误。图片部分源于代码随想录，侵删。    链表链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。  链接的入口节点称为链表的头结点也就是head。  双链表：  循环链表：循环链表可用来解决约瑟夫环问题   链表中的节点在内存中不是连续分布的 ，而是散乱">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/05/26/YVCzvG73koDOeZw.png">
 <meta property="og:image" content="https://s2.loli.net/2022/05/26/HAv7zVF2ZGlDN5q.png">
@@ -152,7 +152,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text"> 链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text"> 性能分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> C++示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E5%92%8C%E5%85%A5%E5%8F%A3%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text"> 关于环形链表和入口问题</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">C++示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E5%92%8C%E5%85%A5%E5%8F%A3%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">关于环形链表和入口问题</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -187,124 +187,112 @@
 
   <div class="content" itemprop="articleBody">
     <blockquote>
-<p>本篇为个人笔记，内容或有错误。<br>
-图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
+<p>本篇为个人笔记，内容或有错误。<br>图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
 </blockquote>
 <!-- toc -->
-<h2 id="链表"><a class="markdownIt-Anchor" href="#链表"></a> 链表</h2>
-<p>链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。</p>
+
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。</p>
 <ol>
-<li>
-<p>链接的入口节点称为链表的头结点也就是head。<br>
-<img src="https://s2.loli.net/2022/05/26/YVCzvG73koDOeZw.png" alt="20220526212803"></p>
+<li><p>链接的入口节点称为链表的头结点也就是head。<br><img src="https://s2.loli.net/2022/05/26/YVCzvG73koDOeZw.png" alt="20220526212803"></p>
 </li>
-<li>
-<p>双链表：<br>
-<img src="https://s2.loli.net/2022/05/26/HAv7zVF2ZGlDN5q.png" alt="20220526212848"></p>
+<li><p>双链表：<br><img src="https://s2.loli.net/2022/05/26/HAv7zVF2ZGlDN5q.png" alt="20220526212848"></p>
 </li>
-<li>
-<p>循环链表：<br>
-循环链表可用来解决约瑟夫环问题<br>
-<img src="https://s2.loli.net/2022/05/26/mQZ5tVT2ScWHdGl.png" alt="20220526212919"></p>
+<li><p>循环链表：<br>循环链表可用来解决约瑟夫环问题<br><img src="https://s2.loli.net/2022/05/26/mQZ5tVT2ScWHdGl.png" alt="20220526212919"></p>
 </li>
 </ol>
 <p>链表中的节点在内存中不是连续分布的 ，而是散乱分布在内存中的某地址上，分配机制取决于操作系统的内存管理。</p>
-<pre class="highlight"><code class="C++"><span class="hljs-comment">// 单链表</span>
-<span class="hljs-keyword">struct</span> <span class="hljs-title class_">ListNode</span> {
-    <span class="hljs-type">int</span> val;  <span class="hljs-comment">// 节点上存储的元素</span>
-    ListNode *next;  <span class="hljs-comment">// 指向下一个节点的指针</span>
-    <span class="hljs-comment">// ListNode *prev;  //指向前一个元素 双链表，记得构造函数初始化</span>
-    <span class="hljs-built_in">ListNode</span>(<span class="hljs-type">int</span> x) : <span class="hljs-built_in">val</span>(x), <span class="hljs-built_in">next</span>(<span class="hljs-literal">NULL</span>) {}  <span class="hljs-comment">// 节点的构造函数</span>
+<pre><code class="C++">// 单链表
+struct ListNode {
+    int val;  // 节点上存储的元素
+    ListNode *next;  // 指向下一个节点的指针
+    // ListNode *prev;  //指向前一个元素 双链表，记得构造函数初始化
+    ListNode(int x) : val(x), next(NULL) {}  // 节点的构造函数
 };
 </code></pre>
-<h3 id="性能分析"><a class="markdownIt-Anchor" href="#性能分析"></a> 性能分析</h3>
-<table>
+<h3 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h3><table>
 <thead>
 <tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">插入/删除</th>
-<th style="text-align:center">查询</th>
-<th style="text-align:center">适用场景</th>
+<th align="center"></th>
+<th align="center">插入/删除</th>
+<th align="center">查询</th>
+<th align="center">适用场景</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">数组</td>
-<td style="text-align:center">O(n)</td>
-<td style="text-align:center">O(1)</td>
-<td style="text-align:center">数据量固定，频繁查询，较少增删</td>
+<tbody><tr>
+<td align="center">数组</td>
+<td align="center">O(n)</td>
+<td align="center">O(1)</td>
+<td align="center">数据量固定，频繁查询，较少增删</td>
 </tr>
 <tr>
-<td style="text-align:center">链表</td>
-<td style="text-align:center">O(1)</td>
-<td style="text-align:center">O(n)</td>
-<td style="text-align:center">数据量不固定，频繁增删，较少查询</td>
+<td align="center">链表</td>
+<td align="center">O(1)</td>
+<td align="center">O(n)</td>
+<td align="center">数据量不固定，频繁增删，较少查询</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>单链表的删除操作一般有两类：</p>
 <ol>
 <li>设置虚拟头，将头节点当作普通节点处理，最后在删除虚拟头</li>
 <li>头节点和其他节点分开处理</li>
 </ol>
 <p>Pyhton、Java等语言可以自动释放内存，C++记得要手动释放内存节约空间。</p>
-<h3 id="c示例"><a class="markdownIt-Anchor" href="#c示例"></a> C++示例</h3>
-<pre class="highlight"><code class="C++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyLinkedList</span> {
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-comment">// 定义链表节点结构体</span>
-    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">LinkedNode</span> {
-        <span class="hljs-type">int</span> val;
+<h3 id="C-示例"><a href="#C-示例" class="headerlink" title="C++示例"></a>C++示例</h3><pre><code class="C++">class MyLinkedList {
+public:
+    // 定义链表节点结构体
+    struct LinkedNode {
+        int val;
         LinkedNode* next;
-        <span class="hljs-built_in">LinkedNode</span>(<span class="hljs-type">int</span> val):<span class="hljs-built_in">val</span>(val), <span class="hljs-built_in">next</span>(<span class="hljs-literal">nullptr</span>){}
+        LinkedNode(int val):val(val), next(nullptr){}
     };
 
-    <span class="hljs-comment">// 初始化链表</span>
-    <span class="hljs-built_in">MyLinkedList</span>() {
-        _dummyHead = <span class="hljs-keyword">new</span> <span class="hljs-built_in">LinkedNode</span>(<span class="hljs-number">0</span>); <span class="hljs-comment">// 这里定义的头结点 是一个虚拟头结点，而不是真正的链表头结点</span>
-        _size = <span class="hljs-number">0</span>;
+    // 初始化链表
+    MyLinkedList() {
+        _dummyHead = new LinkedNode(0); // 这里定义的头结点 是一个虚拟头结点，而不是真正的链表头结点
+        _size = 0;
     }
 
-    <span class="hljs-comment">// 获取到第index个节点数值，如果index是非法数值直接返回-1， 注意index是从0开始的，第0个节点就是头结点</span>
-    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span> </span>{
-        <span class="hljs-keyword">if</span> (index &gt; (_size - <span class="hljs-number">1</span>) || index &lt; <span class="hljs-number">0</span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    // 获取到第index个节点数值，如果index是非法数值直接返回-1， 注意index是从0开始的，第0个节点就是头结点
+    int get(int index) {
+        if (index &gt; (_size - 1) || index &lt; 0) {
+            return -1;
         }
         LinkedNode* cur = _dummyHead-&gt;next;
-        <span class="hljs-keyword">while</span>(index--){ <span class="hljs-comment">// 如果--index 就会陷入死循环</span>
+        while(index--){ // 如果--index 就会陷入死循环
             cur = cur-&gt;next;
         }
-        <span class="hljs-keyword">return</span> cur-&gt;val;
+        return cur-&gt;val;
     }
 
-    <span class="hljs-comment">// 在链表最前面插入一个节点，插入完成后，新插入的节点为链表的新的头结点</span>
-    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">addAtHead</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> </span>{
-        LinkedNode* newNode = <span class="hljs-keyword">new</span> <span class="hljs-built_in">LinkedNode</span>(val);
+    // 在链表最前面插入一个节点，插入完成后，新插入的节点为链表的新的头结点
+    void addAtHead(int val) {
+        LinkedNode* newNode = new LinkedNode(val);
         newNode-&gt;next = _dummyHead-&gt;next;
         _dummyHead-&gt;next = newNode;
         _size++;
     }
 
-    <span class="hljs-comment">// 在链表最后面添加一个节点</span>
-    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">addAtTail</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> </span>{
-        LinkedNode* newNode = <span class="hljs-keyword">new</span> <span class="hljs-built_in">LinkedNode</span>(val);
+    // 在链表最后面添加一个节点
+    void addAtTail(int val) {
+        LinkedNode* newNode = new LinkedNode(val);
         LinkedNode* cur = _dummyHead;
-        <span class="hljs-keyword">while</span>(cur-&gt;next != <span class="hljs-literal">nullptr</span>){
+        while(cur-&gt;next != nullptr){
             cur = cur-&gt;next;
         }
         cur-&gt;next = newNode;
         _size++;
     }
 
-    <span class="hljs-comment">// 在第index个节点之前插入一个新节点，例如index为0，那么新插入的节点为链表的新头节点。</span>
-    <span class="hljs-comment">// 如果index 等于链表的长度，则说明是新插入的节点为链表的尾结点</span>
-    <span class="hljs-comment">// 如果index大于链表的长度，则返回空</span>
-    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">addAtIndex</span><span class="hljs-params">(<span class="hljs-type">int</span> index, <span class="hljs-type">int</span> val)</span> </span>{
-        <span class="hljs-keyword">if</span> (index &gt; _size) {
-            <span class="hljs-keyword">return</span>;
+    // 在第index个节点之前插入一个新节点，例如index为0，那么新插入的节点为链表的新头节点。
+    // 如果index 等于链表的长度，则说明是新插入的节点为链表的尾结点
+    // 如果index大于链表的长度，则返回空
+    void addAtIndex(int index, int val) {
+        if (index &gt; _size) {
+            return;
         }
-        LinkedNode* newNode = <span class="hljs-keyword">new</span> <span class="hljs-built_in">LinkedNode</span>(val);
+        LinkedNode* newNode = new LinkedNode(val);
         LinkedNode* cur = _dummyHead;
-        <span class="hljs-keyword">while</span>(index--) {
+        while(index--) {
             cur = cur-&gt;next;
         }
         newNode-&gt;next = cur-&gt;next;
@@ -312,38 +300,37 @@
         _size++;
     }
 
-    <span class="hljs-comment">// 删除第index个节点，如果index 大于等于链表的长度，直接return，注意index是从0开始的</span>
-    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">deleteAtIndex</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span> </span>{
-        <span class="hljs-keyword">if</span> (index &gt;= _size || index &lt; <span class="hljs-number">0</span>) {
-            <span class="hljs-keyword">return</span>;
+    // 删除第index个节点，如果index 大于等于链表的长度，直接return，注意index是从0开始的
+    void deleteAtIndex(int index) {
+        if (index &gt;= _size || index &lt; 0) {
+            return;
         }
         LinkedNode* cur = _dummyHead;
-        <span class="hljs-keyword">while</span>(index--) {
+        while(index--) {
             cur = cur -&gt;next;
         }
         LinkedNode* tmp = cur-&gt;next;
         cur-&gt;next = cur-&gt;next-&gt;next;
-        <span class="hljs-keyword">delete</span> tmp;
+        delete tmp;
         _size--;
     }
 
-    <span class="hljs-comment">// 打印链表</span>
-    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printLinkedList</span><span class="hljs-params">()</span> </span>{
+    // 打印链表
+    void printLinkedList() {
         LinkedNode* cur = _dummyHead;
-        <span class="hljs-keyword">while</span> (cur-&gt;next != <span class="hljs-literal">nullptr</span>) {
-            cout &lt;&lt; cur-&gt;next-&gt;val &lt;&lt; <span class="hljs-string">" "</span>;
+        while (cur-&gt;next != nullptr) {
+            cout &lt;&lt; cur-&gt;next-&gt;val &lt;&lt; " ";
             cur = cur-&gt;next;
         }
         cout &lt;&lt; endl;
     }
-<span class="hljs-keyword">private</span>:
-    <span class="hljs-type">int</span> _size;
+private:
+    int _size;
     LinkedNode* _dummyHead;
 
 };
 </code></pre>
-<h3 id="关于环形链表和入口问题"><a class="markdownIt-Anchor" href="#关于环形链表和入口问题"></a> 关于环形链表和入口问题</h3>
-<p>链表是否存在环可以用双指针快速判定，fast每次移动两个节点，slow一个节点，如果相遇（即fast == slow），则必定存在环</p>
+<h3 id="关于环形链表和入口问题"><a href="#关于环形链表和入口问题" class="headerlink" title="关于环形链表和入口问题"></a>关于环形链表和入口问题</h3><p>链表是否存在环可以用双指针快速判定，fast每次移动两个节点，slow一个节点，如果相遇（即fast == slow），则必定存在环  </p>
 <p>环的入口可以这样求：在相遇位置设置tmp1，在链表头结点处设置tmp2，每次走一个节点，相遇位置即为环入口节点</p>
 <p>理论比较简单，详细可参见<a target="_blank" rel="noopener" href="https://programmercarl.com/0142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II.html">链表：环找到了，那入口呢？</a>,dalao写的非常详细</p>
 
@@ -374,7 +361,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text"> 链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text"> 性能分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> C++示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E5%92%8C%E5%85%A5%E5%8F%A3%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text"> 关于环形链表和入口问题</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">C++示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E5%92%8C%E5%85%A5%E5%8F%A3%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">关于环形链表和入口问题</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

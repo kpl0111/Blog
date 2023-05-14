@@ -6,7 +6,7 @@
   <link href="https://kpl0111.github.io/blog/atom.xml" rel="self"/>
   
   <link href="https://kpl0111.github.io/blog/"/>
-  <updated>2023-05-06T14:24:22.346Z</updated>
+  <updated>2023-05-14T09:41:32.156Z</updated>
   <id>https://kpl0111.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vim操作指令及配置</title>
+    <link href="https://kpl0111.github.io/blog/2023/056dad740.html"/>
+    <id>https://kpl0111.github.io/blog/2023/056dad740.html</id>
+    <published>2023-05-14T09:01:53.000Z</published>
+    <updated>2023-05-14T09:41:32.156Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本篇使用Vim编辑，个人笔记使用&lt;br&gt;待使用到补充，自己用到才有体会&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- TOC --&gt;
+
+&lt;h2 id=&quot;模式&quot;&gt;&lt;a href=&quot;#模式&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hello kpl!</title>
@@ -43,7 +69,7 @@
     <link href="https://kpl0111.github.io/blog/2023/0589550d80.html"/>
     <id>https://kpl0111.github.io/blog/2023/0589550d80.html</id>
     <published>2023-05-02T12:54:51.000Z</published>
-    <updated>2023-05-06T16:14:53.965Z</updated>
+    <updated>2023-05-13T15:57:54.222Z</updated>
     
     
       
@@ -75,11 +101,11 @@
         
         
     <summary type="html">&lt;ul&gt;
-&lt;li&gt;创建仓库
-&lt;ul&gt;
+&lt;li&gt;创建仓库&lt;ul&gt;
 &lt;li&gt;git clone &amp;lt;url&amp;gt; [directory]&lt;/li&gt;
 &lt;li&gt;git init&lt;/li&gt;
-&lt;li&gt;git config --global &lt;a</summary>
+&lt;li&gt;git config –global user.name ‘你的用户名’&lt;/li&gt;
+&lt;li&gt;git config</summary>
         
       
     
@@ -100,8 +126,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;深入理解c二维数组&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#深入理解c二维数组&quot;&gt;&lt;/a&gt; 深入理解C++二维数组&lt;/h2&gt;
-&lt;blockquote&gt;
+    <summary type="html">&lt;h2 id=&quot;深入理解C-二维数组&quot;&gt;&lt;a href=&quot;#深入理解C-二维数组&quot; class=&quot;headerlink&quot; title=&quot;深入理解C++二维数组&quot;&gt;&lt;/a&gt;深入理解C++二维数组&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;提问：定义一个3 *</summary>
         
       
@@ -123,8 +148,7 @@
       
         
         
-    <summary type="html">&lt;p&gt;vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示：&lt;br&gt;
-&lt;img</summary>
+    <summary type="html">&lt;p&gt;vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示：&lt;br&gt;&lt;img</summary>
         
       
     
@@ -250,8 +274,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;后缀表达式&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#后缀表达式&quot;&gt;&lt;/a&gt; 后缀表达式&lt;/h2&gt;
-&lt;p&gt;后缀表达式也叫&lt;strong&gt;逆波兰表达式&lt;/strong&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;后缀表达式&quot;&gt;&lt;a href=&quot;#后缀表达式&quot; class=&quot;headerlink&quot; title=&quot;后缀表达式&quot;&gt;&lt;/a&gt;后缀表达式&lt;/h2&gt;&lt;p&gt;后缀表达式也叫&lt;strong&gt;逆波兰表达式&lt;/strong&gt;</summary>
         
       
     
@@ -273,12 +296,10 @@
         
         
     <summary type="html">&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;任意位置新建txt文件，打开编辑&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;任意位置新建txt文件，打开编辑&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;复制以下代码&lt;/p&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;console&quot;&gt;@echo off
+&lt;li&gt;&lt;p&gt;复制以下代码&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;console&quot;&gt;@echo off
 
 reg add</summary>
         
@@ -352,9 +373,7 @@ reg add</summary>
       
         
         
-    <summary type="html">&lt;h2 id=&quot;矩阵等价&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#矩阵等价&quot;&gt;&lt;/a&gt; 矩阵等价&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;定义：对同型矩阵A、B，存在可逆阵P和Q，使得&lt;span class=&quot;katex&quot;&gt;&lt;span</summary>
+    <summary type="html">&lt;h2 id=&quot;矩阵等价&quot;&gt;&lt;a href=&quot;#矩阵等价&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -378,8 +397,7 @@ reg add</summary>
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;转载自&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;
-&lt;a</summary>
+&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;&lt;a</summary>
         
       
     
@@ -403,33 +421,7 @@ reg add</summary>
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;转载自&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;
-&lt;a</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>背包理论基础01背包2</title>
-    <link href="https://kpl0111.github.io/blog/2022/08517e3a8f.html"/>
-    <id>https://kpl0111.github.io/blog/2022/08517e3a8f.html</id>
-    <published>2022-08-10T05:21:14.000Z</published>
-    <updated>2022-08-10T06:28:30.544Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;转载自&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;
-&lt;a</summary>
+&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;&lt;a</summary>
         
       
     
