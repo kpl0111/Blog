@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="任意位置新建txt文件，打开编辑  复制以下代码 @echo off  reg add &quot;HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced&quot; &#x2F;v ShowSecondsInSystemClock &#x2F;t REG_DWORD &#x2F;d 1 &#x2F;f  TASKKILL &#x2F;F &#x2F;IM explorer.exe  echo.  e">
+    <meta name="description" content="任意位置新建txt文件，打开编辑   复制以下代码 @echo off  reg add &quot;HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced&quot; &#x2F;v ShowSecondsInSystemClock &#x2F;t REG_DWORD &#x2F;d 1 &#x2F;f  TASKKILL &#x2F;F &#x2F;IM explorer.exe  echo.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="win10时间显示精确到秒">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2022/1091d7ef4e.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="任意位置新建txt文件，打开编辑  复制以下代码 @echo off  reg add &quot;HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced&quot; &#x2F;v ShowSecondsInSystemClock &#x2F;t REG_DWORD &#x2F;d 1 &#x2F;f  TASKKILL &#x2F;F &#x2F;IM explorer.exe  echo.  e">
+<meta property="og:description" content="任意位置新建txt文件，打开编辑   复制以下代码 @echo off  reg add &quot;HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced&quot; &#x2F;v ShowSecondsInSystemClock &#x2F;t REG_DWORD &#x2F;d 1 &#x2F;f  TASKKILL &#x2F;F &#x2F;IM explorer.exe  echo.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20221006095422.png">
 <meta property="article:published_time" content="2022-10-06T01:43:49.000Z">
@@ -185,10 +185,12 @@
 
   <div class="content" itemprop="articleBody">
     <ol>
-<li><p>任意位置新建txt文件，打开编辑</p>
+<li>
+<p>任意位置新建txt文件，打开编辑</p>
 </li>
-<li><p>复制以下代码</p>
-<pre><code class="console">@echo off
+<li>
+<p>复制以下代码</p>
+<pre class="highlight"><code class="console">@echo off
 
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowSecondsInSystemClock /t REG_DWORD /d 1 /f
 
@@ -205,9 +207,12 @@ echo.
 pause
 </code></pre>
 </li>
-<li><p>更改后缀为<code>.bat</code>，之后双击执行该文件即可</p>
+<li>
+<p>更改后缀为<code>.bat</code>，之后双击执行该文件即可</p>
 </li>
-<li><p>效果如下<br><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20221006095422.png" alt="20221006095422"></p>
+<li>
+<p>效果如下<br>
+<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20221006095422.png" alt="20221006095422"></p>
 </li>
 </ol>
 

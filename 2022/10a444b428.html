@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="冒泡排序（Bubble Sort）（稳定排序）（超出时间限制）比较相邻元素，如果第一个比第二个大，则交换。 时间复杂度$n^2$，空间复杂度1 代码： class Solution { public:     vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {         &#x2F;&#x2F; bubbleSort         int n">
+    <meta name="description" content="冒泡排序（Bubble Sort）（稳定排序）（超出时间限制） 比较相邻元素，如果第一个比第二个大，则交换。 时间复杂度n2n^2n2，空间复杂度1 代码： class Solution { public:     vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {         &#x2F;&#x2F; bubbleSort         i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2022/10a444b428.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="冒泡排序（Bubble Sort）（稳定排序）（超出时间限制）比较相邻元素，如果第一个比第二个大，则交换。 时间复杂度$n^2$，空间复杂度1 代码： class Solution { public:     vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {         &#x2F;&#x2F; bubbleSort         int n">
+<meta property="og:description" content="冒泡排序（Bubble Sort）（稳定排序）（超出时间限制） 比较相邻元素，如果第一个比第二个大，则交换。 时间复杂度n2n^2n2，空间复杂度1 代码： class Solution { public:     vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {         &#x2F;&#x2F; bubbleSort         i">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20221015114004.png">
 <meta property="article:published_time" content="2022-10-15T03:08:40.000Z">
@@ -150,7 +150,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%EF%BC%88Bubble-Sort%EF%BC%89%EF%BC%88%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89%EF%BC%88%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">冒泡排序（Bubble Sort）（稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%EF%BC%88Select-Sort%EF%BC%89%EF%BC%88%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89%EF%BC%88%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">选择排序（Select Sort）（非稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%EF%BC%88Insect-Sort%EF%BC%89%EF%BC%88%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89%EF%BC%88%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">插入排序（Insect Sort）（稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%88Shell-Sort%EF%BC%89%EF%BC%88%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">希尔排序（Shell Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%EF%BC%88Merge-Sort%EF%BC%89%EF%BC%88%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">归并排序（Merge Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%EF%BC%88Quick-Sort%EF%BC%89%EF%BC%88%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">快速排序（Quick Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F%EF%BC%88Heap-Sort%EF%BC%89%EF%BC%88%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">堆排序（Heap Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%EF%BC%88Count-Sort%EF%BC%89%EF%BC%88%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">计数排序（Count Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%B6%E6%8E%92%E5%BA%8F%EF%BC%88Bucket-Sort%EF%BC%89%EF%BC%88%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">9.</span> <span class="toc-text">桶排序（Bucket Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F%EF%BC%88Radix-Sort%EF%BC%89%EF%BC%88%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">基数排序（Radix Sort）（稳定排序）</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8Fbubble-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text"> 冒泡排序（Bubble Sort）（稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8Fselect-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text"> 选择排序（Select Sort）（非稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8Finsect-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6"><span class="toc-number">3.</span> <span class="toc-text"> 插入排序（Insect Sort）（稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8Fshell-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">4.</span> <span class="toc-text"> 希尔排序（Shell Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8Fmerge-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text"> 归并排序（Merge Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8Fquick-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">6.</span> <span class="toc-text"> 快速排序（Quick Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8Fheap-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">7.</span> <span class="toc-text"> 堆排序（Heap Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8Fcount-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">8.</span> <span class="toc-text"> 计数排序（Count Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%B6%E6%8E%92%E5%BA%8Fbucket-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">9.</span> <span class="toc-text"> 桶排序（Bucket Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8Fradix-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">10.</span> <span class="toc-text"> 基数排序（Radix Sort）（稳定排序）</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -185,363 +185,387 @@
 
   <div class="content" itemprop="articleBody">
     <p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20221015114004.png" alt="20221015114004"></p>
-<h2 id="冒泡排序（Bubble-Sort）（稳定排序）（超出时间限制）"><a href="#冒泡排序（Bubble-Sort）（稳定排序）（超出时间限制）" class="headerlink" title="冒泡排序（Bubble Sort）（稳定排序）（超出时间限制）"></a>冒泡排序（Bubble Sort）（稳定排序）（超出时间限制）</h2><p>比较相邻元素，如果第一个比第二个大，则交换。</p>
-<p>时间复杂度$n^2$，空间复杂度1</p>
+<h2 id="冒泡排序bubble-sort稳定排序超出时间限制"><a class="markdownIt-Anchor" href="#冒泡排序bubble-sort稳定排序超出时间限制"></a> 冒泡排序（Bubble Sort）（稳定排序）（超出时间限制）</h2>
+<p>比较相邻元素，如果第一个比第二个大，则交换。</p>
+<p>时间复杂度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>，空间复杂度1</p>
 <p>代码：</p>
-<pre><code class="cpp">class Solution {
-public:
-    vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {
-        // bubbleSort
-        int n = nums.size();
-        for (int i = 0; i &lt; n - 1; ++i) {
-            bool flag = false;
-            for (int j = 0; j &lt; n - 1 - i; ++j) {
-                if (nums[j] &gt; nums[j + 1]) {
-                    swap(nums[j], nums[j + 1]);
-                    flag = true;
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-comment">// bubbleSort</span>
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">1</span>; ++i) {
+            <span class="hljs-type">bool</span> flag = <span class="hljs-literal">false</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; n - <span class="hljs-number">1</span> - i; ++j) {
+                <span class="hljs-keyword">if</span> (nums[j] &gt; nums[j + <span class="hljs-number">1</span>]) {
+                    <span class="hljs-built_in">swap</span>(nums[j], nums[j + <span class="hljs-number">1</span>]);
+                    flag = <span class="hljs-literal">true</span>;
                 }                 
             }
-            if (flag == false) break; //无交换，代表当前序列已经最优 
+            <span class="hljs-keyword">if</span> (flag == <span class="hljs-literal">false</span>) <span class="hljs-keyword">break</span>; <span class="hljs-comment">//无交换，代表当前序列已经最优 </span>
         }
-        return nums;
+        <span class="hljs-keyword">return</span> nums;
     }
 };
 </code></pre>
-<h2 id="选择排序（Select-Sort）（非稳定排序）（超出时间限制）"><a href="#选择排序（Select-Sort）（非稳定排序）（超出时间限制）" class="headerlink" title="选择排序（Select Sort）（非稳定排序）（超出时间限制）"></a>选择排序（Select Sort）（非稳定排序）（超出时间限制）</h2><p>依次给每个位置选择当前位置及以后最小的元素（交换当前元素与之后最小元素的位置）。</p>
-<p>不稳定举例：<br>排序前：5, 5*, 1, 7<br>排序后：1, 5*, 5, 7</p>
-<p>时间复杂度$n^2$，空间复杂度1</p>
+<h2 id="选择排序select-sort非稳定排序超出时间限制"><a class="markdownIt-Anchor" href="#选择排序select-sort非稳定排序超出时间限制"></a> 选择排序（Select Sort）（非稳定排序）（超出时间限制）</h2>
+<p>依次给每个位置选择当前位置及以后最小的元素（交换当前元素与之后最小元素的位置）。</p>
+<p>不稳定举例：<br>
+排序前：5, 5*, 1, 7<br>
+排序后：1, 5*, 5, 7</p>
+<p>时间复杂度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>，空间复杂度1</p>
 <p>代码：</p>
-<pre><code class="cpp">class Solution {
-public:
-    vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {
-        // selectSort 选择排序
-        int minIndex;
-        int n = nums.size();
-        for (int i = 0; i &lt; n - 1; ++i) {
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-comment">// selectSort 选择排序</span>
+        <span class="hljs-type">int</span> minIndex;
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">1</span>; ++i) {
             minIndex = i;
-            for (int j = i + 1; j &lt; n; ++j) {
-                if (nums[j] &lt; nums[minIndex]) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt; n; ++j) {
+                <span class="hljs-keyword">if</span> (nums[j] &lt; nums[minIndex]) {
                     minIndex = j;
                 }
             }
-            swap(nums[i], nums[minIndex]);
+            <span class="hljs-built_in">swap</span>(nums[i], nums[minIndex]);
         }
-        return nums;
+        <span class="hljs-keyword">return</span> nums;
     }
 };
 </code></pre>
-<h2 id="插入排序（Insect-Sort）（稳定排序）（超出时间限制）"><a href="#插入排序（Insect-Sort）（稳定排序）（超出时间限制）" class="headerlink" title="插入排序（Insect Sort）（稳定排序）（超出时间限制）"></a>插入排序（Insect Sort）（稳定排序）（超出时间限制）</h2><p>在前 1~i - 1元素有序的情况下，（依次）将第 i 个元素插入前面已经有序的小序列，使其有序。使用哨兵减少比较</p>
-<p>时间复杂度$n^2$，空间复杂度1</p>
+<h2 id="插入排序insect-sort稳定排序超出时间限制"><a class="markdownIt-Anchor" href="#插入排序insect-sort稳定排序超出时间限制"></a> 插入排序（Insect Sort）（稳定排序）（超出时间限制）</h2>
+<p>在前 1~i - 1元素有序的情况下，（依次）将第 i 个元素插入前面已经有序的小序列，使其有序。使用哨兵减少比较</p>
+<p>时间复杂度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>，空间复杂度1</p>
 <p>代码：</p>
-<pre><code class="cpp">class Solution {
-public:
-    vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {
-        int i, j;
-        for (i = 2; i &lt;= nums.size(); i++) {
-            if (nums[i] &lt; nums[i - 1]) {
-                nums[0] = nums[i]; //nums[0]为哨兵
-                for (j = i - 1; nums[0] &lt; nums[j]; j--) {
-                    nums[j + 1] =nums[j];
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-type">int</span> i, j;
+        <span class="hljs-keyword">for</span> (i = <span class="hljs-number">2</span>; i &lt;= nums.<span class="hljs-built_in">size</span>(); i++) {
+            <span class="hljs-keyword">if</span> (nums[i] &lt; nums[i - <span class="hljs-number">1</span>]) {
+                nums[<span class="hljs-number">0</span>] = nums[i]; <span class="hljs-comment">//nums[0]为哨兵</span>
+                <span class="hljs-keyword">for</span> (j = i - <span class="hljs-number">1</span>; nums[<span class="hljs-number">0</span>] &lt; nums[j]; j--) {
+                    nums[j + <span class="hljs-number">1</span>] =nums[j];
                 }
-                nums[j + 1] = nums[0];
+                nums[j + <span class="hljs-number">1</span>] = nums[<span class="hljs-number">0</span>];
             }
         }
-        return nums;
+        <span class="hljs-keyword">return</span> nums;
     }
 };
 </code></pre>
 <p>插入排序在此基础上也可以将搜索和移动分开，使用二分查找先找到要插入位置，然后再移动</p>
-<pre><code class="cpp">class Solution {
-public:
-    vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {
-        int i, j, low, high, mid;
-        for (i = 2; i &lt;= nums.size(); i++) {
-            nums[0] = nums[i];
-            low = 1; high = i - 1;
-            while (low &lt;= high) {
-                mid = (low + high) / 2;
-                if (nums[mid] &gt; nums[0]) high = mid - 1;
-                else low = mid + 1;
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-type">int</span> i, j, low, high, mid;
+        <span class="hljs-keyword">for</span> (i = <span class="hljs-number">2</span>; i &lt;= nums.<span class="hljs-built_in">size</span>(); i++) {
+            nums[<span class="hljs-number">0</span>] = nums[i];
+            low = <span class="hljs-number">1</span>; high = i - <span class="hljs-number">1</span>;
+            <span class="hljs-keyword">while</span> (low &lt;= high) {
+                mid = (low + high) / <span class="hljs-number">2</span>;
+                <span class="hljs-keyword">if</span> (nums[mid] &gt; nums[<span class="hljs-number">0</span>]) high = mid - <span class="hljs-number">1</span>;
+                <span class="hljs-keyword">else</span> low = mid + <span class="hljs-number">1</span>;
             }
-            for (j = i - 1; j &gt; high + 1; j--)
-                nums[j + 1] = nums[j];
-            nums[high + 1] = nums[0];
+            <span class="hljs-keyword">for</span> (j = i - <span class="hljs-number">1</span>; j &gt; high + <span class="hljs-number">1</span>; j--)
+                nums[j + <span class="hljs-number">1</span>] = nums[j];
+            nums[high + <span class="hljs-number">1</span>] = nums[<span class="hljs-number">0</span>];
         }
-        return nums;
+        <span class="hljs-keyword">return</span> nums;
     }
 };
 </code></pre>
-<h2 id="希尔排序（Shell-Sort）（非稳定排序）"><a href="#希尔排序（Shell-Sort）（非稳定排序）" class="headerlink" title="希尔排序（Shell Sort）（非稳定排序）"></a>希尔排序（Shell Sort）（非稳定排序）</h2><p>改进的插入排序（优化：原数组的一个元素距离正确位置很远的情况）<br>先让间隔 h 的元素有序，在使得间隔为 h / 2，一直缩小，一直到 h = 1（此时数组有序）。</p>
-<p>时间复杂度介于nlogn和$n^2$之间，空间复杂度1</p>
+<h2 id="希尔排序shell-sort非稳定排序"><a class="markdownIt-Anchor" href="#希尔排序shell-sort非稳定排序"></a> 希尔排序（Shell Sort）（非稳定排序）</h2>
+<p>改进的插入排序（优化：原数组的一个元素距离正确位置很远的情况）<br>
+先让间隔 h 的元素有序，在使得间隔为 h / 2，一直缩小，一直到 h = 1（此时数组有序）。</p>
+<p>时间复杂度介于nlogn和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>之间，空间复杂度1</p>
 <p>代码：</p>
-<pre><code class="cpp">class Solution {
-    void shellSort(vector&lt;int&gt;&amp;nums, int gap, int i) {
-        int j, tmp = nums[i];
-        for (j = i - gap; j &gt;= 0 &amp;&amp; tmp &lt; nums[j]; j -= gap) {
-            // 依次后移
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">shellSort</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp;nums, <span class="hljs-type">int</span> gap, <span class="hljs-type">int</span> i)</span> </span>{
+        <span class="hljs-type">int</span> j, tmp = nums[i];
+        <span class="hljs-keyword">for</span> (j = i - gap; j &gt;= <span class="hljs-number">0</span> &amp;&amp; tmp &lt; nums[j]; j -= gap) {
+            <span class="hljs-comment">// 依次后移</span>
             nums[j + gap] = nums[j];
         }
         nums[j + gap] = tmp;
     }
-public:
-    vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {
-        int n = nums.size();
-        // 分组，最开始时，间隔 gap 为数组的一半
-        for (int gap = n / 2; gap &gt;= 1 ; gap /= 2) {
-            // 对各个分组进行插入分组
-            for (int i = gap; i &lt; n; ++i) {
-                shellSort(nums, gap, i);
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-comment">// 分组，最开始时，间隔 gap 为数组的一半</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> gap = n / <span class="hljs-number">2</span>; gap &gt;= <span class="hljs-number">1</span> ; gap /= <span class="hljs-number">2</span>) {
+            <span class="hljs-comment">// 对各个分组进行插入分组</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = gap; i &lt; n; ++i) {
+                <span class="hljs-built_in">shellSort</span>(nums, gap, i);
             }
         }
-        return nums;
+        <span class="hljs-keyword">return</span> nums;
     }
 };
 </code></pre>
-<h2 id="归并排序（Merge-Sort）（稳定排序）"><a href="#归并排序（Merge-Sort）（稳定排序）" class="headerlink" title="归并排序（Merge Sort）（稳定排序）"></a>归并排序（Merge Sort）（稳定排序）</h2><p>将无序数组拆分，排序后再合并成大的有序数组。</p>
+<h2 id="归并排序merge-sort稳定排序"><a class="markdownIt-Anchor" href="#归并排序merge-sort稳定排序"></a> 归并排序（Merge Sort）（稳定排序）</h2>
+<p>将无序数组拆分，排序后再合并成大的有序数组。</p>
 <p>时间复杂度nlogn，空间复杂度n</p>
 <p>代码：</p>
-<pre><code class="cpp">class Solution {
-    vector&lt;int&gt; tmp;
-    void merge (vector&lt;int&gt;&amp; nums, int low, int mid, int high) {
-        for (int k = low; k &lt;= high; k++) {
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    vector&lt;<span class="hljs-type">int</span>&gt; tmp;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span> <span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> low, <span class="hljs-type">int</span> mid, <span class="hljs-type">int</span> high)</span> </span>{
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = low; k &lt;= high; k++) {
             tmp[k] = nums[k];
         }
 
-        int i, j;
-        for (i = low, j = mid + 1, k = i; i &lt;= mid &amp;&amp; j &lt;=high; k++) {
-            if (tmp[i] &lt;= tmp[j]) {
+        <span class="hljs-type">int</span> i, j;
+        <span class="hljs-keyword">for</span> (i = low, j = mid + <span class="hljs-number">1</span>, k = i; i &lt;= mid &amp;&amp; j &lt;=high; k++) {
+            <span class="hljs-keyword">if</span> (tmp[i] &lt;= tmp[j]) {
                 nums[k] = tmp[i++];
-            } else {
+            } <span class="hljs-keyword">else</span> {
                 nums[k] = tmp[j++];
             }
         }
-        while (i &lt;= mid) nums[k++] = tmp[i++];
-        while (j &lt;= high) nums[k++] = tmp[j++];
+        <span class="hljs-keyword">while</span> (i &lt;= mid) nums[k++] = tmp[i++];
+        <span class="hljs-keyword">while</span> (j &lt;= high) nums[k++] = tmp[j++];
     }
-public:
-    vector&lt;int&gt; mergeSort(vector&lt;int&gt;&amp; nums, int low, int high) {
-        if (low &lt; high) {
-            int mid = (low + high) / 2;
-            mergeSort(nums, low, mid + 1);
-            mergeSort(nums, mid + 1, high);
-            merge(nums, low, mid, high);
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">mergeSort</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> low, <span class="hljs-type">int</span> high)</span> </span>{
+        <span class="hljs-keyword">if</span> (low &lt; high) {
+            <span class="hljs-type">int</span> mid = (low + high) / <span class="hljs-number">2</span>;
+            <span class="hljs-built_in">mergeSort</span>(nums, low, mid + <span class="hljs-number">1</span>);
+            <span class="hljs-built_in">mergeSort</span>(nums, mid + <span class="hljs-number">1</span>, high);
+            <span class="hljs-built_in">merge</span>(nums, low, mid, high);
         }
     }
 };
 </code></pre>
-<h2 id="快速排序（Quick-Sort）（非稳定排序）"><a href="#快速排序（Quick-Sort）（非稳定排序）" class="headerlink" title="快速排序（Quick Sort）（非稳定排序）"></a>快速排序（Quick Sort）（非稳定排序）</h2><p>随机选取一个数（x = rand() % len + startIndex）作为基准；<br>把比基准小的数交换到前面，比基准大的数交换到后面；<br>对左右区间递归重复。</p>
+<h2 id="快速排序quick-sort非稳定排序"><a class="markdownIt-Anchor" href="#快速排序quick-sort非稳定排序"></a> 快速排序（Quick Sort）（非稳定排序）</h2>
+<p>随机选取一个数（x = rand() % len + startIndex）作为基准；<br>
+把比基准小的数交换到前面，比基准大的数交换到后面；<br>
+对左右区间递归重复。</p>
 <p>时间复杂度nlogn，空间复杂度logn</p>
 <p>代码：</p>
-<pre><code class="cpp">class Solution {
-    void quickSort(vector&lt;int&gt;&amp;nums, int startIndex, int endIndex) {
-        if (startIndex &gt;= endIndex) return;
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp;nums, <span class="hljs-type">int</span> startIndex, <span class="hljs-type">int</span> endIndex)</span> </span>{
+        <span class="hljs-keyword">if</span> (startIndex &gt;= endIndex) <span class="hljs-keyword">return</span>;
         
-        int x = rand() % (endIndex - startIndex + 1) + startIndex; // 基于随机的原则
-        swap(nums[startIndex], nums[x]);
-        int firstNum = nums[startIndex];
+        <span class="hljs-type">int</span> x = <span class="hljs-built_in">rand</span>() % (endIndex - startIndex + <span class="hljs-number">1</span>) + startIndex; <span class="hljs-comment">// 基于随机的原则</span>
+        <span class="hljs-built_in">swap</span>(nums[startIndex], nums[x]);
+        <span class="hljs-type">int</span> firstNum = nums[startIndex];
         
-        int l = startIndex, r = endIndex;
-        while (l &lt; r) {
-            // 从后往前走，将比第一个小的移到前面
-            while (l &lt; r &amp;&amp; nums[r] &gt;= firstNum) --r;
-            if (l &lt; r) {
+        <span class="hljs-type">int</span> l = startIndex, r = endIndex;
+        <span class="hljs-keyword">while</span> (l &lt; r) {
+            <span class="hljs-comment">// 从后往前走，将比第一个小的移到前面</span>
+            <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; nums[r] &gt;= firstNum) --r;
+            <span class="hljs-keyword">if</span> (l &lt; r) {
                 nums[l] = nums[r];
             }
-            // 从前往后走，将比第一个大的移到后面
-            while (l &lt; r &amp;&amp; nums[l] &lt;= firstNum) ++l;
-            if (l &lt; r) {
+            <span class="hljs-comment">// 从前往后走，将比第一个大的移到后面</span>
+            <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; nums[l] &lt;= firstNum) ++l;
+            <span class="hljs-keyword">if</span> (l &lt; r) {
                 nums[r] = nums[l];
             }
         }
         nums[l] = firstNum;
-        // 自顶向下
-        quickSort(nums, startIndex, l - 1);
-        quickSort(nums, l + 1, endIndex);
+        <span class="hljs-comment">// 自顶向下</span>
+        <span class="hljs-built_in">quickSort</span>(nums, startIndex, l - <span class="hljs-number">1</span>);
+        <span class="hljs-built_in">quickSort</span>(nums, l + <span class="hljs-number">1</span>, endIndex);
     }
 
-public:
-    vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {
-        int n = nums.size();
-        quickSort(nums, 0, n - 1);
-        return nums;
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-built_in">quickSort</span>(nums, <span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>);
+        <span class="hljs-keyword">return</span> nums;
     }
 };
 </code></pre>
-<h2 id="堆排序（Heap-Sort）（非稳定排序）"><a href="#堆排序（Heap-Sort）（非稳定排序）" class="headerlink" title="堆排序（Heap Sort）（非稳定排序）"></a>堆排序（Heap Sort）（非稳定排序）</h2><p>先在原先数组的基础上构造大根堆（时间复杂度nlogn）；<br>再依次弹出最大元素（每次弹出的时间复杂度为logk，k为当前大根堆中元素数目）。</p>
+<h2 id="堆排序heap-sort非稳定排序"><a class="markdownIt-Anchor" href="#堆排序heap-sort非稳定排序"></a> 堆排序（Heap Sort）（非稳定排序）</h2>
+<p>先在原先数组的基础上构造大根堆（时间复杂度nlogn）；<br>
+再依次弹出最大元素（每次弹出的时间复杂度为logk，k为当前大根堆中元素数目）。</p>
 <p>时间复杂度nlogn，空间复杂度1</p>
 <p>代码：</p>
-<pre><code class="cpp">class Solution {
-    void buildMaxHeap(vector&lt;int&gt;&amp; nums) {
-        int n = nums.size();
-        for (int i = (n - 1) / 2; i &gt;= 0; --i) {
-            maxHeapify(nums, i, n);
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">buildMaxHeap</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = (n - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">0</span>; --i) {
+            <span class="hljs-built_in">maxHeapify</span>(nums, i, n);
         }
     }
 
-    void maxHeapify(vector&lt;int&gt;&amp; nums, int i, int n) {
-        while (i * 2 + 1 &lt; n) {
-            // 代表当前 i 节点的左右儿子；
-            // 超出数组大小则代表当前 i 节点为叶子节点，不需要移位
-            int lSon = 2 * i + 1;
-            int rSon = 2 * i + 2;
-            int large = i;
-            if (lSon &lt; n &amp;&amp; nums[lSon] &gt; nums[i]) large = lSon;
-            if (rSon &lt; n &amp;&amp; nums[rSon] &gt; nums[large]) large = rSon;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">maxHeapify</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> n)</span> </span>{
+        <span class="hljs-keyword">while</span> (i * <span class="hljs-number">2</span> + <span class="hljs-number">1</span> &lt; n) {
+            <span class="hljs-comment">// 代表当前 i 节点的左右儿子；</span>
+            <span class="hljs-comment">// 超出数组大小则代表当前 i 节点为叶子节点，不需要移位</span>
+            <span class="hljs-type">int</span> lSon = <span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>;
+            <span class="hljs-type">int</span> rSon = <span class="hljs-number">2</span> * i + <span class="hljs-number">2</span>;
+            <span class="hljs-type">int</span> large = i;
+            <span class="hljs-keyword">if</span> (lSon &lt; n &amp;&amp; nums[lSon] &gt; nums[i]) large = lSon;
+            <span class="hljs-keyword">if</span> (rSon &lt; n &amp;&amp; nums[rSon] &gt; nums[large]) large = rSon;
 
-            if (large != i) {
-                swap(nums[i], nums[large]);
-                // 迭代判断对应子节点及其儿子节点的大小关系
+            <span class="hljs-keyword">if</span> (large != i) {
+                <span class="hljs-built_in">swap</span>(nums[i], nums[large]);
+                <span class="hljs-comment">// 迭代判断对应子节点及其儿子节点的大小关系</span>
                 i = large;
-            } else {
-                break;
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">break</span>;
             }
         }
     }
 
-public:
-    vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {
-        // heapSort 堆排序
-        int n = nums.size();
-        // 将数组整理成大根堆
-        buildMaxHeap(nums);
-        for (int i = n - 1; i &gt;= 1; --i) {
-            // 依次弹出最大元素，放到数组最后，当前排序对应数组大小 - 1
-            swap(nums[0], nums[i]);
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-comment">// heapSort 堆排序</span>
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-comment">// 将数组整理成大根堆</span>
+        <span class="hljs-built_in">buildMaxHeap</span>(nums);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = n - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">1</span>; --i) {
+            <span class="hljs-comment">// 依次弹出最大元素，放到数组最后，当前排序对应数组大小 - 1</span>
+            <span class="hljs-built_in">swap</span>(nums[<span class="hljs-number">0</span>], nums[i]);
             --n;
-            maxHeapify(nums, 0, n);
+            <span class="hljs-built_in">maxHeapify</span>(nums, <span class="hljs-number">0</span>, n);
         }
-        return nums;
+        <span class="hljs-keyword">return</span> nums;
     }
 };
 </code></pre>
-<h2 id="计数排序（Count-Sort）（稳定排序）"><a href="#计数排序（Count-Sort）（稳定排序）" class="headerlink" title="计数排序（Count Sort）（稳定排序）"></a>计数排序（Count Sort）（稳定排序）</h2><p>创建数组 counts，用于统计原数组 nums 中各元素值的出现次数；<br>再依次将元素值赋值到 nums 中对应位置。</p>
+<h2 id="计数排序count-sort稳定排序"><a class="markdownIt-Anchor" href="#计数排序count-sort稳定排序"></a> 计数排序（Count Sort）（稳定排序）</h2>
+<p>创建数组 counts，用于统计原数组 nums 中各元素值的出现次数；<br>
+再依次将元素值赋值到 nums 中对应位置。</p>
 <p>计数排序，时间复杂度n + k，空间复杂度k（k = maxNum - minNum + 1）</p>
 <p>代码：</p>
-<pre><code class="cpp">class Solution {
-public:
-    vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {
-        // CountSort 计数排序
-        int n = nums.size();
-        int minNum = INT_MAX, maxNum = INT_MIN;
-        // 找到数组中的最小和最大元素
-        for (int i = 0; i &lt; n; ++i) {
-            if (nums[i] &lt; minNum) minNum = nums[i];
-            if (nums[i] &gt; maxNum) maxNum = nums[i];
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-comment">// CountSort 计数排序</span>
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-type">int</span> minNum = INT_MAX, maxNum = INT_MIN;
+        <span class="hljs-comment">// 找到数组中的最小和最大元素</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) {
+            <span class="hljs-keyword">if</span> (nums[i] &lt; minNum) minNum = nums[i];
+            <span class="hljs-keyword">if</span> (nums[i] &gt; maxNum) maxNum = nums[i];
         }
-        // 构造计数数组
-        vector&lt;int&gt; counts(maxNum - minNum + 1, 0);
-        for (int i = 0; i &lt; n; ++i) {
+        <span class="hljs-comment">// 构造计数数组</span>
+        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">counts</span><span class="hljs-params">(maxNum - minNum + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>)</span></span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) {
             ++counts[nums[i] - minNum];
         }
-        // 计数排序
-        int index = 0;
-        for (int i = 0; i &lt; counts.size(); ++i) {
-            while (counts[i] != 0) {
+        <span class="hljs-comment">// 计数排序</span>
+        <span class="hljs-type">int</span> index = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; counts.<span class="hljs-built_in">size</span>(); ++i) {
+            <span class="hljs-keyword">while</span> (counts[i] != <span class="hljs-number">0</span>) {
                 nums[index++] = i + minNum;
                 counts[i]--;
             }
         }
-        return nums;
+        <span class="hljs-keyword">return</span> nums;
     }
 };
 </code></pre>
-<h2 id="桶排序（Bucket-Sort）（稳定排序）"><a href="#桶排序（Bucket-Sort）（稳定排序）" class="headerlink" title="桶排序（Bucket Sort）（稳定排序）"></a>桶排序（Bucket Sort）（稳定排序）</h2><p>将原数组的元素分到有限数量的桶里（大编号桶里的所有元素均大于小编号桶里的任意元素）；<br>分别对每个桶进行排序；<br>依次合并。</p>
+<h2 id="桶排序bucket-sort稳定排序"><a class="markdownIt-Anchor" href="#桶排序bucket-sort稳定排序"></a> 桶排序（Bucket Sort）（稳定排序）</h2>
+<p>将原数组的元素分到有限数量的桶里（大编号桶里的所有元素均大于小编号桶里的任意元素）；<br>
+分别对每个桶进行排序；<br>
+依次合并。</p>
 <p>时间复杂度n + k，空间复杂度n + k（k为桶的数量）</p>
 <p>代码：</p>
-<pre><code class="cpp">class Solution {
-public:
-    vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {
-        // BucketSort 桶排序
-        int n = nums.size();
-        // 获取数组的最小值和最大值
-        int maxNum = nums[0], minNum = nums[0];
-        for (int i = 1; i &lt; n; ++i) {
-            if (nums[i] &gt; maxNum) maxNum = nums[i];
-            if (nums[i] &lt; minNum) minNum = nums[i];
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-comment">// BucketSort 桶排序</span>
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-comment">// 获取数组的最小值和最大值</span>
+        <span class="hljs-type">int</span> maxNum = nums[<span class="hljs-number">0</span>], minNum = nums[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; n; ++i) {
+            <span class="hljs-keyword">if</span> (nums[i] &gt; maxNum) maxNum = nums[i];
+            <span class="hljs-keyword">if</span> (nums[i] &lt; minNum) minNum = nums[i];
         }
-        // 初始化桶
-        int bucketNum = 5, bucketSize = (maxNum - minNum) / bucketNum + 1;
-        vector&lt;vector&lt;int&gt;&gt; buckets(bucketNum, vector&lt;int&gt;(0));
-        // 小至大分桶
-        for (int num : nums) {
-            int bucketIndex = (num - minNum) / bucketSize;
-            buckets[bucketIndex].emplace_back(num);
+        <span class="hljs-comment">// 初始化桶</span>
+        <span class="hljs-type">int</span> bucketNum = <span class="hljs-number">5</span>, bucketSize = (maxNum - minNum) / bucketNum + <span class="hljs-number">1</span>;
+        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">buckets</span>(bucketNum, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">0</span>));
+        <span class="hljs-comment">// 小至大分桶</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : nums) {
+            <span class="hljs-type">int</span> bucketIndex = (num - minNum) / bucketSize;
+            buckets[bucketIndex].<span class="hljs-built_in">emplace_back</span>(num);
         }
-        // 桶内排序
-        for (int i = 0; i &lt; buckets.size(); ++i) {
-            sort(buckets[i].begin(), buckets[i].end());
+        <span class="hljs-comment">// 桶内排序</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; buckets.<span class="hljs-built_in">size</span>(); ++i) {
+            <span class="hljs-built_in">sort</span>(buckets[i].<span class="hljs-built_in">begin</span>(), buckets[i].<span class="hljs-built_in">end</span>());
         }
-        // 从桶中依次取数
-        int index = 0;
-        for (auto&amp; bucket : buckets) {
-            for (int num : bucket) {
+        <span class="hljs-comment">// 从桶中依次取数</span>
+        <span class="hljs-type">int</span> index = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; bucket : buckets) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : bucket) {
                 nums[index++] = num;
             }
         }
 
-        return nums;
+        <span class="hljs-keyword">return</span> nums;
     }
 };
 </code></pre>
-<h2 id="基数排序（Radix-Sort）（稳定排序）"><a href="#基数排序（Radix-Sort）（稳定排序）" class="headerlink" title="基数排序（Radix Sort）（稳定排序）"></a>基数排序（Radix Sort）（稳定排序）</h2><p>对数组中所有数依次按由低到高的位数进行多次排序；<br>每次排序都基于上次排序的结果。<br>（相对位置顺序保持不变）</p>
-<p>例：原始数组 1，23，21，11，32<br>第一次排序后 1，21，11，32，23<br>第二次排序后 1，11，21，23，32<br>时间复杂度n x k，空间复杂度k（k为最大元素的位数）</p>
+<h2 id="基数排序radix-sort稳定排序"><a class="markdownIt-Anchor" href="#基数排序radix-sort稳定排序"></a> 基数排序（Radix Sort）（稳定排序）</h2>
+<p>对数组中所有数依次按由低到高的位数进行多次排序；<br>
+每次排序都基于上次排序的结果。<br>
+（相对位置顺序保持不变）</p>
+<p>例：原始数组 1，23，21，11，32<br>
+第一次排序后 1，21，11，32，23<br>
+第二次排序后 1，11，21，23，32<br>
+时间复杂度n x k，空间复杂度k（k为最大元素的位数）</p>
 <p>代码：</p>
-<pre><code class="cpp">class Solution {
-    vector&lt;int&gt; counts;
-    void radixSort(vector&lt;int&gt;&amp; nums, vector&lt;int&gt;&amp; tmp, int divisor) {
-        int n = nums.size();
-        counts = vector&lt;int&gt;(10, 0);
-        // 统计个、十、百、千、万上对应 0 ~ 9 的出现次数
-        for (int i = 0; i &lt; n; ++i) {
-            int x = (nums[i] / divisor) % 10;
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    vector&lt;<span class="hljs-type">int</span>&gt; counts;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">radixSort</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, vector&lt;<span class="hljs-type">int</span>&gt;&amp; tmp, <span class="hljs-type">int</span> divisor)</span> </span>{
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        counts = <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">10</span>, <span class="hljs-number">0</span>);
+        <span class="hljs-comment">// 统计个、十、百、千、万上对应 0 ~ 9 的出现次数</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) {
+            <span class="hljs-type">int</span> x = (nums[i] / divisor) % <span class="hljs-number">10</span>;
             ++counts[x];
         }
-        // 前缀和
-        for (int i = 1; i &lt;= 9; ++i) {
-            counts[i] += counts[i - 1];
+        <span class="hljs-comment">// 前缀和</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">9</span>; ++i) {
+            counts[i] += counts[i - <span class="hljs-number">1</span>];
         }
-        // 从后向前赋值
-        for (int i = n - 1; i &gt;= 0; --i) {
-            int x = (nums[i] / divisor) % 10;
-            int index = counts[x] - 1;
+        <span class="hljs-comment">// 从后向前赋值</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = n - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; --i) {
+            <span class="hljs-type">int</span> x = (nums[i] / divisor) % <span class="hljs-number">10</span>;
+            <span class="hljs-type">int</span> index = counts[x] - <span class="hljs-number">1</span>;
             tmp[index] = nums[i];
             --counts[x];
         }
     }
 
-public:
-    vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) {
-        // RadixSort 基数排序
-        int n = nums.size();
-        // 预处理，让所有的数都大于等于0
-        for (int i = 0; i &lt; n; ++i) {
-            nums[i] += 50000; // 50000为最小可能的数组大小
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-comment">// RadixSort 基数排序</span>
+        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();
+        <span class="hljs-comment">// 预处理，让所有的数都大于等于0</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) {
+            nums[i] += <span class="hljs-number">50000</span>; <span class="hljs-comment">// 50000为最小可能的数组大小</span>
         }
-        // 找出最大的数字，并获得其最大位数
-        int maxNum = nums[0];
-        for (int i = 0; i &lt; n; ++i) {
-            if (nums[i] &gt; maxNum) {
+        <span class="hljs-comment">// 找出最大的数字，并获得其最大位数</span>
+        <span class="hljs-type">int</span> maxNum = nums[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) {
+            <span class="hljs-keyword">if</span> (nums[i] &gt; maxNum) {
                 maxNum = nums[i];
             }
         }
-        int num = maxNum, maxLen = 0;
-        while (num) {
+        <span class="hljs-type">int</span> num = maxNum, maxLen = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span> (num) {
             ++maxLen;
-            num /= 10;
+            num /= <span class="hljs-number">10</span>;
         }
-        // 基数排序，低位优先
-        int divisor = 1;
-        vector&lt;int&gt; tmp(n, 0);
-        for (int i = 0; i &lt; maxLen; ++i) {
-            radixSort(nums, tmp, divisor);
-            swap(tmp, nums);
-            divisor *= 10;
+        <span class="hljs-comment">// 基数排序，低位优先</span>
+        <span class="hljs-type">int</span> divisor = <span class="hljs-number">1</span>;
+        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">tmp</span><span class="hljs-params">(n, <span class="hljs-number">0</span>)</span></span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; maxLen; ++i) {
+            <span class="hljs-built_in">radixSort</span>(nums, tmp, divisor);
+            <span class="hljs-built_in">swap</span>(tmp, nums);
+            divisor *= <span class="hljs-number">10</span>;
         }
-        // 减去预处理量
-        for (int i = 0; i &lt; n; ++i) {
-            nums[i] -= 50000;
+        <span class="hljs-comment">// 减去预处理量</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) {
+            nums[i] -= <span class="hljs-number">50000</span>;
         }
-        return nums;
+        <span class="hljs-keyword">return</span> nums;
     }
 };
 </code></pre>
@@ -573,7 +597,7 @@ public:
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%EF%BC%88Bubble-Sort%EF%BC%89%EF%BC%88%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89%EF%BC%88%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">冒泡排序（Bubble Sort）（稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%EF%BC%88Select-Sort%EF%BC%89%EF%BC%88%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89%EF%BC%88%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">选择排序（Select Sort）（非稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%EF%BC%88Insect-Sort%EF%BC%89%EF%BC%88%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89%EF%BC%88%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">插入排序（Insect Sort）（稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%88Shell-Sort%EF%BC%89%EF%BC%88%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">希尔排序（Shell Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%EF%BC%88Merge-Sort%EF%BC%89%EF%BC%88%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">归并排序（Merge Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%EF%BC%88Quick-Sort%EF%BC%89%EF%BC%88%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">快速排序（Quick Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F%EF%BC%88Heap-Sort%EF%BC%89%EF%BC%88%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">堆排序（Heap Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%EF%BC%88Count-Sort%EF%BC%89%EF%BC%88%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">计数排序（Count Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%B6%E6%8E%92%E5%BA%8F%EF%BC%88Bucket-Sort%EF%BC%89%EF%BC%88%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">9.</span> <span class="toc-text">桶排序（Bucket Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F%EF%BC%88Radix-Sort%EF%BC%89%EF%BC%88%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">基数排序（Radix Sort）（稳定排序）</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8Fbubble-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text"> 冒泡排序（Bubble Sort）（稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8Fselect-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text"> 选择排序（Select Sort）（非稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8Finsect-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E8%B6%85%E5%87%BA%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6"><span class="toc-number">3.</span> <span class="toc-text"> 插入排序（Insect Sort）（稳定排序）（超出时间限制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8Fshell-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">4.</span> <span class="toc-text"> 希尔排序（Shell Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8Fmerge-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text"> 归并排序（Merge Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8Fquick-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">6.</span> <span class="toc-text"> 快速排序（Quick Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8Fheap-sort%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">7.</span> <span class="toc-text"> 堆排序（Heap Sort）（非稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8Fcount-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">8.</span> <span class="toc-text"> 计数排序（Count Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%B6%E6%8E%92%E5%BA%8Fbucket-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">9.</span> <span class="toc-text"> 桶排序（Bucket Sort）（稳定排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8Fradix-sort%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F"><span class="toc-number">10.</span> <span class="toc-text"> 基数排序（Radix Sort）（稳定排序）</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

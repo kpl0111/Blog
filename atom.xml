@@ -51,11 +51,11 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本篇使用Vim编辑，个人笔记使用&lt;br&gt;待使用到补充，自己用到才有体会&lt;/p&gt;
+&lt;p&gt;本篇使用Vim编辑，个人笔记使用&lt;br&gt;
+待使用到补充，自己用到才有体会&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;!-- TOC --&gt;
-
-&lt;h2 id=&quot;模式&quot;&gt;&lt;a href=&quot;#模式&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;模式&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
         
       
     
@@ -101,11 +101,11 @@
         
         
     <summary type="html">&lt;ul&gt;
-&lt;li&gt;创建仓库&lt;ul&gt;
+&lt;li&gt;创建仓库
+&lt;ul&gt;
 &lt;li&gt;git clone &amp;lt;url&amp;gt; [directory]&lt;/li&gt;
 &lt;li&gt;git init&lt;/li&gt;
-&lt;li&gt;git config –global user.name ‘你的用户名’&lt;/li&gt;
-&lt;li&gt;git config</summary>
+&lt;li&gt;git config --global &lt;a</summary>
         
       
     
@@ -126,7 +126,8 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;深入理解C-二维数组&quot;&gt;&lt;a href=&quot;#深入理解C-二维数组&quot; class=&quot;headerlink&quot; title=&quot;深入理解C++二维数组&quot;&gt;&lt;/a&gt;深入理解C++二维数组&lt;/h2&gt;&lt;blockquote&gt;
+    <summary type="html">&lt;h2 id=&quot;深入理解c二维数组&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#深入理解c二维数组&quot;&gt;&lt;/a&gt; 深入理解C++二维数组&lt;/h2&gt;
+&lt;blockquote&gt;
 &lt;p&gt;提问：定义一个3 *</summary>
         
       
@@ -148,7 +149,8 @@
       
         
         
-    <summary type="html">&lt;p&gt;vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示：&lt;br&gt;&lt;img</summary>
+    <summary type="html">&lt;p&gt;vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示：&lt;br&gt;
+&lt;img</summary>
         
       
     
@@ -274,7 +276,8 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;后缀表达式&quot;&gt;&lt;a href=&quot;#后缀表达式&quot; class=&quot;headerlink&quot; title=&quot;后缀表达式&quot;&gt;&lt;/a&gt;后缀表达式&lt;/h2&gt;&lt;p&gt;后缀表达式也叫&lt;strong&gt;逆波兰表达式&lt;/strong&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;后缀表达式&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#后缀表达式&quot;&gt;&lt;/a&gt; 后缀表达式&lt;/h2&gt;
+&lt;p&gt;后缀表达式也叫&lt;strong&gt;逆波兰表达式&lt;/strong&gt;</summary>
         
       
     
@@ -296,10 +299,12 @@
         
         
     <summary type="html">&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;任意位置新建txt文件，打开编辑&lt;/p&gt;
+&lt;li&gt;
+&lt;p&gt;任意位置新建txt文件，打开编辑&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;复制以下代码&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;console&quot;&gt;@echo off
+&lt;li&gt;
+&lt;p&gt;复制以下代码&lt;/p&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;console&quot;&gt;@echo off
 
 reg add</summary>
         
@@ -336,7 +341,7 @@ reg add</summary>
     <link href="https://kpl0111.github.io/blog/2022/09aa25a989.html"/>
     <id>https://kpl0111.github.io/blog/2022/09aa25a989.html</id>
     <published>2022-09-18T07:33:17.000Z</published>
-    <updated>2023-07-26T14:13:19.166Z</updated>
+    <updated>2023-08-08T02:46:24.569Z</updated>
     
     
     <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
@@ -373,7 +378,9 @@ reg add</summary>
       
         
         
-    <summary type="html">&lt;h2 id=&quot;矩阵等价&quot;&gt;&lt;a href=&quot;#矩阵等价&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;矩阵等价&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#矩阵等价&quot;&gt;&lt;/a&gt; 矩阵等价&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;定义：对同型矩阵A、B，存在可逆阵P和Q，使得&lt;span class=&quot;katex&quot;&gt;&lt;span</summary>
         
       
     
@@ -397,7 +404,8 @@ reg add</summary>
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;转载自&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;&lt;a</summary>
+&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;
+&lt;a</summary>
         
       
     
@@ -421,7 +429,8 @@ reg add</summary>
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;转载自&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;&lt;a</summary>
+&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;
+&lt;a</summary>
         
       
     

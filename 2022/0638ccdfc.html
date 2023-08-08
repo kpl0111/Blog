@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="本篇为个人笔记，内容或有错误。图片部分源于代码随想录，侵删。     栈和队列不为人知的一面  栈是先进后出，队列是先进先出：  基础知识栈先进后出，提供push 和 pop 等等接口，所有元素必须符合先进后出规则，所以栈不提供走访功能，也不提供迭代器(iterator)。 不像是set 或者map 提供迭代器iterator来遍历所有元素。 栈是以底层容器完成其所有的工作，对外提供统一的接口，">
+    <meta name="description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。    栈和队列不为人知的一面  栈是先进后出，队列是先进先出：   基础知识 栈先进后出，提供push 和 pop 等等接口，所有元素必须符合先进后出规则，所以栈不提供走访功能，也不提供迭代器(iterator)。 不像是set 或者map 提供迭代器iterator来遍历所有元素。 栈是以底层容器完成其所有的工作，对外提供统一的接">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode笔记-栈和队列">
 <meta property="og:url" content="https://kpl0111.github.io/blog/2022/0638ccdfc.html">
 <meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="本篇为个人笔记，内容或有错误。图片部分源于代码随想录，侵删。     栈和队列不为人知的一面  栈是先进后出，队列是先进先出：  基础知识栈先进后出，提供push 和 pop 等等接口，所有元素必须符合先进后出规则，所以栈不提供走访功能，也不提供迭代器(iterator)。 不像是set 或者map 提供迭代器iterator来遍历所有元素。 栈是以底层容器完成其所有的工作，对外提供统一的接口，">
+<meta property="og:description" content="本篇为个人笔记，内容或有错误。 图片部分源于代码随想录，侵删。    栈和队列不为人知的一面  栈是先进后出，队列是先进先出：   基础知识 栈先进后出，提供push 和 pop 等等接口，所有元素必须符合先进后出规则，所以栈不提供走访功能，也不提供迭代器(iterator)。 不像是set 或者map 提供迭代器iterator来遍历所有元素。 栈是以底层容器完成其所有的工作，对外提供统一的接">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/06/16/7yBoa3h4A81kqxI.png">
 <meta property="og:image" content="https://s2.loli.net/2022/06/16/hnMFk4q2geOiDso.png">
@@ -151,7 +151,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%A0%88%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97"><span class="toc-number">2.</span> <span class="toc-text">用栈模拟实现队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E9%98%9F%E5%88%97%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0%E6%A0%88"><span class="toc-number">3.</span> <span class="toc-text">用队列模拟实现栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">有效括号问题</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text"> 基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%A0%88%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97"><span class="toc-number">2.</span> <span class="toc-text"> 用栈模拟实现队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E9%98%9F%E5%88%97%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0%E6%A0%88"><span class="toc-number">3.</span> <span class="toc-text"> 用队列模拟实现栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text"> 有效括号问题</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -186,136 +186,141 @@
 
   <div class="content" itemprop="articleBody">
     <blockquote>
-<p>本篇为个人笔记，内容或有错误。<br>图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
+<p>本篇为个人笔记，内容或有错误。<br>
+图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
 </blockquote>
 <!-- toc -->
-
 <blockquote>
 <p>栈和队列不为人知的一面</p>
 </blockquote>
 <p>栈是先进后出，队列是先进先出：</p>
 <p><img src="https://s2.loli.net/2022/06/16/7yBoa3h4A81kqxI.png" alt="20220616145417"></p>
-<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>栈先进后出，提供push 和 pop 等等接口，所有元素必须符合先进后出规则，所以栈不提供走访功能，也不提供迭代器(iterator)。 不像是set 或者map 提供迭代器iterator来遍历所有元素。</p>
+<h2 id="基础知识"><a class="markdownIt-Anchor" href="#基础知识"></a> 基础知识</h2>
+<p>栈先进后出，提供push 和 pop 等等接口，所有元素必须符合先进后出规则，所以栈不提供走访功能，也不提供迭代器(iterator)。 不像是set 或者map 提供迭代器iterator来遍历所有元素。</p>
 <p>栈是以底层容器完成其所有的工作，对外提供统一的接口，底层容器是可插拔的（<strong>也就是说我们可以控制使用哪种容器来实现栈的功能</strong>）。</p>
 <p>所以STL中栈往往不被归类为容器，而被归类为container adapter（容器适配器）。</p>
 <p>那么问题来了，STL 中栈是用什么容器实现的？</p>
-<p>从下图中可以看出，栈的内部结构，栈的底层实现可以是vector，deque，list 都是可以的， 主要就是数组和链表的底层实现。<br><img src="https://s2.loli.net/2022/06/16/hnMFk4q2geOiDso.png" alt="
+<p>从下图中可以看出，栈的内部结构，栈的底层实现可以是vector，deque，list 都是可以的， 主要就是数组和链表的底层实现。<br>
+<img src="https://s2.loli.net/2022/06/16/hnMFk4q2geOiDso.png" alt="
 栈与队列理论3"></p>
 <p>常用的SGI STL，如果没有指定底层实现的话，默认是以deque为缺省情况下栈的低层结构。</p>
 <p>deque是一个双向队列，只要封住一段，只开通另一端就可以实现栈的逻辑了。</p>
 <p>SGI STL中 队列底层实现缺省情况下一样使用deque实现的。</p>
 <p>也可以指定vector为栈的底层实现，初始化语句如下：</p>
-<pre><code class="C++">std::stack&lt;int, std::vector&lt;int&gt; &gt; third;  // 使用vector为底层容器的栈
+<pre class="highlight"><code class="C++">std::stack&lt;<span class="hljs-type">int</span>, std::vector&lt;<span class="hljs-type">int</span>&gt; &gt; third;  <span class="hljs-comment">// 使用vector为底层容器的栈</span>
 </code></pre>
 <p>对应的队列的情况是一样的。</p>
 <p>队列中先进先出的数据结构，同样不允许有遍历行为，不提供迭代器, SGI STL中队列一样是以deque为缺省情况下的底部结构。</p>
 <p>也可以指定list 为起底层实现，初始化queue的语句如下：</p>
-<pre><code class="C++">std::queue&lt;int, std::list&lt;int&gt;&gt; third; // 定义以list为底层容器的队列
+<pre class="highlight"><code class="C++">std::queue&lt;<span class="hljs-type">int</span>, std::list&lt;<span class="hljs-type">int</span>&gt;&gt; third; <span class="hljs-comment">// 定义以list为底层容器的队列</span>
 </code></pre>
 <p>所以STL 队列也不被归类为容器，而被归类为container adapter（ 容器适配器）。</p>
-<h2 id="用栈模拟实现队列"><a href="#用栈模拟实现队列" class="headerlink" title="用栈模拟实现队列"></a>用栈模拟实现队列</h2><pre><code class="C++">class MyQueue {
-public:
-    stack&lt;int&gt; stIn;
-    stack&lt;int&gt; stOut;
-    /** Initialize your data structure here. */
-    MyQueue() {
+<h2 id="用栈模拟实现队列"><a class="markdownIt-Anchor" href="#用栈模拟实现队列"></a> 用栈模拟实现队列</h2>
+<pre class="highlight"><code class="C++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyQueue</span> {
+<span class="hljs-keyword">public</span>:
+    stack&lt;<span class="hljs-type">int</span>&gt; stIn;
+    stack&lt;<span class="hljs-type">int</span>&gt; stOut;
+    <span class="hljs-comment">/** Initialize your data structure here. */</span>
+    <span class="hljs-built_in">MyQueue</span>() {
 
     }
-    /** Push element x to the back of queue. */
-    void push(int x) {
-        stIn.push(x);
+    <span class="hljs-comment">/** Push element x to the back of queue. */</span>
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+        stIn.<span class="hljs-built_in">push</span>(x);
     }
 
-    /** Removes the element from in front of queue and returns that element. */
-    int pop() {
-        // 只有当stOut为空的时候，再从stIn里导入数据（导入stIn全部数据）
-        if (stOut.empty()) {
-            // 从stIn导入数据直到stIn为空
-            while(!stIn.empty()) {
-                stOut.push(stIn.top());
-                stIn.pop();
+    <span class="hljs-comment">/** Removes the element from in front of queue and returns that element. */</span>
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// 只有当stOut为空的时候，再从stIn里导入数据（导入stIn全部数据）</span>
+        <span class="hljs-keyword">if</span> (stOut.<span class="hljs-built_in">empty</span>()) {
+            <span class="hljs-comment">// 从stIn导入数据直到stIn为空</span>
+            <span class="hljs-keyword">while</span>(!stIn.<span class="hljs-built_in">empty</span>()) {
+                stOut.<span class="hljs-built_in">push</span>(stIn.<span class="hljs-built_in">top</span>());
+                stIn.<span class="hljs-built_in">pop</span>();
             }
         }
-        int result = stOut.top();
-        stOut.pop();
-        return result;
+        <span class="hljs-type">int</span> result = stOut.<span class="hljs-built_in">top</span>();
+        stOut.<span class="hljs-built_in">pop</span>();
+        <span class="hljs-keyword">return</span> result;
     }
 
-    /** Get the front element. */
-    int peek() {
-        int res = this-&gt;pop(); // 直接使用已有的pop函数
-        stOut.push(res); // 因为pop函数弹出了元素res，所以再添加回去
-        return res;
+    <span class="hljs-comment">/** Get the front element. */</span>
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">peek</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-type">int</span> res = <span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">pop</span>(); <span class="hljs-comment">// 直接使用已有的pop函数</span>
+        stOut.<span class="hljs-built_in">push</span>(res); <span class="hljs-comment">// 因为pop函数弹出了元素res，所以再添加回去</span>
+        <span class="hljs-keyword">return</span> res;
     }
 
-    /** Returns whether the queue is empty. */
-    bool empty() {
-        return stIn.empty() &amp;&amp; stOut.empty();
+    <span class="hljs-comment">/** Returns whether the queue is empty. */</span>
+    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> stIn.<span class="hljs-built_in">empty</span>() &amp;&amp; stOut.<span class="hljs-built_in">empty</span>();
     }
 };
 </code></pre>
-<h2 id="用队列模拟实现栈"><a href="#用队列模拟实现栈" class="headerlink" title="用队列模拟实现栈"></a>用队列模拟实现栈</h2><pre><code class="C++">class MyStack {
-public:
-    queue&lt;int&gt; que1;
-    queue&lt;int&gt; que2;
+<h2 id="用队列模拟实现栈"><a class="markdownIt-Anchor" href="#用队列模拟实现栈"></a> 用队列模拟实现栈</h2>
+<pre class="highlight"><code class="C++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyStack</span> {
+<span class="hljs-keyword">public</span>:
+    queue&lt;<span class="hljs-type">int</span>&gt; que1;
+    queue&lt;<span class="hljs-type">int</span>&gt; que2;
 
-    MyStack() {
+    <span class="hljs-built_in">MyStack</span>() {
 
     }
     
-    void push(int x) {
-        que1.push(x);
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+        que1.<span class="hljs-built_in">push</span>(x);
     }
     
-    int pop() {
-        if (!this-&gt;empty()) {
-            while (que1.size() &gt; 1) {
-                que2.push(que1.front());
-                que1.pop();
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">empty</span>()) {
+            <span class="hljs-keyword">while</span> (que1.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">1</span>) {
+                que2.<span class="hljs-built_in">push</span>(que1.<span class="hljs-built_in">front</span>());
+                que1.<span class="hljs-built_in">pop</span>();
             }
             
-            int result = que1.front();
-            que1.pop();
+            <span class="hljs-type">int</span> result = que1.<span class="hljs-built_in">front</span>();
+            que1.<span class="hljs-built_in">pop</span>();
 
-            while (!que2.empty()) {
-                que1.push(que2.front());
-                que2.pop();
+            <span class="hljs-keyword">while</span> (!que2.<span class="hljs-built_in">empty</span>()) {
+                que1.<span class="hljs-built_in">push</span>(que2.<span class="hljs-built_in">front</span>());
+                que2.<span class="hljs-built_in">pop</span>();
             }
-            return result;
+            <span class="hljs-keyword">return</span> result;
         }
-        return 0;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     }
     
-    int top() {
-        return que1.back();
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> que1.<span class="hljs-built_in">back</span>();
     }
     
-    bool empty() {
-        return que1.empty() &amp;&amp; que2.empty();
+    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> que1.<span class="hljs-built_in">empty</span>() &amp;&amp; que2.<span class="hljs-built_in">empty</span>();
     }
 };
 
-/**
+<span class="hljs-comment">/**
  * Your MyStack object will be instantiated and called as such:
  * MyStack* obj = new MyStack();
  * obj-&gt;push(x);
  * int param_2 = obj-&gt;pop();
  * int param_3 = obj-&gt;top();
  * bool param_4 = obj-&gt;empty();
- */
+ */</span>
 </code></pre>
-<h2 id="有效括号问题"><a href="#有效括号问题" class="headerlink" title="有效括号问题"></a>有效括号问题</h2><pre><code class="C++">class Solution {
-public:
-    bool isValid(string s) {
-        stack&lt;char&gt; sta;
-        for (int i = 0; i &lt; s.size(); i++) {
-            if (s[i] == '(') sta.push(')');
-            else if (s[i] == '[') sta.push(']');
-            else if (s[i] == '{') sta.push('}');
-            else if (sta.empty() || sta.top() != s[i]) return false;
-            else sta.pop();
+<h2 id="有效括号问题"><a class="markdownIt-Anchor" href="#有效括号问题"></a> 有效括号问题</h2>
+<pre class="highlight"><code class="C++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isValid</span><span class="hljs-params">(string s)</span> </span>{
+        stack&lt;<span class="hljs-type">char</span>&gt; sta;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) {
+            <span class="hljs-keyword">if</span> (s[i] == <span class="hljs-string">'('</span>) sta.<span class="hljs-built_in">push</span>(<span class="hljs-string">')'</span>);
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s[i] == <span class="hljs-string">'['</span>) sta.<span class="hljs-built_in">push</span>(<span class="hljs-string">']'</span>);
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s[i] == <span class="hljs-string">'{'</span>) sta.<span class="hljs-built_in">push</span>(<span class="hljs-string">'}'</span>);
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sta.<span class="hljs-built_in">empty</span>() || sta.<span class="hljs-built_in">top</span>() != s[i]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+            <span class="hljs-keyword">else</span> sta.<span class="hljs-built_in">pop</span>();
         }
-        return sta.empty();
+        <span class="hljs-keyword">return</span> sta.<span class="hljs-built_in">empty</span>();
     } 
 };
 </code></pre>
@@ -347,7 +352,7 @@ public:
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%A0%88%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97"><span class="toc-number">2.</span> <span class="toc-text">用栈模拟实现队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E9%98%9F%E5%88%97%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0%E6%A0%88"><span class="toc-number">3.</span> <span class="toc-text">用队列模拟实现栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">有效括号问题</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text"> 基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%A0%88%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97"><span class="toc-number">2.</span> <span class="toc-text"> 用栈模拟实现队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E9%98%9F%E5%88%97%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0%E6%A0%88"><span class="toc-number">3.</span> <span class="toc-text"> 用队列模拟实现栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text"> 有效括号问题</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
