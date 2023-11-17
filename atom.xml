@@ -39,6 +39,21 @@
   </entry>
   
   <entry>
+    <title>易错点总结</title>
+    <link href="https://kpl0111.github.io/blog/2023/118455ceb2.html"/>
+    <id>https://kpl0111.github.io/blog/2023/118455ceb2.html</id>
+    <published>2023-11-15T04:12:59.000Z</published>
+    <updated>2023-11-17T13:41:28.770Z</updated>
+    
+    
+    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>原码、反码、补码、移码、浮点数</title>
     <link href="https://kpl0111.github.io/blog/2023/09995a41cb.html"/>
     <id>https://kpl0111.github.io/blog/2023/09995a41cb.html</id>
@@ -65,7 +80,7 @@
     <link href="https://kpl0111.github.io/blog/2023/084f407d5a.html"/>
     <id>https://kpl0111.github.io/blog/2023/084f407d5a.html</id>
     <published>2023-08-27T09:06:34.000Z</published>
-    <updated>2023-11-04T02:17:01.565Z</updated>
+    <updated>2023-11-09T07:28:44.144Z</updated>
     
     
     <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
@@ -397,31 +412,6 @@ reg add</summary>
     <summary type="html">&lt;h2 id=&quot;矩阵等价&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#矩阵等价&quot;&gt;&lt;/a&gt; 矩阵等价&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;定义：对同型矩阵A、B，存在可逆阵P和Q，使得&lt;span class=&quot;katex&quot;&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>背包理论基础多重背包</title>
-    <link href="https://kpl0111.github.io/blog/2022/0871e46bfb.html"/>
-    <id>https://kpl0111.github.io/blog/2022/0871e46bfb.html</id>
-    <published>2022-08-10T05:42:04.000Z</published>
-    <updated>2022-08-10T06:26:03.444Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;转载自&lt;a href=&quot;https://programmercarl.com/&quot;&gt;代码随想录&lt;/a&gt;，侵删&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;建议按照如下顺序观看：&lt;br&gt;
-&lt;a</summary>
         
       
     
