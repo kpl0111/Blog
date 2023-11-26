@@ -1,190 +1,112 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html lang="en">
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="转载自Engineer-Yao   一、基础知识  1.1 Linux系统的文件结构 &#x2F;bin        二进制文件，系统常规命令 &#x2F;boot       系统启动分区，系统启动时读取的文件 &#x2F;dev        设备文件 &#x2F;etc        大多数配置文件 &#x2F;home       普通用户的家目录 &#x2F;lib        32位函数库 &#x2F;lib64      64位库 &#x2F;media">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Linux指令">
-<meta property="og:url" content="https://kpl0111.github.io/blog/2023/0589550d80.html">
-<meta property="og:site_name" content="Nefelibata">
-<meta property="og:description" content="转载自Engineer-Yao   一、基础知识  1.1 Linux系统的文件结构 &#x2F;bin        二进制文件，系统常规命令 &#x2F;boot       系统启动分区，系统启动时读取的文件 &#x2F;dev        设备文件 &#x2F;etc        大多数配置文件 &#x2F;home       普通用户的家目录 &#x2F;lib        32位函数库 &#x2F;lib64      64位库 &#x2F;media">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-05-02T12:54:51.000Z">
-<meta property="article:modified_time" content="2023-05-13T15:57:54.222Z">
-<meta property="article:author" content="Nefelibata">
-<meta property="article:tag" content="Simple">
-<meta name="twitter:card" content="summary">
-    
-    
-        
-          
-              <link rel="shortcut icon" href="/blog/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/blog/images/favicon.ico" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/favicon.ico">
-          
-        
-    
-    <!-- title -->
-    <title>Linux指令</title>
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
-
-    
-<link rel="stylesheet" href="/blog/lib/meslo-LG/styles.css">
-
-    
-<link rel="stylesheet" href="/blog/lib/justified-gallery/justifiedGallery.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        Nefelibata
+    </title>
     
 <link rel="stylesheet" href="/blog/css/style.css">
 
-    <!-- rss -->
-    
-    
-    <!-- jquery -->
-    
-<script src="/blog/lib/jquery/jquery.min.js"></script>
-
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
+    <link rel="stylesheet" href="../css/style/github.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/highlight.min.js"></script>
+    <!-- Include jQuery -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+    <!-- Include ClipboardJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 <meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
 
 <body>
-    <div class="banner">
-<div id="blogtitel" class="blogtitel">Nefelibata</div>
-<ul id="wrapper" class="wrapper">
-  <div class="sun">
-    <div class="star"></div>
-  </div>
-  <div class="mercury">
-    <div class="planet">
-      <div class="shadow"></div>
+    <div class="container">
+        <div class="header">
+    <!-- <div class="logo">
+        <a href="/blog/">Nefelibata</a>
+    </div> -->
+    <!-- <div class="logo">
+        <img src="/images/lkp.png" alt="Logo">
+    </div> -->
+    <div class="nav">
+        <ul class="menu">
+            
+                <li class="menu-item">
+                    <a href="/blog/../" class="menu-item-link">
+                        Nefelibata
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a href="/blog/" class="menu-item-link">
+                        Blog
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a href="/blog/../gallery" class="menu-item-link">
+                        Gallery
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a target="_blank" rel="noopener" href="https://github.com/kpl0111" class="menu-item-link">
+                        Github
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a href="/blog/../about" class="menu-item-link">
+                        About
+                    </a>
+                </li>
+                
+        </ul>
     </div>
-  </div>
-  <div class="venus">
-    <div class="planet">
-      <div class="shadow"></div>
-    </div>
-  </div>
-  <div class="earth">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-  <div class="mars">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-  <div class="jupiter">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-</ul>
 </div>
-
-    <div class="background">
-      
-        <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/blog/../">Home</a></li>
-         
-          <li><a href="/blog/">Blog</a></li>
-         
-          <li><a href="/blog/archives/">Timeline</a></li>
-         
-          <li><a href="/blog/../gallery">Gallery</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
-         
-          <li><a href="/blog/../about">About</a></li>
-        
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" href="/blog/2023/056dad740.html"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
-        
-        
-        <li><a class="icon" href="/blog/2023/044b8db958.html"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
-        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2023/0589550d80.html"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2023/0589550d80.html&text=Linux指令"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2023/0589550d80.html&title=Linux指令"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2023/0589550d80.html&is_video=false&description=Linux指令"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Linux指令&body=Check out this article: https://kpl0111.github.io/blog/2023/0589550d80.html"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2023/0589550d80.html&title=Linux指令"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2023/0589550d80.html&title=Linux指令"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2023/0589550d80.html&title=Linux指令"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2023/0589550d80.html&title=Linux指令"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2023/0589550d80.html&name=Linux指令&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text"> 一、基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-linux%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text"> 1.1 Linux系统的文件结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-linux%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">1.2.</span> <span class="toc-text"> 1.2 Linux系统命令行的含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.3.</span> <span class="toc-text"> 1.3 命令的组成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text"> 二、基础操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E9%87%8D%E5%90%AF%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.1.</span> <span class="toc-text"> 2.1 重启系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-%E5%85%B3%E9%97%AD%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.2 关闭系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4help"><span class="toc-number">2.3.</span> <span class="toc-text"> 2.3 帮助命令（help）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-%E5%91%BD%E4%BB%A4%E8%AF%B4%E6%98%8E%E4%B9%A6man"><span class="toc-number">2.4.</span> <span class="toc-text"> 2.4 命令说明书（man）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25-%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7su"><span class="toc-number">2.5.</span> <span class="toc-text"> 2.5 切换用户（su）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text"> 三、目录操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E5%88%87%E6%8D%A2%E7%9B%AE%E5%BD%95cd"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 切换目录（cd）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95ls"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2 查看目录（ls）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95mkdir"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.3 创建目录（mkdir）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6rm"><span class="toc-number">3.4.</span> <span class="toc-text"> 3.3 删除目录与文件（rm）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-%E4%BF%AE%E6%94%B9%E7%9B%AE%E5%BD%95mv"><span class="toc-number">3.5.</span> <span class="toc-text"> 3.4 修改目录（mv）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35-%E6%8B%B7%E8%B4%9D%E7%9B%AE%E5%BD%95cp"><span class="toc-number">3.6.</span> <span class="toc-text"> 3.5 拷贝目录（cp）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#36-%E6%90%9C%E7%B4%A2%E7%9B%AE%E5%BD%95find"><span class="toc-number">3.7.</span> <span class="toc-text"> 3.6 搜索目录（find）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#37-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95pwd"><span class="toc-number">3.8.</span> <span class="toc-text"> 3.7 查看当前目录（pwd）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text"> 四、文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-%E6%96%B0%E5%A2%9E%E6%96%87%E4%BB%B6touch"><span class="toc-number">4.1.</span> <span class="toc-text"> 4.1 新增文件（touch）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6rm"><span class="toc-number">4.2.</span> <span class="toc-text"> 4.2 删除文件（rm）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6vi-vim"><span class="toc-number">4.3.</span> <span class="toc-text"> 4.3 编辑文件（vi、vim）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#44-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6"><span class="toc-number">4.4.</span> <span class="toc-text"> 4.4 查看文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-number">5.</span> <span class="toc-text"> 五、文件权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-%E6%9D%83%E9%99%90%E8%AF%B4%E6%98%8E"><span class="toc-number">5.1.</span> <span class="toc-text"> 5.1 权限说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-number">5.2.</span> <span class="toc-text"> 5.2 文件权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E6%89%93%E5%8C%85%E4%B8%8E%E8%A7%A3%E5%8E%8B"><span class="toc-number">6.</span> <span class="toc-text"> 六、打包与解压</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#61-%E8%AF%B4%E6%98%8E"><span class="toc-number">6.1.</span> <span class="toc-text"> 6.1 说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#62-%E6%89%93%E5%8C%85%E6%96%87%E4%BB%B6"><span class="toc-number">6.2.</span> <span class="toc-text"> 6.2 打包文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#63-%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6"><span class="toc-number">6.3.</span> <span class="toc-text"> 6.3 解压文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">7.</span> <span class="toc-text"> 七、其他常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#71-find"><span class="toc-number">7.1.</span> <span class="toc-text"> 7.1 find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#72-whereis"><span class="toc-number">7.2.</span> <span class="toc-text"> 7.2 whereis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#73-which"><span class="toc-number">7.3.</span> <span class="toc-text"> 7.3 which</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#74-sudo"><span class="toc-number">7.4.</span> <span class="toc-text"> 7.4 sudo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#75-grep"><span class="toc-number">7.5.</span> <span class="toc-text"> 7.5 grep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#76-service"><span class="toc-number">7.6.</span> <span class="toc-text"> 7.6 service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#77-free"><span class="toc-number">7.7.</span> <span class="toc-text"> 7.7 free</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#78-top"><span class="toc-number">7.8.</span> <span class="toc-text"> 7.8 top</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#79-df"><span class="toc-number">7.9.</span> <span class="toc-text"> 7.9 df</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#710-mount"><span class="toc-number">7.10.</span> <span class="toc-text"> 7.10 mount</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#711-uname"><span class="toc-number">7.11.</span> <span class="toc-text"> 7.11 uname</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#712-yum"><span class="toc-number">7.12.</span> <span class="toc-text"> 7.12 yum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#713-rpm"><span class="toc-number">7.13.</span> <span class="toc-text"> 7.13 rpm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#714-date"><span class="toc-number">7.14.</span> <span class="toc-text"> 7.14 date</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#715-wget"><span class="toc-number">7.15.</span> <span class="toc-text"> 7.15 wget</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#716-ftp"><span class="toc-number">7.16.</span> <span class="toc-text"> 7.16 ftp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#717-scp"><span class="toc-number">7.17.</span> <span class="toc-text"> 7.17 scp</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text"> 八、系统管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#81-%E9%98%B2%E7%81%AB%E5%A2%99%E6%93%8D%E4%BD%9C"><span class="toc-number">8.1.</span> <span class="toc-text"> 8.1 防火墙操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#82-%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8Dcentos-7"><span class="toc-number">8.2.</span> <span class="toc-text"> 8.2 修改主机名（CentOS 7）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#83-%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C"><span class="toc-number">8.3.</span> <span class="toc-text"> 8.3 查看网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#84-%E4%BF%AE%E6%94%B9ip"><span class="toc-number">8.4.</span> <span class="toc-text"> 8.4 修改IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#85-%E9%85%8D%E7%BD%AE%E6%98%A0%E5%B0%84"><span class="toc-number">8.5.</span> <span class="toc-text"> 8.5 配置映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#86-%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B"><span class="toc-number">8.6.</span> <span class="toc-text"> 8.6 查看进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#87-%E7%BB%93%E6%9D%9F%E8%BF%9B%E7%A8%8B"><span class="toc-number">8.7.</span> <span class="toc-text"> 8.7 结束进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#88-%E6%9F%A5%E7%9C%8B%E9%93%BE%E6%8E%A5"><span class="toc-number">8.8.</span> <span class="toc-text"> 8.8 查看链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#89-%E5%BF%AB%E9%80%9F%E6%B8%85%E5%B1%8F"><span class="toc-number">8.9.</span> <span class="toc-text"> 8.9 快速清屏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#810-%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA"><span class="toc-number">8.10.</span> <span class="toc-text"> 8.10 远程主机</span></a></li></ol></li></ol>
-    </div>
-  </span>
-</div>
-
-      
-      <div class="content index width mx-auto px2 my4">
-          
-          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
+        <div class="article">
+    <!-- <div class="article-title">
+        <h2>
+            Linux指令
+        </h2>
+    </div> -->
     
-    <h1 class="posttitle" itemprop="name headline">
-        Linux指令
-    </h1>
-
-
-
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Nefelibata</span>
-      </span>
-      
-    <div class="postdate">
-        <time datetime="2023-05-02T12:54:51.000Z" itemprop="datePublished">2023-05-02</time>
+        
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fas fa-edit"></i>
+            2023/05/02 周二 20:54&nbsp;&nbsp;&nbsp;
+            <span class="just-a-temp"><span>
+            <i class="fas fa-redo"></i>
+            2023/05/13 周六 23:57
+        </div>
     </div>
-
-
-      
-
-    </div>
-  </header>
-  
-
-  <div class="content" itemprop="articleBody">
-    <blockquote>
+    <div class="article-content">
+        <blockquote>
 <p>转载自<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46422300/article/details/104645072">Engineer-Yao</a></p>
 </blockquote>
 <h2 id="一-基础知识"><a class="markdownIt-Anchor" href="#一-基础知识"></a> 一、基础知识</h2>
@@ -500,103 +422,33 @@ netstat -an | grep 8080     //查看指定端口
 <pre class="highlight"><code class="shell">ssh IP       //远程主机，需要输入用户名和密码
 </code></pre>
 
-  </div>
-</article>
-
-
-
-      </div>
-      
-       <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/blog/../">Home</a></li>
-         
-          <li><a href="/blog/">Blog</a></li>
-         
-          <li><a href="/blog/archives/">Timeline</a></li>
-         
-          <li><a href="/blog/../gallery">Gallery</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
-         
-          <li><a href="/blog/../about">About</a></li>
-        
-      </ul>
     </div>
 
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text"> 一、基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-linux%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text"> 1.1 Linux系统的文件结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-linux%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">1.2.</span> <span class="toc-text"> 1.2 Linux系统命令行的含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.3.</span> <span class="toc-text"> 1.3 命令的组成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text"> 二、基础操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E9%87%8D%E5%90%AF%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.1.</span> <span class="toc-text"> 2.1 重启系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-%E5%85%B3%E9%97%AD%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.2 关闭系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4help"><span class="toc-number">2.3.</span> <span class="toc-text"> 2.3 帮助命令（help）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-%E5%91%BD%E4%BB%A4%E8%AF%B4%E6%98%8E%E4%B9%A6man"><span class="toc-number">2.4.</span> <span class="toc-text"> 2.4 命令说明书（man）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25-%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7su"><span class="toc-number">2.5.</span> <span class="toc-text"> 2.5 切换用户（su）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text"> 三、目录操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E5%88%87%E6%8D%A2%E7%9B%AE%E5%BD%95cd"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 切换目录（cd）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95ls"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2 查看目录（ls）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95mkdir"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.3 创建目录（mkdir）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6rm"><span class="toc-number">3.4.</span> <span class="toc-text"> 3.3 删除目录与文件（rm）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-%E4%BF%AE%E6%94%B9%E7%9B%AE%E5%BD%95mv"><span class="toc-number">3.5.</span> <span class="toc-text"> 3.4 修改目录（mv）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35-%E6%8B%B7%E8%B4%9D%E7%9B%AE%E5%BD%95cp"><span class="toc-number">3.6.</span> <span class="toc-text"> 3.5 拷贝目录（cp）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#36-%E6%90%9C%E7%B4%A2%E7%9B%AE%E5%BD%95find"><span class="toc-number">3.7.</span> <span class="toc-text"> 3.6 搜索目录（find）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#37-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95pwd"><span class="toc-number">3.8.</span> <span class="toc-text"> 3.7 查看当前目录（pwd）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text"> 四、文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-%E6%96%B0%E5%A2%9E%E6%96%87%E4%BB%B6touch"><span class="toc-number">4.1.</span> <span class="toc-text"> 4.1 新增文件（touch）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6rm"><span class="toc-number">4.2.</span> <span class="toc-text"> 4.2 删除文件（rm）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6vi-vim"><span class="toc-number">4.3.</span> <span class="toc-text"> 4.3 编辑文件（vi、vim）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#44-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6"><span class="toc-number">4.4.</span> <span class="toc-text"> 4.4 查看文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-number">5.</span> <span class="toc-text"> 五、文件权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-%E6%9D%83%E9%99%90%E8%AF%B4%E6%98%8E"><span class="toc-number">5.1.</span> <span class="toc-text"> 5.1 权限说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-number">5.2.</span> <span class="toc-text"> 5.2 文件权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E6%89%93%E5%8C%85%E4%B8%8E%E8%A7%A3%E5%8E%8B"><span class="toc-number">6.</span> <span class="toc-text"> 六、打包与解压</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#61-%E8%AF%B4%E6%98%8E"><span class="toc-number">6.1.</span> <span class="toc-text"> 6.1 说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#62-%E6%89%93%E5%8C%85%E6%96%87%E4%BB%B6"><span class="toc-number">6.2.</span> <span class="toc-text"> 6.2 打包文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#63-%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6"><span class="toc-number">6.3.</span> <span class="toc-text"> 6.3 解压文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">7.</span> <span class="toc-text"> 七、其他常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#71-find"><span class="toc-number">7.1.</span> <span class="toc-text"> 7.1 find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#72-whereis"><span class="toc-number">7.2.</span> <span class="toc-text"> 7.2 whereis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#73-which"><span class="toc-number">7.3.</span> <span class="toc-text"> 7.3 which</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#74-sudo"><span class="toc-number">7.4.</span> <span class="toc-text"> 7.4 sudo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#75-grep"><span class="toc-number">7.5.</span> <span class="toc-text"> 7.5 grep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#76-service"><span class="toc-number">7.6.</span> <span class="toc-text"> 7.6 service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#77-free"><span class="toc-number">7.7.</span> <span class="toc-text"> 7.7 free</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#78-top"><span class="toc-number">7.8.</span> <span class="toc-text"> 7.8 top</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#79-df"><span class="toc-number">7.9.</span> <span class="toc-text"> 7.9 df</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#710-mount"><span class="toc-number">7.10.</span> <span class="toc-text"> 7.10 mount</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#711-uname"><span class="toc-number">7.11.</span> <span class="toc-text"> 7.11 uname</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#712-yum"><span class="toc-number">7.12.</span> <span class="toc-text"> 7.12 yum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#713-rpm"><span class="toc-number">7.13.</span> <span class="toc-text"> 7.13 rpm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#714-date"><span class="toc-number">7.14.</span> <span class="toc-text"> 7.14 date</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#715-wget"><span class="toc-number">7.15.</span> <span class="toc-text"> 7.15 wget</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#716-ftp"><span class="toc-number">7.16.</span> <span class="toc-text"> 7.16 ftp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#717-scp"><span class="toc-number">7.17.</span> <span class="toc-text"> 7.17 scp</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text"> 八、系统管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#81-%E9%98%B2%E7%81%AB%E5%A2%99%E6%93%8D%E4%BD%9C"><span class="toc-number">8.1.</span> <span class="toc-text"> 8.1 防火墙操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#82-%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8Dcentos-7"><span class="toc-number">8.2.</span> <span class="toc-text"> 8.2 修改主机名（CentOS 7）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#83-%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C"><span class="toc-number">8.3.</span> <span class="toc-text"> 8.3 查看网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#84-%E4%BF%AE%E6%94%B9ip"><span class="toc-number">8.4.</span> <span class="toc-text"> 8.4 修改IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#85-%E9%85%8D%E7%BD%AE%E6%98%A0%E5%B0%84"><span class="toc-number">8.5.</span> <span class="toc-text"> 8.5 配置映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#86-%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B"><span class="toc-number">8.6.</span> <span class="toc-text"> 8.6 查看进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#87-%E7%BB%93%E6%9D%9F%E8%BF%9B%E7%A8%8B"><span class="toc-number">8.7.</span> <span class="toc-text"> 8.7 结束进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#88-%E6%9F%A5%E7%9C%8B%E9%93%BE%E6%8E%A5"><span class="toc-number">8.8.</span> <span class="toc-text"> 8.8 查看链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#89-%E5%BF%AB%E9%80%9F%E6%B8%85%E5%B1%8F"><span class="toc-number">8.9.</span> <span class="toc-text"> 8.9 快速清屏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#810-%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA"><span class="toc-number">8.10.</span> <span class="toc-text"> 8.10 远程主机</span></a></li></ol></li></ol>
-    </div>
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://kpl0111.github.io/blog/2023/0589550d80.html"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://kpl0111.github.io/blog/2023/0589550d80.html&text=Linux指令"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://kpl0111.github.io/blog/2023/0589550d80.html&title=Linux指令"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kpl0111.github.io/blog/2023/0589550d80.html&is_video=false&description=Linux指令"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Linux指令&body=Check out this article: https://kpl0111.github.io/blog/2023/0589550d80.html"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://kpl0111.github.io/blog/2023/0589550d80.html&title=Linux指令"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://kpl0111.github.io/blog/2023/0589550d80.html&title=Linux指令"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://kpl0111.github.io/blog/2023/0589550d80.html&title=Linux指令"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://kpl0111.github.io/blog/2023/0589550d80.html&title=Linux指令"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://kpl0111.github.io/blog/2023/0589550d80.html&name=Linux指令&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-      <ul>
-        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
-        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
-        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
-        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
-      </ul>
-    </div>
-
-  </div>
+    <div class="totop">ToTop</div>
+    <script type="text/javascript" src="../libs/codeBlock/codeBlockFuction.js"></script>
+    <!-- 代码语言 -->
+    <script type="text/javascript" src="../libs/codeBlock/codeLang.js"></script>
+    <!-- 代码块复制 -->
+    <script type="text/javascript" src="../libs/codeBlock/codeCopy.js"></script>
+    <script type="text/javascript" src="../libs/codeBlock/clipboard.min.js"></script>
+    <!-- 代码块收缩 -->
+    <script type="text/javascript" src="../libs/codeBlock/codeShrink.js"></script> 
+    <!-- 代码块折行 -->
+    <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+</div>
+        <div class="footer">
+    <a href="#">
+        2020 <i class="fab fa-studiovinari"></i> Nefelibata <i class="fas fa-angle-double-up"></i>
+    </a>
 </div>
 
-      
-      <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy; 2023 Nefelibata
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/blog/../">Home</a></li>
-         
-          <li><a href="/blog/">Blog</a></li>
-         
-          <li><a href="/blog/archives/">Timeline</a></li>
-         
-          <li><a href="/blog/../gallery">Gallery</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="https://github.com/kpl0111">Github</a></li>
-         
-          <li><a href="/blog/../about">About</a></li>
-        
-      </ul>
-    </nav>
-  </div>
-</footer>
 
-      
-<script src="/blog/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/blog/js/totop.js"></script>
 
 
-<script src="/blog/js/main.js"></script>
-
-<!-- Google Analytics -->
-
-<!-- Disqus Comments -->
-
+<script src="/blog/js/search.js"></script>
 
     </div>
 </body>
+
 </html>
