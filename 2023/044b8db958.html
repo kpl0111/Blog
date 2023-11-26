@@ -20,9 +20,9 @@
     <!-- Include ClipboardJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
 
 <body>
@@ -107,15 +107,13 @@
     </div>
     <div class="article-content">
         <ul>
-<li>创建仓库
-<ul>
+<li>创建仓库<ul>
 <li>git clone &lt;url&gt; [directory]</li>
 <li>git init</li>
-<li>git config --global <a target="_blank" rel="noopener" href="http://user.name">user.name</a> ‘你的用户名’</li>
-<li>git config --global user.email ‘你的邮箱’</li>
+<li>git config –global user.name ‘你的用户名’</li>
+<li>git config –global user.email ‘你的邮箱’</li>
 <li>git remote add origin &lt;远程仓库&gt;</li>
-<li>git add
-<ul>
+<li>git add<ul>
 <li>git add .:添加所有</li>
 <li>git add &lt;文件名&gt;：添加指定文件</li>
 </ul>
@@ -125,29 +123,25 @@
 <li>git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</li>
 </ul>
 </li>
-<li>基本指令
-<ul>
+<li>基本指令<ul>
 <li>git config：配置信息</li>
 <li>git remote -v：查看当前关联的远程主机地址</li>
 <li>git remote rm origin：删除远程地址</li>
 <li>git add：添加文件到缓存命令</li>
-<li>git status：查看文件的状态命令
-<ul>
+<li>git status：查看文件的状态命令<ul>
 <li>git diff：尚未缓存的改动</li>
-<li>git diff --cached：查看已缓存的改动</li>
+<li>git diff –cached：查看已缓存的改动</li>
 <li>git diff HEAD：查看已缓存的与未缓存的所有改动</li>
-<li>git diff --stat：显示摘要而非整个</li>
+<li>git diff –stat：显示摘要而非整个</li>
 </ul>
 </li>
 <li>git diff：查看更新的详细信息命令</li>
-<li>git commit：提交命令
-<ul>
+<li>git commit：提交命令<ul>
 <li>git commit -m “第一次版本提交”</li>
 <li>git commit -am “第一次版本提交”</li>
 </ul>
 </li>
-<li>git reset HEAD：取消缓存命令
-<ul>
+<li>git reset HEAD：取消缓存命令<ul>
 <li>git reset HEAD test.txt</li>
 </ul>
 </li>
@@ -155,8 +149,7 @@
 <li>git mv：移动或重命名命令</li>
 </ul>
 </li>
-<li>分支
-<ul>
+<li>分支<ul>
 <li>git branch：查看分支命令</li>
 <li>git branch (branchname)：创建分支命令</li>
 <li>git checkout (branchname)：切换分支命令</li>
@@ -164,21 +157,18 @@
 <li>git branch -d (branchname)：删除分支命令</li>
 </ul>
 </li>
-<li>标签
-<ul>
-<li>可以使用 git tag -a vx.x来创建一个标签。a 选项意为"创建一个带注解的标签"。 不用 -a 选项也可以执行的，但它不会记录这标签是啥时候打的，谁打的，也不会让你添加个标签的注解</li>
+<li>标签<ul>
+<li>可以使用 git tag -a vx.x来创建一个标签。a 选项意为”创建一个带注解的标签”。 不用 -a 选项也可以执行的，但它不会记录这标签是啥时候打的，谁打的，也不会让你添加个标签的注解</li>
 <li>git tag：查看标签</li>
 </ul>
 </li>
-<li>log
-<ul>
-<li>git log：查看记录
-<ul>
+<li>log<ul>
+<li>git log：查看记录<ul>
 <li>–oneline ：查看历史记录的简洁版本</li>
 <li>–graph ：查看历史中什么时候出现了分支、合并</li>
 <li>–reverse ：逆向显示所有日志</li>
 <li>–author ：查找指定用户的提交日志</li>
-<li>–since、–before、 --until、–after： 指定帅选日期</li>
+<li>–since、–before、 –until、–after： 指定帅选日期</li>
 <li>–no-merges ：选项以隐藏合并提交</li>
 <li>查看提交版本，如果想要回退到指定版本只需使用<code>git checkout 版本ID</code>即可，版本ID在<code>git log</code>之后会显示每个版本的ID</li>
 <li><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230419192806.png" alt="20230419192806"></li>

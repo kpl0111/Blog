@@ -20,9 +20,9 @@
     <!-- Include ClipboardJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
 
 <body>
@@ -109,15 +109,9 @@
         <blockquote>
 <p>转载自<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删</p>
 </blockquote>
-<p>建议按照如下顺序观看：<br>
-<a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a><br>
-<a href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2</a><br>
-<a href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br>
-<a href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包（本文）</a></p>
-<h1 id="动态规划关于多重背包你该了解这些"><a class="markdownIt-Anchor" href="#动态规划关于多重背包你该了解这些"></a> 动态规划：关于多重背包，你该了解这些！</h1>
-<p>这次我们再来说一说多重背包</p>
-<h2 id="多重背包"><a class="markdownIt-Anchor" href="#多重背包"></a> 多重背包</h2>
-<p>对于多重背包，我在力扣上还没发现对应的题目，所以这里就做一下简单介绍，大家大概了解一下。</p>
+<p>建议按照如下顺序观看：<br><a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a><br><a href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2</a><br><a href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br><a href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包（本文）</a></p>
+<h1 id="动态规划：关于多重背包，你该了解这些！"><a href="#动态规划：关于多重背包，你该了解这些！" class="headerlink" title="动态规划：关于多重背包，你该了解这些！"></a>动态规划：关于多重背包，你该了解这些！</h1><p>这次我们再来说一说多重背包</p>
+<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><p>对于多重背包，我在力扣上还没发现对应的题目，所以这里就做一下简单介绍，大家大概了解一下。</p>
 <p>有N种物品和一个容量为V 的背包。第i种物品最多有Mi件可用，每件耗费的空间是Ci ，价值是Wi 。求解将哪些物品装入背包可使这些物品的耗费的空间 总和不超过背包容量，且价值总和最大。</p>
 <p>多重背包和01背包是非常像的， 为什么和01背包像呢？</p>
 <p>每件物品最多有Mi件可用，把Mi件摊开，其实就是一个01背包问题了。</p>
@@ -133,8 +127,7 @@
 <th>数量</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>物品0</td>
 <td>1</td>
 <td>15</td>
@@ -152,8 +145,7 @@
 <td>30</td>
 <td>2</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>问背包能背的物品最大价值是多少？</p>
 <p>和如下情况有区别么？</p>
 <table>
@@ -165,8 +157,7 @@
 <th>数量</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>物品0</td>
 <td>1</td>
 <td>15</td>
@@ -208,71 +199,69 @@
 <td>30</td>
 <td>1</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>毫无区别，这就转成了一个01背包问题了，且每个物品只用一次。</p>
 <p>这种方式来实现多重背包的代码如下：</p>
-<pre class="highlight"><code class="CPP"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test_multi_pack</span><span class="hljs-params">()</span> </span>{
-    vector&lt;<span class="hljs-type">int</span>&gt; weight = {<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>};
-    vector&lt;<span class="hljs-type">int</span>&gt; value = {<span class="hljs-number">15</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>};
-    vector&lt;<span class="hljs-type">int</span>&gt; nums = {<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>};
-    <span class="hljs-type">int</span> bagWeight = <span class="hljs-number">10</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i++) {
-        <span class="hljs-keyword">while</span> (nums[i] &gt; <span class="hljs-number">1</span>) { <span class="hljs-comment">// nums[i]保留到1，把其他物品都展开</span>
-            weight.<span class="hljs-built_in">push_back</span>(weight[i]);
-            value.<span class="hljs-built_in">push_back</span>(value[i]);
+<pre><code class="CPP">void test_multi_pack() {
+    vector&lt;int&gt; weight = {1, 3, 4};
+    vector&lt;int&gt; value = {15, 20, 30};
+    vector&lt;int&gt; nums = {2, 3, 2};
+    int bagWeight = 10;
+    for (int i = 0; i &lt; nums.size(); i++) {
+        while (nums[i] &gt; 1) { // nums[i]保留到1，把其他物品都展开
+            weight.push_back(weight[i]);
+            value.push_back(value[i]);
             nums[i]--;
         }
     }
 
-    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(bagWeight + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>)</span></span>;
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; weight.<span class="hljs-built_in">size</span>(); i++) { <span class="hljs-comment">// 遍历物品</span>
-        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = bagWeight; j &gt;= weight[i]; j--) { <span class="hljs-comment">// 遍历背包容量</span>
-            dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);
+    vector&lt;int&gt; dp(bagWeight + 1, 0);
+    for(int i = 0; i &lt; weight.size(); i++) { // 遍历物品
+        for(int j = bagWeight; j &gt;= weight[i]; j--) { // 遍历背包容量
+            dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
         }
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= bagWeight; j++) {
-            cout &lt;&lt; dp[j] &lt;&lt; <span class="hljs-string">" "</span>;
+        for (int j = 0; j &lt;= bagWeight; j++) {
+            cout &lt;&lt; dp[j] &lt;&lt; " ";
         }
         cout &lt;&lt; endl;
     }
     cout &lt;&lt; dp[bagWeight] &lt;&lt; endl;
 
 }
-<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-built_in">test_multi_pack</span>();
+int main() {
+    test_multi_pack();
 }
-
 </code></pre>
 <ul>
 <li>时间复杂度：O(m × n × k)，m：物品种类个数，n背包容量，k单类物品数量</li>
 </ul>
 <p>也有另一种实现方式，就是把每种商品遍历的个数放在01背包里面在遍历一遍。</p>
 <p>代码如下：（详看注释）</p>
-<pre class="highlight"><code class="CPP"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test_multi_pack</span><span class="hljs-params">()</span> </span>{
-    vector&lt;<span class="hljs-type">int</span>&gt; weight = {<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>};
-    vector&lt;<span class="hljs-type">int</span>&gt; value = {<span class="hljs-number">15</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>};
-    vector&lt;<span class="hljs-type">int</span>&gt; nums = {<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>};
-    <span class="hljs-type">int</span> bagWeight = <span class="hljs-number">10</span>;
-    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(bagWeight + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>)</span></span>;
+<pre><code class="CPP">void test_multi_pack() {
+    vector&lt;int&gt; weight = {1, 3, 4};
+    vector&lt;int&gt; value = {15, 20, 30};
+    vector&lt;int&gt; nums = {2, 3, 2};
+    int bagWeight = 10;
+    vector&lt;int&gt; dp(bagWeight + 1, 0);
 
 
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; weight.<span class="hljs-built_in">size</span>(); i++) { <span class="hljs-comment">// 遍历物品</span>
-        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = bagWeight; j &gt;= weight[i]; j--) { <span class="hljs-comment">// 遍历背包容量</span>
-            <span class="hljs-comment">// 以上为01背包，然后加一个遍历个数</span>
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = <span class="hljs-number">1</span>; k &lt;= nums[i] &amp;&amp; (j - k * weight[i]) &gt;= <span class="hljs-number">0</span>; k++) { <span class="hljs-comment">// 遍历个数</span>
-                dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - k * weight[i]] + k * value[i]);
+    for(int i = 0; i &lt; weight.size(); i++) { // 遍历物品
+        for(int j = bagWeight; j &gt;= weight[i]; j--) { // 遍历背包容量
+            // 以上为01背包，然后加一个遍历个数
+            for (int k = 1; k &lt;= nums[i] &amp;&amp; (j - k * weight[i]) &gt;= 0; k++) { // 遍历个数
+                dp[j] = max(dp[j], dp[j - k * weight[i]] + k * value[i]);
             }
         }
-        <span class="hljs-comment">// 打印一下dp数组</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= bagWeight; j++) {
-            cout &lt;&lt; dp[j] &lt;&lt; <span class="hljs-string">" "</span>;
+        // 打印一下dp数组
+        for (int j = 0; j &lt;= bagWeight; j++) {
+            cout &lt;&lt; dp[j] &lt;&lt; " ";
         }
         cout &lt;&lt; endl;
     }
     cout &lt;&lt; dp[bagWeight] &lt;&lt; endl;
 }
-<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-built_in">test_multi_pack</span>();
+int main() {
+    test_multi_pack();
 }
 </code></pre>
 <ul>
@@ -281,13 +270,9 @@
 <p>从代码里可以看出是01背包里面在加一个for循环遍历一个每种商品的数量。 和01背包还是如出一辙的。</p>
 <p>当然还有那种二进制优化的方法，其实就是把每种物品的数量，打包成一个个独立的包。</p>
 <p>和以上在循环遍历上有所不同，因为是分拆为各个包最后可以组成一个完整背包，具体原理我就不做过多解释了，大家了解一下就行，面试的话基本不会考完这个深度了，感兴趣可以自己深入研究一波。</p>
-<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
-<p>多重背包在面试中基本不会出现，力扣上也没有对应的题目，大家对多重背包的掌握程度知道它是一种01背包，并能在01背包的基础上写出对应代码就可以了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>多重背包在面试中基本不会出现，力扣上也没有对应的题目，大家对多重背包的掌握程度知道它是一种01背包，并能在01背包的基础上写出对应代码就可以了。</p>
 <p>至于背包九讲里面还有混合背包，二维费用背包，分组背包等等这些，大家感兴趣可以自己去学习学习，这里也不做介绍了，面试也不会考。</p>
-<p><a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a><br>
-<a href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2</a><br>
-<a href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br>
-<a href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包（本文）</a></p>
+<p><a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a><br><a href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2</a><br><a href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br><a href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包（本文）</a></p>
 
     </div>
 

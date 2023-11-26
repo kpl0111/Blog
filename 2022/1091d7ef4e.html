@@ -20,9 +20,9 @@
     <!-- Include ClipboardJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
 
 <body>
@@ -107,12 +107,10 @@
     </div>
     <div class="article-content">
         <ol>
-<li>
-<p>任意位置新建txt文件，打开编辑</p>
+<li><p>任意位置新建txt文件，打开编辑</p>
 </li>
-<li>
-<p>复制以下代码</p>
-<pre class="highlight"><code class="console">@echo off
+<li><p>复制以下代码</p>
+<pre><code class="console">@echo off
 
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowSecondsInSystemClock /t REG_DWORD /d 1 /f
 
@@ -129,12 +127,9 @@ echo.
 pause
 </code></pre>
 </li>
-<li>
-<p>更改后缀为<code>.bat</code>，之后双击执行该文件即可</p>
+<li><p>更改后缀为<code>.bat</code>，之后双击执行该文件即可</p>
 </li>
-<li>
-<p>效果如下<br>
-<img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20221006095422.png" alt="20221006095422"></p>
+<li><p>效果如下<br><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20221006095422.png" alt="20221006095422"></p>
 </li>
 </ol>
 

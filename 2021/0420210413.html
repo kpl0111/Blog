@@ -20,9 +20,9 @@
     <!-- Include ClipboardJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
 
 <body>
@@ -106,28 +106,24 @@
         </div>
     </div>
     <div class="article-content">
-        <h2 id="说明"><a class="markdownIt-Anchor" href="#说明"></a> 说明</h2>
-<p>在解压后的ucroe源码包中使用make命令即可以生成所需的目标文件,例如在本次实验中</p>
-<pre class="highlight"><code class="">user@system:~../lab1$ make
+        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>在解压后的ucroe源码包中使用make命令即可以生成所需的目标文件,例如在本次实验中</p>
+<pre><code>user@system:~../lab1$ make
 </code></pre>
 <p>之后就会在bin文件夹生成一系列的目标文件：</p>
 <ul>
 <li>user.img : 被qemu访问的虚拟硬盘文件</li>
 <li>kernel : ELF格式的toy ucore kernel执行文，嵌入到了ucore.img中</li>
 <li>bootblock : 虚拟的硬盘主引导扇区(512字节)，包含了bootloader执行代码，同样嵌入了</li>
-<li>sign : 外部执行程序，用来生成虚拟的硬盘主引导扇区<br>
-还有其他文件，不一一列举。</li>
+<li>sign : 外部执行程序，用来生成虚拟的硬盘主引导扇区<br>还有其他文件，不一一列举。</li>
 </ul>
 <p>如果要对修改后的ucore代码和ucore 源码进行比较，可以使用diff命令。</p>
-<pre class="highlight"><code class="">user@system:~../lab1$ diff 目标文件 源文件
+<pre><code>user@system:~../lab1$ diff 目标文件 源文件
 </code></pre>
-<h2 id="练习1"><a class="markdownIt-Anchor" href="#练习1"></a> 练习1</h2>
-<h3 id="1-操作系统镜像文件ucoreimg如何生成"><a class="markdownIt-Anchor" href="#1-操作系统镜像文件ucoreimg如何生成"></a> 1. 操作系统镜像文件ucore.img如何生成？</h3>
-<p>执行指令</p>
-<pre class="highlight"><code class="">user@system:~../lab1$ make "V="
+<h2 id="练习1"><a href="#练习1" class="headerlink" title="练习1"></a>练习1</h2><h3 id="1-操作系统镜像文件ucore-img如何生成？"><a href="#1-操作系统镜像文件ucore-img如何生成？" class="headerlink" title="1. 操作系统镜像文件ucore.img如何生成？"></a>1. 操作系统镜像文件ucore.img如何生成？</h3><p> 执行指令</p>
+<pre><code>user@system:~../lab1$ make "V="
 </code></pre>
-<p>可以获得Makefile中执行的具体指令，详细信息如下（仅列举有关ucore.img文件生成相关指令）:</p>
-<pre class="highlight"><code class="">   + cc kern/init/init.c           
+<p> 可以获得Makefile中执行的具体指令，详细信息如下（仅列举有关ucore.img文件生成相关指令）:</p>
+<pre><code>   + cc kern/init/init.c           
      gcc -c kern/init/init.c -o obj/kern/init/init.o
 
    + cc kern/libs/readline.c       
@@ -206,78 +202,72 @@
    obj/boot/bootasm.o  obj/boot/bootmain.o
    -o obj/bootblock.o
 </code></pre>
-<p>在makefile文件中搜索ucore.img可以找到</p>
-<pre class="highlight"><code class="">	#create ucore.img
-	UCOREIMG	:=$(call totarget,ucore.img)
-	$(UCOREIMG):$(kernel)$(bootblock)
-		
-		$
-		$(V)dd if=$(kernel) of=$@ seek=1 conv=notrunc
-	$(call create_target,ucore.img)
+<p> 在makefile文件中搜索ucore.img可以找到</p>
+<pre><code>    #create ucore.img
+    UCOREIMG	:=$(call totarget,ucore.img)
+    $(UCOREIMG):$(kernel)$(bootblock)
+        
+        $
+        $(V)dd if=$(kernel) of=$@ seek=1 conv=notrunc
+    $(call create_target,ucore.img)
 </code></pre>
-<p>可以看出ucore.img镜像文件是由kernel和bootblock文件生成的。</p>
-<pre class="highlight"><code class="">	$(V)dd if=/dev/zero of=$@
-	count=100000
+<p> 可以看出ucore.img镜像文件是由kernel和bootblock文件生成的。</p>
+<pre><code>    $(V)dd if=/dev/zero of=$@
+    count=100000
 </code></pre>
-<p>这句语句可以看到UCOREIMG分配了一定空间。</p>
-<pre class="highlight"><code class="">	(V)dd if=$(bootblock) of=$@ conv=notrunc
+<p> 这句语句可以看到UCOREIMG分配了一定空间。</p>
+<pre><code>    (V)dd if=$(bootblock) of=$@ conv=notrunc
 </code></pre>
-<p>这句语句将bootblock复制到上面分配的空间当中。</p>
-<pre class="highlight"><code class="">	$(V)dd if=$(kernel) of=$@ seek=1 conv=notrunc
+<p> 这句语句将bootblock复制到上面分配的空间当中。</p>
+<pre><code>    $(V)dd if=$(kernel) of=$@ seek=1 conv=notrunc
 </code></pre>
-<p>该语句将kernel复制到分配的空间当中。</p>
-<h4 id="1kernel生成"><a class="markdownIt-Anchor" href="#1kernel生成"></a> 1.kernel生成</h4>
-<pre class="highlight"><code class="">	kernel = $(call totarget,kernel)
-	$(kernel): tools/kernel.ld
+<p> 该语句将kernel复制到分配的空间当中。</p>
+<h4 id="1-kernel生成"><a href="#1-kernel生成" class="headerlink" title="1.kernel生成"></a>1.kernel生成</h4><pre><code>    kernel = $(call totarget,kernel)
+    $(kernel): tools/kernel.ld
 </code></pre>
-<p>通过链接来生成kernel目标文件</p>
-<pre class="highlight"><code class="">	$(kernel): $(KOBJS)     
+<p> 通过链接来生成kernel目标文件</p>
+<pre><code>    $(kernel): $(KOBJS)     
 </code></pre>
-<p>kernel的生成还依赖KOBJS</p>
-<pre class="highlight"><code class="">	@echo + ld $@                
-	$(V)$(LD) $(LDFLAGS) -T tools/kernel.ld -o $@ $(KOBJS)   
-	@$(OBJDUMP) -S $@ &gt; $(call asmfile,kernel)  
-	@$(OBJDUMP) -t $@ | $(SED) '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' &gt; $(call symfile,kernel)
-	$(call symfile,kernel)
-	kernel = $(call totarget,kernel)
+<p> kernel的生成还依赖KOBJS</p>
+<pre><code>    @echo + ld $@                
+    $(V)$(LD) $(LDFLAGS) -T tools/kernel.ld -o $@ $(KOBJS)   
+    @$(OBJDUMP) -S $@ &gt; $(call asmfile,kernel)  
+    @$(OBJDUMP) -t $@ | $(SED) '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' &gt; $(call symfile,kernel)
+    $(call symfile,kernel)
+    kernel = $(call totarget,kernel)
 </code></pre>
-<h4 id="2bootblock生成"><a class="markdownIt-Anchor" href="#2bootblock生成"></a> 2.bootblock生成</h4>
-<pre class="highlight"><code class="">	bootfiles = $(call listf_cc,boot) 
+<h4 id="2-bootblock生成"><a href="#2-bootblock生成" class="headerlink" title="2.bootblock生成"></a>2.bootblock生成</h4><pre><code>    bootfiles = $(call listf_cc,boot) 
 </code></pre>
-<p>用boot替换listf_cc里面的变量，将listf_cc的返回值赋给bootfiles,也就是滤出.c,.s文件</p>
-<pre class="highlight"><code class="">	$(foreach f,$(bootfiles),$(call cc_compile,$(f),$(CC),$(CFLAGS) -Os -nostdinc))
+<p> 用boot替换listf_cc里面的变量，将listf_cc的返回值赋给bootfiles,也就是滤出.c,.s文件</p>
+<pre><code>    $(foreach f,$(bootfiles),$(call cc_compile,$(f),$(CC),$(CFLAGS) -Os -nostdinc))
 </code></pre>
-<p>编译bookfiles</p>
-<pre class="highlight"><code class="">	bootblock = $(call totarget,bootblock) 
+<p> 编译bookfiles</p>
+<pre><code>    bootblock = $(call totarget,bootblock) 
 </code></pre>
-<p>生成bootblock</p>
-<pre class="highlight"><code class="">	$(bootblock): $(call toobj,$(bootfiles)) | $(call totarget,sign)
+<p> 生成bootblock</p>
+<pre><code>    $(bootblock): $(call toobj,$(bootfiles)) | $(call totarget,sign)
 </code></pre>
-<p>生成目标文件bootblock需要依赖于sign和bootfiles</p>
-<pre class="highlight"><code class="">	@echo + ld $@       
+<p> 生成目标文件bootblock需要依赖于sign和bootfiles</p>
+<pre><code>    @echo + ld $@       
 </code></pre>
-<p>将以下文件与bootblock连接起来</p>
-<pre class="highlight"><code class="">	$(V)$(LD) $(LDFLAGS) -N -e start -Ttext 0x7C00 $^ -o $(call toobj,bootblock)
-	@$(OBJDUMP) -S $(call objfile,bootblock) &gt; $(call asmfile,bootblock)    
-	@$(OBJCOPY) -S -O binary $(call objfile,bootblock) $(call outfile,bootblock)
-	@$(call totarget,sign) $(call outfile,bootblock) $(bootblock)
+<p> 将以下文件与bootblock连接起来</p>
+<pre><code>    $(V)$(LD) $(LDFLAGS) -N -e start -Ttext 0x7C00 $^ -o $(call toobj,bootblock)
+    @$(OBJDUMP) -S $(call objfile,bootblock) &gt; $(call asmfile,bootblock)    
+    @$(OBJCOPY) -S -O binary $(call objfile,bootblock) $(call outfile,bootblock)
+    @$(call totarget,sign) $(call outfile,bootblock) $(bootblock)
 
-	$(call create_target,bootblock)
+    $(call create_target,bootblock)
 </code></pre>
-<h4 id="3生成sign工具"><a class="markdownIt-Anchor" href="#3生成sign工具"></a> 3.生成sign工具</h4>
-<pre class="highlight"><code class="">	$(call add_files_host,tools/sign.c,sign,sign)
-	$(call create_target_host,sign,sign)
+<h4 id="3-生成sign工具"><a href="#3-生成sign工具" class="headerlink" title="3.生成sign工具"></a>3.生成sign工具</h4><pre><code>    $(call add_files_host,tools/sign.c,sign,sign)
+    $(call create_target_host,sign,sign)
 </code></pre>
 <ul>
 <li>由sign工具、bootfile生成bootblock</li>
 <li>由KOBJS生成kernel</li>
 <li>由kernel和bootblock生成最终的ucore.img</li>
 </ul>
-<h3 id="2一个被系统认为是符合规范的硬盘主引导扇区的特征是什么"><a class="markdownIt-Anchor" href="#2一个被系统认为是符合规范的硬盘主引导扇区的特征是什么"></a> 2.一个被系统认为是符合规范的硬盘主引导扇区的特征是什么?</h3>
-<p>通过查阅资料我们可以知道bootblock区域包含用于引导的最小指令集，而在上一个问题中我们发现bootblock的生成需要依赖于sign.c文件和bootfiles文件，其中bootfiles提供开机启动所需要的文件，而sign.c则代表生成bootblock的规范。<br>
-因此，我们去在文件夹中查看sign.c文件。<br>
-文件代码如下：</p>
-<pre class="highlight"><code class="">    char buf[512];  //定义buf数组
+<h3 id="2-一个被系统认为是符合规范的硬盘主引导扇区的特征是什么"><a href="#2-一个被系统认为是符合规范的硬盘主引导扇区的特征是什么" class="headerlink" title="2.一个被系统认为是符合规范的硬盘主引导扇区的特征是什么?"></a>2.一个被系统认为是符合规范的硬盘主引导扇区的特征是什么?</h3><p> 通过查阅资料我们可以知道bootblock区域包含用于引导的最小指令集，而在上一个问题中我们发现bootblock的生成需要依赖于sign.c文件和bootfiles文件，其中bootfiles提供开机启动所需要的文件，而sign.c则代表生成bootblock的规范。<br> 因此，我们去在文件夹中查看sign.c文件。<br> 文件代码如下：</p>
+<pre><code>    char buf[512];  //定义buf数组
     memset(buf, 0, sizeof(buf));
       // 把buf数组的最后两位置为 0x55, 0xAA
     buf[510] = 0x55;  
@@ -289,62 +279,29 @@
         return -1;
     }
 </code></pre>
-<p>通过查看这里的代码，我们可以发现sign规范中给buf提供了512个字节的空间，而且bootblock的格式是最后两个字节分别是0x55和0xAA，而这也是操作系统课上提到的两个神奇的数。</p>
-<h2 id="练习2"><a class="markdownIt-Anchor" href="#练习2"></a> 练习2</h2>
-<h4 id="1使用qemu调试make文件"><a class="markdownIt-Anchor" href="#1使用qemu调试make文件"></a> 1.使用qemu调试make文件</h4>
-<p>在进入lab1文件夹之后，使用命令 make debug 进入调试模式。<br>
-（1）在查看了tools文件夹中的gdbinit文件之后，可以看到存在代码</p>
-<pre class="highlight"><code class="">	target remote localhost：1234
+<p> 通过查看这里的代码，我们可以发现sign规范中给buf提供了512个字节的空间，而且bootblock的格式是最后两个字节分别是0x55和0xAA，而这也是操作系统课上提到的两个神奇的数。</p>
+<h2 id="练习2"><a href="#练习2" class="headerlink" title="练习2"></a>练习2</h2><h4 id="1-使用qemu调试make文件"><a href="#1-使用qemu调试make文件" class="headerlink" title="1.使用qemu调试make文件"></a>1.使用qemu调试make文件</h4><p> 在进入lab1文件夹之后，使用命令 make debug 进入调试模式。<br> （1）在查看了tools文件夹中的gdbinit文件之后，可以看到存在代码</p>
+<pre><code>    target remote localhost：1234
 </code></pre>
-<p>这代表着在启动之后会连接qemu和gdb。<br>
-（2）在make debug之后输入stepi，可以按照机器指令单步执行。<br>
-（3）一开始进入的是init.c程序。提示是init the console。<br>
-<img src="https://i.loli.net/2021/04/12/BYtSXi2GRELoAWr.jpg" alt="mmexport1618159483754"><br>
-（4）再执行几次step执行源代码之后，就进入stdio.c文件。<br>
-（5）像这样反复执行step/next语句，就可以按照程序源代码一步一步执行了。</p>
-<h4 id="2在初始化位置0x7c00设置实地址断点"><a class="markdownIt-Anchor" href="#2在初始化位置0x7c00设置实地址断点"></a> 2.在初始化位置0x7c00设置实地址断点</h4>
-<p>在tools文件夹中的gdbinit文件中增加"b*0x7c00"语句，可以在实地址0x7c00位置设置一个断点。<br>
-<img src="https://i.loli.net/2021/04/12/tLjaWr6zifSFGms.jpg" alt="mmexport1618159486187"></p>
-<h4 id="3单步跟踪反汇编得到的代码与bootasms和bootblockasm进行比较"><a class="markdownIt-Anchor" href="#3单步跟踪反汇编得到的代码与bootasms和bootblockasm进行比较"></a> 3.单步跟踪反汇编得到的代码与bootasm.s和bootblock.asm进行比较</h4>
-<p>在位置0x7c00位置之后单步执行机器指令并且查看反汇编语句，和gedit打开的bootblock.asm文件进行对比。可以找到这个位置正好在bootblock.asm文件中。在位置0x7c00这里有着相同的语句。<br>
-<img src="https://i.loli.net/2021/04/12/jPdDXh3wg8rTqIy.jpg" alt="mmexport1618159487968"><br>
-注意在这里要在gdb中执行如下的指令</p>
-<pre class="highlight"><code class="">	define hook-stop
-	x/i $pc
-	end
+<p>   这代表着在启动之后会连接qemu和gdb。<br> （2）在make debug之后输入stepi，可以按照机器指令单步执行。<br> （3）一开始进入的是init.c程序。提示是init the console。<br><img src="https://i.loli.net/2021/04/12/BYtSXi2GRELoAWr.jpg" alt="mmexport1618159483754"><br> （4）再执行几次step执行源代码之后，就进入stdio.c文件。<br> （5）像这样反复执行step/next语句，就可以按照程序源代码一步一步执行了。</p>
+<h4 id="2-在初始化位置0x7c00设置实地址断点"><a href="#2-在初始化位置0x7c00设置实地址断点" class="headerlink" title="2.在初始化位置0x7c00设置实地址断点"></a>2.在初始化位置0x7c00设置实地址断点</h4><p> 在tools文件夹中的gdbinit文件中增加”b*0x7c00”语句，可以在实地址0x7c00位置设置一个断点。<br><img src="https://i.loli.net/2021/04/12/tLjaWr6zifSFGms.jpg" alt="mmexport1618159486187"></p>
+<h4 id="3-单步跟踪反汇编得到的代码与bootasm-s和bootblock-asm进行比较"><a href="#3-单步跟踪反汇编得到的代码与bootasm-s和bootblock-asm进行比较" class="headerlink" title="3.单步跟踪反汇编得到的代码与bootasm.s和bootblock.asm进行比较"></a>3.单步跟踪反汇编得到的代码与bootasm.s和bootblock.asm进行比较</h4><p> 在位置0x7c00位置之后单步执行机器指令并且查看反汇编语句，和gedit打开的bootblock.asm文件进行对比。可以找到这个位置正好在bootblock.asm文件中。在位置0x7c00这里有着相同的语句。<br><img src="https://i.loli.net/2021/04/12/jPdDXh3wg8rTqIy.jpg" alt="mmexport1618159487968"><br> 注意在这里要在gdb中执行如下的指令</p>
+<pre><code>    define hook-stop
+    x/i $pc
+    end
 </code></pre>
-<p>这样才可以进入反汇编的状态<br>
-同时我们查看bootasm.s文件之后，可以看到这样的代码</p>
-<pre class="highlight"><code class="">	\#Set up the stack pointer and call into C. The stack region is from 0--start(0x7c00)
-	movl $0x0, %ebp
-	movl $start, %esp
-	call bootmain
+<p> 这样才可以进入反汇编的状态<br> 同时我们查看bootasm.s文件之后，可以看到这样的代码</p>
+<pre><code>    \#Set up the stack pointer and call into C. The stack region is from 0--start(0x7c00)
+    movl $0x0, %ebp
+    movl $start, %esp
+    call bootmain
 </code></pre>
-<p>意味着从这里开始跳转到0x7c00.</p>
-<h4 id="4自己找一个bootloader或者内核中的代码位置设置断点并进行测试"><a class="markdownIt-Anchor" href="#4自己找一个bootloader或者内核中的代码位置设置断点并进行测试"></a> 4.自己找一个bootloader或者内核中的代码位置，设置断点并进行测试</h4>
-<p>像上个问题一样在gdbinit里面写入*b 0x7c1a，设置断点，然后类似的进行单步调试。</p>
-<h2 id="练习3"><a class="markdownIt-Anchor" href="#练习3"></a> 练习3</h2>
-<p>分析bootloader进入保护模式的过程。<br>
-BIOS将通过读取硬盘主引导扇区到内存，并转跳到对应内存中的位置执行bootloader。请分析bootloader是如何完成从实模式进入保护模式的。<br>
-提示：需要阅读小节“保护模式和分段机制”和lab1/boot/bootasm.S源码，了解如何从实模式切换到保护模式，需要了解：<br>
-1、为何开启A20<br>
-2、以及如何开启A20<br>
-3、 如何初始化GDT表<br>
-4、如何使能和进入保护模式</p>
-<h3 id="分析"><a class="markdownIt-Anchor" href="#分析"></a> 分析</h3>
-<h4 id="首先bootloader从实模式进入保护模式要经过一下几个步骤"><a class="markdownIt-Anchor" href="#首先bootloader从实模式进入保护模式要经过一下几个步骤"></a> 首先bootloader从实模式进入保护模式要经过一下几个步骤：</h4>
-<p>1、开启A20门<br>
-2、建立GDT表并对其进行初始化操作<br>
-3、设置cr0寄存器的值为1</p>
-<h4 id="当寄存器值切换后方可表示模式切换成功"><a class="markdownIt-Anchor" href="#当寄存器值切换后方可表示模式切换成功"></a> 当寄存器值切换后方可表示模式切换成功</h4>
-<h4 id="初始状态a20地址线被屏蔽所以一直保持为0我们要进一步访问内存需要a20地址线需要将其打开"><a class="markdownIt-Anchor" href="#初始状态a20地址线被屏蔽所以一直保持为0我们要进一步访问内存需要a20地址线需要将其打开"></a> 初始状态A20地址线被屏蔽所以一直保持为0，我们要进一步访问内存需要A20地址线，需要将其打开。</h4>
-<h3 id="一-开启a20"><a class="markdownIt-Anchor" href="#一-开启a20"></a> 一、开启A20</h3>
-<h4 id="打开a20-gate的具体步骤大致如下"><a class="markdownIt-Anchor" href="#打开a20-gate的具体步骤大致如下"></a> 打开A20 Gate的具体步骤大致如下：</h4>
-<p>1、等待8042 Input buffer为空<br>
-2、发送Write 8042 Output Port （P2） 命令到8042 Input buffer<br>
-3、等待8042 Input buffer为空<br>
-4、将8042 Output Port（P2） 对应字节的第2位置1，然后写入8042 Input buffer</p>
-<pre class="highlight"><code class="">    #  开启A20：通过将键盘控制器上的A20线置于高电位，全部32条地址线可用，
+<p> 意味着从这里开始跳转到0x7c00.</p>
+<h4 id="4-自己找一个bootloader或者内核中的代码位置，设置断点并进行测试"><a href="#4-自己找一个bootloader或者内核中的代码位置，设置断点并进行测试" class="headerlink" title="4.自己找一个bootloader或者内核中的代码位置，设置断点并进行测试"></a>4.自己找一个bootloader或者内核中的代码位置，设置断点并进行测试</h4><p> 像上个问题一样在gdbinit里面写入*b 0x7c1a，设置断点，然后类似的进行单步调试。</p>
+<h2 id="练习3"><a href="#练习3" class="headerlink" title="练习3"></a>练习3</h2><p>分析bootloader进入保护模式的过程。<br>BIOS将通过读取硬盘主引导扇区到内存，并转跳到对应内存中的位置执行bootloader。请分析bootloader是如何完成从实模式进入保护模式的。<br>提示：需要阅读小节“保护模式和分段机制”和lab1/boot/bootasm.S源码，了解如何从实模式切换到保护模式，需要了解：<br>1、为何开启A20<br>2、以及如何开启A20<br>3、 如何初始化GDT表<br>4、如何使能和进入保护模式</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><h4 id="首先bootloader从实模式进入保护模式要经过一下几个步骤："><a href="#首先bootloader从实模式进入保护模式要经过一下几个步骤：" class="headerlink" title="首先bootloader从实模式进入保护模式要经过一下几个步骤："></a>首先bootloader从实模式进入保护模式要经过一下几个步骤：</h4><p> 1、开启A20门<br> 2、建立GDT表并对其进行初始化操作<br> 3、设置cr0寄存器的值为1  </p>
+<h4 id="当寄存器值切换后方可表示模式切换成功"><a href="#当寄存器值切换后方可表示模式切换成功" class="headerlink" title="当寄存器值切换后方可表示模式切换成功"></a>当寄存器值切换后方可表示模式切换成功</h4><h4 id="初始状态A20地址线被屏蔽所以一直保持为0，我们要进一步访问内存需要A20地址线，需要将其打开。"><a href="#初始状态A20地址线被屏蔽所以一直保持为0，我们要进一步访问内存需要A20地址线，需要将其打开。" class="headerlink" title="初始状态A20地址线被屏蔽所以一直保持为0，我们要进一步访问内存需要A20地址线，需要将其打开。"></a>初始状态A20地址线被屏蔽所以一直保持为0，我们要进一步访问内存需要A20地址线，需要将其打开。</h4><h3 id="一、开启A20"><a href="#一、开启A20" class="headerlink" title="一、开启A20"></a>一、开启A20</h3><h4 id="打开A20-Gate的具体步骤大致如下："><a href="#打开A20-Gate的具体步骤大致如下：" class="headerlink" title="打开A20 Gate的具体步骤大致如下："></a>打开A20 Gate的具体步骤大致如下：</h4><p> 1、等待8042 Input buffer为空<br> 2、发送Write 8042 Output Port （P2） 命令到8042 Input buffer<br> 3、等待8042 Input buffer为空<br> 4、将8042 Output Port（P2） 对应字节的第2位置1，然后写入8042 Input buffer     </p>
+<pre><code>    #  开启A20：通过将键盘控制器上的A20线置于高电位，全部32条地址线可用，
     #  可以访问4G的内存空间。
 seta20.1:
     inb $0x64, %al                                  # Wait for not busy(8042 input buffer empty).
@@ -362,8 +319,7 @@ seta20.2:
     movb $0xdf, %al                                 # 0xdf -&gt; port 0x60
     outb %al, $0x60                                 # 0xdf = 11011111, means set P2's A20 bit(the 1 bit) to 1
 </code></pre>
-<h3 id="二-建立并初始化gdt寄存器置为1"><a class="markdownIt-Anchor" href="#二-建立并初始化gdt寄存器置为1"></a> 二、建立并初始化GDT,寄存器置为1</h3>
-<pre class="highlight"><code class=""># Switch from real to protected mode, using a bootstrap GDT
+<h3 id="二、建立并初始化GDT-寄存器置为1"><a href="#二、建立并初始化GDT-寄存器置为1" class="headerlink" title="二、建立并初始化GDT,寄存器置为1"></a>二、建立并初始化GDT,寄存器置为1</h3><pre><code># Switch from real to protected mode, using a bootstrap GDT
 # and segment translation that makes virtual addresses
 # identical to physical addresses, so that the
 # effective memory map does not change during the switch.
@@ -373,126 +329,117 @@ movl %cr0, %eax            #进入保护模式：通过将cr0寄存器PE位置1�
 orl $CR0_PE_ON, %eax
 movl %eax, %cr0
 </code></pre>
-<h4 id="完成以后步骤后bootloader已经从实模式进入到了保护模式"><a class="markdownIt-Anchor" href="#完成以后步骤后bootloader已经从实模式进入到了保护模式"></a> 完成以后步骤后bootloader已经从实模式进入到了保护模式</h4>
-<h2 id="练习4"><a class="markdownIt-Anchor" href="#练习4"></a> 练习4</h2>
-<pre class="highlight"><code class="">分析BootLoader加载ELF格式的OS的过程
+<h4 id="完成以后步骤后bootloader已经从实模式进入到了保护模式"><a href="#完成以后步骤后bootloader已经从实模式进入到了保护模式" class="headerlink" title="完成以后步骤后bootloader已经从实模式进入到了保护模式"></a>完成以后步骤后bootloader已经从实模式进入到了保护模式</h4><h2 id="练习4"><a href="#练习4" class="headerlink" title="练习4"></a>练习4</h2><pre><code>分析BootLoader加载ELF格式的OS的过程
 通过阅读bootmain.c,了解bootloader如何加载ELF文件。通过分析代码和通过qemu来运行调试
 </code></pre>
-<h3 id="分析-2"><a class="markdownIt-Anchor" href="#分析-2"></a> 分析</h3>
-<p>首先看bootmain函数</p>
-<pre class="highlight"><code class="C"><span class="hljs-type">void</span> <span class="hljs-title function_">bootmain</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>{
-   <span class="hljs-comment">//read the 1st page off disk</span>
-   readseg((<span class="hljs-type">uintptr_t</span>)ELFHDR,SECTSIZE*<span class="hljs-number">8</span>,<span class="hljs-number">0</span>);
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>首先看bootmain函数</p>
+<pre><code class="C">void bootmain(void){
+   //read the 1st page off disk
+   readseg((uintptr_t)ELFHDR,SECTSIZE*8,0);
 
-   <span class="hljs-comment">//is this a valid ELF?</span>
-   <span class="hljs-keyword">if</span> (ELFHDR-&gt;e_magic !=ELF_MAGIC){
-           <span class="hljs-keyword">goto</span> bad;
+   //is this a valid ELF?
+   if (ELFHDR-&gt;e_magic !=ELF_MAGIC){
+           goto bad;
    }
 
-   <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">proghdr</span> *<span class="hljs-title">ph</span>,*<span class="hljs-title">eph</span>;</span>
+   struct proghdr *ph,*eph;
 
-   <span class="hljs-comment">// load each program segment(ignores ph flags)</span>
-   ph = (<span class="hljs-keyword">struct</span> proghdr *)((<span class="hljs-type">uintptr_t</span>)ELFHDR+ELFHDR-&gt;e_phoff);
+   // load each program segment(ignores ph flags)
+   ph = (struct proghdr *)((uintptr_t)ELFHDR+ELFHDR-&gt;e_phoff);
    eph = ph + ELFHDR-&gt;e_phnum;
-   <span class="hljs-keyword">for</span>(;ph&lt;eph;ph++){
-           readseg(ph-&gt;p_va &amp; <span class="hljs-number">0xFFFFFF</span>, ph-&gt;p_memsz, ph-&gt;p_offset);
+   for(;ph&lt;eph;ph++){
+           readseg(ph-&gt;p_va &amp; 0xFFFFFF, ph-&gt;p_memsz, ph-&gt;p_offset);
    }
 
-   <span class="hljs-comment">// call the entry point from the ELF header</span>
-   <span class="hljs-comment">// note:does not return</span>
-   ((<span class="hljs-type">void</span>(*)(<span class="hljs-type">void</span>))(ELFHDR-&gt;e_entry &amp; <span class="hljs-number">0xFFFFFF</span>))();
+   // call the entry point from the ELF header
+   // note:does not return
+   ((void(*)(void))(ELFHDR-&gt;e_entry &amp; 0xFFFFFF))();
 bad:
-   outw(<span class="hljs-number">0x8A00</span>,<span class="hljs-number">0x8A00</span>);
-   outw(<span class="hljs-number">0x8A00</span>,<span class="hljs-number">0x8E00</span>);
+   outw(0x8A00,0x8A00);
+   outw(0x8A00,0x8E00);
 
-   <span class="hljs-comment">/* do nothing */</span>
-   <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>);
+   /* do nothing */
+   while(1);
 }
 </code></pre>
 <p>先是读磁盘，转入readseg函数</p>
-<pre class="highlight"><code class="C"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">readseg</span><span class="hljs-params">(<span class="hljs-type">uintptr_t</span> va,<span class="hljs-type">uint32_t</span> count,<span class="hljs-type">uint32_t</span> offset)</span>{
-      <span class="hljs-type">uintptr_t</span> end_va = va + count;
+<pre><code class="C">static void readseg(uintptr_t va,uint32_t count,uint32_t offset){
+      uintptr_t end_va = va + count;
 
-      <span class="hljs-comment">//round down to sector boundary</span>
+      //round down to sector boundary
       va -= offset % SECTSIZE ;
 
-      <span class="hljs-comment">//translate from bytes to sectors; kernel starts at sector 1</span>
-      <span class="hljs-type">uint32_t</span> secno = (offset / SECTSIZE) + <span class="hljs-number">1</span>;
+      //translate from bytes to sectors; kernel starts at sector 1
+      uint32_t secno = (offset / SECTSIZE) + 1;
 
-      <span class="hljs-comment">//If this is too slow , we could read lots of sectors at  a time.</span>
-      <span class="hljs-comment">//We'd write more to memory than asked,but it doesn't matter --</span>
-      <span class="hljs-comment">//We load in increasing order.</span>
-      <span class="hljs-keyword">for</span>(; va &lt; end_va; va += SECTSIZE, secno ++){
-            readsect((<span class="hljs-type">void</span>*)va,secno);
+      //If this is too slow , we could read lots of sectors at  a time.
+      //We'd write more to memory than asked,but it doesn't matter --
+      //We load in increasing order.
+      for(; va &lt; end_va; va += SECTSIZE, secno ++){
+            readsect((void*)va,secno);
       }
 }
 </code></pre>
 <p>从readseg函数发现又调用了readsect函数</p>
-<pre class="highlight"><code class="C"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">readsect</span><span class="hljs-params">(<span class="hljs-type">void</span> *dst,<span class="hljs-type">unit32_t</span> secno)</span>{
-      <span class="hljs-comment">//wait for disk to be ready</span>
+<pre><code class="C">static void readsect(void *dst,unit32_t secno){
+      //wait for disk to be ready
       waitdisk();
 
-      outb(<span class="hljs-number">0x1F2</span>, <span class="hljs-number">1</span>);<span class="hljs-comment">//要读写的扇区数，需要表明要读写几个扇区</span>
-      outb(<span class="hljs-number">0x1F3</span>, secno &amp; <span class="hljs-number">0xFF</span>);<span class="hljs-comment">//LBA参数的0~7位</span>
-      outb(<span class="hljs-number">0x1F4</span>, (secno &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>);<span class="hljs-comment">//LBA参数的8~15位</span>
-      outb(<span class="hljs-number">0x1F5</span>, (secno &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>);<span class="hljs-comment">//LBA参数的16~23位</span>
-      outb(<span class="hljs-number">0x1F6</span>, ((secno &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xF</span>) | <span class="hljs-number">0xE0</span>);<span class="hljs-comment">//第0~3位：LBA参数的24-27位 第4位：为0主盘；为1从盘</span>
-      outb(<span class="hljs-number">0x1F7</span>,<span class="hljs-number">0x20</span>);<span class="hljs-comment">//状态和命令寄存器。操作时先给命令，再读取，如果不是忙状态就从0x1f0端口 读数据</span>
+      outb(0x1F2, 1);//要读写的扇区数，需要表明要读写几个扇区
+      outb(0x1F3, secno &amp; 0xFF);//LBA参数的0~7位
+      outb(0x1F4, (secno &gt;&gt; 8) &amp; 0xFF);//LBA参数的8~15位
+      outb(0x1F5, (secno &gt;&gt; 16) &amp; 0xFF);//LBA参数的16~23位
+      outb(0x1F6, ((secno &gt;&gt; 24) &amp; 0xF) | 0xE0);//第0~3位：LBA参数的24-27位 第4位：为0主盘；为1从盘
+      outb(0x1F7,0x20);//状态和命令寄存器。操作时先给命令，再读取，如果不是忙状态就从0x1f0端口 读数据
 
-       <span class="hljs-comment">//wait for disk to be ready</span>
+       //wait for disk to be ready
       waitdisk();
 
-      <span class="hljs-comment">//read a sector</span>
-      insl(<span class="hljs-number">0x1F0</span>,dst,SECTSIZE/<span class="hljs-number">4</span>);<span class="hljs-comment">//读取扇区</span>
+      //read a sector
+      insl(0x1F0,dst,SECTSIZE/4);//读取扇区
 </code></pre>
-<h4 id="读一个扇区的流程大致如下"><a class="markdownIt-Anchor" href="#读一个扇区的流程大致如下"></a> 读一个扇区的流程大致如下：</h4>
-<ol>
-<li>等待磁盘准备好</li>
-<li>发出读取扇区的命令</li>
-<li>等待磁盘准备好</li>
+<h4 id="读一个扇区的流程大致如下："><a href="#读一个扇区的流程大致如下：" class="headerlink" title="读一个扇区的流程大致如下："></a>读一个扇区的流程大致如下：</h4><ol>
+<li>等待磁盘准备好 </li>
+<li>发出读取扇区的命令 </li>
+<li>等待磁盘准备好 </li>
 <li>把磁盘扇区数据读到指定内存</li>
 </ol>
 <p>其中的outb是一个机器指令，是在x86.h中的</p>
-<pre class="highlight"><code class="C"><span class="hljs-type">static</span> <span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title function_">outb</span><span class="hljs-params">(<span class="hljs-type">uint16_t</span> port, <span class="hljs-type">unit8_t</span> data)</span>{
-      <span class="hljs-keyword">asm</span> <span class="hljs-title function_">volatile</span><span class="hljs-params">(<span class="hljs-string">"outb %0, %1"</span> :: <span class="hljs-string">"a"</span>(data), <span class="hljs-string">"d"</span>(port))</span>;
+<pre><code class="C">static inline void outb(uint16_t port, unit8_t data){
+      asm volatile("outb %0, %1" :: "a"(data), "d"(port));
 }
 </code></pre>
 <p>用内联汇编实现，用了I0空间寻址方式，能将外部的数据读到内存中来，这也是x86里面的寻址方式</p>
 <p>可以发现首先是等磁盘准备好，然后是写入地址和读取磁盘的命令，最后是按照地址读取磁盘扇区（可参考代码中的中文注释）</p>
 <p>再接着看main函数，用了一个if语句判断是否为ELF文件，具体判断方式为将ELF header中的一个e_magic和一个特定值进行比较，若不是则转入bad,是则继续执行</p>
-<pre class="highlight"><code class="C"> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">proghdr</span> *<span class="hljs-title">ph</span>,*<span class="hljs-title">eph</span>;</span>
+<pre><code class="C"> struct proghdr *ph,*eph;
 
-   <span class="hljs-comment">// load each program segment(ignores ph flags)</span>
-   ph = (<span class="hljs-keyword">struct</span> proghdr *)((<span class="hljs-type">uintptr_t</span>)ELFHDR+ELFHDR-&gt;e_phoff);<span class="hljs-comment">//将ELF文件的头部文表取出存到ph</span>
+   // load each program segment(ignores ph flags)
+   ph = (struct proghdr *)((uintptr_t)ELFHDR+ELFHDR-&gt;e_phoff);//将ELF文件的头部文表取出存到ph
    eph = ph + ELFHDR-&gt;e_phnum;
-   <span class="hljs-keyword">for</span>(;ph&lt;eph;ph++){ #加载ELF文件到内存
-           readseg(ph-&gt;p_va &amp; <span class="hljs-number">0xFFFFFF</span>, ph-&gt;p_memsz, ph-&gt;p_offset);
+   for(;ph&lt;eph;ph++){ #加载ELF文件到内存
+           readseg(ph-&gt;p_va &amp; 0xFFFFFF, ph-&gt;p_memsz, ph-&gt;p_offset);
    }
 
-   <span class="hljs-comment">// call the entry point from the ELF header</span>
-   <span class="hljs-comment">// note:does not return</span>
-   ((<span class="hljs-type">void</span>(*)(<span class="hljs-type">void</span>))(ELFHDR-&gt;e_entry &amp; <span class="hljs-number">0xFFFFFF</span>))();<span class="hljs-comment">//ELF文件加载完毕后，将控制权交给ucore去执行</span>
+   // call the entry point from the ELF header
+   // note:does not return
+   ((void(*)(void))(ELFHDR-&gt;e_entry &amp; 0xFFFFFF))();//ELF文件加载完毕后，将控制权交给ucore去执行
 </code></pre>
-<h4 id="由此完成elf文件的加载"><a class="markdownIt-Anchor" href="#由此完成elf文件的加载"></a> 由此完成ELF文件的加载</h4>
-<h2 id="练习5"><a class="markdownIt-Anchor" href="#练习5"></a> 练习5</h2>
-<pre class="highlight"><code class="">完成kdebug.c中函数print_stackframe的实现，可以通过函数&gt;print_stackframe来跟踪函数调用堆栈中记录的返回地址。
+<h4 id="由此完成ELF文件的加载"><a href="#由此完成ELF文件的加载" class="headerlink" title="由此完成ELF文件的加载"></a>由此完成ELF文件的加载</h4><h2 id="练习5"><a href="#练习5" class="headerlink" title="练习5"></a>练习5</h2><pre><code>完成kdebug.c中函数print_stackframe的实现，可以通过函数&gt;print_stackframe来跟踪函数调用堆栈中记录的返回地址。
 </code></pre>
-<h3 id="1-函数堆栈的原理"><a class="markdownIt-Anchor" href="#1-函数堆栈的原理"></a> 1、函数堆栈的原理</h3>
-<p>理解函数堆栈最重要的两点是：栈的结构，以及EBP寄存器的作用。</p>
-<p>一个函数调用动作可分解为零到多个 PUSH指令（用于参数入栈）和一个 CALL 指令。CALL 指令内部其实还暗含了一个将返回地址压栈的动作，这是由硬件完成的。几乎所有本地编译器都会在每个函数体之前插入类似如下的汇编指令：</p>
-<pre class="highlight"><code class="php">pushl %ebp
+<h3 id="1、函数堆栈的原理"><a href="#1、函数堆栈的原理" class="headerlink" title="1、函数堆栈的原理"></a>1、函数堆栈的原理</h3><p> 理解函数堆栈最重要的两点是：栈的结构，以及EBP寄存器的作用。</p>
+<p> 一个函数调用动作可分解为零到多个 PUSH指令（用于参数入栈）和一个 CALL 指令。CALL 指令内部其实还暗含了一个将返回地址压栈的动作，这是由硬件完成的。几乎所有本地编译器都会在每个函数体之前插入类似如下的汇编指令：</p>
+<pre><code class="php">pushl %ebp
 movl %esp,%ebp
 </code></pre>
-<p>这两条汇编指令的含义是：首先将ebp 寄存器入栈，然后将栈顶指针 esp 赋值给 ebp。</p>
-<p>movl %esp %ebp这条指令表面上看是用esp覆盖 ebp原来的值，其实不然。因为给 ebp赋值之前，原ebp 值已经被压栈（位于栈顶），而新的ebp又恰恰指向栈顶。此时ebp寄存器就已经处于一个非常重要的地位，该寄存器中存储着栈中的一个地址（原 ebp入栈后的栈顶），从该地址为基准，向上（栈底方向）能获取返回地址、参数值，向下（栈顶方向）能获取函数局部变量值，而该地址处又存储着上一层函数调用时的ebp值。</p>
-<p>我们可以直接根据ebp就能读取到各个栈帧的地址和值，一般而言，ss:[ebp+4]处为返回地址，ss:[ebp+8]处为第一个参数值（最后一个入栈的参数值，此处假设其占用 4 字节内存，对应32位系统），ss:[ebp-4]处为第一个局部变量，ss:[ebp]处为上一层 ebp 值。</p>
-<p>如图<br>
-<img src="https://www.hualigs.cn/image/60718747980ba.jpg" alt=""></p>
-<h3 id="2-print_stackframe函数的实现"><a class="markdownIt-Anchor" href="#2-print_stackframe函数的实现"></a> 2、print_stackframe函数的实现</h3>
-<p>首先我们直接看到print_stackframe函数的注释：</p>
-<pre class="highlight"><code class="php"><span class="hljs-keyword">void</span> <span class="hljs-title function_ invoke__">print_stackframe</span>(<span class="hljs-keyword">void</span>) {
-     <span class="hljs-comment">/* LAB1 YOUR CODE : STEP 1 */</span>
-     <span class="hljs-comment">/* (1) call read_ebp() to get the value of ebp. the type is (uint32_t);
+<p> 这两条汇编指令的含义是：首先将ebp 寄存器入栈，然后将栈顶指针 esp 赋值给 ebp。</p>
+<p> movl %esp %ebp这条指令表面上看是用esp覆盖 ebp原来的值，其实不然。因为给 ebp赋值之前，原ebp 值已经被压栈（位于栈顶），而新的ebp又恰恰指向栈顶。此时ebp寄存器就已经处于一个非常重要的地位，该寄存器中存储着栈中的一个地址（原 ebp入栈后的栈顶），从该地址为基准，向上（栈底方向）能获取返回地址、参数值，向下（栈顶方向）能获取函数局部变量值，而该地址处又存储着上一层函数调用时的ebp值。</p>
+<p> 我们可以直接根据ebp就能读取到各个栈帧的地址和值，一般而言，ss:[ebp+4]处为返回地址，ss:[ebp+8]处为第一个参数值（最后一个入栈的参数值，此处假设其占用 4 字节内存，对应32位系统），ss:[ebp-4]处为第一个局部变量，ss:[ebp]处为上一层 ebp 值。</p>
+<p> 如图<br><img src="https://www.hualigs.cn/image/60718747980ba.jpg"></p>
+<h3 id="2、print-stackframe函数的实现"><a href="#2、print-stackframe函数的实现" class="headerlink" title="2、print_stackframe函数的实现"></a>2、print_stackframe函数的实现</h3><p> 首先我们直接看到print_stackframe函数的注释：</p>
+<pre><code class="php">void print_stackframe(void) {
+     /* LAB1 YOUR CODE : STEP 1 */
+     /* (1) call read_ebp() to get the value of ebp. the type is (uint32_t);
       * (2) call read_eip() to get the value of eip. the type is (uint32_t);
       * (3) from 0 .. STACKFRAME_DEPTH
       *    (3.1) printf value of ebp, eip
@@ -502,93 +449,75 @@ movl %esp,%ebp
       *    (3.5) popup a calling stackframe
       *           NOTICE: the calling funciton's return addr eip  = ss:[ebp+4]
       *                   the calling funciton's ebp = ss:[ebp]
-      */</span>
+      */
 }
-
 </code></pre>
-<p>这样我们直接根据注释以及之前的相关知识就能比较简单的编写成程序，如下所示：</p>
-<pre class="highlight"><code class="c"><span class="hljs-type">void</span> <span class="hljs-title function_">print_stackframe</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span> {      
-    <span class="hljs-type">uint32_t</span> ebp=read_ebp();<span class="hljs-comment">//(1) call read_ebp() to get the value of ebp. the type is (uint32_t)</span>
-    <span class="hljs-type">uint32_t</span> eip=read_eip();<span class="hljs-comment">//(2) call read_eip() to get the value of eip. the type is (uint32_t)</span>
-    <span class="hljs-type">int</span> i;
-    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;STACKFRAME_DEPTH&amp;&amp;ebp!=<span class="hljs-number">0</span>;i++){<span class="hljs-comment">//(3) from 0 .. STACKFRAME_DEPTH</span>
-          cprintf(<span class="hljs-string">"ebp:0x%08x   eip:0x%08x "</span>,ebp,eip);<span class="hljs-comment">//(3.1)printf value of ebp, eip</span>
-          <span class="hljs-type">uint32_t</span> *tmp=(<span class="hljs-type">uint32_t</span> *)ebp+<span class="hljs-number">2</span>;
-          cprintf(<span class="hljs-string">"arg :0x%08x 0x%08x 0x%08x 0x%08x"</span>,*(tmp+<span class="hljs-number">0</span>),*(tmp+<span class="hljs-number">1</span>),*(tmp+<span class="hljs-number">2</span>),*(tmp+<span class="hljs-number">3</span>));<span class="hljs-comment">//(3.2)(uint32_t)calling arguments [0..4] = the contents in address (unit32_t)ebp +2 [0..4]</span>
-          cprintf(<span class="hljs-string">"\n"</span>);<span class="hljs-comment">//(3.3) cprintf("\n");</span>
-          print_debuginfo(eip<span class="hljs-number">-1</span>);<span class="hljs-comment">//(3.4) call print_debuginfo(eip-1) to print the C calling function name and line number, etc.</span>
-          eip=((<span class="hljs-type">uint32_t</span> *)ebp)[<span class="hljs-number">1</span>];
-          ebp=((<span class="hljs-type">uint32_t</span> *)ebp)[<span class="hljs-number">0</span>];<span class="hljs-comment">//(3.5) popup a calling stackframe</span>
+<p> 这样我们直接根据注释以及之前的相关知识就能比较简单的编写成程序，如下所示：</p>
+<pre><code class="c">void print_stackframe(void) {      
+    uint32_t ebp=read_ebp();//(1) call read_ebp() to get the value of ebp. the type is (uint32_t)
+    uint32_t eip=read_eip();//(2) call read_eip() to get the value of eip. the type is (uint32_t)
+    int i;
+    for(i=0;i&lt;STACKFRAME_DEPTH&amp;&amp;ebp!=0;i++){//(3) from 0 .. STACKFRAME_DEPTH
+          cprintf("ebp:0x%08x   eip:0x%08x ",ebp,eip);//(3.1)printf value of ebp, eip
+          uint32_t *tmp=(uint32_t *)ebp+2;
+          cprintf("arg :0x%08x 0x%08x 0x%08x 0x%08x",*(tmp+0),*(tmp+1),*(tmp+2),*(tmp+3));//(3.2)(uint32_t)calling arguments [0..4] = the contents in address (unit32_t)ebp +2 [0..4]
+          cprintf("\n");//(3.3) cprintf("\n");
+          print_debuginfo(eip-1);//(3.4) call print_debuginfo(eip-1) to print the C calling function name and line number, etc.
+          eip=((uint32_t *)ebp)[1];
+          ebp=((uint32_t *)ebp)[0];//(3.5) popup a calling stackframe
       }
 }
 </code></pre>
-<p>实验结果截图如下：</p>
-<p><img src="https://www.hualigs.cn/image/607182a0e97c8.jpg" alt=""></p>
-<h2 id="练习6完善中断初始化和处理"><a class="markdownIt-Anchor" href="#练习6完善中断初始化和处理"></a> 练习6：完善中断初始化和处理</h2>
-<p>1、中断描述符表（也可简称为保护模式下的中断向量表）中一个表项占多少字节？其中哪几位代表中断处理代码的入口？<br>
-2、请编程完善kern/trap/trap.c中对中断向量表进行初始化的函数idt_init。在idt_init函数中，依次对所有中断入口进行初始化。使用mmu.h中的SETGATE宏，填充idt数组内容。每个中断的入口由tools/vectors.c生成，使用trap.c中声明的vectors数组即可。<br>
-3、请编程完善trap.c中的中断处理函数trap,在对时钟中断进行处理的部分填写trap函数中处理时钟中断的部分，使操作系统毎遇到100次时钟中断后，调用print_tricks子程序，在屏幕上打印一行文字“100 ticks”。</p>
-<h3 id="1-中断描述符表中一个表项占8字节"><a class="markdownIt-Anchor" href="#1-中断描述符表中一个表项占8字节"></a> 1、中断描述符表中一个表项占8字节</h3>
-<p><img src="https://i.loli.net/2021/04/12/AgIlN5Sc1YDE9oP.png" alt="mmexport1618159489650"></p>
+<p> 实验结果截图如下：</p>
+<p><img src="https://www.hualigs.cn/image/607182a0e97c8.jpg"></p>
+<h2 id="练习6：完善中断初始化和处理"><a href="#练习6：完善中断初始化和处理" class="headerlink" title="练习6：完善中断初始化和处理"></a>练习6：完善中断初始化和处理</h2><p>1、中断描述符表（也可简称为保护模式下的中断向量表）中一个表项占多少字节？其中哪几位代表中断处理代码的入口？<br>2、请编程完善kern/trap/trap.c中对中断向量表进行初始化的函数idt_init。在idt_init函数中，依次对所有中断入口进行初始化。使用mmu.h中的SETGATE宏，填充idt数组内容。每个中断的入口由tools/vectors.c生成，使用trap.c中声明的vectors数组即可。<br>3、请编程完善trap.c中的中断处理函数trap,在对时钟中断进行处理的部分填写trap函数中处理时钟中断的部分，使操作系统毎遇到100次时钟中断后，调用print_tricks子程序，在屏幕上打印一行文字“100 ticks”。</p>
+<h3 id="1、中断描述符表中一个表项占8字节"><a href="#1、中断描述符表中一个表项占8字节" class="headerlink" title="1、中断描述符表中一个表项占8字节"></a>1、中断描述符表中一个表项占8字节</h3><p><img src="https://i.loli.net/2021/04/12/AgIlN5Sc1YDE9oP.png" alt="mmexport1618159489650"></p>
 <p>如上图所示，其中的0-15位是offset的低16位，48-63位是offset的高16位，16-31位是段选择子，用于索引全局描述符表GDT来获取中断处理代码对应的段地址，再加上段内偏移量即可得到中断处理代码的入口。</p>
-<h3 id="2-完善初始化函数"><a class="markdownIt-Anchor" href="#2-完善初始化函数"></a> 2、完善初始化函数</h3>
-<pre><code>  （1）根据函数中的注释提示，第一步是声明__vertors[];
+<h3 id="2、完善初始化函数"><a href="#2、完善初始化函数" class="headerlink" title="2、完善初始化函数"></a>2、完善初始化函数</h3><pre><code>  （1）根据函数中的注释提示，第一步是声明__vertors[];
     (2) 第二步是使用SETGATE填充中段描述符表IDT
     (3) 第三步是使用lidt指令让CPU加载中断描述符表IDT
 </code></pre>
-<p>具体的代码如下：</p>
-<pre class="highlight"><code class="C"><span class="hljs-type">void</span> <span class="hljs-title function_">idt_init</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>{
-      <span class="hljs-keyword">extern</span> <span class="hljs-type">uintptr_t</span> __vecors[];
-      <span class="hljs-type">int</span> i;
-      <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++){
-          SETGATE(idt[i],<span class="hljs-number">0</span>,GD_KTEXT,__vectors[i],DPL_KERNEL);
+<p> 具体的代码如下：</p>
+<pre><code class="C">void idt_init(void){
+      extern uintptr_t __vecors[];
+      int i;
+      for(i=0; i &lt; 256; i++){
+          SETGATE(idt[i],0,GD_KTEXT,__vectors[i],DPL_KERNEL);
       }
-      SETGATE(idt[T_SWITCH_TOK],<span class="hljs-number">0</span>,GD_KTEXT,__vectors[T_SWITCH_TOK],DPL_USER);
+      SETGATE(idt[T_SWITCH_TOK],0,GD_KTEXT,__vectors[T_SWITCH_TOK],DPL_USER);
       lidt(&amp;idit_pd);
 }
 </code></pre>
-<p>其中宏SETGATE的定义为</p>
-<pre class="highlight"><code class="">#define SETGATE(gate, istrap, sel, off, dpl)
+<p> 其中宏SETGATE的定义为</p>
+<pre><code>#define SETGATE(gate, istrap, sel, off, dpl)
 </code></pre>
-<p>GD_KTEXT和DPL_KERNEL的定义在memlayout.h中<br>
-<img src="https://i.loli.net/2021/04/12/FitCeqP7261J3jn.png" alt="mmexport1618159491208"><br>
-gate表示处理函数的入口地址，此处即idt[]数组中的内容<br>
-istrap表示1为异常门，0为中断门<br>
-sel表示段选择子<br>
-off表示偏移量，此处即__vectors[]数组中的内容<br>
-dpl表示设置等级，此处设置为DPL_KERNEL，恒为0</p>
-<h3 id="3-编写函数"><a class="markdownIt-Anchor" href="#3-编写函数"></a> 3、编写函数</h3>
-<p>根据提示，需要用一个全局变量记录每次时钟中断，然后用print_ticks()打印“100 ticks”后重新从0开始计数，参照clock.c,写出如下函数：</p>
-<pre class="highlight"><code class="C"><span class="hljs-keyword">case</span> IRQ_OFFSET+IRQ_TIMER:
-ticks=ticks+<span class="hljs-number">1</span>;
-<span class="hljs-keyword">if</span>(ticks==TICK_NUM){
+<p> GD_KTEXT和DPL_KERNEL的定义在memlayout.h中<br><img src="https://i.loli.net/2021/04/12/FitCeqP7261J3jn.png" alt="mmexport1618159491208"><br> gate表示处理函数的入口地址，此处即idt[]数组中的内容<br>istrap表示1为异常门，0为中断门<br>sel表示段选择子<br>off表示偏移量，此处即__vectors[]数组中的内容<br>dpl表示设置等级，此处设置为DPL_KERNEL，恒为0</p>
+<h3 id="3、编写函数"><a href="#3、编写函数" class="headerlink" title="3、编写函数"></a>3、编写函数</h3><p>根据提示，需要用一个全局变量记录每次时钟中断，然后用print_ticks()打印“100 ticks”后重新从0开始计数，参照clock.c,写出如下函数：</p>
+<pre><code class="C">case IRQ_OFFSET+IRQ_TIMER:
+ticks=ticks+1;
+if(ticks==TICK_NUM){
       print_ticks();
-      ticks=<span class="hljs-number">0</span>;
+      ticks=0;
 }
-<span class="hljs-keyword">break</span>;
+break;
 </code></pre>
-<p>其中TICK_NUM已被定义为100<br>
-最后的运行结果为下图：<br>
-<img src="https://i.loli.net/2021/04/12/5UolSrpgHAkIKDv.png" alt="mmexport1618159492686"><br>
-<img src="https://i.loli.net/2021/04/12/LeNXnSIkDY26UGE.png" alt="mmexport1618159481302"></p>
-<h2 id="challenge-12-新建用户态并进行内核态互换"><a class="markdownIt-Anchor" href="#challenge-12-新建用户态并进行内核态互换"></a> Challenge 1&amp;2 新建用户态并进行内核态互换</h2>
-<p>通过编写c++内联汇编函数，来实现用户态和内核态的切换。</p>
+<p> 其中TICK_NUM已被定义为100<br> 最后的运行结果为下图：<br><img src="https://i.loli.net/2021/04/12/5UolSrpgHAkIKDv.png" alt="mmexport1618159492686"><br><img src="https://i.loli.net/2021/04/12/LeNXnSIkDY26UGE.png" alt="mmexport1618159481302"></p>
+<h2 id="Challenge-1-2-新建用户态并进行内核态互换"><a href="#Challenge-1-2-新建用户态并进行内核态互换" class="headerlink" title="Challenge 1&amp;2 新建用户态并进行内核态互换"></a>Challenge 1&amp;2 新建用户态并进行内核态互换</h2><p>通过编写c++内联汇编函数，来实现用户态和内核态的切换。</p>
 <p>已知初始化内核的函数如下：</p>
-<pre class="highlight"><code class="">static void
+<pre><code>static void
 switch_test(void) {
-	print_cur_status(); // print 当前 cs/ss/ds 等寄存器状态
-	cprintf("+++ switch to user mode +++\n");
-	switch_to_user(); // switch to user mode
-	print_cur_status();
-	cprintf("+++ switch to kernel mode +++\n");
-	switch_to_kernel(); // switch to kernel mode
-	print_cur_status();
+    print_cur_status(); // print 当前 cs/ss/ds 等寄存器状态
+    cprintf("+++ switch to user mode +++\n");
+    switch_to_user(); // switch to user mode
+    print_cur_status();
+    cprintf("+++ switch to kernel mode +++\n");
+    switch_to_kernel(); // switch to kernel mode
+    print_cur_status();
 }
 </code></pre>
 <p>而在init.c里面没有switch_to_user函数的内容以及switch_to_kernel函数的内容，因此这些部分需要编程。</p>
-<h3 id="1调到用户态"><a class="markdownIt-Anchor" href="#1调到用户态"></a> 1.调到用户态</h3>
-<p>通过编写switch_to_user的内容来使在内核初始化的时候可以切换到用户态。</p>
-<pre class="highlight"><code class="">asm volatile (
+<h3 id="1-调到用户态"><a href="#1-调到用户态" class="headerlink" title="1.调到用户态"></a>1.调到用户态</h3><p> 通过编写switch_to_user的内容来使在内核初始化的时候可以切换到用户态。</p>
+<pre><code>asm volatile (
     "sub $0x8, %%esp \n"
     "int %0 \n"
     "movl %%ebp, %%esp"
@@ -596,9 +525,8 @@ switch_test(void) {
     : "i"(T_SWITCH_TOU)
 );
 </code></pre>
-<p>通过编写内联汇编语句来实现切换，用中断处理int 0来实现，需要输入的“i”也就是T_SWITCH_TOU。调整栈顶指针和栈底指针开辟程序空间之后，进行中断来实现切换。<br>
-在trap.c中要修改t_switch_tou的内容</p>
-<pre class="highlight"><code class="">case T_SWITCH_TOU:
+<p> 通过编写内联汇编语句来实现切换，用中断处理int 0来实现，需要输入的“i”也就是T_SWITCH_TOU。调整栈顶指针和栈底指针开辟程序空间之后，进行中断来实现切换。<br> 在trap.c中要修改t_switch_tou的内容</p>
+<pre><code>case T_SWITCH_TOU:
     if (tf-&gt;tf_cs != USER_CS) {
         switchk2u = *tf;
         switchk2u.tf_cs = USER_CS;
@@ -609,23 +537,22 @@ switch_test(void) {
       }
       break;
 </code></pre>
-<p>这段代码可以使原来的状态不是用户态时候，将原来的状态修改成用户态。</p>
-<pre class="highlight"><code class="">switchk2u.tf_eflags |= FL_IOPL_MASK;
+<p> 这段代码可以使原来的状态不是用户态时候，将原来的状态修改成用户态。</p>
+<pre><code>switchk2u.tf_eflags |= FL_IOPL_MASK;
 *((uint32_t*)tf - 1) = (uint32_t)&amp;switchk2u;
 </code></pre>
-<p>将这里的标记确认成为用户态，并且中断返回到正确的栈。</p>
-<h3 id="2用户态到内核态"><a class="markdownIt-Anchor" href="#2用户态到内核态"></a> 2.用户态到内核态</h3>
-<p>用类似的内联汇编处理。</p>
-<pre class="highlight"><code class="">asm volatile (
+<p> 将这里的标记确认成为用户态，并且中断返回到正确的栈。</p>
+<h3 id="2-用户态到内核态"><a href="#2-用户态到内核态" class="headerlink" title="2.用户态到内核态"></a>2.用户态到内核态</h3><p> 用类似的内联汇编处理。</p>
+<pre><code>asm volatile (
     "int %0 \n"
     "movl %%ebp, %%esp \n"
     : 
     : "i"(T_SWITCH_TOK)
 );
 </code></pre>
-<p>因为切换到的是内核态，不需要更多空间，所以相比内核到用户的内联汇编不再需要在栈指针减去一个值来开辟空间。</p>
-<p>然后我们同样需要在trap.c中修改T_SWITCH_TOK的内容</p>
-<pre class="highlight"><code class="">case T_SWITCH_TOK:
+<p> 因为切换到的是内核态，不需要更多空间，所以相比内核到用户的内联汇编不再需要在栈指针减去一个值来开辟空间。</p>
+<p> 然后我们同样需要在trap.c中修改T_SWITCH_TOK的内容</p>
+<pre><code>case T_SWITCH_TOK:
     if (tf-&gt;tf_cs != KERNEL_CS) {
         tf-&gt;tf_cs = KERNEL_CS;
         tf-&gt;tf_ds = tf-&gt;tf_es = KERNEL_DS;
@@ -635,9 +562,8 @@ switch_test(void) {
         *((uint32_t *)tf - 1) = (uint32_t)switchu2k;
       }
 </code></pre>
-<p>跟之前切换的修改类似</p>
-<h3 id="3实现切换"><a class="markdownIt-Anchor" href="#3实现切换"></a> 3.实现切换</h3>
-<pre class="highlight"><code class="">case IRQ_OFFSET + IRQ_KBD:
+<p> 跟之前切换的修改类似</p>
+<h3 id="3-实现切换"><a href="#3-实现切换" class="headerlink" title="3.实现切换"></a>3.实现切换</h3><pre><code>case IRQ_OFFSET + IRQ_KBD:
         c = cons_getc();
         cprintf("kbd [%03d] %c\n", c, c);
         if(c == '0' &amp;&amp; (tf-&gt;tf_cs &amp; 3) != 0)
@@ -657,12 +583,10 @@ switch_test(void) {
         break;
 </code></pre>
 <p>修改完代码之后执行</p>
-<pre class="highlight"><code class="">make qemu
+<pre><code>make qemu
 </code></pre>
-<p>键盘输入0或3即可实现切换<br>
-<img src="https://i.loli.net/2021/04/12/BlXaezgdp5FUqCi.png" alt="image-20210412215946076"></p>
-<h4 id="最终评分"><a class="markdownIt-Anchor" href="#最终评分"></a> 最终评分</h4>
-<p><img src="https://i.loli.net/2021/04/12/lsaMBPhk21v57wG.png" alt="image-20210412042453346"></p>
+<p>键盘输入0或3即可实现切换<br><img src="https://i.loli.net/2021/04/12/BlXaezgdp5FUqCi.png" alt="image-20210412215946076"></p>
+<h4 id="最终评分"><a href="#最终评分" class="headerlink" title="最终评分"></a>最终评分</h4><p><img src="https://i.loli.net/2021/04/12/lsaMBPhk21v57wG.png" alt="image-20210412042453346"></p>
 
     </div>
 

@@ -20,9 +20,9 @@
     <!-- Include ClipboardJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
 
 <body>
@@ -106,46 +106,35 @@
         </div>
     </div>
     <div class="article-content">
-        <h2 id="矩阵等价"><a class="markdownIt-Anchor" href="#矩阵等价"></a> 矩阵等价</h2>
-<ul>
-<li>定义：对同型矩阵A、B，存在可逆阵P和Q，使得<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mi>P</mi><mi>A</mi><mi>Q</mi></mrow><annotation encoding="application/x-tex">B=PAQ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">A</span><span class="mord mathnormal">Q</span></span></span></span></li>
+        <h2 id="矩阵等价"><a href="#矩阵等价" class="headerlink" title="矩阵等价"></a>矩阵等价</h2><ul>
+<li>定义：对同型矩阵A、B，存在可逆阵P和Q，使得$B=PAQ$</li>
 <li>充要条件：A和B的秩相等</li>
 </ul>
-<h2 id="矩阵合同"><a class="markdownIt-Anchor" href="#矩阵合同"></a> 矩阵合同</h2>
-<ul>
-<li>定义：对同型方阵A、B，存在可逆阵P使得<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>P</mi><mi>T</mi></msup><mi>A</mi><mi>P</mi><mo>=</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">P^{T}AP = B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>,记作<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≃</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A ≃ B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≃</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></li>
+<h2 id="矩阵合同"><a href="#矩阵合同" class="headerlink" title="矩阵合同"></a>矩阵合同</h2><ul>
+<li>定义：对同型方阵A、B，存在可逆阵P使得$P^{T}AP = B$,记作$A ≃ B$</li>
 </ul>
-<h2 id="矩阵相似"><a class="markdownIt-Anchor" href="#矩阵相似"></a> 矩阵相似</h2>
-<ul>
+<h2 id="矩阵相似"><a href="#矩阵相似" class="headerlink" title="矩阵相似"></a>矩阵相似</h2><ul>
 <li>比等价严苛</li>
-<li>定义：对同型方阵A、B，存在可逆阵P，使得<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>P</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>A</mi><mi>P</mi><mo>=</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">P^{-1}AP = B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>,记作<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∼</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A ∼ B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></li>
+<li>定义：对同型方阵A、B，存在可逆阵P，使得$P^{-1}AP = B$,记作$A ∼ B$</li>
 </ul>
-<h2 id="三者关系"><a class="markdownIt-Anchor" href="#三者关系"></a> 三者关系</h2>
-<p>等价（只有秩相同）<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 合同（秩和正负惯性指数相同）<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 相似（秩，正负惯性指数，特征值均相同），矩阵亲密关系的一步步深化。</p>
+<h2 id="三者关系"><a href="#三者关系" class="headerlink" title="三者关系"></a>三者关系</h2><p>等价（只有秩相同）$\rightarrow$ 合同（秩和正负惯性指数相同）$\rightarrow$ 相似（秩，正负惯性指数，特征值均相同），矩阵亲密关系的一步步深化。</p>
 <ul>
-<li>
-<p>相似矩阵必为等价矩阵，但等价矩阵未必为相似矩阵</p>
+<li><p>相似矩阵必为等价矩阵，但等价矩阵未必为相似矩阵</p>
 </li>
-<li>
-<p>PQ = E的等价矩阵是相似矩阵</p>
+<li><p>PQ = E的等价矩阵是相似矩阵</p>
 </li>
-<li>
-<p>合同矩阵必为等价矩阵，等价矩阵未必为合同矩阵</p>
+<li><p>合同矩阵必为等价矩阵，等价矩阵未必为合同矩阵</p>
 <ul>
 <li>正惯性指数相同的等价矩阵是合同矩阵</li>
 </ul>
 </li>
-<li>
-<p>合同矩阵未必是相似矩阵</p>
+<li><p>合同矩阵未必是相似矩阵</p>
 </li>
-<li>
-<p>相似矩阵未必合同</p>
+<li><p>相似矩阵未必合同</p>
 </li>
-<li>
-<p>正交相似矩阵必为合同矩阵，正交合同矩阵必为相似矩阵</p>
+<li><p>正交相似矩阵必为合同矩阵，正交合同矩阵必为相似矩阵</p>
 </li>
-<li>
-<p>如果A与B都是n阶实对称矩阵，且有相同的特征根．则A与B既相似又合同</p>
+<li><p>如果A与B都是n阶实对称矩阵，且有相同的特征根．则A与B既相似又合同</p>
 </li>
 </ul>
 

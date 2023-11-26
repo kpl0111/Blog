@@ -20,9 +20,9 @@
     <!-- Include ClipboardJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
 
 <body>
@@ -106,69 +106,68 @@
         </div>
     </div>
     <div class="article-content">
-        <h2 id="深入理解c二维数组"><a class="markdownIt-Anchor" href="#深入理解c二维数组"></a> 深入理解C++二维数组</h2>
-<blockquote>
+        <h2 id="深入理解C-二维数组"><a href="#深入理解C-二维数组" class="headerlink" title="深入理解C++二维数组"></a>深入理解C++二维数组</h2><blockquote>
 <p>提问：定义一个3 * 3的数组arr，值分别为1~9，问arr[0][5]的值为多少？</p>
 </blockquote>
 <p>首先定义一个二维数组，然后获取其地址：</p>
-<pre class="highlight"><code class="c++"><span class="hljs-type">int</span> arr[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>] = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>};
-<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) {
-    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">3</span>; j++) {
-        std::cout &lt;&lt; <span class="hljs-string">"arr["</span> &lt;&lt; i &lt;&lt; <span class="hljs-string">"]["</span> &lt;&lt; j &lt;&lt; <span class="hljs-string">"] = "</span> &lt;&lt; arr[i][j] &lt;&lt; <span class="hljs-string">", address = "</span> &lt;&lt; &amp;arr[i][j] &lt;&lt; std::endl;
+<pre><code class="c++">int arr[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+for (int i = 0; i &lt; 3; i++) {
+    for (int j = 0; j &lt; 3; j++) {
+        std::cout &lt;&lt; "arr[" &lt;&lt; i &lt;&lt; "][" &lt;&lt; j &lt;&lt; "] = " &lt;&lt; arr[i][j] &lt;&lt; ", address = " &lt;&lt; &amp;arr[i][j] &lt;&lt; std::endl;
     }
 }
 </code></pre>
 <p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230407150212.png" alt="20230407150212"></p>
 <p>通过打印地址发现每个元素地址之间差4，也就是一个int的长度(一般情况下int型变量为4个字节)，而且地址也是连续的，说明申请了一个二维数组，然后申请了一段连续的地址空间来存放这些数据。</p>
 <p>然后我们打印一下arr、arr[0]、arr[0][0]的地址：</p>
-<pre class="highlight"><code class="c++">std::cout &lt;&lt; <span class="hljs-string">"Address of arr: "</span> &lt;&lt; &amp;arr &lt;&lt; std::endl;
-std::cout &lt;&lt; <span class="hljs-string">"Address of arr[0]: "</span> &lt;&lt; &amp;arr[<span class="hljs-number">0</span>] &lt;&lt; std::endl;
-std::cout &lt;&lt; <span class="hljs-string">"Address of arr[0][0]: "</span> &lt;&lt; &amp;arr[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] &lt;&lt; std::endl;
+<pre><code class="c++">std::cout &lt;&lt; "Address of arr: " &lt;&lt; &amp;arr &lt;&lt; std::endl;
+std::cout &lt;&lt; "Address of arr[0]: " &lt;&lt; &amp;arr[0] &lt;&lt; std::endl;
+std::cout &lt;&lt; "Address of arr[0][0]: " &lt;&lt; &amp;arr[0][0] &lt;&lt; std::endl;
 </code></pre>
 <p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230407150901.png" alt="20230407150901"></p>
 <p>可以看出，三者地址是一样的，这说明三者都指向数组起始地址，变量名<code>arr</code>也就是数组的起始地址，那么arr是什么数据类型呢？</p>
 <p>打印一下arr、arr + 1、 arr + 2、arr[0]、arr[1]、arr[2]的地址:</p>
-<pre class="highlight"><code class="c++">    <span class="hljs-comment">// 打印arr的地址</span>
-    std::cout &lt;&lt; <span class="hljs-string">"Address of arr: "</span> &lt;&lt; arr &lt;&lt; std::endl;
+<pre><code class="c++">    // 打印arr的地址
+    std::cout &lt;&lt; "Address of arr: " &lt;&lt; arr &lt;&lt; std::endl;
 
-    <span class="hljs-comment">// 打印arr + 1的地址</span>
-    std::cout &lt;&lt; <span class="hljs-string">"Address of arr + 1: "</span> &lt;&lt; arr + <span class="hljs-number">1</span> &lt;&lt; std::endl;
+    // 打印arr + 1的地址
+    std::cout &lt;&lt; "Address of arr + 1: " &lt;&lt; arr + 1 &lt;&lt; std::endl;
 
-    <span class="hljs-comment">// 打印arr + 2的地址</span>
-    std::cout &lt;&lt; <span class="hljs-string">"Address of arr + 2: "</span> &lt;&lt; arr + <span class="hljs-number">2</span> &lt;&lt; std::endl;
+    // 打印arr + 2的地址
+    std::cout &lt;&lt; "Address of arr + 2: " &lt;&lt; arr + 2 &lt;&lt; std::endl;
 
-    <span class="hljs-comment">// 打印arr[0]的地址</span>
-    std::cout &lt;&lt; <span class="hljs-string">"Address of arr[0]: "</span> &lt;&lt; arr[<span class="hljs-number">0</span>] &lt;&lt; std::endl;
+    // 打印arr[0]的地址
+    std::cout &lt;&lt; "Address of arr[0]: " &lt;&lt; arr[0] &lt;&lt; std::endl;
 
-    <span class="hljs-comment">// 打印arr[1]的地址</span>
-    std::cout &lt;&lt; <span class="hljs-string">"Address of arr[1]: "</span> &lt;&lt; arr[<span class="hljs-number">1</span>] &lt;&lt; std::endl;
+    // 打印arr[1]的地址
+    std::cout &lt;&lt; "Address of arr[1]: " &lt;&lt; arr[1] &lt;&lt; std::endl;
 
-    <span class="hljs-comment">// 打印arr[2]的地址</span>
-    std::cout &lt;&lt; <span class="hljs-string">"Address of arr[2]: "</span> &lt;&lt; arr[<span class="hljs-number">2</span>] &lt;&lt; std::endl;
+    // 打印arr[2]的地址
+    std::cout &lt;&lt; "Address of arr[2]: " &lt;&lt; arr[2] &lt;&lt; std::endl;
 </code></pre>
 <p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230407151423.png" alt="20230407151423"></p>
 <p>显而易见，arr + n 等价于 arr[n],arr[n]是指针类型，那么arr就是比arr[n]多一维的维指针</p>
 <p>再来看一下arr[0][0]、arr[1][0]、arr[2][0]的地址和值（前面已经打印出来）：</p>
-<pre class="highlight"><code class="c++"><span class="hljs-comment">// 打印arr[0][0]、arr[1][0]、arr[2][0]的地址和值</span>
-std::cout &lt;&lt; <span class="hljs-string">"Address of arr[0][0]: "</span> &lt;&lt; &amp;arr[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] &lt;&lt; <span class="hljs-string">", value = "</span> &lt;&lt; arr[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] &lt;&lt; std::endl;
-std::cout &lt;&lt; <span class="hljs-string">"Address of arr[1][0]: "</span> &lt;&lt; &amp;arr[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] &lt;&lt; <span class="hljs-string">", value = "</span> &lt;&lt; arr[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] &lt;&lt; std::endl;
-std::cout &lt;&lt; <span class="hljs-string">"Address of arr[2][0]: "</span> &lt;&lt; &amp;arr[<span class="hljs-number">2</span>][<span class="hljs-number">0</span>] &lt;&lt; <span class="hljs-string">", value = "</span> &lt;&lt; arr[<span class="hljs-number">2</span>][<span class="hljs-number">0</span>] &lt;&lt; std::endl;
+<pre><code class="c++">// 打印arr[0][0]、arr[1][0]、arr[2][0]的地址和值
+std::cout &lt;&lt; "Address of arr[0][0]: " &lt;&lt; &amp;arr[0][0] &lt;&lt; ", value = " &lt;&lt; arr[0][0] &lt;&lt; std::endl;
+std::cout &lt;&lt; "Address of arr[1][0]: " &lt;&lt; &amp;arr[1][0] &lt;&lt; ", value = " &lt;&lt; arr[1][0] &lt;&lt; std::endl;
+std::cout &lt;&lt; "Address of arr[2][0]: " &lt;&lt; &amp;arr[2][0] &lt;&lt; ", value = " &lt;&lt; arr[2][0] &lt;&lt; std::endl;
 </code></pre>
 <p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230407152029.png" alt="20230407152029"></p>
 <p>可以看到和上述arr[n]地址一样，表示的每一行第一列的值，显而易见arr[n]指向的就是每行首元素的地址，也就是一维指针，那么arr就是二维指针，来验证一下：</p>
-<pre class="highlight"><code class="C++"><span class="hljs-type">int</span> *p = a;　<span class="hljs-comment">// 不通过</span>
+<pre><code class="C++">int *p = a;　// 不通过
 </code></pre>
 <p>实验发现报错，继续看</p>
-<pre class="highlight"><code class="c++"><span class="hljs-type">int</span>* p = *arr;
-std::cout &lt;&lt; <span class="hljs-string">"Address of p: "</span> &lt;&lt; p &lt;&lt; <span class="hljs-string">", Address of arr: "</span> &lt;&lt; arr &lt;&lt; std::endl;
+<pre><code class="c++">int* p = *arr;
+std::cout &lt;&lt; "Address of p: " &lt;&lt; p &lt;&lt; ", Address of arr: " &lt;&lt; arr &lt;&lt; std::endl;
 </code></pre>
 <p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230407152833.png" alt="20230407152833"></p>
-<pre class="highlight"><code class="C++">std::cout &lt;&lt; <span class="hljs-string">"the value of p is: "</span> &lt;&lt; p &lt;&lt; std::endl;
-std::cout &lt;&lt; <span class="hljs-string">"the value of *p is: "</span> &lt;&lt; *p &lt;&lt; std::endl;
-std::cout &lt;&lt; <span class="hljs-string">"the value of p+1 is: "</span> &lt;&lt; p+<span class="hljs-number">1</span> &lt;&lt; std::endl;
-std::cout &lt;&lt; <span class="hljs-string">"the value of *(p+1) is: "</span> &lt;&lt; *(p+<span class="hljs-number">1</span>) &lt;&lt; std::endl;
+<pre><code class="C++">std::cout &lt;&lt; "the value of p is: " &lt;&lt; p &lt;&lt; std::endl;
+std::cout &lt;&lt; "the value of *p is: " &lt;&lt; *p &lt;&lt; std::endl;
+std::cout &lt;&lt; "the value of p+1 is: " &lt;&lt; p+1 &lt;&lt; std::endl;
+std::cout &lt;&lt; "the value of *(p+1) is: " &lt;&lt; *(p+1) &lt;&lt; std::endl;
 
-std::cout &lt;&lt; <span class="hljs-string">"a[1][1] inferred from p : "</span> &lt;&lt; *(p+<span class="hljs-number">1</span>*<span class="hljs-number">3</span>+<span class="hljs-number">1</span>) &lt;&lt; std::endl;
+std::cout &lt;&lt; "a[1][1] inferred from p : " &lt;&lt; *(p+1*3+1) &lt;&lt; std::endl;
 </code></pre>
 <p><img src="https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20230407153004.png" alt="20230407153004"></p>
 <p>对a解引用后确实是一个地址，所以可以定义指针，并且可以用加偏移量的方式得到a[1][1]</p>

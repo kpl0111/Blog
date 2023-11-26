@@ -20,9 +20,9 @@
     <!-- Include ClipboardJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
 
 <body>
@@ -107,20 +107,17 @@
     </div>
     <div class="article-content">
         <blockquote>
-<p>本篇为个人笔记，内容或有错误。<br>
-图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
+<p>本篇为个人笔记，内容或有错误。<br>图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
 </blockquote>
 <!-- toc -->
-<h2 id="数组"><a class="markdownIt-Anchor" href="#数组"></a> 数组</h2>
-<p>需要两点注意的是：</p>
+
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>需要两点注意的是：</p>
 <ul>
 <li>数组下标都是从0开始的</li>
 <li>数组内存空间的地址是连续的</li>
 </ul>
-<p>正是因为数组的在内存空间的地址是连续的，所以我们在删除或者增添元素的时候，就难免要移动其他元素的地址，而且数组不能<strong>增删，只能覆盖</strong>。<br>
-在C++中二维数组在地址空间上是连续的。但是Java是没有指针的，同时也不对程序员暴露其元素的地址，寻址操作完全交给虚拟机。所以看不到每个元素的地址情况。</p>
-<h3 id="二分"><a class="markdownIt-Anchor" href="#二分"></a> 二分</h3>
-<p>使用二分的前提是：</p>
+<p>正是因为数组的在内存空间的地址是连续的，所以我们在删除或者增添元素的时候，就难免要移动其他元素的地址，而且数组不能<strong>增删，只能覆盖</strong>。<br>在C++中二维数组在地址空间上是连续的。但是Java是没有指针的，同时也不对程序员暴露其元素的地址，寻址操作完全交给虚拟机。所以看不到每个元素的地址情况。</p>
+<h3 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h3><p>使用二分的前提是：</p>
 <ul>
 <li>有序数组</li>
 <li>无重复元素</li>
@@ -131,10 +128,8 @@
 <li>左闭右开</li>
 </ol>
 <p>二分法经常写乱，主要是因为对区间的定义没有想清楚，区间的定义就是不变量。要在二分查找的过程中，保持不变量，就是在while寻找中每一次边界的处理都要坚持根据区间的定义来操作，这就是<strong>循环不变量规则</strong>。</p>
-<h3 id="双指针"><a class="markdownIt-Anchor" href="#双指针"></a> 双指针</h3>
-<p>使用双指针可以实现滑动窗口等操作，避免了循环嵌套，大大降低了时间复杂度</p>
-<h3 id="螺旋矩阵"><a class="markdownIt-Anchor" href="#螺旋矩阵"></a> 螺旋矩阵</h3>
-<p>要注意四个方向临界条件以及区间类型都要一致</p>
+<h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><p>使用双指针可以实现滑动窗口等操作，避免了循环嵌套，大大降低了时间复杂度</p>
+<h3 id="螺旋矩阵"><a href="#螺旋矩阵" class="headerlink" title="螺旋矩阵"></a>螺旋矩阵</h3><p>要注意四个方向临界条件以及区间类型都要一致</p>
 
     </div>
 

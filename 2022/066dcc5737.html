@@ -20,9 +20,9 @@
     <!-- Include ClipboardJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
 
 <body>
@@ -107,38 +107,28 @@
     </div>
     <div class="article-content">
         <blockquote>
-<p>在C++中string、const char*、 char* 、char[]四者类型经常会需要转化。</p>
+<p>在C++中string、const char<em>、 char</em> 、char[]四者类型经常会需要转化。</p>
 </blockquote>
 <!-- toc -->
-<h2 id="转化方法"><a class="markdownIt-Anchor" href="#转化方法"></a> 转化方法</h2>
-<blockquote>
+
+<h2 id="转化方法"><a href="#转化方法" class="headerlink" title="转化方法"></a>转化方法</h2><blockquote>
 <ol>
 <li>char*转string：可以直接赋值。</li>
 <li>char[]转string：可以直接赋值。</li>
 <li>char*转char[]：不能直接赋值，可以循环char*字符串逐个字符赋值,也可以使用strcpy_s等函数。</li>
 <li>string转char[]:不能直接赋值，可以循环char*字符串逐个字符赋值,也可以使用strcpy_s等函数</li>
 <li>string转char*:调用string对象的c_str函数或data函数或copy函数。</li>
-<li>char[]转char*:直接赋值即可。<br>
-使用时，要对源格式和目标格式进行初始化。源格式赋值为具体的内容，目标格式赋值为空。</li>
+<li>char[]转char*:直接赋值即可。<br>使用时，要对源格式和目标格式进行初始化。源格式赋值为具体的内容，目标格式赋值为空。</li>
 </ol>
 </blockquote>
 <p><img src="https://s2.loli.net/2022/06/08/75fiJavz1NIknOC.png" alt="20220608193144"></p>
-<p>总结如下：<br>
-A. 变成string,直接赋值。<br>
-B. char[]变成别的，直接赋值。<br>
-C. char*变const char*容易，const char*变char*麻烦。&lt;const_cast&gt;&lt;char*&gt;(const char*);<br>
-D. string变char*要通过const char*中转。<br>
-E. 变成char[]。string逐个赋值，char* const char* strncpy_s()</p>
-<h2 id="c和c中char和string区别"><a class="markdownIt-Anchor" href="#c和c中char和string区别"></a> C和C++中char和string区别</h2>
-<p>在C语言中，string 是定义一个字符串，存储的是一段如“abcd”的数据，而且最后还有一个结束符’\0’;</p>
+<p>总结如下：<br>A. 变成string,直接赋值。<br>B. char[]变成别的，直接赋值。<br>C. char*变const char*容易，const char*变char*麻烦。<const_cast>&lt;char*&gt;(const char*);<br>D. string变char*要通过const char*中转。<br>E. 变成char[]。string逐个赋值，char* const char* strncpy_s()</const_cast></p>
+<h2 id="C和C-中char和string区别"><a href="#C和C-中char和string区别" class="headerlink" title="C和C++中char和string区别"></a>C和C++中char和string区别</h2><p>在C语言中，string 是定义一个字符串，存储的是一段如“abcd”的数据，而且最后还有一个结束符’\0’;</p>
 <p>char 是定义一个字符，存储一个字符，占一个字节。</p>
-<p>在C++中，string有两种，一种是字符串char[]，另外一种是封装好的字符串类，要区别理解。例如’a’是char, "a"是char string，这两者都是普通的字符和字符串，和C语言中没什么不同值得注意的是后者包含两个字符，末尾有一个隐身的’\0’</p>
-<p>而 string str = “a” 是C++ 封装好的string。C<ins>中的char string和string不是一回事。当用到了"string"这个关键词，就不是普通的字符串，而是用到了封装后的类。<br>
-在C</ins>中，char仍然是一个primitive type（原始类型），而string已经经过封装，成为了一个class（类）用到它时，我们需要 #include <string>，它是C++ Standard Library （C++标准库）的一部分。</string></p>
+<p>在C++中，string有两种，一种是字符串char[]，另外一种是封装好的字符串类，要区别理解。例如’a’是char, “a”是char string，这两者都是普通的字符和字符串，和C语言中没什么不同值得注意的是后者包含两个字符，末尾有一个隐身的’\0’  </p>
+<p>而 string str = “a” 是C++ 封装好的string。C++中的char string和string不是一回事。当用到了”string”这个关键词，就不是普通的字符串，而是用到了封装后的类。<br>在C++中，char仍然是一个primitive type（原始类型），而string已经经过封装，成为了一个class（类）用到它时，我们需要 #include <string>，它是C++ Standard Library （C++标准库）的一部分。</string></p>
 <blockquote>
-<p>参考：<br>
-<a target="_blank" rel="noopener" href="https://blog.csdn.net/yejinxiong001/article/details/78436310">c/c++中string与char的区别</a><br>
-<a target="_blank" rel="noopener" href="https://blog.csdn.net/hebbely/article/details/79577880">C++中string、char *、char[]、const char*的转换</a></p>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/yejinxiong001/article/details/78436310">c/c++中string与char的区别</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/hebbely/article/details/79577880">C++中string、char *、char[]、const char*的转换</a></p>
 </blockquote>
 
     </div>

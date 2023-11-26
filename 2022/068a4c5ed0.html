@@ -20,9 +20,9 @@
     <!-- Include ClipboardJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
 
 <body>
@@ -106,26 +106,23 @@
         </div>
     </div>
     <div class="article-content">
-        <p>打开VScode，<code>Ctrl + ,</code>或者<code>设置 -&gt; 设置</code>搜索<code>workbenck</code>，如下图：<br>
-<img src="https://s2.loli.net/2022/06/02/nsmiWrDHCwZ8GzQ.png" alt=""><br>
-点击<code>Edit in settings.json</code>在配置文件最后加上以下参数：</p>
-<pre class="highlight"><code class="json"><span class="hljs-comment">//终端颜色配置</span>
-<span class="hljs-attr">"workbench.colorCustomizations"</span> <span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-    <span class="hljs-comment">//可以将鼠标放到下面的色号上根据自己的偏好进行选择</span>
-	<span class="hljs-attr">"terminal.foreground"</span> <span class="hljs-punctuation">:</span> <span class="hljs-string">"#37FF13"</span><span class="hljs-punctuation">,</span><span class="hljs-comment">//字体颜色</span>
- 	<span class="hljs-attr">"terminal.background"</span> <span class="hljs-punctuation">:</span> <span class="hljs-string">"#2b2424"</span><span class="hljs-comment">//背景颜色</span>
-<span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+        <p>打开VScode，<code>Ctrl + ,</code>或者<code>设置 -&gt; 设置</code>搜索<code>workbenck</code>，如下图：<br><img src="https://s2.loli.net/2022/06/02/nsmiWrDHCwZ8GzQ.png" alt="![](imageVS-Code集成终端字体修改-字体颜色、大小修改方法1654159805450.png)"><br>点击<code>Edit in settings.json</code>在配置文件最后加上以下参数：</p>
+<pre><code class="json">//终端颜色配置
+"workbench.colorCustomizations" : {
+    //可以将鼠标放到下面的色号上根据自己的偏好进行选择
+    "terminal.foreground" : "#37FF13",//字体颜色
+     "terminal.background" : "#2b2424"//背景颜色
+},
 
-<span class="hljs-attr">"terminal.integrated.cursorBlinking"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
-<span class="hljs-attr">"terminal.integrated.lineHeight"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1.2</span><span class="hljs-punctuation">,</span>
-<span class="hljs-attr">"terminal.integrated.letterSpacing"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0.1</span><span class="hljs-punctuation">,</span>
-<span class="hljs-attr">"terminal.integrated.fontSize"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">14</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">//字体大小设置</span>
-<span class="hljs-attr">"terminal.integrated.fontFamily"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Lucida Console"</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">//字体设置</span>
+"terminal.integrated.cursorBlinking": true,
+"terminal.integrated.lineHeight": 1.2,
+"terminal.integrated.letterSpacing": 0.1,
+"terminal.integrated.fontSize": 14, //字体大小设置
+"terminal.integrated.fontFamily": "Lucida Console", //字体设置
 </code></pre>
 <p>保存即可</p>
 <p>具体颜色可根据个人喜好配置，如果想恢复默认颜色或者背景，删除该行代码即可</p>
-<p>配置之后效果如下：<br>
-<img src="https://s2.loli.net/2022/06/02/Fky9ocazPMngN3Q.png" alt=""></p>
+<p>配置之后效果如下：<br><img src="https://s2.loli.net/2022/06/02/Fky9ocazPMngN3Q.png" alt="![](imageVS-Code集成终端字体修改-字体颜色、大小修改方法1654160184142.png)"></p>
 
     </div>
 
