@@ -631,13 +631,6 @@
   </url>
   
   <url>
-    <loc>https://kpl0111.github.io/blog/tags/LeetCode/</loc>
-    <lastmod>2023-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://kpl0111.github.io/blog/tags/Android/</loc>
     <lastmod>2023-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -646,6 +639,13 @@
   
   <url>
     <loc>https://kpl0111.github.io/blog/tags/Homework/</loc>
+    <lastmod>2023-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://kpl0111.github.io/blog/tags/LeetCode/</loc>
     <lastmod>2023-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -687,13 +687,6 @@
   </url>
   
   <url>
-    <loc>https://kpl0111.github.io/blog/tags/command/</loc>
-    <lastmod>2023-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://kpl0111.github.io/blog/tags/Vim/</loc>
     <lastmod>2023-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -701,7 +694,7 @@
   </url>
   
   <url>
-    <loc>https://kpl0111.github.io/blog/tags/Java/</loc>
+    <loc>https://kpl0111.github.io/blog/tags/command/</loc>
     <lastmod>2023-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -709,6 +702,13 @@
   
   <url>
     <loc>https://kpl0111.github.io/blog/tags/MFC/</loc>
+    <lastmod>2023-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://kpl0111.github.io/blog/tags/Java/</loc>
     <lastmod>2023-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
