@@ -682,13 +682,6 @@
   </url>
   
   <url>
-    <loc>https://kpl0111.github.io/blog/tags/OS/</loc>
-    <lastmod>2023-11-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://kpl0111.github.io/blog/tags/VSCode/</loc>
     <lastmod>2023-11-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -696,7 +689,7 @@
   </url>
   
   <url>
-    <loc>https://kpl0111.github.io/blog/tags/command/</loc>
+    <loc>https://kpl0111.github.io/blog/tags/OS/</loc>
     <lastmod>2023-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -704,6 +697,13 @@
   
   <url>
     <loc>https://kpl0111.github.io/blog/tags/Vim/</loc>
+    <lastmod>2023-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://kpl0111.github.io/blog/tags/command/</loc>
     <lastmod>2023-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
