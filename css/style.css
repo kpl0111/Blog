@@ -489,6 +489,25 @@ p.no-result {
   color: #808080;
   font-family: font-serif serif;
 }
+* {
+  cursor: url("https://cdn.jsdelivr.net/gh/kpl0111/tool/mouse/default.cur"), auto !important;
+}
+/* 定义两种不同的鼠标样式 */
+.cursor-default {
+  cursor: url("https://cdn.jsdelivr.net/gh/kpl0111/tool/mouse/default.cur"), auto !important;
+}
+.cursor-pointer {
+  cursor: url("https://cdn.jsdelivr.net/gh/kpl0111/tool/mouse/pointer.cur"), auto !important;
+}
+/* 将默认鼠标样式分配给 a 元素 */
+a {
+/* 你原来的样式 */
+  cursor: url("https://cdn.jsdelivr.net/gh/kpl0111/tool/mouse/default.cur"), auto !important;
+}
+/* 当鼠标悬停在 a 元素上时，将鼠标样式更改为指针样式 */
+a:hover {
+  cursor: url("https://cdn.jsdelivr.net/gh/kpl0111/tool/mouse/pointer.cur"), auto !important;
+}
 @media screen and (max-width: 1100px) {
   body {
     background: #fff;
