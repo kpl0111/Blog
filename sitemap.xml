@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://kpl0111.github.io/blog/2023/113cf76af5.html</loc>
+    <loc>https://kpl0111.github.io/blog/2023/118455ceb2.html</loc>
     
-    <lastmod>2023-11-28</lastmod>
+    <lastmod>2023-11-29</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://kpl0111.github.io/blog/2023/118455ceb2.html</loc>
+    <loc>https://kpl0111.github.io/blog/2023/113cf76af5.html</loc>
     
     <lastmod>2023-11-28</lastmod>
     
@@ -656,13 +656,6 @@
   </url>
   
   <url>
-    <loc>https://kpl0111.github.io/blog/tags/Android/</loc>
-    <lastmod>2023-11-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://kpl0111.github.io/blog/tags/Homework/</loc>
     <lastmod>2023-11-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -720,6 +713,13 @@
   
   <url>
     <loc>https://kpl0111.github.io/blog/tags/Java/</loc>
+    <lastmod>2023-11-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://kpl0111.github.io/blog/tags/Android/</loc>
     <lastmod>2023-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
