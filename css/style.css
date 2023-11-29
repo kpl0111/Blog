@@ -193,6 +193,7 @@ h5:before {
   padding: 3% 4%;
   font-family: Consolas, Monaco, "楷体", "Noto Sans Mono";
   font-size: 15px;
+  overflow-wrap: break-word; /* 添加这一行以实现过长行自动换行 */
 }
 .article-content blockquote code,
 .article-content p code,
@@ -243,6 +244,11 @@ pre code {
   padding: 0;
   color: #e8eaf6;
   background-color: #272822;
+}
+pre code.txt {
+/* 过长自动换行 */
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 pre[class*="language-"] {
   padding: 1.2em;
