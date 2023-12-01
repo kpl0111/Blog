@@ -4,7 +4,7 @@
   <url>
     <loc>https://kpl0111.github.io/blog/2023/118455ceb2.html</loc>
     
-    <lastmod>2023-11-30</lastmod>
+    <lastmod>2023-12-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -670,13 +670,6 @@
   </url>
   
   <url>
-    <loc>https://kpl0111.github.io/blog/tags/MarkDown/</loc>
-    <lastmod>2023-12-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://kpl0111.github.io/blog/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -691,14 +684,7 @@
   </url>
   
   <url>
-    <loc>https://kpl0111.github.io/blog/tags/OS/</loc>
-    <lastmod>2023-12-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://kpl0111.github.io/blog/tags/Vim/</loc>
+    <loc>https://kpl0111.github.io/blog/tags/MarkDown/</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -712,7 +698,21 @@
   </url>
   
   <url>
+    <loc>https://kpl0111.github.io/blog/tags/Vim/</loc>
+    <lastmod>2023-12-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://kpl0111.github.io/blog/tags/command/</loc>
+    <lastmod>2023-12-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://kpl0111.github.io/blog/tags/OS/</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
