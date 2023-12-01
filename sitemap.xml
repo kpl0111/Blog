@@ -614,20 +614,6 @@
 
   
   <url>
-    <loc>https://kpl0111.github.io/blog/tags/STL/</loc>
-    <lastmod>2023-12-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://kpl0111.github.io/blog/tags/C/</loc>
-    <lastmod>2023-12-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://kpl0111.github.io/blog/tags/Hexo/</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -643,6 +629,20 @@
   
   <url>
     <loc>https://kpl0111.github.io/blog/tags/Github/</loc>
+    <lastmod>2023-12-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://kpl0111.github.io/blog/tags/STL/</loc>
+    <lastmod>2023-12-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://kpl0111.github.io/blog/tags/C/</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -712,14 +712,14 @@
   </url>
   
   <url>
-    <loc>https://kpl0111.github.io/blog/tags/Java/</loc>
+    <loc>https://kpl0111.github.io/blog/tags/command/</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://kpl0111.github.io/blog/tags/command/</loc>
+    <loc>https://kpl0111.github.io/blog/tags/Java/</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -784,14 +784,14 @@
 
   
   <url>
-    <loc>https://kpl0111.github.io/blog/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://kpl0111.github.io/blog/categories/Blog/</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://kpl0111.github.io/blog/categories/Blog/</loc>
+    <loc>https://kpl0111.github.io/blog/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
