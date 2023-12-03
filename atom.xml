@@ -3,11 +3,11 @@
   <title>Nefelibata</title>
   
   <subtitle>Nefelibata</subtitle>
-  <link href="https://kpl0111.github.io/blog/atom.xml" rel="self"/>
+  <link href="https://nefelibata.icu/atom.xml" rel="self"/>
   
-  <link href="https://kpl0111.github.io/blog/"/>
-  <updated>2023-12-02T13:44:08.655Z</updated>
-  <id>https://kpl0111.github.io/blog/</id>
+  <link href="https://nefelibata.icu/"/>
+  <updated>2023-12-03T08:03:29.468Z</updated>
+  <id>https://nefelibata.icu/</id>
   
   <author>
     <name>Nefelibata</name>
@@ -18,20 +18,13 @@
   
   <entry>
     <title>Hello Nefelibata!</title>
-    <link href="https://kpl0111.github.io/blog/2099/12c5804086.html"/>
-    <id>https://kpl0111.github.io/blog/2099/12c5804086.html</id>
+    <link href="https://nefelibata.icu/2099/12c5804086.html"/>
+    <id>https://nefelibata.icu/2099/12c5804086.html</id>
     <published>2099-12-31T12:50:55.000Z</published>
-    <updated>2023-12-02T13:44:08.655Z</updated>
+    <updated>2023-12-03T08:03:29.468Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2021/04/07/BHgA5RqQeZTv8Wt.png&quot; alt=&quot;image-20210407205253791&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
+    <summary type="html">&lt;p&gt;Hello Nefelibata!&lt;/p&gt;</summary>
     
     
     
@@ -40,19 +33,13 @@
   
   <entry>
     <title>补个票</title>
-    <link href="https://kpl0111.github.io/blog/2023/113cf76af5.html"/>
-    <id>https://kpl0111.github.io/blog/2023/113cf76af5.html</id>
+    <link href="https://nefelibata.icu/2023/113cf76af5.html"/>
+    <id>https://nefelibata.icu/2023/113cf76af5.html</id>
     <published>2023-11-28T12:40:04.000Z</published>
-    <updated>2023-12-02T13:44:08.706Z</updated>
+    <updated>2023-12-03T08:02:25.183Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20231128204017.png&quot;</summary>
-        
-      
+    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
     
     
     
@@ -61,13 +48,13 @@
   
   <entry>
     <title>厨子戏子痞子观感</title>
-    <link href="https://kpl0111.github.io/blog/2023/119fca6f5f.html"/>
-    <id>https://kpl0111.github.io/blog/2023/119fca6f5f.html</id>
+    <link href="https://nefelibata.icu/2023/119fca6f5f.html"/>
+    <id>https://nefelibata.icu/2023/119fca6f5f.html</id>
     <published>2023-11-26T08:28:37.000Z</published>
-    <updated>2023-12-02T13:44:08.683Z</updated>
+    <updated>2023-12-03T08:02:25.105Z</updated>
     
     
-    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    <summary type="html">Here&#39;s something encrypted.</summary>
     
     
     
@@ -76,34 +63,32 @@
   
   <entry>
     <title>易错点总结</title>
-    <link href="https://kpl0111.github.io/blog/2023/118455ceb2.html"/>
-    <id>https://kpl0111.github.io/blog/2023/118455ceb2.html</id>
+    <link href="https://nefelibata.icu/2023/118455ceb2.html"/>
+    <id>https://nefelibata.icu/2023/118455ceb2.html</id>
     <published>2023-11-15T04:12:59.000Z</published>
-    <updated>2023-12-02T13:44:08.694Z</updated>
+    <updated>2023-12-03T12:17:48.426Z</updated>
     
     
-    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    <summary type="html">Here&#39;s something encrypted.</summary>
     
     
     
+    <category term="笔记" scheme="https://nefelibata.icu/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="笔记" scheme="https://nefelibata.icu/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>原码、反码、补码、移码、浮点数</title>
-    <link href="https://kpl0111.github.io/blog/2023/09995a41cb.html"/>
-    <id>https://kpl0111.github.io/blog/2023/09995a41cb.html</id>
+    <link href="https://nefelibata.icu/2023/09995a41cb.html"/>
+    <id>https://nefelibata.icu/2023/09995a41cb.html</id>
     <published>2023-09-14T05:02:23.000Z</published>
-    <updated>2023-12-02T13:44:08.685Z</updated>
+    <updated>2023-12-03T08:02:25.101Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;基本概念及表示范围&quot;&gt;&lt;a href=&quot;#基本概念及表示范围&quot; class=&quot;headerlink&quot; title=&quot;基本概念及表示范围&quot;&gt;&lt;/a&gt;基本概念及表示范围&lt;/h2&gt;&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
     
     
     
@@ -112,13 +97,13 @@
   
   <entry>
     <title>易错点</title>
-    <link href="https://kpl0111.github.io/blog/2023/084f407d5a.html"/>
-    <id>https://kpl0111.github.io/blog/2023/084f407d5a.html</id>
+    <link href="https://nefelibata.icu/2023/084f407d5a.html"/>
+    <id>https://nefelibata.icu/2023/084f407d5a.html</id>
     <published>2023-08-27T09:06:34.000Z</published>
-    <updated>2023-12-02T13:44:08.689Z</updated>
+    <updated>2023-12-03T08:02:25.123Z</updated>
     
     
-    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    <summary type="html">Here&#39;s something encrypted.</summary>
     
     
     
@@ -127,24 +112,13 @@
   
   <entry>
     <title>Vim操作指令及配置</title>
-    <link href="https://kpl0111.github.io/blog/2023/056dad740.html"/>
-    <id>https://kpl0111.github.io/blog/2023/056dad740.html</id>
+    <link href="https://nefelibata.icu/2023/056dad740.html"/>
+    <id>https://nefelibata.icu/2023/056dad740.html</id>
     <published>2023-05-14T09:01:53.000Z</published>
-    <updated>2023-12-02T13:44:08.676Z</updated>
+    <updated>2023-12-03T08:02:25.061Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本篇使用Vim编辑，个人笔记使用&lt;br&gt;待使用到补充，自己用到才有体会&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;!-- TOC --&gt;
-
-&lt;h2 id=&quot;模式&quot;&gt;&lt;a href=&quot;#模式&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
     
     
     
@@ -153,22 +127,13 @@
   
   <entry>
     <title>Linux指令</title>
-    <link href="https://kpl0111.github.io/blog/2023/0589550d80.html"/>
-    <id>https://kpl0111.github.io/blog/2023/0589550d80.html</id>
+    <link href="https://nefelibata.icu/2023/0589550d80.html"/>
+    <id>https://nefelibata.icu/2023/0589550d80.html</id>
     <published>2023-05-02T12:54:51.000Z</published>
-    <updated>2023-12-02T13:44:08.666Z</updated>
+    <updated>2023-12-03T08:02:25.027Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;转载自&lt;a href=&quot;https://blog.csdn.net/m0_46422300/article/details/104645072&quot;&gt;Engineer-Yao&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2</summary>
-        
-      
+    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
     
     
     
@@ -177,24 +142,13 @@
   
   <entry>
     <title>Git常用指令</title>
-    <link href="https://kpl0111.github.io/blog/2023/044b8db958.html"/>
-    <id>https://kpl0111.github.io/blog/2023/044b8db958.html</id>
+    <link href="https://nefelibata.icu/2023/044b8db958.html"/>
+    <id>https://nefelibata.icu/2023/044b8db958.html</id>
     <published>2023-04-07T09:43:00.000Z</published>
-    <updated>2023-12-02T13:44:08.650Z</updated>
+    <updated>2023-12-03T08:02:24.962Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;创建仓库&lt;ul&gt;
-&lt;li&gt;git clone &amp;lt;url&amp;gt; [directory]&lt;/li&gt;
-&lt;li&gt;git init&lt;/li&gt;
-&lt;li&gt;git config –global user.name ‘你的用户名’&lt;/li&gt;
-&lt;li&gt;git config</summary>
-        
-      
+    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
     
     
     
@@ -203,20 +157,13 @@
   
   <entry>
     <title>C++数组的机理</title>
-    <link href="https://kpl0111.github.io/blog/2023/0445fbc665.html"/>
-    <id>https://kpl0111.github.io/blog/2023/0445fbc665.html</id>
+    <link href="https://nefelibata.icu/2023/0445fbc665.html"/>
+    <id>https://nefelibata.icu/2023/0445fbc665.html</id>
     <published>2023-04-07T06:52:16.000Z</published>
-    <updated>2023-12-02T13:44:08.649Z</updated>
+    <updated>2023-12-03T08:02:24.957Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;深入理解C-二维数组&quot;&gt;&lt;a href=&quot;#深入理解C-二维数组&quot; class=&quot;headerlink&quot; title=&quot;深入理解C++二维数组&quot;&gt;&lt;/a&gt;深入理解C++二维数组&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;提问：定义一个3 *</summary>
-        
-      
+    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
     
     
     
@@ -225,19 +172,13 @@
   
   <entry>
     <title>VSCode设置自动识别文件编码格式</title>
-    <link href="https://kpl0111.github.io/blog/2023/041be02434.html"/>
-    <id>https://kpl0111.github.io/blog/2023/041be02434.html</id>
+    <link href="https://nefelibata.icu/2023/041be02434.html"/>
+    <id>https://nefelibata.icu/2023/041be02434.html</id>
     <published>2023-04-06T11:38:30.000Z</published>
-    <updated>2023-12-02T13:44:08.673Z</updated>
+    <updated>2023-12-03T08:02:25.072Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;vscode打开文件默认是utf-8编码，当我们打开其他编码文件（例如gb2312）时就会产生乱码现象，如下图所示：&lt;br&gt;&lt;img</summary>
-        
-      
+    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
     
     
     
@@ -246,21 +187,13 @@
   
   <entry>
     <title>SVM</title>
-    <link href="https://kpl0111.github.io/blog/2023/0375378e04.html"/>
-    <id>https://kpl0111.github.io/blog/2023/0375378e04.html</id>
+    <link href="https://nefelibata.icu/2023/03753780000.html"/>
+    <id>https://nefelibata.icu/2023/03753780000.html</id>
     <published>2023-03-06T07:59:48.000Z</published>
-    <updated>2023-12-02T13:44:08.669Z</updated>
+    <updated>2023-12-03T08:02:25.044Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;个人笔记&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
+    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
     
     
     
@@ -269,13 +202,13 @@
   
   <entry>
     <title>Seven</title>
-    <link href="https://kpl0111.github.io/blog/2022/1257958268.html"/>
-    <id>https://kpl0111.github.io/blog/2022/1257958268.html</id>
+    <link href="https://nefelibata.icu/2022/1257958268.html"/>
+    <id>https://nefelibata.icu/2022/1257958268.html</id>
     <published>2022-12-18T09:25:55.000Z</published>
-    <updated>2023-12-02T13:44:08.677Z</updated>
+    <updated>2023-12-03T08:02:25.040Z</updated>
     
     
-    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    <summary type="html">Here&#39;s something encrypted.</summary>
     
     
     
@@ -284,13 +217,13 @@
   
   <entry>
     <title>梦</title>
-    <link href="https://kpl0111.github.io/blog/2022/12f1aaadb6.html"/>
-    <id>https://kpl0111.github.io/blog/2022/12f1aaadb6.html</id>
+    <link href="https://nefelibata.icu/2022/12f1aaadb6.html"/>
+    <id>https://nefelibata.icu/2022/12f1aaadb6.html</id>
     <published>2022-12-16T02:45:52.000Z</published>
-    <updated>2023-12-02T13:44:08.692Z</updated>
+    <updated>2023-12-03T08:02:25.138Z</updated>
     
     
-    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    <summary type="html">Here&#39;s something encrypted.</summary>
     
     
     
@@ -299,13 +232,13 @@
   
   <entry>
     <title>随手记(政治)</title>
-    <link href="https://kpl0111.github.io/blog/2022/11b85d3e4c.html"/>
-    <id>https://kpl0111.github.io/blog/2022/11b85d3e4c.html</id>
+    <link href="https://nefelibata.icu/2022/11b85d3e4c.html"/>
+    <id>https://nefelibata.icu/2022/11b85d3e4c.html</id>
     <published>2022-11-16T01:08:43.000Z</published>
-    <updated>2023-12-02T13:44:08.714Z</updated>
+    <updated>2023-12-03T08:02:25.191Z</updated>
     
     
-    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    <summary type="html">Here&#39;s something encrypted.</summary>
     
     
     
@@ -314,13 +247,13 @@
   
   <entry>
     <title>盲区</title>
-    <link href="https://kpl0111.github.io/blog/2022/11b8858517.html"/>
-    <id>https://kpl0111.github.io/blog/2022/11b8858517.html</id>
+    <link href="https://nefelibata.icu/2022/11b8858517.html"/>
+    <id>https://nefelibata.icu/2022/11b8858517.html</id>
     <published>2022-11-10T11:06:12.000Z</published>
-    <updated>2023-12-02T13:44:08.698Z</updated>
+    <updated>2023-12-03T08:02:25.155Z</updated>
     
     
-    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    <summary type="html">Here&#39;s something encrypted.</summary>
     
     
     
@@ -329,20 +262,13 @@
   
   <entry>
     <title>排序</title>
-    <link href="https://kpl0111.github.io/blog/2022/10a444b428.html"/>
-    <id>https://kpl0111.github.io/blog/2022/10a444b428.html</id>
+    <link href="https://nefelibata.icu/2022/10a444b428.html"/>
+    <id>https://nefelibata.icu/2022/10a444b428.html</id>
     <published>2022-10-15T03:08:40.000Z</published>
-    <updated>2023-12-02T13:44:08.691Z</updated>
+    <updated>2023-12-03T08:02:25.116Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://picture-0111.oss-cn-beijing.aliyuncs.com/img/20221015114004.png&quot; alt=&quot;20221015114004&quot;&gt;&lt;/p&gt;
-&lt;h2</summary>
-        
-      
+    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
     
     
     
@@ -351,19 +277,13 @@
   
   <entry>
     <title>中缀表达式转后缀表达式</title>
-    <link href="https://kpl0111.github.io/blog/2022/1072a96e3d.html"/>
-    <id>https://kpl0111.github.io/blog/2022/1072a96e3d.html</id>
+    <link href="https://nefelibata.icu/2022/1072a96e3d.html"/>
+    <id>https://nefelibata.icu/2022/1072a96e3d.html</id>
     <published>2022-10-08T06:36:51.000Z</published>
-    <updated>2023-12-02T13:44:08.680Z</updated>
+    <updated>2023-12-03T08:02:25.085Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;后缀表达式&quot;&gt;&lt;a href=&quot;#后缀表达式&quot; class=&quot;headerlink&quot; title=&quot;后缀表达式&quot;&gt;&lt;/a&gt;后缀表达式&lt;/h2&gt;&lt;p&gt;后缀表达式也叫&lt;strong&gt;逆波兰表达式&lt;/strong&gt;</summary>
-        
-      
+    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
     
     
     
@@ -372,25 +292,13 @@
   
   <entry>
     <title>win10时间显示精确到秒</title>
-    <link href="https://kpl0111.github.io/blog/2022/1091d7ef4e.html"/>
-    <id>https://kpl0111.github.io/blog/2022/1091d7ef4e.html</id>
+    <link href="https://nefelibata.icu/2022/1091d7ef4e.html"/>
+    <id>https://nefelibata.icu/2022/1091d7ef4e.html</id>
     <published>2022-10-06T01:43:49.000Z</published>
-    <updated>2023-12-02T13:44:08.678Z</updated>
+    <updated>2023-12-03T08:02:25.076Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;任意位置新建txt文件，打开编辑&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;复制以下代码&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;console&quot;&gt;@echo off
-
-reg add</summary>
-        
-      
+    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
     
     
     
@@ -399,13 +307,13 @@ reg add</summary>
   
   <entry>
     <title>随手记(除政治)</title>
-    <link href="https://kpl0111.github.io/blog/2022/09aa25a989.html"/>
-    <id>https://kpl0111.github.io/blog/2022/09aa25a989.html</id>
+    <link href="https://nefelibata.icu/2022/09aa25a989.html"/>
+    <id>https://nefelibata.icu/2022/09aa25a989.html</id>
     <published>2022-09-18T07:33:17.000Z</published>
-    <updated>2023-12-02T13:44:08.710Z</updated>
+    <updated>2023-12-03T08:02:25.195Z</updated>
     
     
-    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    <summary type="html">Here&#39;s something encrypted.</summary>
     
     
     

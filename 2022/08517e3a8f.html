@@ -102,18 +102,25 @@
             2022/08/10 周三 13:21&nbsp;&nbsp;&nbsp;
             <span class="just-a-temp"><span>
             <i class="fas fa-redo"></i>
-            2023/12/02 周六 21:44&nbsp;&nbsp;&nbsp;
+            2023/12/03 周日 16:02&nbsp;&nbsp;&nbsp;
             <span class="just-a-temp"><span>
             <i class="fas fa-file-word"></i>
             831 words
         </div>
     </div>
     <div class="article-content">
-        <blockquote>
+        <p>摘要待补充</p>
+<span id="more"></span>
+
+
+
+<!-- toc -->
+
+<blockquote>
 <p>转载自<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删</p>
 </blockquote>
-<p>建议按照如下顺序观看：<br><a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a><br><a href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2（本文）</a><br><a href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br><a href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包</a></p>
-<h1 id="动态规划：关于01背包问题，你该了解这些！（滚动数组）"><a href="#动态规划：关于01背包问题，你该了解这些！（滚动数组）" class="headerlink" title="动态规划：关于01背包问题，你该了解这些！（滚动数组）"></a>动态规划：关于01背包问题，你该了解这些！（滚动数组）</h1><p>昨天<a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a>中是用二维dp数组来讲解01背包。</p>
+<p>建议按照如下顺序观看：<br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a><br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2（本文）</a><br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包</a></p>
+<h1 id="动态规划：关于01背包问题，你该了解这些！（滚动数组）"><a href="#动态规划：关于01背包问题，你该了解这些！（滚动数组）" class="headerlink" title="动态规划：关于01背包问题，你该了解这些！（滚动数组）"></a>动态规划：关于01背包问题，你该了解这些！（滚动数组）</h1><p>昨天<a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a>中是用二维dp数组来讲解01背包。</p>
 <p>今天我们就来说一说滚动数组，其实在前面的题目中我们已经用到过滚动数组了，就是把二维dp降为一维dp，一些录友当时还表示比较困惑。</p>
 <p>那么我们通过01背包，来彻底讲一讲滚动数组！</p>
 <p>接下来还是用如下这个例子来进行讲解</p>
@@ -247,10 +254,10 @@ int main() {
 <p><strong>相信大家读完这篇文章，应该对以上问题都有了答案！</strong></p>
 <p>此时01背包理论基础就讲完了，我用了两篇文章把01背包的dp数组定义、递推公式、初始化、遍历顺序从二维数组到一维数组统统深度剖析了一遍，没有放过任何难点。</p>
 <p>大家可以发现其实信息量还是挺大的。</p>
-<p>如果把<a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a>和本篇的内容都理解了，后面我们在做01背包的题目，就会发现非常简单了。</p>
+<p>如果把<a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a>和本篇的内容都理解了，后面我们在做01背包的题目，就会发现非常简单了。</p>
 <p>不用再凭感觉或者记忆去写背包，而是有自己的思考，了解其本质，代码的方方面面都在自己的掌控之中。</p>
 <p>即使代码没有通过，也会有自己的逻辑去debug，这样就思维清晰了。</p>
-<p><a href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a><br><a href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2（本文）</a><br><a href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br><a href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包</a></p>
+<p><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a><br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2（本文）</a><br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包</a></p>
 
     </div>
 

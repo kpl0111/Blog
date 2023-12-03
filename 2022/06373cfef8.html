@@ -102,14 +102,21 @@
             2022/06/03 周五 10:53&nbsp;&nbsp;&nbsp;
             <span class="just-a-temp"><span>
             <i class="fas fa-redo"></i>
-            2023/12/02 周六 21:44&nbsp;&nbsp;&nbsp;
+            2023/12/03 周日 16:02&nbsp;&nbsp;&nbsp;
             <span class="just-a-temp"><span>
             <i class="fas fa-file-word"></i>
             2683 words
         </div>
     </div>
     <div class="article-content">
-        <h2 id="ESP8266实现智能电灯"><a href="#ESP8266实现智能电灯" class="headerlink" title="ESP8266实现智能电灯"></a>ESP8266实现智能电灯</h2><p>本实验目的是要通过腾讯云服务器和ESP8266芯片实现远程操纵一个LED灯的颜色和亮度</p>
+        <p>摘要待补充</p>
+<span id="more"></span>
+
+
+
+<!-- toc -->
+
+<h2 id="ESP8266实现智能电灯"><a href="#ESP8266实现智能电灯" class="headerlink" title="ESP8266实现智能电灯"></a>ESP8266实现智能电灯</h2><p>本实验目的是要通过腾讯云服务器和ESP8266芯片实现远程操纵一个LED灯的颜色和亮度</p>
 <h3 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h3><p>首先在<a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/iotexplorer">腾讯云物联网开发平台</a>注册一个项目，并设置一个电灯产品，采用Wifi通信，然后在芯片上编写代码实现对LED灯的控制以及对信号的接收，然后用腾讯云配套小程序即可实现远程控制。</p>
 <h3 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h3><ol>
 <li>使用一根提供USB数据线将NodeMCU开发板和电脑连接起来，在命令行执行指令<code>pip install esptool</code>,然后执行<code>esptool read_mac·</code>查看开发板信息<br><img src="https://s2.loli.net/2022/06/07/WlHSxXRKCFIP4pD.png" alt="20220607190411"><br>图中红框内即为使用的接口，如果缺少驱动可以通过驱动精灵下载</li>
