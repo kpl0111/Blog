@@ -1,140 +1,301 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
-        Nefelibata
-    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Language" content="zh-cn">
     
-<link rel="stylesheet" href="/blog/css/style.css">
+    
+    <title>
+        
+            LeetCode笔记-哈希表 | Nefelibata
+             | Nefelibata
+        
+    </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+        <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="Leetcode">
+    
+    
 
-    <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/kpl0111/blog/images/favicon.ico" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kpl0111/blog/css/style/github.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/gh/kpl0111/blog/js/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kpl0111/blog/js/highlight.min.js"></script>
-    <!-- Include jQuery -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
-    <!-- Include ClipboardJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="哈希表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode笔记-哈希表">
+<meta property="og:url" content="https://nefelibata.icu/2022/064cfc9b66.html">
+<meta property="og:site_name" content="Nefelibata">
+<meta property="og:description" content="哈希表">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/06/12/8AsRHUdwTS6kpgv.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/12/6nHRVWyIAxL9XwT.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/12/2Erl7dHO8IuGxyU.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/12/Wj8mAD2QnyKzukM.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/12/IJDeZ8yNmncR3SU.png">
+<meta property="article:published_time" content="2022-06-12T10:19:48.000Z">
+<meta property="article:modified_time" content="2024-01-04T02:41:48.345Z">
+<meta property="article:author" content="Nefelibata">
+<meta property="article:tag" content="Leetcode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/06/12/8AsRHUdwTS6kpgv.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Nefelibata" href="/blog/atom.xml">
+    
+    <link rel="shortcut icon" href="/blog/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/blog/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
 <meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-    <!-- <div class="logo">
-        <a href="/blog/">Nefelibata</a>
-    </div> -->
-    <!-- <div class="logo">
-        <img src="/images/lkp.png" alt="Logo">
-    </div> -->
-    <div class="nav">
-        <ul class="menu">
-            
-                <li class="menu-item">
-                    <a href="/blog/../" class="menu-item-link">
-                        Nefelibata
-                    </a>
-                </li>
-            
-                <li class="menu-item">
-                    <a href="/blog/" class="menu-item-link">
-                        Blog
-                    </a>
-                </li>
-            
-                <li class="menu-item">
-                    <a href="/blog/../gallery" class="menu-item-link">
-                        Gallery
-                    </a>
-                </li>
-            
-                <li class="menu-item">
-                    <a target="_blank" rel="noopener" href="https://github.com/kpl0111" class="menu-item-link">
-                        Github
-                    </a>
-                </li>
-            
-                <li class="menu-item">
-                    <a href="/blog/../about" class="menu-item-link">
-                        About
-                    </a>
-                </li>
-                
-        </ul>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Nefelibata</h5>
+        </hgroup>
+      </div>
     </div>
-</div>
-        <div class="article">
-    <!-- <div class="article-title">
-        <h2>
-            LeetCode笔记-哈希表
-        </h2>
-    </div> -->
-    
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    
-    <div class="article-meta">
-        <div class="article-date">
-            <i class="fas fa-edit"></i>
-            2022/06/12 周日 18:19&nbsp;&nbsp;&nbsp;
-            <span class="just-a-temp"><span>
-            <i class="fas fa-redo"></i>
-            2023/12/19 周二 20:31&nbsp;&nbsp;&nbsp;
-            <span class="just-a-temp"><span>
-            <i class="fas fa-file-word"></i>
-            233 words
+              <li class="waves-block waves-effect">
+                  <a href="/blog/" target="_self" >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/blog/archives" target="_self" >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/blog/categories" target="_self" >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/blog/tags" target="_self" >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/blog/../gallery" target="_blank" >
+                    <i class="icon icon-lg icon-image"></i>
+                    <span>相册</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/blog/../about" target="_blank" >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/blog/../" target="_self" >
+                    <i class="icon icon-lg icon-tree"></i>
+                    <span>Nefelibata</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:kunpengl0111@gamil.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/kpl0111" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/Nefelib31847846" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+        </div>
+      </ul>
+    </div>
+  </div>
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">LeetCode笔记-哈希表</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
         </div>
     </div>
-    <div class="article-content">
-        <p>摘要待补充</p>
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="post-toc-text">哈希表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%93%88%E5%B8%8C%E7%A2%B0%E6%92%9E"><span class="post-toc-text">哈希碰撞</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8B%89%E9%93%BE%E6%B3%95"><span class="post-toc-text">拉链法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BA%BF%E6%80%A7%E6%8E%A2%E6%B5%8B%E6%B3%95"><span class="post-toc-text">线性探测法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E5%93%88%E5%B8%8C%E7%BB%93%E6%9E%84"><span class="post-toc-text">常见的三种哈希结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E9%80%89%E6%8B%A9"><span class="post-toc-text">三种数据结构的选择</span></a></li></ol></li></ol>
+            
+        </nav>
+    </aside>
+   
+<article id="post-LeetCode笔记-哈希表"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">LeetCode笔记-哈希表</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2022-06-12 18:19:48" datetime="2022-06-12T10:19:48.000Z"  itemprop="datePublished">2022-06-12</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/%E7%AC%94%E8%AE%B0/">笔记</a></li></ul>
+
+
+            <i>·</i>
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">2.9</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>哈希表</p>
 <span id="more"></span>
-
-
 
 <blockquote>
 <p>本篇为个人笔记，内容或有错误。<br>图片部分源于<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删。</p>
 </blockquote>
-<!-- toc -->
-
 <h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><blockquote>
 <p>哈希表是根据关键码的值而直接进行访问的数据结构。<br>一般哈希表都是用来快速判断一个元素是否出现在集合里。</p>
 </blockquote>
-<h3 id="哈希碰撞"><a href="#哈希碰撞" class="headerlink" title="哈希碰撞"></a>哈希碰撞</h3><p>两个元素同时映射到哈希表中同一位置，这一现象叫做哈希碰撞，如下例：<br><img src="https://s2.loli.net/2022/06/12/8AsRHUdwTS6kpgv.png" alt="20220612173210"></p>
+<h3 id="哈希碰撞"><a href="#哈希碰撞" class="headerlink" title="哈希碰撞"></a>哈希碰撞</h3><p>两个元素同时映射到哈希表中同一位置，这一现象叫做哈希碰撞，如下例：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/06/12/8AsRHUdwTS6kpgv.png" alt="20220612173210" title="">
+                </div>
+                <div class="image-caption">20220612173210</div>
+            </figure>
+
 <p>一般处理方法有两种，拉链法和线性探测法。</p>
-<h4 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h4><p><img src="https://s2.loli.net/2022/06/12/6nHRVWyIAxL9XwT.png" alt="20220612173630"><br>其实拉链法就是要选择合适的哈希表大小，这样既不会因为数组空值而浪费大量内存，也不会因为链表太长而在查找上浪费太多时间</p>
+<h4 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/06/12/6nHRVWyIAxL9XwT.png" alt="20220612173630" title="">
+                </div>
+                <div class="image-caption">20220612173630</div>
+            </figure>
+<p>其实拉链法就是要选择合适的哈希表大小，这样既不会因为数组空值而浪费大量内存，也不会因为链表太长而在查找上浪费太多时间</p>
 <h4 id="线性探测法"><a href="#线性探测法" class="headerlink" title="线性探测法"></a>线性探测法</h4><p>使用线性探测法，一定要保证tablesize大于datasize，需要依靠哈希表中的空位来解决碰撞问题。</p>
-<p><img src="https://s2.loli.net/2022/06/12/2Erl7dHO8IuGxyU.png" alt="20220612174935"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/06/12/2Erl7dHO8IuGxyU.png" alt="20220612174935" title="">
+                </div>
+                <div class="image-caption">20220612174935</div>
+            </figure>
+
 <h3 id="常见的三种哈希结构"><a href="#常见的三种哈希结构" class="headerlink" title="常见的三种哈希结构"></a>常见的三种哈希结构</h3><p>当我们想使用哈希法来解决问题的时候，我们一般会选择如下三种数据结构。</p>
 <ul>
 <li>数组</li>
 <li>set （集合）</li>
 <li>map(映射)</li>
 </ul>
-<p>在C++中，set 和 map 分别提供以下三种数据结构，其底层实现以及优劣如下表所示：<br><img src="https://s2.loli.net/2022/06/12/Wj8mAD2QnyKzukM.png" alt="20220612183010"></p>
-<p>std::unordered_set底层实现为哈希表，std::set 和std::multiset 的底层实现是红黑树，红黑树是一种平衡二叉搜索树，所以key值是有序的，但key不可以修改，改动key值会导致整棵树的错乱，所以只能删除和增加。<br><img src="https://s2.loli.net/2022/06/12/IJDeZ8yNmncR3SU.png" alt="20220612183049"></p>
+<p>在C++中，set 和 map 分别提供以下三种数据结构，其底层实现以及优劣如下表所示：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/06/12/Wj8mAD2QnyKzukM.png" alt="20220612183010" title="">
+                </div>
+                <div class="image-caption">20220612183010</div>
+            </figure>
+
+<p>std::unordered_set底层实现为哈希表，std::set 和std::multiset 的底层实现是红黑树，红黑树是一种平衡二叉搜索树，所以key值是有序的，但key不可以修改，改动key值会导致整棵树的错乱，所以只能删除和增加。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/06/12/IJDeZ8yNmncR3SU.png" alt="20220612183049" title="">
+                </div>
+                <div class="image-caption">20220612183049</div>
+            </figure>
+
 <p>std::unordered_map 底层实现为哈希表，std::map 和std::multimap 的底层实现是红黑树。同理，std::map 和std::multimap 的key也是有序的（这个问题也经常作为面试题，考察对语言容器底层的理解）。</p>
 <p>当我们要使用集合来解决哈希问题的时候，优先使用unordered_set，因为它的查询和增删效率是最优的，如果需要集合是有序的，那么就用set，如果要求不仅有序还要有重复数据的话，那么就用multiset。</p>
 <p>那么再来看一下map ，在map 是一个key value 的数据结构，map中，对key是有限制，对value没有限制的，因为key的存储方式使用红黑树实现的。</p>
@@ -145,33 +306,352 @@
 <li>map是采用了key-value的方式，一般可以用来保存一一对应的键值对</li>
 </ol>
 
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新：<time datetime="2024-01-04T02:41:48.345Z" itemprop="dateUpdated">2024-01-04 10:41:48</time>
+</span>
+
+
+        
+        
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://nefelibata.icu'">
+            <img src="/blog/img/avatar.jpg" alt="Nefelibata">
+            <a>Nefelibata</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
     </div>
 
-    <div class="totop">ToTop</div>
-    <script type="text/javascript" src="../libs/codeBlock/codeBlockFuction.js"></script>
-    <!-- 代码语言 -->
-    <script type="text/javascript" src="../libs/codeBlock/codeLang.js"></script>
-    <!-- 代码块复制 -->
-    <script type="text/javascript" src="../libs/codeBlock/codeCopy.js"></script>
-    <script type="text/javascript" src="../libs/codeBlock/clipboard.min.js"></script>
-    <!-- 代码块收缩 -->
-    <script type="text/javascript" src="../libs/codeBlock/codeShrink.js"></script> 
-    <!-- 代码块折行 -->
-    <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
-</div>
-        <div class="footer">
-    <a href="#">
-        2020 <i class="fab fa-studiovinari"></i> Nefelibata <i class="fas fa-angle-double-up"></i>
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Leetcode/" rel="tag">Leetcode</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://nefelibata.icu/2022/064cfc9b66.html&title=《LeetCode笔记-哈希表》 — Nefelibata&pic=https://nefelibata.icu/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://nefelibata.icu/2022/064cfc9b66.html&title=《LeetCode笔记-哈希表》 — Nefelibata&source=哈希表" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://nefelibata.icu/2022/064cfc9b66.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode笔记-哈希表》 — Nefelibata&url=https://nefelibata.icu/2022/064cfc9b66.html&via=https://nefelibata.icu" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://nefelibata.icu/2022/064cfc9b66.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
 </div>
 
 
-<script src="/blog/js/totop.js"></script>
 
-
-<script src="/blog/js/search.js"></script>
-
+        </div>
     </div>
-</body>
 
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/blog/2022/06e8411ac8.html" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：LeetCode笔记-KMP
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/blog/2022/064d5af563.html" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：LeetCode笔记-链表">下一篇：LeetCode笔记-链表</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2021
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://nefelibata.icu">nefelibata.icu</a>
+        </span>
+    </div>
+</footer>
+
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="/blog/img/dog.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/wechat.png" data-alipay="/blog/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://nefelibata.icu/2022/064cfc9b66.html&title=《LeetCode笔记-哈希表》 — Nefelibata&pic=https://nefelibata.icu/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://nefelibata.icu/2022/064cfc9b66.html&title=《LeetCode笔记-哈希表》 — Nefelibata&source=哈希表" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://nefelibata.icu/2022/064cfc9b66.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode笔记-哈希表》 — Nefelibata&url=https://nefelibata.icu/2022/064cfc9b66.html&via=https://nefelibata.icu" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://nefelibata.icu/2022/064cfc9b66.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aQXKDMAwF0Nz/0ukmuw7wJZHMYD+vmECNHwtVsvx6xeN9Oo6ePJ8hv3vbwMDAeCwjWeL/66Nn7pqn+vkwMDB2YBxFsMnUyUKrTx7+joGBgTEOrOfXyXsxMDAwkunOn0zuTtJEDAwMjCSAnqeAVUAy21dqcQwMjAcy8l33319/pb+BgYHxKMa7OPIwmjc1J+v5zICBgbE0o7d9lqeDSYTMY+lFKYuBgbEoIw+X+S/54vIc74KHgYGxAWNeZPZCZ/UjHt7FwMBYmpG8JqcmpOQtk5CNgYGxNmOeIPbalpNtOAwMjB0Y1a35JKVLDlL05r/4X4GBgbEoIwmdvSRvknr2jn1gYGCszeilifMQnPzVCICBgbEEoxo0qy9IUsNJmxMDA2MHRp5+9TbL8oK2+lkxMDB2Y1SL2Dy8TkbzmAUGBsZyjGr7sLeUalu0vA2HgYGxNKPKmxywSNLH6mZfuamJgYHxWEavKM3L3WT0GgwYGBi7MfKjFfMn50cuokYmBgbGcozqoYe85zDHjLoZGBgYSzAmm2vVUvNHB1gxMDAWYvRKzaRkrTY7ewdeo6VgYGA8nHFXM3K+Vdc7zDFKGTEwMB7FyENnD1P9fs23YGBgbMDobcN9o1XQrMUxMDAw4uUmhehdieYNARcDA2MDRq/1mM9cCM0YGBgbMHpFbN4wyFsRvc07DAyMtRnV0vH8sMVdBW2vFYqBgbEc4w9lrrc9xh8ylwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/blog/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/blog/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/blog/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+// setInterval(function () {
+// 	setTime("2021/3/27");
+// }, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+// 
+//    getHitokoto();
+// 
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Nefelibata");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c Nefelibata %c  © kpl0111  http://nefelibata.icu \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+<!-- 不蒜子 -->
+<!--  -->
+
+</body>
 </html>

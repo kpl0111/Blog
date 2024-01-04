@@ -1,126 +1,243 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
-        Nefelibata
-    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Language" content="zh-cn">
     
-<link rel="stylesheet" href="/blog/css/style.css">
+    
+    <title>
+        
+            背包理论基础多重背包 | Nefelibata
+             | Nefelibata
+        
+    </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+        <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="背包">
+    
+    
 
-    <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/kpl0111/blog/images/favicon.ico" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kpl0111/blog/css/style/github.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/gh/kpl0111/blog/js/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kpl0111/blog/js/highlight.min.js"></script>
-    <!-- Include jQuery -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
-    <!-- Include ClipboardJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="背包理论基础完全背包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="背包理论基础多重背包">
+<meta property="og:url" content="https://nefelibata.icu/2022/0871e46bfb.html">
+<meta property="og:site_name" content="Nefelibata">
+<meta property="og:description" content="背包理论基础完全背包">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-10T05:42:04.000Z">
+<meta property="article:modified_time" content="2024-01-04T02:41:48.352Z">
+<meta property="article:author" content="Nefelibata">
+<meta property="article:tag" content="背包">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="Nefelibata" href="/blog/atom.xml">
+    
+    <link rel="shortcut icon" href="/blog/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/blog/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
 <meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/blog/atom.xml" title="Nefelibata" type="application/atom+xml">
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-    <!-- <div class="logo">
-        <a href="/blog/">Nefelibata</a>
-    </div> -->
-    <!-- <div class="logo">
-        <img src="/images/lkp.png" alt="Logo">
-    </div> -->
-    <div class="nav">
-        <ul class="menu">
-            
-                <li class="menu-item">
-                    <a href="/blog/../" class="menu-item-link">
-                        Nefelibata
-                    </a>
-                </li>
-            
-                <li class="menu-item">
-                    <a href="/blog/" class="menu-item-link">
-                        Blog
-                    </a>
-                </li>
-            
-                <li class="menu-item">
-                    <a href="/blog/../gallery" class="menu-item-link">
-                        Gallery
-                    </a>
-                </li>
-            
-                <li class="menu-item">
-                    <a target="_blank" rel="noopener" href="https://github.com/kpl0111" class="menu-item-link">
-                        Github
-                    </a>
-                </li>
-            
-                <li class="menu-item">
-                    <a href="/blog/../about" class="menu-item-link">
-                        About
-                    </a>
-                </li>
-                
-        </ul>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Nefelibata</h5>
+        </hgroup>
+      </div>
     </div>
-</div>
-        <div class="article">
-    <!-- <div class="article-title">
-        <h2>
-            背包理论基础多重背包
-        </h2>
-    </div> -->
-    
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    
-    <div class="article-meta">
-        <div class="article-date">
-            <i class="fas fa-edit"></i>
-            2022/08/10 周三 13:42&nbsp;&nbsp;&nbsp;
-            <span class="just-a-temp"><span>
-            <i class="fas fa-redo"></i>
-            2023/12/19 周二 20:31&nbsp;&nbsp;&nbsp;
-            <span class="just-a-temp"><span>
-            <i class="fas fa-file-word"></i>
-            507 words
+              <li class="waves-block waves-effect">
+                  <a href="/blog/" target="_self" >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/blog/archives" target="_self" >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/blog/categories" target="_self" >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/blog/tags" target="_self" >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/blog/../gallery" target="_blank" >
+                    <i class="icon icon-lg icon-image"></i>
+                    <span>相册</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/blog/../about" target="_blank" >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/blog/../" target="_self" >
+                    <i class="icon icon-lg icon-tree"></i>
+                    <span>Nefelibata</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:kunpengl0111@gamil.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/kpl0111" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/Nefelib31847846" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+        </div>
+      </ul>
+    </div>
+  </div>
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">背包理论基础多重背包</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
         </div>
     </div>
-    <div class="article-content">
-        <p>摘要待补充</p>
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="post-toc-text">多重背包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text">总结</span></a></li></ol>
+            
+        </nav>
+    </aside>
+   
+<article id="post-背包理论基础多重背包"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">背包理论基础多重背包</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2022-08-10 13:42:04" datetime="2022-08-10T05:42:04.000Z"  itemprop="datePublished">2022-08-10</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/%E7%AC%94%E8%AE%B0/">笔记</a></li></ul>
+
+
+            <i>·</i>
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">6.3</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>背包理论基础完全背包</p>
 <span id="more"></span>
-
-
-
-<!-- toc -->
 
 <blockquote>
 <p>转载自<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a>，侵删</p>
 </blockquote>
 <p>建议按照如下顺序观看：<br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a><br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2</a><br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包（本文）</a></p>
-<h1 id="动态规划：关于多重背包，你该了解这些！"><a href="#动态规划：关于多重背包，你该了解这些！" class="headerlink" title="动态规划：关于多重背包，你该了解这些！"></a>动态规划：关于多重背包，你该了解这些！</h1><p>这次我们再来说一说多重背包</p>
+<p>这次我们再来说一说多重背包</p>
 <h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><p>对于多重背包，我在力扣上还没发现对应的题目，所以这里就做一下简单介绍，大家大概了解一下。</p>
 <p>有N种物品和一个容量为V 的背包。第i种物品最多有Mi件可用，每件耗费的空间是Ci ，价值是Wi 。求解将哪些物品装入背包可使这些物品的耗费的空间 总和不超过背包容量，且价值总和最大。</p>
 <p>多重背包和01背包是非常像的， 为什么和01背包像呢？</p>
@@ -284,33 +401,352 @@ int main() {
 <p>至于背包九讲里面还有混合背包，二维费用背包，分组背包等等这些，大家感兴趣可以自己去学习学习，这里也不做介绍了，面试也不会考。</p>
 <p><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08c8776b35.html">背包理论基础01背包1</a><br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08517e3a8f.html">背包理论基础01背包2</a><br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/08806f2082.html">背包基础理论完全背包</a><br><a target="_blank" rel="noopener" href="https://kpl0111.github.io/blog/2022/0871e46bfb.html">背包基础理论多重背包（本文）</a></p>
 
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新：<time datetime="2024-01-04T02:41:48.352Z" itemprop="dateUpdated">2024-01-04 10:41:48</time>
+</span>
+
+
+        
+        
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://nefelibata.icu'">
+            <img src="/blog/img/avatar.jpg" alt="Nefelibata">
+            <a>Nefelibata</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
     </div>
 
-    <div class="totop">ToTop</div>
-    <script type="text/javascript" src="../libs/codeBlock/codeBlockFuction.js"></script>
-    <!-- 代码语言 -->
-    <script type="text/javascript" src="../libs/codeBlock/codeLang.js"></script>
-    <!-- 代码块复制 -->
-    <script type="text/javascript" src="../libs/codeBlock/codeCopy.js"></script>
-    <script type="text/javascript" src="../libs/codeBlock/clipboard.min.js"></script>
-    <!-- 代码块收缩 -->
-    <script type="text/javascript" src="../libs/codeBlock/codeShrink.js"></script> 
-    <!-- 代码块折行 -->
-    <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
-</div>
-        <div class="footer">
-    <a href="#">
-        2020 <i class="fab fa-studiovinari"></i> Nefelibata <i class="fas fa-angle-double-up"></i>
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E8%83%8C%E5%8C%85/" rel="tag">背包</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://nefelibata.icu/2022/0871e46bfb.html&title=《背包理论基础多重背包》 — Nefelibata&pic=https://nefelibata.icu/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://nefelibata.icu/2022/0871e46bfb.html&title=《背包理论基础多重背包》 — Nefelibata&source=背包理论基础完全背包" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://nefelibata.icu/2022/0871e46bfb.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《背包理论基础多重背包》 — Nefelibata&url=https://nefelibata.icu/2022/0871e46bfb.html&via=https://nefelibata.icu" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://nefelibata.icu/2022/0871e46bfb.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
 </div>
 
 
-<script src="/blog/js/totop.js"></script>
 
-
-<script src="/blog/js/search.js"></script>
-
+        </div>
     </div>
-</body>
 
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/blog/2022/1072a96e3d.html" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：中缀表达式转后缀表达式
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/blog/2022/08806f2082.html" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：背包理论基础完全背包">下一篇：背包理论基础完全背包</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2021
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://nefelibata.icu">nefelibata.icu</a>
+        </span>
+    </div>
+</footer>
+
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="/blog/img/dog.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/wechat.png" data-alipay="/blog/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://nefelibata.icu/2022/0871e46bfb.html&title=《背包理论基础多重背包》 — Nefelibata&pic=https://nefelibata.icu/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://nefelibata.icu/2022/0871e46bfb.html&title=《背包理论基础多重背包》 — Nefelibata&source=背包理论基础完全背包" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://nefelibata.icu/2022/0871e46bfb.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《背包理论基础多重背包》 — Nefelibata&url=https://nefelibata.icu/2022/0871e46bfb.html&via=https://nefelibata.icu" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://nefelibata.icu/2022/0871e46bfb.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aQZKDMAwEwPz/09kH7OKMZLMVm+aUSgGhOUwsS69XfLwvjt/n5OePr3rdcWBgYGzLeA+Pqx+Y+ebq1/PX8QcVAwPjAYwkCsexOH7EHDM+8/J7DAwMjPjzqgjGwMDAWMsYl51JmH5F4GJgYHw9Iyli86vyu/W27TAwMJ7GyHfd///zLf0NDAyMrRi9uMyvrTYmmyGOgYFxNCMPuN6YRXK3qEBN7oCBgXEoY6YxmTcvc0z+DOXJMgwMjG0ZvR9elfRVQBTrGBgYxzF64xFJ03EM7rUQLl8fBgbG0YxedK4K0+pys9BCwMDAOIjRG9VKAjcvbvPBjgVvEQMDY3NGXojOXDt/hw8rXAwMjOMYvbblqpI1x8wMcGBgYJzByBuQ85tlecjmJAwMjLMZSfFZHQgbg28Z+MDAwDiasWrnKgnome22MgYDA+M4RhKj9wXuqh1+DAyMUxn5IxZq4rgYri4HL6kYGBhHM9Zu5VfHMvLF34IiFgMDY3NGdVu/ujRcNbTx4QkxMDAexpgJ3PHn3mBHczYEAwPjOEYSi1MzHcVzyuUrBgbGoYx38agu8vKFYzXQm/8YGBgYGzJmwq66ud8bqugVyRgYGOcx8sK1WjkmTYKZRkKzp4GBgbEtoxd8q8Yj8sf90BjAwMDAiAN6vBzMX0rhVWJgYGDEgxf5QEa+xoteHAYGxgMYvQ21XmjmbYBCkYyBgXE0Y34vq1qCVh9xWVMTAwNjP8YPV3PbGTLKE/4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/blog/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/blog/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/blog/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+// setInterval(function () {
+// 	setTime("2021/3/27");
+// }, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+// 
+//    getHitokoto();
+// 
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Nefelibata");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c Nefelibata %c  © kpl0111  http://nefelibata.icu \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+<!-- 不蒜子 -->
+<!--  -->
+
+</body>
 </html>

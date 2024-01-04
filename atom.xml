@@ -6,7 +6,7 @@
   <link href="https://nefelibata.icu/atom.xml" rel="self"/>
   
   <link href="https://nefelibata.icu/"/>
-  <updated>2023-12-19T12:31:32.040Z</updated>
+  <updated>2024-01-04T02:41:48.344Z</updated>
   <id>https://nefelibata.icu/</id>
   
   <author>
@@ -21,33 +21,10 @@
     <link href="https://nefelibata.icu/2099/12c5804086.html"/>
     <id>https://nefelibata.icu/2099/12c5804086.html</id>
     <published>2099-12-31T12:50:55.000Z</published>
-    <updated>2023-12-19T12:31:32.040Z</updated>
+    <updated>2024-01-04T02:41:48.344Z</updated>
     
     
     <summary type="html">&lt;p&gt;Hello Nefelibata!&lt;/p&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>final</title>
-    <link href="https://nefelibata.icu/2023/12ecd55cc6.html"/>
-    <id>https://nefelibata.icu/2023/12ecd55cc6.html</id>
-    <published>2023-12-12T06:40:54.000Z</published>
-    <updated>2023-12-21T08:16:34.310Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;h2 id=&quot;模板&quot;&gt;&lt;a href=&quot;#模板&quot; class=&quot;headerlink&quot;</summary>
-        
-      
     
     
     
@@ -59,12 +36,14 @@
     <link href="https://nefelibata.icu/2023/113cf76af5.html"/>
     <id>https://nefelibata.icu/2023/113cf76af5.html</id>
     <published>2023-11-28T12:40:04.000Z</published>
-    <updated>2023-12-19T12:31:32.077Z</updated>
+    <updated>2024-01-04T02:41:48.353Z</updated>
     
     
-    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;😆&lt;/p&gt;</summary>
     
     
+    
+    <category term="随笔" scheme="https://nefelibata.icu/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
   </entry>
@@ -74,32 +53,15 @@
     <link href="https://nefelibata.icu/2023/119fca6f5f.html"/>
     <id>https://nefelibata.icu/2023/119fca6f5f.html</id>
     <published>2023-11-26T08:28:37.000Z</published>
-    <updated>2023-12-19T12:31:32.062Z</updated>
+    <updated>2024-01-04T02:41:48.350Z</updated>
     
     
     <summary type="html">Here&#39;s something encrypted.</summary>
     
     
     
+    <category term="随笔" scheme="https://nefelibata.icu/categories/%E9%9A%8F%E7%AC%94/"/>
     
-  </entry>
-  
-  <entry>
-    <title>易错点总结</title>
-    <link href="https://nefelibata.icu/2023/118455ceb2.html"/>
-    <id>https://nefelibata.icu/2023/118455ceb2.html</id>
-    <published>2023-11-15T04:12:59.000Z</published>
-    <updated>2023-12-21T08:07:57.093Z</updated>
-    
-    
-    <summary type="html">Here&#39;s something encrypted.</summary>
-    
-    
-    
-    <category term="笔记" scheme="https://nefelibata.icu/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="笔记" scheme="https://nefelibata.icu/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -108,57 +70,14 @@
     <link href="https://nefelibata.icu/2023/09995a41cb.html"/>
     <id>https://nefelibata.icu/2023/09995a41cb.html</id>
     <published>2023-09-14T05:02:23.000Z</published>
-    <updated>2023-12-19T12:31:32.061Z</updated>
+    <updated>2024-01-04T02:41:48.350Z</updated>
     
     
-    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>易错点</title>
-    <link href="https://nefelibata.icu/2023/084f407d5a.html"/>
-    <id>https://nefelibata.icu/2023/084f407d5a.html</id>
-    <published>2023-08-27T09:06:34.000Z</published>
-    <updated>2023-12-19T12:31:32.069Z</updated>
-    
-    
-    <summary type="html">Here&#39;s something encrypted.</summary>
+    <summary type="html">&lt;p&gt;原码、反码、补码、移码、浮点数&lt;/p&gt;</summary>
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Vim操作指令及配置</title>
-    <link href="https://nefelibata.icu/2023/056dad740.html"/>
-    <id>https://nefelibata.icu/2023/056dad740.html</id>
-    <published>2023-05-14T09:01:53.000Z</published>
-    <updated>2023-12-19T12:31:32.058Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Linux指令</title>
-    <link href="https://nefelibata.icu/2023/0589550d80.html"/>
-    <id>https://nefelibata.icu/2023/0589550d80.html</id>
-    <published>2023-05-02T12:54:51.000Z</published>
-    <updated>2023-12-19T12:31:32.053Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
-    
-    
+    <category term="烂笔头" scheme="https://nefelibata.icu/categories/%E7%83%82%E7%AC%94%E5%A4%B4/"/>
     
     
   </entry>
@@ -168,13 +87,17 @@
     <link href="https://nefelibata.icu/2023/044b8db958.html"/>
     <id>https://nefelibata.icu/2023/044b8db958.html</id>
     <published>2023-04-07T09:43:00.000Z</published>
-    <updated>2023-12-19T12:31:32.042Z</updated>
+    <updated>2024-01-04T02:41:48.343Z</updated>
     
     
-    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;Git常用指令&lt;/p&gt;</summary>
     
     
     
+    <category term="烂笔头" scheme="https://nefelibata.icu/categories/%E7%83%82%E7%AC%94%E5%A4%B4/"/>
+    
+    
+    <category term="Git" scheme="https://nefelibata.icu/tags/Git/"/>
     
   </entry>
   
@@ -183,28 +106,17 @@
     <link href="https://nefelibata.icu/2023/0445fbc665.html"/>
     <id>https://nefelibata.icu/2023/0445fbc665.html</id>
     <published>2023-04-07T06:52:16.000Z</published>
-    <updated>2023-12-19T12:31:32.039Z</updated>
+    <updated>2024-01-04T02:41:48.343Z</updated>
     
     
-    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>VSCode设置自动识别文件编码格式</title>
-    <link href="https://nefelibata.icu/2023/041be02434.html"/>
-    <id>https://nefelibata.icu/2023/041be02434.html</id>
-    <published>2023-04-06T11:38:30.000Z</published>
-    <updated>2023-12-19T12:31:32.057Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;C++中数组真的存在吗 🤔？&lt;/p&gt;</summary>
     
     
     
+    <category term="想法" scheme="https://nefelibata.icu/categories/%E6%83%B3%E6%B3%95/"/>
+    
+    
+    <category term="C++" scheme="https://nefelibata.icu/tags/C/"/>
     
   </entry>
   
@@ -213,28 +125,17 @@
     <link href="https://nefelibata.icu/2023/03753780000.html"/>
     <id>https://nefelibata.icu/2023/03753780000.html</id>
     <published>2023-03-06T07:59:48.000Z</published>
-    <updated>2023-12-19T12:31:32.055Z</updated>
+    <updated>2024-01-04T02:41:48.348Z</updated>
     
     
-    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Seven</title>
-    <link href="https://nefelibata.icu/2022/1257958268.html"/>
-    <id>https://nefelibata.icu/2022/1257958268.html</id>
-    <published>2022-12-18T09:25:55.000Z</published>
-    <updated>2023-12-19T12:31:32.055Z</updated>
-    
-    
-    <summary type="html">Here&#39;s something encrypted.</summary>
+    <summary type="html">&lt;p&gt;支持向量机是什么呢🤔？&lt;/p&gt;</summary>
     
     
     
+    <category term="笔记" scheme="https://nefelibata.icu/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="SVM" scheme="https://nefelibata.icu/tags/SVM/"/>
     
   </entry>
   
@@ -243,42 +144,14 @@
     <link href="https://nefelibata.icu/2022/12f1aaadb6.html"/>
     <id>https://nefelibata.icu/2022/12f1aaadb6.html</id>
     <published>2022-12-16T02:45:52.000Z</published>
-    <updated>2023-12-19T12:31:32.073Z</updated>
+    <updated>2024-01-04T02:41:48.351Z</updated>
     
     
     <summary type="html">Here&#39;s something encrypted.</summary>
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>随手记(政治)</title>
-    <link href="https://nefelibata.icu/2022/11b85d3e4c.html"/>
-    <id>https://nefelibata.icu/2022/11b85d3e4c.html</id>
-    <published>2022-11-16T01:08:43.000Z</published>
-    <updated>2023-12-19T12:31:32.084Z</updated>
-    
-    
-    <summary type="html">Here&#39;s something encrypted.</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>盲区</title>
-    <link href="https://nefelibata.icu/2022/11b8858517.html"/>
-    <id>https://nefelibata.icu/2022/11b8858517.html</id>
-    <published>2022-11-10T11:06:12.000Z</published>
-    <updated>2023-12-19T12:31:32.073Z</updated>
-    
-    
-    <summary type="html">Here&#39;s something encrypted.</summary>
-    
-    
+    <category term="随笔" scheme="https://nefelibata.icu/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
   </entry>
@@ -288,12 +161,14 @@
     <link href="https://nefelibata.icu/2022/10a444b428.html"/>
     <id>https://nefelibata.icu/2022/10a444b428.html</id>
     <published>2022-10-15T03:08:40.000Z</published>
-    <updated>2023-12-19T12:31:32.065Z</updated>
+    <updated>2024-01-04T02:41:48.350Z</updated>
     
     
-    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;排序&lt;/p&gt;</summary>
     
     
+    
+    <category term="烂笔头" scheme="https://nefelibata.icu/categories/%E7%83%82%E7%AC%94%E5%A4%B4/"/>
     
     
   </entry>
@@ -303,28 +178,205 @@
     <link href="https://nefelibata.icu/2022/1072a96e3d.html"/>
     <id>https://nefelibata.icu/2022/1072a96e3d.html</id>
     <published>2022-10-08T06:36:51.000Z</published>
-    <updated>2023-12-19T12:31:32.065Z</updated>
+    <updated>2024-01-04T02:41:48.349Z</updated>
     
     
-    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;中缀表达式转后缀表达式&lt;/p&gt;</summary>
     
     
+    
+    <category term="烂笔头" scheme="https://nefelibata.icu/categories/%E7%83%82%E7%AC%94%E5%A4%B4/"/>
     
     
   </entry>
   
   <entry>
-    <title>win10时间显示精确到秒</title>
-    <link href="https://nefelibata.icu/2022/1091d7ef4e.html"/>
-    <id>https://nefelibata.icu/2022/1091d7ef4e.html</id>
-    <published>2022-10-06T01:43:49.000Z</published>
-    <updated>2023-12-19T12:31:32.058Z</updated>
+    <title>背包理论基础多重背包</title>
+    <link href="https://nefelibata.icu/2022/0871e46bfb.html"/>
+    <id>https://nefelibata.icu/2022/0871e46bfb.html</id>
+    <published>2022-08-10T05:42:04.000Z</published>
+    <updated>2024-01-04T02:41:48.352Z</updated>
     
     
-    <summary type="html">&lt;p&gt;摘要待补充&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;背包理论基础完全背包&lt;/p&gt;</summary>
     
     
     
+    <category term="笔记" scheme="https://nefelibata.icu/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="背包" scheme="https://nefelibata.icu/tags/%E8%83%8C%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>背包理论基础完全背包</title>
+    <link href="https://nefelibata.icu/2022/08806f2082.html"/>
+    <id>https://nefelibata.icu/2022/08806f2082.html</id>
+    <published>2022-08-10T05:22:02.000Z</published>
+    <updated>2024-01-04T02:41:48.352Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;背包理论基础多重背包&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记" scheme="https://nefelibata.icu/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="背包" scheme="https://nefelibata.icu/tags/%E8%83%8C%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>背包理论基础01背包2</title>
+    <link href="https://nefelibata.icu/2022/08517e3a8f.html"/>
+    <id>https://nefelibata.icu/2022/08517e3a8f.html</id>
+    <published>2022-08-10T05:21:14.000Z</published>
+    <updated>2024-01-04T02:41:48.352Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;背包理论基础02&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记" scheme="https://nefelibata.icu/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="背包" scheme="https://nefelibata.icu/tags/%E8%83%8C%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>背包理论基础01背包1</title>
+    <link href="https://nefelibata.icu/2022/08c8776b35.html"/>
+    <id>https://nefelibata.icu/2022/08c8776b35.html</id>
+    <published>2022-08-10T05:21:02.000Z</published>
+    <updated>2024-01-04T02:41:48.351Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;背包理论基础01&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记" scheme="https://nefelibata.icu/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="背包" scheme="https://nefelibata.icu/tags/%E8%83%8C%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode笔记-动态规划</title>
+    <link href="https://nefelibata.icu/2022/0826e7783f.html"/>
+    <id>https://nefelibata.icu/2022/0826e7783f.html</id>
+    <published>2022-08-06T09:41:48.000Z</published>
+    <updated>2024-01-04T02:41:48.345Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;动规&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记" scheme="https://nefelibata.icu/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Leetcode" scheme="https://nefelibata.icu/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode笔记-贪心算法</title>
+    <link href="https://nefelibata.icu/2022/072a2449dc.html"/>
+    <id>https://nefelibata.icu/2022/072a2449dc.html</id>
+    <published>2022-07-25T12:03:50.000Z</published>
+    <updated>2024-01-04T02:41:48.348Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;贪心的 本质是选择每一阶段的局部最优，从而达到全局最优&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记" scheme="https://nefelibata.icu/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Leetcode" scheme="https://nefelibata.icu/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VSCode+PicGo+Aliyun配置MarkDown图床</title>
+    <link href="https://nefelibata.icu/2022/07b93436c8.html"/>
+    <id>https://nefelibata.icu/2022/07b93436c8.html</id>
+    <published>2022-07-25T09:04:42.000Z</published>
+    <updated>2024-01-04T02:41:48.349Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;VSCode+PicGo+Aliyun配置MarkDown图床&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具" scheme="https://nefelibata.icu/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="工具" scheme="https://nefelibata.icu/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何利用网易云盘同步歌曲歌词</title>
+    <link href="https://nefelibata.icu/2022/07Infinity.html"/>
+    <id>https://nefelibata.icu/2022/07Infinity.html</id>
+    <published>2022-07-25T07:47:47.000Z</published>
+    <updated>2024-01-04T02:41:48.351Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;利用网易云的云盘功能实现Listen 1的效果&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="杂记" scheme="https://nefelibata.icu/categories/%E6%9D%82%E8%AE%B0/"/>
+    
+    
+    <category term="工具" scheme="https://nefelibata.icu/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode笔记-回溯</title>
+    <link href="https://nefelibata.icu/2022/079716a2d4.html"/>
+    <id>https://nefelibata.icu/2022/079716a2d4.html</id>
+    <published>2022-07-02T07:43:02.000Z</published>
+    <updated>2024-01-04T02:41:48.346Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;回溯&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记" scheme="https://nefelibata.icu/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Leetcode" scheme="https://nefelibata.icu/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode笔记-二叉树</title>
+    <link href="https://nefelibata.icu/2022/0621aed2ac.html"/>
+    <id>https://nefelibata.icu/2022/0621aed2ac.html</id>
+    <published>2022-06-17T11:07:45.000Z</published>
+    <updated>2024-01-04T02:41:48.344Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;二叉树&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记" scheme="https://nefelibata.icu/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Leetcode" scheme="https://nefelibata.icu/tags/Leetcode/"/>
     
   </entry>
   
